@@ -1,0 +1,64 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/sidebar.ejs') %>
+
+<div class="container"> 
+
+    <hr>
+    <h2>Moldes</h2> 
+    <a class="btn btn-success" href="/moldes/new"> Inserir Novo Molde</a>
+    <hr>
+
+    <table class="table table-bordered"> 
+        <thead>
+            <tr>
+                <th> ID </th>
+                <th> Descrição </th>
+                <th> Código </th>
+       
+            </tr>
+        </thead>
+        <tbody>
+
+           <% moldes.forEach(molde => { %>
+            <tr>
+                <td> <%= molde.id %> </td>
+                <td> <%=molde.descricao %>  </td>
+                <td> <%=molde.codigo %>  </td>
+         
+                <td> 
+                    <form method="GET" action="/moldes/edit/<%= molde.id %>" style="display: inline;">                                     
+                            <button class="btn btn-warning"> Editar</button>
+                    </form>
+                    
+                    <form method="POST" action="/moldes/delete" style="display: inline;" onsubmit="confirmarDelecao(event, this)"> 
+                            <input type="hidden" name="id" value="<%= molde.id %>">
+                            <button class="btn btn-danger"> Remover</button>
+                    </form> </th>
+                </td>
+            </tr>
+
+           <% }) %> 
+           
+           
+        </tbody>
+
+
+    </table>
+
+</div>
+
+<script>
+
+    function confirmarDelecao(event,form){
+        event.preventDefault();
+        var decision = confirm("Você quer deletar este Produto?");
+         if(decision){
+             form.submit();
+         }
+
+    }
+
+</script>
+
+
+<%- include ('../partials/footer.ejs') %>

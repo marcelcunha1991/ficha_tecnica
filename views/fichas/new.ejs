@@ -1,0 +1,34 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/sidebar.ejs') %>
+
+<div class="container">
+
+ 
+  <br>
+    <div class="card">
+            <div class="card-header">
+                   
+                        <h2>Nova Máquina</h2>
+                    
+            </div>
+            <div class="card-body">
+                    <form  method="POST" action="/maquinas/create">
+                            <input class="form-control" type="text" name="descricao" placeholder="Insira um nome Para a Máquina"><br>
+                            <input class="form-control" type="text" name="codigo" placeholder="Insira um código Para a Máquina"><br>
+                            <input class="form-control" type="text" name="peso" placeholder="Insira um peso em Toneladas Para a Máquina"><br>
+                            <input class="form-control" type="text" name="modelo" placeholder="Inseira o modelo da Máquia"><br>
+                   
+                            
+
+                         
+                            <br>
+                            <button class="btn btn-primary">Cadastrar</button>
+                        </form>
+            </div>
+           
+          
+    </div>
+   
+</div>
+
+<%- include ('../partials/footer.ejs') %>

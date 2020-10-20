@@ -1,0 +1,33 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/sidebar.ejs') %>
+
+<div class="container">
+
+ 
+  <br>
+    <div class="card">
+            <div class="card-header">
+                   
+                        <h2>Editar Molde</h2>
+                    
+            </div>
+            <div class="card-body">
+                    <form  method="POST" action="/moldes/update">
+                            <input class="form-control" type="text" name="descricao" placeholder="Insira um nome Para a Máquina" value="<%= molde.descricao %>"><br>
+                            <input class="form-control" type="text" name="codigo" placeholder="Insira um código Para a Máquina" value="<%= molde.codigo %>"><br>
+                      
+                            <input type="hidden" name="id" value="<%= molde.id %>">
+                            
+
+                         
+                            <br>
+                            <button class="btn btn-primary">Editar</button>
+                        </form>
+            </div>
+           
+          
+    </div>
+   
+</div>
+
+<%- include ('../partials/footer.ejs') %>

@@ -1,0 +1,68 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/sidebar.ejs') %>
+
+<div class="container"> 
+
+    <hr>
+    <h2>Fichas Técnicas</h2> 
+    <a class="btn btn-success" href="/fichas/new"> Inserir Nova Ficha Técnica</a>
+    <hr>
+
+    <table class="table table-bordered"> 
+        <thead>
+            <tr>
+                <th> ID </th>
+                <th> Cliente </th>
+                <th> Produto </th>
+                <th> Máquina </th>
+                <th> Matéria Prima </th>
+                <th> Molde </th>
+            </tr>
+        </thead>
+        <tbody>
+
+           <% fichas.forEach(ficha => { %>
+            <tr>
+                <td> <%= ficha.id %> </td>
+                <td> <%=ficha.cliente %>  </td>
+                <td> <%=ficha.produto %>  </td>
+                <td> <%=ficha.maquina %> </td>
+                <td> <%=ficha.materiaprima %> </td>
+                <td> <%=ficha.molde %> </td>
+                <td> 
+                    <form method="GET" action="/fichas/edit/<%= ficha.id %>" style="display: inline;">                                     
+                            <button class="btn btn-warning"> Editar</button>
+                    </form>
+                    
+                    <form method="POST" action="/fichas/delete" style="display: inline;" onsubmit="confirmarDelecao(event, this)"> 
+                            <input type="hidden" name="id" value="<%= ficha.id %>">
+                            <button class="btn btn-danger"> Remover</button>
+                    </form> </th>
+                </td>
+            </tr>
+
+           <% }) %> 
+           
+           
+        </tbody>
+
+
+    </table>
+
+</div>
+
+<script>
+
+    function confirmarDelecao(event,form){
+        event.preventDefault();
+        var decision = confirm("Você quer deletar esta Máquina?");
+         if(decision){
+             form.submit();
+         }
+
+    }
+
+</script>
+
+
+<%- include ('../partials/footer.ejs') %>
