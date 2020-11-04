@@ -1,17 +1,27 @@
 const express = require("express");
 const router = express.Router();
 const Fichas = require("./Ficha");
+const Parametros = require("./Parametros");
 const adminAuth = require("../middlewares/adminAuth");
 const { render } = require("ejs");
+const Maquinas = require("../Maquinas/Maquinas");
 
 
 router.get("/fichas",  (req,res) => {
+    var maquinas;
 
-
+    Maquinas.findAll().then(maquina => {
+        maquinas = maquina;
+    })
 
     Fichas.findAll().then(fichas => {
+
+        console.log(maquinas);
+        
         res.render("fichas/index",{
             fichas:fichas,
+            maquinas: maquinas,
+            tabela:"",
             nav_maquinas : "",
             nav_produtos : "",
             nav_mp : "",
@@ -25,12 +35,86 @@ router.get("/fichas",  (req,res) => {
     
 })
 
+router.get("/fichas/maquina/:id",  (req,res) => {
+   
+    var maquinaId= req.params.id;
+
+    console.log(maquinaId);
+
+    Maquinas.findOne({
+        where: {
+            id: maquinaId
+         }
+    }).then(maquina => {     
+        
+        Parametros.findAll({
+            limit: 1,
+            where: {
+              mac: maquina.mac
+            },
+            order: [ [ 'createdAt', 'DESC' ]]
+          }).then(output => {
+
+            console.log("Saida do caralho",output[0])
+     
+
+            res.send(output[0])
+            
+          }); 
+    })   
+
+
+    
+
+})
+
+
+router.get("/ficha/getFicha/:macMaquina",  (req,res) => {
+
+    var maquinaMac= req.params.macMaquina;
+    console.log("Maquina ID:", maquinaMac)
+
+
+    Maquinas.findOne({
+        where: {
+            mac : maquinaMac
+        }
+    }).then(output => {
+
+        Fichas.findOne({
+            where: {
+                maquina : output.id
+            }
+        }).then(output => {
+    
+            console.log("Saida do caralho",output)
+     
+    
+            res.send(output)
+            
+          }); 
+        
+      }); 
+
+
+   
+
+})
+
 
 router.get("/fichas/new",  (req,res) => {
 
+    var maquinas;
 
-    Fichas.findAll().then(maquinas => {
-        res.render("fichas/new",{            
+    Maquinas.findAll().then(maquina => {
+        maquinas = maquina;
+    })
+
+    console.log(maquinas);
+
+    Fichas.findAll().then((fichas) => {
+        res.render("fichas/new",{        
+            maquinas: maquinas,    
             nav_maquinas : "",
             nav_produtos : "",
             nav_mp : "",
@@ -45,17 +129,119 @@ router.get("/fichas/new",  (req,res) => {
 })
 
 router.post("/fichas/create",(req,res) => {
-    var descricao = req.body.descricao;
-    var codigo = req.body.codigo;
-    var peso = req.body.peso;
-    var modelo = req.body.modelo;
+    console.log("ID Maquina", req.body.maquina)
+    var maquina = req.body.maquinas;
+    var VI1_min = req.body.VI1_min;
+    var VI1_max = req.body.VI1_max;
+    var VI2_min = req.body.VI12_min;
+    var VI2_max = req.body.VI2_max;
+    var VI3_min = req.body.VI3_min;
+    var VI3_max = req.body.VI3_max;
+    var VI4_min = req.body.VI4_min;
+    var VI4_max = req.body.VI4_max;
+    var VI5_min = req.body.VI5_min;
+    var VI5_max = req.body.VI5_max;
+    var VI6_min = req.body.VI6_min;
+    var VI6_max = req.body.VI6_max;
+    var VI7_min = req.body.VI7_min;
+    var VI7_max = req.body.VI7_max;
+    var VI8_min = req.body.VI8_min;
+    var VI8_max = req.body.VI8_max;
+    var VI9_min = req.body.VI9_min;
+    var VI9_max = req.body.VI9_max;
+    var VI10_min = req.body.VI10_min;
+    var VI10_max = req.body.VI10_max;
+    var VH1_min = req.body.VH1_min;
+    var VH1_max = req.body.VH1_max;
+    var VH2_min = req.body.VH2_min;
+    var VH2_max = req.body.VH2_max;
+    var PI1_min = req.body.PI1_min;
+    var PI1_max = req.body.PI1_max;
+    var LS4_min = req.body.LS4_min;
+    var LS4_max = req.body.LS4_max;
+    var LS4A_min = req.body.LS4A_min;
+    var LS4A_max = req.body.LS4A_max;    
     
 
     Fichas.create({
-        descricao:descricao,
-        codigo: codigo,
-        peso:peso,
-        modelo: modelo
+        maquina:maquina,
+        VI1_min:  VI1_min,
+    VI1_max: VI1_max,
+    VI2_min: VI2_min,
+    VI2_max: VI2_max,
+    VI3_min: VI3_min,
+    VI3_max: VI3_max,
+    VI4_min: VI4_min,
+    VI4_max: VI4_max,
+    VI5_min: VI5_min,
+    VI5_max: VI5_max,
+    VI6_min: VI6_min,
+    VI6_max: VI6_max,
+    VI7_min: VI7_min,
+    VI7_max: VI7_max,
+    VI8_min: VI8_min,
+    VI8_max: VI8_max,
+    VI9_min: VI9_min,
+    VI9_max: VI9_max,
+    VI10_min: VI10_min,
+    VI10_max: VI10_max,
+    VH1_min: VH1_min,
+    VH1_max: VH1_max,
+    VH2_min: VH2_min,
+    VH2_max: VH2_max,
+    PI1_min: PI1_min,
+    PI1_max: PI1_max,
+    LS4_min: LS4_min,
+    LS4_max: LS4_max,
+    LS4A_min: LS4A_min,
+    LS4A_max: LS4A_max,
+    }).then(() => {
+        res.redirect("/fichas");
+    })
+})
+
+
+
+
+router.post("/parametros/insert",(req,res) => {
+
+    console.log(req);
+    
+    var mac = req.body.mac;
+    var VI1 = req.body.VI1;
+    var VI2 = req.body.VI2;
+    var VI3 = req.body.VI3;
+    var VI4 = req.body.VI3;
+    var VI5 = req.body.VI3;
+    var VI6 = req.body.VI3;
+    var VI7 = req.body.VI3;
+    var VI8 = req.body.VI3;
+    var VI9 = req.body.VI3;
+    var VI10 = req.body.VI3;
+    var VH1 = req.body.VI3;
+    var VH2 = req.body.VI3;
+    var PI1 = req.body.VI3;
+    var LS4 = req.body.VI3;
+    var LS4A = req.body.VI3;
+    
+
+    Parametros.create({
+        mac:mac,
+        VI1: VI1,
+        VI2:VI2,
+        VI3: VI3,
+        VI4: VI4,
+        VI5: VI5,
+        VI6: VI6,
+        VI7: VI7,
+        VI8: VI8,
+        VI9: VI9,
+        VI10: VI10,
+        VH1: VH1,
+        VH2: VH2,
+        PI1: PI1,
+        LS4: LS4,
+        LS4A: LS4A,
     }).then(() => {
         res.redirect("/fichas");
     })

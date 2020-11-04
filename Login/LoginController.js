@@ -83,7 +83,7 @@ router.post("/authenticate",(req,res) => {
 
     }else{
 
-        User.findOne({where:{email:email}}).then(user => {
+        User.findOne({where:{nome:email}}).then(user => {
             if(user != undefined){
     
                 var correct = bcrypt.compareSync(password, user.password )
@@ -95,10 +95,10 @@ router.post("/authenticate",(req,res) => {
                     }
                     res.redirect("/maquinas")
                 }else{
-                    res.redirect("/login");
+                    res.redirect("/");
                 }
             }else{
-                res.redirect("/login");
+                res.redirect("/");
             }
     
         }).catch(err =>{

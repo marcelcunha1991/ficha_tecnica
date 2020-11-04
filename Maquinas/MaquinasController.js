@@ -45,8 +45,9 @@ router.get("/maquinas/new",  (req,res) => {
 })
 
 router.post("/maquinas/create",(req,res) => {
-    var descricao = req.body.descricao;
+    var descricao = req.body.cliente;
     var codigo = req.body.codigo;
+    var mac = req.body.mac;
     var peso = req.body.peso;
     var modelo = req.body.modelo;
     
@@ -54,6 +55,7 @@ router.post("/maquinas/create",(req,res) => {
     Maquinas.create({
         descricao:descricao,
         codigo: codigo,
+        mac:mac,
         peso:peso,
         modelo: modelo
     }).then(() => {

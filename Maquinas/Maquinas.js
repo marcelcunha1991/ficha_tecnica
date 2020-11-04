@@ -6,6 +6,10 @@ const Maquinas = conn.define('maquinas',{
         type: Sequelize.STRING,
         allowNull: false
     },
+    mac: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
     codigo: {
         type: Sequelize.STRING,
         allowNull: false

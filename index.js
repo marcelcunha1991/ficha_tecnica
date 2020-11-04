@@ -11,6 +11,7 @@ const MateriaPrima = require("./MateriaPrima/MateriasPrimas");
 const Moldes = require("./Moldes/Moldes");
 const Clientes = require("./Clientes/Clientes");
 const Fichas = require("./Ficha/Ficha");
+const Parametros = require("./Ficha/Parametros");
 
 
 const userController = require("./Login/LoginController");
@@ -76,6 +77,6 @@ app.get("/",(req,res) =>{
 
 
 
-app.listen(3000,() => {
+app.listen(3000,'192.168.0.4',() => {
     console.log("Servidor Rodando");
 })
