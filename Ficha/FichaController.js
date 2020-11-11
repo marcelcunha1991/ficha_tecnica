@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Fichas = require("./Ficha");
 const Parametros = require("./Parametros");
+const ParametrosAtuais = require("./ParametrosAtuais");
 const adminAuth = require("../middlewares/adminAuth");
 const { render } = require("ejs");
 const Maquinas = require("../Maquinas/Maquinas");
@@ -16,7 +17,7 @@ router.get("/fichas",  (req,res) => {
 
     Fichas.findAll().then(fichas => {
 
-        console.log(maquinas);
+      
         
         res.render("fichas/index",{
             fichas:fichas,
@@ -28,6 +29,7 @@ router.get("/fichas",  (req,res) => {
             nav_usuarios : "",
             nav_moldes : "",
             nav_clientes : "",
+            nav_parametros:"",
             nav_ficha: "active"
         })
     });
@@ -35,11 +37,39 @@ router.get("/fichas",  (req,res) => {
     
 })
 
-router.get("/fichas/maquina/:id",  (req,res) => {
+router.get("/fichasUltimo/maquina/:id",  (req,res) => {
    
     var maquinaId= req.params.id;
+      
 
-    console.log(maquinaId);
+    Maquinas.findOne({
+        where: {
+            mac: maquinaId
+         }
+    }).then(maquina => {     
+        
+        ParametrosAtuais.findAll({
+            limit: 1,
+            where: {
+              mac: maquina.mac
+            },
+            order: [ [ 'createdAt', 'DESC' ]]
+          }).then(output => {
+     
+
+            res.send(output[0])
+            
+          }); 
+    })   
+
+
+    
+
+})
+
+router.get("/fichas/maquina/:id",  (req,res) => {
+   
+    var maquinaId= req.params.id;      
 
     Maquinas.findOne({
         where: {
@@ -55,9 +85,6 @@ router.get("/fichas/maquina/:id",  (req,res) => {
             order: [ [ 'createdAt', 'DESC' ]]
           }).then(output => {
 
-            console.log("Saida do caralho",output[0])
-     
-
             res.send(output[0])
             
           }); 
@@ -67,12 +94,12 @@ router.get("/fichas/maquina/:id",  (req,res) => {
     
 
 })
-
-
+    
 router.get("/ficha/getFicha/:macMaquina",  (req,res) => {
 
     var maquinaMac= req.params.macMaquina;
-    console.log("Maquina ID:", maquinaMac)
+ 
+
 
 
     Maquinas.findOne({
@@ -87,7 +114,7 @@ router.get("/ficha/getFicha/:macMaquina",  (req,res) => {
             }
         }).then(output => {
     
-            console.log("Saida do caralho",output)
+         
      
     
             res.send(output)
@@ -101,7 +128,6 @@ router.get("/ficha/getFicha/:macMaquina",  (req,res) => {
 
 })
 
-
 router.get("/fichas/new",  (req,res) => {
 
     var maquinas;
@@ -110,10 +136,9 @@ router.get("/fichas/new",  (req,res) => {
         maquinas = maquina;
     })
 
-    console.log(maquinas);
 
     Fichas.findAll().then((fichas) => {
-        res.render("fichas/new",{        
+        res.render("parametros/new",{        
             maquinas: maquinas,    
             nav_maquinas : "",
             nav_produtos : "",
@@ -121,6 +146,7 @@ router.get("/fichas/new",  (req,res) => {
             nav_usuarios : "",
             nav_moldes : "",
             nav_clientes : "",
+            nav_parametros:"",
             nav_ficha: "active"
         })
     });
@@ -129,11 +155,11 @@ router.get("/fichas/new",  (req,res) => {
 })
 
 router.post("/fichas/create",(req,res) => {
-    console.log("ID Maquina", req.body.maquina)
+   
     var maquina = req.body.maquinas;
     var VI1_min = req.body.VI1_min;
     var VI1_max = req.body.VI1_max;
-    var VI2_min = req.body.VI12_min;
+    var VI2_min = req.body.VI2_min;
     var VI2_max = req.body.VI2_max;
     var VI3_min = req.body.VI3_min;
     var VI3_max = req.body.VI3_max;
@@ -200,29 +226,25 @@ router.post("/fichas/create",(req,res) => {
     })
 })
 
-
-
-
 router.post("/parametros/insert",(req,res) => {
-
-    console.log(req);
+ 
     
     var mac = req.body.mac;
     var VI1 = req.body.VI1;
     var VI2 = req.body.VI2;
     var VI3 = req.body.VI3;
-    var VI4 = req.body.VI3;
-    var VI5 = req.body.VI3;
-    var VI6 = req.body.VI3;
-    var VI7 = req.body.VI3;
-    var VI8 = req.body.VI3;
-    var VI9 = req.body.VI3;
-    var VI10 = req.body.VI3;
-    var VH1 = req.body.VI3;
-    var VH2 = req.body.VI3;
-    var PI1 = req.body.VI3;
-    var LS4 = req.body.VI3;
-    var LS4A = req.body.VI3;
+    var VI4 = req.body.VI4;
+    var VI5 = req.body.VI5;
+    var VI6 = req.body.VI6;
+    var VI7 = req.body.VI7;
+    var VI8 = req.body.VI8;
+    var VI9 = req.body.VI9;
+    var VI10 = req.body.VI10;
+    var VH1 = req.body.VH1;
+    var VH2 = req.body.VH2;
+    var PI1 = req.body.PI1;
+    var LS4 = req.body.LS4;
+    var LS4A = req.body.LS4A;
     
 
     Parametros.create({
@@ -247,6 +269,23 @@ router.post("/parametros/insert",(req,res) => {
     })
 })
 
+router.post("/parametrosAtuais/insert",(req,res) => {
+ 
+    
+    var mac = req.body.mac;
+    var prodShot = req.body.prodShot;
+    var cycleTime = req.body.cycleTime;   
+    
+
+    ParametrosAtuais.create({
+        mac:mac,
+        prodShot: prodShot,
+        cycleTime:cycleTime        
+      
+    }).then(() => {
+        res.redirect("/fichas");
+    })
+})
 
 router.get("/fichas/edit/:id",(req,res) => {
 
@@ -282,7 +321,6 @@ router.get("/fichas/edit/:id",(req,res) => {
 
 })
 
-
 router.post("/fichas/update",(req,res) => {
     
     var descricao = req.body.descricao;
@@ -304,7 +342,6 @@ router.post("/fichas/update",(req,res) => {
         res.redirect("/fichas")
     })
 })
-
 
 router.post("/fichas/delete",(req,res) => {
     var id = req.body.id;

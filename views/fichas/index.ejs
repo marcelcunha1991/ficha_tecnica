@@ -8,9 +8,7 @@
     <a class="btn btn-success" href="/fichas/new"> Inserir Nova Ficha Técnica</a>
     <hr>
 
-    <div id="plotly">
-
-    </div>
+   
 
     <select name="maquinas" id="maquinas"  class="form-control">
         <option > Selecione uma máquina</option>
@@ -24,7 +22,10 @@
 <br>
 
 
-    
+    <labe id="prodShot" style="margin-right: 10%; font-size: 20px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Production Shot :</labe>
+    <labe id="cycleTime"style="font-size: 20px; font-weight:bold;"> Cycle Time :</labe>
+    <br>
+    <br>
     <table class="table table-bordered" id="parametros"> 
         <thead>
             <tr>
@@ -45,6 +46,20 @@
     </table>
 
 
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+
+          <div id="plotly">
+
+        </div>
+         
+      
+        </div>
+      </div>
+
+
 </div>
 
 <script>
@@ -62,4 +77,5 @@
 
 <script src=/scripts/jquery.js></script>
 <script src=/scripts/FichaScripts.js></script>
+
 <%- include ('../partials/footer.ejs') %>   

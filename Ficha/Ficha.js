@@ -7,36 +7,12 @@ const Produtos = require("../Produtos/Produtos");
 const MateriaPrima = require("../MateriaPrima/MateriasPrimas");
 
 const Ficha = conn.define('ficha',{
-    // cliente:{
-    //     type: Sequelize.INTEGER,
-    //     model: 'clientes', // <<< Note, its table's name, not object name
-    //     key: 'id'
-    // }
-    // ,
-    // produto:{
-    //     type: Sequelize.INTEGER,
-    //     model: 'produtos', // <<< Note, its table's name, not object name
-    //     key: 'id'
-    // }
-    // ,
+    
     maquina:{
         type: Sequelize.INTEGER,
         model: 'maquinas', // <<< Note, its table's name, not object name
         key: 'id'
-    }
-    ,
-    // materiaprima:{
-    //     type: Sequelize.INTEGER,
-    //     model: 'materiaprimas', // <<< Note, its table's name, not object name
-    //     key: 'id'
-    // }
-    // ,
-    // molde:{
-    //     type: Sequelize.INTEGER,
-    //     model: 'moldes', // <<< Note, its table's name, not object name
-    //     key: 'id'
-    // }
-    // ,
+    },   
     VI1_min: Sequelize.FLOAT,
     VI1_max: Sequelize.FLOAT,
     VI2_min: Sequelize.FLOAT,

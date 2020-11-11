@@ -15,6 +15,7 @@ router.get("/moldes",  (req,res) => {
             nav_mp : "",
             nav_usuarios : "",
             nav_moldes : "active",
+            nav_parametros:"",
             nav_clientes : "",
             nav_ficha: ""
         })

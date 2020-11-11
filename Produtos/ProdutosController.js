@@ -15,6 +15,7 @@ router.get("/produtos",  (req,res) => {
             nav_mp : "",
             nav_usuarios : "",
             nav_moldes : "",
+            nav_parametros:"",
             nav_clientes : "",
             nav_ficha: ""
         })

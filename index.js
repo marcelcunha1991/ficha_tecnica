@@ -11,7 +11,10 @@ const MateriaPrima = require("./MateriaPrima/MateriasPrimas");
 const Moldes = require("./Moldes/Moldes");
 const Clientes = require("./Clientes/Clientes");
 const Fichas = require("./Ficha/Ficha");
-const Parametros = require("./Ficha/Parametros");
+const ParametrosTecnicos = require("./Ficha/Parametros");
+const ParametrosReal = require("./ParametrosTempoReal/ParametrosReal");
+const ParametrosAtuais = require("./Ficha/ParametrosAtuais");
+
 
 
 const userController = require("./Login/LoginController");
@@ -21,6 +24,8 @@ const materiaPrimaConctroller = require("./MateriaPrima/MateriaPrimaController")
 const moldesConctroller = require("./Moldes/MoldesController");
 const clientesConctroller = require("./Clientes/ClientesController");
 const fichasConctroller = require("./Ficha/FichaController");
+const ParametrosRealController = require("./ParametrosTempoReal/ParametrosRealController");
+
 
 
 //view engine
@@ -51,6 +56,7 @@ app.use("/",materiaPrimaConctroller);
 app.use("/",moldesConctroller);
 app.use("/",clientesConctroller);
 app.use("/",fichasConctroller);
+app.use("/",ParametrosRealController);
 
 
 
@@ -77,6 +83,11 @@ app.get("/",(req,res) =>{
 
 
 
-app.listen(3000,'192.168.0.4',() => {
+app.listen(3000,'123.123.123.54',() => {
     console.log("Servidor Rodando");
 })
+
+
+// app.listen(3000,'192.168.0.8',() => {
+//     console.log("Servidor Rodando");
+// })

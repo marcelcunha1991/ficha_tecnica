@@ -15,6 +15,7 @@ router.get("/materiaprima",  (req,res) => {
             nav_mp : "active",
             nav_usuarios : "",
             nav_moldes : "",
+            nav_parametros:"",
             nav_clientes : "",
             nav_ficha: ""
         })

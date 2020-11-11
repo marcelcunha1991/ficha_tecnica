@@ -18,6 +18,7 @@ router.get("/maquinas",  (req,res) => {
             nav_usuarios : "",
             nav_moldes : "",
             nav_clientes : "",
+            nav_parametros:"",
             nav_ficha: ""
         })
     });

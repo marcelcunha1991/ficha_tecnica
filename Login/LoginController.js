@@ -15,6 +15,7 @@ router.get("/users", (req,res) => {
                 nav_usuarios : "active",
                 nav_moldes : "",
                 nav_clientes : "",
+                nav_parametros:"",
                 nav_ficha: ""
         })
     })

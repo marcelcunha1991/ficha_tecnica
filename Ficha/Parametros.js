@@ -21,10 +21,10 @@ const Parametros = conn.define('parametros',{
     LS4: Sequelize.FLOAT,
     LS4A: Sequelize.FLOAT,
 
-
 })
 
 
 // Parametros.sync({force: true});
+
 
 module.exports = Parametros;
