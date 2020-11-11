@@ -1,4 +1,123 @@
 document.getElementById("prodShot").addEventListener("click", plotaGrafico);
+document.getElementById("cycleTime").addEventListener("click", plotaGrafico2);
+
+function plotaGrafico2(){
+    var value = $( "#maquinas" ).val();  
+
+    var limites;
+    var dados = [];
+    console.log("value",value);
+
+    console.log("ploty");   
+
+
+    $.ajax({  
+        url:'/parametrosCadastrados/'+value,  
+        method:'get',  
+        dataType:'json',
+        success: function(parametrosMaquina) {
+            console.log("Entrou no parametrosCadastrados")
+            
+            limites = parametrosMaquina;
+
+        }
+
+        });
+
+        $.ajax({  
+            url:'/parametrosReais/'+value,  
+            method:'get',  
+            dataType:'json',
+            success: function(dadosp) {
+            
+                     console.log("Dados:" , dadosp)
+
+                    dadosp.forEach(function(nome,i) {
+                        dados.push(nome.cycleTime)
+                    })
+
+                   
+                   
+
+                    
+                
+
+                var Data = {
+                    type: 'scatter',
+                    x:dados,
+                    y: [1,2,3,4,5,6,7,8,9,10],
+                    mode: 'lines+markers',
+                    name: 'Data',
+                    showlegend: true,
+                    hoverinfo: 'all',
+                    line: {
+                      color: 'blue',
+                      width: 2
+                    },
+                    marker: {
+                      color: 'blue',
+                      size: 8,
+                      symbol: 'circle'
+                    }
+                  }
+                  
+                 
+                  
+                  var CL = {
+                    type: 'scatter',
+                    x: [0.5, 10, null, 0.5, 10],
+                    y: [-5, -5, null, 5, 5],
+                    mode: 'lines',
+                    name: 'LCL/UCL',
+                    showlegend: true,
+                    line: {
+                      color: 'red',
+                      width: 2,
+                      dash: 'dash'
+                    }
+                  }
+                  
+                  var Centre = {
+                    type: 'scatter',
+                    x: [0.5, 10],
+                    y: [0, 0],
+                    mode: 'lines',
+                    name: 'Centre',
+                    showlegend: true,
+                    line: {
+                      color: 'grey',
+                      width: 2
+                    }
+                  }
+                  
+                  var data = [Data,CL,Centre]
+                  
+                  var layout = {
+                    title: 'Carta de Controle',
+                    xaxis: {
+                      zeroline: false
+                    },
+                    yaxis: {
+                      range: [-10,10],
+                      zeroline: false
+                    }
+                  }
+                  
+                  Plotly.newPlot('plotly', data,layout);
+                
+                
+    
+            }
+    
+            });
+
+
+        
+
+
+    
+}
+
 
 function plotaGrafico(){
     var value = $( "#maquinas" ).val();  
