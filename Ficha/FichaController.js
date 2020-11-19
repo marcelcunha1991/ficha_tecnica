@@ -138,7 +138,7 @@ router.get("/fichas/new",  (req,res) => {
 
 
     Fichas.findAll().then((fichas) => {
-        res.render("parametros/new",{        
+        res.render("fichas/new",{        
             maquinas: maquinas,    
             nav_maquinas : "",
             nav_produtos : "",
@@ -275,12 +275,14 @@ router.post("/parametrosAtuais/insert",(req,res) => {
     var mac = req.body.mac;
     var prodShot = req.body.prodShot;
     var cycleTime = req.body.cycleTime;   
+    var dwellPressure = req.body.dwellPressure;   
     
 
     ParametrosAtuais.create({
         mac:mac,
         prodShot: prodShot,
-        cycleTime:cycleTime        
+        cycleTime:cycleTime,
+        dwellPressure:dwellPressure    
       
     }).then(() => {
         res.redirect("/fichas");

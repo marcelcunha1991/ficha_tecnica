@@ -31,6 +31,7 @@ router.get("/users/create", (req,res) => {
             nav_usuarios : "active",
             nav_moldes : "",
             nav_clientes : "",
+            nav_parametros:"",
             nav_ficha: ""
     });
 });

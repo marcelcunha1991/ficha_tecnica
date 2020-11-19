@@ -38,6 +38,7 @@ router.get("/maquinas/new",  (req,res) => {
             nav_usuarios : "",
             nav_moldes : "",
             nav_clientes : "",
+            nav_parametros:"",
             nav_ficha: ""
         })
     });
@@ -84,6 +85,7 @@ router.get("/maquinas/edit/:id",(req,res) => {
                 nav_mp : "",
                 nav_usuarios : "",
                 nav_moldes : "",
+                nav_parametros:"",
                 nav_clientes : "",
                 nav_ficha: ""
               

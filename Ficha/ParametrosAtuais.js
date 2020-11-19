@@ -6,6 +6,7 @@ const ParametrosAtuais = conn.define('parametrosAtuais',{
 
     mac: Sequelize.STRING,
     prodShot: Sequelize.FLOAT,
+    dwellPressure: Sequelize.FLOAT,
     cycleTime: Sequelize.FLOAT,
    
 

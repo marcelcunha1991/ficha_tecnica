@@ -83,11 +83,11 @@ app.get("/",(req,res) =>{
 
 
 
-// app.listen(3000,'123.123.123.54',() => {
-//     console.log("Servidor Rodando");
-// })
-
-
-app.listen(3000,'192.168.0.8',() => {
+app.listen(3000,'123.123.123.190',() => {
     console.log("Servidor Rodando");
 })
+
+
+// app.listen(3000,'192.168.43.59',() => {
+//     console.log("Servidor Rodando");
+// })
