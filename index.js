@@ -15,7 +15,9 @@ const ParametrosTecnicos = require("./Ficha/Parametros");
 const ParametrosReal = require("./ParametrosTempoReal/ParametrosReal");
 const ParametrosAtuais = require("./Ficha/ParametrosAtuais");
 
+const cron = require("node-cron");
 
+var nodemailer = require('nodemailer');
 
 const userController = require("./Login/LoginController");
 const maquinasController = require("./Maquinas/MaquinasController");
@@ -26,6 +28,16 @@ const clientesConctroller = require("./Clientes/ClientesController");
 const fichasConctroller = require("./Ficha/FichaController");
 const ParametrosRealController = require("./ParametrosTempoReal/ParametrosRealController");
 
+
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'marcel.silva1991@gmail.com',
+      pass: 'Marcel21003839'
+    }
+  });
+  
+  
 
 
 //view engine
@@ -81,13 +93,29 @@ app.get("/",(req,res) =>{
 
 
 
+// cron.schedule("*/5 * * * *", () => {
 
+//     var mailOptions = {
+//         from: 'marcel.silva1991@gmail.com',
+//         to: 'marcel.silva1991@gmail.com',
+//         subject: 'Variação fora do esperado',
+//         text: 'That was easy!'
+//       };
 
-app.listen(3000,'123.123.123.190',() => {
-    console.log("Servidor Rodando");
-})
+//       transporter.sendMail(mailOptions, function(error, info){
+//         if (error) {
+//           console.log(error);
+//         } else {
+//           console.log('Email sent: ' + info.response);
+//         }
+//       });
+// });
 
-
-// app.listen(3000,'192.168.43.59',() => {
+// app.listen(3000,'123.123.123.190',() => {
 //     console.log("Servidor Rodando");
 // })
+
+
+app.listen(3000,'192.168.0.7',() => {
+    console.log("Servidor Rodando");
+})
