@@ -3,7 +3,6 @@ const app = express();
 const conn = require("./database/database");
 const bodyparser = require("body-parser");
 const session = require("express-session");
-
 const User = require("./Login/User");
 const Maquinas = require("./Maquinas/Maquinas");
 const Produtos = require("./Produtos/Produtos");
@@ -14,11 +13,8 @@ const Fichas = require("./Ficha/Ficha");
 const ParametrosTecnicos = require("./Ficha/Parametros");
 const ParametrosReal = require("./ParametrosTempoReal/ParametrosReal");
 const ParametrosAtuais = require("./Ficha/ParametrosAtuais");
-
 const cron = require("node-cron");
-
 var nodemailer = require('nodemailer');
-
 const userController = require("./Login/LoginController");
 const maquinasController = require("./Maquinas/MaquinasController");
 const produtosConctroller = require("./Produtos/ProdutosController");
@@ -29,17 +25,6 @@ const fichasConctroller = require("./Ficha/FichaController");
 const ParametrosRealController = require("./ParametrosTempoReal/ParametrosRealController");
 
 
-var transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'marcel.silva1991@gmail.com',
-      pass: 'Marcel21003839'
-    }
-  });
-  
-  
-
-
 //view engine
 app.set('view engine','ejs');
 
@@ -48,8 +33,7 @@ app.use(session({
         secret: "qualquercoisa",
         cookie:{
             maxAge: 30000
-        }
-  
+        }  
 }))
 
 //body parser
@@ -95,6 +79,16 @@ app.get("/",(req,res) =>{
 
 // cron.schedule("*/5 * * * *", () => {
 
+
+//     var transporter = nodemailer.createTransport({
+//         service: 'gmail',
+//         auth: {
+//           user: 'marcel.silva1991@gmail.com',
+//           pass: 'Marcel21003839'
+//         }
+//       });
+
+
 //     var mailOptions = {
 //         from: 'marcel.silva1991@gmail.com',
 //         to: 'marcel.silva1991@gmail.com',
@@ -116,6 +110,6 @@ app.get("/",(req,res) =>{
 // })
 
 
-app.listen(3000,'192.168.0.7',() => {
+app.listen(3000,'192.168.0.17',() => {
     console.log("Servidor Rodando");
 })

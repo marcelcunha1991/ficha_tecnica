@@ -45,7 +45,7 @@ function plotaGrafico2(){
 
                 var Data = {
                     type: 'scatter',
-                    x:[1,2,3,4,5,6,7,8,9,10],
+                    x:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],
                     y: dados,
                     mode: 'lines+markers',
                     name: 'Data',
@@ -163,7 +163,7 @@ function plotaGrafico(){
 
                 var Data = {
                     type: 'scatter',
-                    x:[1,2,3,4,5,6,7,8,9,10],
+                    x:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],
                     y: dados,
                     mode: 'lines+markers',
                     name: 'Data',
@@ -262,6 +262,18 @@ $('#maquinas').change(function(){
     
                             $('#prodShot').text("Production Shot :  " + parametrosAtuais.prodShot);
                             $('#cycleTime').text("Cycle Time :  " + parametrosAtuais.cycleTime+ " Seg");
+                            $('#dwellPressure').text("Dwell Pressure :  " + parametrosAtuais.dwellPressure+ " Seg");
+                            $('#ok_prodShot').text("Ok ProdShot:  " + parametrosAtuais.ok_prodShot+ " Seg");
+                            $('#fillingTime').text("Filling Time:  " + parametrosAtuais.fillingTime+ " Seg");
+                            $('#chargingTime').text("Charging Time:  " + parametrosAtuais.chargingTime+ " Seg");
+                            $('#takeoutTime').text("Take Out Time:  " + parametrosAtuais.takeoutTime+ " Seg");
+                            $('#dwellChnagePosition').text("Dwell Change Position:  " + parametrosAtuais.dwellChnagePosition+ " Seg");
+                            $('#cushionPosition').text("Cushion Position:  " + parametrosAtuais.cushionPosition+ " Seg");
+                            $('#chargingTime').text("Charging Time:  " + parametrosAtuais.chargingTime + " Seg");
+                            $('#minumumCushionPosition').text("Minumum Cushion Position :  " + parametrosAtuais.minumumCushionPosition + " Seg");
+                            $('#injetStartPosition').text("Injet Start Position :  " + parametrosAtuais.injetStartPosition + " Seg");
+                            $('#maxInjectPressure').text("Max Inject Pressure :  " + parametrosAtuais.maxInjectPressure + " Seg");
+                            $('#screwRotationSpeed').text("Screw Rotation Speed :  " + parametrosAtuais.screwRotationSpeed + " Seg");
     
                     }
     
@@ -276,15 +288,12 @@ $('#maquinas').change(function(){
     
                         console.log(detalheFicha)
                         console.log(parametrosMaquina)
-                        
-                    
+                
             
                         if(detalheFicha.VI1_max < parametrosMaquina.VI1 || detalheFicha.VI1_max > parametrosMaquina.VI1 ){
-                            markup = "<tr style=\"background-color:#FDFD96\">"+
+                            markup = "<tr>"+
                             "<td> VI1 </td>" + 
-                            "<td>" + detalheFicha.VI1_min + "</td>" + 
-
-                            
+                            "<td>" + detalheFicha.VI1_min + "</td>" +                             
                             "<td>" + detalheFicha.VI1_max + "</td>" + 
                             "<td>" + parametrosMaquina.VI1 + "</td>" +             
                             "</tr>" 

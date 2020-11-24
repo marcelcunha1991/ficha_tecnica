@@ -6,6 +6,8 @@ const ParametrosAtuais = require("./ParametrosAtuais");
 const adminAuth = require("../middlewares/adminAuth");
 const { render } = require("ejs");
 const Maquinas = require("../Maquinas/Maquinas");
+var nodemailer = require('nodemailer');
+const ParametrosMedios = require("../ParametrosTempoReal/ParametrosReal");
 
 
 router.get("/fichas",  (req,res) => {
@@ -56,7 +58,7 @@ router.get("/fichasUltimo/maquina/:id",  (req,res) => {
             order: [ [ 'createdAt', 'DESC' ]]
           }).then(output => {
      
-
+            console.log(output[0])
             res.send(output[0])
             
           }); 
@@ -273,21 +275,93 @@ router.post("/parametrosAtuais/insert",(req,res) => {
  
     
     var mac = req.body.mac;
+    
     var prodShot = req.body.prodShot;
     var cycleTime = req.body.cycleTime;   
     var dwellPressure = req.body.dwellPressure;   
-    
+    var ok_prodShot = req.body.ok_prodShot;
+    var ok_proprintShotdShot = req.body.printShot;
+    var fillingTime = req.body.fillingTime;
+    var chargingTime = req.body.chargingTime;
+    var takeoutTime = req.body.takeoutTime;
+    var dwellChnagePosition = req.body.dwellChnagePosition;
+    var minumumCushionPosition = req.body.minumumCushionPosition;
+    var cushionPosition = req.body.cushionPosition;
+    var injetStartPosition = req.body.injetStartPosition;
+    var maxInjectPressure = req.body.maxInjectPressure;
+    var screwRotationSpeed = req.body.screwRotationSpeed;
+
+    Maquinas.findOne({
+        where: {
+            mac: mac
+         }
+    }).then(maquina => {     
+        
+        ParametrosMedios.findAll({
+            limit: 1,
+            where: {
+              mac: maquina.mac
+            },
+            order: [ [ 'createdAt', 'DESC' ]]
+          }).then(output => {
+
+            if(output.cycleTimeMin > cycleTime || output.cycleTimeMin < cycleTime ){
+
+                sendMail("Cycle Time fora do esperado");
+            }else if (output.dwellPressureMin > dwellPressure || output.dwellPressureMin < dwellPressure ){
+                sendMail("Dwell Pressure fora do esperado");
+            }
+            
+          }); 
+    })      
 
     ParametrosAtuais.create({
         mac:mac,
-        prodShot: prodShot,
-        cycleTime:cycleTime,
-        dwellPressure:dwellPressure    
+        prodShot : prodShot,
+        cycleTime : cycleTime,
+        dwellPressure : dwellPressure,
+        ok_prodShot : ok_prodShot,   
+        ok_proprintShotdShot : ok_proprintShotdShot,
+        fillingTime : fillingTime,
+        chargingTime : chargingTime,
+        takeoutTime : takeoutTime,
+        dwellChnagePosition : dwellChnagePosition,
+        minumumCushionPosition : minumumCushionPosition,
+        cushionPosition : cushionPosition,
+        injetStartPosition : injetStartPosition,
+        maxInjectPressure : maxInjectPressure,
+        screwRotationSpeed : screwRotationSpeed
       
     }).then(() => {
         res.redirect("/fichas");
     })
 })
+
+function emailSender(texto){
+
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'marcel.silva1991@gmail.com',
+          pass: 'Marcel21003839'
+        }
+      });
+
+    var mailOptions = {
+        from: 'marcel.silva1991@gmail.com',
+        to: 'marcel.silva1991@gmail.com',
+        subject: 'Variação fora do esperado',
+        text: texto
+      };
+
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+}
 
 router.get("/fichas/edit/:id",(req,res) => {
 
