@@ -105,11 +105,16 @@ app.get("/",(req,res) =>{
 //       });
 // });
 
-// app.listen(3000,'123.123.123.190',() => {
+app.listen(3000,'170.10.0.142',() => {
+    console.log("Servidor Rodando");
+})
+
+
+// app.listen(3000,'192.168.0.17',() => {
 //     console.log("Servidor Rodando");
 // })
 
 
-app.listen(3000,'192.168.0.17',() => {
-    console.log("Servidor Rodando");
-})
+// app.listen(3000,'localhost',() => {
+//         console.log("Servidor Rodando");
+//     })

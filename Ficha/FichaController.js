@@ -10,19 +10,23 @@ var nodemailer = require('nodemailer');
 const ParametrosMedios = require("../ParametrosTempoReal/ParametrosReal");
 
 
-router.get("/fichas",  (req,res) => {
+router.get("/fichas/:maquina?",  (req,res) => {
     var maquinas;
+
+    var dsMaquina = "",
+    dsMaquina = req.params.maquina;
+
 
     Maquinas.findAll().then(maquina => {
         maquinas = maquina;
     })
 
     Fichas.findAll().then(fichas => {
-
       
         
         res.render("fichas/index",{
             fichas:fichas,
+            dsMaquina : dsMaquina,
             maquinas: maquinas,
             tabela:"",
             nav_maquinas : "",
@@ -290,6 +294,15 @@ router.post("/parametrosAtuais/insert",(req,res) => {
     var injetStartPosition = req.body.injetStartPosition;
     var maxInjectPressure = req.body.maxInjectPressure;
     var screwRotationSpeed = req.body.screwRotationSpeed;
+    var temperature_hen = req.body.temperature_hen;
+    var temperature_hn = req.body.temperature_hn;
+    var temperature_h1 = req.body.temperature_h1;
+    var temperature_h2 = req.body.temperature_h2;
+    var temperature_h3 = req.body.temperature_h3;
+    var temperature_h4 = req.body.temperature_h4;
+    var temperature_h5 = req.body.temperature_h5;
+    var temperature_oil = req.body.temperature_oil;
+    var temperature_hop = req.body.temperature_hop;
 
     Maquinas.findOne({
         where: {
@@ -300,7 +313,7 @@ router.post("/parametrosAtuais/insert",(req,res) => {
         ParametrosMedios.findAll({
             limit: 1,
             where: {
-              mac: maquina.mac
+              maquina: maquina.mac
             },
             order: [ [ 'createdAt', 'DESC' ]]
           }).then(output => {
@@ -330,7 +343,18 @@ router.post("/parametrosAtuais/insert",(req,res) => {
         cushionPosition : cushionPosition,
         injetStartPosition : injetStartPosition,
         maxInjectPressure : maxInjectPressure,
-        screwRotationSpeed : screwRotationSpeed
+        screwRotationSpeed : screwRotationSpeed,
+        temperature_hen : temperature_hen,
+        temperature_hn : temperature_hn,
+        temperature_h1 : temperature_h1,
+        temperature_h2: temperature_h2,
+        temperature_h3 : temperature_h3,
+        temperature_h4 :temperature_h4,
+        temperature_h5: temperature_h5,
+        temperature_oil : temperature_oil,
+        temperature_hop : temperature_hop
+        
+
       
     }).then(() => {
         res.redirect("/fichas");

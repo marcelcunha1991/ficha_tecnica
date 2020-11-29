@@ -8,7 +8,7 @@
     <a class="btn btn-success" href="/fichas/new"> Inserir Nova Ficha Técnica</a>
     <hr>
 
-   
+    <input type="hidden" name="dsMaquina"  id="dsMaquina" value="<%= dsMaquina %>">
 
     <select name="maquinas" id="maquinas"  class="form-control">
         <option > Selecione uma máquina</option>
@@ -22,24 +22,36 @@
 <br>
 
 
-    <labe id="prodShot" style="margin-right: 4%; font-size: 20px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Production Shot :</labe>
+    <labe id="prodShot" style="margin-right: 4%; font-size: 20px; font-weight:bold;"> Production Shot :</labe>
     <labe id="cycleTime"style="margin-right: 4%; font-size: 20px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Cycle Time :</labe>
-    <labe id="dwellPressure"style="margin-right: 4%; font-size: 20px; font-weight:bold;" > Dwell Pressure :</labe>
+    <labe id="dwellPressure"style="margin-right: 4%; font-size: 20px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Dwell Pressure :</labe>
     <labe id="ok_prodShot"style="margin-right: 4%; font-size: 20px; font-weight:bold;" > OK ProdShot :</labe>
     <br>
-    <labe id="fillingTime"style="margin-right: 4%; font-size: 20px; font-weight:bold;" > Filling Time :</labe>
-    <labe id="chargingTime"style="margin-right: 4%; font-size: 20px; font-weight:bold;" > Charging Time :</labe>  
-    <labe id="takeoutTime"style="margin-right: 3%; font-size: 20px; font-weight:bold;" > Take Out Time :</labe>  
-    <labe id="dwellChnagePosition"style="margin-right: 4%; font-size: 20px; font-weight:bold;" > Dwell Change Position :</labe> 
+    <labe id="fillingTime"style="margin-right: 4%; font-size: 20px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Filling Time :</labe>
+    <labe id="chargingTime"style="margin-right: 4%; font-size: 20px; font-weight:bold;" data-toggle="modal" data-target="#myModal" > Charging Time :</labe>  
+    <labe id="takeoutTime"style="margin-right: 3%; font-size: 20px; font-weight:bold;" data-toggle="modal" data-target="#myModal" > Take Out Time :</labe>  
+    <labe id="dwellChnagePosition"style="margin-right: 4%; font-size: 20px; font-weight:bold;" data-toggle="modal" data-target="#myModal" > Dwell Change Position :</labe> 
     <br>
-    <labe id="cushionPosition"style="margin-right: 4%; font-size: 20px; font-weight:bold;" > Cushion Position:</labe>
-    <labe id="minumumCushionPosition"style="margin-right: 4%; font-size: 20px; font-weight:bold;" > Minimum Cushion Position :</labe>  
-    <labe id="injetStartPosition"style="margin-right: 4%; font-size: 20px; font-weight:bold;" > Injet Start Position :</labe>  
+    <labe id="cushionPosition"style="margin-right: 4%; font-size: 20px; font-weight:bold;" data-toggle="modal" data-target="#myModal" > Cushion Position:</labe>
+    <labe id="minumumCushionPosition"style="margin-right: 4%; font-size: 20px; font-weight:bold;" data-toggle="modal" data-target="#myModal" > Minimum Cushion Position :</labe>  
+    <labe id="injetStartPosition"style="margin-right: 4%; font-size: 20px; font-weight:bold;" data-toggle="modal" data-target="#myModal" > Injet Start Position :</labe>  
     <br>
-    <labe id="maxInjectPressure"style="margin-right: 4%; font-size: 20px; font-weight:bold;" > Max Inject Pressure:</labe>  
-    <labe id="screwRotationSpeed"style="margin-right: 4%; font-size: 20px; font-weight:bold;" > Screw Rotation Speed :</labe>  
-
-
+    <labe id="maxInjectPressure"style="margin-right: 4%; font-size: 20px; font-weight:bold;" data-toggle="modal" data-target="#myModal" > Max Inject Pressure:</labe>  
+    <labe id="screwRotationSpeed"style="margin-right: 4%; font-size: 20px; font-weight:bold;" data-toggle="modal" data-target="#myModal" > Screw Rotation Speed :</labe>  
+    <labe id="temperature_hen"style="margin-right: 4%; font-size: 20px; font-weight:bold;" data-toggle="modal" data-target="#myModal" > Temperature Hen :</labe>  
+    <br>
+    <labe id="temperature_hn"style="margin-right: 4%; font-size: 20px; font-weight:bold;" data-toggle="modal" data-target="#myModal" > Temperature Hn :</labe>  
+    <labe id="temperature_h1"style="margin-right: 4%; font-size: 20px; font-weight:bold;" data-toggle="modal" data-target="#myModal" > Temperature H1 :</labe>  
+    <labe id="temperature_oil"style="margin-right: 4%; font-size: 20px; font-weight:bold;" data-toggle="modal" data-target="#myModal" > Temperature OIL :</labe>  
+    <labe id="temperature_h4" hidden style="margin-right: 4%; font-size: 20px; font-weight:bold;" data-toggle="modal" data-target="#myModal"  > Temperature H4 :</labe>  
+      
+    <br>
+    
+    
+    <labe id="temperature_hop"style="margin-right: 4%; font-size: 20px; font-weight:bold;" data-toggle="modal" data-target="#myModal"  > Temperature HOP :</labe>     
+    <labe id="temperature_h2" hidden style="margin-right: 4%; font-size: 20px; font-weight:bold;" data-toggle="modal" data-target="#myModal"  > Temperature H2 :</labe>  
+    <labe id="temperature_h3" hidden style="margin-right: 4%; font-size: 20px; font-weight:bold;" data-toggle="modal" data-target="#myModal"  > Temperature H3 :</labe>  
+    <labe id="temperature_h5" hidden style="margin-right: 4%; font-size: 20px; font-weight:bold;" data-toggle="modal" data-target="#myModal"  > Temperature H5 :</labe>
     <br>
     <br>
     <table class="table table-bordered" id="parametros"> 
@@ -48,7 +60,7 @@
                 <th> Parâmetro </th>
                 <th> Valor Mínimo </th>
                 <th> Valor Máximo </th>
-                <th> Último valor medido </th>             
+                <th> Último valor setado </th>             
             </tr>
         </thead>
         <tbody>

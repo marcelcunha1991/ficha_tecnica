@@ -83,6 +83,28 @@ router.post("/parametrosReal/create",(req,res) => {
     var crewRotationSpeedMin = req.body.crewRotationSpeed_min;
     var crewRotationSpeedMax = req.body.crewRotationSpeed_max;
 
+    var temperature_hen_min = req.body.temperature_hen_min;
+    var temperature_hen_max = req.body.temperature_hen_max;
+    var temperature_hn_min = req.body.temperature_hn_min;
+    var temperature_hn_max = req.body.temperature_hn_max;
+    var temperature_h1_min = req.body.temperature_h1_min;
+    var temperature_h1_max = req.body.temperature_h1_max;
+    var temperature_h2_min = req.body.temperature_h2_min;
+    var temperature_h2_max = req.body.temperature_h2_max;
+    var temperature_h3_min = req.body.temperature_h3_min;
+    var temperature_h3_max = req.body.temperature_h3_max;
+    var temperature_h4_min = req.body.temperature_h4_min;
+    var temperature_h4_max = req.body.temperature_h4_max;
+    var temperature_h5_min = req.body.temperature_h5_min;
+    var temperature_h5_max = req.body.temperature_h5_max;
+    var temperature_oil_min = req.body.temperature_oil_min;
+    var temperature_oil_max = req.body.temperature_oil_max;
+    var temperature_hop_min = req.body.temperature_hop_min;
+    var temperature_hop_max = req.body.temperature_hop_max;
+
+
+
+
     ParametrosReal.create({
         maquina:maquina,
         prodShotMin:  VI1_min,
@@ -112,7 +134,24 @@ router.post("/parametrosReal/create",(req,res) => {
         maxInjectPressureMin : maxInjectPressureMin,
         maxInjectPressureMax : maxInjectPressureMax,
         crewRotationSpeedMin : crewRotationSpeedMin,
-        crewRotationSpeedMax : crewRotationSpeedMax   
+        crewRotationSpeedMax : crewRotationSpeedMax,
+        temperature_henMin : temperature_hen_min,
+        temperature_henMax : temperature_hen_max,
+        temperature_hnMin : temperature_hn_min,
+        temperature_hnMax : temperature_hn_max,
+        temperature_h1Min : temperature_h1_min,
+        temperature_h1Max : temperature_h1_max,
+        temperature_h2Min : temperature_h2_min,
+        temperature_h2Max : temperature_h2_max,
+        temperature_h3Min : temperature_h3_min,
+        temperature_h3Max : temperature_h3_max,
+        temperature_h4Min : temperature_h4_min,
+        temperature_h4Max : temperature_h4_max,
+        temperature_h5Min : temperature_h5_min,
+        temperature_h5Max : temperature_h5_max,
+        temperature_hopMin : temperature_hop_min,
+        temperature_hopMax : temperature_hop_max
+
 
 
   
@@ -122,7 +161,6 @@ router.post("/parametrosReal/create",(req,res) => {
 })
 
 router.get("/parametrosCadastrados/:maquina",  (req,res) => {
-
     var maquinaId= req.params.maquina;      
 
     Maquinas.findOne({

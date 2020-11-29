@@ -148,6 +148,13 @@ router.post("/maquinas/delete",(req,res) => {
 })
 
 
+router.get("/listaMaquinas",(req,res) => {
+
+    Maquinas.findAll().then(maquinas => {
+        res.json({maquinas: maquinas})
+    })
+
+})
 
 
 module.exports = router;
