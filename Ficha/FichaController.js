@@ -156,7 +156,7 @@ router.get("/ficha/getFicha/:macMaquina",  (req,res) => {
 
 })
 
-router.get("/fichas/new",  (req,res) => {
+router.get("/novaficha",  (req,res) => {
 
     var maquinas;
 
