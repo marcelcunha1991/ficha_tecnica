@@ -1,22 +1,22 @@
 const Sequelize = require("sequelize");
 
-// const conn = new Sequelize('fichatecnica','root','sa123',{
-//     host: 'localhost',
-//     dialect: 'mysql',
-//     port:3306,
-//     timezone:"-04:00"
-// })
-
-const conn = new Sequelize('fichatecnica', 'root', 'sa123', {
+const conn = new Sequelize('fichatecnica','root','sa123',{
     host: 'localhost',
-    dialect: 'mssql',
-    timezone:"-04:00",
-    dialectOptions: {
-        options: {
-            encrypt: true,
-        }
-    }
-  });
+    dialect: 'mysql',
+    port:3306,
+    timezone:"-04:00"
+})
+
+// const conn = new Sequelize('fichatecnica', 'root', 'sa123', {
+//     host: 'localhost',
+//     dialect: 'mssql',
+//     timezone:"-04:00",
+//     dialectOptions: {
+//         options: {
+//             encrypt: true,
+//         }
+//     }
+//   });
 
 //   var conn = new Sequelize({
 //     dialect: 'mssql',
