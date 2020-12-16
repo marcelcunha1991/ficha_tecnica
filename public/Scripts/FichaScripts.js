@@ -1,83 +1,5 @@
 // document.getElementById("prodShot").addEventListener("click", plotaGrafico);
-document.getElementById("cycleTime").addEventListener("click", function(){
-    plotaGrafico2("cycleTime");
-},false);
 
-document.getElementById("dwellPressure").addEventListener("click", function(){
-    plotaGrafico2("dwellPressure");
-},false);
-
-document.getElementById("fillingTime").addEventListener("click", function(){
-    plotaGrafico2("fillingTime");
-},false);
-
-document.getElementById("chargingTime").addEventListener("click", function(){
-    plotaGrafico2("chargingTime");
-},false);
-
-document.getElementById("takeoutTime").addEventListener("click", function(){
-    plotaGrafico2("takeoutTime");
-},false);
-
-document.getElementById("dwellChnagePosition").addEventListener("click", function(){
-    plotaGrafico2("dwellChnagePosition");
-},false);
-
-document.getElementById("cushionPosition").addEventListener("click", function(){
-    plotaGrafico2("cushionPosition");
-},false);
-
-document.getElementById("minumumCushionPosition").addEventListener("click", function(){
-    plotaGrafico2("minumumCushionPosition");
-},false);
-
-document.getElementById("injetStartPosition").addEventListener("click", function(){
-    plotaGrafico2("injetStartPosition");
-},false);
-
-document.getElementById("maxInjectPressure").addEventListener("click", function(){
-    plotaGrafico2("maxInjectPressure");
-},false);
-
-document.getElementById("screwRotationSpeed").addEventListener("click", function(){
-    plotaGrafico2("screwRotationSpeed");
-},false);
-
-document.getElementById("temperature_hen").addEventListener("click", function(){
-    plotaGrafico2("temperature_hen");
-},false);
-
-document.getElementById("temperature_hn").addEventListener("click", function(){
-    plotaGrafico2("temperature_hn");
-},false);
-
-document.getElementById("temperature_h1").addEventListener("click", function(){
-    plotaGrafico2("temperature_h1");
-},false);
-
-document.getElementById("temperature_h2").addEventListener("click", function(){
-    plotaGrafico2("temperature_h2");
-},false);
-
-document.getElementById("temperature_h3").addEventListener("click", function(){
-    plotaGrafico2("temperature_h3");
-},false);
-
-document.getElementById("temperature_h4").addEventListener("click", function(){
-    plotaGrafico2("temperature_h4");
-},false);
-
-document.getElementById("temperature_h5").addEventListener("click", function(){
-    plotaGrafico2("temperature_h5");
-},false);
-
-document.getElementById("temperature_oil").addEventListener("click", function(){
-    plotaGrafico2("temperature_oil");
-},false);
-
-document.getElementById("temperature_hop").addEventListener("click", function(){
-    plotaGrafico2("temperature_hop");
-},false);
 
 
 
@@ -531,31 +453,624 @@ function atualizaConteudo(){
                     method:'get',  
                     dataType:'json',
                     success: function(parametrosAtuais) { 
-    
+
+                      $.ajax({  
+                        url:'/parametrosMediosReais/maquina/'+parametrosMaquina.mac,  
+                        method:'get',  
+                        dataType:'json',
+                        success: function(parametrosMediosReais) { 
+
+                          $("#parametrosReais tr").remove();
+
+                      tags = "<tr >"+
+                            "<th> Parâmetro </th>" + 
+                            "<th>" + "Valor Mínimo" + "</th>" +                             
+                            "<th>" + "Valor Máximo" + "</th>" + 
+                            "<th>" + "Último valor lido" + "</th>" +   
+                            "<th>" + "Plota Gráfico" + "</th>" +            
+                            "</tr>" 
+
                             
-                            $('#prodShot').text("Production Shot :  " + parametrosAtuais.prodShot);
-                            $('#cycleTime').text("Cycle Time :  " + parametrosAtuais.cycleTime+ " s");
-                            $('#dwellPressure').text("Dwell Pressure :  " + parametrosAtuais.dwellPressure+ " s");
-                            $('#ok_prodShot').text("Ok ProdShot:  " + parametrosAtuais.ok_prodShot+ " s");
-                            $('#fillingTime').text("Filling Time:  " + parametrosAtuais.fillingTime+ " s");
-                            $('#chargingTime').text("Charging Time:  " + parametrosAtuais.chargingTime+ " s");
-                            $('#takeoutTime').text("Take Out Time:  " + parametrosAtuais.takeoutTime+ " s");
-                            $('#dwellChnagePosition').text("Dwell Change Position:  " + parametrosAtuais.dwellChnagePosition+ " s");
-                            $('#cushionPosition').text("Cushion Position:  " + parametrosAtuais.cushionPosition+ " s");
-                            $('#chargingTime').text("Charging Time:  " + parametrosAtuais.chargingTime + " s");
-                            $('#minumumCushionPosition').text("Minumum Cushion Position :  " + parametrosAtuais.minumumCushionPosition + " s");
-                            $('#injetStartPosition').text("Injet Start Position :  " + parametrosAtuais.injetStartPosition + " s");
-                            $('#maxInjectPressure').text("Max Inject Pressure :  " + parametrosAtuais.maxInjectPressure + " s");
-                            $('#screwRotationSpeed').text("Screw Rotation Speed :  " + parametrosAtuais.screwRotationSpeed + " s");
-                            $('#temperature_hen').text("Temperature Hen :  " + parametrosAtuais.temperature_hen + " C");
-                            $('#temperature_hn').text("Temperature Hn :  " + parametrosAtuais.temperature_hn + " C");
-                            $('#temperature_h1').text("Temperature H1 :  " + parametrosAtuais.temperature_h1 + " C");
-                            $('#temperature_h2').text("Temperature H2 :  " + parametrosAtuais.temperature_h2 + " C");
-                            $('#temperature_h3').text("Temperature H3 :  " + parametrosAtuais.temperature_h3 + " C");                            
-                            $('#temperature_h4').text("Temperature H4 :  " + parametrosAtuais.temperature_h4 + " C");
-                            $('#temperature_h5').text("Temperature H5 :  " + parametrosAtuais.temperature_h5 + " C");
-                            $('#temperature_oil').text("Temperature OIL :  " + parametrosAtuais.temperature_oil + " C");
-                            $('#temperature_hop').text("Temperature HOP :  " + parametrosAtuais.temperature_hop + " C");
+
+
+                          if(parametrosMediosReais.prodShotMax < parametrosAtuais.prodShot || parametrosMediosReais.prodShotMin > parametrosAtuais.prodShot){
+                              tags = tags + "<tr style=\"background-color:#FDFD96\">"+
+                              "<td> Production Shot </td>" + 
+                              "<td>" + parametrosMediosReais.prodShotMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.prodShotMax + "</td>" + 
+                              "<td>" + parametrosAtuais.prodShot + "</td>" +     
+                              "<td>" + '<label id="prodShot" style="margin-right: 4%; font-size: 20px; font-weight:bold;"> </label>' + "</td>" +     
+                              "</tr>"
+                          }else{
+                              tags = tags + "<tr>"+
+                              "<td> Production Shot </td>" + 
+                              "<td>" + parametrosMediosReais.prodShotMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.prodShotMax + "</td>" + 
+                              "<td>" + parametrosAtuais.prodShot + "</td>" +     
+                              "<td>" + '<label id="prodShot" style="margin-right: 4%; font-size: 20px; font-weight:bold;"> </label>' + "</td>" +     
+                              "</tr>"
+                          }
+
+                          if(parametrosMediosReais.cycleTimeMax < parametrosAtuais.cycleTime || parametrosMediosReais.cycleTimeMin > parametrosAtuais.cycleTime){
+                            tags = tags + "<tr style=\"background-color:#FDFD96\">"+
+                            "<td> Cycle Time </td>" + 
+                            "<td>" + parametrosMediosReais.cycleTimeMin + "</td>" +                             
+                            "<td>" + parametrosMediosReais.cycleTimeMax + "</td>" + 
+                            "<td>" + parametrosAtuais.cycleTime + "</td>" +  
+                            "<td>" + '<label id="cycleTime"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +             
+                            "</tr>"
+                          }else{
+                            tags = tags + "<tr>"+
+                            "<td> Cycle Time </td>" + 
+                            "<td>" + parametrosMediosReais.cycleTimeMin + "</td>" +                             
+                            "<td>" + parametrosMediosReais.cycleTimeMax + "</td>" + 
+                            "<td>" + parametrosAtuais.cycleTime + "</td>" +  
+                            "<td>" + '<label id="cycleTime"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +             
+                            "</tr>"
+                          }
+
+                            if(parametrosMediosReais.dwellPressureMax < parametrosAtuais.dwellPressure || parametrosMediosReais.dwellPressureMin > parametrosAtuais.dwellPressure){
+                              tags = tags + "<tr style=\"background-color:#FDFD96\">"+
+                              "<td> Dwell Pressure </td>" + 
+                              "<td>" + parametrosMediosReais.dwellPressureMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.dwellPressureMax + "</td>" + 
+                              "<td>" + parametrosAtuais.dwellPressure + "</td>" +     
+                              "<td>" + '<label id="dwellPressure"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +         
+                              "</tr>"
+
+                            }else{
+                              tags = tags + "<tr>"+
+                              "<td> Dwell Pressure </td>" + 
+                              "<td>" + parametrosMediosReais.dwellPressureMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.dwellPressureMax + "</td>" + 
+                              "<td>" + parametrosAtuais.dwellPressure + "</td>" +     
+                              "<td>" + '<label id="dwellPressure"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +         
+                              "</tr>"
+                            }
+
+                           
+                            if(parametrosMediosReais.ok_prodShotMax < parametrosAtuais.ok_prodShot || parametrosMediosReais.ok_prodShotMin > parametrosAtuais.ok_prodShot){
+                              tags = tags + "<tr style=\"background-color:#FDFD96\">"+
+                              "<td> Ok ProdShot </td>" + 
+                              "<td>" + parametrosMediosReais.ok_prodShotMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.ok_prodShotMax + "</td>" + 
+                              "<td>" + parametrosAtuais.ok_prodShot + "</td>" +      
+                              "<td>" + '<label id="ok_prodShot"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                              "</tr>"
+
+                            }else{
+                              tags = tags + "<tr>"+
+                              "<td> Ok ProdShot </td>" + 
+                              "<td>" + parametrosMediosReais.ok_prodShotMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.ok_prodShotMax + "</td>" + 
+                              "<td>" + parametrosAtuais.ok_prodShot + "</td>" +      
+                              "<td>" + '<label id="ok_prodShot"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                              "</tr>"
+                            }
+                            
+
+                            if(parametrosMediosReais.fillingTimeMax < parametrosAtuais.fillingTime || parametrosMediosReais.fillingTimeMin > parametrosAtuais.fillingTime){
+                              tags = tags + "<tr style=\"background-color:#FDFD96\">"+
+                              "<td> Filling Time </td>" + 
+                              "<td>" + parametrosMediosReais.fillingTimeMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.fillingTimeMax + "</td>" + 
+                              "<td>" + parametrosAtuais.fillingTime + "</td>" +     
+                              "<td>" + '<label id="fillingTime"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                    
+                              "</tr>"
+
+                            }else{
+                              tags = tags + "<tr>"+
+                              "<td> Filling Time </td>" + 
+                              "<td>" + parametrosMediosReais.fillingTimeMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.fillingTimeMax + "</td>" + 
+                              "<td>" + parametrosAtuais.fillingTime + "</td>" +     
+                              "<td>" + '<label id="fillingTime"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                    
+                              "</tr>"
+                            }
+                            
+                            if(parametrosMediosReais.chargingTimeMax < parametrosAtuais.chargingTime || parametrosMediosReais.chargingTimeMin > parametrosAtuais.chargingTime){
+                              tags = tags + "<tr style=\"background-color:#FDFD96\">"+
+                              "<td> Charging Time </td>" + 
+                              "<td>" + parametrosMediosReais.chargingTimeMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.chargingTimeMax + "</td>" + 
+                              "<td>" + parametrosAtuais.chargingTime + "</td>" +       
+                              "<td>" + '<label id="chargingTime"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                    
+                              "</tr>"
+
+                            }else{
+                              tags = tags + "<tr>"+
+                              "<td> Charging Time </td>" + 
+                              "<td>" + parametrosMediosReais.chargingTimeMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.chargingTimeMax + "</td>" + 
+                              "<td>" + parametrosAtuais.chargingTime + "</td>" +       
+                              "<td>" + '<label id="chargingTime"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                    
+                              "</tr>"
+                            }
+
+                            
+                            if(parametrosMediosReais.takeoutTimeMax < parametrosAtuais.takeoutTime || parametrosMediosReais.takeoutTimeMin > parametrosAtuais.takeoutTime){
+                              tags = tags + "<tr style=\"background-color:#FDFD96\">"+
+                              "<td> Take Out Time </td>" + 
+                              "<td>" + parametrosMediosReais.takeoutTimeMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.takeoutTimeMax + "</td>" + 
+                              "<td>" + parametrosAtuais.takeoutTime + "</td>" +   
+                              "<td>" + '<label id="takeoutTime"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                       
+                              "</tr>"
+
+                            }else{
+                              tags = tags + "<tr>"+
+                              "<td> Take Out Time </td>" + 
+                              "<td>" + parametrosMediosReais.takeoutTimeMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.takeoutTimeMax + "</td>" + 
+                              "<td>" + parametrosAtuais.takeoutTime + "</td>" +   
+                              "<td>" + '<label id="takeoutTime"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                       
+                              "</tr>"
+                            }
+                            
+                            if(parametrosMediosReais.dwellChnagePositionMax < parametrosAtuais.dwellChnagePosition || parametrosMediosReais.dwellChnagePositionMin > parametrosAtuais.dwellChnagePosition){
+                              tags = tags + "<tr style=\"background-color:#FDFD96\">"+
+                              "<td> Dwell Change Position </td>" + 
+                              "<td>" + parametrosMediosReais.dwellChnagePositionMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.dwellChnagePositionMax + "</td>" + 
+                              "<td>" + parametrosAtuais.dwellChnagePosition + "</td>" +  
+                              "<td>" + '<label id="dwellChnagePosition"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                        
+                              "</tr>"
+
+                            }else{
+                              tags = tags + "<tr>"+
+                              "<td> Dwell Change Position </td>" + 
+                              "<td>" + parametrosMediosReais.dwellChnagePositionMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.dwellChnagePositionMax + "</td>" + 
+                              "<td>" + parametrosAtuais.dwellChnagePosition + "</td>" +  
+                              "<td>" + '<label id="dwellChnagePosition"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                        
+                              "</tr>"
+                            }
+
+                            
+                            if(parametrosMediosReais.cushionPositionMax < parametrosAtuais.cushionPosition || parametrosMediosReais.cushionPositionMin > parametrosAtuais.cushionPosition){
+                              tags = tags + "<tr style=\"background-color:#FDFD96\">"+
+                              "<td> Cushion Position </td>" + 
+                              "<td>" + parametrosMediosReais.cushionPositionMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.cushionPositionMax + "</td>" + 
+                              "<td>" + parametrosAtuais.cushionPosition + "</td>" +      
+                              "<td>" + '<label id="cushionPosition"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                     
+                              "</tr>"
+
+                            }else{
+                              tags = tags + "<tr>"+
+                              "<td> Cushion Position </td>" + 
+                              "<td>" + parametrosMediosReais.cushionPositionMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.cushionPositionMax + "</td>" + 
+                              "<td>" + parametrosAtuais.cushionPosition + "</td>" +      
+                              "<td>" + '<label id="cushionPosition"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                     
+                              "</tr>"
+                            }
+                            
+
+                            if(parametrosMediosReais.chargingTimeMax < parametrosAtuais.chargingTime || parametrosMediosReais.chargingTimeMin > parametrosAtuais.chargingTime){
+                              tags = tags + "<tr style=\"background-color:#FDFD96\">"+
+                              "<td> Charging Time </td>" + 
+                              "<td>" + parametrosMediosReais.chargingTimeMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.chargingTimeMax + "</td>" + 
+                              "<td>" + parametrosAtuais.chargingTime + "</td>" + 
+                              "<td>" + '<label id="chargingTime"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                         
+                              "</tr>"
+                              
+
+                            }else{
+
+                              tags = tags + "<tr>"+
+                              "<td> Charging Time </td>" + 
+                              "<td>" + parametrosMediosReais.chargingTimeMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.chargingTimeMax + "</td>" + 
+                              "<td>" + parametrosAtuais.chargingTime + "</td>" + 
+                              "<td>" + '<label id="chargingTime"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                         
+                              "</tr>"
+                            }
+                            
+
+                            if(parametrosMediosReais.minumumCushionPositionMax < parametrosAtuais.minumumCushionPosition || parametrosMediosReais.minumumCushionPositionMin > parametrosAtuais.minumumCushionPosition){
+                              tags = tags + "<tr style=\"background-color:#FDFD96\">"+
+                              "<td> Minumum Cushion Position </td>" + 
+                              "<td>" + parametrosMediosReais.minumumCushionPositionMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.minumumCushionPositionMax + "</td>" + 
+                              "<td>" + parametrosAtuais.minumumCushionPosition + "</td>" +       
+                              "<td>" + '<label id="minumumCushionPosition"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                   
+                              "</tr>"
+
+                            }else{
+                              tags = tags + "<tr>"+
+                              "<td> Minumum Cushion Position </td>" + 
+                              "<td>" + parametrosMediosReais.minumumCushionPositionMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.minumumCushionPositionMax + "</td>" + 
+                              "<td>" + parametrosAtuais.minumumCushionPosition + "</td>" +       
+                              "<td>" + '<label id="minumumCushionPosition"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                   
+                              "</tr>"
+
+                            }
+                            
+
+                            if(parametrosMediosReais.injetStartPositionMax < parametrosAtuais.injetStartPosition || parametrosMediosReais.injetStartPositionMin > parametrosAtuais.injetStartPosition){
+                              tags = tags + "<tr style=\"background-color:#FDFD96\">"+
+                              "<td> Injet Start Position </td>" + 
+                              "<td>" + parametrosMediosReais.injetStartPositionMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.injetStartPositionMax + "</td>" + 
+                              "<td>" + parametrosAtuais.injetStartPosition + "</td>" +    
+                              "<td>" + '<label id="injetStartPosition"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                       
+                              "</tr>"
+
+                            }else{
+                              tags = tags + "<tr>"+
+                              "<td> Injet Start Position </td>" + 
+                              "<td>" + parametrosMediosReais.injetStartPositionMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.injetStartPositionMax + "</td>" + 
+                              "<td>" + parametrosAtuais.injetStartPosition + "</td>" +    
+                              "<td>" + '<label id="injetStartPosition"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                       
+                              "</tr>"
+
+                            }
+                            
+                            if(parametrosMediosReais.maxInjectPressureMax < parametrosAtuais.maxInjectPressure || parametrosMediosReais.maxInjectPressureMin > parametrosAtuais.maxInjectPressure){
+                              tags = tags + "<tr style=\"background-color:#FDFD96\">"+
+                              "<td> Max Inject Pressure </td>" + 
+                              "<td>" + parametrosMediosReais.maxInjectPressureMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.maxInjectPressureMax + "</td>" + 
+                              "<td>" + parametrosAtuais.maxInjectPressure + "</td>" +    
+                              "<td>" + '<label id="maxInjectPressure"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                      
+                              "</tr>"
+
+                            }else{
+                              tags = tags + "<tr>"+
+                              "<td> Max Inject Pressure </td>" + 
+                              "<td>" + parametrosMediosReais.maxInjectPressureMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.maxInjectPressureMax + "</td>" + 
+                              "<td>" + parametrosAtuais.maxInjectPressure + "</td>" +    
+                              "<td>" + '<label id="maxInjectPressure"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                      
+                              "</tr>"
+
+                            }
+                            
+
+                            if(parametrosMediosReais.screwRotationSpeedMax < parametrosAtuais.screwRotationSpeed || parametrosMediosReais.screwRotationSpeedMin > parametrosAtuais.screwRotationSpeed){
+                              tags = tags + "<tr style=\"background-color:#FDFD96\">"+
+                              "<td> Screw Rotation Speed </td>" + 
+                              "<td>" + parametrosMediosReais.screwRotationSpeedMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.screwRotationSpeedMax + "</td>" + 
+                              "<td>" + parametrosAtuais.screwRotationSpeed + "</td>" +         
+                              "<td>" + '<label id="screwRotationSpeed"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                 
+                              "</tr>"
+
+                            }else{
+                              tags = tags + "<tr>"+
+                              "<td> Screw Rotation Speed </td>" + 
+                              "<td>" + parametrosMediosReais.screwRotationSpeedMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.screwRotationSpeedMax + "</td>" + 
+                              "<td>" + parametrosAtuais.screwRotationSpeed + "</td>" +         
+                              "<td>" + '<label id="screwRotationSpeed"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                 
+                              "</tr>"
+
+                            }
+                            
+
+                            if(parametrosMediosReais.temperature_henMax < parametrosAtuais.temperature_hen || parametrosMediosReais.temperature_henMin > parametrosAtuais.temperature_hen){
+                              tags = tags + "<tr style=\"background-color:#FDFD96\">"+
+                              "<td> Temperature Hen </td>" + 
+                              "<td>" + parametrosMediosReais.temperature_henMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.temperature_henMax + "</td>" + 
+                              "<td>" + parametrosAtuais.temperature_hen + "</td>" +     
+                              "<td>" + '<label id="temperature_hen"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                     
+                              "</tr>"
+
+                            }else{
+
+                              tags = tags + "<tr>"+
+                              "<td> Temperature Hen </td>" + 
+                              "<td>" + parametrosMediosReais.temperature_henMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.temperature_henMax + "</td>" + 
+                              "<td>" + parametrosAtuais.temperature_hen + "</td>" +     
+                              "<td>" + '<label id="temperature_hen"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                     
+                              "</tr>"
+
+                            }
+                            
+
+                            if(parametrosMediosReais.temperature_hnMax < parametrosAtuais.temperature_hn || parametrosMediosReais.temperature_hnMin > parametrosAtuais.temperature_hn){
+                              tags = tags + "<tr style=\"background-color:#FDFD96\">"+
+                              "<td> Temperature Hen </td>" + 
+                              "<td>" + parametrosMediosReais.temperature_hnMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.temperature_hnMax + "</td>" + 
+                              "<td>" + parametrosAtuais.temperature_hn + "</td>" +     
+                              "<td>" + '<label id="temperature_hn"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                     
+                              "</tr>"
+
+                            }else{
+
+                              tags = tags + "<tr>"+
+                              "<td> Temperature Hen </td>" + 
+                              "<td>" + parametrosMediosReais.temperature_hnMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.temperature_hnMax + "</td>" + 
+                              "<td>" + parametrosAtuais.temperature_hn + "</td>" +     
+                              "<td>" + '<label id="temperature_hn"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                     
+                              "</tr>"
+
+                            }
+
+                            if(parametrosMediosReais.temperature_h1Max < parametrosAtuais.temperature_h1 || parametrosMediosReais.temperature_h1Min > parametrosAtuais.temperature_h1){
+                              tags = tags + "<tr style=\"background-color:#FDFD96\">"+
+                              "<td> Temperature H1 </td>" + 
+                              "<td>" + parametrosMediosReais.temperature_h1Min + "</td>" +                             
+                              "<td>" + parametrosMediosReais.temperature_h1Max + "</td>" + 
+                              "<td>" + parametrosAtuais.temperature_h1 + "</td>" +     
+                              "<td>" + '<label id="temperature_h1"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                     
+                              "</tr>"
+
+
+                            }else{
+
+                              tags = tags + "<tr>"+
+                              "<td> Temperature H1 </td>" + 
+                              "<td>" + parametrosMediosReais.temperature_h1Min + "</td>" +                             
+                              "<td>" + parametrosMediosReais.temperature_h1Max + "</td>" + 
+                              "<td>" + parametrosAtuais.temperature_h1 + "</td>" +     
+                              "<td>" + '<label id="temperature_h1"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                     
+                              "</tr>"
+                            }
+
+                            
+    
+                            if(parametrosMediosReais.temperature_h2Max < parametrosAtuais.temperature_h2 || parametrosMediosReais.temperature_h2Min > parametrosAtuais.temperature_h2){
+                              tags = tags + "<tr style=\"background-color:#FDFD96\">"+
+                              "<td> Temperature H2 </td>" + 
+                              "<td>" + parametrosMediosReais.temperature_h2Min + "</td>" +                             
+                              "<td>" + parametrosMediosReais.temperature_h2Max + "</td>" + 
+                              "<td>" + parametrosAtuais.temperature_h2 + "</td>" +     
+                              "<td>" + '<label id="temperature_h2"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +                     
+                              "</tr>"
+
+
+                            }else{
+
+                              tags = tags + "<tr>"+
+                              "<td> Temperature H2 </td>" + 
+                              "<td>" + parametrosMediosReais.temperature_h2Min + "</td>" +                             
+                              "<td>" + parametrosMediosReais.temperature_h2Max + "</td>" + 
+                              "<td>" + parametrosAtuais.temperature_h2 + "</td>" +     
+                              "<td>" + '<label id="temperature_h2"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +                 
+                              "</tr>"
+                            }
+
+                            if(parametrosMediosReais.temperature_h3Max < parametrosAtuais.temperature_h3 || parametrosMediosReais.temperature_h3Min > parametrosAtuais.temperature_h3){
+                              tags = tags + "<tr style=\"background-color:#FDFD96\">"+
+                              "<td> Temperature H3 </td>" + 
+                              "<td>" + parametrosMediosReais.temperature_h3Min + "</td>" +                             
+                              "<td>" + parametrosMediosReais.temperature_h3Max + "</td>" + 
+                              "<td>" + parametrosAtuais.temperature_h3 + "</td>" +     
+                              "<td>" + '<label id="temperature_h3"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                    
+                              "</tr>"
+
+                            }else{
+                              tags = tags + "<tr>"+
+                              "<td> Temperature H3 </td>" + 
+                              "<td>" + parametrosMediosReais.temperature_h3Min + "</td>" +                             
+                              "<td>" + parametrosMediosReais.temperature_h3Max + "</td>" + 
+                              "<td>" + parametrosAtuais.temperature_h3 + "</td>" +     
+                              "<td>" + '<label id="temperature_h3"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                    
+                              "</tr>"
+                            }
+                            
+                            if(parametrosMediosReais.temperature_h4Max < parametrosAtuais.temperature_h4 || parametrosMediosReais.temperature_h4Min > parametrosAtuais.temperature_h4){
+                              tags = tags + "<tr style=\"background-color:#FDFD96\">"+
+                              "<td> Temperature H4 </td>" + 
+                              "<td>" + parametrosMediosReais.temperature_h4Min + "</td>" +                             
+                              "<td>" + parametrosMediosReais.temperature_h4Max + "</td>" + 
+                              "<td>" + parametrosAtuais.temperature_h4 + "</td>" +     
+                              "<td>" + '<label id="temperature_h4"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                    
+                              "</tr>"
+
+                            }else{
+                              tags = tags + "<tr>"+
+                              "<td> Temperature H4 </td>" + 
+                              "<td>" + parametrosMediosReais.temperature_h4Min + "</td>" +                             
+                              "<td>" + parametrosMediosReais.temperature_h4Max + "</td>" + 
+                              "<td>" + parametrosAtuais.temperature_h4 + "</td>" +     
+                              "<td>" + '<label id="temperature_h4"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                    
+                              "</tr>"
+                            }
+                            
+                            if(parametrosMediosReais.temperature_h5Max < parametrosAtuais.temperature_h5 || parametrosMediosReais.temperature_h5Min > parametrosAtuais.temperature_h5){
+                              tags = tags + "<tr style=\"background-color:#FDFD96\">"+
+                              "<td> Temperature H5 </td>" + 
+                              "<td>" + parametrosMediosReais.temperature_h5Min + "</td>" +                             
+                              "<td>" + parametrosMediosReais.temperature_h5Max + "</td>" + 
+                              "<td>" + parametrosAtuais.temperature_h5 + "</td>" +     
+                              "<td>" + '<label id="temperature_h5"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                    
+                              "</tr>"
+
+                            }else{
+                              tags = tags + "<tr>"+
+                              "<td> Temperature H5 </td>" + 
+                              "<td>" + parametrosMediosReais.temperature_h5Min + "</td>" +                             
+                              "<td>" + parametrosMediosReais.temperature_h5Max + "</td>" + 
+                              "<td>" + parametrosAtuais.temperature_h5 + "</td>" +     
+                              "<td>" + '<label id="temperature_h5"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                    
+                              "</tr>"
+
+                            }
+
+                            
+                            if(parametrosMediosReais.temperature_oilMax < parametrosAtuais.temperature_oil || parametrosMediosReais.temperature_oilMin > parametrosAtuais.temperature_oil){
+                              tags = tags + "<tr style=\"background-color:#FDFD96\">"+
+                              "<td> Temperature OIL </td>" + 
+                              "<td>" + parametrosMediosReais.temperature_oilMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.temperature_oilMax + "</td>" + 
+                              "<td>" + parametrosAtuais.temperature_oil + "</td>" +  
+                              "<td>" + '<label id="temperature_oil"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                       
+                              "</tr>"
+
+
+                            }else{
+
+                              tags = tags + "<tr>"+
+                              "<td> Temperature OIL </td>" + 
+                              "<td>" + parametrosMediosReais.temperature_oilMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.temperature_oilMax + "</td>" + 
+                              "<td>" + parametrosAtuais.temperature_oil + "</td>" +  
+                              "<td>" + '<label id="temperature_oil"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                       
+                              "</tr>"
+                            }
+                            
+
+                            if(parametrosMediosReais.temperature_hopMax < parametrosAtuais.temperature_hop || parametrosMediosReais.temperature_hopMin > parametrosAtuais.temperature_hop){
+                              tags = tags + "<tr style=\"background-color:#FDFD96\">"+
+                              "<td> Temperature HOP </td>" + 
+                              "<td>" + parametrosMediosReais.temperature_hopMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.temperature_hopMax + "</td>" + 
+                              "<td>" + parametrosAtuais.temperature_hop + "</td>" +   
+                              "<td>" + '<label id="temperature_hop"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                        
+                              "</tr>"
+
+
+                            }else{
+                              tags = tags + "<tr>"+
+                              "<td> Temperature HOP </td>" + 
+                              "<td>" + parametrosMediosReais.temperature_hopMin + "</td>" +                             
+                              "<td>" + parametrosMediosReais.temperature_hopMax + "</td>" + 
+                              "<td>" + parametrosAtuais.temperature_hop + "</td>" +   
+                              "<td>" + '<label id="temperature_hop"style="margin-right: 4%; font-size: 12px; font-weight:bold;" data-toggle="modal" data-target="#myModal"> Clique para o gráfico</label>' + "</td>" +               
+                                        
+                              "</tr>"
+
+                            }
+
+                            
+
+                            tableBody = $("#parametrosReais tbody"); 
+                            tableBody.append(tags);
+                          
+                            document.getElementById("cycleTime").addEventListener("click", function(){
+                              plotaGrafico2("cycleTime");
+                          },false);
+                          
+                          document.getElementById("dwellPressure").addEventListener("click", function(){
+                              plotaGrafico2("dwellPressure");
+                          },false);
+                          
+                          document.getElementById("fillingTime").addEventListener("click", function(){
+                              plotaGrafico2("fillingTime");
+                          },false);
+                          
+                          document.getElementById("chargingTime").addEventListener("click", function(){
+                              plotaGrafico2("chargingTime");
+                          },false);
+                          
+                          document.getElementById("takeoutTime").addEventListener("click", function(){
+                              plotaGrafico2("takeoutTime");
+                          },false);
+                          
+                          document.getElementById("dwellChnagePosition").addEventListener("click", function(){
+                              plotaGrafico2("dwellChnagePosition");
+                          },false);
+                          
+                          document.getElementById("cushionPosition").addEventListener("click", function(){
+                              plotaGrafico2("cushionPosition");
+                          },false);
+                          
+                          document.getElementById("minumumCushionPosition").addEventListener("click", function(){
+                              plotaGrafico2("minumumCushionPosition");
+                          },false);
+                          
+                          document.getElementById("injetStartPosition").addEventListener("click", function(){
+                              plotaGrafico2("injetStartPosition");
+                          },false);
+                          
+                          document.getElementById("maxInjectPressure").addEventListener("click", function(){
+                              plotaGrafico2("maxInjectPressure");
+                          },false);
+                          
+                          document.getElementById("screwRotationSpeed").addEventListener("click", function(){
+                              plotaGrafico2("screwRotationSpeed");
+                          },false);
+                          
+                          document.getElementById("temperature_hen").addEventListener("click", function(){
+                              plotaGrafico2("temperature_hen");
+                          },false);
+                          
+                          document.getElementById("temperature_hn").addEventListener("click", function(){
+                              plotaGrafico2("temperature_hn");
+                          },false);
+                          
+                          document.getElementById("temperature_h1").addEventListener("click", function(){
+                              plotaGrafico2("temperature_h1");
+                          },false);
+                          
+                          document.getElementById("temperature_h2").addEventListener("click", function(){
+                              plotaGrafico2("temperature_h2");
+                          },false);
+                          
+                          document.getElementById("temperature_h3").addEventListener("click", function(){
+                              plotaGrafico2("temperature_h3");
+                          },false);
+                          
+                          document.getElementById("temperature_h4").addEventListener("click", function(){
+                              plotaGrafico2("temperature_h4");
+                          },false);
+                          
+                          document.getElementById("temperature_h5").addEventListener("click", function(){
+                              plotaGrafico2("temperature_h5");
+                          },false);
+                          
+                          document.getElementById("temperature_oil").addEventListener("click", function(){
+                              plotaGrafico2("temperature_oil");
+                          },false);
+                          
+                          document.getElementById("temperature_hop").addEventListener("click", function(){
+                              plotaGrafico2("temperature_hop");
+                          },false);
+                      
+
+
+                        }
+    
+                      });
+
+
+
+                      
                             
     
                     }

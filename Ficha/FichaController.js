@@ -45,15 +45,14 @@ router.get("/fichas/:maquina?",  (req,res) => {
 
 router.get("/fichasUltimo/maquina/:id",  (req,res) => {
    
-    var maquinaId= req.params.id;
-      
+    var maquinaId= req.params.id;      
 
     Maquinas.findOne({
         where: {
             mac: maquinaId
          }
-    }).then(maquina => {     
-        
+    }).then(maquina => {    
+
         ParametrosAtuais.findAll({
             limit: 1,
             where: {
@@ -66,10 +65,33 @@ router.get("/fichasUltimo/maquina/:id",  (req,res) => {
             res.send(output[0])
             
           }); 
-    })   
+    })      
 
+})
 
-    
+router.get("/parametrosMediosReais/maquina/:id",  (req,res) => {
+   
+    var maquinaId= req.params.id;      
+    console.log(maquinaId)
+    Maquinas.findOne({
+        where: {
+            mac: maquinaId
+         }
+    }).then(maquina => {    
+
+        ParametrosMedios.findAll({
+            limit: 1,
+            where: {
+              maquina: maquina.id
+            },
+            order: [ [ 'createdAt', 'DESC' ]]
+          }).then(output => {
+     
+            console.log(output[0])
+            res.send(output[0])
+            
+          }); 
+    })      
 
 })
 

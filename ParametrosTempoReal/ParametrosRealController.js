@@ -150,7 +150,9 @@ router.post("/parametrosReal/create",(req,res) => {
         temperature_h5Min : temperature_h5_min,
         temperature_h5Max : temperature_h5_max,
         temperature_hopMin : temperature_hop_min,
-        temperature_hopMax : temperature_hop_max
+        temperature_hopMax : temperature_hop_max,
+        temperature_oilMin : temperature_oil_min,
+        temperature_oilMax : temperature_oil_max
 
 
 
