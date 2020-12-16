@@ -12,6 +12,6 @@ const MateriasPrimas = conn.define('materiaprima',{
     }
 })
 
-// MateriasPrimas.sync({force: true});
+MateriasPrimas.sync();
 
 module.exports = MateriasPrimas;

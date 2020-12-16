@@ -61,7 +61,7 @@ const ParametrosMedios = conn.define('parametrosMedios',{
 })
 
 
-// ParametrosMedios.sync({force: true});
+ParametrosMedios.sync();
 
 
 module.exports = ParametrosMedios;

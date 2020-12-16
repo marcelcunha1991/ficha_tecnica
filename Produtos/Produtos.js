@@ -12,6 +12,6 @@ const Produtos = conn.define('produtos',{
     }
 })
 
-// Produtos.sync({force: true});
+Produtos.sync();
 
 module.exports = Produtos;

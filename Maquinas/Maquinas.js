@@ -24,6 +24,6 @@ const Maquinas = conn.define('maquinas',{
     }
 })
 
-// Maquinas.sync({force: true});
+Maquinas.sync();
 
 module.exports = Maquinas;

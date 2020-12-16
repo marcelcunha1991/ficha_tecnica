@@ -12,6 +12,6 @@ const Moldes = conn.define('moldes',{
     }
 })
 
-// Moldes.sync({force: true});
+Moldes.sync();
 
 module.exports = Moldes;

@@ -54,6 +54,6 @@ Maquinas.hasMany(Ficha);
 Produtos.hasMany(Ficha);
 MateriaPrima.hasMany(Ficha);
 
-// Ficha.sync({force: true});
+Ficha.sync();
 
 module.exports = Ficha;

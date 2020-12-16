@@ -24,7 +24,7 @@ const Parametros = conn.define('parametros',{
 })
 
 
-// Parametros.sync({force: true});
+Parametros.sync();
 
 
 module.exports = Parametros;

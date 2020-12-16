@@ -34,6 +34,6 @@ const ParametrosAtuais = conn.define('parametrosAtuais',{
 
 })
 
-// ParametrosAtuais.sync({force: true});
+ParametrosAtuais.sync();
 
 module.exports = ParametrosAtuais;

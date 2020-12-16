@@ -13,11 +13,8 @@
     <select name="maquinas" id="maquinas"  class="form-control">
         <option > Selecione uma máquina</option>
         <% maquinas.forEach((maquina) => { %>
-
                 <option value="<%= maquina.id %>"> <%= maquina.descricao %></option>
-
         <% }) %>
-
     </select>
 <br>
 <h5>Parâmetros de tempo real : </h5>

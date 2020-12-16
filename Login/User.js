@@ -24,7 +24,7 @@ const User = conn.define('users',{
     }
 })
 
-// User.sync({ force: true });
+User.sync();
 
 // User.create({
 //     nome:"admin",
