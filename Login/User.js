@@ -26,11 +26,11 @@ const User = conn.define('users',{
 
 User.sync();
 
-// User.create({
-//     nome:"admin",
-//     email:"admin@email.com",
-//     password:hash,
-//     matricula:"00000"        
-// })
+User.create({
+    nome:"admin",
+    email:"admin@email.com",
+    password:hash,
+    matricula:"00000"        
+})
 
 module.exports = User;
