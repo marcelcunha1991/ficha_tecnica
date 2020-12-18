@@ -105,10 +105,9 @@ app.get("/",(req,res) =>{
 //       });
 // });
 
-app.listen(3000,'192.168.0.3',() => {
+app.listen(3000,'192.168.0.114',() => {
     console.log("Servidor Rodando");
 })
-
 
 // app.listen(3000,'192.168.0.17',() => {
 //     console.log("Servidor Rodando");

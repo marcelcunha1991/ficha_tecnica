@@ -245,7 +245,7 @@ function plotaGrafico2(area){
                     }
                   }
                   
-                  var data = [Data,CL,Centre]
+                  
 
                   var range_;
 
@@ -290,19 +290,56 @@ function plotaGrafico2(area){
                   }else if (area == "temperature_hop"){                    
                     range_ = [limites.temperature_hopMin,limites.temperature_hopMax]
                   }
+
+                  var histo = {
+                    type: 'histogram',
+                    x: [1,2,3,4,5,6,7,8,9],
+                    y: [4,2,-1,4,-5,-7,0,3,8],
+                    name: 'Distribution',
+                    orientation: 'h',
+                    marker: {
+                      color: 'blue',
+                      line: {
+                        color: 'white',
+                        width: 1
+                      }
+                    },
+                    xaxis: 'x2',
+                    yaxis: 'y2'
+                  }
                   
                   
+                  // var layout = {
+                  //   title: 'Carta de Controle',
+                  //   xaxis: {
+                  //     zeroline: false
+                  //   },
+                  //   yaxis: {
+                  //     range: range_,
+                  //     zeroline: false
+                  //   }
+                  // }
+                  var data = [Data,CL,Centre,histo]
+
                   var layout = {
-                    title: 'Carta de Controle',
+                    title: 'Basic SPC Chart',
                     xaxis: {
+                      domain: [0, 0.7], // 0 to 70% of width
                       zeroline: false
                     },
                     yaxis: {
                       range: range_,
                       zeroline: false
+                    },
+                    xaxis2: {
+                      domain: [0.8, 1] // 70 to 100% of width
+                    },
+                    yaxis2: {
+                      anchor: 'x2',
+                      showticklabels: false
                     }
                   }
-                  
+
                   Plotly.newPlot('plotly', data,layout);
                 
                 
