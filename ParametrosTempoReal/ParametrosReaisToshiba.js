@@ -1,8 +1,7 @@
 const Sequelize = require("sequelize");
 const conn = require("../database/database");
 
-
-const ParametrosAtuais = conn.define('parametrosAtuais',{
+const ParametrosAtuais = conn.define('parametros_reais_toshiba',{
 
     mac: Sequelize.STRING,
     prodShot: Sequelize.FLOAT,
@@ -19,7 +18,6 @@ const ParametrosAtuais = conn.define('parametrosAtuais',{
     injetStartPosition: Sequelize.FLOAT,
     maxInjectPressure: Sequelize.FLOAT,
     screwRotationSpeed: Sequelize.FLOAT, 
-
     temperature_hen: Sequelize.FLOAT, 
     temperature_hn: Sequelize.FLOAT, 
     temperature_h1: Sequelize.FLOAT, 
@@ -34,6 +32,6 @@ const ParametrosAtuais = conn.define('parametrosAtuais',{
 
 })
 
-ParametrosAtuais.sync();
+// ParametrosAtuais.sync();
 
 module.exports = ParametrosAtuais;

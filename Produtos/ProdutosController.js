@@ -17,7 +17,8 @@ router.get("/produtos",  (req,res) => {
             nav_moldes : "",
             nav_parametros:"",
             nav_clientes : "",
-            nav_ficha: ""
+            nav_ficha: "",
+            nav_alertas:""
         })
     });
 
@@ -36,7 +37,8 @@ router.get("/produtos/new",  (req,res) => {
             nav_usuarios : "",
             nav_moldes : "",
             nav_clientes : "",
-            nav_ficha: ""
+            nav_ficha: "",
+            nav_alertas:""
         })
     });
 
@@ -77,7 +79,8 @@ router.get("/produtos/edit/:id",(req,res) => {
                 nav_usuarios : "",
                 nav_moldes : "",
                 nav_clientes : "",
-                nav_ficha: ""
+                nav_ficha: "",
+                nav_alertas:""
               
             })
 

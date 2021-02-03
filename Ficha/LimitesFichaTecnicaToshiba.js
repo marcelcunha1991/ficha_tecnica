@@ -6,7 +6,7 @@ const Maquinas = require("../Maquinas/Maquinas");
 const Produtos = require("../Produtos/Produtos");
 const MateriaPrima = require("../MateriaPrima/MateriasPrimas");
 
-const Ficha = conn.define('ficha',{
+const Ficha = conn.define('limites_ficha_tecnica_toshiba',{
     
     maquina:{
         type: Sequelize.INTEGER,
@@ -54,6 +54,6 @@ Maquinas.hasMany(Ficha);
 Produtos.hasMany(Ficha);
 MateriaPrima.hasMany(Ficha);
 
-Ficha.sync();
+// Ficha.sync();
 
 module.exports = Ficha;

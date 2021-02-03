@@ -17,7 +17,8 @@ router.get("/materiaprima",  (req,res) => {
             nav_moldes : "",
             nav_parametros:"",
             nav_clientes : "",
-            nav_ficha: ""
+            nav_ficha: "",
+            nav_alertas:""
         })
     });
 
@@ -36,7 +37,8 @@ router.get("/materiaprima/new",  (req,res) => {
             nav_usuarios : "",
             nav_moldes : "",
             nav_clientes : "",
-            nav_ficha: ""
+            nav_ficha: "",
+            nav_alertas:""
         })
     });
 
@@ -77,7 +79,8 @@ router.get("/materiaprima/edit/:id",(req,res) => {
                 nav_usuarios : "",
                 nav_moldes : "",
                 nav_clientes : "",
-                nav_ficha: ""
+                nav_ficha: "",
+                nav_alertas:""
               
             })
 

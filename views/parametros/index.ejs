@@ -5,7 +5,7 @@
 
     <hr>
     <h2>Parâmetros de Máquina</h2> 
-    <a class="btn btn-success" href="/parametros/new"> Inserir Novos parâmetros</a>
+    <!-- <a class="btn btn-success" href="/parametros/new"> Inserir Novos parâmetros</a> -->
     <hr>
 
    
@@ -29,14 +29,19 @@
                 <td> <%=article.mac %>  </td>
                
                 <td> 
-                    <form method="GET" action="/maquinas/edit/<%= article.id %>" style="display: inline;">                                     
-                            <button class="btn btn-warning"> Editar</button>
+
+                    <form method="GET" action="/parametros/new/<%= article.id %>" style="display: inline;">                                     
+                        <button class="btn btn-primary"> Inserir Limites de Parâmetros</button>
                     </form>
+
+                    <!-- <form method="GET" action="/maquinas/edit/<%= article.id %>" style="display: inline;">                                     
+                            <button class="btn btn-warning"> Editar</button>
+                    </form> -->
                     
-                    <form method="POST" action="/maquinas/delete" style="display: inline;" onsubmit="confirmarDelecao(event, this)"> 
+                    <!-- <form method="POST" action="/maquinas/delete" style="display: inline;" onsubmit="confirmarDelecao(event, this)"> 
                             <input type="hidden" name="id" value="<%= article.id %>">
                             <button class="btn btn-danger"> Remover</button>
-                    </form> </th>
+                    </form> </th> -->
                 </td>
             </tr>
 

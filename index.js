@@ -9,20 +9,34 @@ const Produtos = require("./Produtos/Produtos");
 const MateriaPrima = require("./MateriaPrima/MateriasPrimas");
 const Moldes = require("./Moldes/Moldes");
 const Clientes = require("./Clientes/Clientes");
-const ParametrosTecnicos = require("./Ficha/Parametros");
-const ParametrosReal = require("./ParametrosTempoReal/ParametrosReal");
-const ParametrosAtuais = require("./Ficha/ParametrosAtuais");
-const Fichas = require("./Ficha/Ficha");
+
+const FichaTecnicaToshiba = require("./Ficha/FichaTecnicaToshiba");
+const LimitesFichaTecnicaToshiba = require("./Ficha/LimitesFichaTecnicaToshiba");
+const ParametrosReaisToshiba = require("./ParametrosTempoReal/ParametrosReaisToshiba");
+const ParametrosReaisAutomata = require("./ParametrosTempoReal/ParametrosReaisAutomata");
+const LimiteParametrosToshiba = require("./ParametrosTempoReal/LimiteParametrosToshiba");
+const LimiteParametrosAutomata = require("./ParametrosTempoReal/LimiteParametrosAutomata");
+const Tipo = require("./Tipo/Tipo");
+const Alertas = require("./Alertas/Alertas");
+const AlertasAbertos = require("./Alertas/AlertasAbertos");
+
 const cron = require("node-cron");
 var nodemailer = require('nodemailer');
 const userController = require("./Login/LoginController");
+const alertasController = require("./Alertas/AlertasController");
 const maquinasController = require("./Maquinas/MaquinasController");
 const produtosConctroller = require("./Produtos/ProdutosController");
 const materiaPrimaConctroller = require("./MateriaPrima/MateriaPrimaController");
 const moldesConctroller = require("./Moldes/MoldesController");
 const clientesConctroller = require("./Clientes/ClientesController");
 const fichasConctroller = require("./Ficha/FichaController");
+const tiposConctroller = require("./Tipo/TipoController");
 const ParametrosRealController = require("./ParametrosTempoReal/ParametrosRealController");
+
+const bcrypt = require("bcryptjs");
+
+var salt = bcrypt.genSaltSync(10);
+var hash = bcrypt.hashSync("admin",salt);
 
 
 //view engine
@@ -53,6 +67,8 @@ app.use("/",moldesConctroller);
 app.use("/",clientesConctroller);
 app.use("/",fichasConctroller);
 app.use("/",ParametrosRealController);
+app.use("/",tiposConctroller);
+app.use("/",alertasController);
 
 
 
@@ -75,45 +91,43 @@ app.get("/",(req,res) =>{
 })
 
 
+//Cria Tabelas
+//     Tipo.sync();
+//     Maquinas.sync();
+//     User.sync();
+//     Produtos.sync();
+//     MateriaPrima.sync();
+//     Moldes.sync();
+//     Clientes.sync();
+//     FichaTecnicaToshiba.sync();
+//     LimitesFichaTecnicaToshiba.sync();
+//     ParametrosReaisToshiba.sync();   
+//     ParametrosReaisAutomata.sync();        
+//     LimiteParametrosToshiba.sync();
+//     LimiteParametrosAutomata.sync();
+    // Alertas.sync();
+    // AlertasAbertos.sync();
 
 
-// cron.schedule("*/5 * * * *", () => {
-
-
-//     var transporter = nodemailer.createTransport({
-//         service: 'gmail',
-//         auth: {
-//           user: 'marcel.silva1991@gmail.com',
-//           pass: 'Marcel21003839'
-//         }
-//       });
-
-
-//     var mailOptions = {
-//         from: 'marcel.silva1991@gmail.com',
-//         to: 'marcel.silva1991@gmail.com',
-//         subject: 'Variação fora do esperado',
-//         text: 'That was easy!'
-//       };
-
-//       transporter.sendMail(mailOptions, function(error, info){
-//         if (error) {
-//           console.log(error);
-//         } else {
-//           console.log('Email sent: ' + info.response);
-//         }
-//       });
-// });
-
-app.listen(3000,'192.168.0.114',() => {
-    console.log("Servidor Rodando");
-})
-
-// app.listen(3000,'192.168.0.17',() => {
-//     console.log("Servidor Rodando");
+//     User.create({
+//     nome:"admin",
+//     email:"admin@email.com",
+//     password:hash,
+//     matricula:"00000"        
 // })
 
-
-// app.listen(3000,'localhost',() => {
-//         console.log("Servidor Rodando");
+//     Tipo.create({
+//         tipo:"Toshiba"
+//     });
+//     Tipo.create({
+//         tipo:"Automata OPTIN"
 //     })
+
+   
+    
+
+
+    
+app.listen(3000,"0.0.0.0",() => {
+    console.log("Servidor Rodando");
+})

@@ -2,7 +2,7 @@ const Sequelize = require("sequelize");
 const conn = require("../database/database");
 
 
-const Parametros = conn.define('parametros',{
+const Parametros = conn.define('ficha_tecnica_toshiba',{
 
     mac: Sequelize.STRING,
     VI1: Sequelize.FLOAT,
@@ -24,7 +24,7 @@ const Parametros = conn.define('parametros',{
 })
 
 
-Parametros.sync();
+// Parametros.sync();
 
 
 module.exports = Parametros;

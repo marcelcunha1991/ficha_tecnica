@@ -16,7 +16,8 @@ router.get("/users", (req,res) => {
                 nav_moldes : "",
                 nav_clientes : "",
                 nav_parametros:"",
-                nav_ficha: ""
+                nav_ficha: "",
+                nav_alertas:""
         })
     })
 });
@@ -32,7 +33,8 @@ router.get("/users/create", (req,res) => {
             nav_moldes : "",
             nav_clientes : "",
             nav_parametros:"",
-            nav_ficha: ""
+            nav_ficha: "",
+            nav_alertas:"active"
     });
 });
 

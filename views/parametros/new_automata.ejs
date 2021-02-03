@@ -1,0 +1,275 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/sidebar.ejs') %>
+
+<div class="container">
+
+ 
+  <br>
+    <div class="card">
+            <div class="card-header">
+                   
+                        <h2>Novo Parâmetros de máquina</h2>
+                    
+            </div>
+            <div class="card-body">
+                    <form  method="POST" action="/parametrosReal/create/<%= maquinas.tipoId %>">
+
+                                        <label for="maquinas"> Máquina Selecionada: </label>
+                                        <input id="maquinas" name="maquinas" size="30" type="text"  value="<%= maquinas.descricao %>" readonly/>
+                                        <input id="idMaquina" name="idMaquina" value = "<%= maquinas.id %>" hidden/>
+                            
+                            <br>
+                            
+                                <div>
+                                        <label for="username"> Tempo De Ciclo Min: </label>
+                                        <input id="tempoDeCiclo_min" name="tempoDeCiclo_min" size="30" type="number" />
+                                
+                                        <label for="name">Tempo De Ciclo Max: </label>
+                                        <input id="tempoDeCiclo_max" name="tempoDeCiclo_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Tempo De Fechamento Do Molde Min: </label>
+                                        <input id="tempoDeFechamentoDoMolde_min" name="tempoDeFechamentoDoMolde_min" size="30" type="number" />
+                                
+                                        <label for="name">Tempo De Fechamento Do Molde Max: </label>
+                                        <input id="tempoDeFechamentoDoMolde_max" name="tempoDeFechamentoDoMolde_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Tempo De Abertura Do Molde Min: </label>
+                                        <input id="tempoDeAberturaDoMolde_min" name="tempoDeAberturaDoMolde_min" size="30" type="number" />
+                                
+                                        <label for="name">Tempo De Abertura Do Molde Max: </label>
+                                        <input id="tempoDeAberturaDoMolde_max" name="tempoDeAberturaDoMolde_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Tempo De Avanco Do Extrator Min: </label>
+                                        <input id="tempoDeAvancoDoExtrator_min" name="tempoDeAvancoDoExtrator_min" size="30" type="number" />
+                                
+                                        <label for="name">Tempo De Avanco Do Extrator Max: </label>
+                                        <input id="tempoDeAvancoDoExtrator_max" name="tempoDeAvancoDoExtrator_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Tempo De Recuo Do Extrator Min: </label>
+                                        <input id="tempoDeRecuoDoExtrator_min" name="tempoDeRecuoDoExtrator_min" size="30" type="number" />
+                                
+                                        <label for="name">Tempo De Recuo Do Extrator Max: </label>
+                                        <input id="tempoDeRecuoDoExtrator_max" name="tempoDeRecuoDoExtrator_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Tempo De Injecao Min: </label>
+                                        <input id="tempoDeInjecao_min" name="tempoDeInjecao_min" size="30" type="number" />
+                                
+                                        <label for="name">Tempo De Injecao Max: </label>
+                                        <input id="tempoDeInjecao_max" name="tempoDeInjecao_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Tempo De Recalque Min: </label>
+                                        <input id="tempoDeRecalque_min" name="tempoDeRecalque_min" size="30" type="number" />
+                                
+                                        <label for="name">Tempo De Recalque Max: </label>
+                                        <input id="tempoDeRecalque_max" name="tempoDeRecalque_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Tempo De Primeira Descompressao Min: </label>
+                                        <input id="tempoDePrimeiraDescompressao_min" name="tempoDePrimeiraDescompressao_min" size="30" type="number" />
+                                
+                                        <label for="name">Tempo De Primeira Descompressao Max: </label>
+                                        <input id="tempoDePrimeiraDescompressao_max" name="tempoDePrimeiraDescompressao_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Tempo De Segunda Descompressao Min: </label>
+                                        <input id="tempoDeSegundaDescompressao_min" name="tempoDeSegundaDescompressao_min" size="30" type="number" />
+                                
+                                        <label for="name">Tempo De Segunda Descompressao Max: </label>
+                                        <input id="tempoDeSegundaDescompressao_max" name="tempoDeSegundaDescompressao_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Tempo De Plastificacao Min: </label>
+                                        <input id="tempoDePlastificacao_min" name="tempoDePlastificacao_min" size="30" type="number" />
+                                
+                                        <label for="name">Tempo De Plastificacao Max: </label>
+                                        <input id="tempoDePlastificacao_max" name="tempoDePlastificacao_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Tempo De Avanco Da Unidade Injetora Min: </label>
+                                        <input id="tempoDeAvancoDaUnidadeInjetora_min" name="tempoDeAvancoDaUnidadeInjetora_min" size="30" type="number" />
+                                
+                                        <label for="name">Tempo De Avanco Da Unidade Injetora Max: </label>
+                                        <input id="tempoDeAvancoDaUnidadeInjetora_max" name="tempoDeAvancoDaUnidadeInjetora_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username"> Tempo De Recuo Da Unidade Injetora Min: </label>
+                                        <input id="tempoDeRecuoDaUnidadeInjetora_min" name="tempoDeRecuoDaUnidadeInjetora_min" size="30" type="number" />
+                                
+                                        <label for="name">Tempo De Recuo Da Unidade Injetora Max: </label>
+                                        <input id="tempoDeRecuoDaUnidadeInjetora_max" name="tempoDeRecuoDaUnidadeInjetora_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Tempo Total De Ciclo Min: </label>
+                                        <input id="tempoTotalDeCiclo_min" name="tempoTotalDeCiclo_min" size="30" type="number" />
+                                
+                                        <label for="name">Tempo Total De Ciclo Max: </label>
+                                        <input id="tempoTotalDeCiclo_max" name="tempoTotalDeCiclo_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Temperatura Da Zona Do Bico Min: </label>
+                                        <input id="temperaturaDaZonaDoBico_min" name="temperaturaDaZonaDoBico_min" size="30" type="number" />
+                                
+                                        <label for="name">Temperatura Da Zona Do Bico Max: </label>
+                                        <input id="temperaturaDaZonaDoBico_max" name="temperaturaDaZonaDoBico_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Temperatura Da Zona Da Flange Min: </label>
+                                        <input id="temperaturaDaZonaDaFlange_min" name="temperaturaDaZonaDaFlange_min" size="30" type="number" />
+                                
+                                        <label for="name">Temperatura Da Zona Da Flange Max: </label>
+                                        <input id="temperaturaDaZonaDaFlange_max" name="temperaturaDaZonaDaFlange_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Temperatura Da Zona A Min: </label>
+                                        <input id="temperaturaDaZonaA_min" name="temperaturaDaZonaA_min" size="30" type="number" />
+                                
+                                        <label for="name">Temperatura Da Zona A Max: </label>
+                                        <input id="temperaturaDaZonaA_max" name="temperaturaDaZonaA_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Temperatura Da Zona B Min: </label>
+                                        <input id="temperaturaDaZonaB_min" name="temperaturaDaZonaB_min" size="30" type="number" />
+                                
+                                        <label for="name">Temperatura Da Zona B Max: </label>
+                                        <input id="temperaturaDaZonaB_max" name="temperaturaDaZonaB_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Temperatura Da Zona C Min: </label>
+                                        <input id="temperaturaDaZonaC_min" name="temperaturaDaZonaC_min" size="30" type="number" />
+                                
+                                        <label for="name">Temperatura Da Zona C Max: </label>
+                                        <input id="temperaturaDaZonaC_max" name="temperaturaDaZonaC_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Temperatura Da Zona D Min: </label>
+                                        <input id="temperaturaDaZonaD_min" name="temperaturaDaZonaD_min" size="30" type="number" />
+                                
+                                        <label for="name">Temperatura Da Zona D Max: </label>
+                                        <input id="temperaturaDaZonaD_max" name="temperaturaDaZonaD_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Temperatura Da Zona E Min: </label>
+                                        <input id="temperaturaDaZonaE_min" name="temperaturaDaZonaE_min" size="30" type="number" />
+                                
+                                        <label for="name">Temperatura Da Zona E Max: </label>
+                                        <input id="temperaturaDaZonaE_max" name="temperaturaDaZonaE_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Temperatura Da Zona F Min: </label>
+                                        <input id="temperaturaDaZonaF_min" name="temperaturaDaZonaF_min" size="30" type="number" />
+                                
+                                        <label for="name">Temperatura Da Zona F Max: </label>
+                                        <input id="temperaturaDaZonaF_max" name="temperaturaDaZonaF_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Velocidade Media Durante a Injecao Min: </label>
+                                        <input id="velocidadeMediaDuranteAInjecao_min" name="velocidadeMediaDuranteAInjecao_min" size="30" type="number" />
+                                
+                                        <label for="name">Velocidade Media Durante a Injecao Max: </label>
+                                        <input id="velocidadeMediaDuranteAInjecao_max" name="velocidadeMediaDuranteAInjecao_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Pressão Media Durante a Injecao Min: </label>
+                                        <input id="pressaoMediaDuranteAInjecao_min" name="pressaoMediaDuranteAInjecao_min" size="30" type="number" />
+                                
+                                        <label for="name">Pressão Media Durante a Injecao Max: </label>
+                                        <input id="pressaoMediaDuranteAInjecao_max" name="pressaoMediaDuranteAInjecao_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Posição De Passagem Para Recalque Min: </label>
+                                        <input id="posicaoDePassagemParaRecalque_min" name="posicaoDePassagemParaRecalque_min" size="30" type="number" />
+                                
+                                        <label for="name">Posição De Passagem Para Recalque Max: </label>
+                                        <input id="posicaoDePassagemParaRecalque_max" name="posicaoDePassagemParaRecalque_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Pressão De Passagem Para Recalque Min: </label>
+                                        <input id="pressaoDePassagemParaRecalque_min" name="pressaoDePassagemParaRecalque_min" size="30" type="number" />
+                                
+                                        <label for="name">Pressão De Passagem Para Recalque Max: </label>
+                                        <input id="pressaoDePassagemParaRecalque_max" name="pressaoDePassagemParaRecalque_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username"> Pressão Media Durante o Recalque Min: </label>
+                                        <input id="pressaoMediaDuranteORecalque_min" name="pressaoMediaDuranteORecalque_min" size="30" type="number" />
+                                
+                                        <label for="name">Pressão Media Durante o Recalque Max: </label>
+                                        <input id="pressaoMediaDuranteORecalque_max" name="pressaoMediaDuranteORecalque_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Colchão Mínimo De Injeção Min: </label>
+                                        <input id="colchaoMinimoDeInjecao_min" name="colchaoMinimoDeInjecao_min" size="30" type="number" />
+                                
+                                        <label for="name">Colchão Mínimo De Injeção Max: </label>
+                                        <input id="colchaoMinimoDeInjecao_max" name="colchaoMinimoDeInjecao_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Velocidade Média Da Plastificação Min: </label>
+                                        <input id="velocidadeMediaDaPlastificacao_min" name="velocidadeMediaDaPlastificacao_min" size="30" type="number" />
+                                
+                                        <label for="name">Velocidade Média Da Plastificação Max: </label>
+                                        <input id="velocidadeMediaDaPlastificacao_max" name="velocidadeMediaDaPlastificacao_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Contra Pressão Média Min: </label>
+                                        <input id="contraPressaoMedia_min" name="contraPressaoMedia_min" size="30" type="number" />
+                                
+                                        <label for="name">Contra Pressão Média Max: </label>
+                                        <input id="contraPressaoMedia_max" name="contraPressaoMedia_max" size="30" type="number" />
+                                </div>
+
+                                <div>
+                                        <label for="username">Posição De Dosagem Min: </label>
+                                        <input id="posicaoDeDosagem_min" name="posicaoDeDosagem_min" size="30" type="number" />
+                                
+                                        <label for="name">Posição De Dosagem Max: </label>
+                                        <input id="posicaoDeDosagem_max" name="posicaoDeDosagem_max" size="30" type="number" />
+                                </div>
+
+                                                    
+                            <br>
+                            <button class="btn btn-primary">Cadastrar</button>
+                        </form>
+            </div>
+           
+          
+    </div>
+   
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<%- include ('../partials/footer.ejs') %>

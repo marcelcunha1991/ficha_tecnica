@@ -1,34 +1,16 @@
 const Sequelize = require("sequelize");
 
-// const conn = new Sequelize('fichatecnica','root','sa123',{
-//     host: 'localhost',
-//     dialect: 'mysql',
-//     port:3306,
-//     timezone:"-04:00"
-// })
 
-var Connection = require('tedious').Connection;  
+// PARAMETROS DE CONEXAO PARA BANCO SQL
 
-    var config = {  
-        server: 'your_server.database.windows.net',  //update me
-        authentication: {
-            type: 'default',
-            options: {
-                userName: 'your_username', //update me
-                password: 'your_password'  //update me
-            }
-        },
-        options: {
-            // If you are on Microsoft Azure, you need encryption:
-            encrypt: true,
-            database: 'your_database'  //update me
-        }
-    };  
-    var connection = new Connection(config);  
-    connection.on('connect', function(err) {  
-        // If no error, then good to proceed.
-        console.log("Connected");  
-    });  
+const conn = new Sequelize('fichatecnica','root','sa123',{
+    host: 'localhost',
+    dialect: 'mysql',
+    port:3306,
+    timezone:"-04:00"
+})
+
+// PARAMETROS DE CONEXAO PARA BANCO SQLSERVER - OPCAO 01
 
 // const conn = new Sequelize('fichatecnica', 'root', 'sa123', {
 //     host: 'localhost',
@@ -41,6 +23,9 @@ var Connection = require('tedious').Connection;
 //     }
 //   });
 
+
+
+// PARAMETROS DE CONEXAO PARA BANCO SQLSERVER - OPCAO 02
 //   var conn = new Sequelize({
 //     dialect: 'mssql',
 //     dialectModulePath: 'sequelize-msnodesqlv8',

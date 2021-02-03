@@ -16,7 +16,9 @@ router.get("/clientes",  (req,res) => {
             nav_usuarios : "",
             nav_moldes : "",
             nav_clientes : "active",
-            nav_ficha: ""
+            nav_ficha: "",
+            nav_alertas:""
+            
         })
     });
 
@@ -35,7 +37,8 @@ router.get("/clientes/new",  (req,res) => {
             nav_usuarios : "",
             nav_moldes : "",
             nav_clientes : "active",
-            nav_ficha: ""
+            nav_ficha: "",
+            nav_alertas:""
         })
     });
 
@@ -76,7 +79,8 @@ router.get("/clientes/edit/:id",(req,res) => {
                 nav_usuarios : "",
                 nav_moldes : "",
                 nav_clientes : "active",
-                nav_ficha: ""
+                nav_ficha: "",
+                nav_alertas:""
               
             })
 

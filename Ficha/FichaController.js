@@ -1,16 +1,20 @@
 const express = require("express");
 const router = express.Router();
-const Fichas = require("./Ficha");
-const Parametros = require("./Parametros");
-const ParametrosAtuais = require("./ParametrosAtuais");
+const FichaTecnicaToshiba = require("./FichaTecnicaToshiba");
+const ParametrosReaisToshiba = require("../ParametrosTempoReal/ParametrosReaisToshiba");
+const ParametrosReaisAutomata = require("../ParametrosTempoReal/ParametrosReaisAutomata");
+const AlertasAbertosAutomata = require("../Alertas/AlertasAbertos");
+const Alertas = require("../Alertas/Alertas");
+const Tipo = require("../Tipo/Tipo");
 const adminAuth = require("../middlewares/adminAuth");
 const { render } = require("ejs");
 const Maquinas = require("../Maquinas/Maquinas");
 var nodemailer = require('nodemailer');
-const ParametrosMedios = require("../ParametrosTempoReal/ParametrosReal");
+const LimiteParametrosToshiba = require("../ParametrosTempoReal/LimiteParametrosToshiba");
+const LimiteParametrosAutomata = require("../ParametrosTempoReal/LimiteParametrosAutomata");
 
 
-router.get("/fichas/:maquina?",  (req,res) => {
+router.get("/fichas/:maquina?",  (req,res) => {     
     var maquinas;
 
     var dsMaquina = "",
@@ -21,8 +25,7 @@ router.get("/fichas/:maquina?",  (req,res) => {
         maquinas = maquina;
     })
 
-    Fichas.findAll().then(fichas => {
-      
+    FichaTecnicaToshiba.findAll().then(fichas => {      
         
         res.render("fichas/index",{
             fichas:fichas,
@@ -36,7 +39,8 @@ router.get("/fichas/:maquina?",  (req,res) => {
             nav_moldes : "",
             nav_clientes : "",
             nav_parametros:"",
-            nav_ficha: "active"
+            nav_ficha: "active",
+            nav_alertas:""
         })
     });
 
@@ -49,48 +53,107 @@ router.get("/fichasUltimo/maquina/:id",  (req,res) => {
 
     Maquinas.findOne({
         where: {
-            mac: maquinaId
-         }
-    }).then(maquina => {    
+            id: maquinaId
+         },
+         include: [{
+            model: Tipo,
+            required: true
+           }]
+    }).then(maquina => {   
+        
+        switch(maquina.tipo.id){
 
-        ParametrosAtuais.findAll({
-            limit: 1,
-            where: {
-              mac: maquina.mac
-            },
-            order: [ [ 'createdAt', 'DESC' ]]
-          }).then(output => {
-     
-            console.log(output[0])
-            res.send(output[0])
+            case 1:
+                
+                ParametrosReaisToshiba.findAll({
+                    limit: 1,
+                    where: {
+                      mac: maquina.mac
+                    },
+                    order: [ [ 'createdAt', 'DESC' ]]
+                  }).then(output => {
+             
+                    console.log(output[0])
+                    res.send(output[0])
+                    
+                  }); 
+                  break;
+
+            case 2: 
+
+                ParametrosReaisAutomata.findAll({
+                    limit: 1,
+                    where: {
+                    mac: maquina.mac
+                    },
+                    order: [ [ 'createdAt', 'DESC' ]]
+                }).then(output => {
             
-          }); 
+                    console.log(output[0])
+                    res.send(output[0])
+                    
+                }); 
+                break;
+            
+
+                
+        }
+  
+
+        
     })      
 
 })
 
 router.get("/parametrosMediosReais/maquina/:id",  (req,res) => {
    
-    var maquinaId= req.params.id;      
+    var maquinaId= req.params.id;
+
     console.log(maquinaId)
+
     Maquinas.findOne({
         where: {
-            mac: maquinaId
-         }
+            id: maquinaId
+         },include: [{
+            model: Tipo,
+            required: true
+           }]
     }).then(maquina => {    
 
-        ParametrosMedios.findAll({
-            limit: 1,
-            where: {
-              maquina: maquina.id
-            },
-            order: [ [ 'createdAt', 'DESC' ]]
-          }).then(output => {
-     
-            console.log(output[0])
-            res.send(output[0])
-            
-          }); 
+        if(maquina.tipo.id == 1) {
+            LimiteParametrosToshiba.findAll({
+                limit: 1,
+                where: {
+                  maquina: maquina.id
+                },
+                include: [{
+                    model: Maquinas,
+                    required: true
+                   }],
+                order: [ [ 'createdAt', 'DESC' ]]
+              }).then(output => {
+         
+                console.log(output[0])
+                res.send(output[0])
+                
+              }); 
+        }else if (maquina.tipo.id == 2) {
+
+            LimiteParametrosAutomata.findAll({
+                limit: 1,
+                where: {
+                  maquina: maquina.id
+                },
+                order: [ [ 'createdAt', 'DESC' ]]
+              }).then(output => {
+         
+                console.log(output[0])
+                res.send(output[0])
+                
+              }); 
+        }
+
+        
     })      
 
 })
@@ -105,7 +168,7 @@ router.get("/fichas/maquina/:id",  (req,res) => {
          }
     }).then(maquina => {     
         
-        Parametros.findAll({
+        FichaTecnicaToshiba.findAll({
             limit: 1,
             where: {
               mac: maquina.mac
@@ -122,7 +185,23 @@ router.get("/fichas/maquina/:id",  (req,res) => {
     
 
 })
-    
+router.get("/getAlertasAbertos/:id",  (req,res) => {
+
+    AlertasAbertosAutomata.findAll({
+        where:{
+            maquinaId : parseInt(req.params.id),
+            status:true
+        },
+        include: [{
+            model: Alertas,
+            required: true
+           }]
+    }).then(result => {
+        res.send(result)
+    })
+
+})
+
 router.get("/ficha/getFicha/:macMaquina",  (req,res) => {
 
     var maquinaMac= req.params.macMaquina;
@@ -136,7 +215,7 @@ router.get("/ficha/getFicha/:macMaquina",  (req,res) => {
         }
     }).then(output => {
 
-        Fichas.findOne({
+        FichaTecnicaToshiba.findOne({
             where: {
                 maquina : output.id
             }
@@ -165,7 +244,7 @@ router.get("/novaficha",  (req,res) => {
     })
 
 
-    Fichas.findAll().then((fichas) => {
+    FichaTecnicaToshiba.findAll().then((fichas) => {
         res.render("fichas/new",{        
             maquinas: maquinas,    
             nav_maquinas : "",
@@ -175,7 +254,8 @@ router.get("/novaficha",  (req,res) => {
             nav_moldes : "",
             nav_clientes : "",
             nav_parametros:"",
-            nav_ficha: "active"
+            nav_ficha: "active",
+            nav_alertas:""
         })
     });
 
@@ -217,7 +297,7 @@ router.post("/fichas/create",(req,res) => {
     var LS4A_max = req.body.LS4A_max;    
     
 
-    Fichas.create({
+    FichaTecnicaToshiba.create({
         maquina:maquina,
         VI1_min:  VI1_min,
     VI1_max: VI1_max,
@@ -256,8 +336,9 @@ router.post("/fichas/create",(req,res) => {
 
 router.post("/parametros/insert",(req,res) => {
  
-    
+
     var mac = req.body.mac;
+    
     var VI1 = req.body.VI1;
     var VI2 = req.body.VI2;
     var VI3 = req.body.VI3;
@@ -275,7 +356,7 @@ router.post("/parametros/insert",(req,res) => {
     var LS4A = req.body.LS4A;
     
 
-    Parametros.create({
+    FichaTecnicaToshiba.create({
         mac:mac,
         VI1: VI1,
         VI2:VI2,
@@ -297,42 +378,101 @@ router.post("/parametros/insert",(req,res) => {
     })
 })
 
-router.post("/parametrosAtuais/insert",(req,res) => {
- 
-    
+router.post("/parametrosAtuais/insertAlarm",(req,res) => {
+
+    console.log(req.body);
+
+    var alarmes = req.body.alarmes;
     var mac = req.body.mac;
-    
-    var prodShot = req.body.prodShot;
-    var cycleTime = req.body.cycleTime;   
-    var dwellPressure = req.body.dwellPressure;   
-    var ok_prodShot = req.body.ok_prodShot;
-    var ok_proprintShotdShot = req.body.printShot;
-    var fillingTime = req.body.fillingTime;
-    var chargingTime = req.body.chargingTime;
-    var takeoutTime = req.body.takeoutTime;
-    var dwellChnagePosition = req.body.dwellChnagePosition;
-    var minumumCushionPosition = req.body.minumumCushionPosition;
-    var cushionPosition = req.body.cushionPosition;
-    var injetStartPosition = req.body.injetStartPosition;
-    var maxInjectPressure = req.body.maxInjectPressure;
-    var screwRotationSpeed = req.body.screwRotationSpeed;
-    var temperature_hen = req.body.temperature_hen;
-    var temperature_hn = req.body.temperature_hn;
-    var temperature_h1 = req.body.temperature_h1;
-    var temperature_h2 = req.body.temperature_h2;
-    var temperature_h3 = req.body.temperature_h3;
-    var temperature_h4 = req.body.temperature_h4;
-    var temperature_h5 = req.body.temperature_h5;
-    var temperature_oil = req.body.temperature_oil;
-    var temperature_hop = req.body.temperature_hop;
+    var tipo = req.body.tipo;
 
     Maquinas.findOne({
         where: {
             mac: mac
          }
     }).then(maquina => {     
+
+        alarmes.forEach(element => {
+
+
+
+            if (tipo == "2"){
+                AlertasAbertosAutomata.findAll({
+                    where:{
+                        alertasAutomatumId : parseInt(element),
+                        maquinaId: maquina.id
+                    }
+                }).then(alertaAberto => {
+                    if (alertaAberto === null) {
+                        console.log('Alarme Aberto');
+                      }else{
+
+                        alertaAberto.forEach(element => {
+                            element.update({
+                                status:false
+                            });
+                        });                        
+                      }
+    
+                      AlertasAbertosAutomata.create({
+                          alertasAutomatumId : parseInt(element),
+                          maquinaId:maquina.id
+                      })
+                })
+            }
+            
+            
+        });       
+       
+    })
+
+
+    res.sendStatus(200);
+
+})
+
+function insertDataToshiba(body){
+
+    Maquinas.findOne({
+        where: {
+            mac: body.mac
+         }
+    }).then(maquina => {     
         
-        ParametrosMedios.findAll({
+        ParametrosReaisToshiba.findAll({
+            limit: 1,
+            where: {
+              maquina: maquina.mac
+            },
+            order: [ [ 'createdAt', 'DESC' ]]
+          }).then(output => {
+
+            if(output.cycleTimeMin > cycleTime || output.cycleTimeMin < cycleTime ){
+                sendMail("Cycle Time fora do esperado");
+            }else if (output.dwellPressureMin > dwellPressure || output.dwellPressureMin < dwellPressure ){
+                sendMail("Dwell Pressure fora do esperado");
+            }
+            
+          }); 
+    })
+
+    ParametrosReaisToshiba.create(body).then(() => {
+        res.redirect("/fichas");
+    })
+
+
+
+}
+
+function insertDataAutomata(body){
+
+    Maquinas.findOne({
+        where: {
+            mac: body.mac
+         }
+    }).then(maquina => {     
+        
+        ParametrosReaisAutomata.findAll({
             limit: 1,
             where: {
               maquina: maquina.mac
@@ -348,39 +488,31 @@ router.post("/parametrosAtuais/insert",(req,res) => {
             }
             
           }); 
-    })      
-
-    ParametrosAtuais.create({
-        mac:mac,
-        prodShot : prodShot,
-        cycleTime : cycleTime,
-        dwellPressure : dwellPressure,
-        ok_prodShot : ok_prodShot,   
-        ok_proprintShotdShot : ok_proprintShotdShot,
-        fillingTime : fillingTime,
-        chargingTime : chargingTime,
-        takeoutTime : takeoutTime,
-        dwellChnagePosition : dwellChnagePosition,
-        minumumCushionPosition : minumumCushionPosition,
-        cushionPosition : cushionPosition,
-        injetStartPosition : injetStartPosition,
-        maxInjectPressure : maxInjectPressure,
-        screwRotationSpeed : screwRotationSpeed,
-        temperature_hen : temperature_hen,
-        temperature_hn : temperature_hn,
-        temperature_h1 : temperature_h1,
-        temperature_h2: temperature_h2,
-        temperature_h3 : temperature_h3,
-        temperature_h4 :temperature_h4,
-        temperature_h5: temperature_h5,
-        temperature_oil : temperature_oil,
-        temperature_hop : temperature_hop
-        
-
-      
-    }).then(() => {
-        res.redirect("/fichas");
     })
+
+    ParametrosReaisAutomata.create(body).then((result) => {
+        return result;
+    }).catch(error =>{
+        return error;
+    })
+
+}
+
+router.post("/parametrosAtuais/insert",(req,res) => {
+ 
+    console.log(req.body)
+    var tipo = req.body.tipo;
+
+    switch(parseInt(tipo)){
+        case 1:
+           insertDataToshiba(req.body);
+           res.sendStatus(200);
+        case 2:
+           insertDataAutomata(req.body);
+           res.sendStatus(200);
+        
+    }
+  
 })
 
 function emailSender(texto){
@@ -417,7 +549,7 @@ router.get("/fichas/edit/:id",(req,res) => {
         res.redirect("/fichas")
     }
 
-    Fichas.findByPk(id).then(ficha => {
+    FichaTecnicaToshiba.findByPk(id).then(ficha => {
 
         if(ficha != undefined){
 
@@ -429,7 +561,8 @@ router.get("/fichas/edit/:id",(req,res) => {
                 nav_usuarios : "",
                 nav_moldes : "",
                 nav_clientes : "",
-                nav_ficha: "active"
+                nav_ficha: "active",
+                nav_ficha: ""
               
             })
 
@@ -451,7 +584,7 @@ router.post("/fichas/update",(req,res) => {
     var modelo = req.body.modelo;
     var id = req.body.id;
 
-    Fichas.update({
+    FichaTecnicaToshiba.update({
         descricao:descricao,
         codigo: codigo,
         peso:peso,
@@ -471,7 +604,7 @@ router.post("/fichas/delete",(req,res) => {
 
         if(!isNaN(id)){
 
-            Fichas.destroy({
+            FichaTecnicaToshiba.destroy({
                 where:{
                     id:id
                 }

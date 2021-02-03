@@ -1,0 +1,33 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/sidebar.ejs') %>
+
+<div class="container">
+
+ 
+  <br>
+    <div class="card">
+            <div class="card-header">
+                   
+                        <h2>Editar Alerta</h2>
+                    
+            </div>
+            <div class="card-body">
+                    <form  method="POST" action="/alertas/update">
+                        <input class="form-control" type="text" name="codigo" placeholder="Insira o codigo do Alerta" value="<%= alerta.codigo %>"><br>       
+                        <input class="form-control" type="text" name="descricao" placeholder="Insira uma descrição para o alerta" value="<%= alerta.descricao %>"><br>                            
+                                                 
+                            <input type="hidden" name="id" value="<%= alerta.id %>">
+                            
+
+                         
+                            <br>
+                            <button class="btn btn-primary">Editar</button>
+                        </form>
+            </div>
+           
+          
+    </div>
+   
+</div>
+
+<%- include ('../partials/footer.ejs') %>

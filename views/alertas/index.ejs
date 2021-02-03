@@ -1,0 +1,68 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/sidebar.ejs') %>
+
+<div class="container"> 
+
+    <hr>
+    <h2>Alertas</h2> 
+    <a class="btn btn-success" href="/alertas/new"> Inserir Novo Alerta  </a>
+    <hr>
+
+    <table class="table table-bordered"> 
+        <thead>
+            <tr>
+                <th> ID </th>
+                <th> Descrição </th>
+                <th> Código </th>
+                <th> Coleta </th>
+                <th> Opções </th>
+       
+            </tr>
+        </thead>
+        <tbody>
+
+           <% alertas.forEach(alerta => { %>
+            <tr>
+                <td> <%=alerta.id %> </td>
+                <td> <%=alerta.descricao %>  </td>
+                <td> <%=alerta.codigo %>  </td>
+                <td> <%=alerta.tipo.tipo %>  </td>
+              
+         
+                <td> 
+                    <form method="GET" action="/alertas/edit/<%= alerta.id %>" style="display: inline;">                                     
+                            <button class="btn btn-warning"> Editar</button>
+                    </form>
+                    
+                    <form method="POST" action="/alertas/delete" style="display: inline;" onsubmit="confirmarDelecao(event, this)"> 
+                            <input type="hidden" name="id" value="<%= alerta.id %>">
+                            <button class="btn btn-danger"> Remover</button>
+                    </form> </th>
+                </td>
+            </tr>
+
+           <% }) %> 
+           
+           
+        </tbody>
+
+
+    </table>
+
+</div>
+
+<script>
+
+    function confirmarDelecao(event,form){
+        event.preventDefault();
+        var decision = confirm("Você quer deletar este Produto?");
+         if(decision){
+             form.submit();
+         }
+
+    }
+
+</script>
+
+
+<%- include ('../partials/footer.ejs') %>

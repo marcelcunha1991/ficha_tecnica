@@ -12,17 +12,10 @@
                     
             </div>
             <div class="card-body">
-                    <form  method="POST" action="/parametrosReal/create">
+                    <form  method="POST" action="/parametrosReal/create/<%= maquinas.tipoId %>" >
 
-                        <select name="maquinas" class="form-control">
-                                <option > Selecione uma máquina</option>
-                                <% maquinas.forEach((maquina) => { %>
-                        
-                                        <option value="<%= maquina.id %>"> <%= maquina.descricao %></option>
-                        
-                                <% }) %>
-                        
-                            </select>
+                                        <label for="maquinas"> Máquina Selecionada: </label>
+                                        <input id="maquinas" name="maquinas" size="30" type="text"  value="<%= maquinas.descricao %>" readonly/>
                             
                             <br>
                             

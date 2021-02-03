@@ -1,17 +1,20 @@
 const Sequelize = require("sequelize");
 const conn = require("../database/database");
+const Tipo = require("../Tipo/Tipo");
 
-const MateriasPrimas = conn.define('materiaprima',{
-    descricao:{
+const Alertas = conn.define('alertasAutomata',{
+    codigo:{
         type: Sequelize.STRING,
         allowNull: false
     },
-    codigo: {
+    descricao: {
         type: Sequelize.STRING,
         allowNull: false
     }
+    
 })
 
-// MateriasPrimas.sync();
+Alertas.belongsTo(Tipo);
+// Clientes.sync({force: true});
 
-module.exports = MateriasPrimas;
+module.exports = Alertas;

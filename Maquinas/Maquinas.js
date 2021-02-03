@@ -1,7 +1,8 @@
 const Sequelize = require("sequelize");
 const conn = require("../database/database");
+const Tipo = require("../Tipo/Tipo")
 
-const Maquinas = conn.define('maquinas',{
+var Maquinas = conn.define('maquinas',{
     descricao:{
         type: Sequelize.STRING,
         allowNull: false
@@ -22,8 +23,9 @@ const Maquinas = conn.define('maquinas',{
         type: Sequelize.STRING,
         allowNull: false
     }
+    
 })
 
-Maquinas.sync();
+Maquinas.belongsTo(Tipo)
 
 module.exports = Maquinas;

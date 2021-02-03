@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const conn = require("../database/database");
 
-const ParametrosMedios = conn.define('parametrosMedios',{
+const ParametrosMedios = conn.define('limite_parametros_reais_toshiba',{
 
     maquina:{
         type: Sequelize.INTEGER,
@@ -61,7 +61,7 @@ const ParametrosMedios = conn.define('parametrosMedios',{
 })
 
 
-ParametrosMedios.sync();
+// ParametrosMedios.sync();
 
 
 module.exports = ParametrosMedios;

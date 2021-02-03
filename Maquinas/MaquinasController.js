@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const Maquinas = require("./Maquinas");
+const Tipo = require("../Tipo/Tipo")
 const adminAuth = require("../middlewares/adminAuth");
 const { render } = require("ejs");
 
 
 router.get("/maquinas",  (req,res) => {
-
 
 
     Maquinas.findAll().then(maquinas => {
@@ -19,9 +19,25 @@ router.get("/maquinas",  (req,res) => {
             nav_moldes : "",
             nav_clientes : "",
             nav_parametros:"",
-            nav_ficha: ""
+            nav_ficha: "",
+            nav_alertas:""
         })
     });
+
+    
+})
+
+router.get("/maquinaById/:id",  (req,res) => {
+
+    var maquinaId = req.params.id;
+    
+    Maquinas.findOne({
+        where:{
+            id:parseInt(maquinaId)
+        }
+    }).then(result => {
+        res.send(result);
+    })
 
     
 })
@@ -29,29 +45,37 @@ router.get("/maquinas",  (req,res) => {
 
 router.get("/maquinas/new",  (req,res) => {
 
+    Tipo.findAll().then(result => {
 
-    Maquinas.findAll().then(maquinas => {
-        res.render("maquinas/new",{            
-            nav_maquinas : "active",
-            nav_produtos : "",
-            nav_mp : "",
-            nav_usuarios : "",
-            nav_moldes : "",
-            nav_clientes : "",
-            nav_parametros:"",
-            nav_ficha: ""
-        })
-    });
+        Maquinas.findAll().then(maquinas => {
+            res.render("maquinas/new",{            
+                nav_maquinas : "active",
+                tipos : result,
+                nav_produtos : "",
+                nav_mp : "",
+                nav_usuarios : "",
+                nav_moldes : "",
+                nav_clientes : "",
+                nav_parametros:"",
+                nav_ficha: "",
+                nav_alertas:""
+            })
+        });
+
+    })
+
+    
 
     
 })
 
 router.post("/maquinas/create",(req,res) => {
-    var descricao = req.body.cliente;
+    var descricao = req.body.descricao;
     var codigo = req.body.codigo;
     var mac = req.body.mac;
     var peso = req.body.peso;
     var modelo = req.body.modelo;
+    var tipo = req.body.tipos;
     
 
     Maquinas.create({
@@ -59,8 +83,9 @@ router.post("/maquinas/create",(req,res) => {
         codigo: codigo,
         mac:mac,
         peso:peso,
-        modelo: modelo
-    }).then(() => {
+        modelo: modelo,
+        tipoId:tipo
+    }).then(result => {
         res.redirect("/maquinas");
     })
 })

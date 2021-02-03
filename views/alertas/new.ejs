@@ -7,16 +7,13 @@
     <div class="card">
             <div class="card-header">
                    
-                        <h2>Nova Ficha Técnica</h2>
+                        <h2>Novo Alerta</h2>
                     
             </div>
             <div class="card-body">
-                    <form  method="POST" action="/maquinas/create">
-                            <input class="form-control" type="text" name="descricao" placeholder="Insira uma descricao nome Para a Máquina"><br>
-                            <input class="form-control" type="text" name="mac" placeholder="Insira um ip Para a Máquina"><br>
-                            <input class="form-control" type="text" name="codigo" placeholder="Insira um código Para a Máquina"><br>
-                            <input class="form-control" type="text" name="peso" placeholder="Insira um peso em Toneladas Para a Máquina"><br>
-                            <input class="form-control" type="text" name="modelo" placeholder="Inseira o modelo da Máquia"><br>
+                    <form  method="POST" action="/alertas/create">
+                            <input class="form-control" type="text" name="codigo" placeholder="Insira o codigo do Alerta"><br>
+                            <input class="form-control" type="text" name="descricao" placeholder="Insira uma descrição para o alerta"><br>
                             <label for="tipos">Escolha a Coleta especifica:  </label>
                             <select name="tipos" id="tipos">
                                 <% tipos.forEach(tipo => { %>
@@ -25,7 +22,7 @@
                        
                               </select>
     
-                            <br><br>
+                            <br>
                             <button class="btn btn-primary">Cadastrar</button>
                             
                         </form>
