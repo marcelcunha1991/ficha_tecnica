@@ -11,11 +11,14 @@ const Moldes = require("./Moldes/Moldes");
 const Clientes = require("./Clientes/Clientes");
 
 const FichaTecnicaToshiba = require("./Ficha/FichaTecnicaToshiba");
+const FichaTecnicaHaitianJupter = require("./Ficha/FichaTecnicaHaitianJypter");
 const LimitesFichaTecnicaToshiba = require("./Ficha/LimitesFichaTecnicaToshiba");
 const ParametrosReaisToshiba = require("./ParametrosTempoReal/ParametrosReaisToshiba");
 const ParametrosReaisAutomata = require("./ParametrosTempoReal/ParametrosReaisAutomata");
+const ParametrosReaisHaitianJupyter = require("./ParametrosTempoReal/ParametrosReaisHaitianJupyter");
 const LimiteParametrosToshiba = require("./ParametrosTempoReal/LimiteParametrosToshiba");
 const LimiteParametrosAutomata = require("./ParametrosTempoReal/LimiteParametrosAutomata");
+const LimiteParametrosHaitianJupyter = require("./ParametrosTempoReal/LimiteParametrosHaitianJupyter");
 const Tipo = require("./Tipo/Tipo");
 const Alertas = require("./Alertas/Alertas");
 const AlertasAbertos = require("./Alertas/AlertasAbertos");
@@ -100,13 +103,16 @@ app.get("/",(req,res) =>{
 //     Moldes.sync();
 //     Clientes.sync();
 //     FichaTecnicaToshiba.sync();
+//     FichaTecnicaHaitianJupter.sync();
 //     LimitesFichaTecnicaToshiba.sync();
 //     ParametrosReaisToshiba.sync();   
-//     ParametrosReaisAutomata.sync();        
+//     ParametrosReaisAutomata.sync();     
+//     ParametrosReaisHaitianJupyter.sync(); 
 //     LimiteParametrosToshiba.sync();
 //     LimiteParametrosAutomata.sync();
-    // Alertas.sync();
-    // AlertasAbertos.sync();
+//     Alertas.sync();
+//     AlertasAbertos.sync();
+//     LimiteParametrosHaitianJupyter.sync();
 
 
 //     User.create({
@@ -122,7 +128,9 @@ app.get("/",(req,res) =>{
 //     Tipo.create({
 //         tipo:"Automata OPTIN"
 //     })
-
+//     Tipo.create({
+//         tipo:"Haitian Jupyter"
+//     })
    
     
 
@@ -131,3 +139,4 @@ app.get("/",(req,res) =>{
 app.listen(3000,"0.0.0.0",() => {
     console.log("Servidor Rodando");
 })
+

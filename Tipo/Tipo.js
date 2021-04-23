@@ -5,6 +5,7 @@ const Tipo = conn.define('tipos',{
 
     tipo:{
         type: Sequelize.STRING,
+        unique: true,
         allowNull: false
     },
 

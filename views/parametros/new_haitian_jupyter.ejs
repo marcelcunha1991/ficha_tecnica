@@ -1,0 +1,686 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/sidebar.ejs') %>
+
+<div class="container">
+
+ 
+  <br>
+    <div class="card">
+            <div class="card-header">
+                   
+                        <h2>Novo Parâmetros de máquina</h2>
+                    
+            </div>
+            <div class="card-body">
+                    <form  method="POST" action="/parametrosReal/create/<%= maquinas.tipoId %>">
+
+                                        <label for="maquinas"> Máquina Selecionada: </label>
+                                        <input id="maquinas" name="maquinas" size="30" type="text"  value="<%= maquinas.descricao %>" readonly/>
+                                        <input id="idMaquina" name="idMaquina" value = "<%= maquinas.id %>" hidden/>
+                            
+                            <br>
+                            
+                                <div>
+                                        <label for="username"> TEMPERATURA ZONA 1 Min: </label>
+                                        <input id="TEMPERATURA_ZONA_1_min" name="TEMPERATURA_ZONA_1_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">TEMPERATURA ZONA 1 Max: </label>
+                                        <input id="TEMPERATURA_ZONA_1_max" name="TEMPERATURA_ZONA_1_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username"> TEMPERATURA ZONA 2 Min: </label>
+                                        <input id="TEMPERATURA_ZONA_2_min" name="TEMPERATURA_ZONA_2_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">TEMPERATURA ZONA 2 Max: </label>
+                                        <input id="TEMPERATURA_ZONA_2_max" name="TEMPERATURA_ZONA_2_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username"> TEMPERATURA ZONA 3 Min: </label>
+                                        <input id="TEMPERATURA_ZONA_3_min" name="TEMPERATURA_ZONA_3_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">TEMPERATURA ZONA 3 Max: </label>
+                                        <input id="TEMPERATURA_ZONA_3_max" name="TEMPERATURA_ZONA_3_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username"> TEMPERATURA ZONA 4 Min: </label>
+                                        <input id="TEMPERATURA_ZONA_4_min" name="TEMPERATURA_ZONA_4_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">TEMPERATURA ZONA 4 Max: </label>
+                                        <input id="TEMPERATURA_ZONA_4_max" name="TEMPERATURA_ZONA_4_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username"> TEMPERATURA ZONA 5 Min: </label>
+                                        <input id="TEMPERATURA_ZONA_5_min" name="TEMPERATURA_ZONA_5_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">TEMPERATURA ZONA 5 Max: </label>
+                                        <input id="TEMPERATURA_ZONA_5_max" name="TEMPERATURA_ZONA_5_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username"> TEMPERATURA ZONA 6 Min: </label>
+                                        <input id="TEMPERATURA_ZONA_6_min" name="TEMPERATURA_ZONA_6_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">TEMPERATURA ZONA 6 Max: </label>
+                                        <input id="TEMPERATURA_ZONA_6_max" name="TEMPERATURA_ZONA_6_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <<label for="username"> TEMPERATURA ZONA 7 Min: </label>
+                                        <input id="TEMPERATURA_ZONA_7_min" name="TEMPERATURA_ZONA_7_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">TEMPERATURA ZONA 7 Max: </label>
+                                        <input id="TEMPERATURA_ZONA_7_max" name="TEMPERATURA_ZONA_7_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">PRESSAO INJECAO MAX bar Min: </label>
+                                        <input id="PRESSAO_INJECAO_MAX_bar_min" name="PRESSAO_INJECAO_MAX_bar_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">PRESSAO INJECAO MAX bar Max: </label>
+                                        <input id="PRESSAO_INJECAO_MAX_bar_max" name="PRESSAO_INJECAO_MAX_bar_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">PRESSAO INJECAO Min: </label>
+                                        <input id="PRESSAO_INJECAO_min" name="PRESSAO_INJECAO_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">PRESSAO INJECAO Max: </label>
+                                        <input id="PRESSAO_INJECAO_max" name="PRESSAO_INJECAO_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">PRESSAO INJECAO 2 Min: </label>
+                                        <input id="PRESSAO_INJECAO_2_min" name="PRESSAO_INJECAO_2_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">PRESSAO INJECAO  2 Max: </label>
+                                        <input id="PRESSAO_INJECAO_2_max" name="PRESSAO_INJECAO_2_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">PRESSAO INJECAO 3 Min: </label>
+                                        <input id="PRESSAO_INJECAO_3_min" name="PRESSAO_INJECAO_3_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">PRESSAO INJECAO 3 Max: </label>
+                                        <input id="PRESSAO_INJECAO_3_max" name="PRESSAO_INJECAO_3_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">PRESSAO INJECAO 4 Min: </label>
+                                        <input id="PRESSAO_INJECAO_4_min" name="PRESSAO_INJECAO_4_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">PRESSAO INJECAO 4 Max: </label>
+                                        <input id="PRESSAO_INJECAO_4_max" name="PRESSAO_INJECAO_4_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">PRESSAO INJECAO 5 Min: </label>
+                                        <input id="PRESSAO_INJECAO_5_min" name="PRESSAO_INJECAO_5_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">PRESSAO INJECAO 5 Max: </label>
+                                        <input id="PRESSAO_INJECAO_5_max" name="PRESSAO_INJECAO_5_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">PRESSAO INJECAO 6 Min: </label>
+                                        <input id="PRESSAO_INJECAO_6_min" name="PRESSAO_INJECAO_6_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">PRESSAO INJECAO 6 Max: </label>
+                                        <input id="PRESSAO_INJECAO_6_max" name="PRESSAO_INJECAO_6_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">PRESSAO INJECAO 7 Min: </label>
+                                        <input id="PRESSAO_INJECAO_7_min" name="PRESSAO_INJECAO_7_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">PRESSAO INJECAO 7 Max: </label>
+                                        <input id="PRESSAO_INJECAO_7_max" name="PRESSAO_INJECAO_7_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">PRESSAO FORCA FECHAMENTO bar Min: </label>
+                                        <input id="PRESSAO_FORCA_FECHAMENTO_bar_min" name="PRESSAO_FORCA_FECHAMENTO_bar_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">PRESSAO FORCA FECHAMENTO bar Max: </label>
+                                        <input id="PRESSAO_FORCA_FECHAMENTO_bar_max" name="PRESSAO_FORCA_FECHAMENTO_bar_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">PRESSAO PROTECAO MOLDE bar Min: </label>
+                                        <input id="PRESSAO_PROTECAO_MOLDE_bar_min" name="PRESSAO_PROTECAO_MOLDE_bar_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">PRESSAO PROTECAO MOLDE bar Max: </label>
+                                        <input id="PRESSAO_PROTECAO_MOLDE_bar_max" name="PRESSAO_PROTECAO_MOLDE_bar_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">PRESSAO MOLDE bar Min: </label>
+                                        <input id="PRESSAO_MOLDE_bar_min" name="PRESSAO_MOLDE_bar_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">PRESSAO MOLDE bar Max: </label>
+                                        <input id="PRESSAO_MOLDE_bar_max" name="PRESSAO_MOLDE_bar_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">PRESSAO_RECALQUE_bar Min: </label>
+                                        <input id="PRESSAO_RECALQUE_bar_min" name="PRESSAO_RECALQUE_bar_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">PRESSAO RECALQUE bar Max: </label>
+                                        <input id="PRESSAO_RECALQUE_bar_max" name="PRESSAO_RECALQUE_bar_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">INJECAO MOLDE PRESSAO bar Min: </label>
+                                        <input id="INJECAO_MOLDE_PRESSAO_bar_min" name="INJECAO_MOLDE_PRESSAO_bar_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">INJECAO MOLDE PRESSAO bar Max: </label>
+                                        <input id="INJECAO_MOLDE_PRESSAO_bar_max" name="INJECAO_MOLDE_PRESSAO_bar_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">INJECAO MOLDE FLUXO Min: </label>
+                                        <input id="INJECAO_MOLDE_FLUXO_min" name="INJECAO_MOLDE_FLUXO_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">INJECAO MOLDE FLUXO Max: </label>
+                                        <input id="INJECAO_MOLDE_FLUXO_max" name="INJECAO_MOLDE_FLUXO_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">POSICAO INJECAO 1 Min: </label>
+                                        <input id="POSICAO_INJECAO_1_min" name="POSICAO_INJECAO_1_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">POSICAO INJECAO 1 Max: </label>
+                                        <input id="POSICAO_INJECAO_1_max" name="POSICAO_INJECAO_1_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">POSICAO INJECAO 2 Min: </label>
+                                        <input id="POSICAO_INJECAO_2_min" name="POSICAO_INJECAO_2_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">POSICAO INJECAO 2 Max: </label>
+                                        <input id="POSICAO_INJECAO_2_max" name="POSICAO_INJECAO_2_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">POSICAO INJECAO 3 Min: </label>
+                                        <input id="POSICAO_INJECAO_3_min" name="POSICAO_INJECAO_3_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">POSICAO INJECAO 3 Max: </label>
+                                        <input id="POSICAO_INJECAO_3_max" name="POSICAO_INJECAO_3_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">POSICAO INJECAO 4 Min: </label>
+                                        <input id="POSICAO_INJECAO_4_min" name="POSICAO_INJECAO_4_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">POSICAO INJECAO 4 Max: </label>
+                                        <input id="POSICAO_INJECAO_4_max" name="POSICAO_INJECAO_4_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">POSICAO INJECAO 5 Min: </label>
+                                        <input id="POSICAO_INJECAO_5_min" name="POSICAO_INJECAO_5_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">POSICAO INJECAO 5 Max: </label>
+                                        <input id="POSICAO_INJECAO_5_max" name="POSICAO_INJECAO_5_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">TEMPO INJECAO REAL Min: </label>
+                                        <input id="TEMPO_INJECAO_REAL_s_min" name="TEMPO_INJECAO_REAL_s_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">TEMPO INJECAO REAL Max: </label>
+                                        <input id="TEMPO_INJECAO_REAL_s_max" name="TEMPO_INJECAO_REAL_s_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">TEMPO INJECAO REAL MAX Min: </label>
+                                        <input id="TEMPO_INJECAO_REAL_MAX_s_min" name="TEMPO_INJECAO_REAL_MAX_s_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">TEMPO INJECAO REAL MAX Max: </label>
+                                        <input id="TEMPO_INJECAO_REAL_MAX_s_max" name="TEMPO_INJECAO_REAL_MAX_s_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">TEMPO RECALQUE Min: </label>
+                                        <input id="TEMPO_RECALQUE_s_min" name="TEMPO_RECALQUE_s_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">TEMPO RECALQUE Max: </label>
+                                        <input id="TEMPO_RECALQUE_s_max" name="TEMPO_RECALQUE_s_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">TEMPO ABERTURA PLACA MOVEL Min: </label>
+                                        <input id="TEMPO_ABERTURA_PLACA_MOVEL_s_min" name="TEMPO_ABERTURA_PLACA_MOVEL_s_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">TEMPO ABERTURA PLACA MOVEL Max: </label>
+                                        <input id="TEMPO_ABERTURA_PLACA_MOVEL_s_max" name="TEMPO_ABERTURA_PLACA_MOVEL_s_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">TEMPO FECHAMENTO PLACA MOVEL Min: </label>
+                                        <input id="TEMPO_FECHAMENTO_PLACA_MOVEL_s_min" name="TEMPO_FECHAMENTO_PLACA_MOVEL_s_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">TEMPO FECHAMENTO PLACA MOVEL Max: </label>
+                                        <input id="TEMPO_FECHAMENTO_PLACA_MOVEL_s_max" name="TEMPO_FECHAMENTO_PLACA_MOVEL_s_max" size="30" type="number"  value=15 />
+                                </div>
+                                <div>
+                                        <label for="username">TEMPO EXTRACAO Min: </label>
+                                        <input id="TEMPO_EXTRACAO_s_min" name="TEMPO_EXTRACAO_s_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">TEMPO EXTRACAO Max: </label>
+                                        <input id="TEMPO_EXTRACAO_s_max" name="TEMPO_EXTRACAO_s_max" size="30" type="number"  value=15 />
+                                </div>
+                                <div>
+                                        <label for="username">TEMPO DOSAGEM Min: </label>
+                                        <input id="TEMPO_DOSAGEM_s_min" name="TEMPO_DOSAGEM_s_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">TEMPO DOSAGEM Max: </label>
+                                        <input id="TEMPO_DOSAGEM_s_max" name="TEMPO_DOSAGEM_s_max" size="30" type="number"  value=15 />
+                                </div>
+                                <div>
+                                        <label for="username">TEMPO RESFRIAMENTO Min: </label>
+                                        <input id="TEMPO_RESFRIAMENTO_s_min" name="TEMPO_RESFRIAMENTO_s_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">TEMPO RESFRIAMENTO Max: </label>
+                                        <input id="TEMPO_RESFRIAMENTO_s_max" name="TEMPO_RESFRIAMENTO_s_max" size="30" type="number"  value=15 />
+                                </div>
+                                <div>
+                                        <label for="username">TEMPO PROTECAO MOLDE Min: </label>
+                                        <input id="TEMPO_PROTECAO_MOLDE_s_min" name="TEMPO_PROTECAO_MOLDE_s_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">TEMPO PROTECAO MOLDE Max: </label>
+                                        <input id="TEMPO_PROTECAO_MOLDE_s_max" name="TEMPO_PROTECAO_MOLDE_s_max" size="30" type="number"  value=15 />
+                                </div>
+                                <div>
+                                        <label for="username">VELOCIDADE INJECAO 1 Min: </label>
+                                        <input id="VELOCIDADE_INJECAO_1_min" name="VELOCIDADE_INJECAO_1_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">VELOCIDADE INJECAO 1 Max: </label>
+                                        <input id="VELOCIDADE_INJECAO_1_max" name="VELOCIDADE_INJECAO_1_max" size="30" type="number"  value=15 />
+                                </div>
+                                <div>
+                                        <label for="username">VELOCIDADE INJECAO 2 Min: </label>
+                                        <input id="VELOCIDADE_INJECAO_2_min" name="VELOCIDADE_INJECAO_2_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">VELOCIDADE INJECAO 2 Max: </label>
+                                        <input id="VELOCIDADE_INJECAO_2_max" name="VELOCIDADE_INJECAO_2_max" size="30" type="number"  value=15 />
+                                </div>
+                                <div>
+                                        <label for="username">VELOCIDADE INJECAO 3 Min: </label>
+                                        <input id="VELOCIDADE_INJECAO_3_min" name="VELOCIDADE_INJECAO_3_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">VELOCIDADE INJECAO 3 Max: </label>
+                                        <input id="VELOCIDADE_INJECAO_3_max" name="VELOCIDADE_INJECAO_3_max" size="30" type="number"  value=15 />
+                                </div>
+                                <div>
+                                        <label for="username">VELOCIDADE INJECAO 4 Min: </label>
+                                        <input id="VELOCIDADE_INJECAO_4_min" name="VELOCIDADE_INJECAO_4_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">VELOCIDADE INJECAO 4 Max: </label>
+                                        <input id="VELOCIDADE_INJECAO_4_max" name="VELOCIDADE_INJECAO_4_max" size="30" type="number"  value=15 />
+                                </div>
+                                <div>
+                                        <label for="username">VELOCIDADE INJECAO 5 Min: </label>
+                                        <input id="VELOCIDADE_INJECAO_5_min" name="VELOCIDADE_INJECAO_5_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">VELOCIDADE INJECAO 5 Max: </label>
+                                        <input id="VELOCIDADE_INJECAO_5_max" name="VELOCIDADE_INJECAO_5_max" size="30" type="number"  value=15 />
+                                </div>
+                                <div>
+                                        <label for="username">VELOCIDADE INJECAO 6 Min: </label>
+                                        <input id="VELOCIDADE_INJECAO_6_min" name="VELOCIDADE_INJECAO_6_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">VELOCIDADE INJECAO 6 Max: </label>
+                                        <input id="VELOCIDADE_INJECAO_6_max" name="VELOCIDADE_INJECAO_6_max" size="30" type="number"  value=15 />
+                                </div>
+                                <div>
+                                        <label for="username">POSICAO RECALQUE Min: </label>
+                                        <input id="POSICAO_RECALQUE_mm_min" name="POSICAO_RECALQUE_mm_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">POSICAO RECALQUE Max: </label>
+                                        <input id="POSICAO_RECALQUE_mm_max" name="POSICAO_RECALQUE_mm_max" size="30" type="number"  value=15 />
+                                </div>
+                                <div>
+                                        <label for="username">CURSO DOSAGEM Min: </label>
+                                        <input id="CURSO_DOSAGEM_mm_min" name="CURSO_DOSAGEM_mm_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">CURSO DOSAGEM Max: </label>
+                                        <input id="CURSO_DOSAGEM_mm_max" name="CURSO_DOSAGEM_mm_max" size="30" type="number"  value=15 />
+                                </div>
+                                <div>
+                                        <label for="username">ROTACAO POR MINUTO ROSCA Min: </label>
+                                        <input id="ROTACAO_POR_MINUTO_ROSCA_rpm_min" name="ROTACAO_POR_MINUTO_ROSCA_rpm_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">ROTACAO POR MINUTO ROSCA Max: </label>
+                                        <input id="ROTACAO_POR_MINUTO_ROSCA_rpm_max" name="ROTACAO_POR_MINUTO_ROSCA_rpm_max" size="30" type="number"  value=15 />
+                                </div>
+                                <div>
+                                        <label for="username">CONTRAPRESSAO MAX Min: </label>
+                                        <input id="CONTRAPRESSAO_MAX_bar_min" name="CONTRAPRESSAO_MAX_bar_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">CONTRAPRESSAO MAX Max: </label>
+                                        <input id="CONTRAPRESSAO_MAX_bar_max" name="CONTRAPRESSAO_MAX_bar_max" size="30" type="number"  value=15 />
+                                </div>
+                                <div>
+                                        <label for="username">MOLDE FECHADO PRESSAO 1 Min: </label>
+                                        <input id="MOLDE_FECHADO_PRESSAO_1_bar_min" name="MOLDE_FECHADO_PRESSAO_1_bar_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">MOLDE FECHADO PRESSAO 1 Max: </label>
+                                        <input id="MOLDE_FECHADO_PRESSAO_1_bar_max" name="MOLDE_FECHADO_PRESSAO_1_bar_max" size="30" type="number"  value=15 />
+                                </div>
+                                <div>
+                                        <label for="username">MOLDE FECHADO VELOCIDADE 1 Min: </label>
+                                        <input id="MOLDE_FECHADO_VELOCIDADE_1_min" name="MOLDE_FECHADO_VELOCIDADE_1_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">MOLDE FECHADO VELOCIDADE 1 Max: </label>
+                                        <input id="MOLDE_FECHADO_VELOCIDADE_1_max" name="MOLDE_FECHADO_VELOCIDADE_1_max" size="30" type="number"  value=15 />
+                                </div>
+                                <div>
+                                        <label for="username">MOLDE FECHADO FECHAR MOLDE POSICAO 1 Min: </label>
+                                        <input id="MOLDE_FECHADO_FECHAR_MOLDE_POSICAO_1_mm_min" name="MOLDE_FECHADO_FECHAR_MOLDE_POSICAO_1_mm_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">MOLDE FECHADO FECHAR MOLDE POSICAO 1 Max: </label>
+                                        <input id="MOLDE_FECHADO_FECHAR_MOLDE_POSICAO_1_mm_max" name="MOLDE_FECHADO_FECHAR_MOLDE_POSICAO_1_mm_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">MOLDE FECHADO PRESSAO 2 Min: </label>
+                                        <input id="MOLDE_FECHADO_PRESSAO_2_bar_min" name="MOLDE_FECHADO_PRESSAO_2_bar_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">MOLDE FECHADO PRESSAO 2 Max: </label>
+                                        <input id="MOLDE_FECHADO_PRESSAO_2_bar_max" name="MOLDE_FECHADO_PRESSAO_2_bar_max" size="30" type="number"  value=15 />
+                                </div>
+                                <div>
+                                        <label for="username">MOLDE FECHADO VELOCIDADE 2 Min: </label>
+                                        <input id="MOLDE_FECHADO_VELOCIDADE_2_min" name="MOLDE_FECHADO_VELOCIDADE_2_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">MOLDE FECHADO VELOCIDADE 2 Max: </label>
+                                        <input id="MOLDE_FECHADO_VELOCIDADE_2_max" name="MOLDE_FECHADO_VELOCIDADE_2_max" size="30" type="number"  value=15 />
+                                </div>
+                                <div>
+                                        <label for="username">MOLDE FECHADO FECHAR MOLDE POSICAO 2 Min: </label>
+                                        <input id="MOLDE_FECHADO_FECHAR_MOLDE_POSICAO_2_mm_min" name="MOLDE_FECHADO_FECHAR_MOLDE_POSICAO_2_mm_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">MOLDE FECHADO FECHAR MOLDE POSICAO 2 Max: </label>
+                                        <input id="MOLDE_FECHADO_FECHAR_MOLDE_POSICAO_2_mm_max" name="MOLDE_FECHADO_FECHAR_MOLDE_POSICAO_2_mm_max" size="30" type="number"  value=15 />
+                                </div>
+                                <div>
+                                        <label for="username">MOLDE FECHADO PRESSAO Min: </label>
+                                        <input id="MOLDE_FECHADO_PRESSAO_bar_min" name="MOLDE_FECHADO_PRESSAO_bar_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">MOLDE FECHADO PRESSAO Max: </label>
+                                        <input id="MOLDE_FECHADO_PRESSAO_bar_max" name="MOLDE_FECHADO_PRESSAO_bar_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">MOLDE FECHADO VELOCIDADE 3 Min: </label>
+                                        <input id="MOLDE_FECHADO_VELOCIDADE_3_min" name="MOLDE_FECHADO_VELOCIDADE_3_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">MOLDE FECHADO VELOCIDADE 3 Max: </label>
+                                        <input id="MOLDE_FECHADO_VELOCIDADE_3_max" name="MOLDE_FECHADO_VELOCIDADE_3_max" size="30" type="number"  value=15 />
+                                </div>
+                                <div>
+                                        <label for="username">MOLDE FECHADO FECHAR MOLDE POSICAO 3 Min: </label>
+                                        <input id="MOLDE_FECHADO_FECHAR_MOLDE_POSICAO_3_mm_min" name="MOLDE_FECHADO_FECHAR_MOLDE_POSICAO_3_mm_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">MOLDE FECHADO FECHAR MOLDE POSICAO 3 Max: </label>
+                                        <input id="MOLDE_FECHADO_FECHAR_MOLDE_POSICAO_3_mm_max" name="MOLDE_FECHADO_FECHAR_MOLDE_POSICAO_3_mm_max" size="30" type="number"  value=15 />
+                                </div>
+                                <div>
+                                        <label for="username">MOLDE FECHADO TEMPO PROTECAO MOLDE Min: </label>
+                                        <input id="MOLDE_FECHADO_TEMPO_PROTECAO_MOLDE_s_min" name="MOLDE_FECHADO_TEMPO_PROTECAO_MOLDE_s_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">MOLDE FECHADO TEMPO PROTECAO MOLDE Max: </label>
+                                        <input id="MOLDE_FECHADO_TEMPO_PROTECAO_MOLDE_s_max" name="MOLDE_FECHADO_TEMPO_PROTECAO_MOLDE_s_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">MOLDE FECHADO TEMPO RETARDO FECHAMENTO Min: </label>
+                                        <input id="MOLDE_FECHADO_TEMPO_RETARDO_FECHAMENTO_s_min" name="MOLDE_FECHADO_TEMPO_RETARDO_FECHAMENTO_s_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">MOLDE FECHADO TEMPO RETARDO FECHAMENTO Max: </label>
+                                        <input id="MOLDE_FECHADO_TEMPO_RETARDO_FECHAMENTO_s_max" name="MOLDE_FECHADO_TEMPO_RETARDO_FECHAMENTO_s_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">MOLDE FECHADO TEMPO RETARDO ABERTURA Min: </label>
+                                        <input id="MOLDE_FECHADO_TEMPO_RETARDO_ABERTURA_s_min" name="MOLDE_FECHADO_TEMPO_RETARDO_ABERTURA_s_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">MOLDE FECHADO TEMPO RETARDO ABERTURA Max: </label>
+                                        <input id="MOLDE_FECHADO_TEMPO_RETARDO_ABERTURA_s_max" name="MOLDE_FECHADO_TEMPO_RETARDO_ABERTURA_s_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">ABERTURA MOLDE POSICAO Min: </label>
+                                        <input id="ABERTURA_MOLDE_POSICAO_mm_min" name="ABERTURA_MOLDE_POSICAO_mm_min" size="30" type="number"  value=15 />
+                                
+                                        <label for="name">ABERTURA MOLDE POSICAO Max: </label>
+                                        <input id="ABERTURA_MOLDE_POSICAO_mm_max" name="ABERTURA_MOLDE_POSICAO_mm_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">ABERTURA MOLDE PRESSAO Min: </label>
+                                        <input id="ABERTURA_MOLDE_PRESSAO_bar_min" name="ABERTURA_MOLDE_PRESSAO_bar_min" size="30" type="number"  value=15 />
+                                 
+                                        <label for="name">ABERTURA MOLDE PRESSAO Max: </label>
+                                        <input id="ABERTURA_MOLDE_PRESSAO_bar_max" name="ABERTURA_MOLDE_PRESSAO_bar_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">ABERTURA MOLDE FLUXO Min: </label>
+                                        <input id="ABERTURA_MOLDE_FLUXO_min" name="ABERTURA_MOLDE_FLUXO_min" size="30" type="number"  value=15 />
+                                 
+                                        <label for="name">ABERTURA MOLDE FLUXO Max: </label>
+                                        <input id="ABERTURA_MOLDE_FLUXO_max" name="ABERTURA_MOLDE_FLUXO_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">RECALQUE TEMPO Min: </label>
+                                        <input id="RECALQUE_TEMPO_s_min" name="RECALQUE_TEMPO_s_min" size="30" type="number"  value=15 />
+                                 
+                                        <label for="name">RECALQUE TEMPO Max: </label>
+                                        <input id="RECALQUE_TEMPO_s_max" name="RECALQUE_TEMPO_s_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">RECALQUE PRESSAO Min: </label>
+                                        <input id="RECALQUE_PRESSAO_bar_min" name="RECALQUE_PRESSAO_bar_min" size="30" type="number"  value=15 />
+                                 
+                                        <label for="name">RECALQUE PRESSAO Max: </label>
+                                        <input id="RECALQUE_PRESSAO_bar_max" name="RECALQUE_PRESSAO_bar_max" size="30" type="number"  value=15 />
+                                </div>
+                             
+                                <div>
+                                        <label for="username">RECALQUE FLUXO Min: </label>
+                                        <input id="RECALQUE_FLUXO_min" name="RECALQUE_FLUXO_min" size="30" type="number"  value=15 />
+                                 
+                                        <label for="name">RECALQUE FLUXO Max: </label>
+                                        <input id="RECALQUE_FLUXO_max" name="RECALQUE_FLUXO_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">DOSAGEM POSICAO Min: </label>
+                                        <input id="DOSAGEM_POSICAO_mm_min" name="DOSAGEM_POSICAO_mm_min" size="30" type="number"  value=15 />
+                                 
+                                        <label for="name">DOSAGEM POSICAO Max: </label>
+                                        <input id="DOSAGEM_POSICAO_mm_max" name="DOSAGEM_POSICAO_mm_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">DOSAGEM PRESSAO Min: </label>
+                                        <input id="DOSAGEM_PRESSAO_bar_min" name="DOSAGEM_PRESSAO_bar_min" size="30" type="number"  value=15 />
+                                 
+                                        <label for="name">DOSAGEM PRESSAO Max: </label>
+                                        <input id="DOSAGEM_PRESSAO_bar_max" name="DOSAGEM_PRESSAO_bar_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">DOSAGEM FLUXO Min: </label>
+                                        <input id="DOSAGEM_FLUXO_min" name="DOSAGEM_FLUXO_min" size="30" type="number"  value=15 />
+                                 
+                                        <label for="name">DOSAGEM FLUXO Max: </label>
+                                        <input id="DOSAGEM_FLUXO_max" name="DOSAGEM_FLUXO_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">DOSAGEM CONTRA PRESSAO Min: </label>
+                                        <input id="DOSAGEM_CONTRA_PRESSAO_bar_min" name="DOSAGEM_CONTRA_PRESSAO_bar_min" size="30" type="number"  value=15 />
+                                 
+                                        <label for="name">DOSAGEM CONTRA PRESSAO Max: </label>
+                                        <input id="DOSAGEM_CONTRA_PRESSAO_bar_max" name="DOSAGEM_CONTRA_PRESSAO_bar_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">EXTRACAO POSICAO Min: </label>
+                                        <input id="EXTRACAO_POSICAO_mm_min" name="EXTRACAO_POSICAO_mm_min" size="30" type="number"  value=15 />
+                                 
+                                        <label for="name">EXTRACAO POSICAO Max: </label>
+                                        <input id="EXTRACAO_POSICAO_mm_max" name="EXTRACAO_POSICAO_mm_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">EXTRACAO RECUO EXTRATOR Min: </label>
+                                        <input id="EXTRACAO_RECUO_EXTRATOR_mm_min" name="EXTRACAO_RECUO_EXTRATOR_mm_min" size="30" type="number"  value=15 />
+                                 
+                                        <label for="name">EXTRACAO RECUO EXTRATOR Max: </label>
+                                        <input id="EXTRACAO_RECUO_EXTRATOR_mm_max" name="EXTRACAO_RECUO_EXTRATOR_mm_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">EXTRACAO POSICAO 1 EXTRATOR PARA FRENTE MM Min: </label>
+                                        <input id="EXTRACAO_POSICAO_1_EXTRATOR_PARA_FRENTE_mm_min" name="EXTRACAO_POSICAO_1_EXTRATOR_PARA_FRENTE_mm_min" size="30" type="number"  value=15 />
+                                 
+                                        <label for="name">EXTRACAO POSICAO 1 EXTRATOR PARA FRENTE MM Max: </label>
+                                        <input id="EXTRACAO_POSICAO_1_EXTRATOR_PARA_FRENTE_mm_max" name="EXTRACAO_POSICAO_1_EXTRATOR_PARA_FRENTE_mm_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">EXTRACAO PRESSAO 1 EXTRATOR PARA FRENTE BAR Min: </label>
+                                        <input id="EXTRACAO_PRESSAO_1_EXTRATOR_PARA_FRENTE_bar_min" name="EXTRACAO_PRESSAO_1_EXTRATOR_PARA_FRENTE_bar_min" size="30" type="number"  value=15 />
+                                 
+                                        <label for="name">EXTRACAO PRESSAO 1 EXTRATOR PARA FRENTE BAR Max: </label>
+                                        <input id="EXTRACAO_PRESSAO_1_EXTRATOR_PARA_FRENTE_bar_max" name="EXTRACAO_PRESSAO_1_EXTRATOR_PARA_FRENTE_bar_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">EXTRACAO VELOCIDADE 1 EXTRATOR PARA FRENTE Min: </label>
+                                        <input id="EXTRACAO_VELOCIDADE_1_EXTRATOR_PARA_FRENTE_min" name="EXTRACAO_VELOCIDADE_1_EXTRATOR_PARA_FRENTE_min" size="30" type="number"  value=15 />
+                                 
+                                        <label for="name">EXTRACAO VELOCIDADE 1 EXTRATOR PARA FRENTE Max: </label>
+                                        <input id="EXTRACAO_VELOCIDADE_1_EXTRATOR_PARA_FRENTE_max" name="EXTRACAO_VELOCIDADE_1_EXTRATOR_PARA_FRENTE_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">EXTRACAO POSICAO 2 EXTRATOR PARA FRENTE MM Min: </label>
+                                        <input id="EXTRACAO_POSICAO_2_EXTRATOR_PARA_FRENTE_mm_min" name="EXTRACAO_POSICAO_2_EXTRATOR_PARA_FRENTE_mm_min" size="30" type="number"  value=15 />
+                                 
+                                        <label for="name">EXTRACAO POSICAO 2 EXTRATOR PARA FRENTE MM Max: </label>
+                                        <input id="EXTRACAO_POSICAO_2_EXTRATOR_PARA_FRENTE_mm_max" name="EXTRACAO_POSICAO_2_EXTRATOR_PARA_FRENTE_mm_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">EXTRACAO PRESSAO 2 EXTRATOR PARA FRENTE BAR Min: </label>
+                                        <input id="EXTRACAO_PRESSAO_2_EXTRATOR_PARA_FRENTE_bar_min" name="EXTRACAO_PRESSAO_2_EXTRATOR_PARA_FRENTE_bar_min" size="30" type="number"  value=15 />
+                                 
+                                        <label for="name">EXTRACAO PRESSAO 2 EXTRATOR PARA FRENTE BAR Max: </label>
+                                        <input id="EXTRACAO_PRESSAO_2_EXTRATOR_PARA_FRENTE_bar_max" name="EXTRACAO_PRESSAO_2_EXTRATOR_PARA_FRENTE_bar_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">EXTRACAO VELOCIDADE 2 EXTRATOR PARA FRENTE Min: </label>
+                                        <input id="EXTRACAO_VELOCIDADE_2_EXTRATOR_PARA_FRENTE_min" name="EXTRACAO_VELOCIDADE_2_EXTRATOR_PARA_FRENTE_min" size="30" type="number"  value=15 />
+                                 
+                                        <label for="name">EXTRACAO VELOCIDADE 2 EXTRATOR PARA FRENTE Max: </label>
+                                        <input id="EXTRACAO_VELOCIDADE_2_EXTRATOR_PARA_FRENTE_max" name="EXTRACAO_VELOCIDADE_2_EXTRATOR_PARA_FRENTE_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">EXTRACAO ATRASO EXTRACAO Min: </label>
+                                        <input id="EXTRACAO_ATRASO_EXTRACAO_s_min" name="EXTRACAO_ATRASO_EXTRACAO_s_min" size="30" type="number"  value=15 />
+                                 
+                                        <label for="name">EXTRACAO ATRASO EXTRACAO Max: </label>
+                                        <input id="EXTRACAO_ATRASO_EXTRACAO_s_max" name="EXTRACAO_ATRASO_EXTRACAO_s_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">EXTRACAO ATRASO EXTRACAO NO FINAL Min: </label>
+                                        <input id="EXTRACAO_ATRASO_EXTRACAO_NO_FINAL_s_min" name="EXTRACAO_ATRASO_EXTRACAO_NO_FINAL_s_min" size="30" type="number"  value=15 />
+                                 
+                                        <label for="name">EXTRACAO ATRASO EXTRACAO NO FINAL Max: </label>
+                                        <input id="EXTRACAO_ATRASO_EXTRACAO_NO_FINAL_s_max" name="EXTRACAO_ATRASO_EXTRACAO_NO_FINAL_s_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">EXTRACAO POSICAO 1 ATRASO EXTRACAO MM Min: </label>
+                                        <input id="EXTRACAO_POSICAO_1_ATRASO_EXTRACAO_mm_min" name="EXTRACAO_POSICAO_1_ATRASO_EXTRACAO_mm_min" size="30" type="number"  value=15 />
+                                 
+                                        <label for="name">EXTRACAO POSICAO 1 ATRASO EXTRACAO MM Max: </label>
+                                        <input id="EXTRACAO_POSICAO_1_ATRASO_EXTRACAO_mm_max" name="EXTRACAO_POSICAO_1_ATRASO_EXTRACAO_mm_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">EXTRACAO PRESSAO 1 ATRASO EXTRACAO BAR Min: </label>
+                                        <input id="EXTRACAO_PRESSAO_1_ATRASO_EXTRACAO_bar_min" name="EXTRACAO_PRESSAO_1_ATRASO_EXTRACAO_bar_min" size="30" type="number"  value=15 />
+                                 
+                                        <label for="name">EXTRACAO PRESSAO 1 ATRASO EXTRACAO BAR Max: </label>
+                                        <input id="EXTRACAO_PRESSAO_1_ATRASO_EXTRACAO_bar_max" name="EXTRACAO_PRESSAO_1_ATRASO_EXTRACAO_bar_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">EXTRACAO VELOCIDADE 1 ATRASO EXTRACAO Min: </label>
+                                        <input id="EXTRACAO_VELOCIDADE_1_ATRASO_EXTRACAO_min" name="EXTRACAO_VELOCIDADE_1_ATRASO_EXTRACAO_min" size="30" type="number"  value=15 />
+                                 
+                                        <label for="name">EXTRACAO VELOCIDADE 1 ATRASO EXTRACAO Max: </label>
+                                        <input id="EXTRACAO_VELOCIDADE_1_ATRASO_EXTRACAO_max" name="EXTRACAO_VELOCIDADE_1_ATRASO_EXTRACAO_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">EXTRACAO PRESSAO 2 ATRASO EXTRACAO BAR Min: </label>
+                                        <input id="EXTRACAO_PRESSAO_2_ATRASO_EXTRACAO_bar_min" name="EXTRACAO_PRESSAO_2_ATRASO_EXTRACAO_bar_min" size="30" type="number"  value=15 />
+                                 
+                                        <label for="name">EXTRACAO PRESSAO 2 ATRASO EXTRACAO BAR Max: </label>
+                                        <input id="EXTRACAO_PRESSAO_2_ATRASO_EXTRACAO_bar_max" name="EXTRACAO_PRESSAO_2_ATRASO_EXTRACAO_bar_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">EXTRACAO VELOCIDADE 2 ATRASO EXTRACAO Min: </label>
+                                        <input id="EXTRACAO_VELOCIDADE_2_ATRASO_EXTRACAO_min" name="EXTRACAO_VELOCIDADE_2_ATRASO_EXTRACAO_min" size="30" type="number"  value=15 />
+                                 
+                                        <label for="name">EXTRACAO VELOCIDADE 1 ATRASO EXTRACAO Max: </label>
+                                        <input id="EXTRACAO_VELOCIDADE_2_ATRASO_EXTRACAO_max" name="EXTRACAO_VELOCIDADE_2_ATRASO_EXTRACAO_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">EXTRACAO RETARDO NA EXTRACAO Min: </label>
+                                        <input id="EXTRACAO_RETARDO_NA_EXTRACAO_s_min" name="EXTRACAO_RETARDO_NA_EXTRACAO_s_min" size="30" type="number"  value=15 />
+                                 
+                                        <label for="name">EXTRACAO RETARDO NA EXTRACAO Max: </label>
+                                        <input id="EXTRACAO_RETARDO_NA_EXTRACAO_s_max" name="EXTRACAO_RETARDO_NA_EXTRACAO_s_max" size="30" type="number"  value=15 />
+                                </div>
+
+                                <div>
+                                        <label for="username">EXTRACAO TEMPO MOVIMENTACAO EXTRAÇÃO Min: </label>
+                                        <input id="EXTRACAO_TEMPO_MOVIMENTACAO_EXTRACAO_s_min" name="EXTRACAO_TEMPO_MOVIMENTACAO_EXTRACAO_s_min" size="30" type="number"  value=15 />
+                                 
+                                        <label for="name">EXTRACAO TEMPO MOVIMENTACAO EXTRAÇÃO Max: </label>
+                                        <input id="EXTRACAO_TEMPO_MOVIMENTACAO_EXTRACAO_s_max" name="EXTRACAO_TEMPO_MOVIMENTACAO_EXTRACAO_s_max" size="30" type="number"  value=15 />
+                                </div>
+
+
+                                                    
+                            <br>
+                            <button class="btn btn-primary">Cadastrar</button>
+                        </form>
+            </div>
+           
+          
+    </div>
+   
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<%- include ('../partials/footer.ejs') %>

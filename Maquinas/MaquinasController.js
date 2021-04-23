@@ -36,6 +36,7 @@ router.get("/maquinaById/:id",  (req,res) => {
             id:parseInt(maquinaId)
         }
     }).then(result => {
+        console.log(result);
         res.send(result);
     })
 
