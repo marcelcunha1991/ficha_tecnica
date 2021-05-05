@@ -8,10 +8,8 @@ $('#maquinas').on('change', function() {
 
         if(data.tipoId == 3 ){
             $("#main").hide("slow");
-            $("#haitian").show();
-          
-        }
-        
+            $("#haitian").show();          
+        }        
       
       });
 
