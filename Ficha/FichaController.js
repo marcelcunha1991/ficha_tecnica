@@ -737,7 +737,6 @@ router.get("/ficha/lista",(req,res) => {
    var tipos;
 
    Tipo.findAll().then(tipo => {
-      console.log(tipo)
       tipos = tipo;
    })
 
@@ -795,7 +794,6 @@ router.get("/fichas/editToshiba/:id",(req,res) => {
    }
 
    LimitesFichaTecnicaToshiba.findByPk(id).then(ficha => {
-      console.log(ficha)
       res.render("fichas/editToshiba",{
          ficha:ficha, 
          nav_maquinas : "active",
@@ -854,7 +852,6 @@ router.get("/fichas/editHaitian/:id",(req,res) => {
 // *CRIANDO FICHA PASTORE
 
 router.post("/fichas/createHaitian",(req,res) => {
-   console.log(req.body)
    var maquina = req.body.maquinaHaitian;
    var cilindro1 = req.body.cilindro1;
    var cilindro2 = req.body.cilindro2;
@@ -2037,10 +2034,8 @@ router.post("/fichas/createHaitian",(req,res) => {
 
 // *ATUALIZANDO FICHA PASTORE
 router.post("/fichas/updateHaitian",(req,res) => {
-   console.log(req.body)
    var id = req.body.id;
    var maquina = req.body.maquina;
-   console.log(maquina)
    var cilindro1 = req.body.cilindro1;
    var cilindro2 = req.body.cilindro2;
    var cilindro3 = req.body.cilindro3;
