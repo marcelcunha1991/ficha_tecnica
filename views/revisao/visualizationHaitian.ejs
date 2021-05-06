@@ -1,0 +1,1594 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/sidebar.ejs') %>
+
+<div class="container-fluid">
+   <br>
+   <h2>Revisões</h2> 
+   <a class="btn btn-success" href="/novaficha"> Inserir Nova Ficha Técnica</a>
+   <a class="btn btn-success" href="/ficha/lista"> Lista de Fichas Técnicas</a>
+   <hr>
+
+   <div class="card">
+      <div class="card-header">                
+         <h2>Revisão Id <%= injetor.revisao %></h2>              
+      </div>
+      <div class="card-body">
+
+         <div class="d-flex justify-content-between">
+            <!-- INJETORES -->
+            <div class="table-responsive table-ficha justify-content-between" style="width: 50vw; margin-right: 20px;">
+               <table class="table-bordered" style="width: 100%">
+                  <thead>
+                     <tr>
+                        <th>TOL &#177; 10%</th>
+                        <th colspan="4">CILINDRO</th>
+                        <th colspan="2">BICO</th>
+                     </tr>
+                     <tr>
+                        <% for(var i = 0; i < 7; i++) { %>
+                           <th><%= i+1 %></th>
+                        <% } %>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                           <td>
+                              <input class="read-only" readonly style="width: 100%" id="cilindro1" name="cilindro1" value="<%= injetor.cilindro1 %>" >
+                           </td>
+                           <td>
+                              <input class="read-only" readonly style="width: 100%" id="cilindro2" name="cilindro2" value="<%= injetor.cilindro2 %>" >
+                           </td>
+                           <td>
+                              <input class="read-only" readonly style="width: 100%" id="cilindro3" name="cilindro3" value="<%= injetor.cilindro3 %>" >
+                           </td>
+                           <td>
+                              <input class="read-only" readonly style="width: 100%" id="cilindro4" name="cilindro4" value="<%= injetor.cilindro4 %>" >
+                           </td>
+                           <td>
+                              <input class="read-only" readonly style="width: 100%" id="cilindro5" name="cilindro5" value="<%= injetor.cilindro5 %>" >
+                           </td>
+                           <td>
+                              <input class="read-only" readonly style="width: 100%" id="cilindro6" name="cilindro6" value="<%= injetor.cilindro6 %>" >
+                           </td>
+                           <td>
+                              <input class="read-only" readonly style="width: 100%" id="cilindro7" name="cilindro7" value="<%= injetor.cilindro7 %>" >
+                           </td>
+                     </tr>
+                  </tbody>
+               </table>
+         
+               <table class="table-bordered" style="width: 100%; margin-top: 30px;">
+                  <thead>
+                     <tr>
+                        <th colspan="6">INJEÇÃO</th>
+                        <th colspan="1">TOL &#177; 10%</th>
+                     </tr>
+                     <tr>
+                        <th colspan="2">COMUTAÇÃO</th>
+                        <% for(var i = 5; i >= 1; i--) { %>
+                           <th colspan="1">INJ. <%= i %></th>
+                        <% } %>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <th scope="row">POSIÇÃO</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="posComutacao" name="posComutacao" value="<%= injetor.posComut %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="posInj5" name="posInj5" value="<%= injetor.posInjecao1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="posInj4" name="posInj4" value="<%= injetor.posInjecao2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="posInj3" name="posInj3" value="<%= injetor.posInjecao3 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="posInj2" name="posInj2" value="<%= injetor.posInjecao4 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="posInj1" name="posInj1" value="<%= injetor.posInjecao5 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope="row">PRESSÃO</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presComutacao" name="presComutacao" value="<%= injetor.presComut %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presInj5" name="presInj5" value="<%= injetor.presInjecao1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presInj4" name="presInj4" value="<%= injetor.presInjecao2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presInj3" name="presInj3" value="<%= injetor.presInjecao3 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presInj2" name="presInj2" value="<%= injetor.presInjecao4 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presInj1" name="presInj1" value="<%= injetor.presInjecao5 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope="row" colspan="2">FLUXO</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoInj5" name="fluxoInj5" value="<%= injetor.fluxoInjecao1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoInj4" name="fluxoInj4" value="<%= injetor.fluxoInjecao2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoInj3" name="fluxoInj3" value="<%= injetor.fluxoInjecao3 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoInj2" name="fluxoInj2" value="<%= injetor.fluxoInjecao4 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoInj1" name="fluxoInj1" value="<%= injetor.fluxoInjecao5 %>">
+                        </td>
+                     </tr>
+                  </tbody>
+                  <tfoot>
+                     <tr>
+                        <th colspan="2">TEMPO DISPARO:</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="tempoDisparo" name="tempoDisparo" value="<%= injetor.tempoDisparo %>">
+                        </td>
+                        <th colspan="3">TEMPO DE PRESSÃO INJEÇÃO:</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="pressaoInj" name="pressaoInj" value="<%= injetor.pressaoInj %>">
+                        </td>
+                     </tr>
+                  </tfoot>
+               </table>
+         
+               <table class="table-bordered" style="width: 100%; margin-top: 30px;">
+                  <thead>
+                     <tr>
+                        <th colspan="6">RECALQUE</th>
+                        <th colspan="1">TOL &#177; 10%</th>
+                     </tr>
+                     <tr>
+                        <th colspan="2">bar / seg / %</th>
+                        <% for(var i = 5; i >= 1; i--) { %>
+                           <th colspan="1">MANT. <%= i %></th>
+                        <% } %>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <th scope="row" colspan="2">PRESSÃO</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presRecalque5" name="presRecalque5" value="<%= injetor.presRecalque1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presRecalque4" name="presRecalque4" value="<%= injetor.presRecalque2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presRecalque3" name="presRecalque3" value="<%= injetor.presRecalque3 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presRecalque2" name="presRecalque2" value="<%= injetor.presRecalque4 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presRecalque1" name="presRecalque1" value="<%= injetor.presRecalque5 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope="row" colspan="2">FLUXO</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoRecalque5" name="fluxoRecalque5" value="<%= injetor.fluxoRecalque1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoRecalque4" name="fluxoRecalque4" value="<%= injetor.fluxoRecalque2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoRecalque3" name="fluxoRecalque3" value="<%= injetor.fluxoRecalque3 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoRecalque2" name="fluxoRecalque2" value="<%= injetor.fluxoRecalque4 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoRecalque1" name="fluxoRecalque1" value="<%= injetor.fluxoRecalque5 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope="row" colspan="2">TEMPO</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="tempoRecalque5" name="tempoRecalque5" value="<%= injetor.tempoRecalque1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="tempoRecalque4" name="tempoRecalque4" value="<%= injetor.tempoRecalque2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="tempoRecalque3" name="tempoRecalque3" value="<%= injetor.tempoRecalque3 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="tempoRecalque2" name="tempoRecalque2" value="<%= injetor.tempoRecalque4 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="tempoRecalque1" name="tempoRecalque1" value="<%= injetor.tempoRecalque5 %>">
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+         
+               <table class="table-bordered" style="width: 100%; margin-top: 30px;">
+                  <thead>
+                     <tr>
+                        <th colspan="6">DOSAGEM</th>
+                        <th colspan="1">TOL &#177; 10%</th>
+                     </tr>
+                     <tr>
+                        <th colspan="2"></th>
+                        <% for(var i = 5; i >= 1; i--) { %>
+                           <th colspan="1">CARGA. <%= i %></th>
+                        <% } %>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <th scope="row" colspan="2">PARTIDA</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="partDosagem5" name="partDosagem5" value="<%= injetor.partDosagem1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="partDosagem4" name="partDosagem4" value="<%= injetor.partDosagem2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="partDosagem3" name="partDosagem3" value="<%= injetor.partDosagem3 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="partDosagem2" name="partDosagem2" value="<%= injetor.partDosagem4 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="partDosagem1" name="partDosagem1" value="<%= injetor.partDosagem5 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope="row" colspan="2">PRESSÃO</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presDosagem5" name="presDosagem5" value="<%= injetor.presDosagem1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presDosagem4" name="presDosagem4" value="<%= injetor.presDosagem2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presDosagem3" name="presDosagem3" value="<%= injetor.presDosagem3 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presDosagem2" name="presDosagem2" value="<%= injetor.presDosagem4 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presDosagem1" name="presDosagem1" value="<%= injetor.presDosagem5 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope="row" colspan="2">FLUXO</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoDosagem5" name="fluxoDosagem5" value="<%= injetor.fluxoDosagem1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoDosagem4" name="fluxoDosagem4" value="<%= injetor.fluxoDosagem2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoDosagem3" name="fluxoDosagem3" value="<%= injetor.fluxoDosagem3 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoDosagem2" name="fluxoDosagem2" value="<%= injetor.fluxoDosagem4 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoDosagem1" name="fluxoDosagem1" value="<%= injetor.fluxoDosagem5 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope="row" colspan="2">CONTRAPRESSÃO</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="CPDosagem5" name="CPDosagem5" value="<%= injetor.CPDosagem1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="CPDosagem4" name="CPDosagem4" value="<%= injetor.CPDosagem2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="CPDosagem3" name="CPDosagem3" value="<%= injetor.CPDosagem3 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="CPDosagem2" name="CPDosagem2" value="<%= injetor.CPDosagem4 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="CPDosagem1" name="CPDosagem1" value="<%= injetor.CPDosagem5 %>">
+                        </td>
+                     </tr>
+                  </tbody>
+                  <tfoot>
+                     <tr>
+                        <th colspan="2">TEMPO:</th>
+                        <td colspan="5">
+                           <input class="read-only" style="width: 100%" id="tempoDosagem" name="tempoDosagem" value="<%= injetor.tempoDosagem %>">
+                        </td>
+                     </tr>
+                  </tfoot>
+               </table>
+         
+               <table class="table-bordered" style="width: 100%; margin-top: 30px;">
+                  <thead>
+                     <tr>
+                        <th colspan="6">DESCOMPRESSÃO</th>
+                        <th colspan="1">TOL &#177; 10%</th>
+                     </tr>
+                     <tr>
+                        <th colspan="3">DESCOMPRIMIR</th>
+                        <th colspan="1">POSIÇÃO</th>
+                        <th colspan="1">PRESSÃO</th>
+                        <th colspan="1">FLUXO</th>
+                        <th colspan="1">TEMPO</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <th colspan="3">ANTES</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="antes1" name="antes1" value="<%= injetor.antesPos %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="antes2" name="antes2" value="<%= injetor.antesPres %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="antes3" name="antes3" value="<%= injetor.antesFluxo %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="antes4" name="antes4" value="<%= injetor.antesTempo %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th colspan="3">DEPOIS</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="depois1" name="depois1" value="<%= injetor.depoisPos %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="depois2" name="depois2" value="<%= injetor.depoisPres %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="depois3" name="depois3" value="<%= injetor.depoisFluxo %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="depois4" name="depois4" value="<%= injetor.depoisTempo %>">
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+         
+               <table class="table-bordered" style="width: 100%; margin-top: 30px;">
+                  <thead>
+                     <tr>
+                        <th colspan="6">FECHAMENTO</th>
+                        <th colspan="1">TOL &#177; 10%</th>
+                     </tr>
+                     <tr>
+                        <th colspan="2"></th>
+                        <% for(var i = 1; i <= 3; i++) { %>
+                           <th colspan="1">FECHA. <%= i %></th>
+                        <% } %>
+                        <th colspan="1">PROT.M</th>
+                        <th colspan="1">ALTA PRESSÃO</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <th scope="row" colspan="2">POSIÇÃO</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="posFecha1" name="posFech1" value="<%= injetor.posFecha1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="posFecha2" name="posFech2" value="<%= injetor.posFecha2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="posFecha3" name="posFech3" value="<%= injetor.posFecha3 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="protMPos" name="protMPos" value="<%= injetor.protMPos %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="AltaPresPos" name="AltaPresPos" value="<%= injetor.AltaPresPos %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope="row" colspan="2">PRESSÃO</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presFecha1" name="presFech1" value="<%= injetor.presFecha1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presFecha2" name="presFech2" value="<%= injetor.presFecha2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presFecha3" name="presFech3" value="<%= injetor.presFecha3 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="protMPres" name="protMPres" value="<%= injetor.protMPres %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="AltaPresPressao" name="AltaPresPressao" value="<%= injetor.AltaPresPres %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope="row" colspan="2">FLUXO</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoFecha1" name="fluxoFech1" value="<%= injetor.fluxoFecha1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoFecha2" name="fluxoFech2" value="<%= injetor.fluxoFecha2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoFecha3" name="fluxoFech3" value="<%= injetor.fluxoFecha3 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="protMFluxo" name="protMFluxo" value="<%= injetor.protMFluxo %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="AltaPresFluxo" name="AltaPresFluxo" value="<%= injetor.AltaPresFluxo %>">
+                        </td>
+                     </tr>
+                  </tbody>
+                  <tfoot>
+                     <tr>
+                        <th colspan="3">TEMPO PROTEÇÃO DE MOLDE:</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="tempoProtMolde" name="tempoProtMolde" value="<%= injetor.tempoProtMolde %>">
+                        </td>
+                        <th colspan="2">TEMPO FECHAMENTO:</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="tempoFecha" name="tempoFecha" value="<%= injetor.tempoFecha %>">
+                        </td>
+                     </tr>
+                  </tfoot>
+               </table>
+         
+               <table class="table-bordered" style="width: 100%; margin-top: 30px;">
+                  <thead>
+                     <tr>
+                        <th colspan="6">ABERTURA</th>
+                        <th colspan="1">TOL &#177; 10%</th>
+                     </tr>
+                     <tr>
+                        <th colspan="2"></th>
+                        <% for(var i = 5; i >= 1; i--) { %>
+                           <th colspan="1">ABRIR. <%= i %></th>
+                        <% } %>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <th scope="row" colspan="2">POSIÇÃO</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="posAbertura5" name="posAbertura5" value="<%= injetor.posAbertura1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="posAbertura4" name="posAbertura4" value="<%= injetor.posAbertura2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="posAbertura3" name="posAbertura3" value="<%= injetor.posAbertura3 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="posAbertura2" name="posAbertura2" value="<%= injetor.posAbertura4 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="posAbertura1" name="posAbertura1" value="<%= injetor.posAbertura5 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope="row" colspan="2">PRESSÃO</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presAbertura5" name="presAbertura5" value="<%= injetor.presAbertura1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presAbertura4" name="presAbertura4" value="<%= injetor.presAbertura2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presAbertura3" name="presAbertura3" value="<%= injetor.presAbertura3 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presAbertura2" name="presAbertura2" value="<%= injetor.presAbertura4 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presAbertura1" name="presAbertura1" value="<%= injetor.presAbertura5 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope="row" colspan="2">FLUXO</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoAbertura5" name="fluxoAbertura5" value="<%= injetor.fluxoAbertura1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoAbertura4" name="fluxoAbertura4" value="<%= injetor.fluxoAbertura2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoAbertura3" name="fluxoAbertura3" value="<%= injetor.fluxoAbertura3 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoAbertura2" name="fluxoAbertura2" value="<%= injetor.fluxoAbertura4 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoAbertura1" name="fluxoAbertura1" value="<%= injetor.fluxoAbertura5 %>">
+                        </td>
+                     </tr>
+                  </tbody>
+                  <tfoot>
+                     <tr>
+                        <th colspan="3">RESFRIAMENTO:</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="resfriamento" name="resfriamento" value="<%= injetor.resfriamento %>">
+                        </td>
+                        <th colspan="2">TEMPO ABERTURA:</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="tempoAbertura" name="tempoAbertura" value="<%= injetor.tempoAbertura %>">
+                        </td>
+                     </tr>
+                  </tfoot>
+               </table>
+         
+               <table class="table-bordered" style="width: 100%; margin-top: 30px;">
+                  <thead>
+                     <tr>
+                        <th colspan="6">EXTRAÇÃO</th>
+                        <th colspan="1">TOL &#177; 10%</th>
+                     </tr>
+                     <tr>
+                        <th rowspan="2" colspan="1"></th>
+                        <th colspan="3">AVANÇO</th>
+                        <th colspan="3">RECUO</th>
+                     </tr>
+                     <tr>
+                        <% for(var i = 1; i <= 3; i++) { %>
+                           <th colspan="1">EXTRAIR. <%= i %></th>
+                        <% } %>
+                        <% for(var i = 3; i >= 1; i--) { %>
+                           <th colspan="1">EXTRAIR. <%= i %></th>
+                        <% } %>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <th scope="row" colspan="1">POSIÇÃO</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="posAvanco1" name="posAvanco1" value="<%= injetor.posAvanco1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="posAvanco2" name="posAvanco2" value="<%= injetor.posAvanco2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="posAvanco3" name="posAvanco3" value="<%= injetor.posAvanco3 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="posRecuo1" name="posRecuo1" value="<%= injetor.posRecuo1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="posRecuo2" name="posRecuo2" value="<%= injetor.posRecuo2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="posRecuo3" name="posRecuo3" value="<%= injetor.posRecuo3 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope="row" colspan="1">PRESSÃO</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presAvanco1" name="presAvanco1" value="<%= injetor.presAvanco1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presAvanco2" name="presAvanco2" value="<%= injetor.presAvanco2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presAvanco3" name="presAvanco3" value="<%= injetor.presAvanco3 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presRecuo1" name="presRecuo1" value="<%= injetor.presRecuo1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presRecuo2" name="presRecuo2" value="<%= injetor.presRecuo2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="presRecuo3" name="presRecuo3" value="<%= injetor.presRecuo3 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope="row" colspan="1">FLUXO</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoAvanco1" name="fluxoAvanco1" value="<%= injetor.fluxoAvanco1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoAvanco2" name="fluxoAvanco2" value="<%= injetor.fluxoAvanco2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoAvanco3" name="fluxoAvanco3" value="<%= injetor.fluxoAvanco3 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoRecuo1" name="fluxoRecuo1" value="<%= injetor.fluxoRecuo1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoRecuo2" name="fluxoRecuo2" value="<%= injetor.fluxoRecuo2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoRecuo3" name="fluxoRecuo3" value="<%= injetor.fluxoRecuo3 %>">
+                        </td>
+                     </tr>
+                  </tbody>
+                  <tfoot>
+                     <tr>
+                        <th colspan="2">ATRASO:</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="atraso" name="atraso" value="<%= injetor.atraso %>">
+                        </td>
+                        <th colspan="2">BATIDA:</th>
+                        <td colspan="2">
+                           <input class="read-only" style="width: 100%" id="batida" name="batida" value="<%= injetor.batida %>">
+                        </td>
+                     </tr>
+                  </tfoot>
+               </table>
+         
+               <table class="table-bordered" style="width: 100%; margin-top: 30px;">
+                  <thead>
+                     <tr>
+                        <th colspan="6">RADIAL HIDRÁULICO</th>
+                        <th colspan="1">TOL &#177; 10%</th>
+                     </tr>
+                     <tr>
+                        <th rowspan="2" colspan="1"></th>
+                        <% for(var i = 1; i <= 3; i++) { %>
+                           <th colspan="2">RADIAL</th>
+                        <% } %>
+                     </tr>
+                     <tr>
+                        <% for(var i = 1; i <= 3; i++) { %>
+                           <th colspan="1">ENTRADA</th>
+                           <th colspan="1">SAÍDA</th>
+                        <% } %>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <th colspan="1">TYPE</th>
+                        <th colspan="1">TEMPO</th>
+                        <th colspan="1">LIMITE</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="type1" name="type1" value="<%= injetor.radialTypeEntrada1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="type2" name="type2" value="<%= injetor.radialTypeSaida1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="type3" name="type3" value="<%= injetor.radialTypeEntrada2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="type4" name="type4" value="<%= injetor.radialTypeSaida2 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope="row" colspan="1">PRESSÃO</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="pressaoRadial1" name="pressaoRadial1" value="<%= injetor.radialPresEntrada1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="pressaoRadial2" name="pressaoRadial2" value="<%= injetor.radialPresSaida1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="pressaoRadial3" name="pressaoRadial3" value="<%= injetor.radialPresEntrada2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="pressaoRadial4" name="pressaoRadial4" value="<%= injetor.radialPresSaida2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="pressaoRadial5" name="pressaoRadial5" value="<%= injetor.radialPresEntrada3 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="pressaoRadial6" name="pressaoRadial6" value="<%= injetor.radialPresSaida3 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope="row" colspan="1">FLUXO</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoRadial1" name="fluxoRadial1" value="<%= injetor.radialFluxoEntrada1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoRadial2" name="fluxoRadial2" value="<%= injetor.radialFluxoSaida1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoRadial3" name="fluxoRadial3" value="<%= injetor.radialFluxoEntrada2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoRadial4" name="fluxoRadial4" value="<%= injetor.radialFluxoSaida2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoRadial5" name="fluxoRadial5" value="<%= injetor.radialFluxoEntrada3 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="fluxoRadial6" name="fluxoRadial6" value="<%= injetor.radialFluxoSaida3 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope="row" colspan="1">ACT. POSIÇÃO</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="posRadial1" name="posRadial1" value="<%= injetor.radialPosEntrada1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="posRadial2" name="posRadial2" value="<%= injetor.radialPosSaida1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="posRadial3" name="posRadial3" value="<%= injetor.radialPosEntrada2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="posRadial4" name="posRadial4" value="<%= injetor.radialPosSaida2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="posRadial5" name="posRadial5" value="<%= injetor.radialPosEntrada3 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="posRadial6" name="posRadial6" value="<%= injetor.radialPosSaida3 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope="row" colspan="1">ACT. TEMPO</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="tempoRadial1" name="tempoRadial1" value="<%= injetor.radialTempoEntrada1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="tempoRadial2" name="tempoRadial2" value="<%= injetor.radialTempoSaida1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="tempoRadial3" name="tempoRadial3" value="<%= injetor.radialTempoEntrada2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="tempoRadial4" name="tempoRadial4" value="<%= injetor.radialTempoSaida2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="tempoRadial5" name="tempoRadial5" value="<%= injetor.radialTempoEntrada3 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="tempoRadial6" name="tempoRadial6" value="<%= injetor.radialTempoSaida3 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope="row" colspan="1">SCRCOUNT</th>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="scrcount1" name="scrcount1" value="<%= injetor.radialSCREntrada1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="scrcount2" name="scrcount2" value="<%= injetor.radialSCRSaida1 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="scrcount3" name="scrcount3" value="<%= injetor.radialSCREntrada2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="scrcount4" name="scrcount4" value="<%= injetor.radialSCRSaida2 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="scrcount5" name="scrcount5" value="<%= injetor.radialSCREntrada3 %>">
+                        </td>
+                        <td colspan="1">
+                           <input class="read-only" style="width: 100%" id="scrcount6" name="scrcount6" value="<%= injetor.radialSCRSaida3 %>">
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <!-- FIM INJETORES -->      
+            
+            <!-- PERIFÉRICOS -->
+            <div class="table-responsive table-ficha d-flex flex-column justify-content-between" style="width: 50vw;">
+               <table class="table-bordered" style="width: 100%">
+                  <thead>
+                     <tr>
+                        <th colspan="5">CÂMARA QUENTE</th>
+                        <th colspan="2">TOL &#177; 10%</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara1" name="camara1" placeholder="1" value="<%= perifericos.camara1 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara2" name="camara2" placeholder="2" value="<%= perifericos.camara2 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara3" name="camara3" placeholder="3" value="<%= perifericos.camara3 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara4" name="camara4" placeholder="4" value="<%= perifericos.camara4 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara5" name="camara5" placeholder="5" value="<%= perifericos.camara5 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara6" name="camara6" placeholder="6" value="<%= perifericos.camara6 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara7" name="camara7" placeholder="7" value="<%= perifericos.camara7 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara8" name="camara8" placeholder="8" value="<%= perifericos.camara8 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara9" name="camara9" placeholder="9" value="<%= perifericos.camara9 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara10" name="camara10" placeholder="10" value="<%= perifericos.camara10 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara11" name="camara11" placeholder="11" value="<%= perifericos.camara11 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara12" name="camara12" placeholder="12" value="<%= perifericos.camara12 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara13" name="camara13" placeholder="13" value="<%= perifericos.camara13 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara14" name="camara14" placeholder="14" value="<%= perifericos.camara14 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara15" name="camara15" placeholder="15" value="<%= perifericos.camara15 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara16" name="camara16" placeholder="16" value="<%= perifericos.camara16 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara17" name="camara17" placeholder="17" value="<%= perifericos.camara17 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara18" name="camara18" placeholder="18" value="<%= perifericos.camara18 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara19" name="camara19" placeholder="19" value="<%= perifericos.camara19 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara20" name="camara20" placeholder="20" value="<%= perifericos.camara20 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara21" name="camara21" placeholder="21" value="<%= perifericos.camara21 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara22" name="camara22" placeholder="22" value="<%= perifericos.camara22 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara23" name="camara23" placeholder="23" value="<%= perifericos.camara23 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara24" name="camara24" placeholder="24" value="<%= perifericos.camara24 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara25" name="camara25" placeholder="25" value="<%= perifericos.camara25 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara26" name="camara26" placeholder="26" value="<%= perifericos.camara26 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara27" name="camara27" placeholder="27" value="<%= perifericos.camara27 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara28" name="camara28" placeholder="28" value="<%= perifericos.camara28 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara29" name="camara29" placeholder="29" value="<%= perifericos.camara29 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara30" name="camara30" placeholder="30" value="<%= perifericos.camara30 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara31" name="camara31" placeholder="31" value="<%= perifericos.camara31 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara32" name="camara32" placeholder="32" value="<%= perifericos.camara32 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara33" name="camara33" placeholder="33" value="<%= perifericos.camara33 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara34" name="camara34" placeholder="34" value="<%= perifericos.camara34 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara35" name="camara35" placeholder="35" value="<%= perifericos.camara35 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara36" name="camara36" placeholder="36" value="<%= perifericos.camara36 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara37" name="camara37" placeholder="37" value="<%= perifericos.camara37 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara38" name="camara38" placeholder="38" value="<%= perifericos.camara38 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara39" name="camara39" placeholder="39" value="<%= perifericos.camara39 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara40" name="camara40" placeholder="40" value="<%= perifericos.camara40 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara41" name="camara41" placeholder="41" value="<%= perifericos.camara41 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara42" name="camara42" placeholder="42" value="<%= perifericos.camara42 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara43" name="camara43" placeholder="43" value="<%= perifericos.camara43 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara44" name="camara44" placeholder="44" value="<%= perifericos.camara44 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara45" name="camara45" placeholder="45" value="<%= perifericos.camara45 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara46" name="camara46" placeholder="46" value="<%= perifericos.camara46 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara47" name="camara47" placeholder="47" value="<%= perifericos.camara47 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara48" name="camara48" placeholder="48" value="<%= perifericos.camara48 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara49" name="camara49" placeholder="49" value="<%= perifericos.camara49 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara50" name="camara50" placeholder="50" value="<%= perifericos.camara50 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara51" name="camara51" placeholder="51" value="<%= perifericos.camara51 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara52" name="camara52" placeholder="52" value="<%= perifericos.camara52 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara53" name="camara53" placeholder="53" value="<%= perifericos.camara53 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara54" name="camara54" placeholder="54" value="<%= perifericos.camara54 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara55" name="camara55" placeholder="55" value="<%= perifericos.camara55 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara56" name="camara56" placeholder="56" value="<%= perifericos.camara56 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara57" name="camara57" placeholder="57" value="<%= perifericos.camara57 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara58" name="camara58" placeholder="58" value="<%= perifericos.camara58 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara59" name="camara59" placeholder="59" value="<%= perifericos.camara59 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara60" name="camara60" placeholder="60" value="<%= perifericos.camara60 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara61" name="camara61" placeholder="61" value="<%= perifericos.camara61 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara62" name="camara62" placeholder="62" value="<%= perifericos.camara62 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara63" name="camara63" placeholder="63" value="<%= perifericos.camara63 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara64" name="camara64" placeholder="64" value="<%= perifericos.camara64 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara65" name="camara65" placeholder="65" value="<%= perifericos.camara65 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara66" name="camara66" placeholder="66" value="<%= perifericos.camara66 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara67" name="camara67" placeholder="67" value="<%= perifericos.camara67 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara68" name="camara68" placeholder="68" value="<%= perifericos.camara68 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara69" name="camara69" placeholder="69" value="<%= perifericos.camara69 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara70" name="camara70" placeholder="70" value="<%= perifericos.camara70 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara71" name="camara71" placeholder="71" value="<%= perifericos.camara71 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara72" name="camara72" placeholder="72" value="<%= perifericos.camara72 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara73" name="camara73" placeholder="73" value="<%= perifericos.camara73 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara74" name="camara74" placeholder="74" value="<%= perifericos.camara74 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara75" name="camara75" placeholder="75" value="<%= perifericos.camara75 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara76" name="camara76" placeholder="76" value="<%= perifericos.camara76 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara77" name="camara77" placeholder="77" value="<%= perifericos.camara77 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara78" name="camara78" placeholder="78" value="<%= perifericos.camara78 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara79" name="camara79" placeholder="79" value="<%= perifericos.camara79 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara80" name="camara80" placeholder="80" value="<%= perifericos.camara80 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara81" name="camara81" placeholder="81" value="<%= perifericos.camara81 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara82" name="camara82" placeholder="82" value="<%= perifericos.camara82 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara83" name="camara83" placeholder="83" value="<%= perifericos.camara83 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara84" name="camara84" placeholder="84" value="<%= perifericos.camara84 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara85" name="camara85" placeholder="85" value="<%= perifericos.camara85 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara86" name="camara86" placeholder="86" value="<%= perifericos.camara86 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara87" name="camara87" placeholder="87" value="<%= perifericos.camara87 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara88" name="camara88" placeholder="88" value="<%= perifericos.camara88 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara89" name="camara89" placeholder="89" value="<%= perifericos.camara89 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara90" name="camara90" placeholder="90" value="<%= perifericos.camara90 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara91" name="camara91" placeholder="91" value="<%= perifericos.camara91 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara92" name="camara92" placeholder="92" value="<%= perifericos.camara92 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara93" name="camara93" placeholder="93" value="<%= perifericos.camara93 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara94" name="camara94" placeholder="94" value="<%= perifericos.camara94 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara95" name="camara95" placeholder="95" value="<%= perifericos.camara95 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara96" name="camara96" placeholder="96" value="<%= perifericos.camara96 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara97" name="camara97" placeholder="97" value="<%= perifericos.camara97 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara98" name="camara98" placeholder="98" value="<%= perifericos.camara98 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara99" name="camara99" placeholder="99" value="<%= perifericos.camara99 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara100" name="camara100" placeholder="100" value="<%= perifericos.camara100 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara101" name="camara101" placeholder="101" value="<%= perifericos.camara101 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara102" name="camara102" placeholder="102" value="<%= perifericos.camara102 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara103" name="camara103" placeholder="103" value="<%= perifericos.camara103 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara104" name="camara104" placeholder="104" value="<%= perifericos.camara104 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara105" name="camara105" placeholder="105" value="<%= perifericos.camara105 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara106" name="camara106" placeholder="106" value="<%= perifericos.camara106 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara107" name="camara107" placeholder="107" value="<%= perifericos.camara107 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara108" name="camara108" placeholder="108" value="<%= perifericos.camara108 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara109" name="camara109" placeholder="109" value="<%= perifericos.camara109 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara110" name="camara110" placeholder="110" value="<%= perifericos.camara110 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara111" name="camara111" placeholder="111" value="<%= perifericos.camara111 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara112" name="camara112" placeholder="112" value="<%= perifericos.camara112 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara113" name="camara113" placeholder="113" value="<%= perifericos.camara113 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara114" name="camara114" placeholder="114" value="<%= perifericos.camara114 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara115" name="camara115" placeholder="115" value="<%= perifericos.camara115 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara116" name="camara116" placeholder="116" value="<%= perifericos.camara116 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara117" name="camara117" placeholder="117" value="<%= perifericos.camara117 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara118" name="camara118" placeholder="118" value="<%= perifericos.camara118 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara119" name="camara119" placeholder="119" value="<%= perifericos.camara119 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara120" name="camara120" placeholder="120" value="<%= perifericos.camara120 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara121" name="camara121" placeholder="121" value="<%= perifericos.camara121 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara122" name="camara122" placeholder="122" value="<%= perifericos.camara122 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara123" name="camara123" placeholder="123" value="<%= perifericos.camara123 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara124" name="camara124" placeholder="124" value="<%= perifericos.camara124 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara125" name="camara125" placeholder="125" value="<%= perifericos.camara125 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara126" name="camara126" placeholder="126" value="<%= perifericos.camara126 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara127" name="camara127" placeholder="127" value="<%= perifericos.camara127 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara128" name="camara128" placeholder="128" value="<%= perifericos.camara128 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara129" name="camara129" placeholder="129" value="<%= perifericos.camara129 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="camara130" name="camara130" placeholder="130" value="<%= perifericos.camara130 %>">
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+               
+               <table class="table-bordered" style="width: 100%;">
+                  <thead>
+                     <tr>
+                        <th colspan="5">VALVE GATES</th>
+                        <th colspan="2">TOL &#177; 10%</th>
+                     </tr>
+                     <tr>
+                        <th colspan="7">SEQUENCIADOR</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="1" value="<%= perifericos.valve1 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="2" value="<%= perifericos.valve2 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG3" name="VG3" placeholder="3" value="<%= perifericos.valve3 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG4" name="VG4" placeholder="4" value="<%= perifericos.valve4 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG5" name="VG5" placeholder="5" value="<%= perifericos.valve5 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG6" name="VG6" placeholder="6" value="<%= perifericos.valve6 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG7" name="VG7" placeholder="7" value="<%= perifericos.valve7 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG8" name="VG8" placeholder="8" value="<%= perifericos.valve8 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG9" name="VG9" placeholder="9" value="<%= perifericos.valve9 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG10" name="VG10" placeholder="10" value="<%= perifericos.valve10 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG11" name="VG11" placeholder="11" value="<%= perifericos.valve11 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG12" name="VG12" placeholder="12" value="<%= perifericos.valve12 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG13" name="VG13" placeholder="13" value="<%= perifericos.valve13 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG14" name="VG14" placeholder="14" value="<%= perifericos.valve14 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG15" name="VG15" placeholder="15" value="<%= perifericos.valve15 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG16" name="VG16" placeholder="16" value="<%= perifericos.valve16 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG17" name="VG17" placeholder="17" value="<%= perifericos.valve17 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG18" name="VG18" placeholder="18" value="<%= perifericos.valve18 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG19" name="VG19" placeholder="19" value="<%= perifericos.valve19 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG20" name="VG20" placeholder="20" value="<%= perifericos.valve20 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG21" name="VG21" placeholder="21" value="<%= perifericos.valve21 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG22" name="VG22" placeholder="22" value="<%= perifericos.valve22 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG23" name="VG23" placeholder="23" value="<%= perifericos.valve23 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG24" name="VG24" placeholder="24" value="<%= perifericos.valve24 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG25" name="VG25" placeholder="25" value="<%= perifericos.valve25 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG26" name="VG26" placeholder="26" value="<%= perifericos.valve26 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG27" name="VG27" placeholder="27" value="<%= perifericos.valve27 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG28" name="VG28" placeholder="28" value="<%= perifericos.valve28 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG29" name="VG29" placeholder="29" value="<%= perifericos.valve29 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG30" name="VG30" placeholder="30" value="<%= perifericos.valve30 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG31" name="VG31" placeholder="31" value="<%= perifericos.valve31 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG32" name="VG32" placeholder="32" value="<%= perifericos.valve32 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG33" name="VG33" placeholder="33" value="<%= perifericos.valve33 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG34" name="VG34" placeholder="34" value="<%= perifericos.valve34 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG35" name="VG35" placeholder="35" value="<%= perifericos.valve35 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG36" name="VG36" placeholder="36" value="<%= perifericos.valve36 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG37" name="VG37" placeholder="37" value="<%= perifericos.valve37 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG38" name="VG38" placeholder="38" value="<%= perifericos.valve38 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG39" name="VG39" placeholder="39" value="<%= perifericos.valve39 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG40" name="VG40" placeholder="40" value="<%= perifericos.valve40 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG41" name="VG41" placeholder="41" value="<%= perifericos.valve41 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG42" name="VG42" placeholder="42" value="<%= perifericos.valve42 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG43" name="VG43" placeholder="43" value="<%= perifericos.valve43 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG44" name="VG44" placeholder="44" value="<%= perifericos.valve44 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG45" name="VG45" placeholder="45" value="<%= perifericos.valve45 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG46" name="VG46" placeholder="46" value="<%= perifericos.valve46 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG47" name="VG47" placeholder="47" value="<%= perifericos.valve47 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG48" name="VG48" placeholder="48" value="<%= perifericos.valve48 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG49" name="VG49" placeholder="49" value="<%= perifericos.valve49 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG50" name="VG50" placeholder="50" value="<%= perifericos.valve50 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG51" name="VG51" placeholder="51" value="<%= perifericos.valve51 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG52" name="VG52" placeholder="52" value="<%= perifericos.valve52 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG53" name="VG53" placeholder="53" value="<%= perifericos.valve53 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG54" name="VG54" placeholder="54" value="<%= perifericos.valve54 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG55" name="VG55" placeholder="55" value="<%= perifericos.valve55 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG56" name="VG56" placeholder="56" value="<%= perifericos.valve56 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG57" name="VG57" placeholder="57" value="<%= perifericos.valve57 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG58" name="VG58" placeholder="58" value="<%= perifericos.valve58 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG59" name="VG59" placeholder="59" value="<%= perifericos.valve59 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG60" name="VG60" placeholder="60" value="<%= perifericos.valve60 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG61" name="VG61" placeholder="61" value="<%= perifericos.valve61 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG62" name="VG62" placeholder="62" value="<%= perifericos.valve62 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG63" name="VG63" placeholder="63" value="<%= perifericos.valve63 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG64" name="VG64" placeholder="64" value="<%= perifericos.valve64 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG65" name="VG65" placeholder="65" value="<%= perifericos.valve65 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG66" name="VG66" placeholder="66" value="<%= perifericos.valve66 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG67" name="VG67" placeholder="67" value="<%= perifericos.valve67 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG68" name="VG68" placeholder="68" value="<%= perifericos.valve68 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG69" name="VG69" placeholder="69" value="<%= perifericos.valve69 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG70" name="VG70" placeholder="70" value="<%= perifericos.valve70 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG71" name="VG71" placeholder="71" value="<%= perifericos.valve71 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG72" name="VG72" placeholder="72" value="<%= perifericos.valve72 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG73" name="VG73" placeholder="73" value="<%= perifericos.valve73 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG74" name="VG74" placeholder="74" value="<%= perifericos.valve74 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG75" name="VG75" placeholder="75" value="<%= perifericos.valve75 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG76" name="VG76" placeholder="76" value="<%= perifericos.valve76 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG77" name="VG77" placeholder="77" value="<%= perifericos.valve77 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG78" name="VG78" placeholder="78" value="<%= perifericos.valve78 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG79" name="VG79" placeholder="79" value="<%= perifericos.valve79 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG80" name="VG80" placeholder="80" value="<%= perifericos.valve80 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG81" name="VG81" placeholder="81" value="<%= perifericos.valve81 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG82" name="VG82" placeholder="82" value="<%= perifericos.valve82 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG83" name="VG83" placeholder="83" value="<%= perifericos.valve83 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG84" name="VG84" placeholder="84" value="<%= perifericos.valve84 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG85" name="VG85" placeholder="85" value="<%= perifericos.valve85 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG86" name="VG86" placeholder="86" value="<%= perifericos.valve86 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG87" name="VG87" placeholder="87" value="<%= perifericos.valve87 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG88" name="VG88" placeholder="88" value="<%= perifericos.valve88 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG89" name="VG89" placeholder="89" value="<%= perifericos.valve89 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG90" name="VG90" placeholder="90" value="<%= perifericos.valve90 %>">
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+         
+               <table class="table-bordered">
+                  <thead>
+                     <tr>
+                        <th colspan="7">REFRIGERAÇÃO DO MOLDE</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <th colspan="3" style="text-align: center;">LADO FIXO</th>
+                        <th rowspan="3" style="text-align: center;">TOL<br> &#177;<br> 10%</th>
+                        <th colspan="3" style="text-align: center;">LADO MÓVEL</th>
+                     </tr>
+                     <tr>
+                        <td colspan="3">
+                           <input class="read-only" style="width: 100%" id="rmladofixo1" name="rmladofixo1" placeholder="50C" value="<%= perifericos.refrLadoFixo1 %> %>">
+                        </td>
+                        <td colspan="3">
+                           <input class="read-only" style="width: 100%" id="rmladomovel1" name="rmladomovel1" placeholder="GELADA" value="<%= perifericos.refrLadoMovel1 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td colspan="3">
+                           <input class="read-only" style="width: 100%" id="rmladofixo2" name="rmladofixo2" placeholder="50C" value="<%= perifericos.refrLadoFixo2 %>">
+                        </td>
+                        <td colspan="3">
+                           <input class="read-only" style="width: 100%" id="rmladomovel2" name="rmladomovel2" placeholder="GELADA" value="<%= perifericos.refrLadoMovel2 %>">
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+         
+               <table class="table-bordered">
+                  <thead>
+                     <tr>
+                        <th colspan="7">STEAM(VAPOR)</th>
+                     </tr>
+                     <tr>
+                        <th colspan="7">REFRIGERAÇÃO DO MOLDE</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <th colspan="3" style="text-align: center;">LADO FIXO</th>
+                        <th rowspan="3" style="text-align: center;">TOL<br> &#177;<br> 10%</th>
+                        <th colspan="3" style="text-align: center;">LADO MÓVEL</th>
+                     </tr>
+                     <tr>
+                        <td colspan="3">
+                           <input class="read-only" style="width: 100%" id="valorladofixo" name="valorladofixo" value="<%= perifericos.vaporLadoFixo1 %>">
+                        </td>
+                        <td colspan="3">
+                           <input class="read-only" style="width: 100%" id="valorladomovel" name="valorladomovel" value="<%= perifericos.vaporLadoFixo2 %>">
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <!-- FIM PERIFÉRICOS -->
+         </div>
+      </div>
+   </div>
+   <br>
+</div>
+
+<%- include ('../partials/footer.ejs') %>

@@ -19,6 +19,11 @@ const LimiteParametrosAutomata = require("./ParametrosTempoReal/LimiteParametros
 const Tipo = require("./Tipo/Tipo");
 const Alertas = require("./Alertas/Alertas");
 const AlertasAbertos = require("./Alertas/AlertasAbertos");
+const FichaPastorePerifericos = require("./Ficha/FichaPastore/FichaTecnicaPastorePerifericos");
+const FichaPastoreInjetores = require("./Ficha/FichaPastore/FichaTecnicaPastoreInjetores");
+const RevisaoLimitesFichaTecnicaToshiba = require("./Revisao/RevisaoLimitesFichaTecnicaToshiba");
+const RevisaoFichaTecnicaPastoreInjetores = require("./Revisao/RevisaoFichaTecnicaPastoreInjetores");
+const RevisaoFichaTecnicaPastorePerifericos = require("./Revisao/RevisaoFichaTecnicaPastorePerifericos");
 
 const cron = require("node-cron");
 var nodemailer = require('nodemailer');
@@ -32,6 +37,7 @@ const clientesConctroller = require("./Clientes/ClientesController");
 const fichasConctroller = require("./Ficha/FichaController");
 const tiposConctroller = require("./Tipo/TipoController");
 const ParametrosRealController = require("./ParametrosTempoReal/ParametrosRealController");
+const revisaoController = require("./Revisao/RevisaoController");
 
 const bcrypt = require("bcryptjs");
 
@@ -69,6 +75,7 @@ app.use("/",fichasConctroller);
 app.use("/",ParametrosRealController);
 app.use("/",tiposConctroller);
 app.use("/",alertasController);
+app.use("/",revisaoController);
 
 
 
@@ -92,21 +99,26 @@ app.get("/",(req,res) =>{
 
 
 //Cria Tabelas
-//     Tipo.sync();
-//     Maquinas.sync();
-//     User.sync();
-//     Produtos.sync();
-//     MateriaPrima.sync();
-//     Moldes.sync();
-//     Clientes.sync();
-//     FichaTecnicaToshiba.sync();
-//     LimitesFichaTecnicaToshiba.sync();
-//     ParametrosReaisToshiba.sync();   
-//     ParametrosReaisAutomata.sync();        
-//     LimiteParametrosToshiba.sync();
-//     LimiteParametrosAutomata.sync();
-    // Alertas.sync();
-    // AlertasAbertos.sync();
+//    Tipo.sync();
+//    Maquinas.sync();
+//    User.sync();
+//    Produtos.sync();
+//    MateriaPrima.sync();
+//    Moldes.sync();
+//    Clientes.sync();
+//    FichaTecnicaToshiba.sync();
+   // LimitesFichaTecnicaToshiba.sync();
+//    ParametrosReaisToshiba.sync();   
+//    ParametrosReaisAutomata.sync();        
+//    LimiteParametrosToshiba.sync();
+//    LimiteParametrosAutomata.sync();
+//    Alertas.sync();
+//    AlertasAbertos.sync();
+//    FichaPastoreInjetores.sync();
+//    FichaPastorePerifericos.sync();
+//    RevisaoLimitesFichaTecnicaToshiba.sync();
+   // RevisaoFichaTecnicaPastoreInjetores.sync();
+//    RevisaoFichaTecnicaPastorePerifericos.sync();
 
 
 //     User.create({
@@ -121,6 +133,9 @@ app.get("/",(req,res) =>{
 //     });
 //     Tipo.create({
 //         tipo:"Automata OPTIN"
+//     })
+//     Tipo.create({
+//         tipo:"HAITIAN"
 //     })
 
    

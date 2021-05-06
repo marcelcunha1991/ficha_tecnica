@@ -1,162 +1,39 @@
 <%- include ('../partials/header.ejs') %>
 <%- include ('../partials/sidebar.ejs') %>
 
-<div class="container">
-
- 
-  <br>
-    <div class="card">
-            <div class="card-header">
-                   
-                        <h2>Nova Ficha Técnica</h2>
-                    
-            </div>
-            <div class="card-body">
-                    <form  method="POST" action="/fichas/create">
-
-                        <select name="maquinas" class="form-control">
-                                <option > Selecione uma máquina</option>
-                                <% maquinas.forEach((maquina) => { %>
-                        
-                                        <option value="<%= maquina.id %>"> <%= maquina.descricao %></option>
-                        
-                                <% }) %>
-                        
-                            </select>
-                            
-                            <br>
-                            
-                                <div>
-                                        <label for="username">VI1 Min: </label>
-                                        <input id="VI1_min" name="VI1_min" size="30" type="number" />
-                                
-                                        <label for="name">VI1 Max: </label>
-                                        <input id="VI1_max" name="VI1_max" size="30" type="number" />
-                                </div>
-
-                                <div>
-                                        <label for="username">VI2 Min: </label>
-                                        <input id="VI2_min" name="VI2_min" size="30" type="number" />
-                                
-                                        <label for="name">VI2 Max: </label>
-                                        <input id="VI2_max" name="VI2_max" size="30" type="number" />
-                                </div>
-
-                                <div>
-                                        <label for="username">VI3 Min: </label>
-                                        <input id="VI3_min" name="VI3_min" size="30" type="number" />
-                                
-                                        <label for="name">VI3 Max: </label>
-                                        <input id="VI3_max" name="VI3_max" size="30" type="number" />
-                                </div>
-
-                                <div>
-                                        <label for="username">VI4 Min: </label>
-                                        <input id="VI4_min" name="VI4_min" size="30" type="number" />
-                                
-                                        <label for="name">VI4 Max: </label>
-                                        <input id="VI4_max" name="VI4_max" size="30" type="number" />
-                                </div>
-
-                                <div>
-                                        <label for="username">VI5 Min: </label>
-                                        <input id="VI5_min" name="VI5_min" size="30" type="number" />
-                                
-                                        <label for="name">VI5 Max: </label>
-                                        <input id="VI5_max" name="VI5_max" size="30" type="number" />
-                                </div>
-
-                                <div>
-                                        <label for="username">VI6 Min: </label>
-                                        <input id="VI6_min" name="VI6_min" size="30" type="number" />
-                                
-                                        <label for="name">VI6 Max: </label>
-                                        <input id="VI6_max" name="VI6_max" size="30" type="number" />
-                                </div>
-
-                                <div>
-                                        <label for="username">VI7 Min: </label>
-                                        <input id="VI7_min" name="VI7_min" size="30" type="number" />
-                                
-                                        <label for="name">VI7 Max: </label>
-                                        <input id="VI7_max" name="VI7_max" size="30" type="number" />
-                                </div>
-
-                                <div>
-                                        <label for="username">VI8 Min: </label>
-                                        <input id="VI8_min" name="VI8_min" size="30" type="number" />
-                                
-                                        <label for="name">VI8 Max: </label>
-                                        <input id="VI8_max" name="VI8_max" size="30" type="number" />
-                                </div>
-
-                                <div>
-                                        <label for="username">VI9 Min: </label>
-                                        <input id="VI9_min" name="VI9_min" size="30" type="number" />
-                                
-                                        <label for="name">VI9 Max: </label>
-                                        <input id="VI9_max" name="VI9_max" size="30" type="number" />
-                                </div>
-
-                                <div>
-                                        <label for="username">VI10 Min: </label>
-                                        <input id="VI10_min" name="VI10_min" size="30" type="number" />
-                                
-                                        <label for="name">VI10 Max: </label>
-                                        <input id="VI10_max" name="VI10_max" size="30" type="number" />
-                                </div>
-
-                                <div>
-                                        <label for="username">VH1 Min: </label>
-                                        <input id="VH1_min" name="VH1_min" size="30" type="number" />
-                                
-                                        <label for="name">VH1 Max: </label>
-                                        <input id="VH1_max" name="VH1_max" size="30" type="number" />
-                                </div>
-
-                                <div>
-                                        <label for="username">VH2 Min: </label>
-                                        <input id="VH2_min" name="VH2_min" size="30" type="number" />
-                                
-                                        <label for="name">VH2 Max: </label>
-                                        <input id="VH2_max" name="VH2_max" size="30" type="number" />
-                                </div>
-
-                                <div>
-                                        <label for="username">PI1 Min: </label>
-                                        <input id="PI1_min" name="PI1_min" size="30" type="number" />
-                                
-                                        <label for="name">PI1 Max: </label>
-                                        <input id="PI1_max" name="PI1_max" size="30" type="number" />
-                                </div>
-
-                                <div>
-                                        <label for="username">LS4 Min: </label>
-                                        <input id="LS4_min" name="LS4_min" size="30" type="number" />
-                                
-                                        <label for="name">LS4 Max: </label>
-                                        <input id="LS4_max" name="LS4_max" size="30" type="number" />
-                                </div>
-
-                                <div>
-                                        <label for="username">LS4A Min: </label>
-                                        <input id="LS4A_min" name="LS4A_min" size="30" type="number" />
-                                        
-                                        <label for="name">LS4A Max: </label>
-                                        <input id="LS4A_max" name="LS4A_max" size="30" type="number" />
-                                </div>
-                            
-
-                         
-                            <br>
-                            <button class="btn btn-primary">Cadastrar</button>
-                        </form>
-            </div>
-           
-          
-    </div>
+<div class="container-fluid"> 
+   <br>
+   <h2>Fichas Técnicas</h2> 
+   <a class="btn btn-success" href="/novaficha"> Inserir Nova Ficha Técnica</a>
+   <a class="btn btn-success" href="/ficha/lista"> Lista de Fichas Técnicas</a>
+   <hr>
    
+   <div class="card">
+      <div class="card-header">
+         <h2>Nova Ficha Técnica</h2>
+      </div>
+      
+      <div class="card-body">
+         <select id="maquinas" name="maquinas" class="form-control">
+            <option > Selecione uma máquina</option>
+            <% maquinas.forEach((maquina) => { %>
+               <option value='<%= maquina.id %>,<%= maquina.tipo.tipo %>'><%= maquina.descricao %> - <%= maquina.tipo.tipo %></option>
+            <% }) %>
+         </select>
+         <br>
+
+         <div id="pastore">
+            <%- include ('./newFichaHaitian.ejs') %>
+         </div>
+         
+         <div id="toshiba">
+            <%- include ('./newFichaToshiba.ejs') %>
+         </div>
+      </div>
+   </div>
+   <br>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src=/scripts/FichaTecnica.js></script>
 <%- include ('../partials/footer.ejs') %>

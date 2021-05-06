@@ -1,0 +1,620 @@
+<form method="POST" action="/fichas/createHaitian">
+   <select style="display:none" id="maquinaHaitian" name="maquinaHaitian" class="form-control">
+      <option > Selecione uma máquina</option>
+      <% maquinas.forEach((maquina) => { %>
+         <option value="<%= maquina.id %>"> <%= maquina.descricao %></option>
+      <% }) %>
+   </select>
+   <br>
+   
+   <div class="d-flex justify-content-between">
+      <!-- INJETORES -->
+      <div class="table-responsive table-ficha justify-content-between" style="width: 50vw; margin-right: 20px;">
+         <table class="table-bordered" style="width: 100%">
+            <thead>
+               <tr>
+                  <th>TOL &#177; 10%</th>
+                  <th colspan="4">CILINDRO</th>
+                  <th colspan="2">BICO</th>
+               </tr>
+               <tr>
+                  <% for(var i = 0; i < 7; i++) { %>
+                     <th><%= i+1 %></th>
+                  <% } %>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <% for(var i = 0; i < 7; i++) { %>
+                     <td>
+                        <input style="width: 100%" id="cilindro<%= i+1 %>" name="cilindro<%= i+1 %>">
+                     </td>
+                  <% } %>
+               </tr>
+            </tbody>
+         </table>
+   
+         <table class="table-bordered" style="width: 100%; margin-top: 30px;">
+            <thead>
+               <tr>
+                  <th colspan="6">INJEÇÃO</th>
+                  <th colspan="1">TOL &#177; 10%</th>
+               </tr>
+               <tr>
+                  <th colspan="2">COMUTAÇÃO</th>
+                  <% for(var i = 5; i >= 1; i--) { %>
+                     <th colspan="1">INJ. <%= i %></th>
+                  <% } %>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <th scope="row">POSIÇÃO</th>
+                  <td colspan="1">
+                     <input style="width: 100%" id="posComutacao" name="posComutacao">
+                  </td>
+                  <% for(var i = 5; i >= 1; i--) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="posInj<%= i %>" name="posInj<%= i %>">
+                     </td>
+                  <% } %>
+               </tr>
+               <tr>
+                  <th scope="row">PRESSÃO</th>
+                  <td colspan="1">
+                     <input style="width: 100%" id="presComutacao" name="presComutacao">
+                  </td>
+                  <% for(var i = 5; i >= 1; i--) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="presInj<%= i %>" name="presInj<%= i %>">
+                     </td>
+                  <% } %>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="2">FLUXO</th>
+                  <% for(var i = 5; i >= 1; i--) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="fluxoInj<%= i %>" name="fluxoInj<%= i %>">
+                     </td>
+                  <% } %>
+               </tr>
+            </tbody>
+            <tfoot>
+               <tr>
+                  <th colspan="2">TEMPO DISPARO:</th>
+                  <td colspan="1">
+                     <input style="width: 100%" id="tempoDisparo" name="tempoDisparo">
+                  </td>
+                  <th colspan="3">TEMPO DE PRESSÃO INJEÇÃO:</th>
+                  <td colspan="1">
+                     <input style="width: 100%" id="pressaoInj" name="pressaoInj">
+                  </td>
+               </tr>
+            </tfoot>
+         </table>
+   
+         <table class="table-bordered" style="width: 100%; margin-top: 30px;">
+            <thead>
+               <tr>
+                  <th colspan="6">RECALQUE</th>
+                  <th colspan="1">TOL &#177; 10%</th>
+               </tr>
+               <tr>
+                  <th colspan="2">bar / seg / %</th>
+                  <% for(var i = 5; i >= 1; i--) { %>
+                     <th colspan="1">MANT. <%= i %></th>
+                  <% } %>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <th scope="row" colspan="2">PRESSÃO</th>
+                  <% for(var i = 5; i >= 1; i--) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="presRecalque<%= i %>" name="presRecalque<%= i %>">
+                     </td>
+                  <% } %>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="2">FLUXO</th>
+                  <% for(var i = 5; i >= 1; i--) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="fluxoRecalque<%= i %>" name="fluxoRecalque<%= i %>">
+                     </td>
+                  <% } %>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="2">TEMPO</th>
+                  <% for(var i = 5; i >= 1; i--) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="tempoRecalque<%= i %>" name="tempoRecalque<%= i %>">
+                     </td>
+                  <% } %>
+               </tr>
+            </tbody>
+         </table>
+   
+         <table class="table-bordered" style="width: 100%; margin-top: 30px;">
+            <thead>
+               <tr>
+                  <th colspan="6">DOSAGEM</th>
+                  <th colspan="1">TOL &#177; 10%</th>
+               </tr>
+               <tr>
+                  <th colspan="2"></th>
+                  <% for(var i = 5; i >= 1; i--) { %>
+                     <th colspan="1">CARGA. <%= i %></th>
+                  <% } %>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <th scope="row" colspan="2">PARTIDA</th>
+                  <% for(var i = 5; i >= 1; i--) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="partDosagem<%= i %>" name="partDosagem<%= i %>">
+                     </td>
+                  <% } %>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="2">PRESSÃO</th>
+                  <% for(var i = 5; i >= 1; i--) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="presDosagem<%= i %>" name="presDosagem<%= i %>">
+                     </td>
+                  <% } %>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="2">FLUXO</th>
+                  <% for(var i = 5; i >= 1; i--) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="fluxoDosagem<%= i %>" name="fluxoDosagem<%= i %>">
+                     </td>
+                  <% } %>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="2">CONTRAPRESSÃO</th>
+                  <% for(var i = 5; i >= 1; i--) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="CPDosagem<%= i %>" name="CPDosagem<%= i %>">
+                     </td>
+                  <% } %>
+               </tr>
+            </tbody>
+            <tfoot>
+               <tr>
+                  <th colspan="2">TEMPO:</th>
+                  <td colspan="5">
+                     <input style="width: 100%" id="tempoDosagem" name="tempoDosagem">
+                  </td>
+               </tr>
+            </tfoot>
+         </table>
+   
+         <table class="table-bordered" style="width: 100%; margin-top: 30px;">
+            <thead>
+               <tr>
+                  <th colspan="6">DESCOMPRESSÃO</th>
+                  <th colspan="1">TOL &#177; 10%</th>
+               </tr>
+               <tr>
+                  <th colspan="3">DESCOMPRIMIR</th>
+                  <th colspan="1">POSIÇÃO</th>
+                  <th colspan="1">PRESSÃO</th>
+                  <th colspan="1">FLUXO</th>
+                  <th colspan="1">TEMPO</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <th colspan="3">ANTES</th>
+                  <% for(var i = 0; i < 4; i++) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="antes<%= i+1 %>" name="antes<%= i+1 %>">
+                     </td>
+                  <% } %>
+               </tr>
+               <tr>
+                  <th colspan="3">DEPOIS</th>
+                  <% for(var i = 0; i < 4; i++) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="depois<%= i+1 %>" name="depois<%= i+1 %>">
+                     </td>
+                  <% } %>
+               </tr>
+            </tbody>
+         </table>
+   
+         <table class="table-bordered" style="width: 100%; margin-top: 30px;">
+            <thead>
+               <tr>
+                  <th colspan="6">FECHAMENTO</th>
+                  <th colspan="1">TOL &#177; 10%</th>
+               </tr>
+               <tr>
+                  <th colspan="2"></th>
+                  <% for(var i = 1; i <= 3; i++) { %>
+                     <th colspan="1">FECHA. <%= i %></th>
+                  <% } %>
+                  <th colspan="1">PROT.M</th>
+                  <th colspan="1">ALTA PRESSÃO</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <th scope="row" colspan="2">POSIÇÃO</th>
+                  <% for(var i = 0; i < 3; i++) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="posFecha<%= i+1 %>" name="posFech<%= i+1 %>">
+                     </td>
+                  <% } %>
+                  <td colspan="1">
+                     <input style="width: 100%" id="protMPos" name="protMPos">
+                  </td>
+                  <td colspan="1">
+                     <input style="width: 100%" id="AltaPresPos" name="AltaPresPos">
+                  </td>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="2">PRESSÃO</th>
+                  <% for(var i = 0; i < 3; i++) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="presFecha<%= i+1 %>" name="presFech<%= i+1 %>">
+                     </td>
+                  <% } %>
+                  <td colspan="1">
+                     <input style="width: 100%" id="protMPres" name="protMPres">
+                  </td>
+                  <td colspan="1">
+                     <input style="width: 100%" id="AltaPresPressao" name="AltaPresPressao">
+                  </td>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="2">FLUXO</th>
+                  <% for(var i = 0; i < 3; i++) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="fluxoFecha<%= i+1 %>" name="fluxoFech<%= i+1 %>">
+                     </td>
+                  <% } %>
+                  <td colspan="1">
+                     <input style="width: 100%" id="protMFluxo" name="protMFluxo">
+                  </td>
+                  <td colspan="1">
+                     <input style="width: 100%" id="AltaPresFluxo" name="AltaPresFluxo">
+                  </td>
+               </tr>
+            </tbody>
+            <tfoot>
+               <tr>
+                  <th colspan="3">TEMPO PROTEÇÃO DE MOLDE:</th>
+                  <td colspan="1">
+                     <input style="width: 100%" id="tempoProtMolde" name="tempoProtMolde">
+                  </td>
+                  <th colspan="2">TEMPO FECHAMENTO:</th>
+                  <td colspan="1">
+                     <input style="width: 100%" id="tempoFecha" name="tempoFecha">
+                  </td>
+               </tr>
+            </tfoot>
+         </table>
+   
+         <table class="table-bordered" style="width: 100%; margin-top: 30px;">
+            <thead>
+               <tr>
+                  <th colspan="6">ABERTURA</th>
+                  <th colspan="1">TOL &#177; 10%</th>
+               </tr>
+               <tr>
+                  <th colspan="2"></th>
+                  <% for(var i = 5; i >= 1; i--) { %>
+                     <th colspan="1">ABRIR. <%= i %></th>
+                  <% } %>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <th scope="row" colspan="2">POSIÇÃO</th>
+                  <% for(var i = 5; i >= 1; i--) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="posAbertura<%= i %>" name="posAbertura<%= i %>">
+                     </td>
+                  <% } %>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="2">PRESSÃO</th>
+                  <% for(var i = 5; i >= 1; i--) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="presAbertura<%= i %>" name="presAbertura<%= i %>">
+                     </td>
+                  <% } %>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="2">FLUXO</th>
+                  <% for(var i = 5; i >= 1; i--) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="fluxoAbertura<%= i %>" name="fluxoAbertura<%= i %>">
+                     </td>
+                  <% } %>
+               </tr>
+            </tbody>
+            <tfoot>
+               <tr>
+                  <th colspan="3">RESFRIAMENTO:</th>
+                  <td colspan="1">
+                     <input style="width: 100%" id="resfriamento" name="resfriamento">
+                  </td>
+                  <th colspan="2">TEMPO ABERTURA:</th>
+                  <td colspan="1">
+                     <input style="width: 100%" id="tempoAbertura" name="tempoAbertura">
+                  </td>
+               </tr>
+            </tfoot>
+         </table>
+   
+         <table class="table-bordered" style="width: 100%; margin-top: 30px;">
+            <thead>
+               <tr>
+                  <th colspan="6">EXTRAÇÃO</th>
+                  <th colspan="1">TOL &#177; 10%</th>
+               </tr>
+               <tr>
+                  <th rowspan="2" colspan="1"></th>
+                  <th colspan="3">AVANÇO</th>
+                  <th colspan="3">RECUO</th>
+               </tr>
+               <tr>
+                  <% for(var i = 1; i <= 3; i++) { %>
+                     <th colspan="1">EXTRAIR. <%= i %></th>
+                  <% } %>
+                  <% for(var i = 3; i >= 1; i--) { %>
+                     <th colspan="1">EXTRAIR. <%= i %></th>
+                  <% } %>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <th scope="row" colspan="1">POSIÇÃO</th>
+                  <% for(var i = 0; i < 3; i++) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="posAvanco<%= i+1 %>" name="posAvanco<%= i+1 %>">
+                     </td>
+                  <% } %>
+                  <% for(var i = 0; i < 3; i++) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="posRecuo<%= i+1 %>" name="posRecuo<%= i+1 %>">
+                     </td>
+                  <% } %>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="1">PRESSÃO</th>
+                  <% for(var i = 0; i < 3; i++) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="presAvanco<%= i+1 %>" name="presAvanco<%= i+1 %>">
+                     </td>
+                  <% } %>
+                  <% for(var i = 0; i < 3; i++) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="presRecuo<%= i+1 %>" name="presRecuo<%= i+1 %>">
+                     </td>
+                  <% } %>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="1">FLUXO</th>
+                  <% for(var i = 0; i < 3; i++) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="fluxoAvanco<%= i+1 %>" name="fluxoAvanco<%= i+1 %>">
+                     </td>
+                  <% } %>
+                  <% for(var i = 0; i < 3; i++) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="fluxoRecuo<%= i+1 %>" name="fluxoRecuo<%= i+1 %>">
+                     </td>
+                  <% } %>
+               </tr>
+            </tbody>
+            <tfoot>
+               <tr>
+                  <th colspan="2">ATRASO:</th>
+                  <td colspan="1">
+                     <input style="width: 100%" id="atraso" name="atraso">
+                  </td>
+                  <th colspan="2">BATIDA:</th>
+                  <td colspan="2">
+                     <input style="width: 100%" id="batida" name="batida">
+                  </td>
+               </tr>
+            </tfoot>
+         </table>
+   
+         <table class="table-bordered" style="width: 100%; margin-top: 30px;">
+            <thead>
+               <tr>
+                  <th colspan="6">RADIAL HIDRÁULICO</th>
+                  <th colspan="1">TOL &#177; 10%</th>
+               </tr>
+               <tr>
+                  <th rowspan="2" colspan="1"></th>
+                  <% for(var i = 1; i <= 3; i++) { %>
+                     <th colspan="2">RADIAL</th>
+                  <% } %>
+               </tr>
+               <tr>
+                  <% for(var i = 1; i <= 3; i++) { %>
+                     <th colspan="1">ENTRADA</th>
+                     <th colspan="1">SAÍDA</th>
+                  <% } %>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <th colspan="1">TYPE</th>
+                  <th colspan="1">TEMPO</th>
+                  <th colspan="1">LIMITE</th>
+                  <% for(var i = 0; i < 4; i++) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="type<%= i+1 %>" name="type<%= i+1 %>">
+                     </td>
+                  <% } %>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="1">PRESSÃO</th>
+                  <% for(var i = 0; i < 6; i++) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="pressaoRadial<%= i+1 %>" name="pressaoRadial<%= i+1 %>">
+                     </td>
+                  <% } %>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="1">FLUXO</th>
+                  <% for(var i = 0; i < 6; i++) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="fluxoRadial<%= i+1 %>" name="fluxoRadial<%= i+1 %>">
+                     </td>
+                  <% } %>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="1">ACT. POSIÇÃO</th>
+                  <% for(var i = 0; i < 6; i++) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="posRadial<%= i+1 %>" name="posRadial<%= i+1 %>">
+                     </td>
+                  <% } %>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="1">ACT. TEMPO</th>
+                  <% for(var i = 0; i < 6; i++) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="tempoRadial<%= i+1 %>" name="tempoRadial<%= i+1 %>">
+                     </td>
+                  <% } %>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="1">SCRCOUNT</th>
+                  <% for(var i = 0; i < 6; i++) { %>
+                     <td colspan="1">
+                        <input style="width: 100%" id="scrcount<%= i+1 %>" name="scrcount<%= i+1 %>">
+                     </td>
+                  <% } %>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <!-- FIM INJETORES -->      
+      
+      <!-- PERIFÉRICOS -->
+      <div class="table-responsive table-ficha d-flex flex-column justify-content-between" style="width: 50vw;">
+         <table class="table-bordered" style="width: 100%">
+            <thead>
+               <tr>
+                  <th colspan="5">CÂMARA QUENTE</th>
+                  <th colspan="2">TOL &#177; 10%</th>
+               </tr>
+            </thead>
+            <tbody>
+               <% for(var j = 0; j < 19; j++) { %>
+                  <tr>
+                     <% for(var i = 0; i < 7; i++) { %>
+                        <% count++ %>
+   
+                        <% if(count <= 130) { %>
+                           <td>
+                              <input style="width: 100%" id="camara<%= i+1 %>" name="camara<%= i+1 %>" placeholder="<%= count %>">
+                           </td>
+                        <% } %>
+                     <% } %>
+                  </tr>
+               <% } %>
+            </tbody>
+         </table>
+         
+         <table class="table-bordered" style="width: 100%;">
+            <thead>
+               <tr>
+                  <th colspan="5">VALVE GATES</th>
+                  <th colspan="2">TOL &#177; 10%</th>
+               </tr>
+               <tr>
+                  <th colspan="7">SEQUENCIADOR</th>
+               </tr>
+            </thead>
+            <tbody>
+               <% count = 0 %>
+               <% for(var j = 0; j < 13; j++) { %>
+                  <tr>
+                     <% for(var i = 0; i < 7; i++) { %>
+                        <% count++ %>
+   
+                        <% if(count <= 90) { %>
+                           <td>
+                              <input style="width: 100%" id="VG<%= i+1 %>" name="VG<%= i+1 %>" placeholder="VG<%= count %>">
+                           </td>
+                        <% } %>
+                     <% } %>
+                  </tr>
+               <% } %>
+            </tbody>
+         </table>
+   
+         <table class="table-bordered">
+            <thead>
+               <tr>
+                  <th colspan="7">REFRIGERAÇÃO DO MOLDE</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <th colspan="3" style="text-align: center;">LADO FIXO</th>
+                  <th rowspan="3" style="text-align: center;">TOL<br> &#177;<br> 10%</th>
+                  <th colspan="3" style="text-align: center;">LADO MÓVEL</th>
+               </tr>
+               <tr>
+                  <td colspan="3">
+                     <input style="width: 100%" id="rmladofixo1" name="rmladofixo1" placeholder="50C">
+                  </td>
+                  <td colspan="3">
+                     <input style="width: 100%" id="rmladomovel1" name="rmladomovel1" placeholder="GELADA">
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="3">
+                     <input style="width: 100%" id="rmladofixo2" name="rmladofixo2" placeholder="50C">
+                  </td>
+                  <td colspan="3">
+                     <input style="width: 100%" id="rmladomovel2" name="rmladomovel2" placeholder="GELADA">
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+   
+         <table class="table-bordered">
+            <thead>
+               <tr>
+                  <th colspan="7">STEAM(VAPOR)</th>
+               </tr>
+               <tr>
+                  <th colspan="7">REFRIGERAÇÃO DO MOLDE</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <th colspan="3" style="text-align: center;">LADO FIXO</th>
+                  <th rowspan="3" style="text-align: center;">TOL<br> &#177;<br> 10%</th>
+                  <th colspan="3" style="text-align: center;">LADO MÓVEL</th>
+               </tr>
+               <tr>
+                  <td colspan="3">
+                     <input style="width: 100%" id="valorladofixo" name="valorladofixo">
+                  </td>
+                  <td colspan="3">
+                     <input style="width: 100%" id="valorladomovel" name="valorladomovel">
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <!-- FIM PERIFÉRICOS -->
+   </div>
+
+   <br>
+   <button class="btn btn-primary">Cadastrar</button>
+</form>

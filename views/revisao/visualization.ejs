@@ -1,0 +1,140 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/sidebar.ejs') %>
+
+<div class="container">
+   <br>
+   <h2>Revisões</h2> 
+   <a class="btn btn-success" href="/novaficha"> Inserir Nova Ficha Técnica</a>
+   <a class="btn btn-success" href="/ficha/lista"> Lista de Fichas Técnicas</a>
+   <hr>
+   
+   <div class="card">
+      <div class="card-header">                
+         <h2>Revisão Id <%= revisoes.revisao %></h2>              
+      </div>
+      <div class="card-body">
+         <div>
+            <label style="font-weight: bold; margin-right: 15px" for="username">VI1 Min: </label>
+            <input style="text-align: left;" class="read-only" readonly id="VI1_min" name="VI1_min" size="30" type="number" value="<%= revisoes.VI1_min %>" />
+      
+            <label style="font-weight: bold; margin-right: 15px" for="name">VI1 Max: </label>
+            <input style="text-align: left;" class="read-only" readonly id="VI1_max" name="VI1_max" size="30" type="number" value="<%= revisoes.VI1_max %>" />
+         </div>
+      
+         <div>
+            <label style="font-weight: bold; margin-right: 15px" for="username">VI2 Min: </label>
+            <input style="text-align: left;" class="read-only" readonly id="VI2_min" name="VI2_min" size="30" type="number" value="<%= revisoes.VI2_min %>" />
+         
+            <label style="font-weight: bold; margin-right: 15px" for="name">VI2 Max: </label>
+            <input style="text-align: left;" class="read-only" readonly id="VI2_max" name="VI2_max" size="30" type="number" value="<%= revisoes.VI2_max %>" />
+         </div>
+      
+         <div>
+            <label style="font-weight: bold; margin-right: 15px" for="username">VI3 Min: </label>
+            <input style="text-align: left;" class="read-only" readonly id="VI3_min" name="VI3_min" size="30" type="number" value="<%= revisoes.VI3_min %>" />
+         
+            <label style="font-weight: bold; margin-right: 15px" for="name">VI3 Max: </label>
+            <input style="text-align: left;" class="read-only" readonly id="VI3_max" name="VI3_max" size="30" type="number" value="<%= revisoes.VI3_max %>" />
+         </div>
+      
+         <div>
+            <label style="font-weight: bold; margin-right: 15px" for="username">VI4 Min: </label>
+            <input style="text-align: left;" class="read-only" readonly id="VI4_min" name="VI4_min" size="30" type="number" value="<%= revisoes.VI4_min %>" />
+         
+            <label style="font-weight: bold; margin-right: 15px" for="name">VI4 Max: </label>
+            <input style="text-align: left;" class="read-only" readonly id="VI4_max" name="VI4_max" size="30" type="number" value="<%= revisoes.VI4_max %>" />
+         </div>
+      
+         <div>
+            <label style="font-weight: bold; margin-right: 15px" for="username">VI5 Min: </label>
+            <input style="text-align: left;" class="read-only" readonly id="VI5_min" name="VI5_min" size="30" type="number" value="<%= revisoes.VI5_min %>" />
+         
+            <label style="font-weight: bold; margin-right: 15px" for="name">VI5 Max: </label>
+            <input style="text-align: left;" class="read-only" readonly id="VI5_max" name="VI5_max" size="30" type="number" value="<%= revisoes.VI5_max %>" />
+         </div>
+      
+         <div>
+            <label style="font-weight: bold; margin-right: 15px" for="username">VI6 Min: </label>
+            <input style="text-align: left;" class="read-only" readonly id="VI6_min" name="VI6_min" size="30" type="number" value="<%= revisoes.VI6_min %>" />
+         
+            <label style="font-weight: bold; margin-right: 15px" for="name">VI6 Max: </label>
+            <input style="text-align: left;" class="read-only" readonly id="VI6_max" name="VI6_max" size="30" type="number" value="<%= revisoes.VI6_max %>" />
+         </div>
+      
+         <div>
+            <label style="font-weight: bold; margin-right: 15px" for="username">VI7 Min: </label>
+            <input style="text-align: left;" class="read-only" readonly id="VI7_min" name="VI7_min" size="30" type="number" value="<%= revisoes.VI7_min %>" />
+         
+            <label style="font-weight: bold; margin-right: 15px" for="name">VI7 Max: </label>
+            <input style="text-align: left;" class="read-only" readonly id="VI7_max" name="VI7_max" size="30" type="number" value="<%= revisoes.VI7_max %>" />
+         </div>
+      
+         <div>
+            <label style="font-weight: bold; margin-right: 15px" for="username">VI8 Min: </label>
+            <input style="text-align: left;" class="read-only" readonly id="VI8_min" name="VI8_min" size="30" type="number" value="<%= revisoes.VI8_min %>" />
+         
+            <label style="font-weight: bold; margin-right: 15px" for="name">VI8 Max: </label>
+            <input style="text-align: left;" class="read-only" readonly id="VI8_max" name="VI8_max" size="30" type="number" value="<%= revisoes.VI8_max %>" />
+         </div>
+      
+         <div>
+            <label style="font-weight: bold; margin-right: 15px" for="username">VI9 Min: </label>
+            <input style="text-align: left;" class="read-only" readonly id="VI9_min" name="VI9_min" size="30" type="number" value="<%= revisoes.VI9_min %>" />
+         
+            <label style="font-weight: bold; margin-right: 15px" for="name">VI9 Max: </label>
+            <input style="text-align: left;" class="read-only" readonly id="VI9_max" name="VI9_max" size="30" type="number" value="<%= revisoes.VI9_max %>" />
+         </div>
+      
+         <div>
+            <label style="font-weight: bold; margin-right: 15px" for="username">VI10 Min: </label>
+            <input style="text-align: left;" class="read-only" readonly id="VI10_min" name="VI10_min" size="30" type="number" value="<%= revisoes.VI10_min %>" />
+         
+            <label style="font-weight: bold; margin-right: 15px" for="name">VI10 Max: </label>
+            <input style="text-align: left;" class="read-only" readonly id="VI10_max" name="VI10_max" size="30" type="number" value="<%= revisoes.VI10_max %>" />
+         </div>
+      
+         <div>
+            <label style="font-weight: bold; margin-right: 15px" for="username">VH1 Min: </label>
+            <input style="text-align: left;" class="read-only" readonly id="VH1_min" name="VH1_min" size="30" type="number" value="<%= revisoes.VH1_min %>" />
+         
+            <label style="font-weight: bold; margin-right: 15px" for="name">VH1 Max: </label>
+            <input style="text-align: left;" class="read-only" readonly id="VH1_max" name="VH1_max" size="30" type="number" value="<%= revisoes.VH1_max %>" />
+         </div>
+      
+         <div>
+            <label style="font-weight: bold; margin-right: 15px" for="username">VH2 Min: </label>
+            <input style="text-align: left;" class="read-only" readonly id="VH2_min" name="VH2_min" size="30" type="number" value="<%= revisoes.VH2_min %>" />
+         
+            <label style="font-weight: bold; margin-right: 15px" for="name">VH2 Max: </label>
+            <input style="text-align: left;" class="read-only" readonly id="VH2_max" name="VH2_max" size="30" type="number" value="<%= revisoes.VH2_max %>" />
+         </div>
+      
+         <div>
+            <label style="font-weight: bold; margin-right: 15px" for="username">PI1 Min: </label>
+            <input style="text-align: left;" class="read-only" readonly id="PI1_min" name="PI1_min" size="30" type="number" value="<%= revisoes.PI1_min %>" />
+      
+            <label style="font-weight: bold; margin-right: 15px" for="name">PI1 Max: </label>
+            <input style="text-align: left;" class="read-only" readonly id="PI1_max" name="PI1_max" size="30" type="number" value="<%= revisoes.PI1_max%>" />
+         </div>
+      
+         <div>
+            <label style="font-weight: bold; margin-right: 15px" for="username">LS4 Min: </label>
+            <input style="text-align: left;" class="read-only" readonly id="LS4_min" name="LS4_min" size="30" type="number" value="<%= revisoes.LS4_min %>" />
+      
+            <label style="font-weight: bold; margin-right: 15px" for="name">LS4 Max: </label>
+            <input style="text-align: left;" class="read-only" readonly id="LS4_max" name="LS4_max" size="30" type="number" value="<%= revisoes.LS4_max %>" />
+         </div>
+      
+         <div>
+            <label style="font-weight: bold; margin-right: 15px" for="username">LS4A Min: </label>
+            <input style="text-align: left;" class="read-only" readonly id="LS4A_min" name="LS4A_min" size="30" type="number" value="<%= revisoes.LS4A_min %>" />
+            
+            <label style="font-weight: bold; margin-right: 15px" for="name">LS4A Max: </label>
+            <input style="text-align: left;" class="read-only" readonly id="LS4A_max" name="LS4A_max" size="30" type="number" value="<%= revisoes.LS4A_max %>" />
+         </div>
+      </div>
+   </div>
+   <br>
+</div>
+
+<%- include ('../partials/footer.ejs') %>

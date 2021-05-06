@@ -19,3 +19,38 @@
     color: #fff;
     transition: all 0.3s;
 }
+
+.table-ficha .table-bordered {
+   border: 2px solid #999;
+}
+.table-ficha .table-bordered > thead > tr > th {
+   border: 1px solid #999;
+   padding: 0.2rem;
+   text-align: center;
+}
+.table-ficha .table-bordered > tbody > tr > td {
+   border: 1px solid #999;
+   padding: 0.3rem;
+}
+.table-ficha .table-bordered > tbody > tr > th{
+   border: 1px solid #999;
+   padding: 0.3rem;
+   text-align: center;
+}
+.table-ficha .table-bordered > tfoot > tr > th{
+   border: 1px solid #999;
+   padding: 0.3rem;
+   border-right: none;
+   text-align: center;
+}
+.table-ficha .table-bordered > tfoot > tr > td{
+   border: 1px solid #999;
+   padding: 0.3rem;
+   border-left: none;
+}
+
+input.read-only {
+   border: none;
+   text-align: center;
+   font-style: italic;
+}

@@ -1,0 +1,40 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/sidebar.ejs') %>
+
+<div class="container mt-4"> 
+   <br>
+   <h2>Fichas Técnicas</h2> 
+   <a class="btn btn-success" href="/novaficha"> Inserir Nova Ficha Técnica</a>
+   <a class="btn btn-success" href="/ficha/lista"> Lista de Fichas Técnicas</a>
+   <hr>
+   
+   <table class="table table-bordered"> 
+      <thead>
+         <tr>
+            <th> ID Revisão </th>
+            <th> ID Ficha Técnica </th>
+            <th> ID Máquina </th>
+            <th> Máquina </th>
+         </tr>
+      </thead>
+      <tbody>
+         <% revisoes.forEach((revisao) => { %>
+            <tr>
+               <td> <%= revisao.revisao %> </td>
+               <td> <%= revisao.idFichaTecnica %> </td>
+               <td> <%= revisao.maquinaId %> </td>
+               <td> <%= revisao.maquina.descricao %> </td>
+               <td> 
+                  <form method="GET" action="/ficha/revisao/visualizacao/<%= revisao.revisao %>" style="display: inline;">                                     
+                     <button class="btn btn-warning">Visualizar</button>
+                  </form>
+               </td>
+           </tr>
+         <% }) %>
+      </tbody>
+  </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src=/scripts/FichaTecnica.js></script>
+<%- include ('../partials/footer.ejs') %>
