@@ -99,26 +99,26 @@ app.get("/",(req,res) =>{
 
 
 //Cria Tabelas
-//    Tipo.sync();
-//    Maquinas.sync();
-//    User.sync();
-//    Produtos.sync();
-//    MateriaPrima.sync();
-//    Moldes.sync();
-//    Clientes.sync();
-//    FichaTecnicaToshiba.sync();
+   // Tipo.sync();
+   // Maquinas.sync();
+   // User.sync();
+   // Produtos.sync();
+   // MateriaPrima.sync();
+   // Moldes.sync();
+   // Clientes.sync();
+   // FichaTecnicaToshiba.sync();
    // LimitesFichaTecnicaToshiba.sync();
-//    ParametrosReaisToshiba.sync();   
-//    ParametrosReaisAutomata.sync();        
-//    LimiteParametrosToshiba.sync();
-//    LimiteParametrosAutomata.sync();
-//    Alertas.sync();
-//    AlertasAbertos.sync();
-//    FichaPastoreInjetores.sync();
-//    FichaPastorePerifericos.sync();
-//    RevisaoLimitesFichaTecnicaToshiba.sync();
+   // ParametrosReaisToshiba.sync();   
+   // ParametrosReaisAutomata.sync();        
+   // LimiteParametrosToshiba.sync();
+   // LimiteParametrosAutomata.sync();
+   // Alertas.sync();
+   // AlertasAbertos.sync();
+   // FichaPastoreInjetores.sync();
+   // FichaPastorePerifericos.sync();
+   // RevisaoLimitesFichaTecnicaToshiba.sync();
    // RevisaoFichaTecnicaPastoreInjetores.sync();
-//    RevisaoFichaTecnicaPastorePerifericos.sync();
+   // RevisaoFichaTecnicaPastorePerifericos.sync();
 
 
 //     User.create({

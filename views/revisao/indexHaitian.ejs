@@ -22,8 +22,8 @@
             <tr>
                <td> <%= injetor.revisao %> </td>
                <td> <%= injetor.idFichaTecnica %> </td>
-               <td> <%= injetor.maquinaId %> </td>
-               <td> <%= injetor.maquina.descricao %> </td>
+               <td> <%= injetor.maq %> </td>
+               <td> <%= maquinaDesc %> </td>
                <td> 
                   <form method="GET" action="/revisao/visualizacao/<%= injetor.revisao %>" style="display: inline;">                                     
                      <button class="btn btn-warning">Visualizar</button>

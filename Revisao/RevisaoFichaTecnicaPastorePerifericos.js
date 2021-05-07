@@ -17,7 +17,7 @@ const RevisaoFichaPastorePerifericos = conn.define('revisao_perifericos_pastore'
       model: 'perifericos_pastore', // <<< Note, its table's name, not object name
       key: 'id'
    },
-   maquinaId:{
+   maq:{
       type: Sequelize.INTEGER,
       model: 'maquinas', // <<< Note, its table's name, not object name
       key: 'id'
@@ -253,12 +253,11 @@ const RevisaoFichaPastorePerifericos = conn.define('revisao_perifericos_pastore'
    vaporLadoFixo2: Sequelize.FLOAT,
 })
 
-// Clientes.hasMany(RevisaoFichaPastorePerifericos);
-// Moldes.hasMany(RevisaoFichaPastorePerifericos);
-// Maquinas.hasMany(RevisaoFichaPastorePerifericos);
-// Produtos.hasMany(RevisaoFichaPastorePerifericos);
-// MateriaPrima.hasMany(RevisaoFichaPastorePerifericos);
-RevisaoFichaPastorePerifericos.belongsTo(Maquinas);
+Clientes.hasMany(RevisaoFichaPastorePerifericos);
+Moldes.hasMany(RevisaoFichaPastorePerifericos);
+Maquinas.hasMany(RevisaoFichaPastorePerifericos);
+Produtos.hasMany(RevisaoFichaPastorePerifericos);
+MateriaPrima.hasMany(RevisaoFichaPastorePerifericos);
 
 
 module.exports = RevisaoFichaPastorePerifericos;

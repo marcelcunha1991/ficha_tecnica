@@ -8,7 +8,7 @@ const MateriaPrima = require("../MateriaPrima/MateriasPrimas");
 
 const Ficha = conn.define('limites_ficha_tecnica_toshiba',{
     
-    maquinaId:{
+    maq:{
         type: Sequelize.INTEGER,
         model: 'maquinas', // <<< Note, its table's name, not object name
         key: 'id'
@@ -48,12 +48,11 @@ const Ficha = conn.define('limites_ficha_tecnica_toshiba',{
     revisao: Sequelize.INTEGER
 })
 
-// Clientes.hasMany(Ficha);
-// Moldes.hasMany(Ficha);
-// Maquinas.hasMany(Ficha);
-// Produtos.hasMany(Ficha);
-// MateriaPrima.hasMany(Ficha);
-Ficha.belongsTo(Maquinas)
+Clientes.hasMany(Ficha);
+Moldes.hasMany(Ficha);
+Maquinas.hasMany(Ficha);
+Produtos.hasMany(Ficha);
+MateriaPrima.hasMany(Ficha);
 
 // Ficha.sync();
 

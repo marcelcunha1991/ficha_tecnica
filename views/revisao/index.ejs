@@ -22,8 +22,8 @@
             <tr>
                <td> <%= revisao.revisao %> </td>
                <td> <%= revisao.idFichaTecnica %> </td>
-               <td> <%= revisao.maquinaId %> </td>
-               <td> <%= revisao.maquina.descricao %> </td>
+               <td> <%= revisao.maq %> </td>
+               <td> <%= maquinaDesc %> </td>
                <td> 
                   <form method="GET" action="/ficha/revisao/visualizacao/<%= revisao.revisao %>" style="display: inline;">                                     
                      <button class="btn btn-warning">Visualizar</button>

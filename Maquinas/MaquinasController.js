@@ -177,12 +177,12 @@ router.post("/maquinas/delete",(req,res) => {
 
                LimitesFichaTecnicaToshiba.destroy({
                   where:{
-                     maquinaId:id
+                     maq:id
                   }
                }).then(() => {
                   RevisaoLimitesFichaTecnicaToshiba.destroy({
                      where:{
-                        maquinaId:id
+                        maq:id
                      }
                   }).then(() => {
                      Maquinas.destroy({
@@ -200,22 +200,22 @@ router.post("/maquinas/delete",(req,res) => {
                
                FichaTecnicaPastoreInjetores.destroy({
                   where:{
-                     maquinaId:id
+                     maq:id
                   }
                }).then(() => {
                   FichaPastorePerifericos.destroy({
                      where:{
-                        maquinaId:id
+                        maq:id
                      }
                   }).then(() => {
                      RevisaoFichaTecnicaPastoreInjetores.destroy({
                         where:{
-                           maquinaId:id
+                           maq:id
                         }
                      })
                      RevisaoFichaTecnicaPastorePerifericos.destroy({
                         where:{
-                           maquinaId:id
+                           maq:id
                         }
                      }).then(() => {
                         Maquinas.destroy({

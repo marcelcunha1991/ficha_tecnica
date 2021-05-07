@@ -305,7 +305,7 @@ router.post("/fichas/createToshiba",(req,res) => {
    
 
    LimitesFichaTecnicaToshiba.create({
-      maquinaId: maquina,
+      maq: maquina,
       VI1_min: VI1_min,
       VI1_max: VI1_max,
       VI2_min: VI2_min,
@@ -341,7 +341,7 @@ router.post("/fichas/createToshiba",(req,res) => {
       //*salvando os dados antigos no banco de revisao antes do usuario fazer a edição
       RevisaoLimitesFichaTecnicaToshiba.create({
          idFichaTecnica: data.id,
-         maquinaId: maquina,
+         maq: maquina,
          VI1_min: VI1_min,
          VI1_max: VI1_max,
          VI2_min: VI2_min,
@@ -662,7 +662,7 @@ router.post("/fichas/update",(req,res) => {
       //*salvando os dados antigos no banco de revisao antes do usuario fazer a edição
       RevisaoLimitesFichaTecnicaToshiba.create({
          idFichaTecnica: id,
-         maquinaId: maquina,
+         maq: maquina,
          VI1_min: VI1_min,
          VI1_max: VI1_max,
          VI2_min: VI2_min,
@@ -703,7 +703,7 @@ router.post("/fichas/update",(req,res) => {
    
 })
 
-router.post("/fichas/delete",(req,res) => {
+router.post("/fichas/deleteToshiba",(req,res) => {
    var id = req.body.id;
    if (id != undefined){
 
@@ -733,12 +733,6 @@ router.post("/fichas/delete",(req,res) => {
 
 router.get("/ficha/lista",(req,res) => {
    var maquinas;
-   var fichas;
-   var tipos;
-
-   Tipo.findAll().then(tipo => {
-      tipos = tipo;
-   })
 
    Maquinas.findAll({
       include: [{
@@ -748,29 +742,8 @@ router.get("/ficha/lista",(req,res) => {
       }]
    }).then(maquina => {
       maquinas = maquina;
-   })
-      
-   LimitesFichaTecnicaToshiba.findAll({
-      include: [{
-         model: Maquinas,
-         required: true,
-         attributes:['descricao']
-      }]
-   }).then(ficha => {
-      fichas = ficha;
-   })
-   
-   FichaTecnicaPastoreInjetores.findAll({
-      include: [{
-         model: Maquinas,
-         required: true,
-         attributes:['descricao']
-      }]
-   }).then(injetor => {
       res.render("fichas/list", {
-         maquinas: maquinas,
-         fichas: fichas,
-         injetores: injetor,
+         maquinas: maquina,
          nav_maquinas : "",
          nav_produtos : "",
          nav_mp : "",
@@ -780,9 +753,32 @@ router.get("/ficha/lista",(req,res) => {
          nav_parametros:"",
          nav_ficha: "active",
          nav_alertas:"",
-         tipos: tipos
       })
    })
+})
+
+router.get("/ficha/lista/:id/:maquina",(req,res) => {
+   var id = req.params.id;
+   var maquina = req.params.maquina;
+
+   if (maquina === "Toshiba") {
+      LimitesFichaTecnicaToshiba.findAll({
+         where: {
+            maq: id
+         }
+      }).then(ficha => {
+         res.send(ficha)
+      })
+
+   } else if (maquina === "HAITIAN") {
+      FichaTecnicaPastoreInjetores.findAll({
+         where: {
+            maq: id
+         }
+      }).then(injetor => {
+         res.send(injetor)
+      })
+   }
 })
 
 router.get("/fichas/editToshiba/:id",(req,res) => {
@@ -796,14 +792,14 @@ router.get("/fichas/editToshiba/:id",(req,res) => {
    LimitesFichaTecnicaToshiba.findByPk(id).then(ficha => {
       res.render("fichas/editToshiba",{
          ficha:ficha, 
-         nav_maquinas : "active",
+         nav_maquinas : "",
          nav_produtos : "",
          nav_mp : "",
          nav_usuarios : "",
          nav_moldes : "",
          nav_clientes : "",
          nav_parametros:"",
-         nav_ficha: "",
+         nav_ficha: "active",
          nav_alertas:"",
          count: 0
       })
@@ -833,14 +829,14 @@ router.get("/fichas/editHaitian/:id",(req,res) => {
       res.render("fichas/editHaitian",{
          injetor:injetor, 
          perifericos:perifericos, 
-         nav_maquinas : "active",
+         nav_maquinas : "",
          nav_produtos : "",
          nav_mp : "",
          nav_usuarios : "",
          nav_moldes : "",
          nav_clientes : "",
          nav_parametros:"",
-         nav_ficha: "",
+         nav_ficha: "active",
          nav_alertas:"",
          count: 0,
          iteration: 0,
@@ -1241,7 +1237,7 @@ router.post("/fichas/createHaitian",(req,res) => {
 
    //*salvando os dados
    FichaTecnicaPastoreInjetores.create({
-      maquinaId: maquina,
+      maq: maquina,
       cilindro1: cilindro1,
       cilindro2: cilindro2,
       cilindro3: cilindro3,
@@ -1403,7 +1399,7 @@ router.post("/fichas/createHaitian",(req,res) => {
    }).then(() => {
 
       FichaPastorePerifericos.create({
-         maquinaId: maquina,
+         maq: maquina,
          camara1: camara1,
          camara2: camara2,
          camara3: camara3,
@@ -1634,7 +1630,7 @@ router.post("/fichas/createHaitian",(req,res) => {
          //*salvando os dados no banco de revisao
          RevisaoFichaTecnicaPastorePerifericos.create({
             idFichaTecnica: data.id,
-            maquinaId: maquina,
+            maq: maquina,
             camara1: camara1,
             camara2: camara2,
             camara3: camara3,
@@ -1865,7 +1861,7 @@ router.post("/fichas/createHaitian",(req,res) => {
 
             RevisaoFichaTecnicaPastoreInjetores.create({
                idFichaTecnica: data.id,
-               maquinaId: maquina,
+               maq: maquina,
                cilindro1: cilindro1,
                cilindro2: cilindro2,
                cilindro3: cilindro3,
@@ -2060,6 +2056,8 @@ router.post("/fichas/updateHaitian",(req,res) => {
    var fluxoInjecao3 = req.body.fluxoInj3;
    var fluxoInjecao4 = req.body.fluxoInj2;
    var fluxoInjecao5 = req.body.fluxoInj1;
+   var tempoDisparo = req.body.tempoDisparo;
+   var pressaoInj = req.body.pressaoInj;
    var presRecalque1 = req.body.presRecalque5;
    var presRecalque2 = req.body.presRecalque4;
    var presRecalque3 = req.body.presRecalque3;
@@ -2095,6 +2093,7 @@ router.post("/fichas/updateHaitian",(req,res) => {
    var CPDosagem3 = req.body.CPDosagem3;
    var CPDosagem4 = req.body.CPDosagem2;
    var CPDosagem5 = req.body.CPDosagem1;
+   var tempoDosagem = req.body.tempoDosagem;
    var antesPos = req.body.antes1;
    var antesPres = req.body.antes2;
    var antesFluxo = req.body.antes3;
@@ -2118,6 +2117,8 @@ router.post("/fichas/updateHaitian",(req,res) => {
    var fluxoFecha3 = req.body.fluxoFech3;
    var protMFluxo = req.body.protMFluxo;
    var AltaPresFluxo = req.body.AltaPresFluxo;
+   var tempoProtMolde = req.body.tempoProtMolde;
+   var tempoFecha = req.body.tempoFecha;
    var posAbertura1 = req.body.posAbertura5;
    var posAbertura2 = req.body.posAbertura4;
    var posAbertura3 = req.body.posAbertura3;
@@ -2133,6 +2134,8 @@ router.post("/fichas/updateHaitian",(req,res) => {
    var fluxoAbertura3 = req.body.fluxoAbertura3;
    var fluxoAbertura4 = req.body.fluxoAbertura2;
    var fluxoAbertura5 = req.body.fluxoAbertura1;
+   var resfriamento = req.body.resfriamento;
+   var tempoAbertura = req.body.tempoAbertura;
    var posAvanco1 = req.body.posAvanco1;
    var posAvanco2 = req.body.posAvanco2;
    var posAvanco3 = req.body.posAvanco3;
@@ -2151,6 +2154,8 @@ router.post("/fichas/updateHaitian",(req,res) => {
    var fluxoRecuo1 = req.body.fluxoRecuo1;
    var fluxoRecuo2 = req.body.fluxoRecuo2;
    var fluxoRecuo3 = req.body.fluxoRecuo3;
+   var atraso = req.body.atraso;
+   var batida = req.body.batida;
    var radialTypeEntrada1 = req.body.type1;
    var radialTypeSaida1 = req.body.type2;
    var radialTypeEntrada2 = req.body.type3;
@@ -2438,6 +2443,8 @@ router.post("/fichas/updateHaitian",(req,res) => {
       fluxoInjecao3: fluxoInjecao3,
       fluxoInjecao4: fluxoInjecao4,
       fluxoInjecao5: fluxoInjecao5,
+      tempoDisparo: tempoDisparo,
+      pressaoInj: pressaoInj,
       presRecalque1: presRecalque1,
       presRecalque2: presRecalque2,
       presRecalque3: presRecalque3,
@@ -2473,6 +2480,7 @@ router.post("/fichas/updateHaitian",(req,res) => {
       CPDosagem3: CPDosagem3,
       CPDosagem4: CPDosagem4,
       CPDosagem5: CPDosagem5,
+      tempoDosagem: tempoDosagem,
       antesPos: antesPos,
       antesPres: antesPres,
       antesFluxo: antesFluxo,
@@ -2496,6 +2504,8 @@ router.post("/fichas/updateHaitian",(req,res) => {
       fluxoFecha3: fluxoFecha3,
       protMFluxo: protMFluxo,
       AltaPresFluxo: AltaPresFluxo,
+      tempoProtMolde: tempoProtMolde,
+      tempoFecha: tempoFecha,
       posAbertura1: posAbertura1,
       posAbertura2: posAbertura2,
       posAbertura3: posAbertura3,
@@ -2511,6 +2521,8 @@ router.post("/fichas/updateHaitian",(req,res) => {
       fluxoAbertura3: fluxoAbertura3,
       fluxoAbertura4: fluxoAbertura4,
       fluxoAbertura5: fluxoAbertura5,
+      resfriamento: resfriamento,
+      tempoAbertura: tempoAbertura,
       posAvanco1: posAvanco1,
       posAvanco2: posAvanco2,
       posAvanco3: posAvanco3,
@@ -2529,6 +2541,8 @@ router.post("/fichas/updateHaitian",(req,res) => {
       fluxoRecuo1: fluxoRecuo1,
       fluxoRecuo2: fluxoRecuo2,
       fluxoRecuo3: fluxoRecuo3,
+      atraso: atraso,
+      batida: batida,
       radialTypeEntrada1: radialTypeEntrada1,
       radialTypeSaida1: radialTypeSaida1,
       radialTypeEntrada2: radialTypeEntrada2,
@@ -2803,7 +2817,7 @@ router.post("/fichas/updateHaitian",(req,res) => {
          //*salvando os dados no banco de revisao
          RevisaoFichaTecnicaPastorePerifericos.create({
             idFichaTecnica: id,
-            maquinaId: maquina,
+            maq: maquina,
             camara1: camara1,
             camara2: camara2,
             camara3: camara3,
@@ -3034,7 +3048,7 @@ router.post("/fichas/updateHaitian",(req,res) => {
 
             RevisaoFichaTecnicaPastoreInjetores.create({
                idFichaTecnica: id,
-               maquinaId: maquina,
+               maq: maquina,
                cilindro1: cilindro1,
                cilindro2: cilindro2,
                cilindro3: cilindro3,
@@ -3059,6 +3073,8 @@ router.post("/fichas/updateHaitian",(req,res) => {
                fluxoInjecao3: fluxoInjecao3,
                fluxoInjecao4: fluxoInjecao4,
                fluxoInjecao5: fluxoInjecao5,
+               tempoDisparo: tempoDisparo,
+               pressaoInj: pressaoInj,
                presRecalque1: presRecalque1,
                presRecalque2: presRecalque2,
                presRecalque3: presRecalque3,
@@ -3094,6 +3110,7 @@ router.post("/fichas/updateHaitian",(req,res) => {
                CPDosagem3: CPDosagem3,
                CPDosagem4: CPDosagem4,
                CPDosagem5: CPDosagem5,
+               tempoDosagem: tempoDosagem,
                antesPos: antesPos,
                antesPres: antesPres,
                antesFluxo: antesFluxo,
@@ -3117,6 +3134,8 @@ router.post("/fichas/updateHaitian",(req,res) => {
                fluxoFecha3: fluxoFecha3,
                protMFluxo: protMFluxo,
                AltaPresFluxo: AltaPresFluxo,
+               tempoProtMolde: tempoProtMolde,
+               tempoFecha: tempoFecha,
                posAbertura1: posAbertura1,
                posAbertura2: posAbertura2,
                posAbertura3: posAbertura3,
@@ -3132,6 +3151,8 @@ router.post("/fichas/updateHaitian",(req,res) => {
                fluxoAbertura3: fluxoAbertura3,
                fluxoAbertura4: fluxoAbertura4,
                fluxoAbertura5: fluxoAbertura5,
+               resfriamento: resfriamento,
+               tempoAbertura: tempoAbertura,
                posAvanco1: posAvanco1,
                posAvanco2: posAvanco2,
                posAvanco3: posAvanco3,
@@ -3150,6 +3171,8 @@ router.post("/fichas/updateHaitian",(req,res) => {
                fluxoRecuo1: fluxoRecuo1,
                fluxoRecuo2: fluxoRecuo2,
                fluxoRecuo3: fluxoRecuo3,
+               atraso: atraso,
+               batida: batida,
                radialTypeEntrada1: radialTypeEntrada1,
                radialTypeSaida1: radialTypeSaida1,
                radialTypeEntrada2: radialTypeEntrada2,
@@ -3233,29 +3256,31 @@ router.post("/fichas/deleteHaitian",(req,res) => {
 
 router.get("/ficha/revisaoToshiba/:id",(req,res) => {
    var fichaId = req.params.id;
-   var string;
 
    RevisaoLimitesFichaTecnicaToshiba.findAll({
       where: {
          idFichaTecnica: fichaId
-      },
-      include: [{
-         model: Maquinas,
-         required: true,
-         attributes:['descricao']
-      }]
+      }
    }).then(revisao => {
-      res.render("revisao/index", {
-         revisoes: revisao,
-         nav_maquinas : "",
-         nav_produtos : "",
-         nav_mp : "",
-         nav_usuarios : "",
-         nav_moldes : "",
-         nav_clientes : "",
-         nav_parametros:"",
-         nav_ficha: "active",
-         nav_alertas:"",
+      Maquinas.findOne({
+         where: {
+            id: revisao[0].maq
+         }
+      }).then(maquina => {
+         console.log(maquina.descricao)
+         res.render("revisao/index", {
+            revisoes: revisao,
+            maquinaDesc: maquina.descricao,
+            nav_maquinas : "",
+            nav_produtos : "",
+            nav_mp : "",
+            nav_usuarios : "",
+            nav_moldes : "",
+            nav_clientes : "",
+            nav_parametros:"",
+            nav_ficha: "active",
+            nav_alertas:"",
+         })
       })
    })
 })
@@ -3266,30 +3291,32 @@ router.get("/ficha/revisaoHaitian/:id",(req,res) => {
    RevisaoFichaTecnicaPastoreInjetores.findAll({
       where: {
          idFichaTecnica: fichaId
-      },
-      include: [{
-         model: Maquinas,
-         required: true,
-         attributes:['descricao']
-      }]
+      }
    }).then(injetor => {
       RevisaoFichaTecnicaPastorePerifericos.findAll({
          where: {
             idFichaTecnica: fichaId
          }
       }).then(periferico => {
-         res.render("revisao/indexHaitian", {
-            injetores: injetor,
-            perifericos: periferico,
-            nav_maquinas : "",
-            nav_produtos : "",
-            nav_mp : "",
-            nav_usuarios : "",
-            nav_moldes : "",
-            nav_clientes : "",
-            nav_parametros:"",
-            nav_ficha: "active",
-            nav_alertas:"",
+         Maquinas.findOne({
+            where: {
+               id: periferico[0].maq
+            }
+         }).then(maquina => {
+            res.render("revisao/indexHaitian", {
+               injetores: injetor,
+               perifericos: periferico,
+               maquinaDesc: maquina.descricao,
+               nav_maquinas : "",
+               nav_produtos : "",
+               nav_mp : "",
+               nav_usuarios : "",
+               nav_moldes : "",
+               nav_clientes : "",
+               nav_parametros:"",
+               nav_ficha: "active",
+               nav_alertas:"",
+            })
          })
       })
 

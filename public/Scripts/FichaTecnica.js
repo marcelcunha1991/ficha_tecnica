@@ -30,41 +30,72 @@ $('#maquinasList').change(e => {
    var v1 = split[0];
    var v2 = split[1];
 
-   if (v2 === 'HAITIAN') {
+   $.ajax({
+      url: "/maquinaById/"+ v1,
+      type: "get", //send it through get method
+      success: function(responseMaquina) {
 
-      $("#pastoreList").show()
-      $("#toshibaList").hide()
-      
-   } else if (v2 === 'Toshiba') {
-      
-      $("#toshibaList").show()    
-      $("#pastoreList").hide()
-   }
-
-   // $.ajax({
-   //    url: "/ficha/lista/"+ v1,
-   //    type: "get", //send it through get method
-   //    success: function(response) {
-   //      console.log('sucesso')
-   //    },
-   //    error: function(xhr) {
-   //       console.log(xhr)
-   //    }
-   //  });
+         $.ajax({
+            url: "/ficha/lista/"+ v1 + "/" + v2,
+            type: "get", //send it through get method
+            success: function(response) {
+               if (v2 === 'HAITIAN') {
+                  addRow(response.length, response, 'Haitian', responseMaquina.descricao)
+               } else if (v2 === 'Toshiba') {
+                  addRow(response.length, response, 'Toshiba', responseMaquina.descricao)
+               }
+               
+            },
+            error: function(xhr) {
+               console.log(xhr)
+            }
+         });
+        
+      },
+      error: function(xhr) {
+         console.log(xhr)
+      }
+   });
 
 });
 
-$('#tiposList').change(e => {
-   var split = e.target.value.split(",");
-
-   if (e.target.value === 'HAITIAN') {
-
-      $("#pastoreList").show()
-      $("#toshibaList").hide()
-      
-   } else if (e.target.value === 'Toshiba') {
-      
-      $("#toshibaList").show()    
-      $("#pastoreList").hide()
+function addRow(rows, data, path, maquina) {
+   var tbody = '';
+   for (var i = 0; i < rows; i++) {
+      tbody +=  "<tr> <td>" + data[i].id +" </td> \
+                  <td>" + data[i].maq +"</td> \
+                  <td>" + maquina +"</td> \
+                  <td>\
+                  <form method='GET' action='/fichas/edit" + path  + "/" + data[i].id  + "' style='display: inline;'><button class='btn btn-warning'> Editar</button></form> \
+                  <form method='POST' action='/fichas/delete" + path + "'" +  "style='display: inline;' onsubmit='confirmarDelecao(event, this)'> \
+                     <input type='hidden' name='id' value='" + data[i].id  + "'> \
+                     <button class='btn btn-danger'> Remover</button> \
+                  </form> \
+                  <form method='GET' action='/ficha/revisao" + path  + "/" + data[i].id  + "' style='display: inline;'><button class='btn btn-info'> Revisão</button></form></td> \
+               </tr>";
    }
-});
+
+   $('#tableBody').html(tbody);
+   
+}
+
+// function addRow(rows, data, path) {
+//    var tbody = '';
+//    for (var i = 0; i < rows; i++) {
+//       tbody +=  "<tr> <td>" + data[i].id +" </td> \
+//                   <td>" + data[i].maq +"</td> \
+//                   <td>" + data[i].maquina.descricao +"</td> \
+//                   <td>\
+//                   <form method='GET' action='/fichas/edit" + path  + "/" + data[i].id  + "' style='display: inline;'><button class='btn btn-warning'> Editar</button></form> \
+//                   <form method='POST' action='/fichas/delete" + path + "'" +  "style='display: inline;' onsubmit='confirmarDelecao(event, this)'> \
+//                      <input type='hidden' name='id' value='" + data[i].id  + "'> \
+//                      <button class='btn btn-danger'> Remover</button> \
+//                   </form> \
+//                   <form method='GET' action='/ficha/revisao" + path  + "/" + data[i].id  + "' style='display: inline;'><button class='btn btn-info'> Revisão</button></form></td> \
+//                </tr>";
+//    }
+
+//    $('#tableBody').html(tbody);
+   
+// }
+

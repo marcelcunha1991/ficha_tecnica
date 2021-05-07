@@ -18,7 +18,7 @@ const RevisaoFichaPastoreInjetores = conn.define('revisao_injetores_pastore',{
       model: 'injetores_pastore', // <<< Note, its table's name, not object name
       key: 'id'
    },
-   maquinaId:{
+   maq:{
       type: Sequelize.INTEGER,
       model: 'maquinas', // <<< Note, its table's name, not object name
       key: 'id'
@@ -196,11 +196,10 @@ const RevisaoFichaPastoreInjetores = conn.define('revisao_injetores_pastore',{
    radialSCRSaida3: Sequelize.FLOAT,
 })
 
-// Clientes.hasMany(RevisaoFichaPastoreInjetores);
-// Moldes.hasMany(RevisaoFichaPastoreInjetores);
-// Maquinas.hasMany(RevisaoFichaPastoreInjetores);
-// Produtos.hasMany(RevisaoFichaPastoreInjetores);
-// MateriaPrima.hasMany(RevisaoFichaPastoreInjetores);
-RevisaoFichaPastoreInjetores.belongsTo(Maquinas);
+Clientes.hasMany(RevisaoFichaPastoreInjetores);
+Moldes.hasMany(RevisaoFichaPastoreInjetores);
+Maquinas.hasMany(RevisaoFichaPastoreInjetores);
+Produtos.hasMany(RevisaoFichaPastoreInjetores);
+MateriaPrima.hasMany(RevisaoFichaPastoreInjetores);
 
 module.exports = RevisaoFichaPastoreInjetores;

@@ -9,26 +9,17 @@
    <a class="btn btn-success" href="/ficha/lista"> Lista de Fichas Técnicas</a>
    <hr>
 
-   <select style="display: none;"  name="maquinasList" id="maquinasList" class="form-control" onchange="">
+   <select  name="maquinasList" id="maquinasList" class="form-control" onchange="">
       <option > Selecione uma máquina</option>
       <% maquinas.forEach((maquina) => { %>
          <option value="<%= maquina.id %>,<%= maquina.tipo.tipo %>">
             <%= maquina.descricao %> - <%= maquina.tipo.tipo %>
          </option>
       <% }) %>
-   </select>
-   <br>
-   <select name="tiposList" id="tiposList" class="form-control" onchange="">
-      <option > Selecione uma fabricante</option>
-      <% tipos.forEach((tipo) => { %>
-         <option value="<%= tipo.tipo %>">
-            <%= tipo.tipo %>
-         </option>
-      <% }) %>
-   </select>
+   </select>   
    <br>
 
-   <table id="toshibaList" class="table table-bordered"> 
+   <table id="fichaTable" class="table table-bordered"> 
       <thead>
          <tr>
             <th> Id Ficha Técnica </th>
@@ -36,62 +27,7 @@
             <th> Máquina </th>
          </tr>
       </thead>
-      <tbody>
-         <% fichas.forEach((ficha) => { %>
-            <tr>
-               <td> <%= ficha.id %> </td>
-               <td> <%= ficha.maquinaId %> </td>
-               <td> <%= ficha.maquina.descricao %> </td>
-               <td> 
-                  <form method="GET" action="/fichas/editToshiba/<%= ficha.id %>" style="display: inline;">                                     
-                     <button class="btn btn-warning"> Editar</button>
-                  </form>
-
-                  <form method="POST" action="/fichas/delete" style="display: inline;" onsubmit="confirmarDelecao(event, this)"> 
-                     <input type="hidden" name="id" value="<%= ficha.id %>">
-                     <button class="btn btn-danger"> Remover</button>
-                  </form>
-                  
-                  <form method="GET" action="/ficha/revisaoToshiba/<%= ficha.id %>" style="display: inline;">                                     
-                     <button class="btn btn-info"> Revisão</button>
-                  </form>
-               </td>
-           </tr>
-         <% }) %>
-      </tbody>
-  </table>
-   
-
-   <table id="pastoreList" class="table table-bordered"> 
-      <thead>
-         <tr>
-            <th> ID Ficha Técnica </th>
-            <th> ID Máquina </th>
-            <th> Máquina </th>
-         </tr>
-      </thead>
-      <tbody>
-         <% injetores.forEach((injetor) => { %>
-            <tr>
-               <td> <%= injetor.id %> </td>
-               <td> <%= injetor.maquinaId %> </td>
-               <td> <%= injetor.maquina.descricao %> </td>
-               <td> 
-                  <form method="GET" action="/fichas/editHaitian/<%= injetor.id %>" style="display: inline;">                                     
-                     <button class="btn btn-warning"> Editar</button>
-                  </form>
-
-                  <form method="POST" action="/fichas/deleteHaitian" style="display: inline;" onsubmit="confirmarDelecao(event, this)"> 
-                     <input type="hidden" name="id" value="<%= injetor.id %>">
-                     <button class="btn btn-danger"> Remover</button>
-                  </form>
-
-                  <form method="GET" action="/ficha/revisaoHaitian/<%= injetor.id %>" style="display: inline;">                                     
-                     <button class="btn btn-info"> Revisão</button>
-                  </form>
-               </td>
-           </tr>
-         <% }) %>
+      <tbody id="tableBody">
       </tbody>
   </table>
 </div>

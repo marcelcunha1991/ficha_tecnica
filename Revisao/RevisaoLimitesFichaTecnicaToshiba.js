@@ -18,7 +18,7 @@ const RevisaoLimitesFichaTecnicaToshiba = conn.define('revisao_limites_ficha_tec
       model: 'limites_ficha_tecnica_toshiba', // <<< Note, its table's name, not object name
       key: 'id'
    },
-   maquinaId:{
+   maq:{
       type: Sequelize.INTEGER,
       model: 'maquinas', // <<< Note, its table's name, not object name
       key: 'id'
@@ -57,12 +57,11 @@ const RevisaoLimitesFichaTecnicaToshiba = conn.define('revisao_limites_ficha_tec
    modelo: Sequelize.STRING,
 })
 
-// Clientes.hasMany(RevisaoLimitesFichaTecnicaToshiba);
-// Moldes.hasMany(RevisaoLimitesFichaTecnicaToshiba);
-// Maquinas.hasMany(RevisaoLimitesFichaTecnicaToshiba);
-// Produtos.hasMany(RevisaoLimitesFichaTecnicaToshiba);
-// MateriaPrima.hasMany(RevisaoLimitesFichaTecnicaToshiba);
-RevisaoLimitesFichaTecnicaToshiba.belongsTo(Maquinas);
+Clientes.hasMany(RevisaoLimitesFichaTecnicaToshiba);
+Moldes.hasMany(RevisaoLimitesFichaTecnicaToshiba);
+Maquinas.hasMany(RevisaoLimitesFichaTecnicaToshiba);
+Produtos.hasMany(RevisaoLimitesFichaTecnicaToshiba);
+MateriaPrima.hasMany(RevisaoLimitesFichaTecnicaToshiba);
 
 
 // Ficha.sync();
