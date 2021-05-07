@@ -3,11 +3,11 @@ const Sequelize = require("sequelize");
 
 // PARAMETROS DE CONEXAO PARA BANCO SQL
 
-const conn = new Sequelize('fichatecnica','root','sa123',{
-    host: 'localhost',
-    dialect: 'mysql',
-    port:3306,
-    timezone:"-04:00"
+const conn = new Sequelize('fichatecnica','root','',{
+   host: 'localhost',
+   dialect: 'mysql',
+   port:3306,
+   timezone:"-04:00"
 })
 
 // PARAMETROS DE CONEXAO PARA BANCO SQLSERVER - OPCAO 01

@@ -152,6 +152,9 @@ const RevisaoFichaPastorePerifericos = conn.define('revisao_perifericos_pastore'
    camara128: Sequelize.FLOAT,
    camara129: Sequelize.FLOAT,
    camara130: Sequelize.FLOAT,
+   termoparK1: {type: Sequelize.FLOAT, allowNull: true},
+   termoparJ: {type: Sequelize.FLOAT, allowNull: true},
+   termoparK2: {type: Sequelize.FLOAT, allowNull: true},
    
    valve1: Sequelize.FLOAT,
    valve2: Sequelize.FLOAT,

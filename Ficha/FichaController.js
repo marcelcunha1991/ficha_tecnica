@@ -770,7 +770,7 @@ router.get("/ficha/lista/:id/:maquina",(req,res) => {
          res.send(ficha)
       })
 
-   } else if (maquina === "HAITIAN") {
+   } else {
       FichaTecnicaPastoreInjetores.findAll({
          where: {
             maq: id
@@ -1138,6 +1138,9 @@ router.post("/fichas/createHaitian",(req,res) => {
    var camara128 = req.body.camara2[18];
    var camara129 = req.body.camara3[18];
    var camara130 = req.body.camara4[18];
+   var termoparK1 = req.body.termoparK1;
+   var termoparJ = req.body.termoparJ;
+   var termoparK2 = req.body.termoparK2;
    var valve1 = req.body.VG1[0];
    var valve2 = req.body.VG2[0];
    var valve3 = req.body.VG3[0];
@@ -1530,6 +1533,9 @@ router.post("/fichas/createHaitian",(req,res) => {
          camara128: camara128,
          camara129: camara129,
          camara130: camara130,
+         termoparK1: termoparK1,
+         termoparJ: termoparJ,
+         termoparK2: termoparK2,
          valve1: valve1,
          valve2: valve2,
          valve3: valve3,
@@ -1761,6 +1767,9 @@ router.post("/fichas/createHaitian",(req,res) => {
             camara128: camara128,
             camara129: camara129,
             camara130: camara130,
+            termoparK1: termoparK1,
+            termoparJ: termoparJ,
+            termoparK2: termoparK2,
             valve1: valve1,
             valve2: valve2,
             valve3: valve3,
@@ -2321,6 +2330,9 @@ router.post("/fichas/updateHaitian",(req,res) => {
    var camara128 = req.body.camara128;
    var camara129 = req.body.camara129;
    var camara130 = req.body.camara130;
+   var termoparK1 = req.body.termoparK1;
+   var termoparJ = req.body.termoparJ;
+   var termoparK2 = req.body.termoparK2;
    var valve1 = req.body.VG1;
    var valve2 = req.body.VG2;
    var valve3 = req.body.VG3;
@@ -2713,6 +2725,9 @@ router.post("/fichas/updateHaitian",(req,res) => {
          camara128: camara128,
          camara129: camara129,
          camara130: camara130,
+         termoparK1: termoparK1,
+         termoparJ: termoparJ,
+         termoparK2: termoparK2,
          valve1: valve1,
          valve2: valve2,
          valve3: valve3,
@@ -2948,6 +2963,9 @@ router.post("/fichas/updateHaitian",(req,res) => {
             camara128: camara128,
             camara129: camara129,
             camara130: camara130,
+            termoparK1: termoparK1,
+            termoparJ: termoparJ,
+            termoparK2: termoparK2,
             valve1: valve1,
             valve2: valve2,
             valve3: valve3,

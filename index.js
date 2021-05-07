@@ -137,6 +137,9 @@ app.get("/",(req,res) =>{
 //     Tipo.create({
 //         tipo:"HAITIAN"
 //     })
+   //  Tipo.create({
+   //      tipo:"Haitian Jupyter"
+   //  })
 
    
     
