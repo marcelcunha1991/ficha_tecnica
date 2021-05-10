@@ -16,7 +16,7 @@
 
          <div class="d-flex justify-content-between">
             <!-- INJETORES -->
-            <div class="table-responsive table-ficha justify-content-between" style="width: 50vw; margin-right: 20px;">
+            <div class="d-flex flex-column table-responsive table-ficha justify-content-between" style="width: 50vw; margin-right: 20px;">
                <table class="table-bordered" style="width: 100%">
                   <thead>
                      <tr>
@@ -57,7 +57,7 @@
                   </tbody>
                </table>
          
-               <table class="table-bordered" style="width: 100%; margin-top: 30px;">
+               <table class="table-bordered" style="width: 100%;">
                   <thead>
                      <tr>
                         <th colspan="6">INJEÇÃO</th>
@@ -146,7 +146,7 @@
                   </tfoot>
                </table>
          
-               <table class="table-bordered" style="width: 100%; margin-top: 30px;">
+               <table class="table-bordered" style="width: 100%;">
                   <thead>
                      <tr>
                         <th colspan="6">RECALQUE</th>
@@ -217,7 +217,7 @@
                   </tbody>
                </table>
          
-               <table class="table-bordered" style="width: 100%; margin-top: 30px;">
+               <table class="table-bordered" style="width: 100%;">
                   <thead>
                      <tr>
                         <th colspan="6">DOSAGEM</th>
@@ -314,7 +314,7 @@
                   </tfoot>
                </table>
          
-               <table class="table-bordered" style="width: 100%; margin-top: 30px;">
+               <table class="table-bordered" style="width: 100%;">
                   <thead>
                      <tr>
                         <th colspan="6">DESCOMPRESSÃO</th>
@@ -362,7 +362,7 @@
                   </tbody>
                </table>
          
-               <table class="table-bordered" style="width: 100%; margin-top: 30px;">
+               <table class="table-bordered" style="width: 100%;">
                   <thead>
                      <tr>
                         <th colspan="6">FECHAMENTO</th>
@@ -447,7 +447,7 @@
                   </tfoot>
                </table>
          
-               <table class="table-bordered" style="width: 100%; margin-top: 30px;">
+               <table class="table-bordered" style="width: 100%;">
                   <thead>
                      <tr>
                         <th colspan="6">ABERTURA</th>
@@ -530,7 +530,7 @@
                   </tfoot>
                </table>
          
-               <table class="table-bordered" style="width: 100%; margin-top: 30px;">
+               <table class="table-bordered" style="width: 100%;">
                   <thead>
                      <tr>
                         <th colspan="6">EXTRAÇÃO</th>
@@ -629,7 +629,7 @@
                   </tfoot>
                </table>
          
-               <table class="table-bordered" style="width: 100%; margin-top: 30px;">
+               <table class="table-bordered" style="width: 100%;">
                   <thead>
                      <tr>
                         <th colspan="6">RADIAL HIDRÁULICO</th>
@@ -1234,7 +1234,7 @@
                   </tfoot>
                </table>
                
-               <table class="table-bordered" style="width: 100%;">
+               <table class="table-bordered" style="width: 100%; margin-top: 40px">
                   <thead>
                      <tr>
                         <th colspan="5">VALVE GATES</th>
@@ -1246,305 +1246,791 @@
                   </thead>
                   <tbody>
                      <tr>
+                        <th>BICO</th>
+                        <th>DLY TIME</th>
+                        <th>ACT TIME</th>
+                        <th>BICO</th>
+                        <th>DLY TIME</th>
+                        <th>ACT TIME</th>
+                     </tr>
+                     <tr>
+                        <th>VG1</th>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="1" value="<%= perifericos.valve1 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG1" value="<%= perifericos.valve1 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="2" value="<%= perifericos.valve2 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG1" value="<%= perifericos.valve2 %>">
+                        </td>
+                        
+                        <th>VG46</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG46" value="<%= perifericos.valve91 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG3" name="VG3" placeholder="3" value="<%= perifericos.valve3 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG4" name="VG4" placeholder="4" value="<%= perifericos.valve4 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG5" name="VG5" placeholder="5" value="<%= perifericos.valve5 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG6" name="VG6" placeholder="6" value="<%= perifericos.valve6 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG7" name="VG7" placeholder="7" value="<%= perifericos.valve7 %>">
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG46" value="<%= perifericos.valve92 %>">
                         </td>
                      </tr>
                      <tr>
+                        <th>VG2</th>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG8" name="VG8" placeholder="8" value="<%= perifericos.valve8 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG2" value="<%= perifericos.valve3 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG9" name="VG9" placeholder="9" value="<%= perifericos.valve9 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG2" value="<%= perifericos.valve4 %>">
+                        </td>
+
+                        <th>VG47</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG47" value="<%= perifericos.valve93 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG10" name="VG10" placeholder="10" value="<%= perifericos.valve10 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG11" name="VG11" placeholder="11" value="<%= perifericos.valve11 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG12" name="VG12" placeholder="12" value="<%= perifericos.valve12 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG13" name="VG13" placeholder="13" value="<%= perifericos.valve13 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG14" name="VG14" placeholder="14" value="<%= perifericos.valve14 %>">
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG47" value="<%= perifericos.valve94 %>">
                         </td>
                      </tr>
                      <tr>
+                        <th>VG3</th>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG15" name="VG15" placeholder="15" value="<%= perifericos.valve15 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG5" value="<%= perifericos.valve5 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG16" name="VG16" placeholder="16" value="<%= perifericos.valve16 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG6" value="<%= perifericos.valve6 %>">
+                        </td>
+
+                        <th>VG48</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG48" value="<%= perifericos.valve95 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG17" name="VG17" placeholder="17" value="<%= perifericos.valve17 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG18" name="VG18" placeholder="18" value="<%= perifericos.valve18 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG19" name="VG19" placeholder="19" value="<%= perifericos.valve19 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG20" name="VG20" placeholder="20" value="<%= perifericos.valve20 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG21" name="VG21" placeholder="21" value="<%= perifericos.valve21 %>">
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG48" value="<%= perifericos.valve96 %>">
                         </td>
                      </tr>
                      <tr>
+                        <th>VG4</th>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG22" name="VG22" placeholder="22" value="<%= perifericos.valve22 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG7" value="<%= perifericos.valve7 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG23" name="VG23" placeholder="23" value="<%= perifericos.valve23 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG8" value="<%= perifericos.valve8 %>">
+                        </td>
+
+                        <th>VG49</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG49" value="<%= perifericos.valve97 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG24" name="VG24" placeholder="24" value="<%= perifericos.valve24 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG25" name="VG25" placeholder="25" value="<%= perifericos.valve25 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG26" name="VG26" placeholder="26" value="<%= perifericos.valve26 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG27" name="VG27" placeholder="27" value="<%= perifericos.valve27 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG28" name="VG28" placeholder="28" value="<%= perifericos.valve28 %>">
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG49" value="<%= perifericos.valve98 %>">
                         </td>
                      </tr>
                      <tr>
+                        <th>VG5</th>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG29" name="VG29" placeholder="29" value="<%= perifericos.valve29 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG9" value="<%= perifericos.valve9 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG30" name="VG30" placeholder="30" value="<%= perifericos.valve30 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG10" value="<%= perifericos.valve10 %>">
+                        </td>
+
+                        <th>VG50</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG50" value="<%= perifericos.valve99 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG31" name="VG31" placeholder="31" value="<%= perifericos.valve31 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG32" name="VG32" placeholder="32" value="<%= perifericos.valve32 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG33" name="VG33" placeholder="33" value="<%= perifericos.valve33 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG34" name="VG34" placeholder="34" value="<%= perifericos.valve34 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG35" name="VG35" placeholder="35" value="<%= perifericos.valve35 %>">
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG50" value="<%= perifericos.valve100 %>">
                         </td>
                      </tr>
                      <tr>
+                        <th>VG6</th>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG36" name="VG36" placeholder="36" value="<%= perifericos.valve36 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG11" value="<%= perifericos.valve11 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG37" name="VG37" placeholder="37" value="<%= perifericos.valve37 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG12" value="<%= perifericos.valve12 %>">
+                        </td>
+
+                        <th>VG51</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG51" value="<%= perifericos.valve101 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG38" name="VG38" placeholder="38" value="<%= perifericos.valve38 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG39" name="VG39" placeholder="39" value="<%= perifericos.valve39 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG40" name="VG40" placeholder="40" value="<%= perifericos.valve40 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG41" name="VG41" placeholder="41" value="<%= perifericos.valve41 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG42" name="VG42" placeholder="42" value="<%= perifericos.valve42 %>">
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG51" value="<%= perifericos.valve102 %>">
                         </td>
                      </tr>
                      <tr>
+                        <th>VG7</th>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG43" name="VG43" placeholder="43" value="<%= perifericos.valve43 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG13" value="<%= perifericos.valve13 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG44" name="VG44" placeholder="44" value="<%= perifericos.valve44 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG14" value="<%= perifericos.valve14 %>">
+                        </td>
+
+                        <th>VG52</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG52" value="<%= perifericos.valve103 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG45" name="VG45" placeholder="45" value="<%= perifericos.valve45 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG46" name="VG46" placeholder="46" value="<%= perifericos.valve46 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG47" name="VG47" placeholder="47" value="<%= perifericos.valve47 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG48" name="VG48" placeholder="48" value="<%= perifericos.valve48 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG49" name="VG49" placeholder="49" value="<%= perifericos.valve49 %>">
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG52" value="<%= perifericos.valve104 %>">
                         </td>
                      </tr>
                      <tr>
+                        <th>VG8</th>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG50" name="VG50" placeholder="50" value="<%= perifericos.valve50 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG15" value="<%= perifericos.valve15 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG51" name="VG51" placeholder="51" value="<%= perifericos.valve51 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG16" value="<%= perifericos.valve16 %>">
+                        </td>
+
+                        <th>VG53</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG53" value="<%= perifericos.valve105 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG52" name="VG52" placeholder="52" value="<%= perifericos.valve52 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG53" name="VG53" placeholder="53" value="<%= perifericos.valve53 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG54" name="VG54" placeholder="54" value="<%= perifericos.valve54 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG55" name="VG55" placeholder="55" value="<%= perifericos.valve55 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG56" name="VG56" placeholder="56" value="<%= perifericos.valve56 %>">
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG53" value="<%= perifericos.valve106 %>">
                         </td>
                      </tr>
                      <tr>
+                        <th>VG9</th>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG57" name="VG57" placeholder="57" value="<%= perifericos.valve57 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG17" value="<%= perifericos.valve17 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG58" name="VG58" placeholder="58" value="<%= perifericos.valve58 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG18" value="<%= perifericos.valve18 %>">
+                        </td>
+
+                        <th>VG54</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG54" value="<%= perifericos.valve107 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG59" name="VG59" placeholder="59" value="<%= perifericos.valve59 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG60" name="VG60" placeholder="60" value="<%= perifericos.valve60 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG61" name="VG61" placeholder="61" value="<%= perifericos.valve61 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG62" name="VG62" placeholder="62" value="<%= perifericos.valve62 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG63" name="VG63" placeholder="63" value="<%= perifericos.valve63 %>">
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG54" value="<%= perifericos.valve108 %>">
                         </td>
                      </tr>
                      <tr>
+                        <th>VG10</th>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG64" name="VG64" placeholder="64" value="<%= perifericos.valve64 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG19" value="<%= perifericos.valve19 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG65" name="VG65" placeholder="65" value="<%= perifericos.valve65 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG20" value="<%= perifericos.valve20 %>">
+                        </td>
+
+                        <th>VG55</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG55" value="<%= perifericos.valve109 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG66" name="VG66" placeholder="66" value="<%= perifericos.valve66 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG67" name="VG67" placeholder="67" value="<%= perifericos.valve67 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG68" name="VG68" placeholder="68" value="<%= perifericos.valve68 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG69" name="VG69" placeholder="69" value="<%= perifericos.valve69 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG70" name="VG70" placeholder="70" value="<%= perifericos.valve70 %>">
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG55" value="<%= perifericos.valve110 %>">
                         </td>
                      </tr>
                      <tr>
+                        <th>VG11</th>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG71" name="VG71" placeholder="71" value="<%= perifericos.valve71 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG21" value="<%= perifericos.valve21 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG72" name="VG72" placeholder="72" value="<%= perifericos.valve72 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG22" value="<%= perifericos.valve22 %>">
+                        </td>
+
+                        <th>VG56</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG56" value="<%= perifericos.valve111 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG73" name="VG73" placeholder="73" value="<%= perifericos.valve73 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG74" name="VG74" placeholder="74" value="<%= perifericos.valve74 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG75" name="VG75" placeholder="75" value="<%= perifericos.valve75 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG76" name="VG76" placeholder="76" value="<%= perifericos.valve76 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG77" name="VG77" placeholder="77" value="<%= perifericos.valve77 %>">
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG56" value="<%= perifericos.valve112 %>">
                         </td>
                      </tr>
                      <tr>
+                        <th>VG12</th>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG78" name="VG78" placeholder="78" value="<%= perifericos.valve78 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG23" value="<%= perifericos.valve23 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG79" name="VG79" placeholder="79" value="<%= perifericos.valve79 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG24" value="<%= perifericos.valve24 %>">
+                        </td>
+
+                        <th>VG57</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG57" value="<%= perifericos.valve113 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG80" name="VG80" placeholder="80" value="<%= perifericos.valve80 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG81" name="VG81" placeholder="81" value="<%= perifericos.valve81 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG82" name="VG82" placeholder="82" value="<%= perifericos.valve82 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG83" name="VG83" placeholder="83" value="<%= perifericos.valve83 %>">
-                        </td>
-                        <td>
-                           <input class="read-only" style="width: 100%" id="VG84" name="VG84" placeholder="84" value="<%= perifericos.valve84 %>">
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG57" value="<%= perifericos.valve114 %>">
                         </td>
                      </tr>
                      <tr>
+                        <th>VG13</th>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG85" name="VG85" placeholder="85" value="<%= perifericos.valve85 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG25" value="<%= perifericos.valve25 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG86" name="VG86" placeholder="86" value="<%= perifericos.valve86 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG26" value="<%= perifericos.valve26 %>">
+                        </td>
+
+                        <th>VG58</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG58" value="<%= perifericos.valve115 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG87" name="VG87" placeholder="87" value="<%= perifericos.valve87 %>">
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG58" value="<%= perifericos.valve116 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG14</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG27" value="<%= perifericos.valve27 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG88" name="VG88" placeholder="88" value="<%= perifericos.valve88 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG28" value="<%= perifericos.valve28 %>">
+                        </td>
+
+                        <th>VG59</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG59" value="<%= perifericos.valve117 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG89" name="VG89" placeholder="89" value="<%= perifericos.valve89 %>">
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG59" value="<%= perifericos.valve118 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG15</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG29" value="<%= perifericos.valve29 %>">
                         </td>
                         <td>
-                           <input class="read-only" style="width: 100%" id="VG90" name="VG90" placeholder="90" value="<%= perifericos.valve90 %>">
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG30" value="<%= perifericos.valve30 %>">
+                        </td>
+
+                        <th>VG60</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG60" value="<%= perifericos.valve119 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG60" value="<%= perifericos.valve120 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG16</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG31" value="<%= perifericos.valve31 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG32" value="<%= perifericos.valve32 %>">
+                        </td>
+
+                        <th>VG61</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG61" value="<%= perifericos.valve121 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG61" value="<%= perifericos.valve122 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG17</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG33" value="<%= perifericos.valve33 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG34" value="<%= perifericos.valve34 %>">
+                        </td>
+
+                        <th>VG62</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG62" value="<%= perifericos.valve123 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG62" value="<%= perifericos.valve124 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG18</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG35" value="<%= perifericos.valve35 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG36" value="<%= perifericos.valve36 %>">
+                        </td>
+
+                        <th>VG63</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG63" value="<%= perifericos.valve125 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG63" value="<%= perifericos.valve126 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG19</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG37" value="<%= perifericos.valve37 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG38" value="<%= perifericos.valve38 %>">
+                        </td>
+
+                        <th>VG64</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG64" value="<%= perifericos.valve127 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG64" value="<%= perifericos.valve128 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG20</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG39" value="<%= perifericos.valve39 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG40" value="<%= perifericos.valve40 %>">
+                        </td>
+
+                        <th>VG65</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG65" value="<%= perifericos.valve129 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG65" value="<%= perifericos.valve130 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG21</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG41" value="<%= perifericos.valve41 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG42" value="<%= perifericos.valve42 %>">
+                        </td>
+
+                        <th>VG66</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG66" value="<%= perifericos.valve131 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG66" value="<%= perifericos.valve132 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG22</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG43" value="<%= perifericos.valve43 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG44" value="<%= perifericos.valve44 %>">
+                        </td>
+
+                        <th>VG67</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG67" value="<%= perifericos.valve133 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG67" value="<%= perifericos.valve134 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG23</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG45" value="<%= perifericos.valve45 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG46" value="<%= perifericos.valve46 %>">
+                        </td>
+
+                        <th>VG68</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG68" value="<%= perifericos.valve135 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG68" value="<%= perifericos.valve136 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG24</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG47" value="<%= perifericos.valve47 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG48" value="<%= perifericos.valve48 %>">
+                        </td>
+                        
+                        <th>VG69</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG69" value="<%= perifericos.valve137 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG69" value="<%= perifericos.valve138 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG25</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG49" value="<%= perifericos.valve49 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG50" value="<%= perifericos.valve50 %>">
+                        </td>
+
+                        <th>VG70</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG70" value="<%= perifericos.valve139 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG70" value="<%= perifericos.valve140 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG26</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG51" value="<%= perifericos.valve51 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG52" value="<%= perifericos.valve52 %>">
+                        </td>
+
+                        <th>VG71</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG71" value="<%= perifericos.valve141 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG71" value="<%= perifericos.valve142 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG27</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG53" value="<%= perifericos.valve53 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG54" value="<%= perifericos.valve54 %>">
+                        </td>
+
+                        <th>VG72</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG72" value="<%= perifericos.valve143 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG72" value="<%= perifericos.valve144 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG28</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG55" value="<%= perifericos.valve55 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG56" value="<%= perifericos.valve56 %>">
+                        </td>
+
+                        <th>VG73</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG73" value="<%= perifericos.valve145 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG73" value="<%= perifericos.valve146 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG29</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG57" value="<%= perifericos.valve57 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG58" value="<%= perifericos.valve58 %>">
+                        </td>
+
+                        <th>VG74</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG74" value="<%= perifericos.valve147 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG74" value="<%= perifericos.valve148 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG30</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG59" value="<%= perifericos.valve59 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG60" value="<%= perifericos.valve60 %>">
+                        </td>
+
+                        <th>VG75</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG75" value="<%= perifericos.valve149 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG75" value="<%= perifericos.valve150 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG31</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG61" value="<%= perifericos.valve61 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG62" value="<%= perifericos.valve62 %>">
+                        </td>
+
+                        <th>VG76</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG76" value="<%= perifericos.valve151 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG76" value="<%= perifericos.valve152 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG32</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG63" value="<%= perifericos.valve63 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG64" value="<%= perifericos.valve64 %>">
+                        </td>
+
+                        <th>VG77</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG77" value="<%= perifericos.valve153 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG77" value="<%= perifericos.valve154 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG33</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG65" value="<%= perifericos.valve65 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG66" value="<%= perifericos.valve66 %>">
+                        </td>
+
+                        <th>VG78</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG78" value="<%= perifericos.valve155 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG78" value="<%= perifericos.valve156 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG34</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG67" value="<%= perifericos.valve67 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG68" value="<%= perifericos.valve68 %>">
+                        </td>
+
+                        <th>VG79</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG79" value="<%= perifericos.valve157 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG79" value="<%= perifericos.valve158 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG35</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG69" value="<%= perifericos.valve69 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG70" value="<%= perifericos.valve70 %>">
+                        </td>
+
+                        <th>VG80</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG80" value="<%= perifericos.valve159 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG80" value="<%= perifericos.valve160 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG36</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG71" value="<%= perifericos.valve71 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG72" value="<%= perifericos.valve72 %>">
+                        </td>
+
+                        <th>VG81</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG81" value="<%= perifericos.valve161 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG81" value="<%= perifericos.valve162 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG37</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG73" value="<%= perifericos.valve73 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG74" value="<%= perifericos.valve74 %>">
+                        </td>
+
+                        <th>VG82</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG82" value="<%= perifericos.valve163 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG82" value="<%= perifericos.valve164 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG38</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG75" value="<%= perifericos.valve75 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG76" value="<%= perifericos.valve76 %>">
+                        </td>
+
+                        <th>VG83</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG83" value="<%= perifericos.valve165 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG83" value="<%= perifericos.valve166 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG39</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG77" value="<%= perifericos.valve77 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG78" value="<%= perifericos.valve78 %>">
+                        </td>
+
+                        <th>VG84</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG84" value="<%= perifericos.valve167 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG84" value="<%= perifericos.valve168 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG40</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG79" value="<%= perifericos.valve79 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG80" value="<%= perifericos.valve80 %>">
+                        </td>
+
+                        <th>VG85</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG85" value="<%= perifericos.valve168 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG85" value="<%= perifericos.valve170 %>">
+                        </td>
+                     </tr>
+
+                     <tr>
+                        <th>VG41</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG81" value="<%= perifericos.valve81 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG82" value="<%= perifericos.valve82 %>">
+                        </td>
+
+                        <th>VG86</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG86" value="<%= perifericos.valve171 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG86" value="<%= perifericos.valve172 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG42</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG83" value="<%= perifericos.valve83 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG84" value="<%= perifericos.valve84 %>">
+                        </td>
+
+                        <th>VG87</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG87" value="<%= perifericos.valve173 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG87" value="<%= perifericos.valve174 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG43</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG85" value="<%= perifericos.valve85 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG86" value="<%= perifericos.valve86 %>">
+                        </td>
+
+                        <th>VG88</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG88" value="<%= perifericos.valve175 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG88" value="<%= perifericos.valve176 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG44</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG87" value="<%= perifericos.valve87 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG88" value="<%= perifericos.valve88 %>">
+                        </td>
+
+                        <th>VG89</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG89" value="<%= perifericos.valve177 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG89" value="<%= perifericos.valve178 %>">
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>VG45</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG89" value="<%= perifericos.valve89 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG1" name="VG1" placeholder="VG90" value="<%= perifericos.valve90 %>">
+                        </td>
+
+                        <th>VG90</th>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG90" value="<%= perifericos.valve179 %>">
+                        </td>
+                        <td>
+                           <input class="read-only" style="width: 100%" id="VG2" name="VG2" placeholder="VG90" value="<%= perifericos.valve180 %>">
                         </td>
                      </tr>
                   </tbody>
+                  <tfoot>
+                     <tr>
+                        <th colspan="1">VOLTAGEM:</th>
+                        <td colspan="6">
+                           <input class="read-only" style="width: 100%" id="voltagem" name="voltagem" value="<%= perifericos.voltagem %>">
+                        </td>
+                     </tr>
+                  </tfoot>
                </table>
          
-               <table class="table-bordered">
+               <table class="table-bordered" style="margin-top: 40px">
                   <thead>
                      <tr>
                         <th colspan="7">REFRIGERAÇÃO DO MOLDE</th>
@@ -1575,7 +2061,7 @@
                   </tbody>
                </table>
          
-               <table class="table-bordered">
+               <table class="table-bordered" style="margin-top: 40px">
                   <thead>
                      <tr>
                         <th colspan="7">STEAM(VAPOR)</th>

@@ -822,6 +822,7 @@ router.get("/fichas/editHaitian/:id",(req,res) => {
 
    FichaPastorePerifericos.findByPk(id).then(periferico => {
       perifericos = periferico
+      console.log(perifericos)
    })
 
    FichaTecnicaPastoreInjetores.findByPk(id).then(injetor => {
@@ -848,6 +849,7 @@ router.get("/fichas/editHaitian/:id",(req,res) => {
 // *CRIANDO FICHA PASTORE
 
 router.post("/fichas/createHaitian",(req,res) => {
+   console.log(req.body)
    var maquina = req.body.maquinaHaitian;
    var cilindro1 = req.body.cilindro1;
    var cilindro2 = req.body.cilindro2;
@@ -1142,95 +1144,187 @@ router.post("/fichas/createHaitian",(req,res) => {
    var termoparJ = req.body.termoparJ;
    var termoparK2 = req.body.termoparK2;
    var valve1 = req.body.VG1[0];
-   var valve2 = req.body.VG2[0];
-   var valve3 = req.body.VG3[0];
-   var valve4 = req.body.VG4[0];
-   var valve5 = req.body.VG5[0];
-   var valve6 = req.body.VG6[0];
-   var valve7 = req.body.VG7[0];
-   var valve8 = req.body.VG1[1];
-   var valve9 = req.body.VG2[1];
-   var valve10 = req.body.VG3[1];
-   var valve11 = req.body.VG4[1];
-   var valve12 = req.body.VG5[1];
-   var valve13 = req.body.VG6[1];
-   var valve14 = req.body.VG7[1];
-   var valve15 = req.body.VG1[2];
-   var valve16 = req.body.VG2[2];
-   var valve17 = req.body.VG3[2];
-   var valve18 = req.body.VG4[2];
-   var valve19 = req.body.VG5[2];
-   var valve20 = req.body.VG6[2];
-   var valve21 = req.body.VG7[2];
-   var valve22 = req.body.VG1[3];
-   var valve23 = req.body.VG2[3];
-   var valve24 = req.body.VG3[3];
-   var valve25 = req.body.VG4[3];
-   var valve26 = req.body.VG5[3];
-   var valve27 = req.body.VG6[3];
-   var valve28 = req.body.VG7[3];
-   var valve29 = req.body.VG1[4];
-   var valve30 = req.body.VG2[4];
-   var valve31 = req.body.VG3[4];
-   var valve32 = req.body.VG4[4];
-   var valve33 = req.body.VG5[4];
-   var valve34 = req.body.VG6[4];
-   var valve35 = req.body.VG7[4];
-   var valve36 = req.body.VG1[5];
-   var valve37 = req.body.VG2[5];
-   var valve38 = req.body.VG3[5];
-   var valve39 = req.body.VG4[5];
-   var valve40 = req.body.VG5[5];
-   var valve41 = req.body.VG6[5];
-   var valve42 = req.body.VG7[5];
-   var valve43 = req.body.VG1[6];
-   var valve44 = req.body.VG2[6];
-   var valve45 = req.body.VG3[6];
-   var valve46 = req.body.VG4[6];
-   var valve47 = req.body.VG5[6];
-   var valve48 = req.body.VG6[6];
-   var valve49 = req.body.VG7[6];
-   var valve50 = req.body.VG1[7];
-   var valve51 = req.body.VG2[7];
-   var valve52 = req.body.VG3[7];
-   var valve53 = req.body.VG4[7];
-   var valve54 = req.body.VG5[7];
-   var valve55 = req.body.VG6[7];
-   var valve56 = req.body.VG7[7];
-   var valve57 = req.body.VG1[8];
-   var valve58 = req.body.VG2[8];
-   var valve59 = req.body.VG3[8];
-   var valve60 = req.body.VG4[8];
-   var valve61 = req.body.VG5[8];
-   var valve62 = req.body.VG6[8];
-   var valve63 = req.body.VG7[8];
-   var valve64 = req.body.VG1[9];
-   var valve65 = req.body.VG2[9];
-   var valve66 = req.body.VG3[9];
-   var valve67 = req.body.VG4[9];
-   var valve68 = req.body.VG5[9];
-   var valve69 = req.body.VG6[9];
-   var valve70 = req.body.VG7[9];
-   var valve71 = req.body.VG1[10];
-   var valve72 = req.body.VG2[10];
-   var valve73 = req.body.VG3[10];
-   var valve74 = req.body.VG4[10];
-   var valve75 = req.body.VG5[10];
-   var valve76 = req.body.VG6[10];
-   var valve77 = req.body.VG7[10];
-   var valve78 = req.body.VG1[11];
-   var valve79 = req.body.VG2[11];
-   var valve80 = req.body.VG3[11];
-   var valve81 = req.body.VG4[11];
-   var valve82 = req.body.VG5[11];
-   var valve83 = req.body.VG6[11];
-   var valve84 = req.body.VG7[11];
-   var valve85 = req.body.VG1[12];
-   var valve86 = req.body.VG2[12];
-   var valve87 = req.body.VG3[12];
-   var valve88 = req.body.VG4[12];
-   var valve89 = req.body.VG5[12];
-   var valve90 = req.body.VG6[12];
+   var valve2 = req.body.VG1[1];
+   var valve3 = req.body.VG1[2];
+   var valve4 = req.body.VG1[3];
+   var valve5 = req.body.VG1[4];
+   var valve6 = req.body.VG1[5];
+   var valve7 = req.body.VG1[6];
+   var valve8 = req.body.VG1[7];
+   var valve9 = req.body.VG1[8];
+   var valve10 = req.body.VG1[9];
+   var valve11 = req.body.VG1[10];
+   var valve12 = req.body.VG1[11];
+   var valve13 = req.body.VG1[12];
+   var valve14 = req.body.VG1[13];
+   var valve15 = req.body.VG1[14];
+   var valve16 = req.body.VG1[15];
+   var valve17 = req.body.VG1[16];
+   var valve18 = req.body.VG1[17];
+   var valve19 = req.body.VG1[18];
+   var valve20 = req.body.VG1[19];
+   var valve21 = req.body.VG1[20];
+   var valve22 = req.body.VG1[21];
+   var valve23 = req.body.VG1[22];
+   var valve24 = req.body.VG1[23];
+   var valve25 = req.body.VG1[24];
+   var valve26 = req.body.VG1[25];
+   var valve27 = req.body.VG1[26];
+   var valve28 = req.body.VG1[27];
+   var valve29 = req.body.VG1[28];
+   var valve30 = req.body.VG1[29];
+   var valve31 = req.body.VG1[30];
+   var valve32 = req.body.VG1[31];
+   var valve33 = req.body.VG1[32];
+   var valve34 = req.body.VG1[33];
+   var valve35 = req.body.VG1[34];
+   var valve36 = req.body.VG1[35];
+   var valve37 = req.body.VG1[36];
+   var valve38 = req.body.VG1[37];
+   var valve39 = req.body.VG1[38];
+   var valve40 = req.body.VG1[39];
+   var valve41 = req.body.VG1[40];
+   var valve42 = req.body.VG1[41];
+   var valve43 = req.body.VG1[42];
+   var valve44 = req.body.VG1[43];
+   var valve45 = req.body.VG1[44];
+   var valve46 = req.body.VG1[45];
+   var valve47 = req.body.VG1[46];
+   var valve48 = req.body.VG1[47];
+   var valve49 = req.body.VG1[48];
+   var valve50 = req.body.VG1[49];
+   var valve51 = req.body.VG1[50];
+   var valve52 = req.body.VG1[51];
+   var valve53 = req.body.VG1[52];
+   var valve54 = req.body.VG1[53];
+   var valve55 = req.body.VG1[54];
+   var valve56 = req.body.VG1[55];
+   var valve57 = req.body.VG1[56];
+   var valve58 = req.body.VG1[57];
+   var valve59 = req.body.VG1[58];
+   var valve60 = req.body.VG1[59];
+   var valve61 = req.body.VG1[60];
+   var valve62 = req.body.VG1[61];
+   var valve63 = req.body.VG1[62];
+   var valve64 = req.body.VG1[63];
+   var valve65 = req.body.VG1[64];
+   var valve66 = req.body.VG1[65];
+   var valve67 = req.body.VG1[66];
+   var valve68 = req.body.VG1[67];
+   var valve69 = req.body.VG1[68];
+   var valve70 = req.body.VG1[69];
+   var valve71 = req.body.VG1[70];
+   var valve72 = req.body.VG1[71];
+   var valve73 = req.body.VG1[72];
+   var valve74 = req.body.VG1[73];
+   var valve75 = req.body.VG1[74];
+   var valve76 = req.body.VG1[75];
+   var valve77 = req.body.VG1[76];
+   var valve78 = req.body.VG1[77];
+   var valve79 = req.body.VG1[78];
+   var valve80 = req.body.VG1[79];
+   var valve81 = req.body.VG1[80];
+   var valve82 = req.body.VG1[81];
+   var valve83 = req.body.VG1[82];
+   var valve84 = req.body.VG1[83];
+   var valve85 = req.body.VG1[84];
+   var valve86 = req.body.VG1[85];
+   var valve87 = req.body.VG1[86];
+   var valve88 = req.body.VG1[87];
+   var valve89 = req.body.VG1[88];
+   var valve90 = req.body.VG1[89];
+   var valve91 = req.body.VG2[0];
+   var valve92 = req.body.VG2[1];
+   var valve93 = req.body.VG2[2];
+   var valve94 = req.body.VG2[3];
+   var valve95 = req.body.VG2[4];
+   var valve96 = req.body.VG2[5];
+   var valve97 = req.body.VG2[6];
+   var valve98 = req.body.VG2[7];
+   var valve99 = req.body.VG2[8];
+   var valve100 = req.body.VG2[9];
+   var valve101 = req.body.VG2[10];
+   var valve102 = req.body.VG2[11];
+   var valve103 = req.body.VG2[12];
+   var valve104 = req.body.VG2[13];
+   var valve105 = req.body.VG2[14];
+   var valve106 = req.body.VG2[15];
+   var valve107 = req.body.VG2[16];
+   var valve108 = req.body.VG2[17];
+   var valve109 = req.body.VG2[18];
+   var valve110 = req.body.VG2[19];
+   var valve111 = req.body.VG2[20];
+   var valve112 = req.body.VG2[21];
+   var valve113 = req.body.VG2[22];
+   var valve114 = req.body.VG2[23];
+   var valve115 = req.body.VG2[24];
+   var valve116 = req.body.VG2[25];
+   var valve117 = req.body.VG2[26];
+   var valve118 = req.body.VG2[27];
+   var valve119 = req.body.VG2[28];
+   var valve120 = req.body.VG2[29];
+   var valve121 = req.body.VG2[30];
+   var valve122 = req.body.VG2[31];
+   var valve123 = req.body.VG2[32];
+   var valve124 = req.body.VG2[33];
+   var valve125 = req.body.VG2[34];
+   var valve126 = req.body.VG2[35];
+   var valve127 = req.body.VG2[36];
+   var valve128 = req.body.VG2[37];
+   var valve129 = req.body.VG2[38];
+   var valve130 = req.body.VG2[39];
+   var valve131 = req.body.VG2[40];
+   var valve132 = req.body.VG2[41];
+   var valve133 = req.body.VG2[42];
+   var valve134 = req.body.VG2[43];
+   var valve135 = req.body.VG2[44];
+   var valve136 = req.body.VG2[45];
+   var valve137 = req.body.VG2[46];
+   var valve138 = req.body.VG2[47];
+   var valve139 = req.body.VG2[48];
+   var valve140 = req.body.VG2[49];
+   var valve141 = req.body.VG2[50];
+   var valve142 = req.body.VG2[51];
+   var valve143 = req.body.VG2[52];
+   var valve144 = req.body.VG2[53];
+   var valve145 = req.body.VG2[54];
+   var valve146 = req.body.VG2[55];
+   var valve147 = req.body.VG2[56];
+   var valve148 = req.body.VG2[57];
+   var valve149 = req.body.VG2[58];
+   var valve150 = req.body.VG2[59];
+   var valve151 = req.body.VG2[60];
+   var valve152 = req.body.VG2[61];
+   var valve153 = req.body.VG2[62];
+   var valve154 = req.body.VG2[63];
+   var valve155 = req.body.VG2[64];
+   var valve156 = req.body.VG2[65];
+   var valve157 = req.body.VG2[66];
+   var valve158 = req.body.VG2[67];
+   var valve159 = req.body.VG2[68];
+   var valve160 = req.body.VG2[69];
+   var valve161 = req.body.VG2[70];
+   var valve162 = req.body.VG2[71];
+   var valve163 = req.body.VG2[72];
+   var valve164 = req.body.VG2[73];
+   var valve165 = req.body.VG2[74];
+   var valve166 = req.body.VG2[75];
+   var valve167 = req.body.VG2[76];
+   var valve168 = req.body.VG2[77];
+   var valve169 = req.body.VG2[78];
+   var valve170 = req.body.VG2[79];
+   var valve171 = req.body.VG2[80];
+   var valve172 = req.body.VG2[81];
+   var valve173 = req.body.VG2[82];
+   var valve174 = req.body.VG2[83];
+   var valve175 = req.body.VG2[84];
+   var valve176 = req.body.VG2[85];
+   var valve177 = req.body.VG2[86];
+   var valve178 = req.body.VG2[87];
+   var valve179 = req.body.VG2[88];
+   var valve180 = req.body.VG2[89];
+   var voltagem = req.body.voltagem;
+
    var refrLadoFixo1 = req.body.rmladofixo1;
    var refrLadoFixo2 = req.body.rmladomovel1;
    var refrLadoMovel1 = req.body.rmladofixo2;
@@ -1626,6 +1720,97 @@ router.post("/fichas/createHaitian",(req,res) => {
          valve88: valve88,
          valve89: valve89,
          valve90: valve90,
+         valve91: valve91,
+         valve92: valve92,
+         valve93: valve93,
+         valve94: valve94,
+         valve95: valve95,
+         valve96: valve96,
+         valve97: valve97,
+         valve98: valve98,
+         valve99: valve99,
+         valve100: valve100,
+         valve101: valve101,
+         valve102: valve102,
+         valve103: valve103,
+         valve104: valve104,
+         valve105: valve105,
+         valve106: valve106,
+         valve107: valve107,
+         valve108: valve108,
+         valve109: valve109,
+         valve110: valve110,
+         valve111: valve111,
+         valve112: valve112,
+         valve113: valve113,
+         valve114: valve114,
+         valve115: valve115,
+         valve116: valve116,
+         valve117: valve117,
+         valve118: valve118,
+         valve119: valve119,
+         valve120: valve120,
+         valve121: valve121,
+         valve122: valve122,
+         valve123: valve123,
+         valve124: valve124,
+         valve125: valve125,
+         valve126: valve126,
+         valve127: valve127,
+         valve128: valve128,
+         valve129: valve129,
+         valve130: valve130,
+         valve131: valve131,
+         valve132: valve132,
+         valve133: valve133,
+         valve134: valve134,
+         valve135: valve135,
+         valve136: valve136,
+         valve137: valve137,
+         valve138: valve138,
+         valve139: valve139,
+         valve140: valve140,
+         valve141: valve141,
+         valve142: valve142,
+         valve143: valve143,
+         valve144: valve144,
+         valve145: valve145,
+         valve146: valve146,
+         valve147: valve147,
+         valve148: valve148,
+         valve149: valve149,
+         valve150: valve150,
+         valve151: valve151,
+         valve152: valve152,
+         valve153: valve153,
+         valve154: valve154,
+         valve155: valve155,
+         valve156: valve156,
+         valve157: valve157,
+         valve158: valve158,
+         valve159: valve159,
+         valve160: valve160,
+         valve161: valve161,
+         valve162: valve162,
+         valve163: valve163,
+         valve164: valve164,
+         valve165: valve165,
+         valve166: valve166,
+         valve167: valve167,
+         valve168: valve168,
+         valve169: valve169,
+         valve170: valve170,
+         valve171: valve171,
+         valve172: valve172,
+         valve173: valve173,
+         valve174: valve174,
+         valve175: valve175,
+         valve176: valve176,
+         valve177: valve177,
+         valve178: valve178,
+         valve179: valve179,
+         valve180: valve180,
+         voltagem: voltagem,
          refrLadoFixo1: refrLadoFixo1,
          refrLadoFixo2: refrLadoFixo2,
          refrLadoMovel1: refrLadoMovel1,
@@ -1860,6 +2045,97 @@ router.post("/fichas/createHaitian",(req,res) => {
             valve88: valve88,
             valve89: valve89,
             valve90: valve90,
+            valve91: valve91,
+            valve92: valve92,
+            valve93: valve93,
+            valve94: valve94,
+            valve95: valve95,
+            valve96: valve96,
+            valve97: valve97,
+            valve98: valve98,
+            valve99: valve99,
+            valve100: valve100,
+            valve101: valve101,
+            valve102: valve102,
+            valve103: valve103,
+            valve104: valve104,
+            valve105: valve105,
+            valve106: valve106,
+            valve107: valve107,
+            valve108: valve108,
+            valve109: valve109,
+            valve110: valve110,
+            valve111: valve111,
+            valve112: valve112,
+            valve113: valve113,
+            valve114: valve114,
+            valve115: valve115,
+            valve116: valve116,
+            valve117: valve117,
+            valve118: valve118,
+            valve119: valve119,
+            valve120: valve120,
+            valve121: valve121,
+            valve122: valve122,
+            valve123: valve123,
+            valve124: valve124,
+            valve125: valve125,
+            valve126: valve126,
+            valve127: valve127,
+            valve128: valve128,
+            valve129: valve129,
+            valve130: valve130,
+            valve131: valve131,
+            valve132: valve132,
+            valve133: valve133,
+            valve134: valve134,
+            valve135: valve135,
+            valve136: valve136,
+            valve137: valve137,
+            valve138: valve138,
+            valve139: valve139,
+            valve140: valve140,
+            valve141: valve141,
+            valve142: valve142,
+            valve143: valve143,
+            valve144: valve144,
+            valve145: valve145,
+            valve146: valve146,
+            valve147: valve147,
+            valve148: valve148,
+            valve149: valve149,
+            valve150: valve150,
+            valve151: valve151,
+            valve152: valve152,
+            valve153: valve153,
+            valve154: valve154,
+            valve155: valve155,
+            valve156: valve156,
+            valve157: valve157,
+            valve158: valve158,
+            valve159: valve159,
+            valve160: valve160,
+            valve161: valve161,
+            valve162: valve162,
+            valve163: valve163,
+            valve164: valve164,
+            valve165: valve165,
+            valve166: valve166,
+            valve167: valve167,
+            valve168: valve168,
+            valve169: valve169,
+            valve170: valve170,
+            valve171: valve171,
+            valve172: valve172,
+            valve173: valve173,
+            valve174: valve174,
+            valve175: valve175,
+            valve176: valve176,
+            valve177: valve177,
+            valve178: valve178,
+            valve179: valve179,
+            valve180: valve180,
+            voltagem: voltagem,
             refrLadoFixo1: refrLadoFixo1,
             refrLadoFixo2: refrLadoFixo2,
             refrLadoMovel1: refrLadoMovel1,
@@ -2333,96 +2609,187 @@ router.post("/fichas/updateHaitian",(req,res) => {
    var termoparK1 = req.body.termoparK1;
    var termoparJ = req.body.termoparJ;
    var termoparK2 = req.body.termoparK2;
-   var valve1 = req.body.VG1;
-   var valve2 = req.body.VG2;
-   var valve3 = req.body.VG3;
-   var valve4 = req.body.VG4;
-   var valve5 = req.body.VG5;
-   var valve6 = req.body.VG6;
-   var valve7 = req.body.VG7;
-   var valve8 = req.body.VG8;
-   var valve9 = req.body.VG9;
-   var valve10 = req.body.VG10;
-   var valve11 = req.body.VG11;
-   var valve12 = req.body.VG12;
-   var valve13 = req.body.VG13;
-   var valve14 = req.body.VG14;
-   var valve15 = req.body.VG15;
-   var valve16 = req.body.VG16;
-   var valve17 = req.body.VG17;
-   var valve18 = req.body.VG18;
-   var valve19 = req.body.VG19;
-   var valve20 = req.body.VG20;
-   var valve21 = req.body.VG21;
-   var valve22 = req.body.VG22;
-   var valve23 = req.body.VG23;
-   var valve24 = req.body.VG24;
-   var valve25 = req.body.VG25;
-   var valve26 = req.body.VG26;
-   var valve27 = req.body.VG27;
-   var valve28 = req.body.VG28;
-   var valve29 = req.body.VG29;
-   var valve30 = req.body.VG30;
-   var valve31 = req.body.VG31;
-   var valve32 = req.body.VG32;
-   var valve33 = req.body.VG33;
-   var valve34 = req.body.VG34;
-   var valve35 = req.body.VG35;
-   var valve36 = req.body.VG36;
-   var valve37 = req.body.VG37;
-   var valve38 = req.body.VG38;
-   var valve39 = req.body.VG39;
-   var valve40 = req.body.VG40;
-   var valve41 = req.body.VG41;
-   var valve42 = req.body.VG42;
-   var valve43 = req.body.VG43;
-   var valve44 = req.body.VG44;
-   var valve45 = req.body.VG45;
-   var valve46 = req.body.VG46;
-   var valve47 = req.body.VG47;
-   var valve48 = req.body.VG48;
-   var valve49 = req.body.VG49;
-   var valve50 = req.body.VG50;
-   var valve51 = req.body.VG51;
-   var valve52 = req.body.VG52;
-   var valve53 = req.body.VG53;
-   var valve54 = req.body.VG54;
-   var valve55 = req.body.VG55;
-   var valve56 = req.body.VG56;
-   var valve57 = req.body.VG57;
-   var valve58 = req.body.VG58;
-   var valve59 = req.body.VG59;
-   var valve60 = req.body.VG60;
-   var valve61 = req.body.VG61;
-   var valve62 = req.body.VG62;
-   var valve63 = req.body.VG63;
-   var valve64 = req.body.VG64;
-   var valve65 = req.body.VG65;
-   var valve66 = req.body.VG66;
-   var valve67 = req.body.VG67;
-   var valve68 = req.body.VG68;
-   var valve69 = req.body.VG69;
-   var valve70 = req.body.VG70;
-   var valve71 = req.body.VG71;
-   var valve72 = req.body.VG72;
-   var valve73 = req.body.VG73;
-   var valve74 = req.body.VG74;
-   var valve75 = req.body.VG75;
-   var valve76 = req.body.VG76;
-   var valve77 = req.body.VG77;
-   var valve78 = req.body.VG78;
-   var valve79 = req.body.VG79;
-   var valve80 = req.body.VG80;
-   var valve81 = req.body.VG81;
-   var valve82 = req.body.VG82;
-   var valve83 = req.body.VG83;
-   var valve84 = req.body.VG84;
-   var valve85 = req.body.VG85;
-   var valve86 = req.body.VG86;
-   var valve87 = req.body.VG87;
-   var valve88 = req.body.VG88;
-   var valve89 = req.body.VG89;
-   var valve90 = req.body.VG90;
+   var valve1 = req.body.VG1[0];
+   var valve2 = req.body.VG1[1];
+   var valve3 = req.body.VG1[2];
+   var valve4 = req.body.VG1[3];
+   var valve5 = req.body.VG1[4];
+   var valve6 = req.body.VG1[5];
+   var valve7 = req.body.VG1[6];
+   var valve8 = req.body.VG1[7];
+   var valve9 = req.body.VG1[8];
+   var valve10 = req.body.VG1[9];
+   var valve11 = req.body.VG1[10];
+   var valve12 = req.body.VG1[11];
+   var valve13 = req.body.VG1[12];
+   var valve14 = req.body.VG1[13];
+   var valve15 = req.body.VG1[14];
+   var valve16 = req.body.VG1[15];
+   var valve17 = req.body.VG1[16];
+   var valve18 = req.body.VG1[17];
+   var valve19 = req.body.VG1[18];
+   var valve20 = req.body.VG1[19];
+   var valve21 = req.body.VG1[20];
+   var valve22 = req.body.VG1[21];
+   var valve23 = req.body.VG1[22];
+   var valve24 = req.body.VG1[23];
+   var valve25 = req.body.VG1[24];
+   var valve26 = req.body.VG1[25];
+   var valve27 = req.body.VG1[26];
+   var valve28 = req.body.VG1[27];
+   var valve29 = req.body.VG1[28];
+   var valve30 = req.body.VG1[29];
+   var valve31 = req.body.VG1[30];
+   var valve32 = req.body.VG1[31];
+   var valve33 = req.body.VG1[32];
+   var valve34 = req.body.VG1[33];
+   var valve35 = req.body.VG1[34];
+   var valve36 = req.body.VG1[35];
+   var valve37 = req.body.VG1[36];
+   var valve38 = req.body.VG1[37];
+   var valve39 = req.body.VG1[38];
+   var valve40 = req.body.VG1[39];
+   var valve41 = req.body.VG1[40];
+   var valve42 = req.body.VG1[41];
+   var valve43 = req.body.VG1[42];
+   var valve44 = req.body.VG1[43];
+   var valve45 = req.body.VG1[44];
+   var valve46 = req.body.VG1[45];
+   var valve47 = req.body.VG1[46];
+   var valve48 = req.body.VG1[47];
+   var valve49 = req.body.VG1[48];
+   var valve50 = req.body.VG1[49];
+   var valve51 = req.body.VG1[50];
+   var valve52 = req.body.VG1[51];
+   var valve53 = req.body.VG1[52];
+   var valve54 = req.body.VG1[53];
+   var valve55 = req.body.VG1[54];
+   var valve56 = req.body.VG1[55];
+   var valve57 = req.body.VG1[56];
+   var valve58 = req.body.VG1[57];
+   var valve59 = req.body.VG1[58];
+   var valve60 = req.body.VG1[59];
+   var valve61 = req.body.VG1[60];
+   var valve62 = req.body.VG1[61];
+   var valve63 = req.body.VG1[62];
+   var valve64 = req.body.VG1[63];
+   var valve65 = req.body.VG1[64];
+   var valve66 = req.body.VG1[65];
+   var valve67 = req.body.VG1[66];
+   var valve68 = req.body.VG1[67];
+   var valve69 = req.body.VG1[68];
+   var valve70 = req.body.VG1[69];
+   var valve71 = req.body.VG1[70];
+   var valve72 = req.body.VG1[71];
+   var valve73 = req.body.VG1[72];
+   var valve74 = req.body.VG1[73];
+   var valve75 = req.body.VG1[74];
+   var valve76 = req.body.VG1[75];
+   var valve77 = req.body.VG1[76];
+   var valve78 = req.body.VG1[77];
+   var valve79 = req.body.VG1[78];
+   var valve80 = req.body.VG1[79];
+   var valve81 = req.body.VG1[80];
+   var valve82 = req.body.VG1[81];
+   var valve83 = req.body.VG1[82];
+   var valve84 = req.body.VG1[83];
+   var valve85 = req.body.VG1[84];
+   var valve86 = req.body.VG1[85];
+   var valve87 = req.body.VG1[86];
+   var valve88 = req.body.VG1[87];
+   var valve89 = req.body.VG1[88];
+   var valve90 = req.body.VG1[89];
+   var valve91 = req.body.VG2[0];
+   var valve92 = req.body.VG2[1];
+   var valve93 = req.body.VG2[2];
+   var valve94 = req.body.VG2[3];
+   var valve95 = req.body.VG2[4];
+   var valve96 = req.body.VG2[5];
+   var valve97 = req.body.VG2[6];
+   var valve98 = req.body.VG2[7];
+   var valve99 = req.body.VG2[8];
+   var valve100 = req.body.VG2[9];
+   var valve101 = req.body.VG2[10];
+   var valve102 = req.body.VG2[11];
+   var valve103 = req.body.VG2[12];
+   var valve104 = req.body.VG2[13];
+   var valve105 = req.body.VG2[14];
+   var valve106 = req.body.VG2[15];
+   var valve107 = req.body.VG2[16];
+   var valve108 = req.body.VG2[17];
+   var valve109 = req.body.VG2[18];
+   var valve110 = req.body.VG2[19];
+   var valve111 = req.body.VG2[20];
+   var valve112 = req.body.VG2[21];
+   var valve113 = req.body.VG2[22];
+   var valve114 = req.body.VG2[23];
+   var valve115 = req.body.VG2[24];
+   var valve116 = req.body.VG2[25];
+   var valve117 = req.body.VG2[26];
+   var valve118 = req.body.VG2[27];
+   var valve119 = req.body.VG2[28];
+   var valve120 = req.body.VG2[29];
+   var valve121 = req.body.VG2[30];
+   var valve122 = req.body.VG2[31];
+   var valve123 = req.body.VG2[32];
+   var valve124 = req.body.VG2[33];
+   var valve125 = req.body.VG2[34];
+   var valve126 = req.body.VG2[35];
+   var valve127 = req.body.VG2[36];
+   var valve128 = req.body.VG2[37];
+   var valve129 = req.body.VG2[38];
+   var valve130 = req.body.VG2[39];
+   var valve131 = req.body.VG2[40];
+   var valve132 = req.body.VG2[41];
+   var valve133 = req.body.VG2[42];
+   var valve134 = req.body.VG2[43];
+   var valve135 = req.body.VG2[44];
+   var valve136 = req.body.VG2[45];
+   var valve137 = req.body.VG2[46];
+   var valve138 = req.body.VG2[47];
+   var valve139 = req.body.VG2[48];
+   var valve140 = req.body.VG2[49];
+   var valve141 = req.body.VG2[50];
+   var valve142 = req.body.VG2[51];
+   var valve143 = req.body.VG2[52];
+   var valve144 = req.body.VG2[53];
+   var valve145 = req.body.VG2[54];
+   var valve146 = req.body.VG2[55];
+   var valve147 = req.body.VG2[56];
+   var valve148 = req.body.VG2[57];
+   var valve149 = req.body.VG2[58];
+   var valve150 = req.body.VG2[59];
+   var valve151 = req.body.VG2[60];
+   var valve152 = req.body.VG2[61];
+   var valve153 = req.body.VG2[62];
+   var valve154 = req.body.VG2[63];
+   var valve155 = req.body.VG2[64];
+   var valve156 = req.body.VG2[65];
+   var valve157 = req.body.VG2[66];
+   var valve158 = req.body.VG2[67];
+   var valve159 = req.body.VG2[68];
+   var valve160 = req.body.VG2[69];
+   var valve161 = req.body.VG2[70];
+   var valve162 = req.body.VG2[71];
+   var valve163 = req.body.VG2[72];
+   var valve164 = req.body.VG2[73];
+   var valve165 = req.body.VG2[74];
+   var valve166 = req.body.VG2[75];
+   var valve167 = req.body.VG2[76];
+   var valve168 = req.body.VG2[77];
+   var valve169 = req.body.VG2[78];
+   var valve170 = req.body.VG2[79];
+   var valve171 = req.body.VG2[80];
+   var valve172 = req.body.VG2[81];
+   var valve173 = req.body.VG2[82];
+   var valve174 = req.body.VG2[83];
+   var valve175 = req.body.VG2[84];
+   var valve176 = req.body.VG2[85];
+   var valve177 = req.body.VG2[86];
+   var valve178 = req.body.VG2[87];
+   var valve179 = req.body.VG2[88];
+   var valve180 = req.body.VG2[89];
+   var voltagem = req.body.voltagem;
    var refrLadoFixo1 = req.body.rmladofixo1;
    var refrLadoFixo2 = req.body.rmladomovel1;
    var refrLadoMovel1 = req.body.rmladofixo2;
@@ -2818,6 +3185,97 @@ router.post("/fichas/updateHaitian",(req,res) => {
          valve88: valve88,
          valve89: valve89,
          valve90: valve90,
+         valve91: valve91,
+         valve92: valve92,
+         valve93: valve93,
+         valve94: valve94,
+         valve95: valve95,
+         valve96: valve96,
+         valve97: valve97,
+         valve98: valve98,
+         valve99: valve99,
+         valve100: valve100,
+         valve101: valve101,
+         valve102: valve102,
+         valve103: valve103,
+         valve104: valve104,
+         valve105: valve105,
+         valve106: valve106,
+         valve107: valve107,
+         valve108: valve108,
+         valve109: valve109,
+         valve110: valve110,
+         valve111: valve111,
+         valve112: valve112,
+         valve113: valve113,
+         valve114: valve114,
+         valve115: valve115,
+         valve116: valve116,
+         valve117: valve117,
+         valve118: valve118,
+         valve119: valve119,
+         valve120: valve120,
+         valve121: valve121,
+         valve122: valve122,
+         valve123: valve123,
+         valve124: valve124,
+         valve125: valve125,
+         valve126: valve126,
+         valve127: valve127,
+         valve128: valve128,
+         valve129: valve129,
+         valve130: valve130,
+         valve131: valve131,
+         valve132: valve132,
+         valve133: valve133,
+         valve134: valve134,
+         valve135: valve135,
+         valve136: valve136,
+         valve137: valve137,
+         valve138: valve138,
+         valve139: valve139,
+         valve140: valve140,
+         valve141: valve141,
+         valve142: valve142,
+         valve143: valve143,
+         valve144: valve144,
+         valve145: valve145,
+         valve146: valve146,
+         valve147: valve147,
+         valve148: valve148,
+         valve149: valve149,
+         valve150: valve150,
+         valve151: valve151,
+         valve152: valve152,
+         valve153: valve153,
+         valve154: valve154,
+         valve155: valve155,
+         valve156: valve156,
+         valve157: valve157,
+         valve158: valve158,
+         valve159: valve159,
+         valve160: valve160,
+         valve161: valve161,
+         valve162: valve162,
+         valve163: valve163,
+         valve164: valve164,
+         valve165: valve165,
+         valve166: valve166,
+         valve167: valve167,
+         valve168: valve168,
+         valve169: valve169,
+         valve170: valve170,
+         valve171: valve171,
+         valve172: valve172,
+         valve173: valve173,
+         valve174: valve174,
+         valve175: valve175,
+         valve176: valve176,
+         valve177: valve177,
+         valve178: valve178,
+         valve179: valve179,
+         valve180: valve180,
+         voltagem: voltagem,
          refrLadoFixo1: refrLadoFixo1,
          refrLadoFixo2: refrLadoFixo2,
          refrLadoMovel1: refrLadoMovel1,
@@ -3056,6 +3514,97 @@ router.post("/fichas/updateHaitian",(req,res) => {
             valve88: valve88,
             valve89: valve89,
             valve90: valve90,
+            valve91: valve91,
+            valve92: valve92,
+            valve93: valve93,
+            valve94: valve94,
+            valve95: valve95,
+            valve96: valve96,
+            valve97: valve97,
+            valve98: valve98,
+            valve99: valve99,
+            valve100: valve100,
+            valve101: valve101,
+            valve102: valve102,
+            valve103: valve103,
+            valve104: valve104,
+            valve105: valve105,
+            valve106: valve106,
+            valve107: valve107,
+            valve108: valve108,
+            valve109: valve109,
+            valve110: valve110,
+            valve111: valve111,
+            valve112: valve112,
+            valve113: valve113,
+            valve114: valve114,
+            valve115: valve115,
+            valve116: valve116,
+            valve117: valve117,
+            valve118: valve118,
+            valve119: valve119,
+            valve120: valve120,
+            valve121: valve121,
+            valve122: valve122,
+            valve123: valve123,
+            valve124: valve124,
+            valve125: valve125,
+            valve126: valve126,
+            valve127: valve127,
+            valve128: valve128,
+            valve129: valve129,
+            valve130: valve130,
+            valve131: valve131,
+            valve132: valve132,
+            valve133: valve133,
+            valve134: valve134,
+            valve135: valve135,
+            valve136: valve136,
+            valve137: valve137,
+            valve138: valve138,
+            valve139: valve139,
+            valve140: valve140,
+            valve141: valve141,
+            valve142: valve142,
+            valve143: valve143,
+            valve144: valve144,
+            valve145: valve145,
+            valve146: valve146,
+            valve147: valve147,
+            valve148: valve148,
+            valve149: valve149,
+            valve150: valve150,
+            valve151: valve151,
+            valve152: valve152,
+            valve153: valve153,
+            valve154: valve154,
+            valve155: valve155,
+            valve156: valve156,
+            valve157: valve157,
+            valve158: valve158,
+            valve159: valve159,
+            valve160: valve160,
+            valve161: valve161,
+            valve162: valve162,
+            valve163: valve163,
+            valve164: valve164,
+            valve165: valve165,
+            valve166: valve166,
+            valve167: valve167,
+            valve168: valve168,
+            valve169: valve169,
+            valve170: valve170,
+            valve171: valve171,
+            valve172: valve172,
+            valve173: valve173,
+            valve174: valve174,
+            valve175: valve175,
+            valve176: valve176,
+            valve177: valve177,
+            valve178: valve178,
+            valve179: valve179,
+            valve180: valve180,
+            voltagem: voltagem,
             refrLadoFixo1: refrLadoFixo1,
             refrLadoFixo2: refrLadoFixo2,
             refrLadoMovel1: refrLadoMovel1,

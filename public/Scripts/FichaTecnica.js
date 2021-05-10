@@ -39,7 +39,8 @@ $('#maquinasList').change(e => {
       url: "/maquinaById/"+ v1,
       type: "get", //send it through get method
       success: function(responseMaquina) {
-         console.log(responseMaquina)
+         // console.log(responseMaquina)
+
          $.ajax({
             url: "/ficha/lista/"+ v1 + "/" + v2,
             type: "get", //send it through get method
