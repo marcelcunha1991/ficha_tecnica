@@ -54,3 +54,7 @@ input.read-only {
    text-align: center;
    font-style: italic;
 }
+
+input.read-only:focus {
+   outline: none;
+}

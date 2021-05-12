@@ -10,6 +10,11 @@ const conn = new Sequelize('fichatecnica','root','',{
    timezone:"-04:00"
 })
 
+// const conn = new Sequelize('fichatecnica','postgres','1234',{
+//    host: 'localhost',
+//    dialect: 'postgres',
+// })
+
 // PARAMETROS DE CONEXAO PARA BANCO SQLSERVER - OPCAO 01
 
 // const conn = new Sequelize('fichatecnica', 'root', 'sa123', {

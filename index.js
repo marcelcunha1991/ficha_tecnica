@@ -14,6 +14,7 @@ const FichaTecnicaToshiba = require("./Ficha/FichaTecnicaToshiba");
 const LimitesFichaTecnicaToshiba = require("./Ficha/LimitesFichaTecnicaToshiba");
 const ParametrosReaisToshiba = require("./ParametrosTempoReal/ParametrosReaisToshiba");
 const ParametrosReaisAutomata = require("./ParametrosTempoReal/ParametrosReaisAutomata");
+const ParametrosReaisHaitianJupyter = require("./ParametrosTempoReal/ParametrosReaisHaitianJupyter");
 const LimiteParametrosToshiba = require("./ParametrosTempoReal/LimiteParametrosToshiba");
 const LimiteParametrosAutomata = require("./ParametrosTempoReal/LimiteParametrosAutomata");
 const Tipo = require("./Tipo/Tipo");
@@ -110,6 +111,7 @@ app.get("/",(req,res) =>{
    // LimitesFichaTecnicaToshiba.sync();
    // ParametrosReaisToshiba.sync();   
    // ParametrosReaisAutomata.sync();        
+   // ParametrosReaisHaitianJupyter.sync();        
    // LimiteParametrosToshiba.sync();
    // LimiteParametrosAutomata.sync();
    // Alertas.sync();
@@ -128,18 +130,18 @@ app.get("/",(req,res) =>{
 //     matricula:"00000"        
 // })
 
-//     Tipo.create({
-//         tipo:"Toshiba"
-//     });
-//     Tipo.create({
-//         tipo:"Automata OPTIN"
-//     })
-//     Tipo.create({
-//         tipo:"HAITIAN"
-//     })
-   //  Tipo.create({
-   //      tipo:"Haitian Jupyter"
-   //  })
+   // Tipo.create({
+   //    tipo:"Toshiba"
+   // });
+   // Tipo.create({
+   //    tipo:"Automata OPTIN"
+   // })
+   // Tipo.create({
+   //    tipo:"Haitian Jupyter"
+   // })
+   // Tipo.create({
+   //    tipo:"HAITIAN"
+   // })
 
    
     

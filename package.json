@@ -19,6 +19,8 @@
     "mysql2": "^2.2.5",
     "node-cron": "^2.0.3",
     "nodemailer": "^6.4.16",
+    "pg": "^8.6.0",
+    "pg-hstore": "^2.3.3",
     "sequelize": "^6.3.5",
     "sequelize-msnodesqlv8": "^0.2.6-beta.8",
     "tedious": "^9.2.1"
