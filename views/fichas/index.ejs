@@ -3,22 +3,24 @@
 
 <div class="container"> 
 
-    <hr>
-    <h2>Fichas Técnicas</h2> 
-    <a class="btn btn-success" href="/novaficha"> Inserir Nova Ficha Técnica</a>
-    <a class="btn btn-success" href="/ficha/lista"> Lista de Fichas Técnicas</a>
-    <hr>
+   <hr>
+   <h2>Fichas Técnicas</h2> 
+   <div id="nav">
+      <a class="btn btn-success" href="/novaficha"> Inserir Nova Ficha Técnica</a>
+      <a class="btn btn-success" href="/ficha/lista"> Lista de Fichas Técnicas</a>
+   </div>
+   <hr>   
+   
+   <input type="hidden" name="dsMaquina"  id="dsMaquina" value="<%= dsMaquina %>">
 
-    <input type="hidden" name="dsMaquina"  id="dsMaquina" value="<%= dsMaquina %>">
+   <select name="maquinas" id="maquinas"  class="form-control">
+      <option value="0"> Selecione uma máquina</option>
+      <% maquinas.forEach((maquina) => { %>
+         <option value="<%= maquina.id %>"> <%= maquina.descricao %></option>
+      <% }) %>
+   </select>
 
-    <select name="maquinas" id="maquinas"  class="form-control">
-        <option > Selecione uma máquina</option>
-        <% maquinas.forEach((maquina) => { %>
-                <option value="<%= maquina.id %>"> <%= maquina.descricao %></option>
-        <% }) %>
-    </select>
-
-    <br>
+   <br>
 <!-- <h5>Alertas Abertos : </h5>
 <br>
 <table class="table table-bordered" id="alertas"> 

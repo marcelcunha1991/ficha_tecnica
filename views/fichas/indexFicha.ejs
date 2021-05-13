@@ -1,0 +1,2142 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/sidebar.ejs') %>
+
+<div class="container-fluid"> 
+
+   <hr>
+   <h2>Fichas Técnicas</h2> 
+   <div id="nav">
+      <a class="btn btn-success" href="/novaficha"> Inserir Nova Ficha Técnica</a>
+      <a class="btn btn-success" href="/ficha/lista"> Lista de Fichas Técnicas</a>
+   </div>
+   <hr> 
+
+   <select name="maquinas" id="maquinas"  class="form-control">
+      <option value="0"> Selecione uma máquina</option>
+      <% maquinas.forEach((maquina) => { %>
+         <option value="<%= maquina.id %>"> <%= maquina.descricao %></option>
+      <% }) %>
+   </select>
+
+   <br>
+
+   <h5>Parâmetros De Programa : </h5>
+   
+   <div class="d-flex flex-column ficha">
+      <div class="d-flex flex-row">
+         <div style="width: 10px; height: 10px; background-color: blue; margin-right: 5px;"></div>Valores cadastrados
+      </div>
+      <div class="d-flex flex-row">
+         <div style="width: 10px; height: 10px; background-color: green; margin-right: 5px;"></div>Valores reais
+      </div>
+   </div>
+
+   <br>
+   <table class="table table-bordered" id="parametros"/> 
+      <thead>
+         <!-- <tr>
+            <th> Parâmetro </th>
+            <th> Valor Mínimo </th>
+            <th> Valor Máximo </th>
+            <th> Último valor setado </th>             
+         </tr> -->
+      </thead>
+      <tbody>
+      </tbody>
+   </table>
+
+
+   <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+         <!-- Modal content-->
+         <div id="plotly">
+      </div>
+      </div>
+   </div>
+
+   <div class="d-flex justify-content-between ficha">
+      <!-- INJETORES -->
+      <div class="d-flex flex-column table-responsive table-ficha justify-content-between" style="width: 50vw; margin-right: 20px;">
+         <table class="table-bordered" style="width: 100%">
+            <thead>
+               <tr>
+                  <th>TOL &#177; 10%</th>
+                  <th colspan="4">CILINDRO</th>
+                  <th colspan="2">BICO</th>
+               </tr>
+               <tr>
+                  <% for(var i = 0; i < 7; i++) { %>
+                     <th><%= i+1 %></th>
+                  <% } %>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                     <td>
+                        <p class="read-only"><span class="cadastrados"><%= injetor.cilindro1 %></span> - <span class="reais"><%= parametros.TEMPERATURA_ZONA_1 %></span></p>
+                     </td>
+                     <td>
+                        <p class="read-only"><span class="cadastrados"><%= injetor.cilindro2 %></span> - <span class="reais"><%= parametros.TEMPERATURA_ZONA_2 %></span></p>
+                     </td>
+                     <td>
+                        <p class="read-only"><span class="cadastrados"><%= injetor.cilindro3 %></span> - <span class="reais"><%= parametros.TEMPERATURA_ZONA_3 %></span></p>
+                     </td>
+                     <td>
+                        <p class="read-only"><span class="cadastrados"><%= injetor.cilindro4 %></span> - <span class="reais"><%= parametros.TEMPERATURA_ZONA_4 %></span></p>
+                     </td>
+                     <td>
+                        <p class="read-only"><span class="cadastrados"><%= injetor.cilindro5 %></span> - <span class="reais"><%= parametros.TEMPERATURA_ZONA_5 %></span></p>
+                     </td>
+                     <td>
+                        <p class="read-only"><span class="cadastrados"><%= injetor.cilindro6 %></span> - <span class="reais"><%= parametros.TEMPERATURA_ZONA_6 %></span></p>
+                     </td>
+                     <td>
+                        <p class="read-only"><span class="cadastrados"><%= injetor.cilindro7 %></span> - <span class="reais"><%= parametros.TEMPERATURA_ZONA_7 %></span></p>
+                     </td>
+               </tr>
+            </tbody>
+         </table>
+   
+         <table class="table-bordered" style="width: 100%;">
+            <thead>
+               <tr>
+                  <th colspan="6">INJEÇÃO</th>
+                  <th colspan="1">TOL &#177; 10%</th>
+               </tr>
+               <tr>
+                  <th colspan="2">COMUTAÇÃO</th>
+                  <% for(var i = 5; i >= 1; i--) { %>
+                     <th colspan="1">INJ. <%= i %></th>
+                  <% } %>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <th scope="row">POSIÇÃO</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.posComut %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.posInjecao1 %></span> - <span class="reais"><%= parametros.INJECAO_POSICAO_1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.posInjecao2 %></span> - <span class="reais"><%= parametros.INJECAO_POSICAO_2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.posInjecao3 %></span> - <span class="reais"><%= parametros.INJECAO_POSICAO_3 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.posInjecao4 %></span> - <span class="reais"><%= parametros.INJECAO_POSICAO_4 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.posInjecao5 %></span> - <span class="reais"><%= parametros.INJECAO_POSICAO_5 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th scope="row">PRESSÃO</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presComut %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presInjecao1 %></span> - <span class="reais"><%= parametros.INJECAO_PRESSAO_1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presInjecao2 %></span> - <span class="reais"><%= parametros.INJECAO_PRESSAO_2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presInjecao3 %></span> - <span class="reais"><%= parametros.INJECAO_PRESSAO_3 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presInjecao4 %></span> - <span class="reais"><%= parametros.INJECAO_PRESSAO_4 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presInjecao5 %></span> - <span class="reais"><%= parametros.INJECAO_PRESSAO_5 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="2">FLUXO</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoInjecao1 %></span> - <span class="reais"><%= parametros.INJECAO_FLUXO_1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoInjecao2 %></span> - <span class="reais"><%= parametros.INJECAO_FLUXO_2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoInjecao3 %></span> - <span class="reais"><%= parametros.INJECAO_FLUXO_3 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoInjecao4 %></span> - <span class="reais"><%= parametros.INJECAO_FLUXO_4 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoInjecao5 %></span> - <span class="reais"><%= parametros.INJECAO_FLUXO_5 %></span></p>
+                  </td>
+               </tr>
+            </tbody>
+            <tfoot>
+               <tr>
+                  <th colspan="2">TEMPO DISPARO:</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.tempoDisparo %></span></p>
+                  </td>
+                  <th colspan="3">TEMPO DE PRESSÃO INJEÇÃO:</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.pressaoInj %></span></p>
+                  </td>
+               </tr>
+            </tfoot>
+         </table>
+   
+         <table class="table-bordered" style="width: 100%;">
+            <thead>
+               <tr>
+                  <th colspan="6">RECALQUE</th>
+                  <th colspan="1">TOL &#177; 10%</th>
+               </tr>
+               <tr>
+                  <th colspan="2">bar / seg / %</th>
+                  <% for(var i = 5; i >= 1; i--) { %>
+                     <th colspan="1">MANT. <%= i %></th>
+                  <% } %>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <th scope="row" colspan="2">PRESSÃO</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presRecalque1 %></span> - <span class="reais"><%= parametros.RECALQUE_PRESSAO_1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presRecalque2 %></span> - <span class="reais"><%= parametros.RECALQUE_PRESSAO_2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presRecalque3 %></span> - <span class="reais"><%= parametros.RECALQUE_PRESSAO_3 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presRecalque4 %></span> - <span class="reais"><%= parametros.RECALQUE_PRESSAO_4 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presRecalque5 %></span> - <span class="reais"><%= parametros.RECALQUE_PRESSAO_5 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="2">FLUXO</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoRecalque1 %></span> - <span class="reais"><%= parametros.RECALQUE_FLUXO_1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoRecalque2 %></span> - <span class="reais"><%= parametros.RECALQUE_FLUXO_2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoRecalque3 %></span> - <span class="reais"><%= parametros.RECALQUE_FLUXO_3 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoRecalque4 %></span> - <span class="reais"><%= parametros.RECALQUE_FLUXO_4 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoRecalque5 %></span> - <span class="reais"><%= parametros.RECALQUE_FLUXO_5 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="2">TEMPO</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.tempoRecalque1 %></span> - <span class="reais"><%= parametros.RECALQUE_TEMPO_1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.tempoRecalque2 %></span> - <span class="reais"><%= parametros.RECALQUE_TEMPO_2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.tempoRecalque3 %></span> - <span class="reais"><%= parametros.RECALQUE_TEMPO_3 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.tempoRecalque4 %></span> - <span class="reais"><%= parametros.RECALQUE_TEMPO_4 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.tempoRecalque5 %></span> - <span class="reais"><%= parametros.RECALQUE_TEMPO_5 %></span></p>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+   
+         <table class="table-bordered" style="width: 100%;">
+            <thead>
+               <tr>
+                  <th colspan="6">DOSAGEM</th>
+                  <th colspan="1">TOL &#177; 10%</th>
+               </tr>
+               <tr>
+                  <th colspan="2"></th>
+                  <% for(var i = 5; i >= 1; i--) { %>
+                     <th colspan="1">CARGA. <%= i %></th>
+                  <% } %>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <th scope="row" colspan="2">PARTIDA</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.partDosagem1 %></span> - <span class="reais"><%= parametros.DOSAGEM_PARTIDA_1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.partDosagem2 %></span> - <span class="reais"><%= parametros.DOSAGEM_PARTIDA_2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.partDosagem3 %></span> - <span class="reais"><%= parametros.DOSAGEM_PARTIDA_3 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.partDosagem4 %></span> - <span class="reais"><%= parametros.DOSAGEM_PARTIDA_4 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.partDosagem5 %></span> - <span class="reais"><%= parametros.DOSAGEM_PARTIDA_5 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="2">PRESSÃO</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presDosagem1 %></span> - <span class="reais"><%= parametros.DOSAGEM_PRESSAO_1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presDosagem2 %></span> - <span class="reais"><%= parametros.DOSAGEM_PRESSAO_2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presDosagem3 %></span> - <span class="reais"><%= parametros.DOSAGEM_PRESSAO_3 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presDosagem4 %></span> - <span class="reais"><%= parametros.DOSAGEM_PRESSAO_4 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presDosagem5 %></span> - <span class="reais"><%= parametros.DOSAGEM_PRESSAO_5 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="2">FLUXO</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoDosagem1 %></span> - <span class="reais"><%= parametros.DOSAGEM_FLUXO_1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoDosagem2 %></span> - <span class="reais"><%= parametros.DOSAGEM_FLUXO_2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoDosagem3 %></span> - <span class="reais"><%= parametros.DOSAGEM_FLUXO_3 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoDosagem4 %></span> - <span class="reais"><%= parametros.DOSAGEM_FLUXO_4 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoDosagem5 %></span> - <span class="reais"><%= parametros.DOSAGEM_FLUXO_5 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="2">CONTRAPRESSÃO</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.CPDosagem1 %></span> - <span class="reais"><%= parametros.DOSAGEM_CONTRAPRESSAO_1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.CPDosagem2 %></span> - <span class="reais"><%= parametros.DOSAGEM_CONTRAPRESSAO_2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.CPDosagem3 %></span> - <span class="reais"><%= parametros.DOSAGEM_CONTRAPRESSAO_3 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.CPDosagem4 %></span> - <span class="reais"><%= parametros.DOSAGEM_CONTRAPRESSAO_4 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.CPDosagem5 %></span> - <span class="reais"><%= parametros.DOSAGEM_CONTRAPRESSAO_5 %></span></p>
+                  </td>
+               </tr>
+            </tbody>
+            <tfoot>
+               <tr>
+                  <th colspan="2">TEMPO:</th>
+                  <td colspan="5">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.tempoDosagem %></span> - <span class="reais"><%= parametros.TEMPO_DOSAGEM %></span></p>
+                  </td>
+               </tr>
+            </tfoot>
+         </table>
+   
+         <table class="table-bordered" style="width: 100%;">
+            <thead>
+               <tr>
+                  <th colspan="6">DESCOMPRESSÃO</th>
+                  <th colspan="1">TOL &#177; 10%</th>
+               </tr>
+               <tr>
+                  <th colspan="3">DESCOMPRIMIR</th>
+                  <th colspan="1">POSIÇÃO</th>
+                  <th colspan="1">PRESSÃO</th>
+                  <th colspan="1">FLUXO</th>
+                  <th colspan="1">TEMPO</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <th colspan="3">ANTES</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.antesPos %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.antesPres %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.antesFluxo %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.antesTempo %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th colspan="3">DEPOIS</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.depoisPos %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.depoisPres %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.depoisFluxo %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.depoisTempo %></span></p>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+   
+         <table class="table-bordered" style="width: 100%;">
+            <thead>
+               <tr>
+                  <th colspan="6">FECHAMENTO</th>
+                  <th colspan="1">TOL &#177; 10%</th>
+               </tr>
+               <tr>
+                  <th colspan="2"></th>
+                  <% for(var i = 1; i <= 3; i++) { %>
+                     <th colspan="1">FECHA. <%= i %></th>
+                  <% } %>
+                  <th colspan="1">PROT.M</th>
+                  <th colspan="1">ALTA PRESSÃO</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <th scope="row" colspan="2">POSIÇÃO</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.posFecha1 %></span> - <span class="reais"><%= parametros.FECHAMENTO_POSICAO_1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.posFecha2 %></span> - <span class="reais"><%= parametros.FECHAMENTO_POSICAO_2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.posFecha3 %></span> - <span class="reais"><%= parametros.FECHAMENTO_POSICAO_3 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.protMPos %></span> - <span class="reais"><%= parametros.FECHAMENTO_POSICAO_PROTECAO_MOLDE %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.AltaPresPos %></span> - <span class="reais"><%= parametros.ECHAMENTO_POSICAO_ALTA_PRESSAO %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="2">PRESSÃO</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presFecha1 %></span> - <span class="reais"><%= parametros.FECHAMENTO_PRESSAO_1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presFecha2 %></span> - <span class="reais"><%= parametros.FECHAMENTO_PRESSAO_2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presFecha3 %></span> - <span class="reais"><%= parametros.FECHAMENTO_PRESSAO_3 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.protMPres %></span> - <span class="reais"><%= parametros.FECHAMENTO_PRESSAO_PROTECAO_MOLDE %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.AltaPresPres %></span> - <span class="reais"><%= parametros.FECHAMENTO_PRESSAO_ALTA_PRESSAO %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="2">FLUXO</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoFecha1 %></span> - <span class="reais"><%= parametros.FECHAMENTO_FLUXO_1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoFecha2 %></span> - <span class="reais"><%= parametros.FECHAMENTO_FLUXO_2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoFecha3 %></span> - <span class="reais"><%= parametros.FECHAMENTO_FLUXO_3 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.protMFluxo %></span> - <span class="reais"><%= parametros.FECHAMENTO_FLUXO_PROTECAO_MOLDE %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.AltaPresFluxo %></span> - <span class="reais"><%= parametros.FECHAMENTO_FLUXO_ALTA_PRESSAO %></span></p>
+                  </td>
+               </tr>
+            </tbody>
+            <tfoot>
+               <tr>
+                  <th colspan="3">TEMPO PROTEÇÃO DE MOLDE:</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.tempoProtMolde %></span></p>
+                  </td>
+                  <th colspan="2">TEMPO FECHAMENTO:</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.tempoFecha %></span></p>
+                  </td>
+               </tr>
+            </tfoot>
+         </table>
+   
+         <table class="table-bordered" style="width: 100%;">
+            <thead>
+               <tr>
+                  <th colspan="6">ABERTURA</th>
+                  <th colspan="1">TOL &#177; 10%</th>
+               </tr>
+               <tr>
+                  <th colspan="2"></th>
+                  <% for(var i = 5; i >= 1; i--) { %>
+                     <th colspan="1">ABRIR. <%= i %></th>
+                  <% } %>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <th scope="row" colspan="2">POSIÇÃO</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.posAbertura1 %></span> - <span class="reais"><%= parametros.ABERTURA_POSICAO_1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.posAbertura2 %></span> - <span class="reais"><%= parametros.ABERTURA_POSICAO_2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.posAbertura3 %></span> - <span class="reais"><%= parametros.ABERTURA_POSICAO_3 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.posAbertura4 %></span> - <span class="reais"><%= parametros.ABERTURA_POSICAO_4 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.posAbertura5 %></span> - <span class="reais"><%= parametros.ABERTURA_POSICAO_5 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="2">PRESSÃO</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presAbertura1 %></span> - <span class="reais"><%= parametros.ABERTURA_PRESSAO_1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presAbertura2 %></span> - <span class="reais"><%= parametros.ABERTURA_PRESSAO_2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presAbertura3 %></span> - <span class="reais"><%= parametros.ABERTURA_PRESSAO_3 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presAbertura4 %></span> - <span class="reais"><%= parametros.ABERTURA_PRESSAO_4 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presAbertura5 %></span> - <span class="reais"><%= parametros.ABERTURA_PRESSAO_5 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="2">FLUXO</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoAbertura1 %></span> - <span class="reais"><%= parametros.ABERTURA_FLUXO_1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoAbertura2 %></span> - <span class="reais"><%= parametros.ABERTURA_FLUXO_2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoAbertura3 %></span> - <span class="reais"><%= parametros.ABERTURA_FLUXO_3 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoAbertura4 %></span> - <span class="reais"><%= parametros.ABERTURA_FLUXO_4 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoAbertura5 %></span> - <span class="reais"><%= parametros.ABERTURA_FLUXO_5 %></span></p>
+                  </td>
+               </tr>
+            </tbody>
+            <tfoot>
+               <tr>
+                  <th colspan="3">RESFRIAMENTO:</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.resfriamento %></span></p>
+                  </td>
+                  <th colspan="2">TEMPO ABERTURA:</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.tempoAbertura %></span></p>
+                  </td>
+               </tr>
+            </tfoot>
+         </table>
+   
+         <table class="table-bordered" style="width: 100%;">
+            <thead>
+               <tr>
+                  <th colspan="6">EXTRAÇÃO</th>
+                  <th colspan="1">TOL &#177; 10%</th>
+               </tr>
+               <tr>
+                  <th rowspan="2" colspan="1"></th>
+                  <th colspan="3">AVANÇO</th>
+                  <th colspan="3">RECUO</th>
+               </tr>
+               <tr>
+                  <% for(var i = 1; i <= 3; i++) { %>
+                     <th colspan="1">EXTRAIR. <%= i %></th>
+                  <% } %>
+                  <% for(var i = 3; i >= 1; i--) { %>
+                     <th colspan="1">EXTRAIR. <%= i %></th>
+                  <% } %>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <th scope="row" colspan="1">POSIÇÃO</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.posAvanco1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.posAvanco2 %></span> - <span class="reais"><%= parametros.EXTRACAO_POSICAO_AVANCO_2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.posAvanco3 %></span> - <span class="reais"><%= parametros.EXTRACAO_POSICAO_AVANCO_3 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.posRecuo1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.posRecuo2 %></span> - <span class="reais"><%= parametros.EXTRACAO_POSICAO_RECUO_2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.posRecuo3 %></span> - <span class="reais"><%= parametros.EXTRACAO_POSICAO_RECUO_3 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="1">PRESSÃO</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presAvanco1 %></span> - <span class="reais"><%= parametros.EXTRACAO_PRESSAO_AVANCO_1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presAvanco2 %></span> - <span class="reais"><%= parametros.EXTRACAO_PRESSAO_AVANCO_2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presAvanco3 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presRecuo1 %></span> - <span class="reais"><%= parametros.EXTRACAO_PRESSAO_RECUO_1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presRecuo2 %></span> - <span class="reais"><%= parametros.EXTRACAO_PRESSAO_RECUO_2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presRecuo3 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="1">FLUXO</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoAvanco1 %></span> - <span class="reais"><%= parametros.EXTRACAO_FLUXO_AVANCO_1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoAvanco2 %></span> - <span class="reais"><%= parametros.EXTRACAO_FLUXO_AVANCO_2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoAvanco3 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoRecuo1 %></span> - <span class="reais"><%= parametros.EXTRACAO_FLUXO_RECUO_1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoRecuo2 %></span> - <span class="reais"><%= parametros.EXTRACAO_FLUXO_RECUO_2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoRecuo3 %></span></p>
+                  </td>
+               </tr>
+            </tbody>
+            <tfoot>
+               <tr>
+                  <th colspan="2">ATRASO:</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.atraso %></span></p>
+                  </td>
+                  <th colspan="2">BATIDA:</th>
+                  <td colspan="2">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.batida %></span></p>
+                  </td>
+               </tr>
+            </tfoot>
+         </table>
+   
+         <table class="table-bordered" style="width: 100%;">
+            <thead>
+               <tr>
+                  <th colspan="6">RADIAL HIDRÁULICO</th>
+                  <th colspan="1">TOL &#177; 10%</th>
+               </tr>
+               <tr>
+                  <th rowspan="2" colspan="1"></th>
+                  <% for(var i = 1; i <= 3; i++) { %>
+                     <th colspan="2">RADIAL</th>
+                  <% } %>
+               </tr>
+               <tr>
+                  <% for(var i = 1; i <= 3; i++) { %>
+                     <th colspan="1">ENTRADA</th>
+                     <th colspan="1">SAÍDA</th>
+                  <% } %>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <th colspan="1">TYPE</th>
+                  <th colspan="1">TEMPO</th>
+                  <th colspan="1">LIMITE</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialTypeEntrada1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialTypeSaida1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialTypeEntrada2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialTypeSaida2 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="1">PRESSÃO</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPresEntrada1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPresSaida1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPresEntrada2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPresSaida2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPresEntrada3 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPresSaida3 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="1">FLUXO</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialFluxoEntrada1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialFluxoSaida1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialFluxoEntrada2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialFluxoSaida2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialFluxoEntrada3 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialFluxoSaida3 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="1">ACT. POSIÇÃO</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPosEntrada1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPosSaida1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPosEntrada2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPosSaida2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPosEntrada3 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPosSaida3 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="1">ACT. TEMPO</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialTempoEntrada1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialTempoSaida1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialTempoEntrada2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialTempoSaida2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialTempoEntrada3 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialTempoSaida3 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th scope="row" colspan="1">SCRCOUNT</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialSCREntrada1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialSCRSaida1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialSCREntrada2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialSCRSaida2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialSCREntrada3 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialSCRSaida3 %></span></p>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <!-- FIM INJETORES -->     
+      
+      <!-- PERIFÉRICOS -->
+      <div class="table-responsive table-ficha d-flex flex-column justify-content-between" style="width: 50vw;">
+         <table class="table-bordered" style="width: 100%">
+            <thead>
+               <tr>
+                  <th colspan="5">CÂMARA QUENTE</th>
+                  <th colspan="2">TOL &#177; 10%</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara1 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara2 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara3 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara4 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara5 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara6 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara7 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara8 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara9 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara10 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara11 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara12 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara13 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara14 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara15 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara16 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara17 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara18 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara19 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara20 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara21 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara22 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara23 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara24 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara25 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara26 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara27 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara28 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara29 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara30 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara31 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara32 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara33 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara34 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara35 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara36 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara37 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara38 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara39 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara40 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara41 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara42 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara43 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara44 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara45 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara46 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara47 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara48 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara49 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara50 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara51 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara52 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara53 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara54 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara55 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara56 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara57 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara58 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara59 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara60 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara61 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara62 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara63 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara64 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara65 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara66 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara67 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara68 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara69 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara70 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara71 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara72 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara73 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara74 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara75 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara76 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara77 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara78 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara79 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara80 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara81 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara82 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara83 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara84 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara85 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara86 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara87 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara88 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara89 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara90 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara91 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara92 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara93 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara94 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara95 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara96 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara97 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara98 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara99 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara100 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara101 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara102 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara103 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara104 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara105 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara106 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara107 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara108 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara109 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara110 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara111 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara112 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara113 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara114 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara115 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara116 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara117 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara118 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara119 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara120 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara121 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara122 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara123 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara124 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara125 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara126 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara127 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara128 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara129 %></span></p>
+                  </td>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.camara130 %></span></p>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+
+         <table id="termopar" class="table-bordered" style="width: 100%; margin-top: 40px">
+            <tbody>
+               <tr>
+                  <th colspan="1">TERMOPAR:</th>
+                  <th colspan="1">K:</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.termoparK1 %></span></p>
+                  </td>
+                  <th colspan="1">J: 1~78</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.termoparJ %></span></p>
+                  </td>
+                  <th colspan="1">K:</th>
+                  <td colspan="1">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.termoparK2 %></span></p>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+         
+         <table class="table-bordered" style="width: 100%; margin-top: 40px">
+            <thead>
+               <tr>
+                  <th colspan="5">VALVE GATES</th>
+                  <th colspan="2">TOL &#177; 10%</th>
+               </tr>
+               <tr>
+                  <th colspan="7">SEQUENCIADOR</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <th>BICO</th>
+                  <th>DLY TIME</th>
+                  <th>ACT TIME</th>
+                  <th>BICO</th>
+                  <th>DLY TIME</th>
+                  <th>ACT TIME</th>
+               </tr>
+               <tr>
+                  <th>VG1</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG1DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG1ACTTIME %></span></p>
+                  </td>
+                  
+                  <th>VG46</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG46DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG46ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG2</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG2DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG2ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG47</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG47DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG47ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG3</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG3DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG3ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG48</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG48DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG48ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG4</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG4DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG4ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG49</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG49DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG49ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG5</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG5DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG5ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG50</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG50DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG50ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG6</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG6DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG6ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG51</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG51DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG51ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG7</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG7DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG7ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG52</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG52DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG52ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG8</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG8DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG8ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG53</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG53DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG53ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG9</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG9DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG9ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG54</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG54DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG54ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG10</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG10DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG10ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG55</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG55DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG55ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG11</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG11DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG11ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG56</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG56DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG56ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG12</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG12DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG12ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG57</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG57DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG57ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG13</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG13DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG13ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG58</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG58DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG58ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG14</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG14DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG14ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG59</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG59DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG59ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG15</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG15DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG15ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG60</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG60DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG60ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG16</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG16DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG16ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG61</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG61DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG61ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG17</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG17DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG17ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG62</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG62DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG62ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG18</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG18DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG18ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG63</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG63DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG63ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG19</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG19DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG19ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG64</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG64DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG64ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG20</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG20DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG20ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG65</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG65DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG65ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG21</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG21DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG21ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG66</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG66DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG66ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG22</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG22DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG22ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG67</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG67DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG67ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG23</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG23DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG23ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG68</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG68DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG68ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG24</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG24DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG24ACTTIME %></span></p>
+                  </td>
+                  
+                  <th>VG69</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG69DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG69ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG25</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG25DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG25ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG70</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG70DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG70ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG26</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG26DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG26ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG71</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG71DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG71ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG27</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG27DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG27ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG72</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG72DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG72ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG28</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG28DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG28ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG73</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG73DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG73ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG29</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG29DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG29ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG74</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG74DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG74ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG30</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG30DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG30ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG75</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG75DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG75ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG31</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG31DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG31ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG76</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG76DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG76ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG32</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG32DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG32ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG77</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG77DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG77ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG33</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG33DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG33ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG78</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG78DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG78ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG34</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG34DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG34ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG79</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG79DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG79ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG35</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG35DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG35ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG80</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG80DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG80ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG36</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG36DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG36ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG81</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG81DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG81ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG37</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG37DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG37ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG82</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG82DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG82ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG38</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG38DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG38ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG83</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG83DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG83ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG39</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG39DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG39ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG84</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG84DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG84ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG40</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG40DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG40ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG85</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG85DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG85ACTTIME %></span></p>
+                  </td>
+               </tr>
+
+               <tr>
+                  <th>VG41</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG41DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG41ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG86</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG86DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG86ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG42</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG42DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG42ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG87</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG87DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG87ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG43</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG43DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG43ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG88</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG88DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG88ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG44</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG44DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG44ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG89</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG89DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG89ACTTIME %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>VG45</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG45DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG45ACTTIME %></span></p>
+                  </td>
+
+                  <th>VG90</th>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG90DLYTIME %></span></p>
+                  </td>
+                  <td>
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.VG90ACTTIME %></span></p>
+                  </td>
+               </tr>
+            </tbody>
+            <tfoot>
+               <tr>
+                  <th colspan="1">VOLTAGEM:</th>
+                  <td colspan="6">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.voltagem %></span></p>
+                  </td>
+               </tr>
+            </tfoot>
+         </table>
+   
+         <table class="table-bordered" style="margin-top: 40px">
+            <thead>
+               <tr>
+                  <th colspan="7">REFRIGERAÇÃO DO MOLDE</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <th colspan="3" style="text-align: center;">LADO FIXO</th>
+                  <th rowspan="3" style="text-align: center;">TOL<br> &#177;<br> 10%</th>
+                  <th colspan="3" style="text-align: center;">LADO MÓVEL</th>
+               </tr>
+               <tr>
+                  <td colspan="3">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.refrLadoFixo1 %></span></p>
+                  </td>
+                  <td colspan="3">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.refrLadoMovel1 %></span></p>
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="3">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.refrLadoFixo2 %></span></p>
+                  </td>
+                  <td colspan="3">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.refrLadoMovel2 %></span></p>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+   
+         <table class="table-bordered" style="margin-top: 40px">
+            <thead>
+               <tr>
+                  <th colspan="7">STEAM(VAPOR)</th>
+               </tr>
+               <tr>
+                  <th colspan="7">REFRIGERAÇÃO DO MOLDE</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <th colspan="3" style="text-align: center;">LADO FIXO</th>
+                  <th rowspan="3" style="text-align: center;">TOL<br> &#177;<br> 10%</th>
+                  <th colspan="3" style="text-align: center;">LADO MÓVEL</th>
+               </tr>
+               <tr>
+                  <td colspan="3">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.vaporLadoFixo1 %></span></p>
+                  </td>
+                  <td colspan="3">
+                     <p class="read-only"><span class="cadastrados"><%= perifericos.vaporLadoFixo2 %></span></p>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <!-- FIM PERIFÉRICOS -->
+   </div>
+</div>
+<br>
+
+<script src=/scripts/jquery.js></script>
+<script src=/scripts/FichaTecnica.js></script>
+<script src=/scripts/FichaScripts2.js></script>
+
+<%- include ('../partials/footer.ejs') %>   

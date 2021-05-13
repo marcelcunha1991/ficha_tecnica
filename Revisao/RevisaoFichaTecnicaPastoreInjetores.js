@@ -23,6 +23,17 @@ const RevisaoFichaPastoreInjetores = conn.define('revisao_injetores_pastore',{
       model: 'maquinas', // <<< Note, its table's name, not object name
       key: 'id'
    },
+
+   NúmeroMolde: {type: Sequelize.FLOAT, defaultValue: 0.0},
+   NúmeroMáquina: Sequelize.STRING,
+   Revisao: {type: Sequelize.FLOAT, defaultValue: 0.0},
+   Cliente: Sequelize.STRING,
+   CodigoPAM: {type: Sequelize.FLOAT, defaultValue: 0.0},
+   Tecnico: Sequelize.STRING,
+   Produto: Sequelize.STRING,
+   Material: Sequelize.STRING,
+   Data: {type: Sequelize.DATE, defaultValue: Sequelize.NOW},
+
    cilindro1: {type: Sequelize.FLOAT, defaultValue: 0.0},
    cilindro2: {type: Sequelize.FLOAT, defaultValue: 0.0},
    cilindro3: {type: Sequelize.FLOAT, defaultValue: 0.0},

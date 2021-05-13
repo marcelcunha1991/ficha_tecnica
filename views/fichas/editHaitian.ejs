@@ -12,6 +12,49 @@
                <input type="hidden" name="id" value="<%= injetor.id %>">
                <input type="hidden" name="maquina" value="<%= injetor.maq %>">
 
+               <table class="table-bordered table-responsive" style="width: 100%; margin-bottom: 40px;">
+                  <thead>
+                     <tr>
+                        <th>Número do Molde:</th>
+                        <th>Número do Máquina:</th>
+                        <th>Revisão:</th>
+                        <th>Cliente:</th>
+                        <th>Código PAM:</th>
+                        <th>Técnico:</th>
+                        <th>Produto:</th>
+                        <th>Material:</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>
+                           <input style="width: 100%" id="molde" name="molde" value="<%= injetor.NúmeroMolde %>">
+                        </td>
+                        <td>
+                           <input style="width: 100%" id="numMaquina" name="numMaquina" value="<%= injetor.NúmeroMáquina %>">
+                        </td>
+                        <td>
+                           <input style="width: 100%" id="revisao" name="revisao" value="<%= injetor.Revisao %>">
+                        </td>
+                        <td>
+                           <input style="width: 100%" id="cliente" name="cliente" value="<%= injetor.Cliente %>">
+                        </td>
+                        <td>
+                           <input style="width: 100%" id="codigoPAM" name="codigoPAM" value="<%= injetor.CodigoPAM %>">
+                        </td>
+                        <td>
+                           <input style="width: 100%" id="tecnico" name="tecnico" value="<%= injetor.Tecnico %>">
+                        </td>
+                        <td>
+                           <input style="width: 100%" id="produto" name="produto" value="<%= injetor.Produto %>">
+                        </td>
+                        <td>
+                           <input style="width: 100%" id="material" name="material" value="<%= injetor.Material %>">
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+
                <div class="d-flex justify-content-between">
                   <!-- INJETORES -->
                   <div class="d-flex flex-column table-responsive table-ficha justify-content-between" style="width: 50vw; margin-right: 20px;">

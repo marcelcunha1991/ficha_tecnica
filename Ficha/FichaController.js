@@ -231,10 +231,12 @@ router.get("/ficha/getFichaPastoreInjetores/:macMaquina",  (req,res) => {
       }
    }).then(output => {
 
-      FichaTecnicaPastoreInjetores.findOne({
+      RevisaoFichaTecnicaPastoreInjetores.findOne({
+         limit: 1,
          where: {
             maq : output.id
-         }
+         },
+         order: [ [ 'createdAt', 'DESC' ]]
       }).then(output => {
          res.send(output)      
       }); 
@@ -252,10 +254,12 @@ router.get("/ficha/getFichaPastorePerifericos/:macMaquina",  (req,res) => {
       }
    }).then(output => {
 
-      FichaPastorePerifericos.findOne({
+      RevisaoFichaTecnicaPastorePerifericos.findOne({
+         limit: 1,
          where: {
             maq : output.id
-         }
+         },
+         order: [ [ 'createdAt', 'DESC' ]]
       }).then(output => {
          res.send(output)      
       }); 
@@ -569,7 +573,6 @@ function insertDataAutomata(body){
 }
 
 function insertDataHaitianJupyter(body){
-   console.log('funcao criando')
    console.log(body)
    ParametrosReaishaitianJupyter.create(body).then((result) => {
       return result;
@@ -579,7 +582,6 @@ function insertDataHaitianJupyter(body){
 }
 
 router.post("/parametrosAtuais/insert",(req,res) => {
-   console.log('rota insert')
    console.log(req.body)
    var tipo = req.body.tipo;
 
@@ -887,6 +889,16 @@ router.get("/fichas/editHaitian/:id",(req,res) => {
 router.post("/fichas/createHaitian",(req,res) => {
    console.log(req.body)
    var maquina = req.body.maquinaHaitian;
+
+   var NúmeroMolde = req.body.molde !== "" ? req.body.molde : 0.0;
+   var NúmeroMáquina = req.body.numMaquina;
+   var Revisao = req.body.revisao !== "" ? req.body.revisao : 0.0;
+   var Cliente = req.body.cliente;
+   var CodigoPAM = req.body.codigoPAM !== "" ? req.body.codigoPAM : 0.0;
+   var Tecnico = req.body.tecnico;
+   var Produto = req.body.produto;
+   var Material = req.body.material;
+
    var cilindro1 = req.body.cilindro1 !== "" ? req.body.cilindro1 : 0.0;
    var cilindro2 = req.body.cilindro2 !== "" ? req.body.cilindro2 : 0.0;
    var cilindro3 = req.body.cilindro3 !== "" ? req.body.cilindro3 : 0.0;
@@ -1371,6 +1383,14 @@ router.post("/fichas/createHaitian",(req,res) => {
    //*salvando os dados
    FichaTecnicaPastoreInjetores.create({
       maq: maquina,
+      NúmeroMolde: NúmeroMolde,
+      NúmeroMáquina: NúmeroMáquina,
+      Revisao: Revisao,
+      Cliente: Cliente,
+      CodigoPAM: CodigoPAM,
+      Tecnico: Tecnico,
+      Produto: Produto,
+      Material: Material,
       cilindro1: cilindro1,
       cilindro2: cilindro2,
       cilindro3: cilindro3,
@@ -2183,6 +2203,14 @@ router.post("/fichas/createHaitian",(req,res) => {
             RevisaoFichaTecnicaPastoreInjetores.create({
                idFichaTecnica: data.id,
                maq: maquina,
+               NúmeroMolde: NúmeroMolde,
+               NúmeroMáquina: NúmeroMáquina,
+               Revisao: Revisao,
+               Cliente: Cliente,
+               CodigoPAM: CodigoPAM,
+               Tecnico: Tecnico,
+               Produto: Produto,
+               Material: Material,
                cilindro1: cilindro1,
                cilindro2: cilindro2,
                cilindro3: cilindro3,
@@ -2353,6 +2381,16 @@ router.post("/fichas/createHaitian",(req,res) => {
 router.post("/fichas/updateHaitian",(req,res) => {
    var id = req.body.id;
    var maquina = req.body.maquina;
+
+   var NúmeroMolde = req.body.molde !== "" ? req.body.molde : 0.0;
+   var NúmeroMáquina = req.body.numMaquina;
+   var Revisao = req.body.revisao !== "" ? req.body.revisao : 0.0;
+   var Cliente = req.body.cliente;
+   var CodigoPAM = req.body.codigoPAM !== "" ? req.body.codigoPAM : 0.0;
+   var Tecnico = req.body.tecnico;
+   var Produto = req.body.produto;
+   var Material = req.body.material;
+
    var cilindro1 = req.body.cilindro1 !== "" ? req.body.cilindro1 : 0.0;
    var cilindro2 = req.body.cilindro2 !== "" ? req.body.cilindro2 : 0.0;
    var cilindro3 = req.body.cilindro3 !== "" ? req.body.cilindro3 : 0.0;
@@ -2834,6 +2872,14 @@ router.post("/fichas/updateHaitian",(req,res) => {
    var vaporLadoFixo2 = req.body.valorladomovel !== "" ? req.body.valorladomovel : 0.0;
    
    FichaTecnicaPastoreInjetores.update({
+      NúmeroMolde: NúmeroMolde,
+      NúmeroMáquina: NúmeroMáquina,
+      Revisao: Revisao,
+      Cliente: Cliente,
+      CodigoPAM: CodigoPAM,
+      Tecnico: Tecnico,
+      Produto: Produto,
+      Material: Material,
       cilindro1: cilindro1,
       cilindro2: cilindro2,
       cilindro3: cilindro3,
@@ -3652,6 +3698,14 @@ router.post("/fichas/updateHaitian",(req,res) => {
             RevisaoFichaTecnicaPastoreInjetores.create({
                idFichaTecnica: id,
                maq: maquina,
+               NúmeroMolde: NúmeroMolde,
+               NúmeroMáquina: NúmeroMáquina,
+               Revisao: Revisao,
+               Cliente: Cliente,
+               CodigoPAM: CodigoPAM,
+               Tecnico: Tecnico,
+               Produto: Produto,
+               Material: Material,
                cilindro1: cilindro1,
                cilindro2: cilindro2,
                cilindro3: cilindro3,
@@ -3923,6 +3977,144 @@ router.get("/ficha/revisaoHaitian/:id",(req,res) => {
          })
       })
 
+   })
+})
+
+router.get("/visualizacaoEmFicha/:maquina",  (req,res) => {     
+   var maquinaId= req.params.maquina;   
+   var maquinas;   
+   
+   Maquinas.findAll().then(maquina => {
+      maquinas = maquina;
+   }) 
+
+   // Maquinas.findAll().then(maquina => {
+   //    maquinas = maquina;
+   //    res.render("fichas/indexFicha",{
+   //       maquinas: maquinas,
+   //       injetor: "",
+   //       perifericos: "",
+   //       parametros: "",
+   //       nav_maquinas : "",
+   //       nav_produtos : "",
+   //       nav_mp : "",
+   //       nav_usuarios : "",
+   //       nav_moldes : "",
+   //       nav_clientes : "",
+   //       nav_parametros:"",
+   //       nav_ficha: "active",
+   //       nav_alertas:""
+   //    })
+   // })   
+
+   Maquinas.findOne({
+      where: {
+         id: maquinaId
+      },
+      include: [{
+         model: Tipo,
+         required: true
+      }]
+   }).then(maquina => {   
+      console.log('maquina')
+      console.log(maquina)
+      switch(maquina.tipo.id){
+
+         // case 1:
+               
+         //    ParametrosReaisToshiba.findAll({
+         //       limit: 1,
+         //       where: {
+         //          mac: maquina.mac
+         //       },
+         //       order: [ [ 'createdAt', 'DESC' ]]
+         //    }).then(output => {
+         
+         //       console.log(output[0])
+         //       res.send(output[0])
+               
+         //    }); 
+         //    break;
+
+         // case 2: 
+
+         //    ParametrosReaisAutomata.findAll({
+         //       limit: 1,
+         //       where: {
+         //       mac: maquina.mac
+         //       },
+         //       order: [ [ 'createdAt', 'DESC' ]]
+         //    }).then(output => {
+      
+         //       console.log(output[0])
+         //       res.send(output[0])
+               
+         //    }); 
+         //    break;
+         
+         case 3: 
+            ParametrosReaishaitianJupyter.findAll({
+               limit: 1,
+               where: {
+                  mac: maquina.descricao
+               },
+               order: [ [ 'createdAt', 'DESC' ]]
+            }).then(outputParams => {
+               console.log('outputParams[0]')
+               console.log(outputParams[0])
+               // res.send(output[0])
+
+               Maquinas.findOne({
+                  where: {
+                     descricao : outputParams[0].mac
+                  }
+               }).then(maq => {
+                  
+                  RevisaoFichaTecnicaPastoreInjetores.findOne({
+                     limit: 1,
+                     where: {
+                        maq : maq.id
+                     },
+                     order: [ [ 'createdAt', 'DESC' ]]
+                  }).then(injetores => {
+                     console.log('outputInj');
+                     console.log(injetores);
+
+                     RevisaoFichaTecnicaPastorePerifericos.findOne({
+                        limit: 1,
+                        where: {
+                           maq : maq.id
+                        },
+                        order: [ [ 'createdAt', 'DESC' ]]
+                     }).then(periferico => {
+                        console.log('outputInj');
+                        console.log(periferico);
+   
+                        res.render("fichas/indexFicha",{
+                           maquinas: maquinas,
+                           parametros: outputParams[0],
+                           injetor: injetores,
+                           perifericos: periferico,
+                           nav_maquinas : "",
+                           nav_produtos : "",
+                           nav_mp : "",
+                           nav_usuarios : "",
+                           nav_moldes : "",
+                           nav_clientes : "",
+                           nav_parametros:"",
+                           nav_ficha: "active",
+                           nav_alertas:""
+                        })
+   
+                     }); 
+
+                  }); 
+                  
+               }); 
+
+            }); 
+            break;
+      }
    })
 })
 

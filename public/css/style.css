@@ -31,6 +31,7 @@
 .table-ficha .table-bordered > tbody > tr > td {
    border: 1px solid #999;
    padding: 0.3rem;
+   text-align: center;
 }
 .table-ficha .table-bordered > tbody > tr > th{
    border: 1px solid #999;
@@ -48,6 +49,17 @@
    padding: 0.3rem;
    border-left: none;
 }
+.table-ficha #termopar > tbody > tr > th{
+   border: 1px solid #999;
+   padding: 0.3rem;
+   border-right: none;
+   text-align: center;
+}
+.table-ficha #termopar > tbody > tr > td{
+   border: 1px solid #999;
+   padding: 0.3rem;
+   border-left: none;
+}
 
 input.read-only {
    border: none;
@@ -57,4 +69,18 @@ input.read-only {
 
 input.read-only:focus {
    outline: none;
+}
+
+p.read-only {
+   text-align: center;
+   font-weight: bold;
+   /* width: fit-content; */
+}
+
+p.read-only span.cadastrados {
+   color: blue
+}
+
+p.read-only span.reais {
+   color: green;
 }

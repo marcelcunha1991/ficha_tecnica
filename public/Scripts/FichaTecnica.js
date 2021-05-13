@@ -4,7 +4,7 @@ $("#pastoreList").hide()
 $("#toshibaList").hide()
 
 //usado em fichas/new.ejs para mostrar uma ficha diferente quando trocar
-$('#maquinas').change(e => {
+$('#maquinasId').change(e => {
    var split = e.target.value.split(",");
    var v1 = split[0];
    var v2 = split[1];

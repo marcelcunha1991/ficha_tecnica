@@ -100,27 +100,27 @@ app.get("/",(req,res) =>{
 
 
 //Cria Tabelas
-   // Tipo.sync();
-   // Maquinas.sync();
-   // User.sync();
-   // Produtos.sync();
-   // MateriaPrima.sync();
-   // Moldes.sync();
-   // Clientes.sync();
-   // FichaTecnicaToshiba.sync();
-   // LimitesFichaTecnicaToshiba.sync();
-   // ParametrosReaisToshiba.sync();   
-   // ParametrosReaisAutomata.sync();        
-   // ParametrosReaisHaitianJupyter.sync();        
-   // LimiteParametrosToshiba.sync();
-   // LimiteParametrosAutomata.sync();
-   // Alertas.sync();
-   // AlertasAbertos.sync();
-   // FichaPastoreInjetores.sync();
-   // FichaPastorePerifericos.sync();
-   // RevisaoLimitesFichaTecnicaToshiba.sync();
-   // RevisaoFichaTecnicaPastoreInjetores.sync();
-   // RevisaoFichaTecnicaPastorePerifericos.sync();
+//    Tipo.sync();
+//    Maquinas.sync();
+//    User.sync();
+//    Produtos.sync();
+//    MateriaPrima.sync();
+//    Moldes.sync();
+//    Clientes.sync();
+//    FichaTecnicaToshiba.sync();
+//    LimitesFichaTecnicaToshiba.sync();
+//    ParametrosReaisToshiba.sync();   
+//    ParametrosReaisAutomata.sync();        
+//    ParametrosReaisHaitianJupyter.sync();        
+//    LimiteParametrosToshiba.sync();
+//    LimiteParametrosAutomata.sync();
+//    Alertas.sync();
+//    AlertasAbertos.sync();
+//    FichaPastoreInjetores.sync();
+//    FichaPastorePerifericos.sync();
+//    RevisaoLimitesFichaTecnicaToshiba.sync();
+//    RevisaoFichaTecnicaPastoreInjetores.sync();
+//    RevisaoFichaTecnicaPastorePerifericos.sync();
 
 
 //     User.create({
@@ -130,18 +130,18 @@ app.get("/",(req,res) =>{
 //     matricula:"00000"        
 // })
 
-   // Tipo.create({
-   //    tipo:"Toshiba"
-   // });
-   // Tipo.create({
-   //    tipo:"Automata OPTIN"
-   // })
-   // Tipo.create({
-   //    tipo:"Haitian Jupyter"
-   // })
-   // Tipo.create({
-   //    tipo:"HAITIAN"
-   // })
+//    Tipo.create({
+//       tipo:"Toshiba"
+//    });
+//    Tipo.create({
+//       tipo:"Automata OPTIN"
+//    })
+//    Tipo.create({
+//       tipo:"Haitian Jupyter"
+//    })
+//    Tipo.create({
+//       tipo:"HAITIAN"
+//    })
 
    
     
