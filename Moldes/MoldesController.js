@@ -36,6 +36,7 @@ router.get("/moldes/new",  (req,res) => {
             nav_mp : "",
             nav_usuarios : "",
             nav_moldes : "active",
+            nav_parametros:"",
             nav_clientes : "",
             nav_ficha: "",
             nav_alertas:""
@@ -47,15 +48,28 @@ router.get("/moldes/new",  (req,res) => {
 
 router.post("/moldes/create",(req,res) => {
     var descricao = req.body.descricao;
-    var codigo = req.body.codigo;    
+    var codigo = req.body.codigo.replace(/\s/g, "");    
 
-    Moldes.create({
-        descricao:descricao,
-        codigo: codigo,
- 
-    }).then(() => {
-        res.redirect("/moldes");
-    })
+   Moldes.findOne({
+      where: {
+         descricao: codigo
+      }
+   }).then(output => {
+      if (output === null || output === 'null') {
+
+         Moldes.create({
+            descricao:codigo,
+            codigo:codigo,
+     
+         }).then(() => {
+            res.redirect("/moldes");
+         })
+
+      } else {
+         res.redirect("/moldes");
+         console.log('MOLDE JÁ EXISTE. NÃO ADICIONADO')
+      }
+   })
 })
 
 
@@ -78,6 +92,7 @@ router.get("/moldes/edit/:id",(req,res) => {
                 nav_mp : "",
                 nav_usuarios : "",
                 nav_moldes : "active",
+                nav_parametros:"",
                 nav_clientes : "",
                 nav_ficha: "",
                 nav_alertas:""
@@ -98,12 +113,12 @@ router.get("/moldes/edit/:id",(req,res) => {
 router.post("/moldes/update",(req,res) => {
     
     var descricao = req.body.descricao;
-    var codigo = req.body.codigo;
+    var codigo = req.body.codigo.replace(/\s/g, "");
     var id = req.body.id;
 
     Moldes.update({
-        descricao:descricao,
-        codigo: codigo,
+        descricao:codigo,
+        codigo:codigo,
  
     },{
         where:{

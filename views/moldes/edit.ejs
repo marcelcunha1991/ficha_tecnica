@@ -12,9 +12,9 @@
                     
             </div>
             <div class="card-body">
-                    <form  method="POST" action="/moldes/update">
-                            <input class="form-control" type="text" name="descricao" placeholder="Insira um nome Para a Máquina" value="<%= molde.descricao %>"><br>
-                            <input class="form-control" type="text" name="codigo" placeholder="Insira um código Para a Máquina" value="<%= molde.codigo %>"><br>
+                    <form name="moldeForm"  method="POST" action="/moldes/update" style="display: inline;" onsubmit="return validateForm()">
+                            <!-- <input class="form-control" type="text" name="descricao" placeh   older="Insira um nome Para a Máquina" value="<%= molde.descricao %>"><br> -->
+                            <input class="form-control" type="text" name="codigo" placeholder="Insira o número do Molde" value="<%= molde.codigo %>"><br>
                       
                             <input type="hidden" name="id" value="<%= molde.id %>">
                             
@@ -22,7 +22,10 @@
                          
                             <br>
                             <button class="btn btn-primary">Editar</button>
-                        </form>
+                     </form>
+                     <form method="GET" action="/moldes" style="display: inline;">
+                        <button class="btn btn-danger">Cancelar</button>
+                     </form>
             </div>
            
           
@@ -30,4 +33,13 @@
    
 </div>
 
+<script>
+   function validateForm() {
+      var molde = document.forms["moldeForm"]["codigo"].value;
+      if (molde === "") {
+         alert("O número do Molde deve ser informado.");
+         return false;
+      }
+   }
+</script>
 <%- include ('../partials/footer.ejs') %>

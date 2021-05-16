@@ -12,9 +12,9 @@
                     
             </div>
             <div class="card-body">
-                    <form  method="POST" action="/moldes/create">
-                            <input class="form-control" type="text" name="descricao" placeholder="Insira uma descrição para o Molde"><br>
-                            <input class="form-control" type="text" name="codigo" placeholder="Insira um código para o Molde"><br>
+                    <form name="moldeForm"  method="POST" action="/moldes/create" style="display: inline;" onsubmit="return validateForm()">
+                            <!-- <input class="form-control" type="text" name="descricao" placeholder="Insira uma descrição para o Molde"><br> -->
+                            <input class="form-control" type="text" name="codigo" placeholder="Insira o número do Molde"><br>
                    
                    
                             
@@ -22,7 +22,10 @@
                          
                             <br>
                             <button class="btn btn-primary">Cadastrar</button>
-                        </form>
+                     </form>
+                     <form method="GET" action="/moldes" style="display: inline;">
+                        <button class="btn btn-danger">Cancelar</button>
+                     </form>
             </div>
            
           
@@ -30,4 +33,13 @@
    
 </div>
 
+<script>
+   function validateForm() {
+      var molde = document.forms["moldeForm"]["codigo"].value;
+      if (molde === "") {
+         alert("O número do Molde deve ser informado.");
+         return false;
+      }
+   }
+</script>
 <%- include ('../partials/footer.ejs') %>

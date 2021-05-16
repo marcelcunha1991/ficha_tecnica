@@ -36,6 +36,7 @@ router.get("/materiaprima/new",  (req,res) => {
             nav_mp : "active",
             nav_usuarios : "",
             nav_moldes : "",
+            nav_parametros:"",
             nav_clientes : "",
             nav_ficha: "",
             nav_alertas:""
@@ -47,15 +48,28 @@ router.get("/materiaprima/new",  (req,res) => {
 
 router.post("/materiaprima/create",(req,res) => {
     var descricao = req.body.descricao;
-    var codigo = req.body.codigo;    
+    var codigo = req.body.codigo.replace(/\./g, "");    
 
-    MateriasPrimas.create({
-        descricao:descricao,
-        codigo: codigo,
- 
-    }).then(() => {
-        res.redirect("/materiaprima");
-    })
+    MateriasPrimas.findOne({
+      where: {
+         descricao: codigo
+      }
+   }).then(output => {
+      if (output === null || output === 'null') {
+
+         MateriasPrimas.create({
+            descricao:codigo,
+            codigo:codigo,
+     
+         }).then(() => {
+               res.redirect("/materiaprima");
+         })
+
+      } else {
+         res.redirect("/materiaprima");
+         console.log('MATERIA PRIMA JÁ EXISTE. NÃO ADICIONADA')
+      }
+   })
 })
 
 
@@ -74,10 +88,11 @@ router.get("/materiaprima/edit/:id",(req,res) => {
             res.render("materiaprima/edit",{
                 materiaprima:materiaprima,
                 nav_maquinas : "",
-                nav_produtos : "active",
-                nav_mp : "",
+                nav_produtos : "",
+                nav_mp : "active",
                 nav_usuarios : "",
                 nav_moldes : "",
+                nav_parametros:"",
                 nav_clientes : "",
                 nav_ficha: "",
                 nav_alertas:""
@@ -98,11 +113,11 @@ router.get("/materiaprima/edit/:id",(req,res) => {
 router.post("/materiaprima/update",(req,res) => {
     
     var descricao = req.body.descricao;
-    var codigo = req.body.codigo;
+    var codigo = req.body.codigo.replace(/\./g, "");
     var id = req.body.id;
 
     MateriasPrimas.update({
-        descricao:descricao,
+        descricao:codigo,
         codigo: codigo,
  
     },{

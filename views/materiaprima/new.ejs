@@ -12,13 +12,16 @@
                     
             </div>
             <div class="card-body">
-                    <form  method="POST" action="/materiaprima/create">
-                            <input class="form-control" type="text" name="descricao" placeholder="Insira uma descrição para a matéria Prima"><br>
+                    <form name="materialForm" method="POST" action="/materiaprima/create" style="display: inline;" onsubmit="return validateForm()">
+                            <!-- <input class="form-control" type="text" name="descricao" placeholder="Insira uma descrição para a matéria Prima"><br> -->
                             <input class="form-control" type="text" name="codigo" placeholder="Insira um código para a matéria prima"><br>
                                          
                             <br>
                             <button class="btn btn-primary">Cadastrar</button>
-                        </form>
+                     </form>
+                     <form method="GET" action="/materiaprima" style="display: inline;">
+                        <button class="btn btn-danger">Cancelar</button>
+                     </form>
             </div>
            
           
@@ -26,4 +29,13 @@
    
 </div>
 
+<script>
+   function validateForm() {
+      var material = document.forms["materialForm"]["codigo"].value;
+      if (material === "") {
+         alert("O número do Material deve ser informado.");
+         return false;
+      }
+   }
+</script>
 <%- include ('../partials/footer.ejs') %>
