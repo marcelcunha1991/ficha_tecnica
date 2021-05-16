@@ -54,6 +54,51 @@
       </div>
    </div>
 
+   <div class="table-responsive ficha">
+      <table class="table-bordered ficha" style="width: 100%; margin-bottom: 40px;">
+         <thead>
+            <tr>
+               <th>Número do Molde:</th>
+               <th>Número da Máquina:</th>
+               <th>Cliente:</th>
+               <th>Código PAM:</th>
+               <th>Técnico:</th>
+               <th>Produto:</th>
+               <th>Material:</th>
+               <th>Revisão:</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td>
+                  <input class="read-only" readonly style="width: 100%" id="molde" name="molde" value="<%= injetor.NúmeroMolde %>">
+               </td>
+               <td>
+                  <input class="read-only" readonly style="width: 100%" id="numMaquina" name="numMaquina" value="<%= injetor.NúmeroMáquina %>">
+               </td>
+               <td>
+                  <input class="read-only" readonly style="width: 100%" id="cliente" name="cliente" value="<%= injetor.Cliente %>">
+               </td>
+               <td>
+                  <input class="read-only" readonly style="width: 100%" id="codigoPAM" name="codigoPAM" value="<%= injetor.CodigoPAM %>">
+               </td>
+               <td>
+                  <input class="read-only" readonly style="width: 100%" id="tecnico" name="tecnico" value="<%= injetor.Tecnico %>">
+               </td>
+               <td>
+                  <input class="read-only" readonly style="width: 100%" id="produto" name="produto" value="<%= injetor.Produto %>">
+               </td>
+               <td>
+                  <input class="read-only" readonly style="width: 100%" id="material" name="material" value="<%= injetor.Material %>">
+               </td>
+               <td>
+                  <input class="read-only" readonly style="width: 100%" id="material" name="material" value="<%= injetor.revisao %>">
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+
    <div class="d-flex justify-content-between ficha">
       <!-- INJETORES -->
       <div class="d-flex flex-column table-responsive table-ficha justify-content-between" style="width: 50vw; margin-right: 20px;">
@@ -176,11 +221,11 @@
                <tr>
                   <th colspan="2">TEMPO DISPARO:</th>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.tempoDisparo %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.tempoDisparo %></span> - <span class="reais"><%= parametros.TEMPO_DISPARO %></span></p>
                   </td>
                   <th colspan="3">TEMPO DE PRESSÃO INJEÇÃO:</th>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.pressaoInj %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.pressaoInj %></span> - <span class="reais"><%= parametros.TEMPO_INJECAO %></span></p>
                   </td>
                </tr>
             </tfoot>
@@ -477,11 +522,11 @@
                <tr>
                   <th colspan="3">TEMPO PROTEÇÃO DE MOLDE:</th>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.tempoProtMolde %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.tempoProtMolde %></span> - <span class="reais"><%= parametros.TEMPO_PROTECAO_MOLDE %></span></p>
                   </td>
                   <th colspan="2">TEMPO FECHAMENTO:</th>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.tempoFecha %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.tempoFecha %></span> - <span class="reais"><%= parametros.TEMPO_FECHAMENTO %></span></p>
                   </td>
                </tr>
             </tfoot>
@@ -560,11 +605,11 @@
                <tr>
                   <th colspan="3">RESFRIAMENTO:</th>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.resfriamento %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.resfriamento %></span> - <span class="reais"><%= parametros.TEMPO_RESFRIAMENT0 %></span></p>
                   </td>
                   <th colspan="2">TEMPO ABERTURA:</th>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.tempoAbertura %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.tempoAbertura %></span> - <span class="reais"><%= parametros.TEMPO_ABERTURA %></span></p>
                   </td>
                </tr>
             </tfoot>
@@ -594,7 +639,7 @@
                <tr>
                   <th scope="row" colspan="1">POSIÇÃO</th>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.posAvanco1 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.posAvanco1 %></span> - <span class="reais"><%= parametros.EXTRACAO_POSICAO_AVANCO_1 %></span></p>
                   </td>
                   <td colspan="1">
                      <p class="read-only"><span class="cadastrados"><%= injetor.posAvanco2 %></span> - <span class="reais"><%= parametros.EXTRACAO_POSICAO_AVANCO_2 %></span></p>
@@ -603,34 +648,34 @@
                      <p class="read-only"><span class="cadastrados"><%= injetor.posAvanco3 %></span> - <span class="reais"><%= parametros.EXTRACAO_POSICAO_AVANCO_3 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.posRecuo1 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.posRecuo1 %></span> - <span class="reais"><%= parametros.EXTRACAO_POSICAO_RECUO_3 %></span></p>
                   </td>
                   <td colspan="1">
                      <p class="read-only"><span class="cadastrados"><%= injetor.posRecuo2 %></span> - <span class="reais"><%= parametros.EXTRACAO_POSICAO_RECUO_2 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.posRecuo3 %></span> - <span class="reais"><%= parametros.EXTRACAO_POSICAO_RECUO_3 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.posRecuo3 %></span> - <span class="reais"><%= parametros.EXTRACAO_POSICAO_AVANCO_1 %></span></p>
                   </td>
                </tr>
                <tr>
                   <th scope="row" colspan="1">PRESSÃO</th>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.presAvanco1 %></span> - <span class="reais"><%= parametros.EXTRACAO_PRESSAO_AVANCO_1 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presAvanco1 %></span> - <span class="reais"><%= parametros.EXTRACAO_PRESSAO_AVANCO_1 %></p>
                   </td>
                   <td colspan="1">
                      <p class="read-only"><span class="cadastrados"><%= injetor.presAvanco2 %></span> - <span class="reais"><%= parametros.EXTRACAO_PRESSAO_AVANCO_2 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.presAvanco3 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presAvanco3 %></span> - <span class="reais"><%= parametros.EXTRACAO_PRESSAO_AVANCO_3 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.presRecuo1 %></span> - <span class="reais"><%= parametros.EXTRACAO_PRESSAO_RECUO_1 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presRecuo1 %></span> - <span class="reais"><%= parametros.EXTRACAO_PRESSAO_RECUO_3 %></span></p>
                   </td>
                   <td colspan="1">
                      <p class="read-only"><span class="cadastrados"><%= injetor.presRecuo2 %></span> - <span class="reais"><%= parametros.EXTRACAO_PRESSAO_RECUO_2 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.presRecuo3 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.presRecuo3 %></span> - <span class="reais"><%= parametros.EXTRACAO_PRESSAO_RECUO_1 %></p>
                   </td>
                </tr>
                <tr>
@@ -642,16 +687,16 @@
                      <p class="read-only"><span class="cadastrados"><%= injetor.fluxoAvanco2 %></span> - <span class="reais"><%= parametros.EXTRACAO_FLUXO_AVANCO_2 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoAvanco3 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoAvanco3 %></span> - <span class="reais"><%= parametros.EXTRACAO_FLUXO_AVANCO_3 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoRecuo1 %></span> - <span class="reais"><%= parametros.EXTRACAO_FLUXO_RECUO_1 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoRecuo1 %></span> - <span class="reais"><%= parametros.EXTRACAO_FLUXO_AVANCO_3 %></span></p>
                   </td>
                   <td colspan="1">
                      <p class="read-only"><span class="cadastrados"><%= injetor.fluxoRecuo2 %></span> - <span class="reais"><%= parametros.EXTRACAO_FLUXO_RECUO_2 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoRecuo3 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.fluxoRecuo3 %></span> - <span class="reais"><%= parametros.EXTRACAO_FLUXO_RECUO_1 %></p>
                   </td>
                </tr>
             </tbody>
@@ -709,106 +754,106 @@
                <tr>
                   <th scope="row" colspan="1">PRESSÃO</th>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPresEntrada1 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPresEntrada1 %></span> - <span class="reais"><%= parametros.RADIAL_PRESSAO_ENTRADA_1 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPresSaida1 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPresSaida1 %></span> - <span class="reais"><%= parametros.RADIAL_PRESSAO_SAIDA_1 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPresEntrada2 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPresEntrada2 %></span> - <span class="reais"><%= parametros.RADIAL_PRESSAO_ENTRADA_2 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPresSaida2 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPresSaida2 %></span> - <span class="reais"><%= parametros.RADIAL_PRESSAO_SAIDA_2 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPresEntrada3 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPresEntrada3 %></span> - <span class="reais"><%= parametros.RADIAL_PRESSAO_ENTRADA_3 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPresSaida3 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPresSaida3 %></span> - <span class="reais"><%= parametros.RADIAL_PRESSAO_SAIDA_3 %></span></p>
                   </td>
                </tr>
                <tr>
                   <th scope="row" colspan="1">FLUXO</th>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialFluxoEntrada1 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialFluxoEntrada1 %></span> - <span class="reais"><%= parametros.RADIAL_FLUXO_ENTRADA_1 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialFluxoSaida1 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialFluxoSaida1 %></span> - <span class="reais"><%= parametros.RADIAL_FLUXO_SAIDA_1 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialFluxoEntrada2 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialFluxoEntrada2 %></span> - <span class="reais"><%= parametros.RADIAL_FLUXO_ENTRADA_2 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialFluxoSaida2 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialFluxoSaida2 %></span> - <span class="reais"><%= parametros.RADIAL_FLUXO_SAIDA_2 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialFluxoEntrada3 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialFluxoEntrada3 %></span> - <span class="reais"><%= parametros.RADIAL_FLUXO_ENTRADA_3 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialFluxoSaida3 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialFluxoSaida3 %></span> - <span class="reais"><%= parametros.RADIAL_FLUXO_SAIDA_3 %></span></p>
                   </td>
                </tr>
                <tr>
                   <th scope="row" colspan="1">ACT. POSIÇÃO</th>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPosEntrada1 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPosEntrada1 %></span> - <span class="reais"><%= parametros.RADIAL_ACT_POSICAO_ENTRADA_1 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPosSaida1 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPosSaida1 %></span> - <span class="reais"><%= parametros.RADIAL_ACT_POSICAO_SAIDA_1 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPosEntrada2 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPosEntrada2 %></span> - <span class="reais"><%= parametros.RADIAL_ACT_POSICAO_ENTRADA_2 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPosSaida2 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPosSaida2 %></span> - <span class="reais"><%= parametros.RADIAL_ACT_POSICAO_SAIDA_2 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPosEntrada3 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPosEntrada3 %></span> - <span class="reais"><%= parametros.RADIAL_ACT_POSICAO_ENTRADA_3 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPosSaida3 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialPosSaida3 %></span> - <span class="reais"><%= parametros.RADIAL_ACT_POSICAO_SAIDA_3 %></span></p>
                   </td>
                </tr>
                <tr>
                   <th scope="row" colspan="1">ACT. TEMPO</th>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialTempoEntrada1 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialTempoEntrada1 %></span> - <span class="reais"><%= parametros.RADIAL_ACT_TEMPO_ENTRADA_1 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialTempoSaida1 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialTempoSaida1 %></span> - <span class="reais"><%= parametros.RADIAL_ACT_TEMPO_SAIDA_1 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialTempoEntrada2 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialTempoEntrada2 %></span> - <span class="reais"><%= parametros.RADIAL_ACT_TEMPO_ENTRADA_2 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialTempoSaida2 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialTempoSaida2 %></span> - <span class="reais"><%= parametros.RADIAL_ACT_TEMPO_SAIDA_2 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialTempoEntrada3 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialTempoEntrada3 %></span> - <span class="reais"><%= parametros.RADIAL_ACT_TEMPO_ENTRADA_3 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialTempoSaida3 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialTempoSaida3 %></span> - <span class="reais"><%= parametros.RADIAL_ACT_TEMPO_SAIDA_3 %></span></p>
                   </td>
                </tr>
                <tr>
                   <th scope="row" colspan="1">SCRCOUNT</th>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialSCREntrada1 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialSCREntrada1 %></span> - <span class="reais"><%= parametros.RADIAL_SCRCOUNT_ENTRADA_1 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialSCRSaida1 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialSCRSaida1 %></span> - <span class="reais"><%= parametros.RADIAL_SCRCOUNT_SAIDA_1 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialSCREntrada2 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialSCREntrada2 %></span> - <span class="reais"><%= parametros.RADIAL_SCRCOUNT_ENTRADA_2 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialSCRSaida2 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialSCRSaida2 %></span> - <span class="reais"><%= parametros.RADIAL_SCRCOUNT_SAIDA_2 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialSCREntrada3 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialSCREntrada3 %></span> - <span class="reais"><%= parametros.RADIAL_SCRCOUNT_ENTRADA_3 %></span></p>
                   </td>
                   <td colspan="1">
-                     <p class="read-only"><span class="cadastrados"><%= injetor.radialSCRSaida3 %></span></p>
+                     <p class="read-only"><span class="cadastrados"><%= injetor.radialSCRSaida3 %></span> - <span class="reais"><%= parametros.RADIAL_SCRCOUNT_SAIDA_3 %></span></p>
                   </td>
                </tr>
             </tbody>
@@ -2138,5 +2183,11 @@
 <script src=/scripts/jquery.js></script>
 <script src=/scripts/FichaTecnica.js></script>
 <script src=/scripts/FichaScripts2.js></script>
+
+<script>
+  setTimeout(function(){
+      window.location.reload(1);
+   }, 5000); 
+</script>
 
 <%- include ('../partials/footer.ejs') %>   

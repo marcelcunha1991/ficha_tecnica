@@ -13,49 +13,51 @@
          <h2>Revisão Id <%= injetor.revisao %></h2>              
       </div>
       <div class="card-body">
-         
-         <table class="table-bordered table-responsive" style="width: 100%; margin-bottom: 40px;">
-            <thead>
-               <tr>
-                  <th>Número do Molde:</th>
-                  <th>Número do Máquina:</th>
-                  <th>Revisão:</th>
-                  <th>Cliente:</th>
-                  <th>Código PAM:</th>
-                  <th>Técnico:</th>
-                  <th>Produto:</th>
-                  <th>Material:</th>
-               </tr>
-            </thead>
-            <tbody>
-               <tr>
-                  <td>
-                     <input class="read-only" readonly style="width: 100%" id="molde" name="molde" value="<%= injetor.NúmeroMolde %>">
-                  </td>
-                  <td>
-                     <input class="read-only" readonly style="width: 100%" id="numMaquina" name="numMaquina" value="<%= injetor.NúmeroMáquina %>">
-                  </td>
-                  <td>
-                     <input class="read-only" readonly style="width: 100%" id="revisao" name="revisao" value="<%= injetor.Revisao %>">
-                  </td>
-                  <td>
-                     <input class="read-only" readonly style="width: 100%" id="cliente" name="cliente" value="<%= injetor.Cliente %>">
-                  </td>
-                  <td>
-                     <input class="read-only" readonly style="width: 100%" id="codigoPAM" name="codigoPAM" value="<%= injetor.CodigoPAM %>">
-                  </td>
-                  <td>
-                     <input class="read-only" readonly style="width: 100%" id="tecnico" name="tecnico" value="<%= injetor.Tecnico %>">
-                  </td>
-                  <td>
-                     <input class="read-only" readonly style="width: 100%" id="produto" name="produto" value="<%= injetor.Produto %>">
-                  </td>
-                  <td>
-                     <input class="read-only" readonly style="width: 100%" id="material" name="material" value="<%= injetor.Material %>">
-                  </td>
-               </tr>
-            </tbody>
-         </table>
+      
+         <div class="table-ficha">
+            <table class="table-bordered table-responsive" style="width: 100%; margin-bottom: 40px;">
+               <thead>
+                  <tr>
+                     <th>Número do Molde:</th>
+                     <th>Número da Máquina:</th>
+                     <th>Cliente:</th>
+                     <th>Código PAM:</th>
+                     <th>Técnico:</th>
+                     <th>Produto:</th>
+                     <th>Número do Material:</th>
+                     <th>Revisão:</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>
+                        <input class="read-only" readonly style="width: 100%" id="molde" name="molde" value="<%= injetor.NúmeroMolde %>">
+                     </td>
+                     <td>
+                        <input class="read-only" readonly style="width: 100%" id="numMaquina" name="numMaquina" value="<%= injetor.NúmeroMáquina %>">
+                     </td>
+                     <td>
+                        <input class="read-only" readonly style="width: 100%" id="cliente" name="cliente" value="<%= injetor.Cliente %>">
+                     </td>
+                     <td>
+                        <input class="read-only" readonly style="width: 100%" id="codigoPAM" name="codigoPAM" value="<%= injetor.CodigoPAM %>">
+                     </td>
+                     <td>
+                        <input class="read-only" readonly style="width: 100%" id="tecnico" name="tecnico" value="<%= injetor.Tecnico %>">
+                     </td>
+                     <td>
+                        <input class="read-only" readonly style="width: 100%" id="produto" name="produto" value="<%= injetor.Produto %>">
+                     </td>
+                     <td>
+                        <input class="read-only" readonly style="width: 100%" id="material" name="material" value="<%= injetor.Material %>">
+                     </td>
+                     <td>
+                        <input class="read-only" readonly style="width: 100%" id="material" name="material" value="<%= injetor.revisao %>">
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
 
          <div class="d-flex justify-content-between">
             <!-- INJETORES -->
