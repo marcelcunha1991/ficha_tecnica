@@ -8,6 +8,8 @@ const ParametrosReaishaitianJupyter = require("../ParametrosTempoReal/Parametros
 const AlertasAbertosAutomata = require("../Alertas/AlertasAbertos");
 const Alertas = require("../Alertas/Alertas");
 const Tipo = require("../Tipo/Tipo");
+const Moldes = require("../Moldes/Moldes");
+const MateriasPrimas = require("../MateriaPrima/MateriasPrimas");
 const adminAuth = require("../middlewares/adminAuth");
 const { render } = require("ejs");
 const Maquinas = require("../Maquinas/Maquinas");
@@ -29,26 +31,25 @@ router.get("/fichas/:maquina?",  (req,res) => {
 
    Maquinas.findAll().then(maquina => {
       maquinas = maquina;
+
+      FichaTecnicaToshiba.findAll().then(fichas => {   
+         res.render("fichas/index",{
+            fichas:fichas,
+            dsMaquina : dsMaquina,
+            maquinas: maquinas,
+            tabela:"",
+            nav_maquinas : "",
+            nav_produtos : "",
+            nav_mp : "",
+            nav_usuarios : "",
+            nav_moldes : "",
+            nav_clientes : "",
+            nav_parametros:"",
+            nav_ficha: "active",
+            nav_alertas:""
+         })
+      });
    })
-
-   FichaTecnicaToshiba.findAll().then(fichas => {   
-      res.render("fichas/index",{
-         fichas:fichas,
-         dsMaquina : dsMaquina,
-         maquinas: maquinas,
-         tabela:"",
-         nav_maquinas : "",
-         nav_produtos : "",
-         nav_mp : "",
-         nav_usuarios : "",
-         nav_moldes : "",
-         nav_clientes : "",
-         nav_parametros:"",
-         nav_ficha: "active",
-         nav_alertas:""
-      })
-   });
-
     
 })
 
@@ -271,32 +272,40 @@ router.get("/novaficha",  (req,res) => {
 
    var maquinas;
 
-   Maquinas.findAll({
-      include: [{
-         model: Tipo,
-         required: true,
-         attributes:['tipo']
-      }]
-   }).then(maquina => {
-      maquinas = maquina;
+   Moldes.findAll().then(molde => {
+
+      MateriasPrimas.findAll().then(material => {
+
+         Maquinas.findAll({
+            include: [{
+               model: Tipo,
+               required: true,
+               attributes:['tipo']
+            }]
+         }).then(maquina => {
+      
+            res.render("fichas/new",{        
+               maquinas: maquina,    
+               materiais: material,    
+               moldes: molde,    
+               nav_maquinas : "",
+               nav_produtos : "",
+               nav_mp : "",
+               nav_usuarios : "",
+               nav_moldes : "",
+               nav_clientes : "",
+               nav_parametros:"",
+               nav_ficha: "active",
+               nav_alertas:"",
+               count: 0,
+            })
+
+         })
+   
+      })
+
    })
     
-   FichaTecnicaToshiba.findAll().then((fichas) => {
-      res.render("fichas/new",{        
-         maquinas: maquinas,    
-         nav_maquinas : "",
-         nav_produtos : "",
-         nav_mp : "",
-         nav_usuarios : "",
-         nav_moldes : "",
-         nav_clientes : "",
-         nav_parametros:"",
-         nav_ficha: "active",
-         nav_alertas:"",
-         count: 0,
-         teste: ""
-      })
-   });
 })
 
 router.post("/fichas/createToshiba",(req,res) => {
@@ -770,29 +779,42 @@ router.post("/fichas/deleteToshiba",(req,res) => {
 })
 
 router.get("/ficha/lista",(req,res) => {
-   var maquinas;
+   var moldes;
+   var materiais;
 
-   Maquinas.findAll({
-      include: [{
-         model: Tipo,
-         required: true,
-         attributes:['tipo']
-      }]
-   }).then(maquina => {
-      maquinas = maquina;
-      res.render("fichas/list", {
-         maquinas: maquina,
-         nav_maquinas : "",
-         nav_produtos : "",
-         nav_mp : "",
-         nav_usuarios : "",
-         nav_moldes : "",
-         nav_clientes : "",
-         nav_parametros:"",
-         nav_ficha: "active",
-         nav_alertas:"",
+   Moldes.findAll().then(molde => {
+      moldes = molde;
+
+      MateriasPrimas.findAll().then(material => {
+         materiais = material;
+   
+         Maquinas.findAll({
+            include: [{
+               model: Tipo,
+               required: true,
+               attributes:['tipo']
+            }]
+         }).then(maquina => {
+
+            res.render("fichas/list", {
+               maquinas: maquina,
+               moldes: moldes,
+               materiais: materiais,
+               nav_maquinas : "",
+               nav_produtos : "",
+               nav_mp : "",
+               nav_usuarios : "",
+               nav_moldes : "",
+               nav_clientes : "",
+               nav_parametros:"",
+               nav_ficha: "active",
+               nav_alertas:"",
+            })
+            
+         })
       })
    })
+
 })
 
 router.get("/ficha/lista/:id/:maquina",(req,res) => {
@@ -858,30 +880,41 @@ router.get("/fichas/editHaitian/:id",(req,res) => {
       res.redirect("/fichas")
    }
 
-   FichaPastorePerifericos.findByPk(id).then(periferico => {
-      perifericos = periferico
-      console.log(perifericos)
-   })
+   Moldes.findAll().then(molde => {
 
-   FichaTecnicaPastoreInjetores.findByPk(id).then(injetor => {
+      MateriasPrimas.findAll().then(material => {
 
-      res.render("fichas/editHaitian",{
-         injetor:injetor, 
-         perifericos:perifericos, 
-         nav_maquinas : "",
-         nav_produtos : "",
-         nav_mp : "",
-         nav_usuarios : "",
-         nav_moldes : "",
-         nav_clientes : "",
-         nav_parametros:"",
-         nav_ficha: "active",
-         nav_alertas:"",
-         count: 0,
-         iteration: 0,
-         
+         FichaPastorePerifericos.findByPk(id).then(periferico => {
+            perifericos = periferico
+      
+            FichaTecnicaPastoreInjetores.findByPk(id).then(injetor => {
+      
+               res.render("fichas/editHaitian",{
+                  injetor:injetor, 
+                  perifericos:perifericos,
+                  materiais:material,
+                  moldes:molde,
+                  nav_maquinas : "",
+                  nav_produtos : "",
+                  nav_mp : "",
+                  nav_usuarios : "",
+                  nav_moldes : "",
+                  nav_clientes : "",
+                  nav_parametros:"",
+                  nav_ficha: "active",
+                  nav_alertas:"",
+                  count: 0,
+                  iteration: 0,
+                  
+               })
+            })
+         })
+
       })
+
    })
+
+   
 })
 
 // *CRIANDO FICHA PASTORE
@@ -890,488 +923,488 @@ router.post("/fichas/createHaitian",(req,res) => {
    console.log(req.body)
    var maquina = req.body.maquinaHaitian;
 
-   var NúmeroMolde = req.body.molde !== "" ? req.body.molde : 0.0;
+   var NúmeroMolde = req.body.molde.replace(/\s/g, "");
    var NúmeroMáquina = req.body.numMaquina;
-   var Revisao = req.body.revisao !== "" ? req.body.revisao : 0.0;
+   var Revisao = req.body.revisao;
    var Cliente = req.body.cliente;
-   var CodigoPAM = req.body.codigoPAM !== "" ? req.body.codigoPAM : 0.0;
+   var CodigoPAM = req.body.codigoPAM.replace(/\s/g, "");
    var Tecnico = req.body.tecnico;
    var Produto = req.body.produto;
-   var Material = req.body.material;
+   var Material = req.body.material.replace(/\./g, "");
 
-   var cilindro1 = req.body.cilindro1 !== "" ? req.body.cilindro1 : 0.0;
-   var cilindro2 = req.body.cilindro2 !== "" ? req.body.cilindro2 : 0.0;
-   var cilindro3 = req.body.cilindro3 !== "" ? req.body.cilindro3 : 0.0;
-   var cilindro4 = req.body.cilindro4 !== "" ? req.body.cilindro4 : 0.0;
-   var cilindro5 = req.body.cilindro5 !== "" ? req.body.cilindro5 : 0.0;
-   var cilindro6 = req.body.cilindro6 !== "" ? req.body.cilindro6 : 0.0;
-   var cilindro7 = req.body.cilindro7 !== "" ? req.body.cilindro7 : 0.0;
-   var posComut = req.body.posComutacao !== "" ? req.body.posComutacao : 0.0;
-   var posInjecao1 = req.body.posInj5 !== "" ? req.body.posInj5 : 0.0;
-   var posInjecao2 = req.body.posInj4 !== "" ? req.body.posInj4 : 0.0;
-   var posInjecao3 = req.body.posInj3 !== "" ? req.body.posInj3 : 0.0;
-   var posInjecao4 = req.body.posInj2 !== "" ? req.body.posInj2 : 0.0;
-   var posInjecao5 = req.body.posInj1 !== "" ? req.body.posInj1 : 0.0;
-   var presComut = req.body.presComutacao !== "" ? req.body.presComutacao : 0.0;
-   var presInjecao1 = req.body.presInj5 !== "" ? req.body.presInj5 : 0.0;
-   var presInjecao2 = req.body.presInj4 !== "" ? req.body.presInj4 : 0.0;
-   var presInjecao3 = req.body.presInj3 !== "" ? req.body.presInj3 : 0.0;
-   var presInjecao4 = req.body.presInj2 !== "" ? req.body.presInj2 : 0.0;
-   var presInjecao5 = req.body.presInj1 !== "" ? req.body.presInj1 : 0.0;
-   var fluxoInjecao1 = req.body.fluxoInj5 !== "" ? req.body.fluxoInj5 : 0.0;
-   var fluxoInjecao2 = req.body.fluxoInj4 !== "" ? req.body.fluxoInj4 : 0.0;
-   var fluxoInjecao3 = req.body.fluxoInj3 !== "" ? req.body.fluxoInj3 : 0.0;
-   var fluxoInjecao4 = req.body.fluxoInj2 !== "" ? req.body.fluxoInj2 : 0.0;
-   var fluxoInjecao5 = req.body.fluxoInj1 !== "" ? req.body.fluxoInj1 : 0.0;
-   var tempoDisparo = req.body.tempoDisparo !== "" ? req.body.tempoDisparo : 0.0;
-   var pressaoInj = req.body.pressaoInj !== "" ? req.body.pressaoInj : 0.0;
-   var presRecalque1 = req.body.presRecalque5 !== "" ? req.body.presRecalque5 : 0.0;
-   var presRecalque2 = req.body.presRecalque4 !== "" ? req.body.presRecalque4 : 0.0;
-   var presRecalque3 = req.body.presRecalque3 !== "" ? req.body.presRecalque3 : 0.0;
-   var presRecalque4 = req.body.presRecalque2 !== "" ? req.body.presRecalque2 : 0.0;
-   var presRecalque5 = req.body.presRecalque1 !== "" ? req.body.presRecalque1 : 0.0;
-   var fluxoRecalque1 = req.body.fluxoRecalque5 !== "" ? req.body.fluxoRecalque5 : 0.0;
-   var fluxoRecalque2 = req.body.fluxoRecalque4 !== "" ? req.body.fluxoRecalque4 : 0.0;
-   var fluxoRecalque3 = req.body.fluxoRecalque3 !== "" ? req.body.fluxoRecalque3 : 0.0;
-   var fluxoRecalque4 = req.body.fluxoRecalque2 !== "" ? req.body.fluxoRecalque2 : 0.0;
-   var fluxoRecalque5 = req.body.fluxoRecalque1 !== "" ? req.body.fluxoRecalque1 : 0.0;
-   var tempoRecalque1 = req.body.tempoRecalque5 !== "" ? req.body.tempoRecalque5 : 0.0;
-   var tempoRecalque2 = req.body.tempoRecalque4 !== "" ? req.body.tempoRecalque4 : 0.0;
-   var tempoRecalque3 = req.body.tempoRecalque3 !== "" ? req.body.tempoRecalque3 : 0.0;
-   var tempoRecalque4 = req.body.tempoRecalque2 !== "" ? req.body.tempoRecalque2 : 0.0;
-   var tempoRecalque5 = req.body.tempoRecalque1 !== "" ? req.body.tempoRecalque1 : 0.0;
-   var partDosagem1 = req.body.partDosagem5 !== "" ? req.body.partDosagem5 : 0.0;
-   var partDosagem2 = req.body.partDosagem4 !== "" ? req.body.partDosagem4 : 0.0;
-   var partDosagem3 = req.body.partDosagem3 !== "" ? req.body.partDosagem3 : 0.0;
-   var partDosagem4 = req.body.partDosagem2 !== "" ? req.body.partDosagem2 : 0.0;
-   var partDosagem5 = req.body.partDosagem1 !== "" ? req.body.partDosagem1 : 0.0;
-   var presDosagem1 = req.body.presDosagem5 !== "" ? req.body.presDosagem5 : 0.0;
-   var presDosagem2 = req.body.presDosagem4 !== "" ? req.body.presDosagem4 : 0.0;
-   var presDosagem3 = req.body.presDosagem3 !== "" ? req.body.presDosagem3 : 0.0;
-   var presDosagem4 = req.body.presDosagem2 !== "" ? req.body.presDosagem2 : 0.0;
-   var presDosagem5 = req.body.presDosagem1 !== "" ? req.body.presDosagem1 : 0.0;
-   var fluxoDosagem1 = req.body.fluxoDosagem5 !== "" ? req.body.fluxoDosagem5 : 0.0;
-   var fluxoDosagem2 = req.body.fluxoDosagem4 !== "" ? req.body.fluxoDosagem4 : 0.0;
-   var fluxoDosagem3 = req.body.fluxoDosagem3 !== "" ? req.body.fluxoDosagem3 : 0.0;
-   var fluxoDosagem4 = req.body.fluxoDosagem2 !== "" ? req.body.fluxoDosagem2 : 0.0;
-   var fluxoDosagem5 = req.body.fluxoDosagem1 !== "" ? req.body.fluxoDosagem1 : 0.0;
-   var CPDosagem1 = req.body.CPDosagem5 !== "" ? req.body.CPDosagem5 : 0.0;
-   var CPDosagem2 = req.body.CPDosagem4 !== "" ? req.body.CPDosagem4 : 0.0;
-   var CPDosagem3 = req.body.CPDosagem3 !== "" ? req.body.CPDosagem3 : 0.0;
-   var CPDosagem4 = req.body.CPDosagem2 !== "" ? req.body.CPDosagem2 : 0.0;
-   var CPDosagem5 = req.body.CPDosagem1 !== "" ? req.body.CPDosagem1 : 0.0;
-   var tempoDosagem = req.body.tempoDosagem !== "" ? req.body.tempoDosagem : 0.0;
-   var antesPos = req.body.antes1 !== "" ? req.body.antes1 : 0.0;
-   var antesPres = req.body.antes2 !== "" ? req.body.antes2 : 0.0;
-   var antesFluxo = req.body.antes3 !== "" ? req.body.antes3 : 0.0;
-   var antesTempo = req.body.antes4 !== "" ? req.body.antes4 : 0.0;
-   var depoisPos = req.body.depois1 !== "" ? req.body.depois1 : 0.0;
-   var depoisPres = req.body.depois2 !== "" ? req.body.depois2 : 0.0;
-   var depoisFluxo = req.body.depois3 !== "" ? req.body.depois3 : 0.0;
-   var depoisTempo = req.body.depois4 !== "" ? req.body.depois4 : 0.0;
-   var posFecha1 = req.body.posFech1 !== "" ? req.body.posFech1 : 0.0;
-   var posFecha2 = req.body.posFech2 !== "" ? req.body.posFech2 : 0.0;
-   var posFecha3 = req.body.posFech3 !== "" ? req.body.posFech3 : 0.0;
-   var protMPos = req.body.protMPos !== "" ? req.body.protMPos : 0.0;
-   var AltaPresPos = req.body.AltaPresPos !== "" ? req.body.AltaPresPos : 0.0;
-   var presFecha1 = req.body.presFech1 !== "" ? req.body.presFech1 : 0.0;
-   var presFecha2 = req.body.presFech2 !== "" ? req.body.presFech2 : 0.0;
-   var presFecha3 = req.body.presFech3 !== "" ? req.body.presFech3 : 0.0;
-   var protMPres = req.body.protMPres !== "" ? req.body.protMPres : 0.0;
-   var AltaPresPres = req.body.AltaPresPressao !== "" ? req.body.AltaPresPressao : 0.0;
-   var fluxoFecha1 = req.body.fluxoFech1 !== "" ? req.body.fluxoFech1 : 0.0;
-   var fluxoFecha2 = req.body.fluxoFech2 !== "" ? req.body.fluxoFech2 : 0.0;
-   var fluxoFecha3 = req.body.fluxoFech3 !== "" ? req.body.fluxoFech3 : 0.0;
-   var protMFluxo = req.body.protMFluxo !== "" ? req.body.protMFluxo : 0.0;
-   var AltaPresFluxo = req.body.AltaPresFluxo !== "" ? req.body.AltaPresFluxo : 0.0;
-   var tempoProtMolde = req.body.tempoProtMolde !== "" ? req.body.tempoProtMolde : 0.0;
-   var tempoFecha = req.body.tempoFecha !== "" ? req.body.tempoFecha : 0.0;
-   var posAbertura1 = req.body.posAbertura5 !== "" ? req.body.posAbertura5 : 0.0;
-   var posAbertura2 = req.body.posAbertura4 !== "" ? req.body.posAbertura4 : 0.0;
-   var posAbertura3 = req.body.posAbertura3 !== "" ? req.body.posAbertura3 : 0.0;
-   var posAbertura4 = req.body.posAbertura2 !== "" ? req.body.posAbertura2 : 0.0;
-   var posAbertura5 = req.body.posAbertura1 !== "" ? req.body.posAbertura1 : 0.0;
-   var presAbertura1 = req.body.presAbertura5 !== "" ? req.body.presAbertura5 : 0.0;
-   var presAbertura2 = req.body.presAbertura4 !== "" ? req.body.presAbertura4 : 0.0;
-   var presAbertura3 = req.body.presAbertura3 !== "" ? req.body.presAbertura3 : 0.0;
-   var presAbertura4 = req.body.presAbertura2 !== "" ? req.body.presAbertura2 : 0.0;
-   var presAbertura5 = req.body.presAbertura1 !== "" ? req.body.presAbertura1 : 0.0;
-   var fluxoAbertura1 = req.body.fluxoAbertura5 !== "" ? req.body.fluxoAbertura5 : 0.0;
-   var fluxoAbertura2 = req.body.fluxoAbertura4 !== "" ? req.body.fluxoAbertura4 : 0.0;
-   var fluxoAbertura3 = req.body.fluxoAbertura3 !== "" ? req.body.fluxoAbertura3 : 0.0;
-   var fluxoAbertura4 = req.body.fluxoAbertura2 !== "" ? req.body.fluxoAbertura2 : 0.0;
-   var fluxoAbertura5 = req.body.fluxoAbertura1 !== "" ? req.body.fluxoAbertura1 : 0.0;
-   var resfriamento = req.body.resfriamento !== "" ? req.body.resfriamento : 0.0;
-   var tempoAbertura = req.body.tempoAbertura !== "" ? req.body.tempoAbertura : 0.0;
-   var posAvanco1 = req.body.posAvanco1 !== "" ? req.body.posAvanco1 : 0.0;
-   var posAvanco2 = req.body.posAvanco2 !== "" ? req.body.posAvanco2 : 0.0;
-   var posAvanco3 = req.body.posAvanco3 !== "" ? req.body.posAvanco3 : 0.0;
-   var posRecuo1 = req.body.posRecuo1 !== "" ? req.body.posRecuo1 : 0.0;
-   var posRecuo2 = req.body.posRecuo2 !== "" ? req.body.posRecuo2 : 0.0;
-   var posRecuo3 = req.body.posRecuo3 !== "" ? req.body.posRecuo3 : 0.0;
-   var presAvanco1 = req.body.presAvanco1 !== "" ? req.body.presAvanco1 : 0.0;
-   var presAvanco2 = req.body.presAvanco2 !== "" ? req.body.presAvanco2 : 0.0;
-   var presAvanco3 = req.body.presAvanco3 !== "" ? req.body.presAvanco3 : 0.0;
-   var presRecuo1 = req.body.presRecuo1 !== "" ? req.body.presRecuo1 : 0.0;
-   var presRecuo2 = req.body.presRecuo2 !== "" ? req.body.presRecuo2 : 0.0;
-   var presRecuo3 = req.body.presRecuo3 !== "" ? req.body.presRecuo3 : 0.0;
-   var fluxoAvanco1 = req.body.fluxoAvanco1 !== "" ? req.body.fluxoAvanco1 : 0.0;
-   var fluxoAvanco2 = req.body.fluxoAvanco2 !== "" ? req.body.fluxoAvanco2 : 0.0;
-   var fluxoAvanco3 = req.body.fluxoAvanco3 !== "" ? req.body.fluxoAvanco3 : 0.0;
-   var fluxoRecuo1 = req.body.fluxoRecuo1 !== "" ? req.body.fluxoRecuo1 : 0.0;
-   var fluxoRecuo2 = req.body.fluxoRecuo2 !== "" ? req.body.fluxoRecuo2 : 0.0;
-   var fluxoRecuo3 = req.body.fluxoRecuo3 !== "" ? req.body.fluxoRecuo3 : 0.0;
-   var atraso = req.body.atraso !== "" ? req.body.atraso : 0.0;
-   var batida = req.body.batida !== "" ? req.body.batida : 0.0;
-   var radialTypeEntrada1 = req.body.type1 !== "" ? req.body.type1 : 0.0;
-   var radialTypeSaida1 = req.body.type2 !== "" ? req.body.type2 : 0.0;
-   var radialTypeEntrada2 = req.body.type3 !== "" ? req.body.type3 : 0.0;
-   var radialTypeSaida2 = req.body.type4 !== "" ? req.body.type4 : 0.0;
-   var radialPresEntrada1 = req.body.pressaoRadial1 !== "" ? req.body.pressaoRadial1 : 0.0;
-   var radialPresSaida1 = req.body.pressaoRadial2 !== "" ? req.body.pressaoRadial2 : 0.0;
-   var radialPresEntrada2 = req.body.pressaoRadial3 !== "" ? req.body.pressaoRadial3 : 0.0;
-   var radialPresSaida2 = req.body.pressaoRadial4 !== "" ? req.body.pressaoRadial4 : 0.0;
-   var radialPresEntrada3 = req.body.pressaoRadial5 !== "" ? req.body.pressaoRadial5 : 0.0;
-   var radialPresSaida3 = req.body.pressaoRadial6 !== "" ? req.body.pressaoRadial6 : 0.0;
-   var radialFluxoEntrada1 = req.body.fluxoRadial1 !== "" ? req.body.fluxoRadial1 : 0.0;
-   var radialFluxoSaida1 = req.body.fluxoRadial2 !== "" ? req.body.fluxoRadial2 : 0.0;
-   var radialFluxoEntrada2 = req.body.fluxoRadial3 !== "" ? req.body.fluxoRadial3 : 0.0;
-   var radialFluxoSaida2 = req.body.fluxoRadial4 !== "" ? req.body.fluxoRadial4 : 0.0;
-   var radialFluxoEntrada3 = req.body.fluxoRadial5 !== "" ? req.body.fluxoRadial5 : 0.0;
-   var radialFluxoSaida3 = req.body.fluxoRadial6 !== "" ? req.body.fluxoRadial6 : 0.0;
-   var radialPosEntrada1 = req.body.posRadial1 !== "" ? req.body.posRadial1 : 0.0;
-   var radialPosSaida1 = req.body.posRadial2 !== "" ? req.body.posRadial2 : 0.0;
-   var radialPosEntrada2 = req.body.posRadial3 !== "" ? req.body.posRadial3 : 0.0;
-   var radialPosSaida2 = req.body.posRadial4 !== "" ? req.body.posRadial4 : 0.0;
-   var radialPosEntrada3 = req.body.posRadial5 !== "" ? req.body.posRadial5 : 0.0;
-   var radialPosSaida3 = req.body.posRadial6 !== "" ? req.body.posRadial6 : 0.0;
-   var radialTempoEntrada1 = req.body.tempoRadial1 !== "" ? req.body.tempoRadial1 : 0.0;
-   var radialTempoSaida1 = req.body.tempoRadial2 !== "" ? req.body.tempoRadial2 : 0.0;
-   var radialTempoEntrada2 = req.body.tempoRadial3 !== "" ? req.body.tempoRadial3 : 0.0;
-   var radialTempoSaida2 = req.body.tempoRadial4 !== "" ? req.body.tempoRadial4 : 0.0;
-   var radialTempoEntrada3 = req.body.tempoRadial5 !== "" ? req.body.tempoRadial5 : 0.0;
-   var radialTempoSaida3 = req.body.tempoRadial6 !== "" ? req.body.tempoRadial6 : 0.0;
-   var radialSCREntrada1 = req.body.scrcount1 !== "" ? req.body.scrcount1 : 0.0;
-   var radialSCRSaida1 = req.body.scrcount2 !== "" ? req.body.scrcount2 : 0.0;
-   var radialSCREntrada2 = req.body.scrcount3 !== "" ? req.body.scrcount3 : 0.0;
-   var radialSCRSaida2 = req.body.scrcount4 !== "" ? req.body.scrcount4 : 0.0;
-   var radialSCREntrada3 = req.body.scrcount5 !== "" ? req.body.scrcount5 : 0.0;
-   var radialSCRSaida3 = req.body.scrcount6 !== "" ? req.body.scrcount6 : 0.0;
+   var cilindro1 = req.body.cilindro1 !== "" ? req.body.cilindro1.replace(",", ".") : 0.0;
+   var cilindro2 = req.body.cilindro2 !== "" ? req.body.cilindro2.replace(",", ".") : 0.0;
+   var cilindro3 = req.body.cilindro3 !== "" ? req.body.cilindro3.replace(",", ".") : 0.0;
+   var cilindro4 = req.body.cilindro4 !== "" ? req.body.cilindro4.replace(",", ".") : 0.0;
+   var cilindro5 = req.body.cilindro5 !== "" ? req.body.cilindro5.replace(",", ".") : 0.0;
+   var cilindro6 = req.body.cilindro6 !== "" ? req.body.cilindro6.replace(",", ".") : 0.0;
+   var cilindro7 = req.body.cilindro7 !== "" ? req.body.cilindro7.replace(",", ".") : 0.0;
+   var posComut = req.body.posComutacao !== "" ? req.body.posComutacao.replace(",", ".") : 0.0;
+   var posInjecao1 = req.body.posInj5 !== "" ? req.body.posInj5.replace(",", ".") : 0.0;
+   var posInjecao2 = req.body.posInj4 !== "" ? req.body.posInj4.replace(",", ".") : 0.0;
+   var posInjecao3 = req.body.posInj3 !== "" ? req.body.posInj3.replace(",", ".") : 0.0;
+   var posInjecao4 = req.body.posInj2 !== "" ? req.body.posInj2.replace(",", ".") : 0.0;
+   var posInjecao5 = req.body.posInj1 !== "" ? req.body.posInj1.replace(",", ".") : 0.0;
+   var presComut = req.body.presComutacao !== "" ? req.body.presComutacao.replace(",", ".") : 0.0;
+   var presInjecao1 = req.body.presInj5 !== "" ? req.body.presInj5.replace(",", ".") : 0.0;
+   var presInjecao2 = req.body.presInj4 !== "" ? req.body.presInj4.replace(",", ".") : 0.0;
+   var presInjecao3 = req.body.presInj3 !== "" ? req.body.presInj3.replace(",", ".") : 0.0;
+   var presInjecao4 = req.body.presInj2 !== "" ? req.body.presInj2.replace(",", ".") : 0.0;
+   var presInjecao5 = req.body.presInj1 !== "" ? req.body.presInj1.replace(",", ".") : 0.0;
+   var fluxoInjecao1 = req.body.fluxoInj5 !== "" ? req.body.fluxoInj5.replace(",", ".") : 0.0;
+   var fluxoInjecao2 = req.body.fluxoInj4 !== "" ? req.body.fluxoInj4.replace(",", ".") : 0.0;
+   var fluxoInjecao3 = req.body.fluxoInj3 !== "" ? req.body.fluxoInj3.replace(",", ".") : 0.0;
+   var fluxoInjecao4 = req.body.fluxoInj2 !== "" ? req.body.fluxoInj2.replace(",", ".") : 0.0;
+   var fluxoInjecao5 = req.body.fluxoInj1 !== "" ? req.body.fluxoInj1.replace(",", ".") : 0.0;
+   var tempoDisparo = req.body.tempoDisparo !== "" ? req.body.tempoDisparo.replace(",", ".") : 0.0;
+   var pressaoInj = req.body.pressaoInj !== "" ? req.body.pressaoInj.replace(",", ".") : 0.0;
+   var presRecalque1 = req.body.presRecalque5 !== "" ? req.body.presRecalque5.replace(",", ".") : 0.0;
+   var presRecalque2 = req.body.presRecalque4 !== "" ? req.body.presRecalque4.replace(",", ".") : 0.0;
+   var presRecalque3 = req.body.presRecalque3 !== "" ? req.body.presRecalque3.replace(",", ".") : 0.0;
+   var presRecalque4 = req.body.presRecalque2 !== "" ? req.body.presRecalque2.replace(",", ".") : 0.0;
+   var presRecalque5 = req.body.presRecalque1 !== "" ? req.body.presRecalque1.replace(",", ".") : 0.0;
+   var fluxoRecalque1 = req.body.fluxoRecalque5 !== "" ? req.body.fluxoRecalque5.replace(",", ".") : 0.0;
+   var fluxoRecalque2 = req.body.fluxoRecalque4 !== "" ? req.body.fluxoRecalque4.replace(",", ".") : 0.0;
+   var fluxoRecalque3 = req.body.fluxoRecalque3 !== "" ? req.body.fluxoRecalque3.replace(",", ".") : 0.0;
+   var fluxoRecalque4 = req.body.fluxoRecalque2 !== "" ? req.body.fluxoRecalque2.replace(",", ".") : 0.0;
+   var fluxoRecalque5 = req.body.fluxoRecalque1 !== "" ? req.body.fluxoRecalque1.replace(",", ".") : 0.0;
+   var tempoRecalque1 = req.body.tempoRecalque5 !== "" ? req.body.tempoRecalque5.replace(",", ".") : 0.0;
+   var tempoRecalque2 = req.body.tempoRecalque4 !== "" ? req.body.tempoRecalque4.replace(",", ".") : 0.0;
+   var tempoRecalque3 = req.body.tempoRecalque3 !== "" ? req.body.tempoRecalque3.replace(",", ".") : 0.0;
+   var tempoRecalque4 = req.body.tempoRecalque2 !== "" ? req.body.tempoRecalque2.replace(",", ".") : 0.0;
+   var tempoRecalque5 = req.body.tempoRecalque1 !== "" ? req.body.tempoRecalque1.replace(",", ".") : 0.0;
+   var partDosagem1 = req.body.partDosagem5 !== "" ? req.body.partDosagem5.replace(",", ".") : 0.0;
+   var partDosagem2 = req.body.partDosagem4 !== "" ? req.body.partDosagem4.replace(",", ".") : 0.0;
+   var partDosagem3 = req.body.partDosagem3 !== "" ? req.body.partDosagem3.replace(",", ".") : 0.0;
+   var partDosagem4 = req.body.partDosagem2 !== "" ? req.body.partDosagem2.replace(",", ".") : 0.0;
+   var partDosagem5 = req.body.partDosagem1 !== "" ? req.body.partDosagem1.replace(",", ".") : 0.0;
+   var presDosagem1 = req.body.presDosagem5 !== "" ? req.body.presDosagem5.replace(",", ".") : 0.0;
+   var presDosagem2 = req.body.presDosagem4 !== "" ? req.body.presDosagem4.replace(",", ".") : 0.0;
+   var presDosagem3 = req.body.presDosagem3 !== "" ? req.body.presDosagem3.replace(",", ".") : 0.0;
+   var presDosagem4 = req.body.presDosagem2 !== "" ? req.body.presDosagem2.replace(",", ".") : 0.0;
+   var presDosagem5 = req.body.presDosagem1 !== "" ? req.body.presDosagem1.replace(",", ".") : 0.0;
+   var fluxoDosagem1 = req.body.fluxoDosagem5 !== "" ? req.body.fluxoDosagem5.replace(",", ".") : 0.0;
+   var fluxoDosagem2 = req.body.fluxoDosagem4 !== "" ? req.body.fluxoDosagem4.replace(",", ".") : 0.0;
+   var fluxoDosagem3 = req.body.fluxoDosagem3 !== "" ? req.body.fluxoDosagem3.replace(",", ".") : 0.0;
+   var fluxoDosagem4 = req.body.fluxoDosagem2 !== "" ? req.body.fluxoDosagem2.replace(",", ".") : 0.0;
+   var fluxoDosagem5 = req.body.fluxoDosagem1 !== "" ? req.body.fluxoDosagem1.replace(",", ".") : 0.0;
+   var CPDosagem1 = req.body.CPDosagem5 !== "" ? req.body.CPDosagem5.replace(",", ".") : 0.0;
+   var CPDosagem2 = req.body.CPDosagem4 !== "" ? req.body.CPDosagem4.replace(",", ".") : 0.0;
+   var CPDosagem3 = req.body.CPDosagem3 !== "" ? req.body.CPDosagem3.replace(",", ".") : 0.0;
+   var CPDosagem4 = req.body.CPDosagem2 !== "" ? req.body.CPDosagem2.replace(",", ".") : 0.0;
+   var CPDosagem5 = req.body.CPDosagem1 !== "" ? req.body.CPDosagem1.replace(",", ".") : 0.0;
+   var tempoDosagem = req.body.tempoDosagem !== "" ? req.body.tempoDosagem.replace(",", ".") : 0.0;
+   var antesPos = req.body.antes1 !== "" ? req.body.antes1.replace(",", ".") : 0.0;
+   var antesPres = req.body.antes2 !== "" ? req.body.antes2.replace(",", ".") : 0.0;
+   var antesFluxo = req.body.antes3 !== "" ? req.body.antes3.replace(",", ".") : 0.0;
+   var antesTempo = req.body.antes4 !== "" ? req.body.antes4.replace(",", ".") : 0.0;
+   var depoisPos = req.body.depois1 !== "" ? req.body.depois1.replace(",", ".") : 0.0;
+   var depoisPres = req.body.depois2 !== "" ? req.body.depois2.replace(",", ".") : 0.0;
+   var depoisFluxo = req.body.depois3 !== "" ? req.body.depois3.replace(",", ".") : 0.0;
+   var depoisTempo = req.body.depois4 !== "" ? req.body.depois4.replace(",", ".") : 0.0;
+   var posFecha1 = req.body.posFech1 !== "" ? req.body.posFech1.replace(",", ".") : 0.0;
+   var posFecha2 = req.body.posFech2 !== "" ? req.body.posFech2.replace(",", ".") : 0.0;
+   var posFecha3 = req.body.posFech3 !== "" ? req.body.posFech3.replace(",", ".") : 0.0;
+   var protMPos = req.body.protMPos !== "" ? req.body.protMPos.replace(",", ".") : 0.0;
+   var AltaPresPos = req.body.AltaPresPos !== "" ? req.body.AltaPresPos.replace(",", ".") : 0.0;
+   var presFecha1 = req.body.presFech1 !== "" ? req.body.presFech1.replace(",", ".") : 0.0;
+   var presFecha2 = req.body.presFech2 !== "" ? req.body.presFech2.replace(",", ".") : 0.0;
+   var presFecha3 = req.body.presFech3 !== "" ? req.body.presFech3.replace(",", ".") : 0.0;
+   var protMPres = req.body.protMPres !== "" ? req.body.protMPres.replace(",", ".") : 0.0;
+   var AltaPresPres = req.body.AltaPresPressao !== "" ? req.body.AltaPresPressao.replace(",", ".") : 0.0;
+   var fluxoFecha1 = req.body.fluxoFech1 !== "" ? req.body.fluxoFech1.replace(",", ".") : 0.0;
+   var fluxoFecha2 = req.body.fluxoFech2 !== "" ? req.body.fluxoFech2.replace(",", ".") : 0.0;
+   var fluxoFecha3 = req.body.fluxoFech3 !== "" ? req.body.fluxoFech3.replace(",", ".") : 0.0;
+   var protMFluxo = req.body.protMFluxo !== "" ? req.body.protMFluxo.replace(",", ".") : 0.0;
+   var AltaPresFluxo = req.body.AltaPresFluxo !== "" ? req.body.AltaPresFluxo.replace(",", ".") : 0.0;
+   var tempoProtMolde = req.body.tempoProtMolde !== "" ? req.body.tempoProtMolde.replace(",", ".") : 0.0;
+   var tempoFecha = req.body.tempoFecha !== "" ? req.body.tempoFecha.replace(",", ".") : 0.0;
+   var posAbertura1 = req.body.posAbertura5 !== "" ? req.body.posAbertura5.replace(",", ".") : 0.0;
+   var posAbertura2 = req.body.posAbertura4 !== "" ? req.body.posAbertura4.replace(",", ".") : 0.0;
+   var posAbertura3 = req.body.posAbertura3 !== "" ? req.body.posAbertura3.replace(",", ".") : 0.0;
+   var posAbertura4 = req.body.posAbertura2 !== "" ? req.body.posAbertura2.replace(",", ".") : 0.0;
+   var posAbertura5 = req.body.posAbertura1 !== "" ? req.body.posAbertura1.replace(",", ".") : 0.0;
+   var presAbertura1 = req.body.presAbertura5 !== "" ? req.body.presAbertura5.replace(",", ".") : 0.0;
+   var presAbertura2 = req.body.presAbertura4 !== "" ? req.body.presAbertura4.replace(",", ".") : 0.0;
+   var presAbertura3 = req.body.presAbertura3 !== "" ? req.body.presAbertura3.replace(",", ".") : 0.0;
+   var presAbertura4 = req.body.presAbertura2 !== "" ? req.body.presAbertura2.replace(",", ".") : 0.0;
+   var presAbertura5 = req.body.presAbertura1 !== "" ? req.body.presAbertura1.replace(",", ".") : 0.0;
+   var fluxoAbertura1 = req.body.fluxoAbertura5 !== "" ? req.body.fluxoAbertura5.replace(",", ".") : 0.0;
+   var fluxoAbertura2 = req.body.fluxoAbertura4 !== "" ? req.body.fluxoAbertura4.replace(",", ".") : 0.0;
+   var fluxoAbertura3 = req.body.fluxoAbertura3 !== "" ? req.body.fluxoAbertura3.replace(",", ".") : 0.0;
+   var fluxoAbertura4 = req.body.fluxoAbertura2 !== "" ? req.body.fluxoAbertura2.replace(",", ".") : 0.0;
+   var fluxoAbertura5 = req.body.fluxoAbertura1 !== "" ? req.body.fluxoAbertura1.replace(",", ".") : 0.0;
+   var resfriamento = req.body.resfriamento !== "" ? req.body.resfriamento.replace(",", ".") : 0.0;
+   var tempoAbertura = req.body.tempoAbertura !== "" ? req.body.tempoAbertura.replace(",", ".") : 0.0;
+   var posAvanco1 = req.body.posAvanco1 !== "" ? req.body.posAvanco1.replace(",", ".") : 0.0;
+   var posAvanco2 = req.body.posAvanco2 !== "" ? req.body.posAvanco2.replace(",", ".") : 0.0;
+   var posAvanco3 = req.body.posAvanco3 !== "" ? req.body.posAvanco3.replace(",", ".") : 0.0;
+   var posRecuo1 = req.body.posRecuo1 !== "" ? req.body.posRecuo1.replace(",", ".") : 0.0;
+   var posRecuo2 = req.body.posRecuo2 !== "" ? req.body.posRecuo2.replace(",", ".") : 0.0;
+   var posRecuo3 = req.body.posRecuo3 !== "" ? req.body.posRecuo3.replace(",", ".") : 0.0;
+   var presAvanco1 = req.body.presAvanco1 !== "" ? req.body.presAvanco1.replace(",", ".") : 0.0;
+   var presAvanco2 = req.body.presAvanco2 !== "" ? req.body.presAvanco2.replace(",", ".") : 0.0;
+   var presAvanco3 = req.body.presAvanco3 !== "" ? req.body.presAvanco3.replace(",", ".") : 0.0;
+   var presRecuo1 = req.body.presRecuo1 !== "" ? req.body.presRecuo1.replace(",", ".") : 0.0;
+   var presRecuo2 = req.body.presRecuo2 !== "" ? req.body.presRecuo2.replace(",", ".") : 0.0;
+   var presRecuo3 = req.body.presRecuo3 !== "" ? req.body.presRecuo3.replace(",", ".") : 0.0;
+   var fluxoAvanco1 = req.body.fluxoAvanco1 !== "" ? req.body.fluxoAvanco1.replace(",", ".") : 0.0;
+   var fluxoAvanco2 = req.body.fluxoAvanco2 !== "" ? req.body.fluxoAvanco2.replace(",", ".") : 0.0;
+   var fluxoAvanco3 = req.body.fluxoAvanco3 !== "" ? req.body.fluxoAvanco3.replace(",", ".") : 0.0;
+   var fluxoRecuo1 = req.body.fluxoRecuo1 !== "" ? req.body.fluxoRecuo1.replace(",", ".") : 0.0;
+   var fluxoRecuo2 = req.body.fluxoRecuo2 !== "" ? req.body.fluxoRecuo2.replace(",", ".") : 0.0;
+   var fluxoRecuo3 = req.body.fluxoRecuo3 !== "" ? req.body.fluxoRecuo3.replace(",", ".") : 0.0;
+   var atraso = req.body.atraso !== "" ? req.body.atraso.replace(",", ".") : 0.0;
+   var batida = req.body.batida !== "" ? req.body.batida.replace(",", ".") : 0.0;
+   var radialTypeEntrada1 = req.body.type1 !== "" ? req.body.type1.replace(",", ".") : 0.0;
+   var radialTypeSaida1 = req.body.type2 !== "" ? req.body.type2.replace(",", ".") : 0.0;
+   var radialTypeEntrada2 = req.body.type3 !== "" ? req.body.type3.replace(",", ".") : 0.0;
+   var radialTypeSaida2 = req.body.type4 !== "" ? req.body.type4.replace(",", ".") : 0.0;
+   var radialPresEntrada1 = req.body.pressaoRadial1 !== "" ? req.body.pressaoRadial1.replace(",", ".") : 0.0;
+   var radialPresSaida1 = req.body.pressaoRadial2 !== "" ? req.body.pressaoRadial2.replace(",", ".") : 0.0;
+   var radialPresEntrada2 = req.body.pressaoRadial3 !== "" ? req.body.pressaoRadial3.replace(",", ".") : 0.0;
+   var radialPresSaida2 = req.body.pressaoRadial4 !== "" ? req.body.pressaoRadial4.replace(",", ".") : 0.0;
+   var radialPresEntrada3 = req.body.pressaoRadial5 !== "" ? req.body.pressaoRadial5.replace(",", ".") : 0.0;
+   var radialPresSaida3 = req.body.pressaoRadial6 !== "" ? req.body.pressaoRadial6.replace(",", ".") : 0.0;
+   var radialFluxoEntrada1 = req.body.fluxoRadial1 !== "" ? req.body.fluxoRadial1.replace(",", ".") : 0.0;
+   var radialFluxoSaida1 = req.body.fluxoRadial2 !== "" ? req.body.fluxoRadial2.replace(",", ".") : 0.0;
+   var radialFluxoEntrada2 = req.body.fluxoRadial3 !== "" ? req.body.fluxoRadial3.replace(",", ".") : 0.0;
+   var radialFluxoSaida2 = req.body.fluxoRadial4 !== "" ? req.body.fluxoRadial4.replace(",", ".") : 0.0;
+   var radialFluxoEntrada3 = req.body.fluxoRadial5 !== "" ? req.body.fluxoRadial5.replace(",", ".") : 0.0;
+   var radialFluxoSaida3 = req.body.fluxoRadial6 !== "" ? req.body.fluxoRadial6.replace(",", ".") : 0.0;
+   var radialPosEntrada1 = req.body.posRadial1 !== "" ? req.body.posRadial1.replace(",", ".") : 0.0;
+   var radialPosSaida1 = req.body.posRadial2 !== "" ? req.body.posRadial2.replace(",", ".") : 0.0;
+   var radialPosEntrada2 = req.body.posRadial3 !== "" ? req.body.posRadial3.replace(",", ".") : 0.0;
+   var radialPosSaida2 = req.body.posRadial4 !== "" ? req.body.posRadial4.replace(",", ".") : 0.0;
+   var radialPosEntrada3 = req.body.posRadial5 !== "" ? req.body.posRadial5.replace(",", ".") : 0.0;
+   var radialPosSaida3 = req.body.posRadial6 !== "" ? req.body.posRadial6.replace(",", ".") : 0.0;
+   var radialTempoEntrada1 = req.body.tempoRadial1 !== "" ? req.body.tempoRadial1.replace(",", ".") : 0.0;
+   var radialTempoSaida1 = req.body.tempoRadial2 !== "" ? req.body.tempoRadial2.replace(",", ".") : 0.0;
+   var radialTempoEntrada2 = req.body.tempoRadial3 !== "" ? req.body.tempoRadial3.replace(",", ".") : 0.0;
+   var radialTempoSaida2 = req.body.tempoRadial4 !== "" ? req.body.tempoRadial4.replace(",", ".") : 0.0;
+   var radialTempoEntrada3 = req.body.tempoRadial5 !== "" ? req.body.tempoRadial5.replace(",", ".") : 0.0;
+   var radialTempoSaida3 = req.body.tempoRadial6 !== "" ? req.body.tempoRadial6.replace(",", ".") : 0.0;
+   var radialSCREntrada1 = req.body.scrcount1 !== "" ? req.body.scrcount1.replace(",", ".") : 0.0;
+   var radialSCRSaida1 = req.body.scrcount2 !== "" ? req.body.scrcount2.replace(",", ".") : 0.0;
+   var radialSCREntrada2 = req.body.scrcount3 !== "" ? req.body.scrcount3.replace(",", ".") : 0.0;
+   var radialSCRSaida2 = req.body.scrcount4 !== "" ? req.body.scrcount4.replace(",", ".") : 0.0;
+   var radialSCREntrada3 = req.body.scrcount5 !== "" ? req.body.scrcount5.replace(",", ".") : 0.0;
+   var radialSCRSaida3 = req.body.scrcount6 !== "" ? req.body.scrcount6.replace(",", ".") : 0.0;
 
-   var camara1 = req.body.camara1[0] !== "" ? req.body.camara1[0] : 0.0;
-   var camara2 = req.body.camara2[0] !== "" ? req.body.camara2[0] : 0.0;
-   var camara3 = req.body.camara3[0] !== "" ? req.body.camara3[0] : 0.0;
-   var camara4 = req.body.camara4[0] !== "" ? req.body.camara4[0] : 0.0;
-   var camara5 = req.body.camara5[0] !== "" ? req.body.camara5[0] : 0.0;
-   var camara6 = req.body.camara6[0] !== "" ? req.body.camara6[0] : 0.0;
-   var camara7 = req.body.camara7[0] !== "" ? req.body.camara7[0] : 0.0;
-   var camara8 = req.body.camara1[1] !== "" ? req.body.camara1[1] : 0.0;
-   var camara9 = req.body.camara2[1] !== "" ? req.body.camara2[1] : 0.0;
-   var camara10 = req.body.camara3[1] !== "" ? req.body.camara3[1] : 0.0;
-   var camara11 = req.body.camara4[1] !== "" ? req.body.camara4[1] : 0.0;
-   var camara12 = req.body.camara5[1] !== "" ? req.body.camara5[1] : 0.0;
-   var camara13 = req.body.camara6[1] !== "" ? req.body.camara6[1] : 0.0;
-   var camara14 = req.body.camara7[1] !== "" ? req.body.camara7[1] : 0.0;
-   var camara15 = req.body.camara1[2] !== "" ? req.body.camara1[2] : 0.0;
-   var camara16 = req.body.camara2[2] !== "" ? req.body.camara2[2] : 0.0;
-   var camara17 = req.body.camara3[2] !== "" ? req.body.camara3[2] : 0.0;
-   var camara18 = req.body.camara4[2] !== "" ? req.body.camara4[3] : 0.0;
-   var camara19 = req.body.camara5[2] !== "" ? req.body.camara5[2] : 0.0;
-   var camara20 = req.body.camara6[2] !== "" ? req.body.camara6[2] : 0.0;
-   var camara21 = req.body.camara7[2] !== "" ? req.body.camara7[2] : 0.0;
-   var camara22 = req.body.camara1[3] !== "" ? req.body.camara1[3] : 0.0;
-   var camara23 = req.body.camara2[3] !== "" ? req.body.camara2[3] : 0.0;
-   var camara24 = req.body.camara3[3] !== "" ? req.body.camara3[3] : 0.0;
-   var camara25 = req.body.camara4[3] !== "" ? req.body.camara4[3] : 0.0;
-   var camara26 = req.body.camara5[3] !== "" ? req.body.camara5[3] : 0.0;
-   var camara27 = req.body.camara6[3] !== "" ? req.body.camara6[3] : 0.0;
-   var camara28 = req.body.camara7[3] !== "" ? req.body.camara7[3] : 0.0;
-   var camara29 = req.body.camara1[4] !== "" ? req.body.camara1[4] : 0.0;
-   var camara30 = req.body.camara2[4] !== "" ? req.body.camara2[4] : 0.0;
-   var camara31 = req.body.camara3[4] !== "" ? req.body.camara3[4] : 0.0;
-   var camara32 = req.body.camara4[4] !== "" ? req.body.camara4[4] : 0.0;
-   var camara33 = req.body.camara5[4] !== "" ? req.body.camara5[4] : 0.0;
-   var camara34 = req.body.camara6[4] !== "" ? req.body.camara6[4] : 0.0;
-   var camara35 = req.body.camara7[4] !== "" ? req.body.camara7[4] : 0.0;
-   var camara36 = req.body.camara1[5] !== "" ? req.body.camara1[5] : 0.0;
-   var camara37 = req.body.camara2[5] !== "" ? req.body.camara2[5] : 0.0;
-   var camara38 = req.body.camara3[5] !== "" ? req.body.camara3[5] : 0.0;
-   var camara39 = req.body.camara4[5] !== "" ? req.body.camara4[5] : 0.0;
-   var camara40 = req.body.camara5[5] !== "" ? req.body.camara5[5] : 0.0;
-   var camara41 = req.body.camara6[5] !== "" ? req.body.camara6[5] : 0.0;
-   var camara42 = req.body.camara7[5] !== "" ? req.body.camara7[5] : 0.0;
-   var camara43 = req.body.camara1[6] !== "" ? req.body.camara1[6] : 0.0;
-   var camara44 = req.body.camara2[6] !== "" ? req.body.camara2[6] : 0.0;
-   var camara45 = req.body.camara3[6] !== "" ? req.body.camara3[6] : 0.0;
-   var camara46 = req.body.camara4[6] !== "" ? req.body.camara4[6] : 0.0;
-   var camara47 = req.body.camara5[6] !== "" ? req.body.camara5[6] : 0.0;
-   var camara48 = req.body.camara6[6] !== "" ? req.body.camara6[6] : 0.0;
-   var camara49 = req.body.camara7[6] !== "" ? req.body.camara7[6] : 0.0;
-   var camara50 = req.body.camara1[7] !== "" ? req.body.camara1[7] : 0.0;
-   var camara51 = req.body.camara2[7] !== "" ? req.body.camara2[7] : 0.0;
-   var camara52 = req.body.camara3[7] !== "" ? req.body.camara3[7] : 0.0;
-   var camara53 = req.body.camara4[7] !== "" ? req.body.camara4[7] : 0.0;
-   var camara54 = req.body.camara5[7] !== "" ? req.body.camara5[7] : 0.0;
-   var camara55 = req.body.camara6[7] !== "" ? req.body.camara6[7] : 0.0;
-   var camara56 = req.body.camara7[7] !== "" ? req.body.camara7[7] : 0.0;
-   var camara57 = req.body.camara1[8] !== "" ? req.body.camara1[8] : 0.0;
-   var camara58 = req.body.camara2[8] !== "" ? req.body.camara2[8] : 0.0;
-   var camara59 = req.body.camara3[8] !== "" ? req.body.camara3[8] : 0.0;
-   var camara60 = req.body.camara4[8] !== "" ? req.body.camara4[8] : 0.0;
-   var camara61 = req.body.camara5[8] !== "" ? req.body.camara5[8] : 0.0;
-   var camara62 = req.body.camara6[8] !== "" ? req.body.camara6[8] : 0.0;
-   var camara63 = req.body.camara7[8] !== "" ? req.body.camara7[8] : 0.0;
-   var camara64 = req.body.camara1[9] !== "" ? req.body.camara1[9] : 0.0;
-   var camara65 = req.body.camara2[9] !== "" ? req.body.camara2[9] : 0.0;
-   var camara66 = req.body.camara3[9] !== "" ? req.body.camara3[9] : 0.0;
-   var camara67 = req.body.camara4[9] !== "" ? req.body.camara4[9] : 0.0;
-   var camara68 = req.body.camara5[9] !== "" ? req.body.camara5[9] : 0.0;
-   var camara69 = req.body.camara6[9] !== "" ? req.body.camara6[9] : 0.0;
-   var camara70 = req.body.camara7[9] !== "" ? req.body.camara7[9] : 0.0;
-   var camara71 = req.body.camara1[10] !== "" ? req.body.camara1[10] : 0.0;
-   var camara72 = req.body.camara2[10] !== "" ? req.body.camara2[10] : 0.0;
-   var camara73 = req.body.camara3[10] !== "" ? req.body.camara3[10] : 0.0;
-   var camara74 = req.body.camara4[10] !== "" ? req.body.camara4[10] : 0.0;
-   var camara75 = req.body.camara5[10] !== "" ? req.body.camara5[10] : 0.0;
-   var camara76 = req.body.camara6[10] !== "" ? req.body.camara6[10] : 0.0;
-   var camara77 = req.body.camara7[10] !== "" ? req.body.camara7[10] : 0.0;
-   var camara78 = req.body.camara1[11] !== "" ? req.body.camara1[11] : 0.0;
-   var camara79 = req.body.camara2[11] !== "" ? req.body.camara2[11] : 0.0;
-   var camara80 = req.body.camara3[11] !== "" ? req.body.camara3[11] : 0.0;
-   var camara81 = req.body.camara4[11] !== "" ? req.body.camara4[11] : 0.0;
-   var camara82 = req.body.camara5[11] !== "" ? req.body.camara5[11] : 0.0;
-   var camara83 = req.body.camara6[11] !== "" ? req.body.camara6[11] : 0.0;
-   var camara84 = req.body.camara7[11] !== "" ? req.body.camara7[11] : 0.0;
-   var camara85 = req.body.camara1[12] !== "" ? req.body.camara1[12] : 0.0;
-   var camara86 = req.body.camara2[12] !== "" ? req.body.camara2[12] : 0.0;
-   var camara87 = req.body.camara3[12] !== "" ? req.body.camara3[12] : 0.0;
-   var camara88 = req.body.camara4[12] !== "" ? req.body.camara4[12] : 0.0;
-   var camara89 = req.body.camara5[12] !== "" ? req.body.camara5[12] : 0.0;
-   var camara90 = req.body.camara6[12] !== "" ? req.body.camara6[12] : 0.0;
-   var camara91 = req.body.camara7[12] !== "" ? req.body.camara7[12] : 0.0;
-   var camara92 = req.body.camara1[13] !== "" ? req.body.camara1[13] : 0.0;
-   var camara93 = req.body.camara2[13] !== "" ? req.body.camara2[13] : 0.0;
-   var camara94 = req.body.camara3[13] !== "" ? req.body.camara3[13] : 0.0;
-   var camara95 = req.body.camara4[13] !== "" ? req.body.camara4[13] : 0.0;
-   var camara96 = req.body.camara5[13] !== "" ? req.body.camara5[13] : 0.0;
-   var camara97 = req.body.camara6[13] !== "" ? req.body.camara6[13] : 0.0;
-   var camara98 = req.body.camara7[13] !== "" ? req.body.camara7[13] : 0.0;
-   var camara99 = req.body.camara1[14] !== "" ? req.body.camara1[14] : 0.0;
-   var camara100 = req.body.camara2[14] !== "" ? req.body.camara2[14] : 0.0;
-   var camara101 = req.body.camara3[14] !== "" ? req.body.camara3[14] : 0.0;
-   var camara102 = req.body.camara4[14] !== "" ? req.body.camara4[14] : 0.0;
-   var camara103 = req.body.camara5[14] !== "" ? req.body.camara5[14] : 0.0;
-   var camara104 = req.body.camara6[14] !== "" ? req.body.camara6[14] : 0.0;
-   var camara105 = req.body.camara7[14] !== "" ? req.body.camara7[14] : 0.0;
-   var camara106 = req.body.camara1[15] !== "" ? req.body.camara1[15] : 0.0;
-   var camara107 = req.body.camara2[15] !== "" ? req.body.camara2[15] : 0.0;
-   var camara108 = req.body.camara3[15] !== "" ? req.body.camara3[15] : 0.0;
-   var camara109 = req.body.camara4[15] !== "" ? req.body.camara4[15] : 0.0;
-   var camara110 = req.body.camara5[15] !== "" ? req.body.camara5[15] : 0.0;
-   var camara111 = req.body.camara6[15] !== "" ? req.body.camara6[15] : 0.0;
-   var camara112 = req.body.camara7[15] !== "" ? req.body.camara7[15] : 0.0;
-   var camara113 = req.body.camara1[16] !== "" ? req.body.camara1[16] : 0.0;
-   var camara114 = req.body.camara2[16] !== "" ? req.body.camara2[16] : 0.0;
-   var camara115 = req.body.camara3[16] !== "" ? req.body.camara3[16] : 0.0;
-   var camara116 = req.body.camara4[16] !== "" ? req.body.camara4[16] : 0.0;
-   var camara117 = req.body.camara5[16] !== "" ? req.body.camara5[16] : 0.0;
-   var camara118 = req.body.camara6[16] !== "" ? req.body.camara6[16] : 0.0;
-   var camara119 = req.body.camara7[16] !== "" ? req.body.camara7[16] : 0.0;
-   var camara120 = req.body.camara1[17] !== "" ? req.body.camara1[17] : 0.0;
-   var camara121 = req.body.camara2[17] !== "" ? req.body.camara2[17] : 0.0;
-   var camara122 = req.body.camara3[17] !== "" ? req.body.camara3[17] : 0.0;
-   var camara123 = req.body.camara4[17] !== "" ? req.body.camara4[17] : 0.0;
-   var camara124 = req.body.camara5[17] !== "" ? req.body.camara5[17] : 0.0;
-   var camara125 = req.body.camara6[17] !== "" ? req.body.camara6[17] : 0.0;
-   var camara126 = req.body.camara7[17] !== "" ? req.body.camara7[17] : 0.0;
-   var camara127 = req.body.camara1[18] !== "" ? req.body.camara1[18] : 0.0;
-   var camara128 = req.body.camara2[18] !== "" ? req.body.camara2[18] : 0.0;
-   var camara129 = req.body.camara3[18] !== "" ? req.body.camara3[18] : 0.0;
-   var camara130 = req.body.camara4[18] !== "" ? req.body.camara4[18] : 0.0;
-   var termoparK1 = req.body.termoparK1 !== "" ? req.body.termoparK1 : 0.0;
-   var termoparJ = req.body.termoparJ !== "" ? req.body.termoparJ : 0.0;
-   var termoparK2 = req.body.termoparK2 !== "" ? req.body.termoparK2 : 0.0;
-   var VG1DLYTIME = req.body.VG1[0] !== "" ? req.body.VG1[0] : 0.0;
-   var VG1ACTTIME = req.body.VG1[1] !== "" ? req.body.VG1[1] : 0.0;
-   var VG2DLYTIME = req.body.VG1[2] !== "" ? req.body.VG1[2] : 0.0;
-   var VG2ACTTIME = req.body.VG1[3] !== "" ? req.body.VG1[3] : 0.0;
-   var VG3DLYTIME = req.body.VG1[4] !== "" ? req.body.VG1[4] : 0.0;
-   var VG3ACTTIME = req.body.VG1[5] !== "" ? req.body.VG1[5] : 0.0;
-   var VG4DLYTIME = req.body.VG1[6] !== "" ? req.body.VG1[6] : 0.0;
-   var VG4ACTTIME = req.body.VG1[7] !== "" ? req.body.VG1[7] : 0.0;
-   var VG5DLYTIME = req.body.VG1[8] !== "" ? req.body.VG1[8] : 0.0;
-   var VG5ACTTIME = req.body.VG1[9] !== "" ? req.body.VG1[9] : 0.0;
-   var VG6DLYTIME = req.body.VG1[10] !== "" ? req.body.VG1[10] : 0.0;
-   var VG6ACTTIME = req.body.VG1[11] !== "" ? req.body.VG1[11] : 0.0;
-   var VG7DLYTIME = req.body.VG1[12] !== "" ? req.body.VG1[12] : 0.0;
-   var VG7ACTTIME = req.body.VG1[13] !== "" ? req.body.VG1[13] : 0.0;
-   var VG8DLYTIME = req.body.VG1[14] !== "" ? req.body.VG1[14] : 0.0;
-   var VG8ACTTIME = req.body.VG1[15] !== "" ? req.body.VG1[15] : 0.0;
-   var VG9DLYTIME = req.body.VG1[16] !== "" ? req.body.VG1[16] : 0.0;
-   var VG9ACTTIME = req.body.VG1[17] !== "" ? req.body.VG1[17] : 0.0;
-   var VG10DLYTIME = req.body.VG1[18] !== "" ? req.body.VG1[18] : 0.0;
-   var VG10ACTTIME = req.body.VG1[19] !== "" ? req.body.VG1[19] : 0.0;
-   var VG11DLYTIME = req.body.VG1[20] !== "" ? req.body.VG1[20] : 0.0;
-   var VG11ACTTIME = req.body.VG1[21] !== "" ? req.body.VG1[21] : 0.0;
-   var VG12DLYTIME = req.body.VG1[22] !== "" ? req.body.VG1[22] : 0.0;
-   var VG12ACTTIME = req.body.VG1[23] !== "" ? req.body.VG1[23] : 0.0;
-   var VG13DLYTIME = req.body.VG1[24] !== "" ? req.body.VG1[24] : 0.0;
-   var VG13ACTTIME = req.body.VG1[25] !== "" ? req.body.VG1[25] : 0.0;
-   var VG14DLYTIME = req.body.VG1[26] !== "" ? req.body.VG1[26] : 0.0;
-   var VG14ACTTIME = req.body.VG1[27] !== "" ? req.body.VG1[27] : 0.0;
-   var VG15DLYTIME = req.body.VG1[28] !== "" ? req.body.VG1[28] : 0.0;
-   var VG15ACTTIME = req.body.VG1[29] !== "" ? req.body.VG1[29] : 0.0;
-   var VG16DLYTIME = req.body.VG1[30] !== "" ? req.body.VG1[30] : 0.0;
-   var VG16ACTTIME = req.body.VG1[31] !== "" ? req.body.VG1[31] : 0.0;
-   var VG17DLYTIME = req.body.VG1[32] !== "" ? req.body.VG1[32] : 0.0;
-   var VG17ACTTIME = req.body.VG1[33] !== "" ? req.body.VG1[33] : 0.0;
-   var VG18DLYTIME = req.body.VG1[34] !== "" ? req.body.VG1[34] : 0.0;
-   var VG18ACTTIME = req.body.VG1[35] !== "" ? req.body.VG1[35] : 0.0;
-   var VG19DLYTIME = req.body.VG1[36] !== "" ? req.body.VG1[36] : 0.0;
-   var VG19ACTTIME = req.body.VG1[37] !== "" ? req.body.VG1[37] : 0.0;
-   var VG20DLYTIME = req.body.VG1[38] !== "" ? req.body.VG1[38] : 0.0;
-   var VG20ACTTIME = req.body.VG1[39] !== "" ? req.body.VG1[39] : 0.0;
-   var VG21DLYTIME = req.body.VG1[40] !== "" ? req.body.VG1[40] : 0.0;
-   var VG21ACTTIME = req.body.VG1[41] !== "" ? req.body.VG1[41] : 0.0;
-   var VG22DLYTIME = req.body.VG1[42] !== "" ? req.body.VG1[42] : 0.0;
-   var VG22ACTTIME = req.body.VG1[43] !== "" ? req.body.VG1[43] : 0.0;
-   var VG23DLYTIME = req.body.VG1[44] !== "" ? req.body.VG1[44] : 0.0;
-   var VG23ACTTIME = req.body.VG1[45] !== "" ? req.body.VG1[45] : 0.0;
-   var VG24DLYTIME = req.body.VG1[46] !== "" ? req.body.VG1[46] : 0.0;
-   var VG24ACTTIME = req.body.VG1[47] !== "" ? req.body.VG1[47] : 0.0;
-   var VG25DLYTIME = req.body.VG1[48] !== "" ? req.body.VG1[48] : 0.0;
-   var VG25ACTTIME = req.body.VG1[49] !== "" ? req.body.VG1[49] : 0.0;
-   var VG26DLYTIME = req.body.VG1[50] !== "" ? req.body.VG1[50] : 0.0;
-   var VG26ACTTIME = req.body.VG1[51] !== "" ? req.body.VG1[51] : 0.0;
-   var VG27DLYTIME = req.body.VG1[52] !== "" ? req.body.VG1[52] : 0.0;
-   var VG27ACTTIME = req.body.VG1[53] !== "" ? req.body.VG1[53] : 0.0;
-   var VG28DLYTIME = req.body.VG1[54] !== "" ? req.body.VG1[54] : 0.0;
-   var VG28ACTTIME = req.body.VG1[55] !== "" ? req.body.VG1[55] : 0.0;
-   var VG29DLYTIME = req.body.VG1[56] !== "" ? req.body.VG1[56] : 0.0;
-   var VG29ACTTIME = req.body.VG1[57] !== "" ? req.body.VG1[57] : 0.0;
-   var VG30DLYTIME = req.body.VG1[58] !== "" ? req.body.VG1[58] : 0.0;
-   var VG30ACTTIME = req.body.VG1[59] !== "" ? req.body.VG1[59] : 0.0;
-   var VG31DLYTIME = req.body.VG1[60] !== "" ? req.body.VG1[60] : 0.0;
-   var VG31ACTTIME = req.body.VG1[61] !== "" ? req.body.VG1[61] : 0.0;
-   var VG32DLYTIME = req.body.VG1[62] !== "" ? req.body.VG1[62] : 0.0;
-   var VG32ACTTIME = req.body.VG1[63] !== "" ? req.body.VG1[63] : 0.0;
-   var VG33DLYTIME = req.body.VG1[64] !== "" ? req.body.VG1[64] : 0.0;
-   var VG33ACTTIME = req.body.VG1[65] !== "" ? req.body.VG1[65] : 0.0;
-   var VG34DLYTIME = req.body.VG1[66] !== "" ? req.body.VG1[66] : 0.0;
-   var VG34ACTTIME = req.body.VG1[67] !== "" ? req.body.VG1[67] : 0.0;
-   var VG35DLYTIME = req.body.VG1[68] !== "" ? req.body.VG1[68] : 0.0;
-   var VG35ACTTIME = req.body.VG1[69] !== "" ? req.body.VG1[69] : 0.0;
-   var VG36DLYTIME = req.body.VG1[70] !== "" ? req.body.VG1[70] : 0.0;
-   var VG36ACTTIME = req.body.VG1[71] !== "" ? req.body.VG1[71] : 0.0;
-   var VG37DLYTIME = req.body.VG1[72] !== "" ? req.body.VG1[72] : 0.0;
-   var VG37ACTTIME = req.body.VG1[73] !== "" ? req.body.VG1[73] : 0.0;
-   var VG38DLYTIME = req.body.VG1[74] !== "" ? req.body.VG1[74] : 0.0;
-   var VG38ACTTIME = req.body.VG1[75] !== "" ? req.body.VG1[75] : 0.0;
-   var VG39DLYTIME = req.body.VG1[76] !== "" ? req.body.VG1[76] : 0.0;
-   var VG39ACTTIME = req.body.VG1[77] !== "" ? req.body.VG1[77] : 0.0;
-   var VG40DLYTIME = req.body.VG1[78] !== "" ? req.body.VG1[78] : 0.0;
-   var VG40ACTTIME = req.body.VG1[79] !== "" ? req.body.VG1[79] : 0.0;
-   var VG41DLYTIME = req.body.VG1[80] !== "" ? req.body.VG1[80] : 0.0;
-   var VG41ACTTIME = req.body.VG1[81] !== "" ? req.body.VG1[81] : 0.0;
-   var VG42DLYTIME = req.body.VG1[82] !== "" ? req.body.VG1[82] : 0.0;
-   var VG42ACTTIME = req.body.VG1[83] !== "" ? req.body.VG1[83] : 0.0;
-   var VG43DLYTIME = req.body.VG1[84] !== "" ? req.body.VG1[84] : 0.0;
-   var VG43ACTTIME = req.body.VG1[85] !== "" ? req.body.VG1[85] : 0.0;
-   var VG44DLYTIME = req.body.VG1[86] !== "" ? req.body.VG1[86] : 0.0;
-   var VG44ACTTIME = req.body.VG1[87] !== "" ? req.body.VG1[87] : 0.0;
-   var VG45DLYTIME = req.body.VG1[88] !== "" ? req.body.VG1[88] : 0.0;
-   var VG45ACTTIME = req.body.VG1[89] !== "" ? req.body.VG1[89] : 0.0;
-   var VG46DLYTIME = req.body.VG2[0] !== "" ? req.body.VG2[0] : 0.0;
-   var VG46ACTTIME = req.body.VG2[1] !== "" ? req.body.VG2[1] : 0.0;
-   var VG47DLYTIME = req.body.VG2[2] !== "" ? req.body.VG2[2] : 0.0;
-   var VG47ACTTIME = req.body.VG2[3] !== "" ? req.body.VG2[3] : 0.0;
-   var VG48DLYTIME = req.body.VG2[4] !== "" ? req.body.VG2[4] : 0.0;
-   var VG48ACTTIME = req.body.VG2[5] !== "" ? req.body.VG2[5] : 0.0;
-   var VG49DLYTIME = req.body.VG2[6] !== "" ? req.body.VG2[6] : 0.0;
-   var VG49ACTTIME = req.body.VG2[7] !== "" ? req.body.VG2[7] : 0.0;
-   var VG50DLYTIME = req.body.VG2[8] !== "" ? req.body.VG2[8] : 0.0;
-   var VG50ACTTIME = req.body.VG2[9] !== "" ? req.body.VG2[9] : 0.0;
-   var VG51DLYTIME = req.body.VG2[10] !== "" ? req.body.VG2[10] : 0.0;
-   var VG51ACTTIME = req.body.VG2[11] !== "" ? req.body.VG2[11] : 0.0;
-   var VG52DLYTIME = req.body.VG2[12] !== "" ? req.body.VG2[12] : 0.0;
-   var VG52ACTTIME = req.body.VG2[13] !== "" ? req.body.VG2[13] : 0.0;
-   var VG53DLYTIME = req.body.VG2[14] !== "" ? req.body.VG2[14] : 0.0;
-   var VG53ACTTIME = req.body.VG2[15] !== "" ? req.body.VG2[15] : 0.0;
-   var VG54DLYTIME = req.body.VG2[16] !== "" ? req.body.VG2[16] : 0.0;
-   var VG54ACTTIME = req.body.VG2[17] !== "" ? req.body.VG2[17] : 0.0;
-   var VG55DLYTIME = req.body.VG2[18] !== "" ? req.body.VG2[18] : 0.0;
-   var VG55ACTTIME = req.body.VG2[19] !== "" ? req.body.VG2[19] : 0.0;
-   var VG56DLYTIME = req.body.VG2[20] !== "" ? req.body.VG2[20] : 0.0;
-   var VG56ACTTIME = req.body.VG2[21] !== "" ? req.body.VG2[21] : 0.0;
-   var VG57DLYTIME = req.body.VG2[22] !== "" ? req.body.VG2[22] : 0.0;
-   var VG57ACTTIME = req.body.VG2[23] !== "" ? req.body.VG2[23] : 0.0;
-   var VG58DLYTIME = req.body.VG2[24] !== "" ? req.body.VG2[24] : 0.0;
-   var VG58ACTTIME = req.body.VG2[25] !== "" ? req.body.VG2[25] : 0.0;
-   var VG59DLYTIME = req.body.VG2[26] !== "" ? req.body.VG2[26] : 0.0;
-   var VG59ACTTIME = req.body.VG2[27] !== "" ? req.body.VG2[27] : 0.0;
-   var VG60DLYTIME = req.body.VG2[28] !== "" ? req.body.VG2[28] : 0.0;
-   var VG60ACTTIME = req.body.VG2[29] !== "" ? req.body.VG2[29] : 0.0;
-   var VG61DLYTIME = req.body.VG2[30] !== "" ? req.body.VG2[30] : 0.0;
-   var VG61ACTTIME = req.body.VG2[31] !== "" ? req.body.VG2[31] : 0.0;
-   var VG62DLYTIME = req.body.VG2[32] !== "" ? req.body.VG2[32] : 0.0;
-   var VG62ACTTIME = req.body.VG2[33] !== "" ? req.body.VG2[33] : 0.0;
-   var VG63DLYTIME = req.body.VG2[34] !== "" ? req.body.VG2[34] : 0.0;
-   var VG63ACTTIME = req.body.VG2[35] !== "" ? req.body.VG2[35] : 0.0;
-   var VG64DLYTIME = req.body.VG2[36] !== "" ? req.body.VG2[36] : 0.0;
-   var VG64ACTTIME = req.body.VG2[37] !== "" ? req.body.VG2[37] : 0.0;
-   var VG65DLYTIME = req.body.VG2[38] !== "" ? req.body.VG2[38] : 0.0;
-   var VG65ACTTIME = req.body.VG2[39] !== "" ? req.body.VG2[39] : 0.0;
-   var VG66DLYTIME = req.body.VG2[40] !== "" ? req.body.VG2[40] : 0.0;
-   var VG66ACTTIME = req.body.VG2[41] !== "" ? req.body.VG2[41] : 0.0;
-   var VG67DLYTIME = req.body.VG2[42] !== "" ? req.body.VG2[42] : 0.0;
-   var VG67ACTTIME = req.body.VG2[43] !== "" ? req.body.VG2[43] : 0.0;
-   var VG68DLYTIME = req.body.VG2[44] !== "" ? req.body.VG2[44] : 0.0;
-   var VG68ACTTIME = req.body.VG2[45] !== "" ? req.body.VG2[45] : 0.0;
-   var VG69DLYTIME = req.body.VG2[46] !== "" ? req.body.VG2[46] : 0.0;
-   var VG69ACTTIME = req.body.VG2[47] !== "" ? req.body.VG2[47] : 0.0;
-   var VG70DLYTIME = req.body.VG2[48] !== "" ? req.body.VG2[48] : 0.0;
-   var VG70ACTTIME = req.body.VG2[49] !== "" ? req.body.VG2[49] : 0.0;
-   var VG71DLYTIME = req.body.VG2[50] !== "" ? req.body.VG2[50] : 0.0;
-   var VG71ACTTIME = req.body.VG2[51] !== "" ? req.body.VG2[51] : 0.0;
-   var VG72DLYTIME = req.body.VG2[52] !== "" ? req.body.VG2[52] : 0.0;
-   var VG72ACTTIME = req.body.VG2[53] !== "" ? req.body.VG2[53] : 0.0;
-   var VG73DLYTIME = req.body.VG2[54] !== "" ? req.body.VG2[54] : 0.0;
-   var VG73ACTTIME = req.body.VG2[55] !== "" ? req.body.VG2[55] : 0.0;
-   var VG74DLYTIME = req.body.VG2[56] !== "" ? req.body.VG2[56] : 0.0;
-   var VG74ACTTIME = req.body.VG2[57] !== "" ? req.body.VG2[57] : 0.0;
-   var VG75DLYTIME = req.body.VG2[58] !== "" ? req.body.VG2[58] : 0.0;
-   var VG75ACTTIME = req.body.VG2[59] !== "" ? req.body.VG2[59] : 0.0;
-   var VG76DLYTIME = req.body.VG2[60] !== "" ? req.body.VG2[60] : 0.0;
-   var VG76ACTTIME = req.body.VG2[61] !== "" ? req.body.VG2[61] : 0.0;
-   var VG77DLYTIME = req.body.VG2[62] !== "" ? req.body.VG2[62] : 0.0;
-   var VG77ACTTIME = req.body.VG2[63] !== "" ? req.body.VG2[63] : 0.0;
-   var VG78DLYTIME = req.body.VG2[64] !== "" ? req.body.VG2[64] : 0.0;
-   var VG78ACTTIME = req.body.VG2[65] !== "" ? req.body.VG2[65] : 0.0;
-   var VG79DLYTIME = req.body.VG2[66] !== "" ? req.body.VG2[66] : 0.0;
-   var VG79ACTTIME = req.body.VG2[67] !== "" ? req.body.VG2[67] : 0.0;
-   var VG80DLYTIME = req.body.VG2[68] !== "" ? req.body.VG2[68] : 0.0;
-   var VG80ACTTIME = req.body.VG2[69] !== "" ? req.body.VG2[69] : 0.0;
-   var VG81DLYTIME = req.body.VG2[70] !== "" ? req.body.VG2[70] : 0.0;
-   var VG81ACTTIME = req.body.VG2[71] !== "" ? req.body.VG2[71] : 0.0;
-   var VG82DLYTIME = req.body.VG2[72] !== "" ? req.body.VG2[72] : 0.0;
-   var VG82ACTTIME = req.body.VG2[73] !== "" ? req.body.VG2[73] : 0.0;
-   var VG83DLYTIME = req.body.VG2[74] !== "" ? req.body.VG2[74] : 0.0;
-   var VG83ACTTIME = req.body.VG2[75] !== "" ? req.body.VG2[75] : 0.0;
-   var VG84DLYTIME = req.body.VG2[76] !== "" ? req.body.VG2[76] : 0.0;
-   var VG84ACTTIME = req.body.VG2[77] !== "" ? req.body.VG2[77] : 0.0;
-   var VG85DLYTIME = req.body.VG2[78] !== "" ? req.body.VG2[78] : 0.0;
-   var VG85ACTTIME = req.body.VG2[79] !== "" ? req.body.VG2[79] : 0.0;
-   var VG86DLYTIME = req.body.VG2[80] !== "" ? req.body.VG2[80] : 0.0;
-   var VG86ACTTIME = req.body.VG2[81] !== "" ? req.body.VG2[81] : 0.0;
-   var VG87DLYTIME = req.body.VG2[82] !== "" ? req.body.VG2[82] : 0.0;
-   var VG87ACTTIME = req.body.VG2[83] !== "" ? req.body.VG2[83] : 0.0;
-   var VG88DLYTIME = req.body.VG2[84] !== "" ? req.body.VG2[84] : 0.0;
-   var VG88ACTTIME = req.body.VG2[85] !== "" ? req.body.VG2[85] : 0.0;
-   var VG89DLYTIME = req.body.VG2[86] !== "" ? req.body.VG2[86] : 0.0;
-   var VG89ACTTIME = req.body.VG2[87] !== "" ? req.body.VG2[87] : 0.0;
-   var VG90DLYTIME = req.body.VG2[88] !== "" ? req.body.VG2[88] : 0.0;
-   var VG90ACTTIME = req.body.VG2[89] !== "" ? req.body.VG2[89] : 0.0;
-   var voltagem = req.body.voltagem !== "" ? req.body.voltagem : 0.0;
+   var camara1 = req.body.camara1[0] !== "" ? req.body.camara1[0].replace(",", ".") : 0.0;
+   var camara2 = req.body.camara2[0] !== "" ? req.body.camara2[0].replace(",", ".") : 0.0;
+   var camara3 = req.body.camara3[0] !== "" ? req.body.camara3[0].replace(",", ".") : 0.0;
+   var camara4 = req.body.camara4[0] !== "" ? req.body.camara4[0].replace(",", ".") : 0.0;
+   var camara5 = req.body.camara5[0] !== "" ? req.body.camara5[0].replace(",", ".") : 0.0;
+   var camara6 = req.body.camara6[0] !== "" ? req.body.camara6[0].replace(",", ".") : 0.0;
+   var camara7 = req.body.camara7[0] !== "" ? req.body.camara7[0].replace(",", ".") : 0.0;
+   var camara8 = req.body.camara1[1] !== "" ? req.body.camara1[1].replace(",", ".") : 0.0;
+   var camara9 = req.body.camara2[1] !== "" ? req.body.camara2[1].replace(",", ".") : 0.0;
+   var camara10 = req.body.camara3[1] !== "" ? req.body.camara3[1].replace(",", ".") : 0.0;
+   var camara11 = req.body.camara4[1] !== "" ? req.body.camara4[1].replace(",", ".") : 0.0;
+   var camara12 = req.body.camara5[1] !== "" ? req.body.camara5[1].replace(",", ".") : 0.0;
+   var camara13 = req.body.camara6[1] !== "" ? req.body.camara6[1].replace(",", ".") : 0.0;
+   var camara14 = req.body.camara7[1] !== "" ? req.body.camara7[1].replace(",", ".") : 0.0;
+   var camara15 = req.body.camara1[2] !== "" ? req.body.camara1[2].replace(",", ".") : 0.0;
+   var camara16 = req.body.camara2[2] !== "" ? req.body.camara2[2].replace(",", ".") : 0.0;
+   var camara17 = req.body.camara3[2] !== "" ? req.body.camara3[2].replace(",", ".") : 0.0;
+   var camara18 = req.body.camara4[2] !== "" ? req.body.camara4[3].replace(",", ".") : 0.0;
+   var camara19 = req.body.camara5[2] !== "" ? req.body.camara5[2].replace(",", ".") : 0.0;
+   var camara20 = req.body.camara6[2] !== "" ? req.body.camara6[2].replace(",", ".") : 0.0;
+   var camara21 = req.body.camara7[2] !== "" ? req.body.camara7[2].replace(",", ".") : 0.0;
+   var camara22 = req.body.camara1[3] !== "" ? req.body.camara1[3].replace(",", ".") : 0.0;
+   var camara23 = req.body.camara2[3] !== "" ? req.body.camara2[3].replace(",", ".") : 0.0;
+   var camara24 = req.body.camara3[3] !== "" ? req.body.camara3[3].replace(",", ".") : 0.0;
+   var camara25 = req.body.camara4[3] !== "" ? req.body.camara4[3].replace(",", ".") : 0.0;
+   var camara26 = req.body.camara5[3] !== "" ? req.body.camara5[3].replace(",", ".") : 0.0;
+   var camara27 = req.body.camara6[3] !== "" ? req.body.camara6[3].replace(",", ".") : 0.0;
+   var camara28 = req.body.camara7[3] !== "" ? req.body.camara7[3].replace(",", ".") : 0.0;
+   var camara29 = req.body.camara1[4] !== "" ? req.body.camara1[4].replace(",", ".") : 0.0;
+   var camara30 = req.body.camara2[4] !== "" ? req.body.camara2[4].replace(",", ".") : 0.0;
+   var camara31 = req.body.camara3[4] !== "" ? req.body.camara3[4].replace(",", ".") : 0.0;
+   var camara32 = req.body.camara4[4] !== "" ? req.body.camara4[4].replace(",", ".") : 0.0;
+   var camara33 = req.body.camara5[4] !== "" ? req.body.camara5[4].replace(",", ".") : 0.0;
+   var camara34 = req.body.camara6[4] !== "" ? req.body.camara6[4].replace(",", ".") : 0.0;
+   var camara35 = req.body.camara7[4] !== "" ? req.body.camara7[4].replace(",", ".") : 0.0;
+   var camara36 = req.body.camara1[5] !== "" ? req.body.camara1[5].replace(",", ".") : 0.0;
+   var camara37 = req.body.camara2[5] !== "" ? req.body.camara2[5].replace(",", ".") : 0.0;
+   var camara38 = req.body.camara3[5] !== "" ? req.body.camara3[5].replace(",", ".") : 0.0;
+   var camara39 = req.body.camara4[5] !== "" ? req.body.camara4[5].replace(",", ".") : 0.0;
+   var camara40 = req.body.camara5[5] !== "" ? req.body.camara5[5].replace(",", ".") : 0.0;
+   var camara41 = req.body.camara6[5] !== "" ? req.body.camara6[5].replace(",", ".") : 0.0;
+   var camara42 = req.body.camara7[5] !== "" ? req.body.camara7[5].replace(",", ".") : 0.0;
+   var camara43 = req.body.camara1[6] !== "" ? req.body.camara1[6].replace(",", ".") : 0.0;
+   var camara44 = req.body.camara2[6] !== "" ? req.body.camara2[6].replace(",", ".") : 0.0;
+   var camara45 = req.body.camara3[6] !== "" ? req.body.camara3[6].replace(",", ".") : 0.0;
+   var camara46 = req.body.camara4[6] !== "" ? req.body.camara4[6].replace(",", ".") : 0.0;
+   var camara47 = req.body.camara5[6] !== "" ? req.body.camara5[6].replace(",", ".") : 0.0;
+   var camara48 = req.body.camara6[6] !== "" ? req.body.camara6[6].replace(",", ".") : 0.0;
+   var camara49 = req.body.camara7[6] !== "" ? req.body.camara7[6].replace(",", ".") : 0.0;
+   var camara50 = req.body.camara1[7] !== "" ? req.body.camara1[7].replace(",", ".") : 0.0;
+   var camara51 = req.body.camara2[7] !== "" ? req.body.camara2[7].replace(",", ".") : 0.0;
+   var camara52 = req.body.camara3[7] !== "" ? req.body.camara3[7].replace(",", ".") : 0.0;
+   var camara53 = req.body.camara4[7] !== "" ? req.body.camara4[7].replace(",", ".") : 0.0;
+   var camara54 = req.body.camara5[7] !== "" ? req.body.camara5[7].replace(",", ".") : 0.0;
+   var camara55 = req.body.camara6[7] !== "" ? req.body.camara6[7].replace(",", ".") : 0.0;
+   var camara56 = req.body.camara7[7] !== "" ? req.body.camara7[7].replace(",", ".") : 0.0;
+   var camara57 = req.body.camara1[8] !== "" ? req.body.camara1[8].replace(",", ".") : 0.0;
+   var camara58 = req.body.camara2[8] !== "" ? req.body.camara2[8].replace(",", ".") : 0.0;
+   var camara59 = req.body.camara3[8] !== "" ? req.body.camara3[8].replace(",", ".") : 0.0;
+   var camara60 = req.body.camara4[8] !== "" ? req.body.camara4[8].replace(",", ".") : 0.0;
+   var camara61 = req.body.camara5[8] !== "" ? req.body.camara5[8].replace(",", ".") : 0.0;
+   var camara62 = req.body.camara6[8] !== "" ? req.body.camara6[8].replace(",", ".") : 0.0;
+   var camara63 = req.body.camara7[8] !== "" ? req.body.camara7[8].replace(",", ".") : 0.0;
+   var camara64 = req.body.camara1[9] !== "" ? req.body.camara1[9].replace(",", ".") : 0.0;
+   var camara65 = req.body.camara2[9] !== "" ? req.body.camara2[9].replace(",", ".") : 0.0;
+   var camara66 = req.body.camara3[9] !== "" ? req.body.camara3[9].replace(",", ".") : 0.0;
+   var camara67 = req.body.camara4[9] !== "" ? req.body.camara4[9].replace(",", ".") : 0.0;
+   var camara68 = req.body.camara5[9] !== "" ? req.body.camara5[9].replace(",", ".") : 0.0;
+   var camara69 = req.body.camara6[9] !== "" ? req.body.camara6[9].replace(",", ".") : 0.0;
+   var camara70 = req.body.camara7[9] !== "" ? req.body.camara7[9].replace(",", ".") : 0.0;
+   var camara71 = req.body.camara1[10] !== "" ? req.body.camara1[10].replace(",", ".") : 0.0;
+   var camara72 = req.body.camara2[10] !== "" ? req.body.camara2[10].replace(",", ".") : 0.0;
+   var camara73 = req.body.camara3[10] !== "" ? req.body.camara3[10].replace(",", ".") : 0.0;
+   var camara74 = req.body.camara4[10] !== "" ? req.body.camara4[10].replace(",", ".") : 0.0;
+   var camara75 = req.body.camara5[10] !== "" ? req.body.camara5[10].replace(",", ".") : 0.0;
+   var camara76 = req.body.camara6[10] !== "" ? req.body.camara6[10].replace(",", ".") : 0.0;
+   var camara77 = req.body.camara7[10] !== "" ? req.body.camara7[10].replace(",", ".") : 0.0;
+   var camara78 = req.body.camara1[11] !== "" ? req.body.camara1[11].replace(",", ".") : 0.0;
+   var camara79 = req.body.camara2[11] !== "" ? req.body.camara2[11].replace(",", ".") : 0.0;
+   var camara80 = req.body.camara3[11] !== "" ? req.body.camara3[11].replace(",", ".") : 0.0;
+   var camara81 = req.body.camara4[11] !== "" ? req.body.camara4[11].replace(",", ".") : 0.0;
+   var camara82 = req.body.camara5[11] !== "" ? req.body.camara5[11].replace(",", ".") : 0.0;
+   var camara83 = req.body.camara6[11] !== "" ? req.body.camara6[11].replace(",", ".") : 0.0;
+   var camara84 = req.body.camara7[11] !== "" ? req.body.camara7[11].replace(",", ".") : 0.0;
+   var camara85 = req.body.camara1[12] !== "" ? req.body.camara1[12].replace(",", ".") : 0.0;
+   var camara86 = req.body.camara2[12] !== "" ? req.body.camara2[12].replace(",", ".") : 0.0;
+   var camara87 = req.body.camara3[12] !== "" ? req.body.camara3[12].replace(",", ".") : 0.0;
+   var camara88 = req.body.camara4[12] !== "" ? req.body.camara4[12].replace(",", ".") : 0.0;
+   var camara89 = req.body.camara5[12] !== "" ? req.body.camara5[12].replace(",", ".") : 0.0;
+   var camara90 = req.body.camara6[12] !== "" ? req.body.camara6[12].replace(",", ".") : 0.0;
+   var camara91 = req.body.camara7[12] !== "" ? req.body.camara7[12].replace(",", ".") : 0.0;
+   var camara92 = req.body.camara1[13] !== "" ? req.body.camara1[13].replace(",", ".") : 0.0;
+   var camara93 = req.body.camara2[13] !== "" ? req.body.camara2[13].replace(",", ".") : 0.0;
+   var camara94 = req.body.camara3[13] !== "" ? req.body.camara3[13].replace(",", ".") : 0.0;
+   var camara95 = req.body.camara4[13] !== "" ? req.body.camara4[13].replace(",", ".") : 0.0;
+   var camara96 = req.body.camara5[13] !== "" ? req.body.camara5[13].replace(",", ".") : 0.0;
+   var camara97 = req.body.camara6[13] !== "" ? req.body.camara6[13].replace(",", ".") : 0.0;
+   var camara98 = req.body.camara7[13] !== "" ? req.body.camara7[13].replace(",", ".") : 0.0;
+   var camara99 = req.body.camara1[14] !== "" ? req.body.camara1[14].replace(",", ".") : 0.0;
+   var camara100 = req.body.camara2[14] !== "" ? req.body.camara2[14].replace(",", ".") : 0.0;
+   var camara101 = req.body.camara3[14] !== "" ? req.body.camara3[14].replace(",", ".") : 0.0;
+   var camara102 = req.body.camara4[14] !== "" ? req.body.camara4[14].replace(",", ".") : 0.0;
+   var camara103 = req.body.camara5[14] !== "" ? req.body.camara5[14].replace(",", ".") : 0.0;
+   var camara104 = req.body.camara6[14] !== "" ? req.body.camara6[14].replace(",", ".") : 0.0;
+   var camara105 = req.body.camara7[14] !== "" ? req.body.camara7[14].replace(",", ".") : 0.0;
+   var camara106 = req.body.camara1[15] !== "" ? req.body.camara1[15].replace(",", ".") : 0.0;
+   var camara107 = req.body.camara2[15] !== "" ? req.body.camara2[15].replace(",", ".") : 0.0;
+   var camara108 = req.body.camara3[15] !== "" ? req.body.camara3[15].replace(",", ".") : 0.0;
+   var camara109 = req.body.camara4[15] !== "" ? req.body.camara4[15].replace(",", ".") : 0.0;
+   var camara110 = req.body.camara5[15] !== "" ? req.body.camara5[15].replace(",", ".") : 0.0;
+   var camara111 = req.body.camara6[15] !== "" ? req.body.camara6[15].replace(",", ".") : 0.0;
+   var camara112 = req.body.camara7[15] !== "" ? req.body.camara7[15].replace(",", ".") : 0.0;
+   var camara113 = req.body.camara1[16] !== "" ? req.body.camara1[16].replace(",", ".") : 0.0;
+   var camara114 = req.body.camara2[16] !== "" ? req.body.camara2[16].replace(",", ".") : 0.0;
+   var camara115 = req.body.camara3[16] !== "" ? req.body.camara3[16].replace(",", ".") : 0.0;
+   var camara116 = req.body.camara4[16] !== "" ? req.body.camara4[16].replace(",", ".") : 0.0;
+   var camara117 = req.body.camara5[16] !== "" ? req.body.camara5[16].replace(",", ".") : 0.0;
+   var camara118 = req.body.camara6[16] !== "" ? req.body.camara6[16].replace(",", ".") : 0.0;
+   var camara119 = req.body.camara7[16] !== "" ? req.body.camara7[16].replace(",", ".") : 0.0;
+   var camara120 = req.body.camara1[17] !== "" ? req.body.camara1[17].replace(",", ".") : 0.0;
+   var camara121 = req.body.camara2[17] !== "" ? req.body.camara2[17].replace(",", ".") : 0.0;
+   var camara122 = req.body.camara3[17] !== "" ? req.body.camara3[17].replace(",", ".") : 0.0;
+   var camara123 = req.body.camara4[17] !== "" ? req.body.camara4[17].replace(",", ".") : 0.0;
+   var camara124 = req.body.camara5[17] !== "" ? req.body.camara5[17].replace(",", ".") : 0.0;
+   var camara125 = req.body.camara6[17] !== "" ? req.body.camara6[17].replace(",", ".") : 0.0;
+   var camara126 = req.body.camara7[17] !== "" ? req.body.camara7[17].replace(",", ".") : 0.0;
+   var camara127 = req.body.camara1[18] !== "" ? req.body.camara1[18].replace(",", ".") : 0.0;
+   var camara128 = req.body.camara2[18] !== "" ? req.body.camara2[18].replace(",", ".") : 0.0;
+   var camara129 = req.body.camara3[18] !== "" ? req.body.camara3[18].replace(",", ".") : 0.0;
+   var camara130 = req.body.camara4[18] !== "" ? req.body.camara4[18].replace(",", ".") : 0.0;
+   var termoparK1 = req.body.termoparK1 !== "" ? req.body.termoparK1.replace(",", ".") : 0.0;
+   var termoparJ = req.body.termoparJ !== "" ? req.body.termoparJ.replace(",", ".") : 0.0;
+   var termoparK2 = req.body.termoparK2 !== "" ? req.body.termoparK2.replace(",", ".") : 0.0;
+   var VG1DLYTIME = req.body.VG1[0] !== "" ? req.body.VG1[0].replace(",", ".") : 0.0;
+   var VG1ACTTIME = req.body.VG1[1] !== "" ? req.body.VG1[1].replace(",", ".") : 0.0;
+   var VG2DLYTIME = req.body.VG1[2] !== "" ? req.body.VG1[2].replace(",", ".") : 0.0;
+   var VG2ACTTIME = req.body.VG1[3] !== "" ? req.body.VG1[3].replace(",", ".") : 0.0;
+   var VG3DLYTIME = req.body.VG1[4] !== "" ? req.body.VG1[4].replace(",", ".") : 0.0;
+   var VG3ACTTIME = req.body.VG1[5] !== "" ? req.body.VG1[5].replace(",", ".") : 0.0;
+   var VG4DLYTIME = req.body.VG1[6] !== "" ? req.body.VG1[6].replace(",", ".") : 0.0;
+   var VG4ACTTIME = req.body.VG1[7] !== "" ? req.body.VG1[7].replace(",", ".") : 0.0;
+   var VG5DLYTIME = req.body.VG1[8] !== "" ? req.body.VG1[8].replace(",", ".") : 0.0;
+   var VG5ACTTIME = req.body.VG1[9] !== "" ? req.body.VG1[9].replace(",", ".") : 0.0;
+   var VG6DLYTIME = req.body.VG1[10] !== "" ? req.body.VG1[10].replace(",", ".") : 0.0;
+   var VG6ACTTIME = req.body.VG1[11] !== "" ? req.body.VG1[11].replace(",", ".") : 0.0;
+   var VG7DLYTIME = req.body.VG1[12] !== "" ? req.body.VG1[12].replace(",", ".") : 0.0;
+   var VG7ACTTIME = req.body.VG1[13] !== "" ? req.body.VG1[13].replace(",", ".") : 0.0;
+   var VG8DLYTIME = req.body.VG1[14] !== "" ? req.body.VG1[14].replace(",", ".") : 0.0;
+   var VG8ACTTIME = req.body.VG1[15] !== "" ? req.body.VG1[15].replace(",", ".") : 0.0;
+   var VG9DLYTIME = req.body.VG1[16] !== "" ? req.body.VG1[16].replace(",", ".") : 0.0;
+   var VG9ACTTIME = req.body.VG1[17] !== "" ? req.body.VG1[17].replace(",", ".") : 0.0;
+   var VG10DLYTIME = req.body.VG1[18] !== "" ? req.body.VG1[18].replace(",", ".") : 0.0;
+   var VG10ACTTIME = req.body.VG1[19] !== "" ? req.body.VG1[19].replace(",", ".") : 0.0;
+   var VG11DLYTIME = req.body.VG1[20] !== "" ? req.body.VG1[20].replace(",", ".") : 0.0;
+   var VG11ACTTIME = req.body.VG1[21] !== "" ? req.body.VG1[21].replace(",", ".") : 0.0;
+   var VG12DLYTIME = req.body.VG1[22] !== "" ? req.body.VG1[22].replace(",", ".") : 0.0;
+   var VG12ACTTIME = req.body.VG1[23] !== "" ? req.body.VG1[23].replace(",", ".") : 0.0;
+   var VG13DLYTIME = req.body.VG1[24] !== "" ? req.body.VG1[24].replace(",", ".") : 0.0;
+   var VG13ACTTIME = req.body.VG1[25] !== "" ? req.body.VG1[25].replace(",", ".") : 0.0;
+   var VG14DLYTIME = req.body.VG1[26] !== "" ? req.body.VG1[26].replace(",", ".") : 0.0;
+   var VG14ACTTIME = req.body.VG1[27] !== "" ? req.body.VG1[27].replace(",", ".") : 0.0;
+   var VG15DLYTIME = req.body.VG1[28] !== "" ? req.body.VG1[28].replace(",", ".") : 0.0;
+   var VG15ACTTIME = req.body.VG1[29] !== "" ? req.body.VG1[29].replace(",", ".") : 0.0;
+   var VG16DLYTIME = req.body.VG1[30] !== "" ? req.body.VG1[30].replace(",", ".") : 0.0;
+   var VG16ACTTIME = req.body.VG1[31] !== "" ? req.body.VG1[31].replace(",", ".") : 0.0;
+   var VG17DLYTIME = req.body.VG1[32] !== "" ? req.body.VG1[32].replace(",", ".") : 0.0;
+   var VG17ACTTIME = req.body.VG1[33] !== "" ? req.body.VG1[33].replace(",", ".") : 0.0;
+   var VG18DLYTIME = req.body.VG1[34] !== "" ? req.body.VG1[34].replace(",", ".") : 0.0;
+   var VG18ACTTIME = req.body.VG1[35] !== "" ? req.body.VG1[35].replace(",", ".") : 0.0;
+   var VG19DLYTIME = req.body.VG1[36] !== "" ? req.body.VG1[36].replace(",", ".") : 0.0;
+   var VG19ACTTIME = req.body.VG1[37] !== "" ? req.body.VG1[37].replace(",", ".") : 0.0;
+   var VG20DLYTIME = req.body.VG1[38] !== "" ? req.body.VG1[38].replace(",", ".") : 0.0;
+   var VG20ACTTIME = req.body.VG1[39] !== "" ? req.body.VG1[39].replace(",", ".") : 0.0;
+   var VG21DLYTIME = req.body.VG1[40] !== "" ? req.body.VG1[40].replace(",", ".") : 0.0;
+   var VG21ACTTIME = req.body.VG1[41] !== "" ? req.body.VG1[41].replace(",", ".") : 0.0;
+   var VG22DLYTIME = req.body.VG1[42] !== "" ? req.body.VG1[42].replace(",", ".") : 0.0;
+   var VG22ACTTIME = req.body.VG1[43] !== "" ? req.body.VG1[43].replace(",", ".") : 0.0;
+   var VG23DLYTIME = req.body.VG1[44] !== "" ? req.body.VG1[44].replace(",", ".") : 0.0;
+   var VG23ACTTIME = req.body.VG1[45] !== "" ? req.body.VG1[45].replace(",", ".") : 0.0;
+   var VG24DLYTIME = req.body.VG1[46] !== "" ? req.body.VG1[46].replace(",", ".") : 0.0;
+   var VG24ACTTIME = req.body.VG1[47] !== "" ? req.body.VG1[47].replace(",", ".") : 0.0;
+   var VG25DLYTIME = req.body.VG1[48] !== "" ? req.body.VG1[48].replace(",", ".") : 0.0;
+   var VG25ACTTIME = req.body.VG1[49] !== "" ? req.body.VG1[49].replace(",", ".") : 0.0;
+   var VG26DLYTIME = req.body.VG1[50] !== "" ? req.body.VG1[50].replace(",", ".") : 0.0;
+   var VG26ACTTIME = req.body.VG1[51] !== "" ? req.body.VG1[51].replace(",", ".") : 0.0;
+   var VG27DLYTIME = req.body.VG1[52] !== "" ? req.body.VG1[52].replace(",", ".") : 0.0;
+   var VG27ACTTIME = req.body.VG1[53] !== "" ? req.body.VG1[53].replace(",", ".") : 0.0;
+   var VG28DLYTIME = req.body.VG1[54] !== "" ? req.body.VG1[54].replace(",", ".") : 0.0;
+   var VG28ACTTIME = req.body.VG1[55] !== "" ? req.body.VG1[55].replace(",", ".") : 0.0;
+   var VG29DLYTIME = req.body.VG1[56] !== "" ? req.body.VG1[56].replace(",", ".") : 0.0;
+   var VG29ACTTIME = req.body.VG1[57] !== "" ? req.body.VG1[57].replace(",", ".") : 0.0;
+   var VG30DLYTIME = req.body.VG1[58] !== "" ? req.body.VG1[58].replace(",", ".") : 0.0;
+   var VG30ACTTIME = req.body.VG1[59] !== "" ? req.body.VG1[59].replace(",", ".") : 0.0;
+   var VG31DLYTIME = req.body.VG1[60] !== "" ? req.body.VG1[60].replace(",", ".") : 0.0;
+   var VG31ACTTIME = req.body.VG1[61] !== "" ? req.body.VG1[61].replace(",", ".") : 0.0;
+   var VG32DLYTIME = req.body.VG1[62] !== "" ? req.body.VG1[62].replace(",", ".") : 0.0;
+   var VG32ACTTIME = req.body.VG1[63] !== "" ? req.body.VG1[63].replace(",", ".") : 0.0;
+   var VG33DLYTIME = req.body.VG1[64] !== "" ? req.body.VG1[64].replace(",", ".") : 0.0;
+   var VG33ACTTIME = req.body.VG1[65] !== "" ? req.body.VG1[65].replace(",", ".") : 0.0;
+   var VG34DLYTIME = req.body.VG1[66] !== "" ? req.body.VG1[66].replace(",", ".") : 0.0;
+   var VG34ACTTIME = req.body.VG1[67] !== "" ? req.body.VG1[67].replace(",", ".") : 0.0;
+   var VG35DLYTIME = req.body.VG1[68] !== "" ? req.body.VG1[68].replace(",", ".") : 0.0;
+   var VG35ACTTIME = req.body.VG1[69] !== "" ? req.body.VG1[69].replace(",", ".") : 0.0;
+   var VG36DLYTIME = req.body.VG1[70] !== "" ? req.body.VG1[70].replace(",", ".") : 0.0;
+   var VG36ACTTIME = req.body.VG1[71] !== "" ? req.body.VG1[71].replace(",", ".") : 0.0;
+   var VG37DLYTIME = req.body.VG1[72] !== "" ? req.body.VG1[72].replace(",", ".") : 0.0;
+   var VG37ACTTIME = req.body.VG1[73] !== "" ? req.body.VG1[73].replace(",", ".") : 0.0;
+   var VG38DLYTIME = req.body.VG1[74] !== "" ? req.body.VG1[74].replace(",", ".") : 0.0;
+   var VG38ACTTIME = req.body.VG1[75] !== "" ? req.body.VG1[75].replace(",", ".") : 0.0;
+   var VG39DLYTIME = req.body.VG1[76] !== "" ? req.body.VG1[76].replace(",", ".") : 0.0;
+   var VG39ACTTIME = req.body.VG1[77] !== "" ? req.body.VG1[77].replace(",", ".") : 0.0;
+   var VG40DLYTIME = req.body.VG1[78] !== "" ? req.body.VG1[78].replace(",", ".") : 0.0;
+   var VG40ACTTIME = req.body.VG1[79] !== "" ? req.body.VG1[79].replace(",", ".") : 0.0;
+   var VG41DLYTIME = req.body.VG1[80] !== "" ? req.body.VG1[80].replace(",", ".") : 0.0;
+   var VG41ACTTIME = req.body.VG1[81] !== "" ? req.body.VG1[81].replace(",", ".") : 0.0;
+   var VG42DLYTIME = req.body.VG1[82] !== "" ? req.body.VG1[82].replace(",", ".") : 0.0;
+   var VG42ACTTIME = req.body.VG1[83] !== "" ? req.body.VG1[83].replace(",", ".") : 0.0;
+   var VG43DLYTIME = req.body.VG1[84] !== "" ? req.body.VG1[84].replace(",", ".") : 0.0;
+   var VG43ACTTIME = req.body.VG1[85] !== "" ? req.body.VG1[85].replace(",", ".") : 0.0;
+   var VG44DLYTIME = req.body.VG1[86] !== "" ? req.body.VG1[86].replace(",", ".") : 0.0;
+   var VG44ACTTIME = req.body.VG1[87] !== "" ? req.body.VG1[87].replace(",", ".") : 0.0;
+   var VG45DLYTIME = req.body.VG1[88] !== "" ? req.body.VG1[88].replace(",", ".") : 0.0;
+   var VG45ACTTIME = req.body.VG1[89] !== "" ? req.body.VG1[89].replace(",", ".") : 0.0;
+   var VG46DLYTIME = req.body.VG2[0] !== "" ? req.body.VG2[0].replace(",", ".") : 0.0;
+   var VG46ACTTIME = req.body.VG2[1] !== "" ? req.body.VG2[1].replace(",", ".") : 0.0;
+   var VG47DLYTIME = req.body.VG2[2] !== "" ? req.body.VG2[2].replace(",", ".") : 0.0;
+   var VG47ACTTIME = req.body.VG2[3] !== "" ? req.body.VG2[3].replace(",", ".") : 0.0;
+   var VG48DLYTIME = req.body.VG2[4] !== "" ? req.body.VG2[4].replace(",", ".") : 0.0;
+   var VG48ACTTIME = req.body.VG2[5] !== "" ? req.body.VG2[5].replace(",", ".") : 0.0;
+   var VG49DLYTIME = req.body.VG2[6] !== "" ? req.body.VG2[6].replace(",", ".") : 0.0;
+   var VG49ACTTIME = req.body.VG2[7] !== "" ? req.body.VG2[7].replace(",", ".") : 0.0;
+   var VG50DLYTIME = req.body.VG2[8] !== "" ? req.body.VG2[8].replace(",", ".") : 0.0;
+   var VG50ACTTIME = req.body.VG2[9] !== "" ? req.body.VG2[9].replace(",", ".") : 0.0;
+   var VG51DLYTIME = req.body.VG2[10] !== "" ? req.body.VG2[10].replace(",", ".") : 0.0;
+   var VG51ACTTIME = req.body.VG2[11] !== "" ? req.body.VG2[11].replace(",", ".") : 0.0;
+   var VG52DLYTIME = req.body.VG2[12] !== "" ? req.body.VG2[12].replace(",", ".") : 0.0;
+   var VG52ACTTIME = req.body.VG2[13] !== "" ? req.body.VG2[13].replace(",", ".") : 0.0;
+   var VG53DLYTIME = req.body.VG2[14] !== "" ? req.body.VG2[14].replace(",", ".") : 0.0;
+   var VG53ACTTIME = req.body.VG2[15] !== "" ? req.body.VG2[15].replace(",", ".") : 0.0;
+   var VG54DLYTIME = req.body.VG2[16] !== "" ? req.body.VG2[16].replace(",", ".") : 0.0;
+   var VG54ACTTIME = req.body.VG2[17] !== "" ? req.body.VG2[17].replace(",", ".") : 0.0;
+   var VG55DLYTIME = req.body.VG2[18] !== "" ? req.body.VG2[18].replace(",", ".") : 0.0;
+   var VG55ACTTIME = req.body.VG2[19] !== "" ? req.body.VG2[19].replace(",", ".") : 0.0;
+   var VG56DLYTIME = req.body.VG2[20] !== "" ? req.body.VG2[20].replace(",", ".") : 0.0;
+   var VG56ACTTIME = req.body.VG2[21] !== "" ? req.body.VG2[21].replace(",", ".") : 0.0;
+   var VG57DLYTIME = req.body.VG2[22] !== "" ? req.body.VG2[22].replace(",", ".") : 0.0;
+   var VG57ACTTIME = req.body.VG2[23] !== "" ? req.body.VG2[23].replace(",", ".") : 0.0;
+   var VG58DLYTIME = req.body.VG2[24] !== "" ? req.body.VG2[24].replace(",", ".") : 0.0;
+   var VG58ACTTIME = req.body.VG2[25] !== "" ? req.body.VG2[25].replace(",", ".") : 0.0;
+   var VG59DLYTIME = req.body.VG2[26] !== "" ? req.body.VG2[26].replace(",", ".") : 0.0;
+   var VG59ACTTIME = req.body.VG2[27] !== "" ? req.body.VG2[27].replace(",", ".") : 0.0;
+   var VG60DLYTIME = req.body.VG2[28] !== "" ? req.body.VG2[28].replace(",", ".") : 0.0;
+   var VG60ACTTIME = req.body.VG2[29] !== "" ? req.body.VG2[29].replace(",", ".") : 0.0;
+   var VG61DLYTIME = req.body.VG2[30] !== "" ? req.body.VG2[30].replace(",", ".") : 0.0;
+   var VG61ACTTIME = req.body.VG2[31] !== "" ? req.body.VG2[31].replace(",", ".") : 0.0;
+   var VG62DLYTIME = req.body.VG2[32] !== "" ? req.body.VG2[32].replace(",", ".") : 0.0;
+   var VG62ACTTIME = req.body.VG2[33] !== "" ? req.body.VG2[33].replace(",", ".") : 0.0;
+   var VG63DLYTIME = req.body.VG2[34] !== "" ? req.body.VG2[34].replace(",", ".") : 0.0;
+   var VG63ACTTIME = req.body.VG2[35] !== "" ? req.body.VG2[35].replace(",", ".") : 0.0;
+   var VG64DLYTIME = req.body.VG2[36] !== "" ? req.body.VG2[36].replace(",", ".") : 0.0;
+   var VG64ACTTIME = req.body.VG2[37] !== "" ? req.body.VG2[37].replace(",", ".") : 0.0;
+   var VG65DLYTIME = req.body.VG2[38] !== "" ? req.body.VG2[38].replace(",", ".") : 0.0;
+   var VG65ACTTIME = req.body.VG2[39] !== "" ? req.body.VG2[39].replace(",", ".") : 0.0;
+   var VG66DLYTIME = req.body.VG2[40] !== "" ? req.body.VG2[40].replace(",", ".") : 0.0;
+   var VG66ACTTIME = req.body.VG2[41] !== "" ? req.body.VG2[41].replace(",", ".") : 0.0;
+   var VG67DLYTIME = req.body.VG2[42] !== "" ? req.body.VG2[42].replace(",", ".") : 0.0;
+   var VG67ACTTIME = req.body.VG2[43] !== "" ? req.body.VG2[43].replace(",", ".") : 0.0;
+   var VG68DLYTIME = req.body.VG2[44] !== "" ? req.body.VG2[44].replace(",", ".") : 0.0;
+   var VG68ACTTIME = req.body.VG2[45] !== "" ? req.body.VG2[45].replace(",", ".") : 0.0;
+   var VG69DLYTIME = req.body.VG2[46] !== "" ? req.body.VG2[46].replace(",", ".") : 0.0;
+   var VG69ACTTIME = req.body.VG2[47] !== "" ? req.body.VG2[47].replace(",", ".") : 0.0;
+   var VG70DLYTIME = req.body.VG2[48] !== "" ? req.body.VG2[48].replace(",", ".") : 0.0;
+   var VG70ACTTIME = req.body.VG2[49] !== "" ? req.body.VG2[49].replace(",", ".") : 0.0;
+   var VG71DLYTIME = req.body.VG2[50] !== "" ? req.body.VG2[50].replace(",", ".") : 0.0;
+   var VG71ACTTIME = req.body.VG2[51] !== "" ? req.body.VG2[51].replace(",", ".") : 0.0;
+   var VG72DLYTIME = req.body.VG2[52] !== "" ? req.body.VG2[52].replace(",", ".") : 0.0;
+   var VG72ACTTIME = req.body.VG2[53] !== "" ? req.body.VG2[53].replace(",", ".") : 0.0;
+   var VG73DLYTIME = req.body.VG2[54] !== "" ? req.body.VG2[54].replace(",", ".") : 0.0;
+   var VG73ACTTIME = req.body.VG2[55] !== "" ? req.body.VG2[55].replace(",", ".") : 0.0;
+   var VG74DLYTIME = req.body.VG2[56] !== "" ? req.body.VG2[56].replace(",", ".") : 0.0;
+   var VG74ACTTIME = req.body.VG2[57] !== "" ? req.body.VG2[57].replace(",", ".") : 0.0;
+   var VG75DLYTIME = req.body.VG2[58] !== "" ? req.body.VG2[58].replace(",", ".") : 0.0;
+   var VG75ACTTIME = req.body.VG2[59] !== "" ? req.body.VG2[59].replace(",", ".") : 0.0;
+   var VG76DLYTIME = req.body.VG2[60] !== "" ? req.body.VG2[60].replace(",", ".") : 0.0;
+   var VG76ACTTIME = req.body.VG2[61] !== "" ? req.body.VG2[61].replace(",", ".") : 0.0;
+   var VG77DLYTIME = req.body.VG2[62] !== "" ? req.body.VG2[62].replace(",", ".") : 0.0;
+   var VG77ACTTIME = req.body.VG2[63] !== "" ? req.body.VG2[63].replace(",", ".") : 0.0;
+   var VG78DLYTIME = req.body.VG2[64] !== "" ? req.body.VG2[64].replace(",", ".") : 0.0;
+   var VG78ACTTIME = req.body.VG2[65] !== "" ? req.body.VG2[65].replace(",", ".") : 0.0;
+   var VG79DLYTIME = req.body.VG2[66] !== "" ? req.body.VG2[66].replace(",", ".") : 0.0;
+   var VG79ACTTIME = req.body.VG2[67] !== "" ? req.body.VG2[67].replace(",", ".") : 0.0;
+   var VG80DLYTIME = req.body.VG2[68] !== "" ? req.body.VG2[68].replace(",", ".") : 0.0;
+   var VG80ACTTIME = req.body.VG2[69] !== "" ? req.body.VG2[69].replace(",", ".") : 0.0;
+   var VG81DLYTIME = req.body.VG2[70] !== "" ? req.body.VG2[70].replace(",", ".") : 0.0;
+   var VG81ACTTIME = req.body.VG2[71] !== "" ? req.body.VG2[71].replace(",", ".") : 0.0;
+   var VG82DLYTIME = req.body.VG2[72] !== "" ? req.body.VG2[72].replace(",", ".") : 0.0;
+   var VG82ACTTIME = req.body.VG2[73] !== "" ? req.body.VG2[73].replace(",", ".") : 0.0;
+   var VG83DLYTIME = req.body.VG2[74] !== "" ? req.body.VG2[74].replace(",", ".") : 0.0;
+   var VG83ACTTIME = req.body.VG2[75] !== "" ? req.body.VG2[75].replace(",", ".") : 0.0;
+   var VG84DLYTIME = req.body.VG2[76] !== "" ? req.body.VG2[76].replace(",", ".") : 0.0;
+   var VG84ACTTIME = req.body.VG2[77] !== "" ? req.body.VG2[77].replace(",", ".") : 0.0;
+   var VG85DLYTIME = req.body.VG2[78] !== "" ? req.body.VG2[78].replace(",", ".") : 0.0;
+   var VG85ACTTIME = req.body.VG2[79] !== "" ? req.body.VG2[79].replace(",", ".") : 0.0;
+   var VG86DLYTIME = req.body.VG2[80] !== "" ? req.body.VG2[80].replace(",", ".") : 0.0;
+   var VG86ACTTIME = req.body.VG2[81] !== "" ? req.body.VG2[81].replace(",", ".") : 0.0;
+   var VG87DLYTIME = req.body.VG2[82] !== "" ? req.body.VG2[82].replace(",", ".") : 0.0;
+   var VG87ACTTIME = req.body.VG2[83] !== "" ? req.body.VG2[83].replace(",", ".") : 0.0;
+   var VG88DLYTIME = req.body.VG2[84] !== "" ? req.body.VG2[84].replace(",", ".") : 0.0;
+   var VG88ACTTIME = req.body.VG2[85] !== "" ? req.body.VG2[85].replace(",", ".") : 0.0;
+   var VG89DLYTIME = req.body.VG2[86] !== "" ? req.body.VG2[86].replace(",", ".") : 0.0;
+   var VG89ACTTIME = req.body.VG2[87] !== "" ? req.body.VG2[87].replace(",", ".") : 0.0;
+   var VG90DLYTIME = req.body.VG2[88] !== "" ? req.body.VG2[88].replace(",", ".") : 0.0;
+   var VG90ACTTIME = req.body.VG2[89] !== "" ? req.body.VG2[89].replace(",", ".") : 0.0;
+   var voltagem = req.body.voltagem !== "" ? req.body.voltagem.replace(",", ".") : 0.0;
 
    var refrLadoFixo1 = req.body.rmladofixo1 !== "" ? req.body.rmladofixo1 : 0.0;
    var refrLadoFixo2 = req.body.rmladomovel1 !== "" ? req.body.rmladomovel1 : 0.0;
@@ -2375,6 +2408,47 @@ router.post("/fichas/createHaitian",(req,res) => {
          })
       })
    })
+
+   Moldes.findOne({
+      where: {
+         descricao: NúmeroMolde
+      }
+   }).then(output => {
+      if (output === null || output === 'null') {
+
+         Moldes.create({
+            descricao:NúmeroMolde,
+            codigo:NúmeroMolde,
+         }).then(() => {
+            console.log('MOLDE ADICIONADO')
+         })
+
+      } else {
+         console.log('MOLDE JÁ EXISTE. NÃO ADICIONADO')
+      }
+   })
+
+   MateriasPrimas.findOne({
+      where: {
+         descricao: Material
+      }
+   }).then(output => {
+      if (output === null || output === 'null') {
+
+         MateriasPrimas.create({
+            descricao:Material,
+            codigo:Material,
+      
+         }).then(() => {
+            console.log('MATERIA PRIMA ADICIONADA.')
+         })
+
+      } else {
+         console.log('MATERIA PRIMA JÁ EXISTE. NÃO ADICIONADA')
+      }
+   })
+
+   
 })
 
 // *ATUALIZANDO FICHA PASTORE
@@ -2382,494 +2456,494 @@ router.post("/fichas/updateHaitian",(req,res) => {
    var id = req.body.id;
    var maquina = req.body.maquina;
 
-   var NúmeroMolde = req.body.molde !== "" ? req.body.molde : 0.0;
+   var NúmeroMolde = req.body.molde.replace(/\s/g, "");
    var NúmeroMáquina = req.body.numMaquina;
-   var Revisao = req.body.revisao !== "" ? req.body.revisao : 0.0;
+   var Revisao = req.body.revisao;
    var Cliente = req.body.cliente;
-   var CodigoPAM = req.body.codigoPAM !== "" ? req.body.codigoPAM : 0.0;
+   var CodigoPAM = req.body.codigoPAM.replace(/\s/g, "");
    var Tecnico = req.body.tecnico;
    var Produto = req.body.produto;
-   var Material = req.body.material;
+   var Material = req.body.material.replace(/\./g, "");
 
-   var cilindro1 = req.body.cilindro1 !== "" ? req.body.cilindro1 : 0.0;
-   var cilindro2 = req.body.cilindro2 !== "" ? req.body.cilindro2 : 0.0;
-   var cilindro3 = req.body.cilindro3 !== "" ? req.body.cilindro3 : 0.0;
-   var cilindro4 = req.body.cilindro4 !== "" ? req.body.cilindro4 : 0.0;
-   var cilindro5 = req.body.cilindro5 !== "" ? req.body.cilindro5 : 0.0;
-   var cilindro6 = req.body.cilindro6 !== "" ? req.body.cilindro6 : 0.0;
-   var cilindro7 = req.body.cilindro7 !== "" ? req.body.cilindro7 : 0.0;
-   var posComut = req.body.posComutacao !== "" ? req.body.posComutacao : 0.0;
-   var posInjecao1 = req.body.posInj5 !== "" ? req.body.posInj5 : 0.0;
-   var posInjecao2 = req.body.posInj4 !== "" ? req.body.posInj4 : 0.0;
-   var posInjecao3 = req.body.posInj3 !== "" ? req.body.posInj3 : 0.0;
-   var posInjecao4 = req.body.posInj2 !== "" ? req.body.posInj2 : 0.0;
-   var posInjecao5 = req.body.posInj1 !== "" ? req.body.posInj1 : 0.0;
-   var presComut = req.body.presComutacao !== "" ? req.body.presComutacao : 0.0;
-   var presInjecao1 = req.body.presInj5 !== "" ? req.body.presInj5 : 0.0;
-   var presInjecao2 = req.body.presInj4 !== "" ? req.body.presInj4 : 0.0;
-   var presInjecao3 = req.body.presInj3 !== "" ? req.body.presInj3 : 0.0;
-   var presInjecao4 = req.body.presInj2 !== "" ? req.body.presInj2 : 0.0;
-   var presInjecao5 = req.body.presInj1 !== "" ? req.body.presInj1 : 0.0;
-   var fluxoInjecao1 = req.body.fluxoInj5 !== "" ? req.body.fluxoInj5 : 0.0;
-   var fluxoInjecao2 = req.body.fluxoInj4 !== "" ? req.body.fluxoInj4 : 0.0;
-   var fluxoInjecao3 = req.body.fluxoInj3 !== "" ? req.body.fluxoInj3 : 0.0;
-   var fluxoInjecao4 = req.body.fluxoInj2 !== "" ? req.body.fluxoInj2 : 0.0;
-   var fluxoInjecao5 = req.body.fluxoInj1 !== "" ? req.body.fluxoInj1 : 0.0;
-   var tempoDisparo = req.body.tempoDisparo !== "" ? req.body.tempoDisparo : 0.0;
-   var pressaoInj = req.body.pressaoInj !== "" ? req.body.pressaoInj : 0.0;
-   var presRecalque1 = req.body.presRecalque5 !== "" ? req.body.presRecalque5 : 0.0;
-   var presRecalque2 = req.body.presRecalque4 !== "" ? req.body.presRecalque4 : 0.0;
-   var presRecalque3 = req.body.presRecalque3 !== "" ? req.body.presRecalque3 : 0.0;
-   var presRecalque4 = req.body.presRecalque2 !== "" ? req.body.presRecalque2 : 0.0;
-   var presRecalque5 = req.body.presRecalque1 !== "" ? req.body.presRecalque1 : 0.0;
-   var fluxoRecalque1 = req.body.fluxoRecalque5 !== "" ? req.body.fluxoRecalque5 : 0.0;
-   var fluxoRecalque2 = req.body.fluxoRecalque4 !== "" ? req.body.fluxoRecalque4 : 0.0;
-   var fluxoRecalque3 = req.body.fluxoRecalque3 !== "" ? req.body.fluxoRecalque3 : 0.0;
-   var fluxoRecalque4 = req.body.fluxoRecalque2 !== "" ? req.body.fluxoRecalque2 : 0.0;
-   var fluxoRecalque5 = req.body.fluxoRecalque1 !== "" ? req.body.fluxoRecalque1 : 0.0;
-   var tempoRecalque1 = req.body.tempoRecalque5 !== "" ? req.body.tempoRecalque5 : 0.0;
-   var tempoRecalque2 = req.body.tempoRecalque4 !== "" ? req.body.tempoRecalque4 : 0.0;
-   var tempoRecalque3 = req.body.tempoRecalque3 !== "" ? req.body.tempoRecalque3 : 0.0;
-   var tempoRecalque4 = req.body.tempoRecalque2 !== "" ? req.body.tempoRecalque2 : 0.0;
-   var tempoRecalque5 = req.body.tempoRecalque1 !== "" ? req.body.tempoRecalque1 : 0.0;
-   var partDosagem1 = req.body.partDosagem5 !== "" ? req.body.partDosagem5 : 0.0;
-   var partDosagem2 = req.body.partDosagem4 !== "" ? req.body.partDosagem4 : 0.0;
-   var partDosagem3 = req.body.partDosagem3 !== "" ? req.body.partDosagem3 : 0.0;
-   var partDosagem4 = req.body.partDosagem2 !== "" ? req.body.partDosagem2 : 0.0;
-   var partDosagem5 = req.body.partDosagem1 !== "" ? req.body.partDosagem1 : 0.0;
-   var presDosagem1 = req.body.presDosagem1 !== "" ? req.body.presDosagem1 : 0.0;
-   var presDosagem2 = req.body.presDosagem1 !== "" ? req.body.presDosagem1 : 0.0;
-   var presDosagem3 = req.body.presDosagem1 !== "" ? req.body.presDosagem1 : 0.0;
-   var presDosagem4 = req.body.presDosagem1 !== "" ? req.body.presDosagem1 : 0.0;
-   var presDosagem5 = req.body.presDosagem1 !== "" ? req.body.presDosagem1 : 0.0;
-   var fluxoDosagem1 = req.body.fluxoDosagem5 !== "" ? req.body.fluxoDosagem5 : 0.0;
-   var fluxoDosagem2 = req.body.fluxoDosagem4 !== "" ? req.body.fluxoDosagem4 : 0.0;
-   var fluxoDosagem3 = req.body.fluxoDosagem3 !== "" ? req.body.fluxoDosagem3 : 0.0;
-   var fluxoDosagem4 = req.body.fluxoDosagem2 !== "" ? req.body.fluxoDosagem2 : 0.0;
-   var fluxoDosagem5 = req.body.fluxoDosagem1 !== "" ? req.body.fluxoDosagem1 : 0.0;
-   var CPDosagem1 = req.body.CPDosagem5 !== "" ? req.body.CPDosagem5 : 0.0;
-   var CPDosagem2 = req.body.CPDosagem4 !== "" ? req.body.CPDosagem4 : 0.0;
-   var CPDosagem3 = req.body.CPDosagem3 !== "" ? req.body.CPDosagem3 : 0.0;
-   var CPDosagem4 = req.body.CPDosagem2 !== "" ? req.body.CPDosagem2 : 0.0;
-   var CPDosagem5 = req.body.CPDosagem1 !== "" ? req.body.CPDosagem1 : 0.0;
-   var tempoDosagem = req.body.tempoDosagem !== "" ? req.body.tempoDosagem : 0.0;
-   var antesPos = req.body.antes1 !== "" ? req.body.antes1 : 0.0;
-   var antesPres = req.body.antes2 !== "" ? req.body.antes2 : 0.0;
-   var antesFluxo = req.body.antes3 !== "" ? req.body.antes3 : 0.0;
-   var antesTempo = req.body.antes4 !== "" ? req.body.antes4 : 0.0;
-   var depoisPos = req.body.depois1 !== "" ? req.body.depois1 : 0.0;
-   var depoisPres = req.body.depois2 !== "" ? req.body.depois2 : 0.0;
-   var depoisFluxo = req.body.depois3 !== "" ? req.body.depois3 : 0.0;
-   var depoisTempo = req.body.depois4 !== "" ? req.body.depois4 : 0.0;
-   var posFecha1 = req.body.posFech1 !== "" ? req.body.posFech1 : 0.0;
-   var posFecha2 = req.body.posFech2 !== "" ? req.body.posFech2 : 0.0;
-   var posFecha3 = req.body.posFech3 !== "" ? req.body.posFech3 : 0.0;
-   var protMPos = req.body.protMPos !== "" ? req.body.protMPos : 0.0;
-   var AltaPresPos = req.body.AltaPresPos !== "" ? req.body.AltaPresPos : 0.0;
-   var presFecha1 = req.body.presFech1 !== "" ? req.body.presFech1 : 0.0;
-   var presFecha2 = req.body.presFech2 !== "" ? req.body.presFech2 : 0.0;
-   var presFecha3 = req.body.presFech3 !== "" ? req.body.presFech3 : 0.0;
-   var protMPres = req.body.protMPres !== "" ? req.body.protMPres : 0.0;
-   var AltaPresPres = req.body.AltaPresPressao !== "" ? req.body.AltaPresPressao : 0.0;
-   var fluxoFecha1 = req.body.fluxoFech1 !== "" ? req.body.fluxoFech1 : 0.0;
-   var fluxoFecha2 = req.body.fluxoFech2 !== "" ? req.body.fluxoFech2 : 0.0;
-   var fluxoFecha3 = req.body.fluxoFech3 !== "" ? req.body.fluxoFech3 : 0.0;
-   var protMFluxo = req.body.protMFluxo !== "" ? req.body.protMFluxo : 0.0;
-   var AltaPresFluxo = req.body.AltaPresFluxo !== "" ? req.body.AltaPresFluxo : 0.0;
-   var tempoProtMolde = req.body.tempoProtMolde !== "" ? req.body.tempoProtMolde : 0.0;
-   var tempoFecha = req.body.tempoFecha !== "" ? req.body.tempoFecha : 0.0;
-   var posAbertura1 = req.body.posAbertura5 !== "" ? req.body.posAbertura5 : 0.0;
-   var posAbertura2 = req.body.posAbertura4 !== "" ? req.body.posAbertura4 : 0.0;
-   var posAbertura3 = req.body.posAbertura3 !== "" ? req.body.posAbertura3 : 0.0;
-   var posAbertura4 = req.body.posAbertura2 !== "" ? req.body.posAbertura2 : 0.0;
-   var posAbertura5 = req.body.posAbertura1 !== "" ? req.body.posAbertura1 : 0.0;
-   var presAbertura1 = req.body.presAbertura5 !== "" ? req.body.presAbertura5 : 0.0;
-   var presAbertura2 = req.body.presAbertura4 !== "" ? req.body.presAbertura4 : 0.0;
-   var presAbertura3 = req.body.presAbertura3 !== "" ? req.body.presAbertura3 : 0.0;
-   var presAbertura4 = req.body.presAbertura2 !== "" ? req.body.presAbertura2 : 0.0;
-   var presAbertura5 = req.body.presAbertura1 !== "" ? req.body.presAbertura1 : 0.0;
-   var fluxoAbertura1 = req.body.fluxoAbertura5 !== "" ? req.body.fluxoAbertura5 : 0.0;
-   var fluxoAbertura2 = req.body.fluxoAbertura4 !== "" ? req.body.fluxoAbertura4 : 0.0;
-   var fluxoAbertura3 = req.body.fluxoAbertura3 !== "" ? req.body.fluxoAbertura3 : 0.0;
-   var fluxoAbertura4 = req.body.fluxoAbertura2 !== "" ? req.body.fluxoAbertura2 : 0.0;
-   var fluxoAbertura5 = req.body.fluxoAbertura1 !== "" ? req.body.fluxoAbertura1 : 0.0;
-   var resfriamento = req.body.resfriamento !== "" ? req.body.resfriamento : 0.0;
-   var tempoAbertura = req.body.tempoAbertura !== "" ? req.body.tempoAbertura : 0.0;
-   var posAvanco1 = req.body.posAvanco1 !== "" ? req.body.posAvanco1 : 0.0;
-   var posAvanco2 = req.body.posAvanco2 !== "" ? req.body.posAvanco2 : 0.0;
-   var posAvanco3 = req.body.posAvanco3 !== "" ? req.body.posAvanco3 : 0.0;
-   var posRecuo1 = req.body.posRecuo1 !== "" ? req.body.posRecuo1 : 0.0;
-   var posRecuo2 = req.body.posRecuo2 !== "" ? req.body.posRecuo2 : 0.0;
-   var posRecuo3 = req.body.posRecuo3 !== "" ? req.body.posRecuo3 : 0.0;
-   var presAvanco1 = req.body.presAvanco1 !== "" ? req.body.presAvanco1 : 0.0;
-   var presAvanco2 = req.body.presAvanco2 !== "" ? req.body.presAvanco2 : 0.0;
-   var presAvanco3 = req.body.presAvanco3 !== "" ? req.body.presAvanco3 : 0.0;
-   var presRecuo1 = req.body.presRecuo1 !== "" ? req.body.presRecuo1 : 0.0;
-   var presRecuo2 = req.body.presRecuo2 !== "" ? req.body.presRecuo2 : 0.0;
-   var presRecuo3 = req.body.presRecuo3 !== "" ? req.body.presRecuo3 : 0.0;
-   var fluxoAvanco1 = req.body.fluxoAvanco1 !== "" ? req.body.fluxoAvanco1 : 0.0;
-   var fluxoAvanco2 = req.body.fluxoAvanco2 !== "" ? req.body.fluxoAvanco2 : 0.0;
-   var fluxoAvanco3 = req.body.fluxoAvanco3 !== "" ? req.body.fluxoAvanco3 : 0.0;
-   var fluxoRecuo1 = req.body.fluxoRecuo1 !== "" ? req.body.fluxoRecuo1 : 0.0;
-   var fluxoRecuo2 = req.body.fluxoRecuo2 !== "" ? req.body.fluxoRecuo2 : 0.0;
-   var fluxoRecuo3 = req.body.fluxoRecuo3 !== "" ? req.body.fluxoRecuo3 : 0.0;
-   var atraso = req.body.atraso !== "" ? req.body.atraso : 0.0;
-   var batida = req.body.batida !== "" ? req.body.batida : 0.0;
-   var radialTypeEntrada1 = req.body.type1 !== "" ? req.body.type1 : 0.0;
-   var radialTypeSaida1 = req.body.type2 !== "" ? req.body.type2 : 0.0;
-   var radialTypeEntrada2 = req.body.type3 !== "" ? req.body.type3 : 0.0;
-   var radialTypeSaida2 = req.body.type4 !== "" ? req.body.type4 : 0.0;
-   var radialPresEntrada1 = req.body.pressaoRadial1 !== "" ? req.body.pressaoRadial1 : 0.0;
-   var radialPresSaida1 = req.body.pressaoRadial2 !== "" ? req.body.pressaoRadial2 : 0.0;
-   var radialPresEntrada2 = req.body.pressaoRadial3 !== "" ? req.body.pressaoRadial3 : 0.0;
-   var radialPresSaida2 = req.body.pressaoRadial4 !== "" ? req.body.pressaoRadial4 : 0.0;
-   var radialPresEntrada3 = req.body.pressaoRadial5 !== "" ? req.body.pressaoRadial5 : 0.0;
-   var radialPresSaida3 = req.body.pressaoRadial6 !== "" ? req.body.pressaoRadial6 : 0.0;
-   var radialFluxoEntrada1 = req.body.fluxoRadial1 !== "" ? req.body.fluxoRadial1 : 0.0;
-   var radialFluxoSaida1 = req.body.fluxoRadial2 !== "" ? req.body.fluxoRadial2 : 0.0;
-   var radialFluxoEntrada2 = req.body.fluxoRadial3 !== "" ? req.body.fluxoRadial3 : 0.0;
-   var radialFluxoSaida2 = req.body.fluxoRadial4 !== "" ? req.body.fluxoRadial4 : 0.0;
-   var radialFluxoEntrada3 = req.body.fluxoRadial5 !== "" ? req.body.fluxoRadial5 : 0.0;
-   var radialFluxoSaida3 = req.body.fluxoRadial6 !== "" ? req.body.fluxoRadial6 : 0.0;
-   var radialPosEntrada1 = req.body.posRadial1 !== "" ? req.body.posRadial1 : 0.0;
-   var radialPosSaida1 = req.body.posRadial2 !== "" ? req.body.posRadial2 : 0.0;
-   var radialPosEntrada2 = req.body.posRadial3 !== "" ? req.body.posRadial3 : 0.0;
-   var radialPosSaida2 = req.body.posRadial4 !== "" ? req.body.posRadial4 : 0.0;
-   var radialPosEntrada3 = req.body.posRadial5 !== "" ? req.body.posRadial5 : 0.0;
-   var radialPosSaida3 = req.body.posRadial6 !== "" ? req.body.posRadial6 : 0.0;
-   var radialTempoEntrada1 = req.body.tempoRadial1 !== "" ? req.body.tempoRadial1 : 0.0;
-   var radialTempoSaida1 = req.body.tempoRadial2 !== "" ? req.body.tempoRadial2 : 0.0;
-   var radialTempoEntrada2 = req.body.tempoRadial3 !== "" ? req.body.tempoRadial3 : 0.0;
-   var radialTempoSaida2 = req.body.tempoRadial4 !== "" ? req.body.tempoRadial4 : 0.0;
-   var radialTempoEntrada3 = req.body.tempoRadial5 !== "" ? req.body.tempoRadial5 : 0.0;
-   var radialTempoSaida3 = req.body.tempoRadial6 !== "" ? req.body.tempoRadial6 : 0.0;
-   var radialSCREntrada1 = req.body.scrcount1 !== "" ? req.body.scrcount1 : 0.0;
-   var radialSCRSaida1 = req.body.scrcount2 !== "" ? req.body.scrcount2 : 0.0;
-   var radialSCREntrada2 = req.body.scrcount3 !== "" ? req.body.scrcount3 : 0.0;
-   var radialSCRSaida2 = req.body.scrcount4 !== "" ? req.body.scrcount4 : 0.0;
-   var radialSCREntrada3 = req.body.scrcount5 !== "" ? req.body.scrcount5 : 0.0;
-   var radialSCRSaida3 = req.body.scrcount6 !== "" ? req.body.scrcount6 : 0.0;
+   var cilindro1 = req.body.cilindro1 !== "" ? req.body.cilindro1.replace(",", ".") : 0.0;
+   var cilindro2 = req.body.cilindro2 !== "" ? req.body.cilindro2.replace(",", ".") : 0.0;
+   var cilindro3 = req.body.cilindro3 !== "" ? req.body.cilindro3.replace(",", ".") : 0.0;
+   var cilindro4 = req.body.cilindro4 !== "" ? req.body.cilindro4.replace(",", ".") : 0.0;
+   var cilindro5 = req.body.cilindro5 !== "" ? req.body.cilindro5.replace(",", ".") : 0.0;
+   var cilindro6 = req.body.cilindro6 !== "" ? req.body.cilindro6.replace(",", ".") : 0.0;
+   var cilindro7 = req.body.cilindro7 !== "" ? req.body.cilindro7.replace(",", ".") : 0.0;
+   var posComut = req.body.posComutacao !== "" ? req.body.posComutacao.replace(",", ".") : 0.0;
+   var posInjecao1 = req.body.posInj5 !== "" ? req.body.posInj5.replace(",", ".") : 0.0;
+   var posInjecao2 = req.body.posInj4 !== "" ? req.body.posInj4.replace(",", ".") : 0.0;
+   var posInjecao3 = req.body.posInj3 !== "" ? req.body.posInj3.replace(",", ".") : 0.0;
+   var posInjecao4 = req.body.posInj2 !== "" ? req.body.posInj2.replace(",", ".") : 0.0;
+   var posInjecao5 = req.body.posInj1 !== "" ? req.body.posInj1.replace(",", ".") : 0.0;
+   var presComut = req.body.presComutacao !== "" ? req.body.presComutacao.replace(",", ".") : 0.0;
+   var presInjecao1 = req.body.presInj5 !== "" ? req.body.presInj5.replace(",", ".") : 0.0;
+   var presInjecao2 = req.body.presInj4 !== "" ? req.body.presInj4.replace(",", ".") : 0.0;
+   var presInjecao3 = req.body.presInj3 !== "" ? req.body.presInj3.replace(",", ".") : 0.0;
+   var presInjecao4 = req.body.presInj2 !== "" ? req.body.presInj2.replace(",", ".") : 0.0;
+   var presInjecao5 = req.body.presInj1 !== "" ? req.body.presInj1.replace(",", ".") : 0.0;
+   var fluxoInjecao1 = req.body.fluxoInj5 !== "" ? req.body.fluxoInj5.replace(",", ".") : 0.0;
+   var fluxoInjecao2 = req.body.fluxoInj4 !== "" ? req.body.fluxoInj4.replace(",", ".") : 0.0;
+   var fluxoInjecao3 = req.body.fluxoInj3 !== "" ? req.body.fluxoInj3.replace(",", ".") : 0.0;
+   var fluxoInjecao4 = req.body.fluxoInj2 !== "" ? req.body.fluxoInj2.replace(",", ".") : 0.0;
+   var fluxoInjecao5 = req.body.fluxoInj1 !== "" ? req.body.fluxoInj1.replace(",", ".") : 0.0;
+   var tempoDisparo = req.body.tempoDisparo !== "" ? req.body.tempoDisparo.replace(",", ".") : 0.0;
+   var pressaoInj = req.body.pressaoInj !== "" ? req.body.pressaoInj.replace(",", ".") : 0.0;
+   var presRecalque1 = req.body.presRecalque5 !== "" ? req.body.presRecalque5.replace(",", ".") : 0.0;
+   var presRecalque2 = req.body.presRecalque4 !== "" ? req.body.presRecalque4.replace(",", ".") : 0.0;
+   var presRecalque3 = req.body.presRecalque3 !== "" ? req.body.presRecalque3.replace(",", ".") : 0.0;
+   var presRecalque4 = req.body.presRecalque2 !== "" ? req.body.presRecalque2.replace(",", ".") : 0.0;
+   var presRecalque5 = req.body.presRecalque1 !== "" ? req.body.presRecalque1.replace(",", ".") : 0.0;
+   var fluxoRecalque1 = req.body.fluxoRecalque5 !== "" ? req.body.fluxoRecalque5.replace(",", ".") : 0.0;
+   var fluxoRecalque2 = req.body.fluxoRecalque4 !== "" ? req.body.fluxoRecalque4.replace(",", ".") : 0.0;
+   var fluxoRecalque3 = req.body.fluxoRecalque3 !== "" ? req.body.fluxoRecalque3.replace(",", ".") : 0.0;
+   var fluxoRecalque4 = req.body.fluxoRecalque2 !== "" ? req.body.fluxoRecalque2.replace(",", ".") : 0.0;
+   var fluxoRecalque5 = req.body.fluxoRecalque1 !== "" ? req.body.fluxoRecalque1.replace(",", ".") : 0.0;
+   var tempoRecalque1 = req.body.tempoRecalque5 !== "" ? req.body.tempoRecalque5.replace(",", ".") : 0.0;
+   var tempoRecalque2 = req.body.tempoRecalque4 !== "" ? req.body.tempoRecalque4.replace(",", ".") : 0.0;
+   var tempoRecalque3 = req.body.tempoRecalque3 !== "" ? req.body.tempoRecalque3.replace(",", ".") : 0.0;
+   var tempoRecalque4 = req.body.tempoRecalque2 !== "" ? req.body.tempoRecalque2.replace(",", ".") : 0.0;
+   var tempoRecalque5 = req.body.tempoRecalque1 !== "" ? req.body.tempoRecalque1.replace(",", ".") : 0.0;
+   var partDosagem1 = req.body.partDosagem5 !== "" ? req.body.partDosagem5.replace(",", ".") : 0.0;
+   var partDosagem2 = req.body.partDosagem4 !== "" ? req.body.partDosagem4.replace(",", ".") : 0.0;
+   var partDosagem3 = req.body.partDosagem3 !== "" ? req.body.partDosagem3.replace(",", ".") : 0.0;
+   var partDosagem4 = req.body.partDosagem2 !== "" ? req.body.partDosagem2.replace(",", ".") : 0.0;
+   var partDosagem5 = req.body.partDosagem1 !== "" ? req.body.partDosagem1.replace(",", ".") : 0.0;
+   var presDosagem1 = req.body.presDosagem1 !== "" ? req.body.presDosagem1.replace(",", ".") : 0.0;
+   var presDosagem2 = req.body.presDosagem1 !== "" ? req.body.presDosagem1.replace(",", ".") : 0.0;
+   var presDosagem3 = req.body.presDosagem1 !== "" ? req.body.presDosagem1.replace(",", ".") : 0.0;
+   var presDosagem4 = req.body.presDosagem1 !== "" ? req.body.presDosagem1.replace(",", ".") : 0.0;
+   var presDosagem5 = req.body.presDosagem1 !== "" ? req.body.presDosagem1.replace(",", ".") : 0.0;
+   var fluxoDosagem1 = req.body.fluxoDosagem5 !== "" ? req.body.fluxoDosagem5.replace(",", ".") : 0.0;
+   var fluxoDosagem2 = req.body.fluxoDosagem4 !== "" ? req.body.fluxoDosagem4.replace(",", ".") : 0.0;
+   var fluxoDosagem3 = req.body.fluxoDosagem3 !== "" ? req.body.fluxoDosagem3.replace(",", ".") : 0.0;
+   var fluxoDosagem4 = req.body.fluxoDosagem2 !== "" ? req.body.fluxoDosagem2.replace(",", ".") : 0.0;
+   var fluxoDosagem5 = req.body.fluxoDosagem1 !== "" ? req.body.fluxoDosagem1.replace(",", ".") : 0.0;
+   var CPDosagem1 = req.body.CPDosagem5 !== "" ? req.body.CPDosagem5.replace(",", ".") : 0.0;
+   var CPDosagem2 = req.body.CPDosagem4 !== "" ? req.body.CPDosagem4.replace(",", ".") : 0.0;
+   var CPDosagem3 = req.body.CPDosagem3 !== "" ? req.body.CPDosagem3.replace(",", ".") : 0.0;
+   var CPDosagem4 = req.body.CPDosagem2 !== "" ? req.body.CPDosagem2.replace(",", ".") : 0.0;
+   var CPDosagem5 = req.body.CPDosagem1 !== "" ? req.body.CPDosagem1.replace(",", ".") : 0.0;
+   var tempoDosagem = req.body.tempoDosagem !== "" ? req.body.tempoDosagem.replace(",", ".") : 0.0;
+   var antesPos = req.body.antes1 !== "" ? req.body.antes1.replace(",", ".") : 0.0;
+   var antesPres = req.body.antes2 !== "" ? req.body.antes2.replace(",", ".") : 0.0;
+   var antesFluxo = req.body.antes3 !== "" ? req.body.antes3.replace(",", ".") : 0.0;
+   var antesTempo = req.body.antes4 !== "" ? req.body.antes4.replace(",", ".") : 0.0;
+   var depoisPos = req.body.depois1 !== "" ? req.body.depois1.replace(",", ".") : 0.0;
+   var depoisPres = req.body.depois2 !== "" ? req.body.depois2.replace(",", ".") : 0.0;
+   var depoisFluxo = req.body.depois3 !== "" ? req.body.depois3.replace(",", ".") : 0.0;
+   var depoisTempo = req.body.depois4 !== "" ? req.body.depois4.replace(",", ".") : 0.0;
+   var posFecha1 = req.body.posFech1 !== "" ? req.body.posFech1.replace(",", ".") : 0.0;
+   var posFecha2 = req.body.posFech2 !== "" ? req.body.posFech2.replace(",", ".") : 0.0;
+   var posFecha3 = req.body.posFech3 !== "" ? req.body.posFech3.replace(",", ".") : 0.0;
+   var protMPos = req.body.protMPos !== "" ? req.body.protMPos.replace(",", ".") : 0.0;
+   var AltaPresPos = req.body.AltaPresPos !== "" ? req.body.AltaPresPos.replace(",", ".") : 0.0;
+   var presFecha1 = req.body.presFech1 !== "" ? req.body.presFech1.replace(",", ".") : 0.0;
+   var presFecha2 = req.body.presFech2 !== "" ? req.body.presFech2.replace(",", ".") : 0.0;
+   var presFecha3 = req.body.presFech3 !== "" ? req.body.presFech3.replace(",", ".") : 0.0;
+   var protMPres = req.body.protMPres !== "" ? req.body.protMPres.replace(",", ".") : 0.0;
+   var AltaPresPres = req.body.AltaPresPressao !== "" ? req.body.AltaPresPressao.replace(",", ".") : 0.0;
+   var fluxoFecha1 = req.body.fluxoFech1 !== "" ? req.body.fluxoFech1.replace(",", ".") : 0.0;
+   var fluxoFecha2 = req.body.fluxoFech2 !== "" ? req.body.fluxoFech2.replace(",", ".") : 0.0;
+   var fluxoFecha3 = req.body.fluxoFech3 !== "" ? req.body.fluxoFech3.replace(",", ".") : 0.0;
+   var protMFluxo = req.body.protMFluxo !== "" ? req.body.protMFluxo.replace(",", ".") : 0.0;
+   var AltaPresFluxo = req.body.AltaPresFluxo !== "" ? req.body.AltaPresFluxo.replace(",", ".") : 0.0;
+   var tempoProtMolde = req.body.tempoProtMolde !== "" ? req.body.tempoProtMolde.replace(",", ".") : 0.0;
+   var tempoFecha = req.body.tempoFecha !== "" ? req.body.tempoFecha.replace(",", ".") : 0.0;
+   var posAbertura1 = req.body.posAbertura5 !== "" ? req.body.posAbertura5.replace(",", ".") : 0.0;
+   var posAbertura2 = req.body.posAbertura4 !== "" ? req.body.posAbertura4.replace(",", ".") : 0.0;
+   var posAbertura3 = req.body.posAbertura3 !== "" ? req.body.posAbertura3.replace(",", ".") : 0.0;
+   var posAbertura4 = req.body.posAbertura2 !== "" ? req.body.posAbertura2.replace(",", ".") : 0.0;
+   var posAbertura5 = req.body.posAbertura1 !== "" ? req.body.posAbertura1.replace(",", ".") : 0.0;
+   var presAbertura1 = req.body.presAbertura5 !== "" ? req.body.presAbertura5.replace(",", ".") : 0.0;
+   var presAbertura2 = req.body.presAbertura4 !== "" ? req.body.presAbertura4.replace(",", ".") : 0.0;
+   var presAbertura3 = req.body.presAbertura3 !== "" ? req.body.presAbertura3.replace(",", ".") : 0.0;
+   var presAbertura4 = req.body.presAbertura2 !== "" ? req.body.presAbertura2.replace(",", ".") : 0.0;
+   var presAbertura5 = req.body.presAbertura1 !== "" ? req.body.presAbertura1.replace(",", ".") : 0.0;
+   var fluxoAbertura1 = req.body.fluxoAbertura5 !== "" ? req.body.fluxoAbertura5.replace(",", ".") : 0.0;
+   var fluxoAbertura2 = req.body.fluxoAbertura4 !== "" ? req.body.fluxoAbertura4.replace(",", ".") : 0.0;
+   var fluxoAbertura3 = req.body.fluxoAbertura3 !== "" ? req.body.fluxoAbertura3.replace(",", ".") : 0.0;
+   var fluxoAbertura4 = req.body.fluxoAbertura2 !== "" ? req.body.fluxoAbertura2.replace(",", ".") : 0.0;
+   var fluxoAbertura5 = req.body.fluxoAbertura1 !== "" ? req.body.fluxoAbertura1.replace(",", ".") : 0.0;
+   var resfriamento = req.body.resfriamento !== "" ? req.body.resfriamento.replace(",", ".") : 0.0;
+   var tempoAbertura = req.body.tempoAbertura !== "" ? req.body.tempoAbertura.replace(",", ".") : 0.0;
+   var posAvanco1 = req.body.posAvanco1 !== "" ? req.body.posAvanco1.replace(",", ".") : 0.0;
+   var posAvanco2 = req.body.posAvanco2 !== "" ? req.body.posAvanco2.replace(",", ".") : 0.0;
+   var posAvanco3 = req.body.posAvanco3 !== "" ? req.body.posAvanco3.replace(",", ".") : 0.0;
+   var posRecuo1 = req.body.posRecuo1 !== "" ? req.body.posRecuo1.replace(",", ".") : 0.0;
+   var posRecuo2 = req.body.posRecuo2 !== "" ? req.body.posRecuo2.replace(",", ".") : 0.0;
+   var posRecuo3 = req.body.posRecuo3 !== "" ? req.body.posRecuo3.replace(",", ".") : 0.0;
+   var presAvanco1 = req.body.presAvanco1 !== "" ? req.body.presAvanco1.replace(",", ".") : 0.0;
+   var presAvanco2 = req.body.presAvanco2 !== "" ? req.body.presAvanco2.replace(",", ".") : 0.0;
+   var presAvanco3 = req.body.presAvanco3 !== "" ? req.body.presAvanco3.replace(",", ".") : 0.0;
+   var presRecuo1 = req.body.presRecuo1 !== "" ? req.body.presRecuo1.replace(",", ".") : 0.0;
+   var presRecuo2 = req.body.presRecuo2 !== "" ? req.body.presRecuo2.replace(",", ".") : 0.0;
+   var presRecuo3 = req.body.presRecuo3 !== "" ? req.body.presRecuo3.replace(",", ".") : 0.0;
+   var fluxoAvanco1 = req.body.fluxoAvanco1 !== "" ? req.body.fluxoAvanco1.replace(",", ".") : 0.0;
+   var fluxoAvanco2 = req.body.fluxoAvanco2 !== "" ? req.body.fluxoAvanco2.replace(",", ".") : 0.0;
+   var fluxoAvanco3 = req.body.fluxoAvanco3 !== "" ? req.body.fluxoAvanco3.replace(",", ".") : 0.0;
+   var fluxoRecuo1 = req.body.fluxoRecuo1 !== "" ? req.body.fluxoRecuo1.replace(",", ".") : 0.0;
+   var fluxoRecuo2 = req.body.fluxoRecuo2 !== "" ? req.body.fluxoRecuo2.replace(",", ".") : 0.0;
+   var fluxoRecuo3 = req.body.fluxoRecuo3 !== "" ? req.body.fluxoRecuo3.replace(",", ".") : 0.0;
+   var atraso = req.body.atraso !== "" ? req.body.atraso.replace(",", ".") : 0.0;
+   var batida = req.body.batida !== "" ? req.body.batida.replace(",", ".") : 0.0;
+   var radialTypeEntrada1 = req.body.type1 !== "" ? req.body.type1.replace(",", ".") : 0.0;
+   var radialTypeSaida1 = req.body.type2 !== "" ? req.body.type2.replace(",", ".") : 0.0;
+   var radialTypeEntrada2 = req.body.type3 !== "" ? req.body.type3.replace(",", ".") : 0.0;
+   var radialTypeSaida2 = req.body.type4 !== "" ? req.body.type4.replace(",", ".") : 0.0;
+   var radialPresEntrada1 = req.body.pressaoRadial1 !== "" ? req.body.pressaoRadial1.replace(",", ".") : 0.0;
+   var radialPresSaida1 = req.body.pressaoRadial2 !== "" ? req.body.pressaoRadial2.replace(",", ".") : 0.0;
+   var radialPresEntrada2 = req.body.pressaoRadial3 !== "" ? req.body.pressaoRadial3.replace(",", ".") : 0.0;
+   var radialPresSaida2 = req.body.pressaoRadial4 !== "" ? req.body.pressaoRadial4.replace(",", ".") : 0.0;
+   var radialPresEntrada3 = req.body.pressaoRadial5 !== "" ? req.body.pressaoRadial5.replace(",", ".") : 0.0;
+   var radialPresSaida3 = req.body.pressaoRadial6 !== "" ? req.body.pressaoRadial6.replace(",", ".") : 0.0;
+   var radialFluxoEntrada1 = req.body.fluxoRadial1 !== "" ? req.body.fluxoRadial1.replace(",", ".") : 0.0;
+   var radialFluxoSaida1 = req.body.fluxoRadial2 !== "" ? req.body.fluxoRadial2.replace(",", ".") : 0.0;
+   var radialFluxoEntrada2 = req.body.fluxoRadial3 !== "" ? req.body.fluxoRadial3.replace(",", ".") : 0.0;
+   var radialFluxoSaida2 = req.body.fluxoRadial4 !== "" ? req.body.fluxoRadial4.replace(",", ".") : 0.0;
+   var radialFluxoEntrada3 = req.body.fluxoRadial5 !== "" ? req.body.fluxoRadial5.replace(",", ".") : 0.0;
+   var radialFluxoSaida3 = req.body.fluxoRadial6 !== "" ? req.body.fluxoRadial6.replace(",", ".") : 0.0;
+   var radialPosEntrada1 = req.body.posRadial1 !== "" ? req.body.posRadial1.replace(",", ".") : 0.0;
+   var radialPosSaida1 = req.body.posRadial2 !== "" ? req.body.posRadial2.replace(",", ".") : 0.0;
+   var radialPosEntrada2 = req.body.posRadial3 !== "" ? req.body.posRadial3.replace(",", ".") : 0.0;
+   var radialPosSaida2 = req.body.posRadial4 !== "" ? req.body.posRadial4.replace(",", ".") : 0.0;
+   var radialPosEntrada3 = req.body.posRadial5 !== "" ? req.body.posRadial5.replace(",", ".") : 0.0;
+   var radialPosSaida3 = req.body.posRadial6 !== "" ? req.body.posRadial6.replace(",", ".") : 0.0;
+   var radialTempoEntrada1 = req.body.tempoRadial1 !== "" ? req.body.tempoRadial1.replace(",", ".") : 0.0;
+   var radialTempoSaida1 = req.body.tempoRadial2 !== "" ? req.body.tempoRadial2.replace(",", ".") : 0.0;
+   var radialTempoEntrada2 = req.body.tempoRadial3 !== "" ? req.body.tempoRadial3.replace(",", ".") : 0.0;
+   var radialTempoSaida2 = req.body.tempoRadial4 !== "" ? req.body.tempoRadial4.replace(",", ".") : 0.0;
+   var radialTempoEntrada3 = req.body.tempoRadial5 !== "" ? req.body.tempoRadial5.replace(",", ".") : 0.0;
+   var radialTempoSaida3 = req.body.tempoRadial6 !== "" ? req.body.tempoRadial6.replace(",", ".") : 0.0;
+   var radialSCREntrada1 = req.body.scrcount1 !== "" ? req.body.scrcount1.replace(",", ".") : 0.0;
+   var radialSCRSaida1 = req.body.scrcount2 !== "" ? req.body.scrcount2.replace(",", ".") : 0.0;
+   var radialSCREntrada2 = req.body.scrcount3 !== "" ? req.body.scrcount3.replace(",", ".") : 0.0;
+   var radialSCRSaida2 = req.body.scrcount4 !== "" ? req.body.scrcount4.replace(",", ".") : 0.0;
+   var radialSCREntrada3 = req.body.scrcount5 !== "" ? req.body.scrcount5.replace(",", ".") : 0.0;
+   var radialSCRSaida3 = req.body.scrcount6 !== "" ? req.body.scrcount6.replace(",", ".") : 0.0;
 
-   var camara1 = req.body.camara1 !== "" ? req.body.camara1 : 0.0;
-   var camara2 = req.body.camara2 !== "" ? req.body.camara2 : 0.0;
-   var camara3 = req.body.camara3 !== "" ? req.body.camara3 : 0.0;
-   var camara4 = req.body.camara4 !== "" ? req.body.camara4 : 0.0;
-   var camara5 = req.body.camara5 !== "" ? req.body.camara5 : 0.0;
-   var camara6 = req.body.camara6 !== "" ? req.body.camara6 : 0.0;
-   var camara7 = req.body.camara7 !== "" ? req.body.camara7 : 0.0;
-   var camara8 = req.body.camara8 !== "" ? req.body.camara8 : 0.0;
-   var camara9 = req.body.camara9 !== "" ? req.body.camara9 : 0.0;
-   var camara10 = req.body.camara10 !== "" ? req.body.camara10 : 0.0;
-   var camara11 = req.body.camara11 !== "" ? req.body.camara11 : 0.0;
-   var camara12 = req.body.camara12 !== "" ? req.body.camara12 : 0.0;
-   var camara13 = req.body.camara13 !== "" ? req.body.camara13 : 0.0;
-   var camara14 = req.body.camara14 !== "" ? req.body.camara14 : 0.0;
-   var camara15 = req.body.camara15 !== "" ? req.body.camara15 : 0.0;
-   var camara16 = req.body.camara16 !== "" ? req.body.camara16 : 0.0;
-   var camara17 = req.body.camara17 !== "" ? req.body.camara17 : 0.0;
-   var camara18 = req.body.camara18 !== "" ? req.body.camara18 : 0.0;
-   var camara19 = req.body.camara19 !== "" ? req.body.camara19 : 0.0;
-   var camara20 = req.body.camara20 !== "" ? req.body.camara20 : 0.0;
-   var camara21 = req.body.camara21 !== "" ? req.body.camara21 : 0.0;
-   var camara22 = req.body.camara22 !== "" ? req.body.camara22 : 0.0;
-   var camara23 = req.body.camara23 !== "" ? req.body.camara23 : 0.0;
-   var camara24 = req.body.camara24 !== "" ? req.body.camara24 : 0.0;
-   var camara25 = req.body.camara25 !== "" ? req.body.camara25 : 0.0;
-   var camara26 = req.body.camara26 !== "" ? req.body.camara26 : 0.0;
-   var camara27 = req.body.camara27 !== "" ? req.body.camara27 : 0.0;
-   var camara28 = req.body.camara28 !== "" ? req.body.camara28 : 0.0;
-   var camara29 = req.body.camara29 !== "" ? req.body.camara29 : 0.0;
-   var camara30 = req.body.camara30 !== "" ? req.body.camara30 : 0.0;
-   var camara31 = req.body.camara31 !== "" ? req.body.camara31 : 0.0;
-   var camara32 = req.body.camara32 !== "" ? req.body.camara32 : 0.0;
-   var camara33 = req.body.camara33 !== "" ? req.body.camara33 : 0.0;
-   var camara34 = req.body.camara34 !== "" ? req.body.camara34 : 0.0;
-   var camara35 = req.body.camara35 !== "" ? req.body.camara35 : 0.0;
-   var camara36 = req.body.camara36 !== "" ? req.body.camara36 : 0.0;
-   var camara37 = req.body.camara37 !== "" ? req.body.camara37 : 0.0;
-   var camara38 = req.body.camara38 !== "" ? req.body.camara38 : 0.0;
-   var camara39 = req.body.camara39 !== "" ? req.body.camara39 : 0.0;
-   var camara40 = req.body.camara40 !== "" ? req.body.camara40 : 0.0;
-   var camara41 = req.body.camara41 !== "" ? req.body.camara41 : 0.0;
-   var camara42 = req.body.camara42 !== "" ? req.body.camara42 : 0.0;
-   var camara43 = req.body.camara43 !== "" ? req.body.camara43 : 0.0;
-   var camara44 = req.body.camara44 !== "" ? req.body.camara44 : 0.0;
-   var camara45 = req.body.camara45 !== "" ? req.body.camara45 : 0.0;
-   var camara46 = req.body.camara46 !== "" ? req.body.camara46 : 0.0;
-   var camara47 = req.body.camara47 !== "" ? req.body.camara47 : 0.0;
-   var camara48 = req.body.camara48 !== "" ? req.body.camara48 : 0.0;
-   var camara49 = req.body.camara49 !== "" ? req.body.camara49 : 0.0;
-   var camara50 = req.body.camara50 !== "" ? req.body.camara50 : 0.0;
-   var camara51 = req.body.camara51 !== "" ? req.body.camara51 : 0.0;
-   var camara52 = req.body.camara52 !== "" ? req.body.camara52 : 0.0;
-   var camara53 = req.body.camara53 !== "" ? req.body.camara53 : 0.0;
-   var camara54 = req.body.camara54 !== "" ? req.body.camara54 : 0.0;
-   var camara55 = req.body.camara55 !== "" ? req.body.camara55 : 0.0;
-   var camara56 = req.body.camara56 !== "" ? req.body.camara56 : 0.0;
-   var camara57 = req.body.camara57 !== "" ? req.body.camara57 : 0.0;
-   var camara58 = req.body.camara58 !== "" ? req.body.camara58 : 0.0;
-   var camara59 = req.body.camara59 !== "" ? req.body.camara59 : 0.0;
-   var camara60 = req.body.camara60 !== "" ? req.body.camara60 : 0.0;
-   var camara61 = req.body.camara61 !== "" ? req.body.camara61 : 0.0;
-   var camara62 = req.body.camara62 !== "" ? req.body.camara62 : 0.0;
-   var camara63 = req.body.camara63 !== "" ? req.body.camara63 : 0.0;
-   var camara64 = req.body.camara64 !== "" ? req.body.camara64 : 0.0;
-   var camara65 = req.body.camara65 !== "" ? req.body.camara65 : 0.0;
-   var camara66 = req.body.camara66 !== "" ? req.body.camara66 : 0.0;
-   var camara67 = req.body.camara67 !== "" ? req.body.camara67 : 0.0;
-   var camara68 = req.body.camara68 !== "" ? req.body.camara68 : 0.0;
-   var camara69 = req.body.camara69 !== "" ? req.body.camara69 : 0.0;
-   var camara70 = req.body.camara70 !== "" ? req.body.camara70 : 0.0;
-   var camara71 = req.body.camara71 !== "" ? req.body.camara71 : 0.0;
-   var camara72 = req.body.camara72 !== "" ? req.body.camara72 : 0.0;
-   var camara73 = req.body.camara73 !== "" ? req.body.camara73 : 0.0;
-   var camara74 = req.body.camara74 !== "" ? req.body.camara74 : 0.0;
-   var camara75 = req.body.camara75 !== "" ? req.body.camara75 : 0.0;
-   var camara76 = req.body.camara76 !== "" ? req.body.camara76 : 0.0;
-   var camara77 = req.body.camara77 !== "" ? req.body.camara77 : 0.0;
-   var camara78 = req.body.camara78 !== "" ? req.body.camara78 : 0.0;
-   var camara79 = req.body.camara79 !== "" ? req.body.camara79 : 0.0;
-   var camara80 = req.body.camara80 !== "" ? req.body.camara80 : 0.0;
-   var camara81 = req.body.camara81 !== "" ? req.body.camara81 : 0.0;
-   var camara82 = req.body.camara82 !== "" ? req.body.camara82 : 0.0;
-   var camara83 = req.body.camara83 !== "" ? req.body.camara83 : 0.0;
-   var camara84 = req.body.camara84 !== "" ? req.body.camara84 : 0.0;
-   var camara85 = req.body.camara85 !== "" ? req.body.camara85 : 0.0;
-   var camara86 = req.body.camara86 !== "" ? req.body.camara86 : 0.0;
-   var camara87 = req.body.camara87 !== "" ? req.body.camara87 : 0.0;
-   var camara88 = req.body.camara88 !== "" ? req.body.camara88 : 0.0;
-   var camara89 = req.body.camara89 !== "" ? req.body.camara89 : 0.0;
-   var camara90 = req.body.camara90 !== "" ? req.body.camara90 : 0.0;
-   var camara91 = req.body.camara91 !== "" ? req.body.camara91 : 0.0;
-   var camara92 = req.body.camara92 !== "" ? req.body.camara92 : 0.0;
-   var camara93 = req.body.camara93 !== "" ? req.body.camara93 : 0.0;
-   var camara94 = req.body.camara94 !== "" ? req.body.camara94 : 0.0;
-   var camara95 = req.body.camara95 !== "" ? req.body.camara95 : 0.0;
-   var camara96 = req.body.camara96 !== "" ? req.body.camara96 : 0.0;
-   var camara97 = req.body.camara97 !== "" ? req.body.camara97 : 0.0;
-   var camara98 = req.body.camara98 !== "" ? req.body.camara98 : 0.0;
-   var camara99 = req.body.camara99 !== "" ? req.body.camara99 : 0.0;
-   var camara100 = req.body.camara100 !== "" ? req.body.camara100 : 0.0;
-   var camara101 = req.body.camara101 !== "" ? req.body.camara101 : 0.0;
-   var camara102 = req.body.camara102 !== "" ? req.body.camara102 : 0.0;
-   var camara103 = req.body.camara103 !== "" ? req.body.camara103 : 0.0;
-   var camara104 = req.body.camara104 !== "" ? req.body.camara104 : 0.0;
-   var camara105 = req.body.camara105 !== "" ? req.body.camara105 : 0.0;
-   var camara106 = req.body.camara106 !== "" ? req.body.camara106 : 0.0;
-   var camara107 = req.body.camara107 !== "" ? req.body.camara107 : 0.0;
-   var camara108 = req.body.camara108 !== "" ? req.body.camara108 : 0.0;
-   var camara109 = req.body.camara109 !== "" ? req.body.camara109 : 0.0;
-   var camara110 = req.body.camara110 !== "" ? req.body.camara110 : 0.0;
-   var camara111 = req.body.camara111 !== "" ? req.body.camara111 : 0.0;
-   var camara112 = req.body.camara112 !== "" ? req.body.camara112 : 0.0;
-   var camara113 = req.body.camara113 !== "" ? req.body.camara113 : 0.0;
-   var camara114 = req.body.camara114 !== "" ? req.body.camara114 : 0.0;
-   var camara115 = req.body.camara115 !== "" ? req.body.camara115 : 0.0;
-   var camara116 = req.body.camara116 !== "" ? req.body.camara116 : 0.0;
-   var camara117 = req.body.camara117 !== "" ? req.body.camara117 : 0.0;
-   var camara118 = req.body.camara118 !== "" ? req.body.camara118 : 0.0;
-   var camara119 = req.body.camara119 !== "" ? req.body.camara119 : 0.0;
-   var camara120 = req.body.camara120 !== "" ? req.body.camara120 : 0.0;
-   var camara121 = req.body.camara121 !== "" ? req.body.camara121 : 0.0;
-   var camara122 = req.body.camara122 !== "" ? req.body.camara122 : 0.0;
-   var camara123 = req.body.camara123 !== "" ? req.body.camara123 : 0.0;
-   var camara124 = req.body.camara124 !== "" ? req.body.camara124 : 0.0;
-   var camara125 = req.body.camara125 !== "" ? req.body.camara125 : 0.0;
-   var camara126 = req.body.camara126 !== "" ? req.body.camara126 : 0.0;
-   var camara127 = req.body.camara127 !== "" ? req.body.camara127 : 0.0;
-   var camara128 = req.body.camara128 !== "" ? req.body.camara128 : 0.0;
-   var camara129 = req.body.camara129 !== "" ? req.body.camara129 : 0.0;
-   var camara130 = req.body.camara130 !== "" ? req.body.camara130 : 0.0;
-   var termoparK1 = req.body.termoparK1 !== "" ? req.body.termoparK1 : 0.0;
-   var termoparJ = req.body.termoparJ !== "" ? req.body.termoparJ : 0.0;
-   var termoparK2 = req.body.termoparK2 !== "" ? req.body.termoparK2 : 0.0;
-   var valve1 = req.body.VG1[0] !== "" ? req.body.VG1[0] : 0.0;
-   var valve2 = req.body.VG1[1] !== "" ? req.body.VG1[1] : 0.0;
-   var valve3 = req.body.VG1[2] !== "" ? req.body.VG1[2] : 0.0;
-   var valve4 = req.body.VG1[3] !== "" ? req.body.VG1[3] : 0.0;
-   var valve5 = req.body.VG1[4] !== "" ? req.body.VG1[4] : 0.0;
-   var valve6 = req.body.VG1[5] !== "" ? req.body.VG1[5] : 0.0;
-   var valve7 = req.body.VG1[6] !== "" ? req.body.VG1[6] : 0.0;
-   var valve8 = req.body.VG1[7] !== "" ? req.body.VG1[7] : 0.0;
-   var valve9 = req.body.VG1[8] !== "" ? req.body.VG1[8] : 0.0;
-   var valve10 = req.body.VG1[9] !== "" ? req.body.VG1[9] : 0.0;
-   var valve11 = req.body.VG1[10] !== "" ? req.body.VG1[10] : 0.0;
-   var valve12 = req.body.VG1[11] !== "" ? req.body.VG1[11] : 0.0;
-   var valve13 = req.body.VG1[12] !== "" ? req.body.VG1[12] : 0.0;
-   var valve14 = req.body.VG1[13] !== "" ? req.body.VG1[13] : 0.0;
-   var valve15 = req.body.VG1[14] !== "" ? req.body.VG1[14] : 0.0;
-   var valve16 = req.body.VG1[15] !== "" ? req.body.VG1[15] : 0.0;
-   var valve17 = req.body.VG1[16] !== "" ? req.body.VG1[16] : 0.0;
-   var valve18 = req.body.VG1[17] !== "" ? req.body.VG1[17] : 0.0;
-   var valve19 = req.body.VG1[18] !== "" ? req.body.VG1[18] : 0.0;
-   var valve20 = req.body.VG1[19] !== "" ? req.body.VG1[19] : 0.0;
-   var valve21 = req.body.VG1[20] !== "" ? req.body.VG1[20] : 0.0;
-   var valve22 = req.body.VG1[21] !== "" ? req.body.VG1[21] : 0.0;
-   var valve23 = req.body.VG1[22] !== "" ? req.body.VG1[22] : 0.0;
-   var valve24 = req.body.VG1[23] !== "" ? req.body.VG1[23] : 0.0;
-   var valve25 = req.body.VG1[24] !== "" ? req.body.VG1[24] : 0.0;
-   var valve26 = req.body.VG1[25] !== "" ? req.body.VG1[25] : 0.0;
-   var valve27 = req.body.VG1[26] !== "" ? req.body.VG1[26] : 0.0;
-   var valve28 = req.body.VG1[27] !== "" ? req.body.VG1[27] : 0.0;
-   var valve29 = req.body.VG1[28] !== "" ? req.body.VG1[28] : 0.0;
-   var valve30 = req.body.VG1[29] !== "" ? req.body.VG1[29] : 0.0;
-   var valve31 = req.body.VG1[30] !== "" ? req.body.VG1[30] : 0.0;
-   var valve32 = req.body.VG1[31] !== "" ? req.body.VG1[31] : 0.0;
-   var valve33 = req.body.VG1[32] !== "" ? req.body.VG1[32] : 0.0;
-   var valve34 = req.body.VG1[33] !== "" ? req.body.VG1[33] : 0.0;
-   var valve35 = req.body.VG1[34] !== "" ? req.body.VG1[34] : 0.0;
-   var valve36 = req.body.VG1[35] !== "" ? req.body.VG1[35] : 0.0;
-   var valve37 = req.body.VG1[36] !== "" ? req.body.VG1[36] : 0.0;
-   var valve38 = req.body.VG1[37] !== "" ? req.body.VG1[37] : 0.0;
-   var valve39 = req.body.VG1[38] !== "" ? req.body.VG1[38] : 0.0;
-   var valve40 = req.body.VG1[39] !== "" ? req.body.VG1[39] : 0.0;
-   var valve41 = req.body.VG1[40] !== "" ? req.body.VG1[40] : 0.0;
-   var valve42 = req.body.VG1[41] !== "" ? req.body.VG1[41] : 0.0;
-   var valve43 = req.body.VG1[42] !== "" ? req.body.VG1[42] : 0.0;
-   var valve44 = req.body.VG1[43] !== "" ? req.body.VG1[43] : 0.0;
-   var valve45 = req.body.VG1[44] !== "" ? req.body.VG1[44] : 0.0;
-   var valve46 = req.body.VG1[45] !== "" ? req.body.VG1[45] : 0.0;
-   var valve47 = req.body.VG1[46] !== "" ? req.body.VG1[46] : 0.0;
-   var valve48 = req.body.VG1[47] !== "" ? req.body.VG1[47] : 0.0;
-   var valve49 = req.body.VG1[48] !== "" ? req.body.VG1[48] : 0.0;
-   var valve50 = req.body.VG1[49] !== "" ? req.body.VG1[49] : 0.0;
-   var valve51 = req.body.VG1[50] !== "" ? req.body.VG1[50] : 0.0;
-   var valve52 = req.body.VG1[51] !== "" ? req.body.VG1[51] : 0.0;
-   var valve53 = req.body.VG1[52] !== "" ? req.body.VG1[52] : 0.0;
-   var valve54 = req.body.VG1[53] !== "" ? req.body.VG1[53] : 0.0;
-   var valve55 = req.body.VG1[54] !== "" ? req.body.VG1[54] : 0.0;
-   var valve56 = req.body.VG1[55] !== "" ? req.body.VG1[55] : 0.0;
-   var valve57 = req.body.VG1[56] !== "" ? req.body.VG1[56] : 0.0;
-   var valve58 = req.body.VG1[57] !== "" ? req.body.VG1[57] : 0.0;
-   var valve59 = req.body.VG1[58] !== "" ? req.body.VG1[58] : 0.0;
-   var valve60 = req.body.VG1[59] !== "" ? req.body.VG1[59] : 0.0;
-   var valve61 = req.body.VG1[60] !== "" ? req.body.VG1[60] : 0.0;
-   var valve62 = req.body.VG1[61] !== "" ? req.body.VG1[61] : 0.0;
-   var valve63 = req.body.VG1[62] !== "" ? req.body.VG1[62] : 0.0;
-   var valve64 = req.body.VG1[63] !== "" ? req.body.VG1[63] : 0.0;
-   var valve65 = req.body.VG1[64] !== "" ? req.body.VG1[64] : 0.0;
-   var valve66 = req.body.VG1[65] !== "" ? req.body.VG1[65] : 0.0;
-   var valve67 = req.body.VG1[66] !== "" ? req.body.VG1[66] : 0.0;
-   var valve68 = req.body.VG1[67] !== "" ? req.body.VG1[67] : 0.0;
-   var valve69 = req.body.VG1[68] !== "" ? req.body.VG1[68] : 0.0;
-   var valve70 = req.body.VG1[69] !== "" ? req.body.VG1[69] : 0.0;
-   var valve71 = req.body.VG1[70] !== "" ? req.body.VG1[70] : 0.0;
-   var valve72 = req.body.VG1[71] !== "" ? req.body.VG1[71] : 0.0;
-   var valve73 = req.body.VG1[72] !== "" ? req.body.VG1[72] : 0.0;
-   var valve74 = req.body.VG1[73] !== "" ? req.body.VG1[73] : 0.0;
-   var valve75 = req.body.VG1[74] !== "" ? req.body.VG1[74] : 0.0;
-   var valve76 = req.body.VG1[75] !== "" ? req.body.VG1[75] : 0.0;
-   var valve77 = req.body.VG1[76] !== "" ? req.body.VG1[76] : 0.0;
-   var valve78 = req.body.VG1[77] !== "" ? req.body.VG1[77] : 0.0;
-   var valve79 = req.body.VG1[78] !== "" ? req.body.VG1[78] : 0.0;
-   var valve80 = req.body.VG1[79] !== "" ? req.body.VG1[79] : 0.0;
-   var valve81 = req.body.VG1[80] !== "" ? req.body.VG1[80] : 0.0;
-   var valve82 = req.body.VG1[81] !== "" ? req.body.VG1[81] : 0.0;
-   var valve83 = req.body.VG1[82] !== "" ? req.body.VG1[82] : 0.0;
-   var valve84 = req.body.VG1[83] !== "" ? req.body.VG1[83] : 0.0;
-   var valve85 = req.body.VG1[84] !== "" ? req.body.VG1[84] : 0.0;
-   var valve86 = req.body.VG1[85] !== "" ? req.body.VG1[85] : 0.0;
-   var valve87 = req.body.VG1[86] !== "" ? req.body.VG1[86] : 0.0;
-   var valve88 = req.body.VG1[87] !== "" ? req.body.VG1[87] : 0.0;
-   var valve89 = req.body.VG1[88] !== "" ? req.body.VG1[88] : 0.0;
-   var valve90 = req.body.VG1[89] !== "" ? req.body.VG1[89] : 0.0;
-   var valve91 = req.body.VG2[0] !== "" ? req.body.VG2[0] : 0.0;
-   var valve92 = req.body.VG2[1] !== "" ? req.body.VG2[1] : 0.0;
-   var valve93 = req.body.VG2[2] !== "" ? req.body.VG2[2] : 0.0;
-   var valve94 = req.body.VG2[3] !== "" ? req.body.VG2[3] : 0.0;
-   var valve95 = req.body.VG2[4] !== "" ? req.body.VG2[4] : 0.0;
-   var valve96 = req.body.VG2[5] !== "" ? req.body.VG2[5] : 0.0;
-   var valve97 = req.body.VG2[6] !== "" ? req.body.VG2[6] : 0.0;
-   var valve98 = req.body.VG2[7] !== "" ? req.body.VG2[7] : 0.0;
-   var valve99 = req.body.VG2[8] !== "" ? req.body.VG2[8] : 0.0;
-   var valve100 = req.body.VG2[9] !== "" ? req.body.VG2[9] : 0.0;
-   var valve101 = req.body.VG2[10] !== "" ? req.body.VG2[10] : 0.0;
-   var valve102 = req.body.VG2[11] !== "" ? req.body.VG2[11] : 0.0;
-   var valve103 = req.body.VG2[12] !== "" ? req.body.VG2[12] : 0.0;
-   var valve104 = req.body.VG2[13] !== "" ? req.body.VG2[13] : 0.0;
-   var valve105 = req.body.VG2[14] !== "" ? req.body.VG2[14] : 0.0;
-   var valve106 = req.body.VG2[15] !== "" ? req.body.VG2[15] : 0.0;
-   var valve107 = req.body.VG2[16] !== "" ? req.body.VG2[16] : 0.0;
-   var valve108 = req.body.VG2[17] !== "" ? req.body.VG2[17] : 0.0;
-   var valve109 = req.body.VG2[18] !== "" ? req.body.VG2[18] : 0.0;
-   var valve110 = req.body.VG2[19] !== "" ? req.body.VG2[19] : 0.0;
-   var valve111 = req.body.VG2[20] !== "" ? req.body.VG2[20] : 0.0;
-   var valve112 = req.body.VG2[21] !== "" ? req.body.VG2[21] : 0.0;
-   var valve113 = req.body.VG2[22] !== "" ? req.body.VG2[22] : 0.0;
-   var valve114 = req.body.VG2[23] !== "" ? req.body.VG2[23] : 0.0;
-   var valve115 = req.body.VG2[24] !== "" ? req.body.VG2[24] : 0.0;
-   var valve116 = req.body.VG2[25] !== "" ? req.body.VG2[25] : 0.0;
-   var valve117 = req.body.VG2[26] !== "" ? req.body.VG2[26] : 0.0;
-   var valve118 = req.body.VG2[27] !== "" ? req.body.VG2[27] : 0.0;
-   var valve119 = req.body.VG2[28] !== "" ? req.body.VG2[28] : 0.0;
-   var valve120 = req.body.VG2[29] !== "" ? req.body.VG2[29] : 0.0;
-   var valve121 = req.body.VG2[30] !== "" ? req.body.VG2[30] : 0.0;
-   var valve122 = req.body.VG2[31] !== "" ? req.body.VG2[31] : 0.0;
-   var valve123 = req.body.VG2[32] !== "" ? req.body.VG2[32] : 0.0;
-   var valve124 = req.body.VG2[33] !== "" ? req.body.VG2[33] : 0.0;
-   var valve125 = req.body.VG2[34] !== "" ? req.body.VG2[34] : 0.0;
-   var valve126 = req.body.VG2[35] !== "" ? req.body.VG2[35] : 0.0;
-   var valve127 = req.body.VG2[36] !== "" ? req.body.VG2[36] : 0.0;
-   var valve128 = req.body.VG2[37] !== "" ? req.body.VG2[37] : 0.0;
-   var valve129 = req.body.VG2[38] !== "" ? req.body.VG2[38] : 0.0;
-   var valve130 = req.body.VG2[39] !== "" ? req.body.VG2[39] : 0.0;
-   var valve131 = req.body.VG2[40] !== "" ? req.body.VG2[40] : 0.0;
-   var valve132 = req.body.VG2[41] !== "" ? req.body.VG2[41] : 0.0;
-   var valve133 = req.body.VG2[42] !== "" ? req.body.VG2[42] : 0.0;
-   var valve134 = req.body.VG2[43] !== "" ? req.body.VG2[43] : 0.0;
-   var valve135 = req.body.VG2[44] !== "" ? req.body.VG2[44] : 0.0;
-   var valve136 = req.body.VG2[45] !== "" ? req.body.VG2[45] : 0.0;
-   var valve137 = req.body.VG2[46] !== "" ? req.body.VG2[46] : 0.0;
-   var valve138 = req.body.VG2[47] !== "" ? req.body.VG2[47] : 0.0;
-   var valve139 = req.body.VG2[48] !== "" ? req.body.VG2[48] : 0.0;
-   var valve140 = req.body.VG2[49] !== "" ? req.body.VG2[49] : 0.0;
-   var valve141 = req.body.VG2[50] !== "" ? req.body.VG2[50] : 0.0;
-   var valve142 = req.body.VG2[51] !== "" ? req.body.VG2[51] : 0.0;
-   var valve143 = req.body.VG2[52] !== "" ? req.body.VG2[52] : 0.0;
-   var valve144 = req.body.VG2[53] !== "" ? req.body.VG2[53] : 0.0;
-   var valve145 = req.body.VG2[54] !== "" ? req.body.VG2[54] : 0.0;
-   var valve146 = req.body.VG2[55] !== "" ? req.body.VG2[55] : 0.0;
-   var valve147 = req.body.VG2[56] !== "" ? req.body.VG2[56] : 0.0;
-   var valve148 = req.body.VG2[57] !== "" ? req.body.VG2[57] : 0.0;
-   var valve149 = req.body.VG2[58] !== "" ? req.body.VG2[58] : 0.0;
-   var valve150 = req.body.VG2[59] !== "" ? req.body.VG2[59] : 0.0;
-   var valve151 = req.body.VG2[60] !== "" ? req.body.VG2[60] : 0.0;
-   var valve152 = req.body.VG2[61] !== "" ? req.body.VG2[61] : 0.0;
-   var valve153 = req.body.VG2[62] !== "" ? req.body.VG2[62] : 0.0;
-   var valve154 = req.body.VG2[63] !== "" ? req.body.VG2[63] : 0.0;
-   var valve155 = req.body.VG2[64] !== "" ? req.body.VG2[64] : 0.0;
-   var valve156 = req.body.VG2[65] !== "" ? req.body.VG2[65] : 0.0;
-   var valve157 = req.body.VG2[66] !== "" ? req.body.VG2[66] : 0.0;
-   var valve158 = req.body.VG2[67] !== "" ? req.body.VG2[67] : 0.0;
-   var valve159 = req.body.VG2[68] !== "" ? req.body.VG2[68] : 0.0;
-   var valve160 = req.body.VG2[69] !== "" ? req.body.VG2[69] : 0.0;
-   var valve161 = req.body.VG2[70] !== "" ? req.body.VG2[70] : 0.0;
-   var valve162 = req.body.VG2[71] !== "" ? req.body.VG2[71] : 0.0;
-   var valve163 = req.body.VG2[72] !== "" ? req.body.VG2[72] : 0.0;
-   var valve164 = req.body.VG2[73] !== "" ? req.body.VG2[73] : 0.0;
-   var valve165 = req.body.VG2[74] !== "" ? req.body.VG2[74] : 0.0;
-   var valve166 = req.body.VG2[75] !== "" ? req.body.VG2[75] : 0.0;
-   var valve167 = req.body.VG2[76] !== "" ? req.body.VG2[76] : 0.0;
-   var valve168 = req.body.VG2[77] !== "" ? req.body.VG2[77] : 0.0;
-   var valve169 = req.body.VG2[78] !== "" ? req.body.VG2[78] : 0.0;
-   var valve170 = req.body.VG2[79] !== "" ? req.body.VG2[79] : 0.0;
-   var valve171 = req.body.VG2[80] !== "" ? req.body.VG2[80] : 0.0;
-   var valve172 = req.body.VG2[81] !== "" ? req.body.VG2[81] : 0.0;
-   var valve173 = req.body.VG2[82] !== "" ? req.body.VG2[82] : 0.0;
-   var valve174 = req.body.VG2[83] !== "" ? req.body.VG2[83] : 0.0;
-   var valve175 = req.body.VG2[84] !== "" ? req.body.VG2[84] : 0.0;
-   var valve176 = req.body.VG2[85] !== "" ? req.body.VG2[85] : 0.0;
-   var valve177 = req.body.VG2[86] !== "" ? req.body.VG2[86] : 0.0;
-   var valve178 = req.body.VG2[87] !== "" ? req.body.VG2[87] : 0.0;
-   var valve179 = req.body.VG2[88] !== "" ? req.body.VG2[88] : 0.0;
-   var valve180 = req.body.VG2[89] !== "" ? req.body.VG2[89] : 0.0;
-   var voltagem = req.body.voltagem !== "" ? req.body.voltagem : 0.0;
-   var refrLadoFixo1 = req.body.rmladofixo1 !== "" ? req.body.rmladofixo1 : 0.0;
-   var refrLadoFixo2 = req.body.rmladomovel1 !== "" ? req.body.rmladomovel1 : 0.0;
-   var refrLadoMovel1 = req.body.rmladofixo2 !== "" ? req.body.rmladofixo2 : 0.0;
-   var refrLadoMovel2 = req.body.rmladomovel2 !== "" ? req.body.rmladomovel2 : 0.0;
-   var vaporLadoFixo1 = req.body.valorladofixo !== "" ? req.body.valorladofixo : 0.0;
-   var vaporLadoFixo2 = req.body.valorladomovel !== "" ? req.body.valorladomovel : 0.0;
+   var camara1 = req.body.camara1 !== "" ? req.body.camara1.replace(",", ".") : 0.0;
+   var camara2 = req.body.camara2 !== "" ? req.body.camara2.replace(",", ".") : 0.0;
+   var camara3 = req.body.camara3 !== "" ? req.body.camara3.replace(",", ".") : 0.0;
+   var camara4 = req.body.camara4 !== "" ? req.body.camara4.replace(",", ".") : 0.0;
+   var camara5 = req.body.camara5 !== "" ? req.body.camara5.replace(",", ".") : 0.0;
+   var camara6 = req.body.camara6 !== "" ? req.body.camara6.replace(",", ".") : 0.0;
+   var camara7 = req.body.camara7 !== "" ? req.body.camara7.replace(",", ".") : 0.0;
+   var camara8 = req.body.camara8 !== "" ? req.body.camara8.replace(",", ".") : 0.0;
+   var camara9 = req.body.camara9 !== "" ? req.body.camara9.replace(",", ".") : 0.0;
+   var camara10 = req.body.camara10 !== "" ? req.body.camara10.replace(",", ".") : 0.0;
+   var camara11 = req.body.camara11 !== "" ? req.body.camara11.replace(",", ".") : 0.0;
+   var camara12 = req.body.camara12 !== "" ? req.body.camara12.replace(",", ".") : 0.0;
+   var camara13 = req.body.camara13 !== "" ? req.body.camara13.replace(",", ".") : 0.0;
+   var camara14 = req.body.camara14 !== "" ? req.body.camara14.replace(",", ".") : 0.0;
+   var camara15 = req.body.camara15 !== "" ? req.body.camara15.replace(",", ".") : 0.0;
+   var camara16 = req.body.camara16 !== "" ? req.body.camara16.replace(",", ".") : 0.0;
+   var camara17 = req.body.camara17 !== "" ? req.body.camara17.replace(",", ".") : 0.0;
+   var camara18 = req.body.camara18 !== "" ? req.body.camara18.replace(",", ".") : 0.0;
+   var camara19 = req.body.camara19 !== "" ? req.body.camara19.replace(",", ".") : 0.0;
+   var camara20 = req.body.camara20 !== "" ? req.body.camara20.replace(",", ".") : 0.0;
+   var camara21 = req.body.camara21 !== "" ? req.body.camara21.replace(",", ".") : 0.0;
+   var camara22 = req.body.camara22 !== "" ? req.body.camara22.replace(",", ".") : 0.0;
+   var camara23 = req.body.camara23 !== "" ? req.body.camara23.replace(",", ".") : 0.0;
+   var camara24 = req.body.camara24 !== "" ? req.body.camara24.replace(",", ".") : 0.0;
+   var camara25 = req.body.camara25 !== "" ? req.body.camara25.replace(",", ".") : 0.0;
+   var camara26 = req.body.camara26 !== "" ? req.body.camara26.replace(",", ".") : 0.0;
+   var camara27 = req.body.camara27 !== "" ? req.body.camara27.replace(",", ".") : 0.0;
+   var camara28 = req.body.camara28 !== "" ? req.body.camara28.replace(",", ".") : 0.0;
+   var camara29 = req.body.camara29 !== "" ? req.body.camara29.replace(",", ".") : 0.0;
+   var camara30 = req.body.camara30 !== "" ? req.body.camara30.replace(",", ".") : 0.0;
+   var camara31 = req.body.camara31 !== "" ? req.body.camara31.replace(",", ".") : 0.0;
+   var camara32 = req.body.camara32 !== "" ? req.body.camara32.replace(",", ".") : 0.0;
+   var camara33 = req.body.camara33 !== "" ? req.body.camara33.replace(",", ".") : 0.0;
+   var camara34 = req.body.camara34 !== "" ? req.body.camara34.replace(",", ".") : 0.0;
+   var camara35 = req.body.camara35 !== "" ? req.body.camara35.replace(",", ".") : 0.0;
+   var camara36 = req.body.camara36 !== "" ? req.body.camara36.replace(",", ".") : 0.0;
+   var camara37 = req.body.camara37 !== "" ? req.body.camara37.replace(",", ".") : 0.0;
+   var camara38 = req.body.camara38 !== "" ? req.body.camara38.replace(",", ".") : 0.0;
+   var camara39 = req.body.camara39 !== "" ? req.body.camara39.replace(",", ".") : 0.0;
+   var camara40 = req.body.camara40 !== "" ? req.body.camara40.replace(",", ".") : 0.0;
+   var camara41 = req.body.camara41 !== "" ? req.body.camara41.replace(",", ".") : 0.0;
+   var camara42 = req.body.camara42 !== "" ? req.body.camara42.replace(",", ".") : 0.0;
+   var camara43 = req.body.camara43 !== "" ? req.body.camara43.replace(",", ".") : 0.0;
+   var camara44 = req.body.camara44 !== "" ? req.body.camara44.replace(",", ".") : 0.0;
+   var camara45 = req.body.camara45 !== "" ? req.body.camara45.replace(",", ".") : 0.0;
+   var camara46 = req.body.camara46 !== "" ? req.body.camara46.replace(",", ".") : 0.0;
+   var camara47 = req.body.camara47 !== "" ? req.body.camara47.replace(",", ".") : 0.0;
+   var camara48 = req.body.camara48 !== "" ? req.body.camara48.replace(",", ".") : 0.0;
+   var camara49 = req.body.camara49 !== "" ? req.body.camara49.replace(",", ".") : 0.0;
+   var camara50 = req.body.camara50 !== "" ? req.body.camara50.replace(",", ".") : 0.0;
+   var camara51 = req.body.camara51 !== "" ? req.body.camara51.replace(",", ".") : 0.0;
+   var camara52 = req.body.camara52 !== "" ? req.body.camara52.replace(",", ".") : 0.0;
+   var camara53 = req.body.camara53 !== "" ? req.body.camara53.replace(",", ".") : 0.0;
+   var camara54 = req.body.camara54 !== "" ? req.body.camara54.replace(",", ".") : 0.0;
+   var camara55 = req.body.camara55 !== "" ? req.body.camara55.replace(",", ".") : 0.0;
+   var camara56 = req.body.camara56 !== "" ? req.body.camara56.replace(",", ".") : 0.0;
+   var camara57 = req.body.camara57 !== "" ? req.body.camara57.replace(",", ".") : 0.0;
+   var camara58 = req.body.camara58 !== "" ? req.body.camara58.replace(",", ".") : 0.0;
+   var camara59 = req.body.camara59 !== "" ? req.body.camara59.replace(",", ".") : 0.0;
+   var camara60 = req.body.camara60 !== "" ? req.body.camara60.replace(",", ".") : 0.0;
+   var camara61 = req.body.camara61 !== "" ? req.body.camara61.replace(",", ".") : 0.0;
+   var camara62 = req.body.camara62 !== "" ? req.body.camara62.replace(",", ".") : 0.0;
+   var camara63 = req.body.camara63 !== "" ? req.body.camara63.replace(",", ".") : 0.0;
+   var camara64 = req.body.camara64 !== "" ? req.body.camara64.replace(",", ".") : 0.0;
+   var camara65 = req.body.camara65 !== "" ? req.body.camara65.replace(",", ".") : 0.0;
+   var camara66 = req.body.camara66 !== "" ? req.body.camara66.replace(",", ".") : 0.0;
+   var camara67 = req.body.camara67 !== "" ? req.body.camara67.replace(",", ".") : 0.0;
+   var camara68 = req.body.camara68 !== "" ? req.body.camara68.replace(",", ".") : 0.0;
+   var camara69 = req.body.camara69 !== "" ? req.body.camara69.replace(",", ".") : 0.0;
+   var camara70 = req.body.camara70 !== "" ? req.body.camara70.replace(",", ".") : 0.0;
+   var camara71 = req.body.camara71 !== "" ? req.body.camara71.replace(",", ".") : 0.0;
+   var camara72 = req.body.camara72 !== "" ? req.body.camara72.replace(",", ".") : 0.0;
+   var camara73 = req.body.camara73 !== "" ? req.body.camara73.replace(",", ".") : 0.0;
+   var camara74 = req.body.camara74 !== "" ? req.body.camara74.replace(",", ".") : 0.0;
+   var camara75 = req.body.camara75 !== "" ? req.body.camara75.replace(",", ".") : 0.0;
+   var camara76 = req.body.camara76 !== "" ? req.body.camara76.replace(",", ".") : 0.0;
+   var camara77 = req.body.camara77 !== "" ? req.body.camara77.replace(",", ".") : 0.0;
+   var camara78 = req.body.camara78 !== "" ? req.body.camara78.replace(",", ".") : 0.0;
+   var camara79 = req.body.camara79 !== "" ? req.body.camara79.replace(",", ".") : 0.0;
+   var camara80 = req.body.camara80 !== "" ? req.body.camara80.replace(",", ".") : 0.0;
+   var camara81 = req.body.camara81 !== "" ? req.body.camara81.replace(",", ".") : 0.0;
+   var camara82 = req.body.camara82 !== "" ? req.body.camara82.replace(",", ".") : 0.0;
+   var camara83 = req.body.camara83 !== "" ? req.body.camara83.replace(",", ".") : 0.0;
+   var camara84 = req.body.camara84 !== "" ? req.body.camara84.replace(",", ".") : 0.0;
+   var camara85 = req.body.camara85 !== "" ? req.body.camara85.replace(",", ".") : 0.0;
+   var camara86 = req.body.camara86 !== "" ? req.body.camara86.replace(",", ".") : 0.0;
+   var camara87 = req.body.camara87 !== "" ? req.body.camara87.replace(",", ".") : 0.0;
+   var camara88 = req.body.camara88 !== "" ? req.body.camara88.replace(",", ".") : 0.0;
+   var camara89 = req.body.camara89 !== "" ? req.body.camara89.replace(",", ".") : 0.0;
+   var camara90 = req.body.camara90 !== "" ? req.body.camara90.replace(",", ".") : 0.0;
+   var camara91 = req.body.camara91 !== "" ? req.body.camara91.replace(",", ".") : 0.0;
+   var camara92 = req.body.camara92 !== "" ? req.body.camara92.replace(",", ".") : 0.0;
+   var camara93 = req.body.camara93 !== "" ? req.body.camara93.replace(",", ".") : 0.0;
+   var camara94 = req.body.camara94 !== "" ? req.body.camara94.replace(",", ".") : 0.0;
+   var camara95 = req.body.camara95 !== "" ? req.body.camara95.replace(",", ".") : 0.0;
+   var camara96 = req.body.camara96 !== "" ? req.body.camara96.replace(",", ".") : 0.0;
+   var camara97 = req.body.camara97 !== "" ? req.body.camara97.replace(",", ".") : 0.0;
+   var camara98 = req.body.camara98 !== "" ? req.body.camara98.replace(",", ".") : 0.0;
+   var camara99 = req.body.camara99 !== "" ? req.body.camara99.replace(",", ".") : 0.0;
+   var camara100 = req.body.camara100 !== "" ? req.body.camara100.replace(",", ".") : 0.0;
+   var camara101 = req.body.camara101 !== "" ? req.body.camara101.replace(",", ".") : 0.0;
+   var camara102 = req.body.camara102 !== "" ? req.body.camara102.replace(",", ".") : 0.0;
+   var camara103 = req.body.camara103 !== "" ? req.body.camara103.replace(",", ".") : 0.0;
+   var camara104 = req.body.camara104 !== "" ? req.body.camara104.replace(",", ".") : 0.0;
+   var camara105 = req.body.camara105 !== "" ? req.body.camara105.replace(",", ".") : 0.0;
+   var camara106 = req.body.camara106 !== "" ? req.body.camara106.replace(",", ".") : 0.0;
+   var camara107 = req.body.camara107 !== "" ? req.body.camara107.replace(",", ".") : 0.0;
+   var camara108 = req.body.camara108 !== "" ? req.body.camara108.replace(",", ".") : 0.0;
+   var camara109 = req.body.camara109 !== "" ? req.body.camara109.replace(",", ".") : 0.0;
+   var camara110 = req.body.camara110 !== "" ? req.body.camara110.replace(",", ".") : 0.0;
+   var camara111 = req.body.camara111 !== "" ? req.body.camara111.replace(",", ".") : 0.0;
+   var camara112 = req.body.camara112 !== "" ? req.body.camara112.replace(",", ".") : 0.0;
+   var camara113 = req.body.camara113 !== "" ? req.body.camara113.replace(",", ".") : 0.0;
+   var camara114 = req.body.camara114 !== "" ? req.body.camara114.replace(",", ".") : 0.0;
+   var camara115 = req.body.camara115 !== "" ? req.body.camara115.replace(",", ".") : 0.0;
+   var camara116 = req.body.camara116 !== "" ? req.body.camara116.replace(",", ".") : 0.0;
+   var camara117 = req.body.camara117 !== "" ? req.body.camara117.replace(",", ".") : 0.0;
+   var camara118 = req.body.camara118 !== "" ? req.body.camara118.replace(",", ".") : 0.0;
+   var camara119 = req.body.camara119 !== "" ? req.body.camara119.replace(",", ".") : 0.0;
+   var camara120 = req.body.camara120 !== "" ? req.body.camara120.replace(",", ".") : 0.0;
+   var camara121 = req.body.camara121 !== "" ? req.body.camara121.replace(",", ".") : 0.0;
+   var camara122 = req.body.camara122 !== "" ? req.body.camara122.replace(",", ".") : 0.0;
+   var camara123 = req.body.camara123 !== "" ? req.body.camara123.replace(",", ".") : 0.0;
+   var camara124 = req.body.camara124 !== "" ? req.body.camara124.replace(",", ".") : 0.0;
+   var camara125 = req.body.camara125 !== "" ? req.body.camara125.replace(",", ".") : 0.0;
+   var camara126 = req.body.camara126 !== "" ? req.body.camara126.replace(",", ".") : 0.0;
+   var camara127 = req.body.camara127 !== "" ? req.body.camara127.replace(",", ".") : 0.0;
+   var camara128 = req.body.camara128 !== "" ? req.body.camara128.replace(",", ".") : 0.0;
+   var camara129 = req.body.camara129 !== "" ? req.body.camara129.replace(",", ".") : 0.0;
+   var camara130 = req.body.camara130 !== "" ? req.body.camara130.replace(",", ".") : 0.0;
+   var termoparK1 = req.body.termoparK1 !== "" ? req.body.termoparK1.replace(",", ".") : 0.0;
+   var termoparJ = req.body.termoparJ !== "" ? req.body.termoparJ.replace(",", ".") : 0.0;
+   var termoparK2 = req.body.termoparK2 !== "" ? req.body.termoparK2.replace(",", ".") : 0.0;
+   var valve1 = req.body.VG1[0] !== "" ? req.body.VG1[0].replace(",", ".") : 0.0;
+   var valve2 = req.body.VG1[1] !== "" ? req.body.VG1[1].replace(",", ".") : 0.0;
+   var valve3 = req.body.VG1[2] !== "" ? req.body.VG1[2].replace(",", ".") : 0.0;
+   var valve4 = req.body.VG1[3] !== "" ? req.body.VG1[3].replace(",", ".") : 0.0;
+   var valve5 = req.body.VG1[4] !== "" ? req.body.VG1[4].replace(",", ".") : 0.0;
+   var valve6 = req.body.VG1[5] !== "" ? req.body.VG1[5].replace(",", ".") : 0.0;
+   var valve7 = req.body.VG1[6] !== "" ? req.body.VG1[6].replace(",", ".") : 0.0;
+   var valve8 = req.body.VG1[7] !== "" ? req.body.VG1[7].replace(",", ".") : 0.0;
+   var valve9 = req.body.VG1[8] !== "" ? req.body.VG1[8].replace(",", ".") : 0.0;
+   var valve10 = req.body.VG1[9] !== "" ? req.body.VG1[9].replace(",", ".") : 0.0;
+   var valve11 = req.body.VG1[10] !== "" ? req.body.VG1[10].replace(",", ".") : 0.0;
+   var valve12 = req.body.VG1[11] !== "" ? req.body.VG1[11].replace(",", ".") : 0.0;
+   var valve13 = req.body.VG1[12] !== "" ? req.body.VG1[12].replace(",", ".") : 0.0;
+   var valve14 = req.body.VG1[13] !== "" ? req.body.VG1[13].replace(",", ".") : 0.0;
+   var valve15 = req.body.VG1[14] !== "" ? req.body.VG1[14].replace(",", ".") : 0.0;
+   var valve16 = req.body.VG1[15] !== "" ? req.body.VG1[15].replace(",", ".") : 0.0;
+   var valve17 = req.body.VG1[16] !== "" ? req.body.VG1[16].replace(",", ".") : 0.0;
+   var valve18 = req.body.VG1[17] !== "" ? req.body.VG1[17].replace(",", ".") : 0.0;
+   var valve19 = req.body.VG1[18] !== "" ? req.body.VG1[18].replace(",", ".") : 0.0;
+   var valve20 = req.body.VG1[19] !== "" ? req.body.VG1[19].replace(",", ".") : 0.0;
+   var valve21 = req.body.VG1[20] !== "" ? req.body.VG1[20].replace(",", ".") : 0.0;
+   var valve22 = req.body.VG1[21] !== "" ? req.body.VG1[21].replace(",", ".") : 0.0;
+   var valve23 = req.body.VG1[22] !== "" ? req.body.VG1[22].replace(",", ".") : 0.0;
+   var valve24 = req.body.VG1[23] !== "" ? req.body.VG1[23].replace(",", ".") : 0.0;
+   var valve25 = req.body.VG1[24] !== "" ? req.body.VG1[24].replace(",", ".") : 0.0;
+   var valve26 = req.body.VG1[25] !== "" ? req.body.VG1[25].replace(",", ".") : 0.0;
+   var valve27 = req.body.VG1[26] !== "" ? req.body.VG1[26].replace(",", ".") : 0.0;
+   var valve28 = req.body.VG1[27] !== "" ? req.body.VG1[27].replace(",", ".") : 0.0;
+   var valve29 = req.body.VG1[28] !== "" ? req.body.VG1[28].replace(",", ".") : 0.0;
+   var valve30 = req.body.VG1[29] !== "" ? req.body.VG1[29].replace(",", ".") : 0.0;
+   var valve31 = req.body.VG1[30] !== "" ? req.body.VG1[30].replace(",", ".") : 0.0;
+   var valve32 = req.body.VG1[31] !== "" ? req.body.VG1[31].replace(",", ".") : 0.0;
+   var valve33 = req.body.VG1[32] !== "" ? req.body.VG1[32].replace(",", ".") : 0.0;
+   var valve34 = req.body.VG1[33] !== "" ? req.body.VG1[33].replace(",", ".") : 0.0;
+   var valve35 = req.body.VG1[34] !== "" ? req.body.VG1[34].replace(",", ".") : 0.0;
+   var valve36 = req.body.VG1[35] !== "" ? req.body.VG1[35].replace(",", ".") : 0.0;
+   var valve37 = req.body.VG1[36] !== "" ? req.body.VG1[36].replace(",", ".") : 0.0;
+   var valve38 = req.body.VG1[37] !== "" ? req.body.VG1[37].replace(",", ".") : 0.0;
+   var valve39 = req.body.VG1[38] !== "" ? req.body.VG1[38].replace(",", ".") : 0.0;
+   var valve40 = req.body.VG1[39] !== "" ? req.body.VG1[39].replace(",", ".") : 0.0;
+   var valve41 = req.body.VG1[40] !== "" ? req.body.VG1[40].replace(",", ".") : 0.0;
+   var valve42 = req.body.VG1[41] !== "" ? req.body.VG1[41].replace(",", ".") : 0.0;
+   var valve43 = req.body.VG1[42] !== "" ? req.body.VG1[42].replace(",", ".") : 0.0;
+   var valve44 = req.body.VG1[43] !== "" ? req.body.VG1[43].replace(",", ".") : 0.0;
+   var valve45 = req.body.VG1[44] !== "" ? req.body.VG1[44].replace(",", ".") : 0.0;
+   var valve46 = req.body.VG1[45] !== "" ? req.body.VG1[45].replace(",", ".") : 0.0;
+   var valve47 = req.body.VG1[46] !== "" ? req.body.VG1[46].replace(",", ".") : 0.0;
+   var valve48 = req.body.VG1[47] !== "" ? req.body.VG1[47].replace(",", ".") : 0.0;
+   var valve49 = req.body.VG1[48] !== "" ? req.body.VG1[48].replace(",", ".") : 0.0;
+   var valve50 = req.body.VG1[49] !== "" ? req.body.VG1[49].replace(",", ".") : 0.0;
+   var valve51 = req.body.VG1[50] !== "" ? req.body.VG1[50].replace(",", ".") : 0.0;
+   var valve52 = req.body.VG1[51] !== "" ? req.body.VG1[51].replace(",", ".") : 0.0;
+   var valve53 = req.body.VG1[52] !== "" ? req.body.VG1[52].replace(",", ".") : 0.0;
+   var valve54 = req.body.VG1[53] !== "" ? req.body.VG1[53].replace(",", ".") : 0.0;
+   var valve55 = req.body.VG1[54] !== "" ? req.body.VG1[54].replace(",", ".") : 0.0;
+   var valve56 = req.body.VG1[55] !== "" ? req.body.VG1[55].replace(",", ".") : 0.0;
+   var valve57 = req.body.VG1[56] !== "" ? req.body.VG1[56].replace(",", ".") : 0.0;
+   var valve58 = req.body.VG1[57] !== "" ? req.body.VG1[57].replace(",", ".") : 0.0;
+   var valve59 = req.body.VG1[58] !== "" ? req.body.VG1[58].replace(",", ".") : 0.0;
+   var valve60 = req.body.VG1[59] !== "" ? req.body.VG1[59].replace(",", ".") : 0.0;
+   var valve61 = req.body.VG1[60] !== "" ? req.body.VG1[60].replace(",", ".") : 0.0;
+   var valve62 = req.body.VG1[61] !== "" ? req.body.VG1[61].replace(",", ".") : 0.0;
+   var valve63 = req.body.VG1[62] !== "" ? req.body.VG1[62].replace(",", ".") : 0.0;
+   var valve64 = req.body.VG1[63] !== "" ? req.body.VG1[63].replace(",", ".") : 0.0;
+   var valve65 = req.body.VG1[64] !== "" ? req.body.VG1[64].replace(",", ".") : 0.0;
+   var valve66 = req.body.VG1[65] !== "" ? req.body.VG1[65].replace(",", ".") : 0.0;
+   var valve67 = req.body.VG1[66] !== "" ? req.body.VG1[66].replace(",", ".") : 0.0;
+   var valve68 = req.body.VG1[67] !== "" ? req.body.VG1[67].replace(",", ".") : 0.0;
+   var valve69 = req.body.VG1[68] !== "" ? req.body.VG1[68].replace(",", ".") : 0.0;
+   var valve70 = req.body.VG1[69] !== "" ? req.body.VG1[69].replace(",", ".") : 0.0;
+   var valve71 = req.body.VG1[70] !== "" ? req.body.VG1[70].replace(",", ".") : 0.0;
+   var valve72 = req.body.VG1[71] !== "" ? req.body.VG1[71].replace(",", ".") : 0.0;
+   var valve73 = req.body.VG1[72] !== "" ? req.body.VG1[72].replace(",", ".") : 0.0;
+   var valve74 = req.body.VG1[73] !== "" ? req.body.VG1[73].replace(",", ".") : 0.0;
+   var valve75 = req.body.VG1[74] !== "" ? req.body.VG1[74].replace(",", ".") : 0.0;
+   var valve76 = req.body.VG1[75] !== "" ? req.body.VG1[75].replace(",", ".") : 0.0;
+   var valve77 = req.body.VG1[76] !== "" ? req.body.VG1[76].replace(",", ".") : 0.0;
+   var valve78 = req.body.VG1[77] !== "" ? req.body.VG1[77].replace(",", ".") : 0.0;
+   var valve79 = req.body.VG1[78] !== "" ? req.body.VG1[78].replace(",", ".") : 0.0;
+   var valve80 = req.body.VG1[79] !== "" ? req.body.VG1[79].replace(",", ".") : 0.0;
+   var valve81 = req.body.VG1[80] !== "" ? req.body.VG1[80].replace(",", ".") : 0.0;
+   var valve82 = req.body.VG1[81] !== "" ? req.body.VG1[81].replace(",", ".") : 0.0;
+   var valve83 = req.body.VG1[82] !== "" ? req.body.VG1[82].replace(",", ".") : 0.0;
+   var valve84 = req.body.VG1[83] !== "" ? req.body.VG1[83].replace(",", ".") : 0.0;
+   var valve85 = req.body.VG1[84] !== "" ? req.body.VG1[84].replace(",", ".") : 0.0;
+   var valve86 = req.body.VG1[85] !== "" ? req.body.VG1[85].replace(",", ".") : 0.0;
+   var valve87 = req.body.VG1[86] !== "" ? req.body.VG1[86].replace(",", ".") : 0.0;
+   var valve88 = req.body.VG1[87] !== "" ? req.body.VG1[87].replace(",", ".") : 0.0;
+   var valve89 = req.body.VG1[88] !== "" ? req.body.VG1[88].replace(",", ".") : 0.0;
+   var valve90 = req.body.VG1[89] !== "" ? req.body.VG1[89].replace(",", ".") : 0.0;
+   var valve91 = req.body.VG2[0] !== "" ? req.body.VG2[0].replace(",", ".") : 0.0;
+   var valve92 = req.body.VG2[1] !== "" ? req.body.VG2[1].replace(",", ".") : 0.0;
+   var valve93 = req.body.VG2[2] !== "" ? req.body.VG2[2].replace(",", ".") : 0.0;
+   var valve94 = req.body.VG2[3] !== "" ? req.body.VG2[3].replace(",", ".") : 0.0;
+   var valve95 = req.body.VG2[4] !== "" ? req.body.VG2[4].replace(",", ".") : 0.0;
+   var valve96 = req.body.VG2[5] !== "" ? req.body.VG2[5].replace(",", ".") : 0.0;
+   var valve97 = req.body.VG2[6] !== "" ? req.body.VG2[6].replace(",", ".") : 0.0;
+   var valve98 = req.body.VG2[7] !== "" ? req.body.VG2[7].replace(",", ".") : 0.0;
+   var valve99 = req.body.VG2[8] !== "" ? req.body.VG2[8].replace(",", ".") : 0.0;
+   var valve100 = req.body.VG2[9] !== "" ? req.body.VG2[9].replace(",", ".") : 0.0;
+   var valve101 = req.body.VG2[10] !== "" ? req.body.VG2[10].replace(",", ".") : 0.0;
+   var valve102 = req.body.VG2[11] !== "" ? req.body.VG2[11].replace(",", ".") : 0.0;
+   var valve103 = req.body.VG2[12] !== "" ? req.body.VG2[12].replace(",", ".") : 0.0;
+   var valve104 = req.body.VG2[13] !== "" ? req.body.VG2[13].replace(",", ".") : 0.0;
+   var valve105 = req.body.VG2[14] !== "" ? req.body.VG2[14].replace(",", ".") : 0.0;
+   var valve106 = req.body.VG2[15] !== "" ? req.body.VG2[15].replace(",", ".") : 0.0;
+   var valve107 = req.body.VG2[16] !== "" ? req.body.VG2[16].replace(",", ".") : 0.0;
+   var valve108 = req.body.VG2[17] !== "" ? req.body.VG2[17].replace(",", ".") : 0.0;
+   var valve109 = req.body.VG2[18] !== "" ? req.body.VG2[18].replace(",", ".") : 0.0;
+   var valve110 = req.body.VG2[19] !== "" ? req.body.VG2[19].replace(",", ".") : 0.0;
+   var valve111 = req.body.VG2[20] !== "" ? req.body.VG2[20].replace(",", ".") : 0.0;
+   var valve112 = req.body.VG2[21] !== "" ? req.body.VG2[21].replace(",", ".") : 0.0;
+   var valve113 = req.body.VG2[22] !== "" ? req.body.VG2[22].replace(",", ".") : 0.0;
+   var valve114 = req.body.VG2[23] !== "" ? req.body.VG2[23].replace(",", ".") : 0.0;
+   var valve115 = req.body.VG2[24] !== "" ? req.body.VG2[24].replace(",", ".") : 0.0;
+   var valve116 = req.body.VG2[25] !== "" ? req.body.VG2[25].replace(",", ".") : 0.0;
+   var valve117 = req.body.VG2[26] !== "" ? req.body.VG2[26].replace(",", ".") : 0.0;
+   var valve118 = req.body.VG2[27] !== "" ? req.body.VG2[27].replace(",", ".") : 0.0;
+   var valve119 = req.body.VG2[28] !== "" ? req.body.VG2[28].replace(",", ".") : 0.0;
+   var valve120 = req.body.VG2[29] !== "" ? req.body.VG2[29].replace(",", ".") : 0.0;
+   var valve121 = req.body.VG2[30] !== "" ? req.body.VG2[30].replace(",", ".") : 0.0;
+   var valve122 = req.body.VG2[31] !== "" ? req.body.VG2[31].replace(",", ".") : 0.0;
+   var valve123 = req.body.VG2[32] !== "" ? req.body.VG2[32].replace(",", ".") : 0.0;
+   var valve124 = req.body.VG2[33] !== "" ? req.body.VG2[33].replace(",", ".") : 0.0;
+   var valve125 = req.body.VG2[34] !== "" ? req.body.VG2[34].replace(",", ".") : 0.0;
+   var valve126 = req.body.VG2[35] !== "" ? req.body.VG2[35].replace(",", ".") : 0.0;
+   var valve127 = req.body.VG2[36] !== "" ? req.body.VG2[36].replace(",", ".") : 0.0;
+   var valve128 = req.body.VG2[37] !== "" ? req.body.VG2[37].replace(",", ".") : 0.0;
+   var valve129 = req.body.VG2[38] !== "" ? req.body.VG2[38].replace(",", ".") : 0.0;
+   var valve130 = req.body.VG2[39] !== "" ? req.body.VG2[39].replace(",", ".") : 0.0;
+   var valve131 = req.body.VG2[40] !== "" ? req.body.VG2[40].replace(",", ".") : 0.0;
+   var valve132 = req.body.VG2[41] !== "" ? req.body.VG2[41].replace(",", ".") : 0.0;
+   var valve133 = req.body.VG2[42] !== "" ? req.body.VG2[42].replace(",", ".") : 0.0;
+   var valve134 = req.body.VG2[43] !== "" ? req.body.VG2[43].replace(",", ".") : 0.0;
+   var valve135 = req.body.VG2[44] !== "" ? req.body.VG2[44].replace(",", ".") : 0.0;
+   var valve136 = req.body.VG2[45] !== "" ? req.body.VG2[45].replace(",", ".") : 0.0;
+   var valve137 = req.body.VG2[46] !== "" ? req.body.VG2[46].replace(",", ".") : 0.0;
+   var valve138 = req.body.VG2[47] !== "" ? req.body.VG2[47].replace(",", ".") : 0.0;
+   var valve139 = req.body.VG2[48] !== "" ? req.body.VG2[48].replace(",", ".") : 0.0;
+   var valve140 = req.body.VG2[49] !== "" ? req.body.VG2[49].replace(",", ".") : 0.0;
+   var valve141 = req.body.VG2[50] !== "" ? req.body.VG2[50].replace(",", ".") : 0.0;
+   var valve142 = req.body.VG2[51] !== "" ? req.body.VG2[51].replace(",", ".") : 0.0;
+   var valve143 = req.body.VG2[52] !== "" ? req.body.VG2[52].replace(",", ".") : 0.0;
+   var valve144 = req.body.VG2[53] !== "" ? req.body.VG2[53].replace(",", ".") : 0.0;
+   var valve145 = req.body.VG2[54] !== "" ? req.body.VG2[54].replace(",", ".") : 0.0;
+   var valve146 = req.body.VG2[55] !== "" ? req.body.VG2[55].replace(",", ".") : 0.0;
+   var valve147 = req.body.VG2[56] !== "" ? req.body.VG2[56].replace(",", ".") : 0.0;
+   var valve148 = req.body.VG2[57] !== "" ? req.body.VG2[57].replace(",", ".") : 0.0;
+   var valve149 = req.body.VG2[58] !== "" ? req.body.VG2[58].replace(",", ".") : 0.0;
+   var valve150 = req.body.VG2[59] !== "" ? req.body.VG2[59].replace(",", ".") : 0.0;
+   var valve151 = req.body.VG2[60] !== "" ? req.body.VG2[60].replace(",", ".") : 0.0;
+   var valve152 = req.body.VG2[61] !== "" ? req.body.VG2[61].replace(",", ".") : 0.0;
+   var valve153 = req.body.VG2[62] !== "" ? req.body.VG2[62].replace(",", ".") : 0.0;
+   var valve154 = req.body.VG2[63] !== "" ? req.body.VG2[63].replace(",", ".") : 0.0;
+   var valve155 = req.body.VG2[64] !== "" ? req.body.VG2[64].replace(",", ".") : 0.0;
+   var valve156 = req.body.VG2[65] !== "" ? req.body.VG2[65].replace(",", ".") : 0.0;
+   var valve157 = req.body.VG2[66] !== "" ? req.body.VG2[66].replace(",", ".") : 0.0;
+   var valve158 = req.body.VG2[67] !== "" ? req.body.VG2[67].replace(",", ".") : 0.0;
+   var valve159 = req.body.VG2[68] !== "" ? req.body.VG2[68].replace(",", ".") : 0.0;
+   var valve160 = req.body.VG2[69] !== "" ? req.body.VG2[69].replace(",", ".") : 0.0;
+   var valve161 = req.body.VG2[70] !== "" ? req.body.VG2[70].replace(",", ".") : 0.0;
+   var valve162 = req.body.VG2[71] !== "" ? req.body.VG2[71].replace(",", ".") : 0.0;
+   var valve163 = req.body.VG2[72] !== "" ? req.body.VG2[72].replace(",", ".") : 0.0;
+   var valve164 = req.body.VG2[73] !== "" ? req.body.VG2[73].replace(",", ".") : 0.0;
+   var valve165 = req.body.VG2[74] !== "" ? req.body.VG2[74].replace(",", ".") : 0.0;
+   var valve166 = req.body.VG2[75] !== "" ? req.body.VG2[75].replace(",", ".") : 0.0;
+   var valve167 = req.body.VG2[76] !== "" ? req.body.VG2[76].replace(",", ".") : 0.0;
+   var valve168 = req.body.VG2[77] !== "" ? req.body.VG2[77].replace(",", ".") : 0.0;
+   var valve169 = req.body.VG2[78] !== "" ? req.body.VG2[78].replace(",", ".") : 0.0;
+   var valve170 = req.body.VG2[79] !== "" ? req.body.VG2[79].replace(",", ".") : 0.0;
+   var valve171 = req.body.VG2[80] !== "" ? req.body.VG2[80].replace(",", ".") : 0.0;
+   var valve172 = req.body.VG2[81] !== "" ? req.body.VG2[81].replace(",", ".") : 0.0;
+   var valve173 = req.body.VG2[82] !== "" ? req.body.VG2[82].replace(",", ".") : 0.0;
+   var valve174 = req.body.VG2[83] !== "" ? req.body.VG2[83].replace(",", ".") : 0.0;
+   var valve175 = req.body.VG2[84] !== "" ? req.body.VG2[84].replace(",", ".") : 0.0;
+   var valve176 = req.body.VG2[85] !== "" ? req.body.VG2[85].replace(",", ".") : 0.0;
+   var valve177 = req.body.VG2[86] !== "" ? req.body.VG2[86].replace(",", ".") : 0.0;
+   var valve178 = req.body.VG2[87] !== "" ? req.body.VG2[87].replace(",", ".") : 0.0;
+   var valve179 = req.body.VG2[88] !== "" ? req.body.VG2[88].replace(",", ".") : 0.0;
+   var valve180 = req.body.VG2[89] !== "" ? req.body.VG2[89].replace(",", ".") : 0.0;
+   var voltagem = req.body.voltagem !== "" ? req.body.voltagem.replace(",", ".") : 0.0;
+   var refrLadoFixo1 = req.body.rmladofixo1 !== "" ? req.body.rmladofixo1.replace(",", ".") : 0.0;
+   var refrLadoFixo2 = req.body.rmladomovel1 !== "" ? req.body.rmladomovel1.replace(",", ".") : 0.0;
+   var refrLadoMovel1 = req.body.rmladofixo2 !== "" ? req.body.rmladofixo2.replace(",", ".") : 0.0;
+   var refrLadoMovel2 = req.body.rmladomovel2 !== "" ? req.body.rmladomovel2.replace(",", ".") : 0.0;
+   var vaporLadoFixo1 = req.body.valorladofixo !== "" ? req.body.valorladofixo.replace(",", ".") : 0.0;
+   var vaporLadoFixo2 = req.body.valorladomovel !== "" ? req.body.valorladomovel.replace(",", ".") : 0.0;
    
    FichaTecnicaPastoreInjetores.update({
       NúmeroMolde: NúmeroMolde,

@@ -4,18 +4,32 @@
 <div class="container"> 
 
    <br>
-   <h2>Fichas Técnicas</h2> 
+   <h2>Lista de Fichas Técnicas</h2> 
    <a class="btn btn-success" href="/novaficha"> Inserir Nova Ficha Técnica</a>
    <a class="btn btn-success" href="/ficha/lista"> Lista de Fichas Técnicas</a>
    <hr>
 
-   <select  name="maquinasList" id="maquinasList" class="form-control" onchange="">
-      <option > Selecione uma máquina</option>
+   <select  name="maquinasList" id="maquinasList" class="form-control">
+      <option value="0"> Selecione uma máquina</option>
       <% maquinas.forEach((maquina) => { %>
          <option value="<%= maquina.id %>,<%= maquina.tipo.tipo %>">
             <%= maquina.descricao %> - <%= maquina.tipo.tipo %>
          </option>
       <% }) %>
+   </select>   
+   <br>
+
+   <select name="moldes" id="moldes" class="form-control">
+      <option value="0">Filtre por Molde</option>
+      <% moldes.forEach((molde) => { %>
+         <option value="<%= molde.descricao %>">
+            <%= molde.descricao %>
+         </option>
+      <% }) %>
+   </select>   
+   <br>
+
+   <select name="materiais" id="materiais" class="form-control">
    </select>   
    <br>
 
@@ -25,6 +39,8 @@
             <th> Id Ficha Técnica </th>
             <th> Id Máquina </th>
             <th> Máquina </th>
+            <th> Molde </th>
+            <th> Material </th>
          </tr>
       </thead>
       <tbody id="tableBody">
