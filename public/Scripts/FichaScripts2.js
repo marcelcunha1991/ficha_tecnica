@@ -624,7 +624,7 @@ function plotaGrafico2(area) {
  
 function atualizaConteudo() {
    console.log($("#maquinas").val());
-   // setInterval(function () {
+   setInterval(function () {
       var maquina;
 
 
@@ -1429,7 +1429,7 @@ function atualizaConteudo() {
 
 
                               tableBody = $("#parametros tbody");
-                              tableBody.append(markup);
+                              tableBody.html(markup);
                            }
                         });
                      }
@@ -1439,7 +1439,7 @@ function atualizaConteudo() {
          }
       })
 
-   // }, 3000);
+   }, 3000);
 
 }
  
