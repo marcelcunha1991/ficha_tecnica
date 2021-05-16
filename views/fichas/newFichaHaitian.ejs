@@ -1,4 +1,4 @@
-<form method="POST" action="/fichas/createHaitian">
+<form name="pamForm" method="POST" action="/fichas/createHaitian" onsubmit="return validateForm()">
    <select style="display:none" id="maquinaHaitian" name="maquinaHaitian" class="form-control">
       <option > Selecione uma máquina</option>
       <% maquinas.forEach((maquina) => { %>
@@ -7,48 +7,56 @@
    </select>
    <br>
 
-   <table class="table-bordered table-responsive" style="width: 100%; margin-bottom: 40px;">
-      <thead>
-         <tr>
-            <th>Número do Molde:</th>
-            <th>Número do Máquina:</th>
-            <th>Revisão:</th>
-            <th>Cliente:</th>
-            <th>Código PAM:</th>
-            <th>Técnico:</th>
-            <th>Produto:</th>
-            <th>Material:</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr>
-            <td>
-               <input style="width: 100%" id="molde" name="molde">
-            </td>
-            <td>
-               <input style="width: 100%" id="numMaquina" name="numMaquina">
-            </td>
-            <td>
-               <input style="width: 100%" id="revisao" name="revisao">
-            </td>
-            <td>
-               <input style="width: 100%" id="cliente" name="cliente">
-            </td>
-            <td>
-               <input style="width: 100%" id="codigoPAM" name="codigoPAM">
-            </td>
-            <td>
-               <input style="width: 100%" id="tecnico" name="tecnico">
-            </td>
-            <td>
-               <input style="width: 100%" id="produto" name="produto">
-            </td>
-            <td>
-               <input style="width: 100%" id="material" name="material">
-            </td>
-         </tr>
-      </tbody>
-   </table>
+   <div class="table-ficha">
+      <table class="table-bordered table-responsive" style="width: 100%; margin-bottom: 40px;">
+         <thead>
+            <tr>
+               <th><span style="color: red;">*</span>Número do Molde:</th>
+               <th>Número da Máquina:</th>
+               <th>Cliente:</th>
+               <th>Código PAM:</th>
+               <th>Técnico:</th>
+               <th>Produto:</th>
+               <th><span style="color: red;">*</span>Número do Material:</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td>
+                  <input style="width: 100%" id="molde" name="molde" list="moldeList">
+                  <datalist id="moldeList">
+                     <% moldes.forEach((molde) => { %>
+                        <option value="<%= molde.codigo %>"></option>
+                     <% }) %>
+                  </datalist>  
+               </td>
+               <td>
+                  <input style="width: 100%" id="numMaquina" name="numMaquina">
+               </td>
+               <td>
+                  <input style="width: 100%" id="cliente" name="cliente">
+               </td>
+               <td>
+                  <input style="width: 100%" id="codigoPAM" name="codigoPAM">
+               </td>
+               <td>
+                  <input style="width: 100%" id="tecnico" name="tecnico">
+               </td>
+               <td>
+                  <input style="width: 100%" id="produto" name="produto">
+               </td>
+               <td>
+                  <input style="width: 100%" id="material" name="material" list="materialList">
+                  <datalist id="materialList">
+                     <% materiais.forEach((material) => { %>
+                        <option value="<%= material.codigo %>"></option>
+                     <% }) %>
+                  </datalist>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
    
    <div class="d-flex justify-content-between">
       <!-- INJETORES -->
@@ -707,3 +715,18 @@
    <br>
    <button class="btn btn-primary">Cadastrar</button>
 </form>
+
+<script>
+   function validateForm() {
+      var molde = document.forms["pamForm"]["molde"].value;
+      var material = document.forms["pamForm"]["material"].value;
+      if (molde === "") {
+         alert("O número do Molde deve ser informado.");
+         return false;
+      }
+      if (material === "") {
+         alert("O número do Material deve ser informado.");
+         return false;
+      }
+   }
+</script>
