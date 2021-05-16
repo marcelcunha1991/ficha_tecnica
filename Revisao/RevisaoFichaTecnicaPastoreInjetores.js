@@ -24,11 +24,11 @@ const RevisaoFichaPastoreInjetores = conn.define('revisao_injetores_pastore',{
       key: 'id'
    },
 
-   NúmeroMolde: {type: Sequelize.FLOAT, defaultValue: 0.0},
+   NúmeroMolde: Sequelize.STRING,
    NúmeroMáquina: Sequelize.STRING,
-   Revisao: {type: Sequelize.FLOAT, defaultValue: 0.0},
+   Revisao: Sequelize.STRING,
    Cliente: Sequelize.STRING,
-   CodigoPAM: {type: Sequelize.FLOAT, defaultValue: 0.0},
+   CodigoPAM: Sequelize.STRING,
    Tecnico: Sequelize.STRING,
    Produto: Sequelize.STRING,
    Material: Sequelize.STRING,
