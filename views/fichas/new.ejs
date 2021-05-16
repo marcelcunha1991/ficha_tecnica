@@ -1,7 +1,14 @@
 <%- include ('../partials/header.ejs') %>
 <%- include ('../partials/sidebar.ejs') %>
 
-<div class="container-fluid"> 
+<div class="container-fluid">
+   <br>
+   <form method="GET" action="/fichas" style="display: inline;">
+      <button class="btn btn-info" style="width: 70px;">
+         <i class="fa fa-arrow-left" title="Voltar"></i>
+      </button>
+   </form>
+   <br>
    <br>
    <h2>Adicionar Ficha Técnica</h2> 
    <a class="btn btn-success" href="/novaficha"> Inserir Nova Ficha Técnica</a>
