@@ -84,3 +84,7 @@ p.read-only span.cadastrados {
 p.read-only span.reais {
    color: green;
 }
+
+.outOfRange {
+   background-color: #FDFD96;
+}

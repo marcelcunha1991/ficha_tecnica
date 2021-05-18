@@ -105,8 +105,8 @@ router.get("/fichasUltimo/maquina/:id",  (req,res) => {
             ParametrosReaishaitianJupyter.findAll({
                limit: 1,
                where: {
-               mac: maquina.descricao
-            },
+                  mac: maquina.descricao
+               },
                order: [ [ 'createdAt', 'DESC' ]]
             }).then(output => {
       
@@ -4051,144 +4051,6 @@ router.get("/ficha/revisaoHaitian/:id",(req,res) => {
          })
       })
 
-   })
-})
-
-router.get("/visualizacaoEmFicha/:maquina",  (req,res) => {     
-   var maquinaId= req.params.maquina;   
-   var maquinas;   
-   
-   Maquinas.findAll().then(maquina => {
-      maquinas = maquina;
-   }) 
-
-   // Maquinas.findAll().then(maquina => {
-   //    maquinas = maquina;
-   //    res.render("fichas/indexFicha",{
-   //       maquinas: maquinas,
-   //       injetor: "",
-   //       perifericos: "",
-   //       parametros: "",
-   //       nav_maquinas : "",
-   //       nav_produtos : "",
-   //       nav_mp : "",
-   //       nav_usuarios : "",
-   //       nav_moldes : "",
-   //       nav_clientes : "",
-   //       nav_parametros:"",
-   //       nav_ficha: "active",
-   //       nav_alertas:""
-   //    })
-   // })   
-
-   Maquinas.findOne({
-      where: {
-         id: maquinaId
-      },
-      include: [{
-         model: Tipo,
-         required: true
-      }]
-   }).then(maquina => {   
-      console.log('maquina')
-      console.log(maquina)
-      switch(maquina.tipo.id){
-
-         // case 1:
-               
-         //    ParametrosReaisToshiba.findAll({
-         //       limit: 1,
-         //       where: {
-         //          mac: maquina.mac
-         //       },
-         //       order: [ [ 'createdAt', 'DESC' ]]
-         //    }).then(output => {
-         
-         //       console.log(output[0])
-         //       res.send(output[0])
-               
-         //    }); 
-         //    break;
-
-         // case 2: 
-
-         //    ParametrosReaisAutomata.findAll({
-         //       limit: 1,
-         //       where: {
-         //       mac: maquina.mac
-         //       },
-         //       order: [ [ 'createdAt', 'DESC' ]]
-         //    }).then(output => {
-      
-         //       console.log(output[0])
-         //       res.send(output[0])
-               
-         //    }); 
-         //    break;
-         
-         case 3: 
-            ParametrosReaishaitianJupyter.findAll({
-               limit: 1,
-               where: {
-                  mac: maquina.descricao
-               },
-               order: [ [ 'createdAt', 'DESC' ]]
-            }).then(outputParams => {
-               console.log('outputParams[0]')
-               console.log(outputParams[0])
-               // res.send(output[0])
-
-               Maquinas.findOne({
-                  where: {
-                     descricao : outputParams[0].mac
-                  }
-               }).then(maq => {
-                  
-                  RevisaoFichaTecnicaPastoreInjetores.findOne({
-                     limit: 1,
-                     where: {
-                        maq : maq.id
-                     },
-                     order: [ [ 'createdAt', 'DESC' ]]
-                  }).then(injetores => {
-                     console.log('outputInj');
-                     console.log(injetores);
-
-                     RevisaoFichaTecnicaPastorePerifericos.findOne({
-                        limit: 1,
-                        where: {
-                           maq : maq.id
-                        },
-                        order: [ [ 'createdAt', 'DESC' ]]
-                     }).then(periferico => {
-                        console.log('outputInj');
-                        console.log(periferico);
-   
-                        res.render("fichas/indexFicha",{
-                           maquinas: maquinas,
-                           parametros: outputParams[0],
-                           injetor: injetores,
-                           perifericos: periferico,
-                           nav_maquinas : "",
-                           nav_produtos : "",
-                           nav_mp : "",
-                           nav_usuarios : "",
-                           nav_moldes : "",
-                           nav_clientes : "",
-                           nav_parametros:"",
-                           nav_ficha: "active",
-                           nav_alertas:""
-                        })
-   
-                     }); 
-
-                  }); 
-                  
-               }); 
-
-            }); 
-            break;
-      }
    })
 })
 

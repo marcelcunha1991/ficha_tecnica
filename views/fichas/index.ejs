@@ -1,11 +1,11 @@
 <%- include ('../partials/header.ejs') %>
 <%- include ('../partials/sidebar.ejs') %>
 
-<div class="container"> 
+<div class="container-fluid"> 
 
    <hr>
    <h2>Fichas Técnicas</h2> 
-   <div id="nav">
+   <div>
       <a class="btn btn-success" href="/novaficha"> Inserir Nova Ficha Técnica</a>
       <a class="btn btn-success" href="/ficha/lista"> Lista de Fichas Técnicas</a>
    </div>
@@ -21,85 +21,67 @@
    </select>
 
    <br>
-<!-- <h5>Alertas Abertos : </h5>
-<br>
-<table class="table table-bordered" id="alertas"> 
-    <thead>
-        <tr>
+   <div id="nav"></div>
+   <br>
+
+   <!-- <h5>Alertas Abertos : </h5>
+   <br>
+   <table class="table table-bordered" id="alertas"> 
+      <thead>
+         <tr>
             <th> Descrição dos Alertas: </th>
-                   
-        </tr>
-    </thead>
-    <tbody>
+         </tr>
+      </thead>
+      <tbody>
+      </tbody>
+   </table>
+   <br>
 
-       
-       
-       
-    </tbody>
-
-
-</table>
-<br>
-<h5>Parâmetros de tempo real : </h5>
-<br>
-<table class="table table-bordered" id="parametrosReais"> 
-    <thead>
-        <tr>
+   <h5>Parâmetros de tempo real : </h5>
+   <br>
+   <table class="table table-bordered" id="parametrosReais"> 
+      <thead>
+         <tr>
             <th> Parâmetro </th>
             <th> Valor Mínimo </th>
             <th> Valor Máximo </th>
             <th> Último valor lido </th>             
-        </tr>
-    </thead>
-    <tbody>
-
-       
-       
-       
-    </tbody>
-
-
-</table> -->
-
-  
+         </tr>
+      </thead>
+      <tbody>
+      </tbody>
+   </table> -->
     
-    <h5>Parâmetros De Programa : </h5>
-    <br>
-    <table class="table table-bordered" id="parametros"> 
-        <thead>
-            <tr>
-                <th> Parâmetro </th>
-                <th> Valor Mínimo </th>
-                <th> Valor Máximo </th>
-                <th> Último valor setado </th>             
-            </tr>
-        </thead>
-        <tbody>
+   <h5>Parâmetros De Programa : </h5>
+   <br>
+   <table class="table table-bordered" id="parametros"> 
+      <thead>
+         <tr>
+            <th> Parâmetro </th>
+            <th> Valor Mínimo </th>
+            <th> Valor Máximo </th>
+            <th> Último valor setado </th>             
+         </tr>
+      </thead>
+      <tbody>
+      </tbody>
+   </table>
 
-           
-           
-           
-        </tbody>
-
-
-    </table>
+   <div id="ficha">
+      <%- include ('./indexFicha.ejs') %>
+   </div>
 
 
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-      
-          <!-- Modal content-->
-
-          <div id="plotly">
-
-        </div>
-         
-      
-        </div>
+   <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+         <!-- Modal content-->
+         <div id="plotly"></div>
       </div>
-
+   </div>
 
 </div>
+<br>
+<br>
 
 <script>
 
@@ -117,5 +99,6 @@
 <script src=/scripts/jquery.js></script>
 <!-- <script src=/scripts/FichaScripts.js></script> -->
 <script src=/scripts/FichaScripts2.js></script>
+<script src=/scripts/paramsEmFicha.js></script>
 
 <%- include ('../partials/footer.ejs') %>   

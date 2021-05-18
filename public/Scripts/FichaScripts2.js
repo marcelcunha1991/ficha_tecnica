@@ -635,7 +635,7 @@ function atualizaConteudo() {
          dataType: 'json',
          success: function (maquina_) {     
 
-            // PREENCHE TABELA DE FICHA TECNICA
+            // PREENCHE TABELA DE FICHA TECNICA DA COLETA PASTORE
             $.ajax({
                url: '/fichasUltimo/maquina/' + $("#maquinas").val(),
                method: 'get',
@@ -1442,27 +1442,5 @@ function atualizaConteudo() {
    }, 3000);
 
 }
- 
-$('#maquinas').change(function () {
-   atualizaConteudo();
-   var anchor = '';
-
-   if ($("#maquinas").val() !== "0") {
-      anchor += "<a style='margin-right: 5px' class='btn btn-success' href='/novaficha'>Inserir Nova Ficha Técnica</a>"
-      + "<a style='margin-right: 5px' class='btn btn-success' href='/ficha/lista'>Lista de Fichas Técnicas</a>"
-      + "<a id='visuEmFicha' class='btn btn-info' href='/visualizacaoEmFicha/" + $("#maquinas").val() + "'>Visualização em Ficha</a>"
-
-      div = $("#nav");
-      div.html(anchor);
-
-      $(".ficha").remove();
-
-   } else {
-      $("#visuEmFicha").hide();
-      
-   }
-
-   
-});
  
  
