@@ -100,7 +100,8 @@ $('#moldes').change(e => {
                   }
                }
                
-               selectMaterial(material);              
+               selectMaterial(material);     
+                        
                if (v2 === 'HAITIAN' || v3 === "Haitian") {
                   addRow(arrayMolde.length, arrayMolde, 'Haitian', responseMaquina.descricao)
                } else if (v2 === 'Toshiba') {
