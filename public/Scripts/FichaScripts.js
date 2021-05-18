@@ -2138,7 +2138,7 @@ function atualizaConteudo() {
         });
 
 
-        // PREENCHE TABELA DE FICHA TECNICA
+        // PREENCHE TABELA DE FICHA TECNICA DA COLETA TIPO TOSHIBA
         $.ajax({
           url: '/fichas/maquina/' + $("#maquinas").val(),
           method: 'get',
