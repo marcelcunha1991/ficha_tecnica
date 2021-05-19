@@ -1,5 +1,4 @@
 // document.getElementById("prodShot").addEventListener("click", plotaGrafico);
-$("#visuEmFicha").hide()
 
 if ($('#dsMaquina').val() != "") {
 
