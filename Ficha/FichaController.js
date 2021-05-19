@@ -3944,6 +3944,45 @@ router.post("/fichas/updateHaitian",(req,res) => {
          })
       })
    })
+
+   Moldes.findOne({
+      where: {
+         descricao: NúmeroMolde
+      }
+   }).then(output => {
+      if (output === null || output === 'null') {
+
+         Moldes.create({
+            descricao:NúmeroMolde,
+            codigo:NúmeroMolde,
+         }).then(() => {
+            console.log('MOLDE ADICIONADO')
+         })
+
+      } else {
+         console.log('MOLDE JÁ EXISTE. NÃO ADICIONADO')
+      }
+   })
+
+   MateriasPrimas.findOne({
+      where: {
+         descricao: Material
+      }
+   }).then(output => {
+      if (output === null || output === 'null') {
+
+         MateriasPrimas.create({
+            descricao:Material,
+            codigo:Material,
+      
+         }).then(() => {
+            console.log('MATERIA PRIMA ADICIONADA.')
+         })
+
+      } else {
+         console.log('MATERIA PRIMA JÁ EXISTE. NÃO ADICIONADA')
+      }
+   })
 })
 
 router.post("/fichas/deleteHaitian",(req,res) => {
