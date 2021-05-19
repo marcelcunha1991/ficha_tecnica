@@ -90,13 +90,20 @@ $('#moldes').change(e => {
             url: "/ficha/lista/"+ v1 + "/" + v2,
             type: "get", //send it through get method
             success: function(response) {
-               for (let i = 0; i < response.length; i++) {
-                  if (response[i].NúmeroMolde === molde) {
-                     arrayMolde.push(response[i])
-                     
-                     if (!material.includes(response[i].Material)) {
-                        material.push(response[i].Material)   
+
+               if (molde !== "0") {
+                  for (let i = 0; i < response.length; i++) {
+                     if (response[i].NúmeroMolde === molde) {
+                        arrayMolde.push(response[i])
+                           
+                        if (!material.includes(response[i].Material)) {
+                           material.push(response[i].Material)   
+                        }
                      }
+                  }
+               } else {
+                  for (let i = 0; i < response.length; i++) {
+                     arrayMolde.push(response[i])
                   }
                }
                
@@ -130,13 +137,20 @@ $('#materiais').change(e => {
       url: "/maquinaById/"+ v1,
       type: "get", //send it through get method
       success: function(responseMaquina) {
-         // console.log(responseMaquina)
 
-         for (let i = 0; i < arrayMolde.length; i++) {
-            if (arrayMolde[i].Material === material) {
+         if (material !== "0") {
+            for (let i = 0; i < arrayMolde.length; i++) {
+               if (arrayMolde[i].Material === material) {
+                  arrayMaterial.push(arrayMolde[i])                     
+               }
+            }
+         } else {
+            for (let i = 0; i < arrayMolde.length; i++) {
                arrayMaterial.push(arrayMolde[i])                     
             }
          }
+
+         
       
          addRow(arrayMaterial.length, arrayMaterial, 'Haitian', responseMaquina.descricao)
       }
