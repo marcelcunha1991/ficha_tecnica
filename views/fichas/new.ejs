@@ -10,7 +10,6 @@
    </form>
    <br>
    <br>
-   <h2>Adicionar Ficha Técnica</h2> 
    <a class="btn btn-success" href="/novaficha"> Inserir Nova Ficha Técnica</a>
    <a class="btn btn-success" href="/ficha/lista"> Lista de Fichas Técnicas</a>
    <hr>
@@ -21,6 +20,7 @@
       </div>
       
       <div class="card-body">
+         <h5>Selecione uma máquina:</h5>
          <select id="maquinasId" name="maquinasId" class="form-control">
             <option > Selecione uma máquina</option>
             <% maquinas.forEach((maquina) => { %>

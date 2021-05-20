@@ -9,6 +9,7 @@
    <a class="btn btn-success" href="/ficha/lista"> Lista de Fichas Técnicas</a>
    <hr>
 
+   <h5>Selecione uma máquina:</h5>
    <select  name="maquinasList" id="maquinasList" class="form-control">
       <option value="0"> Selecione uma máquina</option>
       <% maquinas.forEach((maquina) => { %>
@@ -19,7 +20,8 @@
    </select>   
    <br>
 
-   <select name="moldes" id="moldes" class="form-control">
+   <h5 class="moldes">Filtre por molde:</h5>
+   <select name="moldes" id="moldes" class="form-control moldes">
       <option value="0">Filtre por Molde</option>
       <% moldes.forEach((molde) => { %>
          <option value="<%= molde.descricao %>">
@@ -29,7 +31,8 @@
    </select>   
    <br>
 
-   <select name="materiais" id="materiais" class="form-control">
+   <h5 class="materiais">Filtre por material:</h5>
+   <select name="materiais" id="materiais" class="form-control materiais">
    </select>   
    <br>
 

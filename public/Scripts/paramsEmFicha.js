@@ -2,7 +2,8 @@ $('#maquinas').change(function () {
    var anchor = '';
 
    if ($("#maquinas").val() !== "0") {
-      anchor += "<button style='margin-right: 5px' class='btn btn-info params' onclick='tipoVisualizacao(1)'>Visualização em lista</button>"
+      anchor += "<h5>Escolha uma forma de visualização:</h5>" + 
+      "<button style='margin-right: 5px' class='btn btn-info params' onclick='tipoVisualizacao(1)'>Visualização em lista</button>"
       + "<button class='btn btn-info params' onclick='tipoVisualizacao(2)'>Visualização em Ficha</button>"
 
       div = $("#nav");
@@ -1701,9 +1702,9 @@ function tipoVisualizacao(tipo) {
       
    } else {
       $("#parametros").hide();
+      $("#ficha").show();
       
       setInterval(function () {
-         $("#ficha").show();
          
          $.ajax({
             url: '/maquinaById/' + $("#maquinas").val(),

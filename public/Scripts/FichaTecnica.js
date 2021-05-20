@@ -1,7 +1,7 @@
 ﻿$("#toshiba").hide()    
 $("#pastore").hide()
-$("#moldes").hide()
-$("#materiais").hide()
+$(".moldes").hide()
+$(".materiais").hide()
 
 //usado em fichas/new.ejs para mostrar uma ficha diferente quando trocar
 $('#maquinasId').change(e => {
@@ -40,7 +40,7 @@ $('#maquinasList').change(e => {
    v2 = split[1];
    splitName = v2.split(" ");
    v3 = splitName[0]
-   $("#moldes").show()
+   $(".moldes").show()
 
    $.ajax({
       url: "/maquinaById/"+ v1,
@@ -74,11 +74,11 @@ $('#maquinasList').change(e => {
 
 var molde;
 var arrayMolde = [];
-$('#moldes').change(e => {
+$('.moldes').change(e => {
    molde = e.target.value;
    arrayMolde = [];
    var material = [];
-   $("#materiais").show()
+   $(".materiais").show()
 
    $.ajax({
       url: "/maquinaById/"+ v1,
@@ -129,7 +129,7 @@ $('#moldes').change(e => {
 });
 
 var material;
-$('#materiais').change(e => {
+$('.materiais').change(e => {
    material = e.target.value;
    var arrayMaterial = [];
 
@@ -181,7 +181,7 @@ function addRow(rows, data, path, maquina) {
 }
 
 function selectMaterial(array) {
-   var opt = "<option value='0'>Filtre por Material</option>";
+   var opt = "<option value='0'>Filtre por material</option>";
 
    for (let i = 0; i < array.length; i++) {
       opt +='<option value="' + array[i] + '">' + array[i] + '</option>'
