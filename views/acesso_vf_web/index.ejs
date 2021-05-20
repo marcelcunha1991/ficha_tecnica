@@ -1,0 +1,102 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/sidebar.ejs') %>
+
+<div class="container-fluid"> 
+   
+   <br>
+   <h2>Ficha Técnica - Parâmetros</h2> 
+   <h3 style="color: rgb(105, 105, 105)">Máquina <%= maquinaId %></h3> 
+   <hr>   
+   
+   <input type="hidden" name="maquinaId"  id="maquinaId" value="<%= maquinaId %>">
+
+   <!-- <select name="maquinas" id="maquinas"  class="form-control">
+      <option value="0"> Selecione uma máquina</option>
+      <% maquinas.forEach((maquina) => { %>
+         <option value="1"> <%= maquina.descricao %></option>
+      <% }) %>
+   </select> -->
+
+   <h5>Escolha uma forma de visualização:</h5>
+   <button style='margin-right: 5px' class='btn btn-info params' onclick='tipoVisualizacao(1)'>Visualização em lista</button>
+   <button class='btn btn-info params' onclick='tipoVisualizacao(2)'>Visualização em Ficha</button>
+
+   <br>
+   <div id="nav"></div>
+   <br>
+
+   <!-- <h5>Alertas Abertos : </h5>
+   <br>
+   <table class="table table-bordered" id="alertas"> 
+      <thead>
+         <tr>
+            <th> Descrição dos Alertas: </th>
+         </tr>
+      </thead>
+      <tbody>
+      </tbody>
+   </table>
+   <br>
+
+   <h5>Parâmetros de tempo real : </h5>
+   <br>
+   <table class="table table-bordered" id="parametrosReais"> 
+      <thead>
+         <tr>
+            <th> Parâmetro </th>
+            <th> Valor Mínimo </th>
+            <th> Valor Máximo </th>
+            <th> Último valor lido </th>             
+         </tr>
+      </thead>
+      <tbody>
+      </tbody>
+   </table> -->
+    
+   <h5>Parâmetros De Programa: </h5>
+   <br>
+   <table class="table table-bordered" id="parametros"> 
+      <thead>
+         <tr>
+            <th> Parâmetro </th>
+            <th> Valor Mínimo </th>
+            <th> Valor Máximo </th>
+            <th> Último valor setado </th>             
+         </tr>
+      </thead>
+      <tbody>
+      </tbody>
+   </table>
+
+   <div id="ficha">
+      <%- include ('../fichas/indexFicha.ejs') %>
+   </div>
+
+   <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+         <!-- Modal content-->
+         <div id="plotly"></div>
+      </div>
+   </div>
+
+</div>
+<br>
+<br>
+
+<script>
+
+    function confirmarDelecao(event,form){
+        event.preventDefault();
+        var decision = confirm("Você quer deletar esta Máquina?");
+         if(decision){
+             form.submit();
+         }
+
+    }
+
+</script>
+
+<script src=/scripts/jquery.js></script>
+<script src=/scripts/acessoVfWebScript.js></script>
+
+<%- include ('../partials/footer.ejs') %>   

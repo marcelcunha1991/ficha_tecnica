@@ -39,6 +39,7 @@ const fichasConctroller = require("./Ficha/FichaController");
 const tiposConctroller = require("./Tipo/TipoController");
 const ParametrosRealController = require("./ParametrosTempoReal/ParametrosRealController");
 const revisaoController = require("./Revisao/RevisaoController");
+const acessoVfWebController = require("./Acesso_Vf_Web/Acesso_Vf_WebController");
 
 const bcrypt = require("bcryptjs");
 
@@ -77,6 +78,7 @@ app.use("/",ParametrosRealController);
 app.use("/",tiposConctroller);
 app.use("/",alertasController);
 app.use("/",revisaoController);
+app.use("/",acessoVfWebController);
 
 
 
