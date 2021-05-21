@@ -4,32 +4,50 @@
 <div class="container">
 
  
-  <br>
-    <div class="card">
-            <div class="card-header">
+   <br>
+   <div class="card">
+      <div class="card-header">
                    
-                        <h2>Editar Máquina</h2>
+         <h2>Editar Máquina</h2>
                     
-            </div>
-            <div class="card-body">
-                    <form  method="POST" action="/maquinas/update">
-                            <input class="form-control" type="text" name="descricao" placeholder="Insira um nome Para a Máquina" value="<%= maquina.descricao %>"><br>
-                            <input class="form-control" type="text" name="mac" placeholder="Insira um ip Para a Máquina" value="<%= maquina.mac %>"><br>
-                            <input class="form-control" type="text" name="codigo" placeholder="Insira um código Para a Máquina" value="<%= maquina.codigo %>"><br>
-                            <input class="form-control" type="text" name="peso" placeholder="Insira um peso em Toneladas Para a Máquina" value="<%= maquina.peso %>"><br>
-                            <input class="form-control" type="text" name="modelo" placeholder="Inseira o modelo da Máquia" value="<%= maquina.modelo %>"><br>
-                            <input type="hidden" name="id" value="<%= maquina.id %>">
-                            
-
-                         
-                            <br>
-                            <button class="btn btn-primary">Editar</button>
-                        </form>
-            </div>
+      </div>
+      <div class="card-body">
+         <form name="maquinaForm" method="POST" action="/maquinas/update" onsubmit="return validateForm()">
+            <h6>Insira uma descricao para a máquina:</h6>
+            <input class="form-control" type="text" id="descricao" name="descricao" value="<%= maquina.descricao %>"><br>
+            <h6>Insira um IP para a máquina:</h6>
+            <input class="form-control" type="text" id="mac" name="mac" value="<%= maquina.mac %>"><br>
+            <h6>Insira o código Injet da máquina:</h6>
+            <input class="form-control" type="text" id="codigo" name="codigo" value="<%= maquina.codigo %>" placeholder="Ex.: 000064"><br>
+            <h6>Insira um peso em toneladas para a máquina:</h6>
+            <input class="form-control" type="text" id="peso" name="peso" value="<%= maquina.peso %>"><br>
+            <h6>Insira o modelo da máquina:</h6>
+            <input class="form-control" type="text" id="modelo" name="modelo" value="<%= maquina.modelo %>" ><br>
+            <input type="hidden" name="id" value="<%= maquina.id %>">
+                                                   
+            <br>
+            <button class="btn btn-primary">Editar</button>
+         </form>
+      </div>
            
           
-    </div>
+   </div>
    
 </div>
+
+<script>
+   function validateForm() {
+      var descricao = document.forms["maquinaForm"]["descricao"].value;
+      var codigo = document.forms["maquinaForm"]["codigo"].value;
+      if (descricao === "") {
+         alert("A descrição deve ser preenchida.");
+         return false;
+      }
+      if (codigo === "") {
+         alert("O código Injet deve ser informado.");
+         return false;
+      }
+   }
+</script>
 
 <%- include ('../partials/footer.ejs') %>

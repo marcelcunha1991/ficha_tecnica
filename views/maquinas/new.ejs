@@ -3,39 +3,57 @@
 
 <div class="container">
  
-  <br>
-    <div class="card">
-            <div class="card-header">
+   <br>
+   <div class="card">
+      <div class="card-header">
                    
-                        <h2>Nova Máquina</h2>
-                    
-            </div>
-            <div class="card-body">
-                    <form  method="POST" action="/maquinas/create">
-                            <input class="form-control" type="text" name="descricao" placeholder="Insira uma descricao nome Para a Máquina"><br>
-                            <input class="form-control" type="text" name="mac" placeholder="Insira um ip Para a Máquina"><br>
-                            <input class="form-control" type="text" name="codigo" placeholder="Insira um código Para a Máquina"><br>
-                            <input class="form-control" type="text" name="peso" placeholder="Insira um peso em Toneladas Para a Máquina"><br>
-                            <input class="form-control" type="text" name="modelo" placeholder="Insira o modelo da Máquina"><br>
-                            <label for="tipos">Escolha a Coleta especifica:  </label>
-                            <select name="tipos" id="tipos">
-                                <% tipos.forEach(tipo => { %>
-                                        <option value= "<%= tipo.id %>" ><%= tipo.tipo%></option>
-                                <%})%>
-                       
-                              </select>
-    
-                            <br><br>
-                            <button class="btn btn-primary">Cadastrar</button>
-                            
-                        </form>
-            </div>
+         <h2>Nova Máquina</h2>
+                  
+         </div>
+         <div class="card-body">
+            <form name="maquinaForm" method="POST" action="/maquinas/create" onsubmit="return validateForm()">
+               <h6>Insira uma descricao para a máquina:</h6>
+               <input class="form-control" type="text" id="descricao" name="descricao"><br>
+               <h6>Insira um IP para a máquina:</h6>
+               <input class="form-control" type="text" id="mac" name="mac"><br>
+               <h6>Insira o código Injet da máquina:</h6>
+               <input class="form-control" type="text" id="codigo" name="codigo" placeholder="Ex.: 000064"><br>
+               <h6>Insira um peso em toneladas para a máquina:</h6>
+               <input class="form-control" type="text" id="peso" name="peso"><br>
+               <h6>Insira o modelo da máquina:</h6>
+               <input class="form-control" type="text" id="modelo" name="modelo" ><br>
+               <label style="font-weight: 500;" for="tipos">Escolha a Coleta especifica:</label>
+               <select name="tipos" id="tipos">
+                  <% tipos.forEach(tipo => { %>
+                     <option value= "<%= tipo.id %>" ><%= tipo.tipo%></option>
+                  <%})%>
+               </select>
+
+               <br><br>
+               <button class="btn btn-primary">Cadastrar</button>
+                           
+            </form>
+      </div>
            
           
-    </div>
+   </div>
    
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src=/scripts/documentScripts.js></script>
+<script>
+   function validateForm() {
+      var descricao = document.forms["maquinaForm"]["descricao"].value;
+      var codigo = document.forms["maquinaForm"]["codigo"].value;
+      if (descricao === "") {
+         alert("A descrição deve ser preenchida.");
+         return false;
+      }
+      if (codigo === "") {
+         alert("O código Injet deve ser informado.");
+         return false;
+      }
+   }
+</script>
 <%- include ('../partials/footer.ejs') %>

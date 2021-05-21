@@ -55,46 +55,37 @@
     
    <h5>Parâmetros De Programa: </h5>
    <br>
-   <table class="table table-bordered" id="parametros"> 
-      <thead>
-         <tr>
-            <th> Parâmetro </th>
-            <th> Valor Mínimo </th>
-            <th> Valor Máximo </th>
-            <th> Último valor setado </th>             
-         </tr>
-      </thead>
-      <tbody>
-      </tbody>
-   </table>
 
-   <div id="ficha">
-      <%- include ('../fichas/indexFicha.ejs') %>
-   </div>
-
-   <div id="myModal" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-         <!-- Modal content-->
-         <div id="plotly"></div>
+   <div id="main">
+      <table class="table table-bordered" id="parametros"> 
+         <thead>
+            <tr>
+               <th> Parâmetro </th>
+               <th> Valor Mínimo </th>
+               <th> Valor Máximo </th>
+               <th> Último valor setado </th>             
+            </tr>
+         </thead>
+         <tbody>
+         </tbody>
+      </table>
+   
+      <div id="ficha">
+         <%- include ('../fichas/indexFicha.ejs') %>
+      </div>
+   
+      <div id="myModal" class="modal fade" role="dialog">
+         <div class="modal-dialog">
+            <!-- Modal content-->
+            <div id="plotly"></div>
+         </div>
       </div>
    </div>
+   
 
 </div>
 <br>
 <br>
-
-<script>
-
-    function confirmarDelecao(event,form){
-        event.preventDefault();
-        var decision = confirm("Você quer deletar esta Máquina?");
-         if(decision){
-             form.submit();
-         }
-
-    }
-
-</script>
 
 <script src=/scripts/jquery.js></script>
 <script src=/scripts/acessoVfWebScript.js></script>

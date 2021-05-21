@@ -1,7 +1,24 @@
 $("#parametros").hide();
 $("#ficha").hide();
 
-console.log($("#maquinaId").val());
+var codInjet = $("#maquinaId").val();
+
+$(document).ready(function(){
+   $.ajax({
+      url: '/externo/vf-web/maquinaById/' + codInjet,
+      method: 'get',
+      dataType: 'json',
+      success: function (maquina_) { 
+         if (maquina_.error === -1) {
+            var texto = "<h1 style='text-align: center'>Máquina não cadastrada ou código incorreto.</h1>"
+
+            var main = $("#main");
+            main.html(texto);
+         }
+      }
+   })
+});
+
 
 function tipoVisualizacao(tipo) {
 
@@ -15,14 +32,13 @@ function tipoVisualizacao(tipo) {
 
          //OBTEM DADOS DE MAQUINA
          $.ajax({
-            url: '/maquinaById/' + 1,
+            url: '/externo/vf-web/maquinaById/' + codInjet,
             method: 'get',
             dataType: 'json',
             success: function (maquina_) {     
-
                // PREENCHE TABELA DE FICHA TECNICA DA COLETA PASTORE
                $.ajax({
-                  url: '/fichasUltimo/maquina/' + 1,
+                  url: '/externo/vf-web/fichasUltimo/maquina/' + codInjet,
                   method: 'get',
                   dataType: 'json',
                   success: function (parametros) {
@@ -1691,14 +1707,14 @@ function tipoVisualizacao(tipo) {
       setInterval(function () {
          
          $.ajax({
-            url: '/maquinaById/' + 1,
+            url: '/externo/vf-web/maquinaById/' + codInjet,
             method: 'get',
             dataType: 'json',
             success: function (maquina_) {    
          
                // PREENCHE TABELA DE FICHA TECNICA
                $.ajax({
-                  url: '/fichasUltimo/maquina/' + 1,
+                  url: '/externo/vf-web/fichasUltimo/maquina/' + codInjet,
                   method: 'get',
                   dataType: 'json',
                   success: function (parametros) {
@@ -1717,7 +1733,7 @@ function tipoVisualizacao(tipo) {
                               method: 'get',
                               dataType: 'json',
                               success: function(perifericos) {
-                                 console.log(perifericos)
+                                 // console.log(perifericos)
 
                                  //CABECALHO FICHA
                                  var header = "<tr>" +
