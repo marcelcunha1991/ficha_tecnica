@@ -3,6 +3,7 @@ const router = express.Router();
 const Maquinas = require("../Maquinas/Maquinas");
 const ParametrosReaisToshiba = require("../ParametrosTempoReal/ParametrosReaisToshiba");
 const ParametrosReaisAutomata = require("../ParametrosTempoReal/ParametrosReaisAutomata");
+const ParametrosReaisHaitianJupyter = require("../ParametrosTempoReal/ParametrosReaisHaitianJupyter");
 const LimiteParametrosToshiba = require("../ParametrosTempoReal/LimiteParametrosToshiba");
 const LimiteParametrosAutomata = require("../ParametrosTempoReal/LimiteParametrosAutomata");
 
@@ -353,7 +354,19 @@ router.get("/parametrosReais/:maquina",  (req,res) => {
                 res.send(output)
                 
               }); 
-        }
+        }else if(maquina.tipoId == 3){
+         ParametrosReaisHaitianJupyter.findAll({
+             limit: 30,
+             where: {
+               mac: maquina.mac
+             },
+             order: [ [ 'createdAt', 'DESC' ]]
+           }).then(output => {
+ 
+             res.send(output)
+             
+           }); 
+     }
         
     })   
 

@@ -86,6 +86,7 @@ p.read-only {
    text-align: center;
    font-weight: bold;
    /* width: fit-content; */
+   cursor: pointer;
 }
 
 p.read-only span.cadastrados {
