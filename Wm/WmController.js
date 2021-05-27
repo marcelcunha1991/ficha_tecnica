@@ -20,7 +20,7 @@ router.get("/trigger",  (req,res) => {
       
       var mailOptions = {
         from: 'wmmailcentral@gmail.com',
-        to: 'marcel.silva1991@gmail.com',
+        to: 'implantacaomap@gmail.com',
         subject: 'WM ALERTA',
         text: 'Parâmetros tendendo a sair dos limites esperados'
       };
