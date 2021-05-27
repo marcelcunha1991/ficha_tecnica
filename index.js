@@ -40,6 +40,7 @@ const tiposConctroller = require("./Tipo/TipoController");
 const ParametrosRealController = require("./ParametrosTempoReal/ParametrosRealController");
 const revisaoController = require("./Revisao/RevisaoController");
 const acessoVfWebController = require("./Acesso_Vf_Web/Acesso_Vf_WebController");
+const WmController = require("./Wm/WmController");
 
 const bcrypt = require("bcryptjs");
 
@@ -79,6 +80,7 @@ app.use("/",tiposConctroller);
 app.use("/",alertasController);
 app.use("/",revisaoController);
 app.use("/",acessoVfWebController);
+app.use("/",WmController);
 
 
 
