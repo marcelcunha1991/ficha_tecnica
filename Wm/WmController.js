@@ -7,11 +7,15 @@ router.get("/trigger",  (req,res) => {
 
     var transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
+        secure: false, // use SSL
         port: 587,
         auth: {
           user: 'wmmailcentral@gmail.com',
           pass: 'marcelft131291'
-        }
+        },        
+      tls: {
+          rejectUnauthorized: false
+      }
       });
       
       var mailOptions = {

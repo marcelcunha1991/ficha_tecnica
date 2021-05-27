@@ -3,7 +3,7 @@ const Sequelize = require("sequelize");
 
 // PARAMETROS DE CONEXAO PARA BANCO SQL
 
-// const conn = new Sequelize('fichatecnica','root','',{
+// const conn = new Sequelize('fichatecnica','root','sa123',{
 //    host: 'localhost',
 //    dialect: 'mysql',
 //    port:3306,
