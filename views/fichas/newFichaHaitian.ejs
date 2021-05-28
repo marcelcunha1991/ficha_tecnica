@@ -555,6 +555,32 @@
       <!-- PERIFÉRICOS -->
       <div class="table-responsive table-ficha d-flex flex-column justify-content-between" style="width: 50vw;">
          <table class="table-bordered" style="width: 100%">
+            <tbody>
+               <tr>
+                  <th colspan="1">TERMOPAR:</th>
+                  <td colspan="1">
+                     <input checked type="radio" id="termopar" name="termopar" value="K">
+                     <label for="termopar">K</label>
+                  </td>
+                  <td colspan="1">
+                     <input type="radio" id="termopar" name="termopar" value="J">
+                     <label for="termopar">J</label>
+                  </td>
+   
+                  <th colspan="1">VOLTAGEM:</th>
+                  <td colspan="1">
+                     <input checked type="radio" id="voltagem" name="voltagem" value="220">
+                     <label for="voltagem">220</label>
+                  </td>
+                  <td colspan="1">
+                     <input type="radio" id="voltagem" name="voltagem" value="24">
+                     <label for="voltagem">24</label>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+         
+         <table class="table-bordered" style="width: 100%; margin-top: 40px">
             <thead>
                <tr>
                   <th colspan="5">CÂMARA QUENTE</th>
@@ -576,23 +602,6 @@
                   </tr>
                <% } %>
             </tbody>
-            <tfoot>
-               <tr>
-                  <th colspan="1">TERMOPAR:</th>
-                  <th colspan="1">K:</th>
-                  <td colspan="1">
-                     <input style="width: 100%" id="termoparK1" name="termoparK1">
-                  </td>
-                  <th colspan="1">J: 1~78</th>
-                  <td colspan="1">
-                     <input style="width: 100%" id="termoparJ" name="termoparJ">
-                  </td>
-                  <th colspan="1">K:</th>
-                  <td colspan="1">
-                     <input style="width: 100%" id="termoparK2" name="termoparK2">
-                  </td>
-               </tr>
-            </tfoot>
          </table>
          
          <table class="table-bordered" style="width: 100%; margin-top: 40px">
@@ -615,8 +624,8 @@
                   <th>ACT TIME</th>
                </tr>
                <% count = 0 %>
-               <% count2 = 45 %>
-               <% for(var j = 0; j < 45; j++) { %>
+               <% count2 = 20 %>
+               <% for(var j = 0; j < 20; j++) { %>
                   <tr>
                      <!-- lado esquerdo -->
                      <% for(var i = 0; i < 1; i++) { %> 
@@ -642,14 +651,6 @@
                   </tr>
                <% } %>
             </tbody>
-            <tfoot>
-               <tr>
-                  <th colspan="1">VOLTAGEM:</th>
-                  <td colspan="6">
-                     <input style="width: 100%" id="voltagem" name="voltagem">
-                  </td>
-               </tr>
-            </tfoot>
          </table>
    
          <table class="table-bordered" style="margin-top: 40px">

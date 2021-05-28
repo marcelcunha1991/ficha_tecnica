@@ -60,7 +60,7 @@
                         <p id="descMaterial"><%= injetor.Material %></p>
                      </td>
                      <td>
-                        <input class="read-only" readonly style="width: 100%" id="material" name="material" value="<%= injetor.revisao %>">
+                        <input class="read-only" readonly style="width: 100%" id="revisao" name="revisao" value="<%= injetor.revisao %>">
                      </td>
                   </tr>
                </tbody>
@@ -832,6 +832,28 @@
             <!-- PERIFÉRICOS -->
             <div class="table-responsive table-ficha d-flex flex-column justify-content-between" style="width: 50vw;">
                <table class="table-bordered" style="width: 100%">
+                  <tbody>
+                     <tr>
+                        <th colspan="1">TERMOPAR:</th>
+                        <td colspan="1">
+                           <p id="termoparK">K</p>
+                        </td>
+                        <td colspan="1">
+                           <p id="termoparJ">J</p>
+                        </td>
+         
+                        <th colspan="1">VOLTAGEM:</th>
+                        <td colspan="1">
+                           <p id="voltagem220">220</p>
+                        </td>
+                        <td colspan="1">
+                           <p id="voltagem24">24</p>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+
+               <table class="table-bordered" style="width: 100%; margin-top: 40px;">
                   <thead>
                      <tr>
                         <th colspan="5">CÂMARA QUENTE</th>
@@ -1268,23 +1290,6 @@
                         </td>
                      </tr>
                   </tbody>
-                  <tfoot>
-                     <tr>
-                        <th colspan="1">TERMOPAR:</th>
-                        <th colspan="1">K:</th>
-                        <td colspan="1">
-                           <input class="read-only" readonly style="width: 100%" id="termoparK1" name="termoparK1" value="<%= perifericos.termoparK1 %>">
-                        </td>
-                        <th colspan="1">J: 1~78</th>
-                        <td colspan="1">
-                           <input class="read-only" readonly style="width: 100%" id="termoparJ" name="termoparJ" value="<%= perifericos.termoparJ %>">
-                        </td>
-                        <th colspan="1">K:</th>
-                        <td colspan="1">
-                           <input class="read-only" readonly style="width: 100%" id="termoparK2" name="termoparK2" value="<%= perifericos.termoparK2 %>">
-                        </td>
-                     </tr>
-                  </tfoot>
                </table>
                
                <table class="table-bordered" style="width: 100%; margin-top: 40px">
@@ -1315,12 +1320,12 @@
                            <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG1" value="<%= perifericos.VG1ACTTIME %>">
                         </td>
                         
-                        <th>VG46</th>
+                        <th>VG21</th>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG46" value="<%= perifericos.VG46DLYTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG21" value="<%= perifericos.VG21DLYTIME %>">
                         </td>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG46" value="<%= perifericos.VG46ACTTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG21" value="<%= perifericos.VG21ACTTIME %>">
                         </td>
                      </tr>
                      <tr>
@@ -1332,12 +1337,12 @@
                            <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG2" value="<%= perifericos.VG2ACTTIME %>">
                         </td>
 
-                        <th>VG47</th>
+                        <th>VG22</th>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG47" value="<%= perifericos.VG47DLYTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG22" value="<%= perifericos.VG22DLYTIME %>">
                         </td>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG47" value="<%= perifericos.VG47ACTTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG22" value="<%= perifericos.VG22ACTTIME %>">
                         </td>
                      </tr>
                      <tr>
@@ -1349,12 +1354,12 @@
                            <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG3" value="<%= perifericos.VG3ACTTIME %>">
                         </td>
 
-                        <th>VG48</th>
+                        <th>VG23</th>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG48" value="<%= perifericos.VG48DLYTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG23" value="<%= perifericos.VG23DLYTIME %>">
                         </td>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG48" value="<%= perifericos.VG48ACTTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG23" value="<%= perifericos.VG23ACTTIME %>">
                         </td>
                      </tr>
                      <tr>
@@ -1366,12 +1371,12 @@
                            <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG4" value="<%= perifericos.VG4ACTTIME %>">
                         </td>
 
-                        <th>VG49</th>
+                        <th>VG24</th>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG49" value="<%= perifericos.VG49DLYTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG24" value="<%= perifericos.VG24DLYTIME %>">
                         </td>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG49" value="<%= perifericos.VG49ACTTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG24" value="<%= perifericos.VG24ACTTIME %>">
                         </td>
                      </tr>
                      <tr>
@@ -1383,12 +1388,12 @@
                            <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG5" value="<%= perifericos.VG5ACTTIME %>">
                         </td>
 
-                        <th>VG50</th>
+                        <th>VG25</th>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG50" value="<%= perifericos.VG50DLYTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG25" value="<%= perifericos.VG25DLYTIME %>">
                         </td>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG50" value="<%= perifericos.VG50ACTTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG25" value="<%= perifericos.VG25ACTTIME %>">
                         </td>
                      </tr>
                      <tr>
@@ -1400,12 +1405,12 @@
                            <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG6" value="<%= perifericos.VG6ACTTIME %>">
                         </td>
 
-                        <th>VG51</th>
+                        <th>VG26</th>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG51" value="<%= perifericos.VG51DLYTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG26" value="<%= perifericos.VG26DLYTIME %>">
                         </td>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG51" value="<%= perifericos.VG51ACTTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG26" value="<%= perifericos.VG26ACTTIME %>">
                         </td>
                      </tr>
                      <tr>
@@ -1417,12 +1422,12 @@
                            <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG7" value="<%= perifericos.VG7ACTTIME %>">
                         </td>
 
-                        <th>VG52</th>
+                        <th>VG27</th>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG52" value="<%= perifericos.VG52DLYTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG27" value="<%= perifericos.VG27DLYTIME %>">
                         </td>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG52" value="<%= perifericos.VG52ACTTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG27" value="<%= perifericos.VG27ACTTIME %>">
                         </td>
                      </tr>
                      <tr>
@@ -1434,12 +1439,12 @@
                            <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG8" value="<%= perifericos.VG8ACTTIME %>">
                         </td>
 
-                        <th>VG53</th>
+                        <th>VG28</th>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG53" value="<%= perifericos.VG53DLYTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG28" value="<%= perifericos.VG28DLYTIME %>">
                         </td>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG53" value="<%= perifericos.VG53ACTTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG28" value="<%= perifericos.VG28ACTTIME %>">
                         </td>
                      </tr>
                      <tr>
@@ -1451,12 +1456,12 @@
                            <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG9" value="<%= perifericos.VG9ACTTIME %>">
                         </td>
 
-                        <th>VG54</th>
+                        <th>VG29</th>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG54" value="<%= perifericos.VG54DLYTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG29" value="<%= perifericos.VG29DLYTIME %>">
                         </td>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG54" value="<%= perifericos.VG54ACTTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG29" value="<%= perifericos.VG29ACTTIME %>">
                         </td>
                      </tr>
                      <tr>
@@ -1468,12 +1473,12 @@
                            <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG10" value="<%= perifericos.VG10ACTTIME %>">
                         </td>
 
-                        <th>VG55</th>
+                        <th>VG30</th>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG55" value="<%= perifericos.VG55DLYTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG30" value="<%= perifericos.VG30DLYTIME %>">
                         </td>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG55" value="<%= perifericos.VG55ACTTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG30" value="<%= perifericos.VG30ACTTIME %>">
                         </td>
                      </tr>
                      <tr>
@@ -1485,12 +1490,12 @@
                            <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG11" value="<%= perifericos.VG11ACTTIME %>">
                         </td>
 
-                        <th>VG56</th>
+                        <th>VG31</th>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG56" value="<%= perifericos.VG56DLYTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG31" value="<%= perifericos.VG31DLYTIME %>">
                         </td>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG56" value="<%= perifericos.VG56ACTTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG31" value="<%= perifericos.VG31ACTTIME %>">
                         </td>
                      </tr>
                      <tr>
@@ -1502,12 +1507,12 @@
                            <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG12" value="<%= perifericos.VG12ACTTIME %>">
                         </td>
 
-                        <th>VG57</th>
+                        <th>VG32</th>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG57" value="<%= perifericos.VG57DLYTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG32" value="<%= perifericos.VG32DLYTIME %>">
                         </td>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG57" value="<%= perifericos.VG57ACTTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG32" value="<%= perifericos.VG32ACTTIME %>">
                         </td>
                      </tr>
                      <tr>
@@ -1519,12 +1524,12 @@
                            <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG13" value="<%= perifericos.VG13ACTTIME %>">
                         </td>
 
-                        <th>VG58</th>
+                        <th>VG33</th>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG58" value="<%= perifericos.VG58DLYTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG33" value="<%= perifericos.VG33DLYTIME %>">
                         </td>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG58" value="<%= perifericos.VG58ACTTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG33" value="<%= perifericos.VG33ACTTIME %>">
                         </td>
                      </tr>
                      <tr>
@@ -1536,12 +1541,12 @@
                            <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG14" value="<%= perifericos.VG14ACTTIME %>">
                         </td>
 
-                        <th>VG59</th>
+                        <th>VG34</th>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG59" value="<%= perifericos.VG59DLYTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG34" value="<%= perifericos.VG34DLYTIME %>">
                         </td>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG59" value="<%= perifericos.VG59ACTTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG34" value="<%= perifericos.VG34ACTTIME %>">
                         </td>
                      </tr>
                      <tr>
@@ -1553,12 +1558,12 @@
                            <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG15" value="<%= perifericos.VG15ACTTIME %>">
                         </td>
 
-                        <th>VG60</th>
+                        <th>VG35</th>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG60" value="<%= perifericos.VG60DLYTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG35" value="<%= perifericos.VG35DLYTIME %>">
                         </td>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG60" value="<%= perifericos.VG60ACTTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG35" value="<%= perifericos.VG35ACTTIME %>">
                         </td>
                      </tr>
                      <tr>
@@ -1570,12 +1575,12 @@
                            <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG16" value="<%= perifericos.VG16ACTTIME %>">
                         </td>
 
-                        <th>VG61</th>
+                        <th>VG36</th>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG61" value="<%= perifericos.VG61DLYTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG36" value="<%= perifericos.VG36DLYTIME %>">
                         </td>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG61" value="<%= perifericos.VG61ACTTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG36" value="<%= perifericos.VG36ACTTIME %>">
                         </td>
                      </tr>
                      <tr>
@@ -1587,12 +1592,12 @@
                            <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG17" value="<%= perifericos.VG17ACTTIME %>">
                         </td>
 
-                        <th>VG62</th>
+                        <th>VG37</th>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG62" value="<%= perifericos.VG62DLYTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG37" value="<%= perifericos.VG37DLYTIME %>">
                         </td>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG62" value="<%= perifericos.VG62ACTTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG37" value="<%= perifericos.VG37ACTTIME %>">
                         </td>
                      </tr>
                      <tr>
@@ -1604,12 +1609,12 @@
                            <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG18" value="<%= perifericos.VG18ACTTIME %>">
                         </td>
 
-                        <th>VG63</th>
+                        <th>VG38</th>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG63" value="<%= perifericos.VG63DLYTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG38" value="<%= perifericos.VG38DLYTIME %>">
                         </td>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG63" value="<%= perifericos.VG63ACTTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG38" value="<%= perifericos.VG38ACTTIME %>">
                         </td>
                      </tr>
                      <tr>
@@ -1621,12 +1626,12 @@
                            <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG19" value="<%= perifericos.VG19ACTTIME %>">
                         </td>
 
-                        <th>VG64</th>
+                        <th>VG39</th>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG64" value="<%= perifericos.VG64DLYTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG39" value="<%= perifericos.VG39DLYTIME %>">
                         </td>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG64" value="<%= perifericos.VG64ACTTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG39" value="<%= perifericos.VG39ACTTIME %>">
                         </td>
                      </tr>
                      <tr>
@@ -1638,449 +1643,15 @@
                            <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG20" value="<%= perifericos.VG20ACTTIME %>">
                         </td>
 
-                        <th>VG65</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG65" value="<%= perifericos.VG65DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG65" value="<%= perifericos.VG65ACTTIME %>">
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>VG21</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG21" value="<%= perifericos.VG21DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG21" value="<%= perifericos.VG21ACTTIME %>">
-                        </td>
-
-                        <th>VG66</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG66" value="<%= perifericos.VG66DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG66" value="<%= perifericos.VG66ACTTIME %>">
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>VG22</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG22" value="<%= perifericos.VG22DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG22" value="<%= perifericos.VG22ACTTIME %>">
-                        </td>
-
-                        <th>VG67</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG67" value="<%= perifericos.VG67DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG67" value="<%= perifericos.VG67ACTTIME %>">
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>VG23</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG23" value="<%= perifericos.VG23DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG23" value="<%= perifericos.VG23ACTTIME %>">
-                        </td>
-
-                        <th>VG68</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG68" value="<%= perifericos.VG68DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG68" value="<%= perifericos.VG68ACTTIME %>">
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>VG24</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG24" value="<%= perifericos.VG24DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG24" value="<%= perifericos.VG24ACTTIME %>">
-                        </td>
-                        
-                        <th>VG69</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG69" value="<%= perifericos.VG69DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG69" value="<%= perifericos.VG69ACTTIME %>">
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>VG25</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG25" value="<%= perifericos.VG25DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG25" value="<%= perifericos.VG25ACTTIME %>">
-                        </td>
-
-                        <th>VG70</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG70" value="<%= perifericos.VG70DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG70" value="<%= perifericos.VG70ACTTIME %>">
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>VG26</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG26" value="<%= perifericos.VG26DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG26" value="<%= perifericos.VG26ACTTIME %>">
-                        </td>
-
-                        <th>VG71</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG71" value="<%= perifericos.VG71DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG71" value="<%= perifericos.VG71ACTTIME %>">
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>VG27</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG27" value="<%= perifericos.VG27DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG27" value="<%= perifericos.VG27ACTTIME %>">
-                        </td>
-
-                        <th>VG72</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG72" value="<%= perifericos.VG72DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG72" value="<%= perifericos.VG72ACTTIME %>">
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>VG28</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG28" value="<%= perifericos.VG28DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG28" value="<%= perifericos.VG28ACTTIME %>">
-                        </td>
-
-                        <th>VG73</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG73" value="<%= perifericos.VG73DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG73" value="<%= perifericos.VG73ACTTIME %>">
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>VG29</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG29" value="<%= perifericos.VG29DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG29" value="<%= perifericos.VG29ACTTIME %>">
-                        </td>
-
-                        <th>VG74</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG74" value="<%= perifericos.VG74DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG74" value="<%= perifericos.VG74ACTTIME %>">
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>VG30</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG30" value="<%= perifericos.VG30DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG30" value="<%= perifericos.VG30ACTTIME %>">
-                        </td>
-
-                        <th>VG75</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG75" value="<%= perifericos.VG75DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG75" value="<%= perifericos.VG75ACTTIME %>">
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>VG31</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG31" value="<%= perifericos.VG31DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG31" value="<%= perifericos.VG31ACTTIME %>">
-                        </td>
-
-                        <th>VG76</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG76" value="<%= perifericos.VG76DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG76" value="<%= perifericos.VG76ACTTIME %>">
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>VG32</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG32" value="<%= perifericos.VG32DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG32" value="<%= perifericos.VG32ACTTIME %>">
-                        </td>
-
-                        <th>VG77</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG77" value="<%= perifericos.VG77DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG77" value="<%= perifericos.VG77ACTTIME %>">
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>VG33</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG33" value="<%= perifericos.VG33DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG33" value="<%= perifericos.VG33ACTTIME %>">
-                        </td>
-
-                        <th>VG78</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG78" value="<%= perifericos.VG78DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG78" value="<%= perifericos.VG78ACTTIME %>">
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>VG34</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG34" value="<%= perifericos.VG34DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG34" value="<%= perifericos.VG34ACTTIME %>">
-                        </td>
-
-                        <th>VG79</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG79" value="<%= perifericos.VG79DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG79" value="<%= perifericos.VG79ACTTIME %>">
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>VG35</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG35" value="<%= perifericos.VG35DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG35" value="<%= perifericos.VG35ACTTIME %>">
-                        </td>
-
-                        <th>VG80</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG80" value="<%= perifericos.VG80DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG80" value="<%= perifericos.VG80ACTTIME %>">
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>VG36</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG36" value="<%= perifericos.VG36DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG36" value="<%= perifericos.VG36ACTTIME %>">
-                        </td>
-
-                        <th>VG81</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG81" value="<%= perifericos.VG81DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG81" value="<%= perifericos.VG81ACTTIME %>">
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>VG37</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG37" value="<%= perifericos.VG37DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG37" value="<%= perifericos.VG37ACTTIME %>">
-                        </td>
-
-                        <th>VG82</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG82" value="<%= perifericos.VG82DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG82" value="<%= perifericos.VG82ACTTIME %>">
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>VG38</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG38" value="<%= perifericos.VG38DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG38" value="<%= perifericos.VG38ACTTIME %>">
-                        </td>
-
-                        <th>VG83</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG83" value="<%= perifericos.VG83DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG83" value="<%= perifericos.VG83ACTTIME %>">
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>VG39</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG39" value="<%= perifericos.VG39DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG39" value="<%= perifericos.VG39ACTTIME %>">
-                        </td>
-
-                        <th>VG84</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG84" value="<%= perifericos.VG84DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG84" value="<%= perifericos.VG84ACTTIME %>">
-                        </td>
-                     </tr>
-                     <tr>
                         <th>VG40</th>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG40" value="<%= perifericos.VG40DLYTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG40" value="<%= perifericos.VG40DLYTIME %>">
                         </td>
                         <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG40" value="<%= perifericos.VG40ACTTIME %>">
-                        </td>
-
-                        <th>VG85</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG85" value="<%= perifericos.VG85DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG85" value="<%= perifericos.VG85ACTTIME %>">
-                        </td>
-                     </tr>
-
-                     <tr>
-                        <th>VG41</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG41" value="<%= perifericos.VG41DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG41" value="<%= perifericos.VG41ACTTIME %>">
-                        </td>
-
-                        <th>VG86</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG86" value="<%= perifericos.VG86DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG86" value="<%= perifericos.VG86ACTTIME %>">
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>VG42</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG42" value="<%= perifericos.VG42DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG42" value="<%= perifericos.VG42ACTTIME %>">
-                        </td>
-
-                        <th>VG87</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG87" value="<%= perifericos.VG87DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG87" value="<%= perifericos.VG87ACTTIME %>">
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>VG43</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG43" value="<%= perifericos.VG43DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG43" value="<%= perifericos.VG43ACTTIME %>">
-                        </td>
-
-                        <th>VG88</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG88" value="<%= perifericos.VG88DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG88" value="<%= perifericos.VG88ACTTIME %>">
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>VG44</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG44" value="<%= perifericos.VG44DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG44" value="<%= perifericos.VG44ACTTIME %>">
-                        </td>
-
-                        <th>VG89</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG89" value="<%= perifericos.VG89DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG89" value="<%= perifericos.VG89ACTTIME %>">
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>VG45</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG45" value="<%= perifericos.VG45DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG1" name="VG1" placeholder="VG45" value="<%= perifericos.VG45ACTTIME %>">
-                        </td>
-
-                        <th>VG90</th>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG90" value="<%= perifericos.VG90DLYTIME %>">
-                        </td>
-                        <td>
-                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG90" value="<%= perifericos.VG90ACTTIME %>">
+                           <input class="read-only" readonly style="width: 100%" id="VG2" name="VG2" placeholder="VG40" value="<%= perifericos.VG40ACTTIME %>">
                         </td>
                      </tr>
                   </tbody>
-                  <tfoot>
-                     <tr>
-                        <th colspan="1">VOLTAGEM:</th>
-                        <td colspan="6">
-                           <input class="read-only" readonly style="width: 100%" id="voltagem" name="voltagem" value="<%= perifericos.voltagem %>">
-                        </td>
-                     </tr>
-                  </tfoot>
                </table>
          
                <table class="table-bordered" style="margin-top: 40px">
@@ -2147,4 +1718,6 @@
    <br>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src=/scripts/documentScripts.js></script>
 <%- include ('../partials/footer.ejs') %>

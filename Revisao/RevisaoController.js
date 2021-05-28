@@ -41,7 +41,6 @@ router.get("/revisao/visualizacao/:id",(req,res) => {
             revisao: Id
          }
       }).then(periferico => {
-         console.log(periferico)
          res.render("revisao/visualizationHaitian", {
             injetor: injetor[0],
             perifericos: periferico[0],
@@ -58,6 +57,19 @@ router.get("/revisao/visualizacao/:id",(req,res) => {
       })
 
    })
+})
+
+router.get("/get/revisao/:id",(req,res) => {
+   var Id = req.params.id;
+      
+   RevisaoFichaTecnicaPastorePerifericos.findAll({
+      where: {
+         revisao: Id
+      }
+   }).then(periferico => {
+      res.send(periferico[0])
+   })
+
 })
 
 module.exports = router;

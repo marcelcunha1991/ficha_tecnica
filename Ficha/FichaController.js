@@ -870,6 +870,15 @@ router.get("/fichas/editToshiba/:id",(req,res) => {
 
 })
 
+router.get("/get/editHaitian/:id",(req,res) => {
+
+   var id = req.params.id;
+   
+   FichaPastorePerifericos.findByPk(id).then(periferico => {
+      res.send(periferico)
+   })
+   
+})
 
 router.get("/fichas/editHaitian/:id",(req,res) => {
 
@@ -907,13 +916,14 @@ router.get("/fichas/editHaitian/:id",(req,res) => {
                   iteration: 0,
                   
                })
+
+               res.send(injetor)
             })
          })
 
       })
 
    })
-
    
 })
 
@@ -1091,6 +1101,8 @@ router.post("/fichas/createHaitian",(req,res) => {
    var radialSCREntrada3 = req.body.scrcount5 !== "" ? req.body.scrcount5.replace(",", ".") : 0.0;
    var radialSCRSaida3 = req.body.scrcount6 !== "" ? req.body.scrcount6.replace(",", ".") : 0.0;
 
+   var termopar = req.body.termopar;
+   var voltagem = req.body.voltagem;
    var camara1 = req.body.camara1[0] !== "" ? req.body.camara1[0].replace(",", ".") : 0.0;
    var camara2 = req.body.camara2[0] !== "" ? req.body.camara2[0].replace(",", ".") : 0.0;
    var camara3 = req.body.camara3[0] !== "" ? req.body.camara3[0].replace(",", ".") : 0.0;
@@ -1221,9 +1233,6 @@ router.post("/fichas/createHaitian",(req,res) => {
    var camara128 = req.body.camara2[18] !== "" ? req.body.camara2[18].replace(",", ".") : 0.0;
    var camara129 = req.body.camara3[18] !== "" ? req.body.camara3[18].replace(",", ".") : 0.0;
    var camara130 = req.body.camara4[18] !== "" ? req.body.camara4[18].replace(",", ".") : 0.0;
-   var termoparK1 = req.body.termoparK1 !== "" ? req.body.termoparK1.replace(",", ".") : 0.0;
-   var termoparJ = req.body.termoparJ !== "" ? req.body.termoparJ.replace(",", ".") : 0.0;
-   var termoparK2 = req.body.termoparK2 !== "" ? req.body.termoparK2.replace(",", ".") : 0.0;
    var VG1DLYTIME = req.body.VG1[0] !== "" ? req.body.VG1[0].replace(",", ".") : 0.0;
    var VG1ACTTIME = req.body.VG1[1] !== "" ? req.body.VG1[1].replace(",", ".") : 0.0;
    var VG2DLYTIME = req.body.VG1[2] !== "" ? req.body.VG1[2].replace(",", ".") : 0.0;
@@ -1264,148 +1273,47 @@ router.post("/fichas/createHaitian",(req,res) => {
    var VG19ACTTIME = req.body.VG1[37] !== "" ? req.body.VG1[37].replace(",", ".") : 0.0;
    var VG20DLYTIME = req.body.VG1[38] !== "" ? req.body.VG1[38].replace(",", ".") : 0.0;
    var VG20ACTTIME = req.body.VG1[39] !== "" ? req.body.VG1[39].replace(",", ".") : 0.0;
-   var VG21DLYTIME = req.body.VG1[40] !== "" ? req.body.VG1[40].replace(",", ".") : 0.0;
-   var VG21ACTTIME = req.body.VG1[41] !== "" ? req.body.VG1[41].replace(",", ".") : 0.0;
-   var VG22DLYTIME = req.body.VG1[42] !== "" ? req.body.VG1[42].replace(",", ".") : 0.0;
-   var VG22ACTTIME = req.body.VG1[43] !== "" ? req.body.VG1[43].replace(",", ".") : 0.0;
-   var VG23DLYTIME = req.body.VG1[44] !== "" ? req.body.VG1[44].replace(",", ".") : 0.0;
-   var VG23ACTTIME = req.body.VG1[45] !== "" ? req.body.VG1[45].replace(",", ".") : 0.0;
-   var VG24DLYTIME = req.body.VG1[46] !== "" ? req.body.VG1[46].replace(",", ".") : 0.0;
-   var VG24ACTTIME = req.body.VG1[47] !== "" ? req.body.VG1[47].replace(",", ".") : 0.0;
-   var VG25DLYTIME = req.body.VG1[48] !== "" ? req.body.VG1[48].replace(",", ".") : 0.0;
-   var VG25ACTTIME = req.body.VG1[49] !== "" ? req.body.VG1[49].replace(",", ".") : 0.0;
-   var VG26DLYTIME = req.body.VG1[50] !== "" ? req.body.VG1[50].replace(",", ".") : 0.0;
-   var VG26ACTTIME = req.body.VG1[51] !== "" ? req.body.VG1[51].replace(",", ".") : 0.0;
-   var VG27DLYTIME = req.body.VG1[52] !== "" ? req.body.VG1[52].replace(",", ".") : 0.0;
-   var VG27ACTTIME = req.body.VG1[53] !== "" ? req.body.VG1[53].replace(",", ".") : 0.0;
-   var VG28DLYTIME = req.body.VG1[54] !== "" ? req.body.VG1[54].replace(",", ".") : 0.0;
-   var VG28ACTTIME = req.body.VG1[55] !== "" ? req.body.VG1[55].replace(",", ".") : 0.0;
-   var VG29DLYTIME = req.body.VG1[56] !== "" ? req.body.VG1[56].replace(",", ".") : 0.0;
-   var VG29ACTTIME = req.body.VG1[57] !== "" ? req.body.VG1[57].replace(",", ".") : 0.0;
-   var VG30DLYTIME = req.body.VG1[58] !== "" ? req.body.VG1[58].replace(",", ".") : 0.0;
-   var VG30ACTTIME = req.body.VG1[59] !== "" ? req.body.VG1[59].replace(",", ".") : 0.0;
-   var VG31DLYTIME = req.body.VG1[60] !== "" ? req.body.VG1[60].replace(",", ".") : 0.0;
-   var VG31ACTTIME = req.body.VG1[61] !== "" ? req.body.VG1[61].replace(",", ".") : 0.0;
-   var VG32DLYTIME = req.body.VG1[62] !== "" ? req.body.VG1[62].replace(",", ".") : 0.0;
-   var VG32ACTTIME = req.body.VG1[63] !== "" ? req.body.VG1[63].replace(",", ".") : 0.0;
-   var VG33DLYTIME = req.body.VG1[64] !== "" ? req.body.VG1[64].replace(",", ".") : 0.0;
-   var VG33ACTTIME = req.body.VG1[65] !== "" ? req.body.VG1[65].replace(",", ".") : 0.0;
-   var VG34DLYTIME = req.body.VG1[66] !== "" ? req.body.VG1[66].replace(",", ".") : 0.0;
-   var VG34ACTTIME = req.body.VG1[67] !== "" ? req.body.VG1[67].replace(",", ".") : 0.0;
-   var VG35DLYTIME = req.body.VG1[68] !== "" ? req.body.VG1[68].replace(",", ".") : 0.0;
-   var VG35ACTTIME = req.body.VG1[69] !== "" ? req.body.VG1[69].replace(",", ".") : 0.0;
-   var VG36DLYTIME = req.body.VG1[70] !== "" ? req.body.VG1[70].replace(",", ".") : 0.0;
-   var VG36ACTTIME = req.body.VG1[71] !== "" ? req.body.VG1[71].replace(",", ".") : 0.0;
-   var VG37DLYTIME = req.body.VG1[72] !== "" ? req.body.VG1[72].replace(",", ".") : 0.0;
-   var VG37ACTTIME = req.body.VG1[73] !== "" ? req.body.VG1[73].replace(",", ".") : 0.0;
-   var VG38DLYTIME = req.body.VG1[74] !== "" ? req.body.VG1[74].replace(",", ".") : 0.0;
-   var VG38ACTTIME = req.body.VG1[75] !== "" ? req.body.VG1[75].replace(",", ".") : 0.0;
-   var VG39DLYTIME = req.body.VG1[76] !== "" ? req.body.VG1[76].replace(",", ".") : 0.0;
-   var VG39ACTTIME = req.body.VG1[77] !== "" ? req.body.VG1[77].replace(",", ".") : 0.0;
-   var VG40DLYTIME = req.body.VG1[78] !== "" ? req.body.VG1[78].replace(",", ".") : 0.0;
-   var VG40ACTTIME = req.body.VG1[79] !== "" ? req.body.VG1[79].replace(",", ".") : 0.0;
-   var VG41DLYTIME = req.body.VG1[80] !== "" ? req.body.VG1[80].replace(",", ".") : 0.0;
-   var VG41ACTTIME = req.body.VG1[81] !== "" ? req.body.VG1[81].replace(",", ".") : 0.0;
-   var VG42DLYTIME = req.body.VG1[82] !== "" ? req.body.VG1[82].replace(",", ".") : 0.0;
-   var VG42ACTTIME = req.body.VG1[83] !== "" ? req.body.VG1[83].replace(",", ".") : 0.0;
-   var VG43DLYTIME = req.body.VG1[84] !== "" ? req.body.VG1[84].replace(",", ".") : 0.0;
-   var VG43ACTTIME = req.body.VG1[85] !== "" ? req.body.VG1[85].replace(",", ".") : 0.0;
-   var VG44DLYTIME = req.body.VG1[86] !== "" ? req.body.VG1[86].replace(",", ".") : 0.0;
-   var VG44ACTTIME = req.body.VG1[87] !== "" ? req.body.VG1[87].replace(",", ".") : 0.0;
-   var VG45DLYTIME = req.body.VG1[88] !== "" ? req.body.VG1[88].replace(",", ".") : 0.0;
-   var VG45ACTTIME = req.body.VG1[89] !== "" ? req.body.VG1[89].replace(",", ".") : 0.0;
-   var VG46DLYTIME = req.body.VG2[0] !== "" ? req.body.VG2[0].replace(",", ".") : 0.0;
-   var VG46ACTTIME = req.body.VG2[1] !== "" ? req.body.VG2[1].replace(",", ".") : 0.0;
-   var VG47DLYTIME = req.body.VG2[2] !== "" ? req.body.VG2[2].replace(",", ".") : 0.0;
-   var VG47ACTTIME = req.body.VG2[3] !== "" ? req.body.VG2[3].replace(",", ".") : 0.0;
-   var VG48DLYTIME = req.body.VG2[4] !== "" ? req.body.VG2[4].replace(",", ".") : 0.0;
-   var VG48ACTTIME = req.body.VG2[5] !== "" ? req.body.VG2[5].replace(",", ".") : 0.0;
-   var VG49DLYTIME = req.body.VG2[6] !== "" ? req.body.VG2[6].replace(",", ".") : 0.0;
-   var VG49ACTTIME = req.body.VG2[7] !== "" ? req.body.VG2[7].replace(",", ".") : 0.0;
-   var VG50DLYTIME = req.body.VG2[8] !== "" ? req.body.VG2[8].replace(",", ".") : 0.0;
-   var VG50ACTTIME = req.body.VG2[9] !== "" ? req.body.VG2[9].replace(",", ".") : 0.0;
-   var VG51DLYTIME = req.body.VG2[10] !== "" ? req.body.VG2[10].replace(",", ".") : 0.0;
-   var VG51ACTTIME = req.body.VG2[11] !== "" ? req.body.VG2[11].replace(",", ".") : 0.0;
-   var VG52DLYTIME = req.body.VG2[12] !== "" ? req.body.VG2[12].replace(",", ".") : 0.0;
-   var VG52ACTTIME = req.body.VG2[13] !== "" ? req.body.VG2[13].replace(",", ".") : 0.0;
-   var VG53DLYTIME = req.body.VG2[14] !== "" ? req.body.VG2[14].replace(",", ".") : 0.0;
-   var VG53ACTTIME = req.body.VG2[15] !== "" ? req.body.VG2[15].replace(",", ".") : 0.0;
-   var VG54DLYTIME = req.body.VG2[16] !== "" ? req.body.VG2[16].replace(",", ".") : 0.0;
-   var VG54ACTTIME = req.body.VG2[17] !== "" ? req.body.VG2[17].replace(",", ".") : 0.0;
-   var VG55DLYTIME = req.body.VG2[18] !== "" ? req.body.VG2[18].replace(",", ".") : 0.0;
-   var VG55ACTTIME = req.body.VG2[19] !== "" ? req.body.VG2[19].replace(",", ".") : 0.0;
-   var VG56DLYTIME = req.body.VG2[20] !== "" ? req.body.VG2[20].replace(",", ".") : 0.0;
-   var VG56ACTTIME = req.body.VG2[21] !== "" ? req.body.VG2[21].replace(",", ".") : 0.0;
-   var VG57DLYTIME = req.body.VG2[22] !== "" ? req.body.VG2[22].replace(",", ".") : 0.0;
-   var VG57ACTTIME = req.body.VG2[23] !== "" ? req.body.VG2[23].replace(",", ".") : 0.0;
-   var VG58DLYTIME = req.body.VG2[24] !== "" ? req.body.VG2[24].replace(",", ".") : 0.0;
-   var VG58ACTTIME = req.body.VG2[25] !== "" ? req.body.VG2[25].replace(",", ".") : 0.0;
-   var VG59DLYTIME = req.body.VG2[26] !== "" ? req.body.VG2[26].replace(",", ".") : 0.0;
-   var VG59ACTTIME = req.body.VG2[27] !== "" ? req.body.VG2[27].replace(",", ".") : 0.0;
-   var VG60DLYTIME = req.body.VG2[28] !== "" ? req.body.VG2[28].replace(",", ".") : 0.0;
-   var VG60ACTTIME = req.body.VG2[29] !== "" ? req.body.VG2[29].replace(",", ".") : 0.0;
-   var VG61DLYTIME = req.body.VG2[30] !== "" ? req.body.VG2[30].replace(",", ".") : 0.0;
-   var VG61ACTTIME = req.body.VG2[31] !== "" ? req.body.VG2[31].replace(",", ".") : 0.0;
-   var VG62DLYTIME = req.body.VG2[32] !== "" ? req.body.VG2[32].replace(",", ".") : 0.0;
-   var VG62ACTTIME = req.body.VG2[33] !== "" ? req.body.VG2[33].replace(",", ".") : 0.0;
-   var VG63DLYTIME = req.body.VG2[34] !== "" ? req.body.VG2[34].replace(",", ".") : 0.0;
-   var VG63ACTTIME = req.body.VG2[35] !== "" ? req.body.VG2[35].replace(",", ".") : 0.0;
-   var VG64DLYTIME = req.body.VG2[36] !== "" ? req.body.VG2[36].replace(",", ".") : 0.0;
-   var VG64ACTTIME = req.body.VG2[37] !== "" ? req.body.VG2[37].replace(",", ".") : 0.0;
-   var VG65DLYTIME = req.body.VG2[38] !== "" ? req.body.VG2[38].replace(",", ".") : 0.0;
-   var VG65ACTTIME = req.body.VG2[39] !== "" ? req.body.VG2[39].replace(",", ".") : 0.0;
-   var VG66DLYTIME = req.body.VG2[40] !== "" ? req.body.VG2[40].replace(",", ".") : 0.0;
-   var VG66ACTTIME = req.body.VG2[41] !== "" ? req.body.VG2[41].replace(",", ".") : 0.0;
-   var VG67DLYTIME = req.body.VG2[42] !== "" ? req.body.VG2[42].replace(",", ".") : 0.0;
-   var VG67ACTTIME = req.body.VG2[43] !== "" ? req.body.VG2[43].replace(",", ".") : 0.0;
-   var VG68DLYTIME = req.body.VG2[44] !== "" ? req.body.VG2[44].replace(",", ".") : 0.0;
-   var VG68ACTTIME = req.body.VG2[45] !== "" ? req.body.VG2[45].replace(",", ".") : 0.0;
-   var VG69DLYTIME = req.body.VG2[46] !== "" ? req.body.VG2[46].replace(",", ".") : 0.0;
-   var VG69ACTTIME = req.body.VG2[47] !== "" ? req.body.VG2[47].replace(",", ".") : 0.0;
-   var VG70DLYTIME = req.body.VG2[48] !== "" ? req.body.VG2[48].replace(",", ".") : 0.0;
-   var VG70ACTTIME = req.body.VG2[49] !== "" ? req.body.VG2[49].replace(",", ".") : 0.0;
-   var VG71DLYTIME = req.body.VG2[50] !== "" ? req.body.VG2[50].replace(",", ".") : 0.0;
-   var VG71ACTTIME = req.body.VG2[51] !== "" ? req.body.VG2[51].replace(",", ".") : 0.0;
-   var VG72DLYTIME = req.body.VG2[52] !== "" ? req.body.VG2[52].replace(",", ".") : 0.0;
-   var VG72ACTTIME = req.body.VG2[53] !== "" ? req.body.VG2[53].replace(",", ".") : 0.0;
-   var VG73DLYTIME = req.body.VG2[54] !== "" ? req.body.VG2[54].replace(",", ".") : 0.0;
-   var VG73ACTTIME = req.body.VG2[55] !== "" ? req.body.VG2[55].replace(",", ".") : 0.0;
-   var VG74DLYTIME = req.body.VG2[56] !== "" ? req.body.VG2[56].replace(",", ".") : 0.0;
-   var VG74ACTTIME = req.body.VG2[57] !== "" ? req.body.VG2[57].replace(",", ".") : 0.0;
-   var VG75DLYTIME = req.body.VG2[58] !== "" ? req.body.VG2[58].replace(",", ".") : 0.0;
-   var VG75ACTTIME = req.body.VG2[59] !== "" ? req.body.VG2[59].replace(",", ".") : 0.0;
-   var VG76DLYTIME = req.body.VG2[60] !== "" ? req.body.VG2[60].replace(",", ".") : 0.0;
-   var VG76ACTTIME = req.body.VG2[61] !== "" ? req.body.VG2[61].replace(",", ".") : 0.0;
-   var VG77DLYTIME = req.body.VG2[62] !== "" ? req.body.VG2[62].replace(",", ".") : 0.0;
-   var VG77ACTTIME = req.body.VG2[63] !== "" ? req.body.VG2[63].replace(",", ".") : 0.0;
-   var VG78DLYTIME = req.body.VG2[64] !== "" ? req.body.VG2[64].replace(",", ".") : 0.0;
-   var VG78ACTTIME = req.body.VG2[65] !== "" ? req.body.VG2[65].replace(",", ".") : 0.0;
-   var VG79DLYTIME = req.body.VG2[66] !== "" ? req.body.VG2[66].replace(",", ".") : 0.0;
-   var VG79ACTTIME = req.body.VG2[67] !== "" ? req.body.VG2[67].replace(",", ".") : 0.0;
-   var VG80DLYTIME = req.body.VG2[68] !== "" ? req.body.VG2[68].replace(",", ".") : 0.0;
-   var VG80ACTTIME = req.body.VG2[69] !== "" ? req.body.VG2[69].replace(",", ".") : 0.0;
-   var VG81DLYTIME = req.body.VG2[70] !== "" ? req.body.VG2[70].replace(",", ".") : 0.0;
-   var VG81ACTTIME = req.body.VG2[71] !== "" ? req.body.VG2[71].replace(",", ".") : 0.0;
-   var VG82DLYTIME = req.body.VG2[72] !== "" ? req.body.VG2[72].replace(",", ".") : 0.0;
-   var VG82ACTTIME = req.body.VG2[73] !== "" ? req.body.VG2[73].replace(",", ".") : 0.0;
-   var VG83DLYTIME = req.body.VG2[74] !== "" ? req.body.VG2[74].replace(",", ".") : 0.0;
-   var VG83ACTTIME = req.body.VG2[75] !== "" ? req.body.VG2[75].replace(",", ".") : 0.0;
-   var VG84DLYTIME = req.body.VG2[76] !== "" ? req.body.VG2[76].replace(",", ".") : 0.0;
-   var VG84ACTTIME = req.body.VG2[77] !== "" ? req.body.VG2[77].replace(",", ".") : 0.0;
-   var VG85DLYTIME = req.body.VG2[78] !== "" ? req.body.VG2[78].replace(",", ".") : 0.0;
-   var VG85ACTTIME = req.body.VG2[79] !== "" ? req.body.VG2[79].replace(",", ".") : 0.0;
-   var VG86DLYTIME = req.body.VG2[80] !== "" ? req.body.VG2[80].replace(",", ".") : 0.0;
-   var VG86ACTTIME = req.body.VG2[81] !== "" ? req.body.VG2[81].replace(",", ".") : 0.0;
-   var VG87DLYTIME = req.body.VG2[82] !== "" ? req.body.VG2[82].replace(",", ".") : 0.0;
-   var VG87ACTTIME = req.body.VG2[83] !== "" ? req.body.VG2[83].replace(",", ".") : 0.0;
-   var VG88DLYTIME = req.body.VG2[84] !== "" ? req.body.VG2[84].replace(",", ".") : 0.0;
-   var VG88ACTTIME = req.body.VG2[85] !== "" ? req.body.VG2[85].replace(",", ".") : 0.0;
-   var VG89DLYTIME = req.body.VG2[86] !== "" ? req.body.VG2[86].replace(",", ".") : 0.0;
-   var VG89ACTTIME = req.body.VG2[87] !== "" ? req.body.VG2[87].replace(",", ".") : 0.0;
-   var VG90DLYTIME = req.body.VG2[88] !== "" ? req.body.VG2[88].replace(",", ".") : 0.0;
-   var VG90ACTTIME = req.body.VG2[89] !== "" ? req.body.VG2[89].replace(",", ".") : 0.0;
-   var voltagem = req.body.voltagem !== "" ? req.body.voltagem.replace(",", ".") : 0.0;
-
+   var VG21DLYTIME = req.body.VG2[0] !== "" ? req.body.VG2[0].replace(",", ".") : 0.0;
+   var VG21ACTTIME = req.body.VG2[1] !== "" ? req.body.VG2[1].replace(",", ".") : 0.0;
+   var VG22DLYTIME = req.body.VG2[2] !== "" ? req.body.VG2[2].replace(",", ".") : 0.0;
+   var VG22ACTTIME = req.body.VG2[3] !== "" ? req.body.VG2[3].replace(",", ".") : 0.0;
+   var VG23DLYTIME = req.body.VG2[4] !== "" ? req.body.VG2[4].replace(",", ".") : 0.0;
+   var VG23ACTTIME = req.body.VG2[5] !== "" ? req.body.VG2[5].replace(",", ".") : 0.0;
+   var VG24DLYTIME = req.body.VG2[6] !== "" ? req.body.VG2[6].replace(",", ".") : 0.0;
+   var VG24ACTTIME = req.body.VG2[7] !== "" ? req.body.VG2[7].replace(",", ".") : 0.0;
+   var VG25DLYTIME = req.body.VG2[8] !== "" ? req.body.VG2[8].replace(",", ".") : 0.0;
+   var VG25ACTTIME = req.body.VG2[9] !== "" ? req.body.VG2[9].replace(",", ".") : 0.0;
+   var VG26DLYTIME = req.body.VG2[10] !== "" ? req.body.VG2[10].replace(",", ".") : 0.0;
+   var VG26ACTTIME = req.body.VG2[11] !== "" ? req.body.VG2[11].replace(",", ".") : 0.0;
+   var VG27DLYTIME = req.body.VG2[12] !== "" ? req.body.VG2[12].replace(",", ".") : 0.0;
+   var VG27ACTTIME = req.body.VG2[13] !== "" ? req.body.VG2[13].replace(",", ".") : 0.0;
+   var VG28DLYTIME = req.body.VG2[14] !== "" ? req.body.VG2[14].replace(",", ".") : 0.0;
+   var VG28ACTTIME = req.body.VG2[15] !== "" ? req.body.VG2[15].replace(",", ".") : 0.0;
+   var VG29DLYTIME = req.body.VG2[16] !== "" ? req.body.VG2[16].replace(",", ".") : 0.0;
+   var VG29ACTTIME = req.body.VG2[17] !== "" ? req.body.VG2[17].replace(",", ".") : 0.0;
+   var VG30DLYTIME = req.body.VG2[18] !== "" ? req.body.VG2[18].replace(",", ".") : 0.0;
+   var VG30ACTTIME = req.body.VG2[19] !== "" ? req.body.VG2[19].replace(",", ".") : 0.0;
+   var VG31DLYTIME = req.body.VG2[20] !== "" ? req.body.VG2[20].replace(",", ".") : 0.0;
+   var VG31ACTTIME = req.body.VG2[21] !== "" ? req.body.VG2[21].replace(",", ".") : 0.0;
+   var VG32DLYTIME = req.body.VG2[22] !== "" ? req.body.VG2[22].replace(",", ".") : 0.0;
+   var VG32ACTTIME = req.body.VG2[23] !== "" ? req.body.VG2[23].replace(",", ".") : 0.0;
+   var VG33DLYTIME = req.body.VG2[24] !== "" ? req.body.VG2[24].replace(",", ".") : 0.0;
+   var VG33ACTTIME = req.body.VG2[25] !== "" ? req.body.VG2[25].replace(",", ".") : 0.0;
+   var VG34DLYTIME = req.body.VG2[26] !== "" ? req.body.VG2[26].replace(",", ".") : 0.0;
+   var VG34ACTTIME = req.body.VG2[27] !== "" ? req.body.VG2[27].replace(",", ".") : 0.0;
+   var VG35DLYTIME = req.body.VG2[28] !== "" ? req.body.VG2[28].replace(",", ".") : 0.0;
+   var VG35ACTTIME = req.body.VG2[29] !== "" ? req.body.VG2[29].replace(",", ".") : 0.0;
+   var VG36DLYTIME = req.body.VG2[30] !== "" ? req.body.VG2[30].replace(",", ".") : 0.0;
+   var VG36ACTTIME = req.body.VG2[31] !== "" ? req.body.VG2[31].replace(",", ".") : 0.0;
+   var VG37DLYTIME = req.body.VG2[32] !== "" ? req.body.VG2[32].replace(",", ".") : 0.0;
+   var VG37ACTTIME = req.body.VG2[33] !== "" ? req.body.VG2[33].replace(",", ".") : 0.0;
+   var VG38DLYTIME = req.body.VG2[34] !== "" ? req.body.VG2[34].replace(",", ".") : 0.0;
+   var VG38ACTTIME = req.body.VG2[35] !== "" ? req.body.VG2[35].replace(",", ".") : 0.0;
+   var VG39DLYTIME = req.body.VG2[36] !== "" ? req.body.VG2[36].replace(",", ".") : 0.0;
+   var VG39ACTTIME = req.body.VG2[37] !== "" ? req.body.VG2[37].replace(",", ".") : 0.0;
+   var VG40DLYTIME = req.body.VG2[38] !== "" ? req.body.VG2[38].replace(",", ".") : 0.0;
+   var VG40ACTTIME = req.body.VG2[39] !== "" ? req.body.VG2[39].replace(",", ".") : 0.0;
+   
    var refrLadoFixo1 = req.body.rmladofixo1 !== "" ? req.body.rmladofixo1 : 0.0;
    var refrLadoFixo2 = req.body.rmladomovel1 !== "" ? req.body.rmladomovel1 : 0.0;
    var refrLadoMovel1 = req.body.rmladofixo2 !== "" ? req.body.rmladofixo2 : 0.0;
@@ -1586,6 +1494,8 @@ router.post("/fichas/createHaitian",(req,res) => {
 
       FichaPastorePerifericos.create({
          maq: maquina,
+         termopar: termopar,
+         voltagem: voltagem,
          camara1: camara1,
          camara2: camara2,
          camara3: camara3,
@@ -1716,9 +1626,6 @@ router.post("/fichas/createHaitian",(req,res) => {
          camara128: camara128,
          camara129: camara129,
          camara130: camara130,
-         termoparK1: termoparK1,
-         termoparJ: termoparJ,
-         termoparK2: termoparK2,
          VG1DLYTIME: VG1DLYTIME,
          VG1ACTTIME: VG1ACTTIME,
          VG2DLYTIME: VG2DLYTIME,
@@ -1799,107 +1706,6 @@ router.post("/fichas/createHaitian",(req,res) => {
          VG39ACTTIME: VG39ACTTIME,
          VG40DLYTIME: VG40DLYTIME,
          VG40ACTTIME: VG40ACTTIME,
-         VG41DLYTIME: VG41DLYTIME,
-         VG41ACTTIME: VG41ACTTIME,
-         VG42DLYTIME: VG42DLYTIME,
-         VG42ACTTIME: VG42ACTTIME,
-         VG43DLYTIME: VG43DLYTIME,
-         VG43ACTTIME: VG43ACTTIME,
-         VG44DLYTIME: VG44DLYTIME,
-         VG44ACTTIME: VG44ACTTIME,
-         VG45DLYTIME: VG45DLYTIME,
-         VG45ACTTIME: VG45ACTTIME,
-         VG46DLYTIME: VG46DLYTIME,
-         VG46ACTTIME: VG46ACTTIME,
-         VG47DLYTIME: VG47DLYTIME,
-         VG47ACTTIME: VG47ACTTIME,
-         VG48DLYTIME: VG48DLYTIME,
-         VG48ACTTIME: VG48ACTTIME,
-         VG49DLYTIME: VG49DLYTIME,
-         VG49ACTTIME: VG49ACTTIME,
-         VG50DLYTIME: VG50DLYTIME,
-         VG50ACTTIME: VG50ACTTIME,
-         VG51DLYTIME: VG51DLYTIME,
-         VG51ACTTIME: VG51ACTTIME,
-         VG52DLYTIME: VG52DLYTIME,
-         VG52ACTTIME: VG52ACTTIME,
-         VG53DLYTIME: VG53DLYTIME,
-         VG53ACTTIME: VG53ACTTIME,
-         VG54DLYTIME: VG54DLYTIME,
-         VG54ACTTIME: VG54ACTTIME,
-         VG55DLYTIME: VG55DLYTIME,
-         VG55ACTTIME: VG55ACTTIME,
-         VG56DLYTIME: VG56DLYTIME,
-         VG56ACTTIME: VG56ACTTIME,
-         VG57DLYTIME: VG57DLYTIME,
-         VG57ACTTIME: VG57ACTTIME,
-         VG58DLYTIME: VG58DLYTIME,
-         VG58ACTTIME: VG58ACTTIME,
-         VG59DLYTIME: VG59DLYTIME,
-         VG59ACTTIME: VG59ACTTIME,
-         VG60DLYTIME: VG60DLYTIME,
-         VG60ACTTIME: VG60ACTTIME,
-         VG61DLYTIME: VG61DLYTIME,
-         VG61ACTTIME: VG61ACTTIME,
-         VG62DLYTIME: VG62DLYTIME,
-         VG62ACTTIME: VG62ACTTIME,
-         VG63DLYTIME: VG63DLYTIME,
-         VG63ACTTIME: VG63ACTTIME,
-         VG64DLYTIME: VG64DLYTIME,
-         VG64ACTTIME: VG64ACTTIME,
-         VG65DLYTIME: VG65DLYTIME,
-         VG65ACTTIME: VG65ACTTIME,
-         VG66DLYTIME: VG66DLYTIME,
-         VG66ACTTIME: VG66ACTTIME,
-         VG67DLYTIME: VG67DLYTIME,
-         VG67ACTTIME: VG67ACTTIME,
-         VG68DLYTIME: VG68DLYTIME,
-         VG68ACTTIME: VG68ACTTIME,
-         VG69DLYTIME: VG69DLYTIME,
-         VG69ACTTIME: VG69ACTTIME,
-         VG70DLYTIME: VG70DLYTIME,
-         VG70ACTTIME: VG70ACTTIME,
-         VG71DLYTIME: VG71DLYTIME,
-         VG71ACTTIME: VG71ACTTIME,
-         VG72DLYTIME: VG72DLYTIME,
-         VG72ACTTIME: VG72ACTTIME,
-         VG73DLYTIME: VG73DLYTIME,
-         VG73ACTTIME: VG73ACTTIME,
-         VG74DLYTIME: VG74DLYTIME,
-         VG74ACTTIME: VG74ACTTIME,
-         VG75DLYTIME: VG75DLYTIME,
-         VG75ACTTIME: VG75ACTTIME,
-         VG76DLYTIME: VG76DLYTIME,
-         VG76ACTTIME: VG76ACTTIME,
-         VG77DLYTIME: VG77DLYTIME,
-         VG77ACTTIME: VG77ACTTIME,
-         VG78DLYTIME: VG78DLYTIME,
-         VG78ACTTIME: VG78ACTTIME,
-         VG79DLYTIME: VG79DLYTIME,
-         VG79ACTTIME: VG79ACTTIME,
-         VG80DLYTIME: VG80DLYTIME,
-         VG80ACTTIME: VG80ACTTIME,
-         VG81DLYTIME: VG81DLYTIME,
-         VG81ACTTIME: VG81ACTTIME,
-         VG82DLYTIME: VG82DLYTIME,
-         VG82ACTTIME: VG82ACTTIME,
-         VG83DLYTIME: VG83DLYTIME,
-         VG83ACTTIME: VG83ACTTIME,
-         VG84DLYTIME: VG84DLYTIME,
-         VG84ACTTIME: VG84ACTTIME,
-         VG85DLYTIME: VG85DLYTIME,
-         VG85ACTTIME: VG85ACTTIME,
-         VG86DLYTIME: VG86DLYTIME,
-         VG86ACTTIME: VG86ACTTIME,
-         VG87DLYTIME: VG87DLYTIME,
-         VG87ACTTIME: VG87ACTTIME,
-         VG88DLYTIME: VG88DLYTIME,
-         VG88ACTTIME: VG88ACTTIME,
-         VG89DLYTIME: VG89DLYTIME,
-         VG89ACTTIME: VG89ACTTIME,
-         VG90DLYTIME: VG90DLYTIME,
-         VG90ACTTIME: VG90ACTTIME,
-         voltagem: voltagem,
          refrLadoFixo1: refrLadoFixo1,
          refrLadoFixo2: refrLadoFixo2,
          refrLadoMovel1: refrLadoMovel1,
@@ -1911,6 +1717,8 @@ router.post("/fichas/createHaitian",(req,res) => {
          RevisaoFichaTecnicaPastorePerifericos.create({
             idFichaTecnica: data.id,
             maq: maquina,
+            termopar: termopar,
+            voltagem: voltagem,
             camara1: camara1,
             camara2: camara2,
             camara3: camara3,
@@ -2041,9 +1849,6 @@ router.post("/fichas/createHaitian",(req,res) => {
             camara128: camara128,
             camara129: camara129,
             camara130: camara130,
-            termoparK1: termoparK1,
-            termoparJ: termoparJ,
-            termoparK2: termoparK2,
             VG1DLYTIME: VG1DLYTIME,
             VG1ACTTIME: VG1ACTTIME,
             VG2DLYTIME: VG2DLYTIME,
@@ -2124,107 +1929,6 @@ router.post("/fichas/createHaitian",(req,res) => {
             VG39ACTTIME: VG39ACTTIME,
             VG40DLYTIME: VG40DLYTIME,
             VG40ACTTIME: VG40ACTTIME,
-            VG41DLYTIME: VG41DLYTIME,
-            VG41ACTTIME: VG41ACTTIME,
-            VG42DLYTIME: VG42DLYTIME,
-            VG42ACTTIME: VG42ACTTIME,
-            VG43DLYTIME: VG43DLYTIME,
-            VG43ACTTIME: VG43ACTTIME,
-            VG44DLYTIME: VG44DLYTIME,
-            VG44ACTTIME: VG44ACTTIME,
-            VG45DLYTIME: VG45DLYTIME,
-            VG45ACTTIME: VG45ACTTIME,
-            VG46DLYTIME: VG46DLYTIME,
-            VG46ACTTIME: VG46ACTTIME,
-            VG47DLYTIME: VG47DLYTIME,
-            VG47ACTTIME: VG47ACTTIME,
-            VG48DLYTIME: VG48DLYTIME,
-            VG48ACTTIME: VG48ACTTIME,
-            VG49DLYTIME: VG49DLYTIME,
-            VG49ACTTIME: VG49ACTTIME,
-            VG50DLYTIME: VG50DLYTIME,
-            VG50ACTTIME: VG50ACTTIME,
-            VG51DLYTIME: VG51DLYTIME,
-            VG51ACTTIME: VG51ACTTIME,
-            VG52DLYTIME: VG52DLYTIME,
-            VG52ACTTIME: VG52ACTTIME,
-            VG53DLYTIME: VG53DLYTIME,
-            VG53ACTTIME: VG53ACTTIME,
-            VG54DLYTIME: VG54DLYTIME,
-            VG54ACTTIME: VG54ACTTIME,
-            VG55DLYTIME: VG55DLYTIME,
-            VG55ACTTIME: VG55ACTTIME,
-            VG56DLYTIME: VG56DLYTIME,
-            VG56ACTTIME: VG56ACTTIME,
-            VG57DLYTIME: VG57DLYTIME,
-            VG57ACTTIME: VG57ACTTIME,
-            VG58DLYTIME: VG58DLYTIME,
-            VG58ACTTIME: VG58ACTTIME,
-            VG59DLYTIME: VG59DLYTIME,
-            VG59ACTTIME: VG59ACTTIME,
-            VG60DLYTIME: VG60DLYTIME,
-            VG60ACTTIME: VG60ACTTIME,
-            VG61DLYTIME: VG61DLYTIME,
-            VG61ACTTIME: VG61ACTTIME,
-            VG62DLYTIME: VG62DLYTIME,
-            VG62ACTTIME: VG62ACTTIME,
-            VG63DLYTIME: VG63DLYTIME,
-            VG63ACTTIME: VG63ACTTIME,
-            VG64DLYTIME: VG64DLYTIME,
-            VG64ACTTIME: VG64ACTTIME,
-            VG65DLYTIME: VG65DLYTIME,
-            VG65ACTTIME: VG65ACTTIME,
-            VG66DLYTIME: VG66DLYTIME,
-            VG66ACTTIME: VG66ACTTIME,
-            VG67DLYTIME: VG67DLYTIME,
-            VG67ACTTIME: VG67ACTTIME,
-            VG68DLYTIME: VG68DLYTIME,
-            VG68ACTTIME: VG68ACTTIME,
-            VG69DLYTIME: VG69DLYTIME,
-            VG69ACTTIME: VG69ACTTIME,
-            VG70DLYTIME: VG70DLYTIME,
-            VG70ACTTIME: VG70ACTTIME,
-            VG71DLYTIME: VG71DLYTIME,
-            VG71ACTTIME: VG71ACTTIME,
-            VG72DLYTIME: VG72DLYTIME,
-            VG72ACTTIME: VG72ACTTIME,
-            VG73DLYTIME: VG73DLYTIME,
-            VG73ACTTIME: VG73ACTTIME,
-            VG74DLYTIME: VG74DLYTIME,
-            VG74ACTTIME: VG74ACTTIME,
-            VG75DLYTIME: VG75DLYTIME,
-            VG75ACTTIME: VG75ACTTIME,
-            VG76DLYTIME: VG76DLYTIME,
-            VG76ACTTIME: VG76ACTTIME,
-            VG77DLYTIME: VG77DLYTIME,
-            VG77ACTTIME: VG77ACTTIME,
-            VG78DLYTIME: VG78DLYTIME,
-            VG78ACTTIME: VG78ACTTIME,
-            VG79DLYTIME: VG79DLYTIME,
-            VG79ACTTIME: VG79ACTTIME,
-            VG80DLYTIME: VG80DLYTIME,
-            VG80ACTTIME: VG80ACTTIME,
-            VG81DLYTIME: VG81DLYTIME,
-            VG81ACTTIME: VG81ACTTIME,
-            VG82DLYTIME: VG82DLYTIME,
-            VG82ACTTIME: VG82ACTTIME,
-            VG83DLYTIME: VG83DLYTIME,
-            VG83ACTTIME: VG83ACTTIME,
-            VG84DLYTIME: VG84DLYTIME,
-            VG84ACTTIME: VG84ACTTIME,
-            VG85DLYTIME: VG85DLYTIME,
-            VG85ACTTIME: VG85ACTTIME,
-            VG86DLYTIME: VG86DLYTIME,
-            VG86ACTTIME: VG86ACTTIME,
-            VG87DLYTIME: VG87DLYTIME,
-            VG87ACTTIME: VG87ACTTIME,
-            VG88DLYTIME: VG88DLYTIME,
-            VG88ACTTIME: VG88ACTTIME,
-            VG89DLYTIME: VG89DLYTIME,
-            VG89ACTTIME: VG89ACTTIME,
-            VG90DLYTIME: VG90DLYTIME,
-            VG90ACTTIME: VG90ACTTIME,
-            voltagem: voltagem,
             refrLadoFixo1: refrLadoFixo1,
             refrLadoFixo2: refrLadoFixo2,
             refrLadoMovel1: refrLadoMovel1,
@@ -2624,6 +2328,8 @@ router.post("/fichas/updateHaitian",(req,res) => {
    var radialSCREntrada3 = req.body.scrcount5 !== "" ? req.body.scrcount5.replace(",", ".") : 0.0;
    var radialSCRSaida3 = req.body.scrcount6 !== "" ? req.body.scrcount6.replace(",", ".") : 0.0;
 
+   var termopar = req.body.termopar;
+   var voltagem = req.body.voltagem;
    var camara1 = req.body.camara1 !== "" ? req.body.camara1.replace(",", ".") : 0.0;
    var camara2 = req.body.camara2 !== "" ? req.body.camara2.replace(",", ".") : 0.0;
    var camara3 = req.body.camara3 !== "" ? req.body.camara3.replace(",", ".") : 0.0;
@@ -2754,190 +2460,87 @@ router.post("/fichas/updateHaitian",(req,res) => {
    var camara128 = req.body.camara128 !== "" ? req.body.camara128.replace(",", ".") : 0.0;
    var camara129 = req.body.camara129 !== "" ? req.body.camara129.replace(",", ".") : 0.0;
    var camara130 = req.body.camara130 !== "" ? req.body.camara130.replace(",", ".") : 0.0;
-   var termoparK1 = req.body.termoparK1 !== "" ? req.body.termoparK1.replace(",", ".") : 0.0;
-   var termoparJ = req.body.termoparJ !== "" ? req.body.termoparJ.replace(",", ".") : 0.0;
-   var termoparK2 = req.body.termoparK2 !== "" ? req.body.termoparK2.replace(",", ".") : 0.0;
-   var valve1 = req.body.VG1[0] !== "" ? req.body.VG1[0].replace(",", ".") : 0.0;
-   var valve2 = req.body.VG1[1] !== "" ? req.body.VG1[1].replace(",", ".") : 0.0;
-   var valve3 = req.body.VG1[2] !== "" ? req.body.VG1[2].replace(",", ".") : 0.0;
-   var valve4 = req.body.VG1[3] !== "" ? req.body.VG1[3].replace(",", ".") : 0.0;
-   var valve5 = req.body.VG1[4] !== "" ? req.body.VG1[4].replace(",", ".") : 0.0;
-   var valve6 = req.body.VG1[5] !== "" ? req.body.VG1[5].replace(",", ".") : 0.0;
-   var valve7 = req.body.VG1[6] !== "" ? req.body.VG1[6].replace(",", ".") : 0.0;
-   var valve8 = req.body.VG1[7] !== "" ? req.body.VG1[7].replace(",", ".") : 0.0;
-   var valve9 = req.body.VG1[8] !== "" ? req.body.VG1[8].replace(",", ".") : 0.0;
-   var valve10 = req.body.VG1[9] !== "" ? req.body.VG1[9].replace(",", ".") : 0.0;
-   var valve11 = req.body.VG1[10] !== "" ? req.body.VG1[10].replace(",", ".") : 0.0;
-   var valve12 = req.body.VG1[11] !== "" ? req.body.VG1[11].replace(",", ".") : 0.0;
-   var valve13 = req.body.VG1[12] !== "" ? req.body.VG1[12].replace(",", ".") : 0.0;
-   var valve14 = req.body.VG1[13] !== "" ? req.body.VG1[13].replace(",", ".") : 0.0;
-   var valve15 = req.body.VG1[14] !== "" ? req.body.VG1[14].replace(",", ".") : 0.0;
-   var valve16 = req.body.VG1[15] !== "" ? req.body.VG1[15].replace(",", ".") : 0.0;
-   var valve17 = req.body.VG1[16] !== "" ? req.body.VG1[16].replace(",", ".") : 0.0;
-   var valve18 = req.body.VG1[17] !== "" ? req.body.VG1[17].replace(",", ".") : 0.0;
-   var valve19 = req.body.VG1[18] !== "" ? req.body.VG1[18].replace(",", ".") : 0.0;
-   var valve20 = req.body.VG1[19] !== "" ? req.body.VG1[19].replace(",", ".") : 0.0;
-   var valve21 = req.body.VG1[20] !== "" ? req.body.VG1[20].replace(",", ".") : 0.0;
-   var valve22 = req.body.VG1[21] !== "" ? req.body.VG1[21].replace(",", ".") : 0.0;
-   var valve23 = req.body.VG1[22] !== "" ? req.body.VG1[22].replace(",", ".") : 0.0;
-   var valve24 = req.body.VG1[23] !== "" ? req.body.VG1[23].replace(",", ".") : 0.0;
-   var valve25 = req.body.VG1[24] !== "" ? req.body.VG1[24].replace(",", ".") : 0.0;
-   var valve26 = req.body.VG1[25] !== "" ? req.body.VG1[25].replace(",", ".") : 0.0;
-   var valve27 = req.body.VG1[26] !== "" ? req.body.VG1[26].replace(",", ".") : 0.0;
-   var valve28 = req.body.VG1[27] !== "" ? req.body.VG1[27].replace(",", ".") : 0.0;
-   var valve29 = req.body.VG1[28] !== "" ? req.body.VG1[28].replace(",", ".") : 0.0;
-   var valve30 = req.body.VG1[29] !== "" ? req.body.VG1[29].replace(",", ".") : 0.0;
-   var valve31 = req.body.VG1[30] !== "" ? req.body.VG1[30].replace(",", ".") : 0.0;
-   var valve32 = req.body.VG1[31] !== "" ? req.body.VG1[31].replace(",", ".") : 0.0;
-   var valve33 = req.body.VG1[32] !== "" ? req.body.VG1[32].replace(",", ".") : 0.0;
-   var valve34 = req.body.VG1[33] !== "" ? req.body.VG1[33].replace(",", ".") : 0.0;
-   var valve35 = req.body.VG1[34] !== "" ? req.body.VG1[34].replace(",", ".") : 0.0;
-   var valve36 = req.body.VG1[35] !== "" ? req.body.VG1[35].replace(",", ".") : 0.0;
-   var valve37 = req.body.VG1[36] !== "" ? req.body.VG1[36].replace(",", ".") : 0.0;
-   var valve38 = req.body.VG1[37] !== "" ? req.body.VG1[37].replace(",", ".") : 0.0;
-   var valve39 = req.body.VG1[38] !== "" ? req.body.VG1[38].replace(",", ".") : 0.0;
-   var valve40 = req.body.VG1[39] !== "" ? req.body.VG1[39].replace(",", ".") : 0.0;
-   var valve41 = req.body.VG1[40] !== "" ? req.body.VG1[40].replace(",", ".") : 0.0;
-   var valve42 = req.body.VG1[41] !== "" ? req.body.VG1[41].replace(",", ".") : 0.0;
-   var valve43 = req.body.VG1[42] !== "" ? req.body.VG1[42].replace(",", ".") : 0.0;
-   var valve44 = req.body.VG1[43] !== "" ? req.body.VG1[43].replace(",", ".") : 0.0;
-   var valve45 = req.body.VG1[44] !== "" ? req.body.VG1[44].replace(",", ".") : 0.0;
-   var valve46 = req.body.VG1[45] !== "" ? req.body.VG1[45].replace(",", ".") : 0.0;
-   var valve47 = req.body.VG1[46] !== "" ? req.body.VG1[46].replace(",", ".") : 0.0;
-   var valve48 = req.body.VG1[47] !== "" ? req.body.VG1[47].replace(",", ".") : 0.0;
-   var valve49 = req.body.VG1[48] !== "" ? req.body.VG1[48].replace(",", ".") : 0.0;
-   var valve50 = req.body.VG1[49] !== "" ? req.body.VG1[49].replace(",", ".") : 0.0;
-   var valve51 = req.body.VG1[50] !== "" ? req.body.VG1[50].replace(",", ".") : 0.0;
-   var valve52 = req.body.VG1[51] !== "" ? req.body.VG1[51].replace(",", ".") : 0.0;
-   var valve53 = req.body.VG1[52] !== "" ? req.body.VG1[52].replace(",", ".") : 0.0;
-   var valve54 = req.body.VG1[53] !== "" ? req.body.VG1[53].replace(",", ".") : 0.0;
-   var valve55 = req.body.VG1[54] !== "" ? req.body.VG1[54].replace(",", ".") : 0.0;
-   var valve56 = req.body.VG1[55] !== "" ? req.body.VG1[55].replace(",", ".") : 0.0;
-   var valve57 = req.body.VG1[56] !== "" ? req.body.VG1[56].replace(",", ".") : 0.0;
-   var valve58 = req.body.VG1[57] !== "" ? req.body.VG1[57].replace(",", ".") : 0.0;
-   var valve59 = req.body.VG1[58] !== "" ? req.body.VG1[58].replace(",", ".") : 0.0;
-   var valve60 = req.body.VG1[59] !== "" ? req.body.VG1[59].replace(",", ".") : 0.0;
-   var valve61 = req.body.VG1[60] !== "" ? req.body.VG1[60].replace(",", ".") : 0.0;
-   var valve62 = req.body.VG1[61] !== "" ? req.body.VG1[61].replace(",", ".") : 0.0;
-   var valve63 = req.body.VG1[62] !== "" ? req.body.VG1[62].replace(",", ".") : 0.0;
-   var valve64 = req.body.VG1[63] !== "" ? req.body.VG1[63].replace(",", ".") : 0.0;
-   var valve65 = req.body.VG1[64] !== "" ? req.body.VG1[64].replace(",", ".") : 0.0;
-   var valve66 = req.body.VG1[65] !== "" ? req.body.VG1[65].replace(",", ".") : 0.0;
-   var valve67 = req.body.VG1[66] !== "" ? req.body.VG1[66].replace(",", ".") : 0.0;
-   var valve68 = req.body.VG1[67] !== "" ? req.body.VG1[67].replace(",", ".") : 0.0;
-   var valve69 = req.body.VG1[68] !== "" ? req.body.VG1[68].replace(",", ".") : 0.0;
-   var valve70 = req.body.VG1[69] !== "" ? req.body.VG1[69].replace(",", ".") : 0.0;
-   var valve71 = req.body.VG1[70] !== "" ? req.body.VG1[70].replace(",", ".") : 0.0;
-   var valve72 = req.body.VG1[71] !== "" ? req.body.VG1[71].replace(",", ".") : 0.0;
-   var valve73 = req.body.VG1[72] !== "" ? req.body.VG1[72].replace(",", ".") : 0.0;
-   var valve74 = req.body.VG1[73] !== "" ? req.body.VG1[73].replace(",", ".") : 0.0;
-   var valve75 = req.body.VG1[74] !== "" ? req.body.VG1[74].replace(",", ".") : 0.0;
-   var valve76 = req.body.VG1[75] !== "" ? req.body.VG1[75].replace(",", ".") : 0.0;
-   var valve77 = req.body.VG1[76] !== "" ? req.body.VG1[76].replace(",", ".") : 0.0;
-   var valve78 = req.body.VG1[77] !== "" ? req.body.VG1[77].replace(",", ".") : 0.0;
-   var valve79 = req.body.VG1[78] !== "" ? req.body.VG1[78].replace(",", ".") : 0.0;
-   var valve80 = req.body.VG1[79] !== "" ? req.body.VG1[79].replace(",", ".") : 0.0;
-   var valve81 = req.body.VG1[80] !== "" ? req.body.VG1[80].replace(",", ".") : 0.0;
-   var valve82 = req.body.VG1[81] !== "" ? req.body.VG1[81].replace(",", ".") : 0.0;
-   var valve83 = req.body.VG1[82] !== "" ? req.body.VG1[82].replace(",", ".") : 0.0;
-   var valve84 = req.body.VG1[83] !== "" ? req.body.VG1[83].replace(",", ".") : 0.0;
-   var valve85 = req.body.VG1[84] !== "" ? req.body.VG1[84].replace(",", ".") : 0.0;
-   var valve86 = req.body.VG1[85] !== "" ? req.body.VG1[85].replace(",", ".") : 0.0;
-   var valve87 = req.body.VG1[86] !== "" ? req.body.VG1[86].replace(",", ".") : 0.0;
-   var valve88 = req.body.VG1[87] !== "" ? req.body.VG1[87].replace(",", ".") : 0.0;
-   var valve89 = req.body.VG1[88] !== "" ? req.body.VG1[88].replace(",", ".") : 0.0;
-   var valve90 = req.body.VG1[89] !== "" ? req.body.VG1[89].replace(",", ".") : 0.0;
-   var valve91 = req.body.VG2[0] !== "" ? req.body.VG2[0].replace(",", ".") : 0.0;
-   var valve92 = req.body.VG2[1] !== "" ? req.body.VG2[1].replace(",", ".") : 0.0;
-   var valve93 = req.body.VG2[2] !== "" ? req.body.VG2[2].replace(",", ".") : 0.0;
-   var valve94 = req.body.VG2[3] !== "" ? req.body.VG2[3].replace(",", ".") : 0.0;
-   var valve95 = req.body.VG2[4] !== "" ? req.body.VG2[4].replace(",", ".") : 0.0;
-   var valve96 = req.body.VG2[5] !== "" ? req.body.VG2[5].replace(",", ".") : 0.0;
-   var valve97 = req.body.VG2[6] !== "" ? req.body.VG2[6].replace(",", ".") : 0.0;
-   var valve98 = req.body.VG2[7] !== "" ? req.body.VG2[7].replace(",", ".") : 0.0;
-   var valve99 = req.body.VG2[8] !== "" ? req.body.VG2[8].replace(",", ".") : 0.0;
-   var valve100 = req.body.VG2[9] !== "" ? req.body.VG2[9].replace(",", ".") : 0.0;
-   var valve101 = req.body.VG2[10] !== "" ? req.body.VG2[10].replace(",", ".") : 0.0;
-   var valve102 = req.body.VG2[11] !== "" ? req.body.VG2[11].replace(",", ".") : 0.0;
-   var valve103 = req.body.VG2[12] !== "" ? req.body.VG2[12].replace(",", ".") : 0.0;
-   var valve104 = req.body.VG2[13] !== "" ? req.body.VG2[13].replace(",", ".") : 0.0;
-   var valve105 = req.body.VG2[14] !== "" ? req.body.VG2[14].replace(",", ".") : 0.0;
-   var valve106 = req.body.VG2[15] !== "" ? req.body.VG2[15].replace(",", ".") : 0.0;
-   var valve107 = req.body.VG2[16] !== "" ? req.body.VG2[16].replace(",", ".") : 0.0;
-   var valve108 = req.body.VG2[17] !== "" ? req.body.VG2[17].replace(",", ".") : 0.0;
-   var valve109 = req.body.VG2[18] !== "" ? req.body.VG2[18].replace(",", ".") : 0.0;
-   var valve110 = req.body.VG2[19] !== "" ? req.body.VG2[19].replace(",", ".") : 0.0;
-   var valve111 = req.body.VG2[20] !== "" ? req.body.VG2[20].replace(",", ".") : 0.0;
-   var valve112 = req.body.VG2[21] !== "" ? req.body.VG2[21].replace(",", ".") : 0.0;
-   var valve113 = req.body.VG2[22] !== "" ? req.body.VG2[22].replace(",", ".") : 0.0;
-   var valve114 = req.body.VG2[23] !== "" ? req.body.VG2[23].replace(",", ".") : 0.0;
-   var valve115 = req.body.VG2[24] !== "" ? req.body.VG2[24].replace(",", ".") : 0.0;
-   var valve116 = req.body.VG2[25] !== "" ? req.body.VG2[25].replace(",", ".") : 0.0;
-   var valve117 = req.body.VG2[26] !== "" ? req.body.VG2[26].replace(",", ".") : 0.0;
-   var valve118 = req.body.VG2[27] !== "" ? req.body.VG2[27].replace(",", ".") : 0.0;
-   var valve119 = req.body.VG2[28] !== "" ? req.body.VG2[28].replace(",", ".") : 0.0;
-   var valve120 = req.body.VG2[29] !== "" ? req.body.VG2[29].replace(",", ".") : 0.0;
-   var valve121 = req.body.VG2[30] !== "" ? req.body.VG2[30].replace(",", ".") : 0.0;
-   var valve122 = req.body.VG2[31] !== "" ? req.body.VG2[31].replace(",", ".") : 0.0;
-   var valve123 = req.body.VG2[32] !== "" ? req.body.VG2[32].replace(",", ".") : 0.0;
-   var valve124 = req.body.VG2[33] !== "" ? req.body.VG2[33].replace(",", ".") : 0.0;
-   var valve125 = req.body.VG2[34] !== "" ? req.body.VG2[34].replace(",", ".") : 0.0;
-   var valve126 = req.body.VG2[35] !== "" ? req.body.VG2[35].replace(",", ".") : 0.0;
-   var valve127 = req.body.VG2[36] !== "" ? req.body.VG2[36].replace(",", ".") : 0.0;
-   var valve128 = req.body.VG2[37] !== "" ? req.body.VG2[37].replace(",", ".") : 0.0;
-   var valve129 = req.body.VG2[38] !== "" ? req.body.VG2[38].replace(",", ".") : 0.0;
-   var valve130 = req.body.VG2[39] !== "" ? req.body.VG2[39].replace(",", ".") : 0.0;
-   var valve131 = req.body.VG2[40] !== "" ? req.body.VG2[40].replace(",", ".") : 0.0;
-   var valve132 = req.body.VG2[41] !== "" ? req.body.VG2[41].replace(",", ".") : 0.0;
-   var valve133 = req.body.VG2[42] !== "" ? req.body.VG2[42].replace(",", ".") : 0.0;
-   var valve134 = req.body.VG2[43] !== "" ? req.body.VG2[43].replace(",", ".") : 0.0;
-   var valve135 = req.body.VG2[44] !== "" ? req.body.VG2[44].replace(",", ".") : 0.0;
-   var valve136 = req.body.VG2[45] !== "" ? req.body.VG2[45].replace(",", ".") : 0.0;
-   var valve137 = req.body.VG2[46] !== "" ? req.body.VG2[46].replace(",", ".") : 0.0;
-   var valve138 = req.body.VG2[47] !== "" ? req.body.VG2[47].replace(",", ".") : 0.0;
-   var valve139 = req.body.VG2[48] !== "" ? req.body.VG2[48].replace(",", ".") : 0.0;
-   var valve140 = req.body.VG2[49] !== "" ? req.body.VG2[49].replace(",", ".") : 0.0;
-   var valve141 = req.body.VG2[50] !== "" ? req.body.VG2[50].replace(",", ".") : 0.0;
-   var valve142 = req.body.VG2[51] !== "" ? req.body.VG2[51].replace(",", ".") : 0.0;
-   var valve143 = req.body.VG2[52] !== "" ? req.body.VG2[52].replace(",", ".") : 0.0;
-   var valve144 = req.body.VG2[53] !== "" ? req.body.VG2[53].replace(",", ".") : 0.0;
-   var valve145 = req.body.VG2[54] !== "" ? req.body.VG2[54].replace(",", ".") : 0.0;
-   var valve146 = req.body.VG2[55] !== "" ? req.body.VG2[55].replace(",", ".") : 0.0;
-   var valve147 = req.body.VG2[56] !== "" ? req.body.VG2[56].replace(",", ".") : 0.0;
-   var valve148 = req.body.VG2[57] !== "" ? req.body.VG2[57].replace(",", ".") : 0.0;
-   var valve149 = req.body.VG2[58] !== "" ? req.body.VG2[58].replace(",", ".") : 0.0;
-   var valve150 = req.body.VG2[59] !== "" ? req.body.VG2[59].replace(",", ".") : 0.0;
-   var valve151 = req.body.VG2[60] !== "" ? req.body.VG2[60].replace(",", ".") : 0.0;
-   var valve152 = req.body.VG2[61] !== "" ? req.body.VG2[61].replace(",", ".") : 0.0;
-   var valve153 = req.body.VG2[62] !== "" ? req.body.VG2[62].replace(",", ".") : 0.0;
-   var valve154 = req.body.VG2[63] !== "" ? req.body.VG2[63].replace(",", ".") : 0.0;
-   var valve155 = req.body.VG2[64] !== "" ? req.body.VG2[64].replace(",", ".") : 0.0;
-   var valve156 = req.body.VG2[65] !== "" ? req.body.VG2[65].replace(",", ".") : 0.0;
-   var valve157 = req.body.VG2[66] !== "" ? req.body.VG2[66].replace(",", ".") : 0.0;
-   var valve158 = req.body.VG2[67] !== "" ? req.body.VG2[67].replace(",", ".") : 0.0;
-   var valve159 = req.body.VG2[68] !== "" ? req.body.VG2[68].replace(",", ".") : 0.0;
-   var valve160 = req.body.VG2[69] !== "" ? req.body.VG2[69].replace(",", ".") : 0.0;
-   var valve161 = req.body.VG2[70] !== "" ? req.body.VG2[70].replace(",", ".") : 0.0;
-   var valve162 = req.body.VG2[71] !== "" ? req.body.VG2[71].replace(",", ".") : 0.0;
-   var valve163 = req.body.VG2[72] !== "" ? req.body.VG2[72].replace(",", ".") : 0.0;
-   var valve164 = req.body.VG2[73] !== "" ? req.body.VG2[73].replace(",", ".") : 0.0;
-   var valve165 = req.body.VG2[74] !== "" ? req.body.VG2[74].replace(",", ".") : 0.0;
-   var valve166 = req.body.VG2[75] !== "" ? req.body.VG2[75].replace(",", ".") : 0.0;
-   var valve167 = req.body.VG2[76] !== "" ? req.body.VG2[76].replace(",", ".") : 0.0;
-   var valve168 = req.body.VG2[77] !== "" ? req.body.VG2[77].replace(",", ".") : 0.0;
-   var valve169 = req.body.VG2[78] !== "" ? req.body.VG2[78].replace(",", ".") : 0.0;
-   var valve170 = req.body.VG2[79] !== "" ? req.body.VG2[79].replace(",", ".") : 0.0;
-   var valve171 = req.body.VG2[80] !== "" ? req.body.VG2[80].replace(",", ".") : 0.0;
-   var valve172 = req.body.VG2[81] !== "" ? req.body.VG2[81].replace(",", ".") : 0.0;
-   var valve173 = req.body.VG2[82] !== "" ? req.body.VG2[82].replace(",", ".") : 0.0;
-   var valve174 = req.body.VG2[83] !== "" ? req.body.VG2[83].replace(",", ".") : 0.0;
-   var valve175 = req.body.VG2[84] !== "" ? req.body.VG2[84].replace(",", ".") : 0.0;
-   var valve176 = req.body.VG2[85] !== "" ? req.body.VG2[85].replace(",", ".") : 0.0;
-   var valve177 = req.body.VG2[86] !== "" ? req.body.VG2[86].replace(",", ".") : 0.0;
-   var valve178 = req.body.VG2[87] !== "" ? req.body.VG2[87].replace(",", ".") : 0.0;
-   var valve179 = req.body.VG2[88] !== "" ? req.body.VG2[88].replace(",", ".") : 0.0;
-   var valve180 = req.body.VG2[89] !== "" ? req.body.VG2[89].replace(",", ".") : 0.0;
-   var voltagem = req.body.voltagem !== "" ? req.body.voltagem.replace(",", ".") : 0.0;
+   var VG1DLYTIME = req.body.VG1[0] !== "" ? req.body.VG1[0].replace(",", ".") : 0.0;
+   var VG1ACTTIME = req.body.VG1[1] !== "" ? req.body.VG1[1].replace(",", ".") : 0.0;
+   var VG2DLYTIME = req.body.VG1[2] !== "" ? req.body.VG1[2].replace(",", ".") : 0.0;
+   var VG2ACTTIME = req.body.VG1[3] !== "" ? req.body.VG1[3].replace(",", ".") : 0.0;
+   var VG3DLYTIME = req.body.VG1[4] !== "" ? req.body.VG1[4].replace(",", ".") : 0.0;
+   var VG3ACTTIME = req.body.VG1[5] !== "" ? req.body.VG1[5].replace(",", ".") : 0.0;
+   var VG4DLYTIME = req.body.VG1[6] !== "" ? req.body.VG1[6].replace(",", ".") : 0.0;
+   var VG4ACTTIME = req.body.VG1[7] !== "" ? req.body.VG1[7].replace(",", ".") : 0.0;
+   var VG5DLYTIME = req.body.VG1[8] !== "" ? req.body.VG1[8].replace(",", ".") : 0.0;
+   var VG5ACTTIME = req.body.VG1[9] !== "" ? req.body.VG1[9].replace(",", ".") : 0.0;
+   var VG6DLYTIME = req.body.VG1[10] !== "" ? req.body.VG1[10].replace(",", ".") : 0.0;
+   var VG6ACTTIME = req.body.VG1[11] !== "" ? req.body.VG1[11].replace(",", ".") : 0.0;
+   var VG7DLYTIME = req.body.VG1[12] !== "" ? req.body.VG1[12].replace(",", ".") : 0.0;
+   var VG7ACTTIME = req.body.VG1[13] !== "" ? req.body.VG1[13].replace(",", ".") : 0.0;
+   var VG8DLYTIME = req.body.VG1[14] !== "" ? req.body.VG1[14].replace(",", ".") : 0.0;
+   var VG8ACTTIME = req.body.VG1[15] !== "" ? req.body.VG1[15].replace(",", ".") : 0.0;
+   var VG9DLYTIME = req.body.VG1[16] !== "" ? req.body.VG1[16].replace(",", ".") : 0.0;
+   var VG9ACTTIME = req.body.VG1[17] !== "" ? req.body.VG1[17].replace(",", ".") : 0.0;
+   var VG10DLYTIME = req.body.VG1[18] !== "" ? req.body.VG1[18].replace(",", ".") : 0.0;
+   var VG10ACTTIME = req.body.VG1[19] !== "" ? req.body.VG1[19].replace(",", ".") : 0.0;
+   var VG11DLYTIME = req.body.VG1[20] !== "" ? req.body.VG1[20].replace(",", ".") : 0.0;
+   var VG11ACTTIME = req.body.VG1[21] !== "" ? req.body.VG1[21].replace(",", ".") : 0.0;
+   var VG12DLYTIME = req.body.VG1[22] !== "" ? req.body.VG1[22].replace(",", ".") : 0.0;
+   var VG12ACTTIME = req.body.VG1[23] !== "" ? req.body.VG1[23].replace(",", ".") : 0.0;
+   var VG13DLYTIME = req.body.VG1[24] !== "" ? req.body.VG1[24].replace(",", ".") : 0.0;
+   var VG13ACTTIME = req.body.VG1[25] !== "" ? req.body.VG1[25].replace(",", ".") : 0.0;
+   var VG14DLYTIME = req.body.VG1[26] !== "" ? req.body.VG1[26].replace(",", ".") : 0.0;
+   var VG14ACTTIME = req.body.VG1[27] !== "" ? req.body.VG1[27].replace(",", ".") : 0.0;
+   var VG15DLYTIME = req.body.VG1[28] !== "" ? req.body.VG1[28].replace(",", ".") : 0.0;
+   var VG15ACTTIME = req.body.VG1[29] !== "" ? req.body.VG1[29].replace(",", ".") : 0.0;
+   var VG16DLYTIME = req.body.VG1[30] !== "" ? req.body.VG1[30].replace(",", ".") : 0.0;
+   var VG16ACTTIME = req.body.VG1[31] !== "" ? req.body.VG1[31].replace(",", ".") : 0.0;
+   var VG17DLYTIME = req.body.VG1[32] !== "" ? req.body.VG1[32].replace(",", ".") : 0.0;
+   var VG17ACTTIME = req.body.VG1[33] !== "" ? req.body.VG1[33].replace(",", ".") : 0.0;
+   var VG18DLYTIME = req.body.VG1[34] !== "" ? req.body.VG1[34].replace(",", ".") : 0.0;
+   var VG18ACTTIME = req.body.VG1[35] !== "" ? req.body.VG1[35].replace(",", ".") : 0.0;
+   var VG19DLYTIME = req.body.VG1[36] !== "" ? req.body.VG1[36].replace(",", ".") : 0.0;
+   var VG19ACTTIME = req.body.VG1[37] !== "" ? req.body.VG1[37].replace(",", ".") : 0.0;
+   var VG20DLYTIME = req.body.VG1[38] !== "" ? req.body.VG1[38].replace(",", ".") : 0.0;
+   var VG20ACTTIME = req.body.VG1[39] !== "" ? req.body.VG1[39].replace(",", ".") : 0.0;
+   var VG21DLYTIME = req.body.VG2[0] !== "" ? req.body.VG2[0].replace(",", ".") : 0.0;
+   var VG21ACTTIME = req.body.VG2[1] !== "" ? req.body.VG2[1].replace(",", ".") : 0.0;
+   var VG22DLYTIME = req.body.VG2[2] !== "" ? req.body.VG2[2].replace(",", ".") : 0.0;
+   var VG22ACTTIME = req.body.VG2[3] !== "" ? req.body.VG2[3].replace(",", ".") : 0.0;
+   var VG23DLYTIME = req.body.VG2[4] !== "" ? req.body.VG2[4].replace(",", ".") : 0.0;
+   var VG23ACTTIME = req.body.VG2[5] !== "" ? req.body.VG2[5].replace(",", ".") : 0.0;
+   var VG24DLYTIME = req.body.VG2[6] !== "" ? req.body.VG2[6].replace(",", ".") : 0.0;
+   var VG24ACTTIME = req.body.VG2[7] !== "" ? req.body.VG2[7].replace(",", ".") : 0.0;
+   var VG25DLYTIME = req.body.VG2[8] !== "" ? req.body.VG2[8].replace(",", ".") : 0.0;
+   var VG25ACTTIME = req.body.VG2[9] !== "" ? req.body.VG2[9].replace(",", ".") : 0.0;
+   var VG26DLYTIME = req.body.VG2[10] !== "" ? req.body.VG2[10].replace(",", ".") : 0.0;
+   var VG26ACTTIME = req.body.VG2[11] !== "" ? req.body.VG2[11].replace(",", ".") : 0.0;
+   var VG27DLYTIME = req.body.VG2[12] !== "" ? req.body.VG2[12].replace(",", ".") : 0.0;
+   var VG27ACTTIME = req.body.VG2[13] !== "" ? req.body.VG2[13].replace(",", ".") : 0.0;
+   var VG28DLYTIME = req.body.VG2[14] !== "" ? req.body.VG2[14].replace(",", ".") : 0.0;
+   var VG28ACTTIME = req.body.VG2[15] !== "" ? req.body.VG2[15].replace(",", ".") : 0.0;
+   var VG29DLYTIME = req.body.VG2[16] !== "" ? req.body.VG2[16].replace(",", ".") : 0.0;
+   var VG29ACTTIME = req.body.VG2[17] !== "" ? req.body.VG2[17].replace(",", ".") : 0.0;
+   var VG30DLYTIME = req.body.VG2[18] !== "" ? req.body.VG2[18].replace(",", ".") : 0.0;
+   var VG30ACTTIME = req.body.VG2[19] !== "" ? req.body.VG2[19].replace(",", ".") : 0.0;
+   var VG31DLYTIME = req.body.VG2[20] !== "" ? req.body.VG2[20].replace(",", ".") : 0.0;
+   var VG31ACTTIME = req.body.VG2[21] !== "" ? req.body.VG2[21].replace(",", ".") : 0.0;
+   var VG32DLYTIME = req.body.VG2[22] !== "" ? req.body.VG2[22].replace(",", ".") : 0.0;
+   var VG32ACTTIME = req.body.VG2[23] !== "" ? req.body.VG2[23].replace(",", ".") : 0.0;
+   var VG33DLYTIME = req.body.VG2[24] !== "" ? req.body.VG2[24].replace(",", ".") : 0.0;
+   var VG33ACTTIME = req.body.VG2[25] !== "" ? req.body.VG2[25].replace(",", ".") : 0.0;
+   var VG34DLYTIME = req.body.VG2[26] !== "" ? req.body.VG2[26].replace(",", ".") : 0.0;
+   var VG34ACTTIME = req.body.VG2[27] !== "" ? req.body.VG2[27].replace(",", ".") : 0.0;
+   var VG35DLYTIME = req.body.VG2[28] !== "" ? req.body.VG2[28].replace(",", ".") : 0.0;
+   var VG35ACTTIME = req.body.VG2[29] !== "" ? req.body.VG2[29].replace(",", ".") : 0.0;
+   var VG36DLYTIME = req.body.VG2[30] !== "" ? req.body.VG2[30].replace(",", ".") : 0.0;
+   var VG36ACTTIME = req.body.VG2[31] !== "" ? req.body.VG2[31].replace(",", ".") : 0.0;
+   var VG37DLYTIME = req.body.VG2[32] !== "" ? req.body.VG2[32].replace(",", ".") : 0.0;
+   var VG37ACTTIME = req.body.VG2[33] !== "" ? req.body.VG2[33].replace(",", ".") : 0.0;
+   var VG38DLYTIME = req.body.VG2[34] !== "" ? req.body.VG2[34].replace(",", ".") : 0.0;
+   var VG38ACTTIME = req.body.VG2[35] !== "" ? req.body.VG2[35].replace(",", ".") : 0.0;
+   var VG39DLYTIME = req.body.VG2[36] !== "" ? req.body.VG2[36].replace(",", ".") : 0.0;
+   var VG39ACTTIME = req.body.VG2[37] !== "" ? req.body.VG2[37].replace(",", ".") : 0.0;
+   var VG40DLYTIME = req.body.VG2[38] !== "" ? req.body.VG2[38].replace(",", ".") : 0.0;
+   var VG40ACTTIME = req.body.VG2[39] !== "" ? req.body.VG2[39].replace(",", ".") : 0.0;
+
    var refrLadoFixo1 = req.body.rmladofixo1 !== "" ? req.body.rmladofixo1.replace(",", ".") : 0.0;
    var refrLadoFixo2 = req.body.rmladomovel1 !== "" ? req.body.rmladomovel1.replace(",", ".") : 0.0;
    var refrLadoMovel1 = req.body.rmladofixo2 !== "" ? req.body.rmladofixo2.replace(",", ".") : 0.0;
@@ -3118,6 +2721,8 @@ router.post("/fichas/updateHaitian",(req,res) => {
       }
    }).then(() => {
       FichaPastorePerifericos.update({
+         termopar: termopar,
+         voltagem: voltagem,
          camara1: camara1,
          camara2: camara2,
          camara3: camara3,
@@ -3248,190 +2853,86 @@ router.post("/fichas/updateHaitian",(req,res) => {
          camara128: camara128,
          camara129: camara129,
          camara130: camara130,
-         termoparK1: termoparK1,
-         termoparJ: termoparJ,
-         termoparK2: termoparK2,
-         valve1: valve1,
-         valve2: valve2,
-         valve3: valve3,
-         valve4: valve4,
-         valve5: valve5,
-         valve6: valve6,
-         valve7: valve7,
-         valve8: valve8,
-         valve9: valve9,
-         valve10: valve10,
-         valve11: valve11,
-         valve12: valve12,
-         valve13: valve13,
-         valve14: valve14,
-         valve15: valve15,
-         valve16: valve16,
-         valve17: valve17,
-         valve18: valve18,
-         valve19: valve19,
-         valve20: valve20,
-         valve21: valve21,
-         valve22: valve22,
-         valve23: valve23,
-         valve24: valve24,
-         valve25: valve25,
-         valve26: valve26,
-         valve27: valve27,
-         valve28: valve28,
-         valve29: valve29,
-         valve30: valve30,
-         valve31: valve31,
-         valve32: valve32,
-         valve33: valve33,
-         valve34: valve34,
-         valve35: valve35,
-         valve36: valve36,
-         valve37: valve37,
-         valve38: valve38,
-         valve39: valve39,
-         valve40: valve40,
-         valve41: valve41,
-         valve42: valve42,
-         valve43: valve43,
-         valve44: valve44,
-         valve45: valve45,
-         valve46: valve46,
-         valve47: valve47,
-         valve48: valve48,
-         valve49: valve49,
-         valve50: valve50,
-         valve51: valve51,
-         valve52: valve52,
-         valve53: valve53,
-         valve54: valve54,
-         valve55: valve55,
-         valve56: valve56,
-         valve57: valve57,
-         valve58: valve58,
-         valve59: valve59,
-         valve60: valve60,
-         valve61: valve61,
-         valve62: valve62,
-         valve63: valve63,
-         valve64: valve64,
-         valve65: valve65,
-         valve66: valve66,
-         valve67: valve67,
-         valve68: valve68,
-         valve69: valve69,
-         valve70: valve70,
-         valve71: valve71,
-         valve72: valve72,
-         valve73: valve73,
-         valve74: valve74,
-         valve75: valve75,
-         valve76: valve76,
-         valve77: valve77,
-         valve78: valve78,
-         valve79: valve79,
-         valve80: valve80,
-         valve81: valve81,
-         valve82: valve82,
-         valve83: valve83,
-         valve84: valve84,
-         valve85: valve85,
-         valve86: valve86,
-         valve87: valve87,
-         valve88: valve88,
-         valve89: valve89,
-         valve90: valve90,
-         valve91: valve91,
-         valve92: valve92,
-         valve93: valve93,
-         valve94: valve94,
-         valve95: valve95,
-         valve96: valve96,
-         valve97: valve97,
-         valve98: valve98,
-         valve99: valve99,
-         valve100: valve100,
-         valve101: valve101,
-         valve102: valve102,
-         valve103: valve103,
-         valve104: valve104,
-         valve105: valve105,
-         valve106: valve106,
-         valve107: valve107,
-         valve108: valve108,
-         valve109: valve109,
-         valve110: valve110,
-         valve111: valve111,
-         valve112: valve112,
-         valve113: valve113,
-         valve114: valve114,
-         valve115: valve115,
-         valve116: valve116,
-         valve117: valve117,
-         valve118: valve118,
-         valve119: valve119,
-         valve120: valve120,
-         valve121: valve121,
-         valve122: valve122,
-         valve123: valve123,
-         valve124: valve124,
-         valve125: valve125,
-         valve126: valve126,
-         valve127: valve127,
-         valve128: valve128,
-         valve129: valve129,
-         valve130: valve130,
-         valve131: valve131,
-         valve132: valve132,
-         valve133: valve133,
-         valve134: valve134,
-         valve135: valve135,
-         valve136: valve136,
-         valve137: valve137,
-         valve138: valve138,
-         valve139: valve139,
-         valve140: valve140,
-         valve141: valve141,
-         valve142: valve142,
-         valve143: valve143,
-         valve144: valve144,
-         valve145: valve145,
-         valve146: valve146,
-         valve147: valve147,
-         valve148: valve148,
-         valve149: valve149,
-         valve150: valve150,
-         valve151: valve151,
-         valve152: valve152,
-         valve153: valve153,
-         valve154: valve154,
-         valve155: valve155,
-         valve156: valve156,
-         valve157: valve157,
-         valve158: valve158,
-         valve159: valve159,
-         valve160: valve160,
-         valve161: valve161,
-         valve162: valve162,
-         valve163: valve163,
-         valve164: valve164,
-         valve165: valve165,
-         valve166: valve166,
-         valve167: valve167,
-         valve168: valve168,
-         valve169: valve169,
-         valve170: valve170,
-         valve171: valve171,
-         valve172: valve172,
-         valve173: valve173,
-         valve174: valve174,
-         valve175: valve175,
-         valve176: valve176,
-         valve177: valve177,
-         valve178: valve178,
-         valve179: valve179,
-         valve180: valve180,
-         voltagem: voltagem,
+         VG1DLYTIME: VG1DLYTIME,
+         VG1ACTTIME: VG1ACTTIME,
+         VG2DLYTIME: VG2DLYTIME,
+         VG2ACTTIME: VG2ACTTIME,
+         VG3DLYTIME: VG3DLYTIME,
+         VG3ACTTIME: VG3ACTTIME,
+         VG4DLYTIME: VG4DLYTIME,
+         VG4ACTTIME: VG4ACTTIME,
+         VG5DLYTIME: VG5DLYTIME,
+         VG5ACTTIME: VG5ACTTIME,
+         VG6DLYTIME: VG6DLYTIME,
+         VG6ACTTIME: VG6ACTTIME,
+         VG7DLYTIME: VG7DLYTIME,
+         VG7ACTTIME: VG7ACTTIME,
+         VG8DLYTIME: VG8DLYTIME,
+         VG8ACTTIME: VG8ACTTIME,
+         VG9DLYTIME: VG9DLYTIME,
+         VG9ACTTIME: VG9ACTTIME,
+         VG10DLYTIME: VG10DLYTIME,
+         VG10ACTTIME: VG10ACTTIME,
+         VG11DLYTIME: VG11DLYTIME,
+         VG11ACTTIME: VG11ACTTIME,
+         VG12DLYTIME: VG12DLYTIME,
+         VG12ACTTIME: VG12ACTTIME,
+         VG13DLYTIME: VG13DLYTIME,
+         VG13ACTTIME: VG13ACTTIME,
+         VG14DLYTIME: VG14DLYTIME,
+         VG14ACTTIME: VG14ACTTIME,
+         VG15DLYTIME: VG15DLYTIME,
+         VG15ACTTIME: VG15ACTTIME,
+         VG16DLYTIME: VG16DLYTIME,
+         VG16ACTTIME: VG16ACTTIME,
+         VG17DLYTIME: VG17DLYTIME,
+         VG17ACTTIME: VG17ACTTIME,
+         VG18DLYTIME: VG18DLYTIME,
+         VG18ACTTIME: VG18ACTTIME,
+         VG19DLYTIME: VG19DLYTIME,
+         VG19ACTTIME: VG19ACTTIME,
+         VG20DLYTIME: VG20DLYTIME,
+         VG20ACTTIME: VG20ACTTIME,
+         VG21DLYTIME: VG21DLYTIME,
+         VG21ACTTIME: VG21ACTTIME,
+         VG22DLYTIME: VG22DLYTIME,
+         VG22ACTTIME: VG22ACTTIME,
+         VG23DLYTIME: VG23DLYTIME,
+         VG23ACTTIME: VG23ACTTIME,
+         VG24DLYTIME: VG24DLYTIME,
+         VG24ACTTIME: VG24ACTTIME,
+         VG25DLYTIME: VG25DLYTIME,
+         VG25ACTTIME: VG25ACTTIME,
+         VG26DLYTIME: VG26DLYTIME,
+         VG26ACTTIME: VG26ACTTIME,
+         VG27DLYTIME: VG27DLYTIME,
+         VG27ACTTIME: VG27ACTTIME,
+         VG28DLYTIME: VG28DLYTIME,
+         VG28ACTTIME: VG28ACTTIME,
+         VG29DLYTIME: VG29DLYTIME,
+         VG29ACTTIME: VG29ACTTIME,
+         VG30DLYTIME: VG30DLYTIME,
+         VG30ACTTIME: VG30ACTTIME,
+         VG31DLYTIME: VG31DLYTIME,
+         VG31ACTTIME: VG31ACTTIME,
+         VG32DLYTIME: VG32DLYTIME,
+         VG32ACTTIME: VG32ACTTIME,
+         VG33DLYTIME: VG33DLYTIME,
+         VG33ACTTIME: VG33ACTTIME,
+         VG34DLYTIME: VG34DLYTIME,
+         VG34ACTTIME: VG34ACTTIME,
+         VG35DLYTIME: VG35DLYTIME,
+         VG35ACTTIME: VG35ACTTIME,
+         VG36DLYTIME: VG36DLYTIME,
+         VG36ACTTIME: VG36ACTTIME,
+         VG37DLYTIME: VG37DLYTIME,
+         VG37ACTTIME: VG37ACTTIME,
+         VG38DLYTIME: VG38DLYTIME,
+         VG38ACTTIME: VG38ACTTIME,
+         VG39DLYTIME: VG39DLYTIME,
+         VG39ACTTIME: VG39ACTTIME,
+         VG40DLYTIME: VG40DLYTIME,
+         VG40ACTTIME: VG40ACTTIME,
          refrLadoFixo1: refrLadoFixo1,
          refrLadoFixo2: refrLadoFixo2,
          refrLadoMovel1: refrLadoMovel1,
@@ -3447,6 +2948,8 @@ router.post("/fichas/updateHaitian",(req,res) => {
          RevisaoFichaTecnicaPastorePerifericos.create({
             idFichaTecnica: id,
             maq: maquina,
+            termopar: termopar,
+            voltagem: voltagem,
             camara1: camara1,
             camara2: camara2,
             camara3: camara3,
@@ -3577,190 +3080,86 @@ router.post("/fichas/updateHaitian",(req,res) => {
             camara128: camara128,
             camara129: camara129,
             camara130: camara130,
-            termoparK1: termoparK1,
-            termoparJ: termoparJ,
-            termoparK2: termoparK2,
-            valve1: valve1,
-            valve2: valve2,
-            valve3: valve3,
-            valve4: valve4,
-            valve5: valve5,
-            valve6: valve6,
-            valve7: valve7,
-            valve8: valve8,
-            valve9: valve9,
-            valve10: valve10,
-            valve11: valve11,
-            valve12: valve12,
-            valve13: valve13,
-            valve14: valve14,
-            valve15: valve15,
-            valve16: valve16,
-            valve17: valve17,
-            valve18: valve18,
-            valve19: valve19,
-            valve20: valve20,
-            valve21: valve21,
-            valve22: valve22,
-            valve23: valve23,
-            valve24: valve24,
-            valve25: valve25,
-            valve26: valve26,
-            valve27: valve27,
-            valve28: valve28,
-            valve29: valve29,
-            valve30: valve30,
-            valve31: valve31,
-            valve32: valve32,
-            valve33: valve33,
-            valve34: valve34,
-            valve35: valve35,
-            valve36: valve36,
-            valve37: valve37,
-            valve38: valve38,
-            valve39: valve39,
-            valve40: valve40,
-            valve41: valve41,
-            valve42: valve42,
-            valve43: valve43,
-            valve44: valve44,
-            valve45: valve45,
-            valve46: valve46,
-            valve47: valve47,
-            valve48: valve48,
-            valve49: valve49,
-            valve50: valve50,
-            valve51: valve51,
-            valve52: valve52,
-            valve53: valve53,
-            valve54: valve54,
-            valve55: valve55,
-            valve56: valve56,
-            valve57: valve57,
-            valve58: valve58,
-            valve59: valve59,
-            valve60: valve60,
-            valve61: valve61,
-            valve62: valve62,
-            valve63: valve63,
-            valve64: valve64,
-            valve65: valve65,
-            valve66: valve66,
-            valve67: valve67,
-            valve68: valve68,
-            valve69: valve69,
-            valve70: valve70,
-            valve71: valve71,
-            valve72: valve72,
-            valve73: valve73,
-            valve74: valve74,
-            valve75: valve75,
-            valve76: valve76,
-            valve77: valve77,
-            valve78: valve78,
-            valve79: valve79,
-            valve80: valve80,
-            valve81: valve81,
-            valve82: valve82,
-            valve83: valve83,
-            valve84: valve84,
-            valve85: valve85,
-            valve86: valve86,
-            valve87: valve87,
-            valve88: valve88,
-            valve89: valve89,
-            valve90: valve90,
-            valve91: valve91,
-            valve92: valve92,
-            valve93: valve93,
-            valve94: valve94,
-            valve95: valve95,
-            valve96: valve96,
-            valve97: valve97,
-            valve98: valve98,
-            valve99: valve99,
-            valve100: valve100,
-            valve101: valve101,
-            valve102: valve102,
-            valve103: valve103,
-            valve104: valve104,
-            valve105: valve105,
-            valve106: valve106,
-            valve107: valve107,
-            valve108: valve108,
-            valve109: valve109,
-            valve110: valve110,
-            valve111: valve111,
-            valve112: valve112,
-            valve113: valve113,
-            valve114: valve114,
-            valve115: valve115,
-            valve116: valve116,
-            valve117: valve117,
-            valve118: valve118,
-            valve119: valve119,
-            valve120: valve120,
-            valve121: valve121,
-            valve122: valve122,
-            valve123: valve123,
-            valve124: valve124,
-            valve125: valve125,
-            valve126: valve126,
-            valve127: valve127,
-            valve128: valve128,
-            valve129: valve129,
-            valve130: valve130,
-            valve131: valve131,
-            valve132: valve132,
-            valve133: valve133,
-            valve134: valve134,
-            valve135: valve135,
-            valve136: valve136,
-            valve137: valve137,
-            valve138: valve138,
-            valve139: valve139,
-            valve140: valve140,
-            valve141: valve141,
-            valve142: valve142,
-            valve143: valve143,
-            valve144: valve144,
-            valve145: valve145,
-            valve146: valve146,
-            valve147: valve147,
-            valve148: valve148,
-            valve149: valve149,
-            valve150: valve150,
-            valve151: valve151,
-            valve152: valve152,
-            valve153: valve153,
-            valve154: valve154,
-            valve155: valve155,
-            valve156: valve156,
-            valve157: valve157,
-            valve158: valve158,
-            valve159: valve159,
-            valve160: valve160,
-            valve161: valve161,
-            valve162: valve162,
-            valve163: valve163,
-            valve164: valve164,
-            valve165: valve165,
-            valve166: valve166,
-            valve167: valve167,
-            valve168: valve168,
-            valve169: valve169,
-            valve170: valve170,
-            valve171: valve171,
-            valve172: valve172,
-            valve173: valve173,
-            valve174: valve174,
-            valve175: valve175,
-            valve176: valve176,
-            valve177: valve177,
-            valve178: valve178,
-            valve179: valve179,
-            valve180: valve180,
-            voltagem: voltagem,
+            VG1DLYTIME: VG1DLYTIME,
+            VG1ACTTIME: VG1ACTTIME,
+            VG2DLYTIME: VG2DLYTIME,
+            VG2ACTTIME: VG2ACTTIME,
+            VG3DLYTIME: VG3DLYTIME,
+            VG3ACTTIME: VG3ACTTIME,
+            VG4DLYTIME: VG4DLYTIME,
+            VG4ACTTIME: VG4ACTTIME,
+            VG5DLYTIME: VG5DLYTIME,
+            VG5ACTTIME: VG5ACTTIME,
+            VG6DLYTIME: VG6DLYTIME,
+            VG6ACTTIME: VG6ACTTIME,
+            VG7DLYTIME: VG7DLYTIME,
+            VG7ACTTIME: VG7ACTTIME,
+            VG8DLYTIME: VG8DLYTIME,
+            VG8ACTTIME: VG8ACTTIME,
+            VG9DLYTIME: VG9DLYTIME,
+            VG9ACTTIME: VG9ACTTIME,
+            VG10DLYTIME: VG10DLYTIME,
+            VG10ACTTIME: VG10ACTTIME,
+            VG11DLYTIME: VG11DLYTIME,
+            VG11ACTTIME: VG11ACTTIME,
+            VG12DLYTIME: VG12DLYTIME,
+            VG12ACTTIME: VG12ACTTIME,
+            VG13DLYTIME: VG13DLYTIME,
+            VG13ACTTIME: VG13ACTTIME,
+            VG14DLYTIME: VG14DLYTIME,
+            VG14ACTTIME: VG14ACTTIME,
+            VG15DLYTIME: VG15DLYTIME,
+            VG15ACTTIME: VG15ACTTIME,
+            VG16DLYTIME: VG16DLYTIME,
+            VG16ACTTIME: VG16ACTTIME,
+            VG17DLYTIME: VG17DLYTIME,
+            VG17ACTTIME: VG17ACTTIME,
+            VG18DLYTIME: VG18DLYTIME,
+            VG18ACTTIME: VG18ACTTIME,
+            VG19DLYTIME: VG19DLYTIME,
+            VG19ACTTIME: VG19ACTTIME,
+            VG20DLYTIME: VG20DLYTIME,
+            VG20ACTTIME: VG20ACTTIME,
+            VG21DLYTIME: VG21DLYTIME,
+            VG21ACTTIME: VG21ACTTIME,
+            VG22DLYTIME: VG22DLYTIME,
+            VG22ACTTIME: VG22ACTTIME,
+            VG23DLYTIME: VG23DLYTIME,
+            VG23ACTTIME: VG23ACTTIME,
+            VG24DLYTIME: VG24DLYTIME,
+            VG24ACTTIME: VG24ACTTIME,
+            VG25DLYTIME: VG25DLYTIME,
+            VG25ACTTIME: VG25ACTTIME,
+            VG26DLYTIME: VG26DLYTIME,
+            VG26ACTTIME: VG26ACTTIME,
+            VG27DLYTIME: VG27DLYTIME,
+            VG27ACTTIME: VG27ACTTIME,
+            VG28DLYTIME: VG28DLYTIME,
+            VG28ACTTIME: VG28ACTTIME,
+            VG29DLYTIME: VG29DLYTIME,
+            VG29ACTTIME: VG29ACTTIME,
+            VG30DLYTIME: VG30DLYTIME,
+            VG30ACTTIME: VG30ACTTIME,
+            VG31DLYTIME: VG31DLYTIME,
+            VG31ACTTIME: VG31ACTTIME,
+            VG32DLYTIME: VG32DLYTIME,
+            VG32ACTTIME: VG32ACTTIME,
+            VG33DLYTIME: VG33DLYTIME,
+            VG33ACTTIME: VG33ACTTIME,
+            VG34DLYTIME: VG34DLYTIME,
+            VG34ACTTIME: VG34ACTTIME,
+            VG35DLYTIME: VG35DLYTIME,
+            VG35ACTTIME: VG35ACTTIME,
+            VG36DLYTIME: VG36DLYTIME,
+            VG36ACTTIME: VG36ACTTIME,
+            VG37DLYTIME: VG37DLYTIME,
+            VG37ACTTIME: VG37ACTTIME,
+            VG38DLYTIME: VG38DLYTIME,
+            VG38ACTTIME: VG38ACTTIME,
+            VG39DLYTIME: VG39DLYTIME,
+            VG39ACTTIME: VG39ACTTIME,
+            VG40DLYTIME: VG40DLYTIME,
+            VG40ACTTIME: VG40ACTTIME,
             refrLadoFixo1: refrLadoFixo1,
             refrLadoFixo2: refrLadoFixo2,
             refrLadoMovel1: refrLadoMovel1,
