@@ -3460,7 +3460,8 @@ router.get("/ficha/revisaoHaitian/:id",(req,res) => {
    RevisaoFichaTecnicaPastoreInjetores.findAll({
       where: {
          idFichaTecnica: fichaId
-      }
+      },
+      order: [ [ 'createdAt', 'DESC' ]]
    }).then(injetor => {
       RevisaoFichaTecnicaPastorePerifericos.findAll({
          where: {
