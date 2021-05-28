@@ -72,4 +72,17 @@ router.get("/get/revisao/:id",(req,res) => {
 
 })
 
+router.get("/idRevisaoHaitian/:idFicha", (req, res) => {
+   var id = req.params.idFicha;
+
+   RevisaoFichaTecnicaPastoreInjetores.findOne({
+      where: {
+         idFichaTecnica:id
+      },
+      order: [[ 'createdAt', 'DESC' ]]
+   }).then(revisao => {
+      res.send(revisao)
+   })
+})
+
 module.exports = router;

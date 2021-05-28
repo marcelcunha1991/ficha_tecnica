@@ -52,10 +52,28 @@ $('#maquinasList').change(e => {
             url: "/ficha/lista/"+ v1 + "/" + v2,
             type: "get", //send it through get method
             success: function(response) {
+               var numRevisao = [];
+               
                if (v2 === 'HAITIAN' || v3 === "Haitian") {
-                  addRow(response.length, response, 'Haitian', responseMaquina.descricao)
+                  //passando o numero da revisao atual da ficha tecnica
+                  response.forEach(element => {
+
+                     $.ajax({
+                        url: "/idRevisaoHaitian/" + element.id,
+                        type: "get", //send it through get method
+                        success: function(res) {
+                           numRevisao.push(res.revisao)
+                        }
+                     });
+
+                  });
+                  
+                  setTimeout(() => {
+                     addRow(response.length, response, 'Haitian', responseMaquina.descricao, numRevisao)
+                  }, 200);
+
                } else if (v2 === 'Toshiba') {
-                  addRow(response.length, response, 'Toshiba', responseMaquina.descricao)
+                  addRow(response.length, response, 'Toshiba', responseMaquina.descricao, numRevisao)
                }
                
             },
@@ -69,6 +87,8 @@ $('#maquinasList').change(e => {
          console.log(xhr)
       }
    });
+
+   
 
 });
 
@@ -158,10 +178,11 @@ $('.materiais').change(e => {
    
 });
 
-function addRow(rows, data, path, maquina) {
+function addRow(rows, data, path, maquina, revisao) {
    var tbody = '';
    for (var i = 0; i < rows; i++) {
-      tbody +=  "<tr> <td>" + data[i].id +" </td> \
+      tbody +=  "<tr> <td>" + revisao[i] +"</td> \
+                  <td>" + data[i].id +" </td> \
                   <td>" + data[i].maq +"</td> \
                   <td>" + maquina +"</td> \
                   <td>" + data[i].NúmeroMolde +"</td> \
