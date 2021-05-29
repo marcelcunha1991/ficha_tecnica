@@ -1315,11 +1315,35 @@ router.post("/fichas/createHaitian",(req,res) => {
    var VG40ACTTIME = req.body.VG2[39] !== "" ? req.body.VG2[39].replace(",", ".") : 0.0;
    
    var refrLadoFixo1 = req.body.rmladofixo1 !== "" ? req.body.rmladofixo1 : 0.0;
-   var refrLadoFixo2 = req.body.rmladomovel1 !== "" ? req.body.rmladomovel1 : 0.0;
-   var refrLadoMovel1 = req.body.rmladofixo2 !== "" ? req.body.rmladofixo2 : 0.0;
+   var fixoRefrig1 = req.body.fixoRefrig1;
+   var refrLadoFixo2 = req.body.rmladofixo2 !== "" ? req.body.rmladofixo2 : 0.0;
+   var fixoRefrig2 = req.body.fixoRefrig2;
+   var refrLadoFixo3 = req.body.rmladofixo3 !== "" ? req.body.rmladofixo3 : 0.0;
+   var fixoRefrig3 = req.body.fixoRefrig3;
+   var refrLadoFixo4 = req.body.rmladofixo4 !== "" ? req.body.rmladofixo4 : 0.0;
+   var fixoRefrig4 = req.body.fixoRefrig4;
+   
+   var refrLadoMovel1 = req.body.rmladomovel1 !== "" ? req.body.rmladomovel1 : 0.0;
+   var movelRefrig1 = req.body.movelRefrig1;
    var refrLadoMovel2 = req.body.rmladomovel2 !== "" ? req.body.rmladomovel2 : 0.0;
-   var vaporLadoFixo1 = req.body.valorladofixo !== "" ? req.body.valorladofixo : 0.0;
-   var vaporLadoFixo2 = req.body.valorladomovel !== "" ? req.body.valorladomovel : 0.0;
+   var movelRefrig2 = req.body.movelRefrig2;
+   var refrLadoMovel3 = req.body.rmladomovel3 !== "" ? req.body.rmladomovel3 : 0.0;
+   var movelRefrig3 = req.body.movelRefrig3;
+   var refrLadoMovel4 = req.body.rmladomovel4 !== "" ? req.body.rmladomovel4 : 0.0;
+   var movelRefrig4 = req.body.movelRefrig4;
+
+   var vaporLadoFixo1 = req.body.vaporladofixo1 !== "" ? req.body.vaporladofixo1 : 0.0;
+   var vaporLadoMovel1 = req.body.vaporladomovel1 !== "" ? req.body.vaporladomovel1 : 0.0;
+   var vaporLadoFixo2 = req.body.vaporladofixo2 !== "" ? req.body.vaporladofixo2 : 0.0;
+   var vaporLadoMovel2 = req.body.vaporladomovel2 !== "" ? req.body.vaporladomovel2 : 0.0;
+   var vaporLadoFixo3 = req.body.vaporladofixo3 !== "" ? req.body.vaporladofixo3 : 0.0;
+   var vaporLadoMovel3 = req.body.vaporladomovel3 !== "" ? req.body.vaporladomovel3 : 0.0;
+   var vaporLadoFixo4 = req.body.vaporladofixo4 !== "" ? req.body.vaporladofixo4 : 0.0;
+   var vaporLadoMovel4 = req.body.vaporladomovel4 !== "" ? req.body.vaporladomovel4 : 0.0;
+   var vaporLadoFixo5 = req.body.vaporladofixo5 !== "" ? req.body.vaporladofixo5 : 0.0;
+   var vaporLadoMovel5 = req.body.vaporladomovel5 !== "" ? req.body.vaporladomovel5 : 0.0;
+   var fixoSteam = req.body.fixoSteam;
+   var movelSteam = req.body.movelSteam;
 
    //*salvando os dados
    FichaTecnicaPastoreInjetores.create({
@@ -1707,11 +1731,33 @@ router.post("/fichas/createHaitian",(req,res) => {
          VG40DLYTIME: VG40DLYTIME,
          VG40ACTTIME: VG40ACTTIME,
          refrLadoFixo1: refrLadoFixo1,
+         fixoRefrig1: fixoRefrig1,
          refrLadoFixo2: refrLadoFixo2,
+         fixoRefrig2: fixoRefrig2,
+         refrLadoFixo3: refrLadoFixo3,
+         fixoRefrig3: fixoRefrig3,
+         refrLadoFixo4: refrLadoFixo4,
+         fixoRefrig4: fixoRefrig4,
          refrLadoMovel1: refrLadoMovel1,
+         movelRefrig1: movelRefrig1,
          refrLadoMovel2: refrLadoMovel2,
+         movelRefrig2: movelRefrig2,
+         refrLadoMovel3: refrLadoMovel3,
+         movelRefrig3: movelRefrig3,
+         refrLadoMovel4: refrLadoMovel4,
+         movelRefrig4: movelRefrig4,
          vaporLadoFixo1: vaporLadoFixo1,
+         vaporLadoMovel1: vaporLadoMovel1,
          vaporLadoFixo2: vaporLadoFixo2,
+         vaporLadoMovel2: vaporLadoMovel2,
+         vaporLadoFixo3: vaporLadoFixo3,
+         vaporLadoMovel3: vaporLadoMovel3,
+         vaporLadoFixo4: vaporLadoFixo4,
+         vaporLadoMovel4: vaporLadoMovel4,
+         vaporLadoFixo5: vaporLadoFixo5,
+         vaporLadoMovel5: vaporLadoMovel5,
+         fixoSteam: fixoSteam,
+         movelSteam: movelSteam,
       }).then(data => {
          //*salvando os dados no banco de revisao
          RevisaoFichaTecnicaPastorePerifericos.create({
@@ -1930,11 +1976,33 @@ router.post("/fichas/createHaitian",(req,res) => {
             VG40DLYTIME: VG40DLYTIME,
             VG40ACTTIME: VG40ACTTIME,
             refrLadoFixo1: refrLadoFixo1,
+            fixoRefrig1: fixoRefrig1,
             refrLadoFixo2: refrLadoFixo2,
+            fixoRefrig2: fixoRefrig2,
+            refrLadoFixo3: refrLadoFixo3,
+            fixoRefrig3: fixoRefrig3,
+            refrLadoFixo4: refrLadoFixo4,
+            fixoRefrig4: fixoRefrig4,
             refrLadoMovel1: refrLadoMovel1,
+            movelRefrig1: movelRefrig1,
             refrLadoMovel2: refrLadoMovel2,
+            movelRefrig2: movelRefrig2,
+            refrLadoMovel3: refrLadoMovel3,
+            movelRefrig3: movelRefrig3,
+            refrLadoMovel4: refrLadoMovel4,
+            movelRefrig4: movelRefrig4,
             vaporLadoFixo1: vaporLadoFixo1,
+            vaporLadoMovel1: vaporLadoMovel1,
             vaporLadoFixo2: vaporLadoFixo2,
+            vaporLadoMovel2: vaporLadoMovel2,
+            vaporLadoFixo3: vaporLadoFixo3,
+            vaporLadoMovel3: vaporLadoMovel3,
+            vaporLadoFixo4: vaporLadoFixo4,
+            vaporLadoMovel4: vaporLadoMovel4,
+            vaporLadoFixo5: vaporLadoFixo5,
+            vaporLadoMovel5: vaporLadoMovel5,
+            fixoSteam: fixoSteam,
+            movelSteam: movelSteam,
          }).then(() => {
 
             RevisaoFichaTecnicaPastoreInjetores.create({
@@ -2541,12 +2609,36 @@ router.post("/fichas/updateHaitian",(req,res) => {
    var VG40DLYTIME = req.body.VG2[38] !== "" ? req.body.VG2[38].replace(",", ".") : 0.0;
    var VG40ACTTIME = req.body.VG2[39] !== "" ? req.body.VG2[39].replace(",", ".") : 0.0;
 
-   var refrLadoFixo1 = req.body.rmladofixo1 !== "" ? req.body.rmladofixo1.replace(",", ".") : 0.0;
-   var refrLadoFixo2 = req.body.rmladomovel1 !== "" ? req.body.rmladomovel1.replace(",", ".") : 0.0;
-   var refrLadoMovel1 = req.body.rmladofixo2 !== "" ? req.body.rmladofixo2.replace(",", ".") : 0.0;
-   var refrLadoMovel2 = req.body.rmladomovel2 !== "" ? req.body.rmladomovel2.replace(",", ".") : 0.0;
-   var vaporLadoFixo1 = req.body.valorladofixo !== "" ? req.body.valorladofixo.replace(",", ".") : 0.0;
-   var vaporLadoFixo2 = req.body.valorladomovel !== "" ? req.body.valorladomovel.replace(",", ".") : 0.0;
+   var refrLadoFixo1 = req.body.rmladofixo1 !== "" ? req.body.rmladofixo1 : 0.0;
+   var fixoRefrig1 = req.body.fixoRefrig1;
+   var refrLadoFixo2 = req.body.rmladofixo2 !== "" ? req.body.rmladofixo2 : 0.0;
+   var fixoRefrig2 = req.body.fixoRefrig2;
+   var refrLadoFixo3 = req.body.rmladofixo3 !== "" ? req.body.rmladofixo3 : 0.0;
+   var fixoRefrig3 = req.body.fixoRefrig3;
+   var refrLadoFixo4 = req.body.rmladofixo4 !== "" ? req.body.rmladofixo4 : 0.0;
+   var fixoRefrig4 = req.body.fixoRefrig4;
+   
+   var refrLadoMovel1 = req.body.rmladomovel1 !== "" ? req.body.rmladomovel1 : 0.0;
+   var movelRefrig1 = req.body.movelRefrig1;
+   var refrLadoMovel2 = req.body.rmladomovel2 !== "" ? req.body.rmladomovel2 : 0.0;
+   var movelRefrig2 = req.body.movelRefrig2;
+   var refrLadoMovel3 = req.body.rmladomovel3 !== "" ? req.body.rmladomovel3 : 0.0;
+   var movelRefrig3 = req.body.movelRefrig3;
+   var refrLadoMovel4 = req.body.rmladomovel4 !== "" ? req.body.rmladomovel4 : 0.0;
+   var movelRefrig4 = req.body.movelRefrig4;
+
+   var vaporLadoFixo1 = req.body.vaporladofixo1 !== "" ? req.body.vaporladofixo1 : 0.0;
+   var vaporLadoMovel1 = req.body.vaporladomovel1 !== "" ? req.body.vaporladomovel1 : 0.0;
+   var vaporLadoFixo2 = req.body.vaporladofixo2 !== "" ? req.body.vaporladofixo2 : 0.0;
+   var vaporLadoMovel2 = req.body.vaporladomovel2 !== "" ? req.body.vaporladomovel2 : 0.0;
+   var vaporLadoFixo3 = req.body.vaporladofixo3 !== "" ? req.body.vaporladofixo3 : 0.0;
+   var vaporLadoMovel3 = req.body.vaporladomovel3 !== "" ? req.body.vaporladomovel3 : 0.0;
+   var vaporLadoFixo4 = req.body.vaporladofixo4 !== "" ? req.body.vaporladofixo4 : 0.0;
+   var vaporLadoMovel4 = req.body.vaporladomovel4 !== "" ? req.body.vaporladomovel4 : 0.0;
+   var vaporLadoFixo5 = req.body.vaporladofixo5 !== "" ? req.body.vaporladofixo5 : 0.0;
+   var vaporLadoMovel5 = req.body.vaporladomovel5 !== "" ? req.body.vaporladomovel5 : 0.0;
+   var fixoSteam = req.body.fixoSteam;
+   var movelSteam = req.body.movelSteam;
    
    FichaTecnicaPastoreInjetores.update({
       NúmeroMolde: NúmeroMolde,
@@ -2934,11 +3026,33 @@ router.post("/fichas/updateHaitian",(req,res) => {
          VG40DLYTIME: VG40DLYTIME,
          VG40ACTTIME: VG40ACTTIME,
          refrLadoFixo1: refrLadoFixo1,
+         fixoRefrig1: fixoRefrig1,
          refrLadoFixo2: refrLadoFixo2,
+         fixoRefrig2: fixoRefrig2,
+         refrLadoFixo3: refrLadoFixo3,
+         fixoRefrig3: fixoRefrig3,
+         refrLadoFixo4: refrLadoFixo4,
+         fixoRefrig4: fixoRefrig4,
          refrLadoMovel1: refrLadoMovel1,
+         movelRefrig1: movelRefrig1,
          refrLadoMovel2: refrLadoMovel2,
+         movelRefrig2: movelRefrig2,
+         refrLadoMovel3: refrLadoMovel3,
+         movelRefrig3: movelRefrig3,
+         refrLadoMovel4: refrLadoMovel4,
+         movelRefrig4: movelRefrig4,
          vaporLadoFixo1: vaporLadoFixo1,
+         vaporLadoMovel1: vaporLadoMovel1,
          vaporLadoFixo2: vaporLadoFixo2,
+         vaporLadoMovel2: vaporLadoMovel2,
+         vaporLadoFixo3: vaporLadoFixo3,
+         vaporLadoMovel3: vaporLadoMovel3,
+         vaporLadoFixo4: vaporLadoFixo4,
+         vaporLadoMovel4: vaporLadoMovel4,
+         vaporLadoFixo5: vaporLadoFixo5,
+         vaporLadoMovel5: vaporLadoMovel5,
+         fixoSteam: fixoSteam,
+         movelSteam: movelSteam,
       },{
          where:{
             id:id
@@ -3161,11 +3275,33 @@ router.post("/fichas/updateHaitian",(req,res) => {
             VG40DLYTIME: VG40DLYTIME,
             VG40ACTTIME: VG40ACTTIME,
             refrLadoFixo1: refrLadoFixo1,
+            fixoRefrig1: fixoRefrig1,
             refrLadoFixo2: refrLadoFixo2,
+            fixoRefrig2: fixoRefrig2,
+            refrLadoFixo3: refrLadoFixo3,
+            fixoRefrig3: fixoRefrig3,
+            refrLadoFixo4: refrLadoFixo4,
+            fixoRefrig4: fixoRefrig4,
             refrLadoMovel1: refrLadoMovel1,
+            movelRefrig1: movelRefrig1,
             refrLadoMovel2: refrLadoMovel2,
+            movelRefrig2: movelRefrig2,
+            refrLadoMovel3: refrLadoMovel3,
+            movelRefrig3: movelRefrig3,
+            refrLadoMovel4: refrLadoMovel4,
+            movelRefrig4: movelRefrig4,
             vaporLadoFixo1: vaporLadoFixo1,
+            vaporLadoMovel1: vaporLadoMovel1,
             vaporLadoFixo2: vaporLadoFixo2,
+            vaporLadoMovel2: vaporLadoMovel2,
+            vaporLadoFixo3: vaporLadoFixo3,
+            vaporLadoMovel3: vaporLadoMovel3,
+            vaporLadoFixo4: vaporLadoFixo4,
+            vaporLadoMovel4: vaporLadoMovel4,
+            vaporLadoFixo5: vaporLadoFixo5,
+            vaporLadoMovel5: vaporLadoMovel5,
+            fixoSteam: fixoSteam,
+            movelSteam: movelSteam,
          }).then(() => {
 
             RevisaoFichaTecnicaPastoreInjetores.create({

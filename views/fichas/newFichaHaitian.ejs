@@ -85,7 +85,7 @@
             </tbody>
          </table>
    
-         <table class="table-bordered" style="width: 100%;">
+         <table class="table-bordered" style="width: 100%; margin-top: 40px;">
             <thead>
                <tr>
                   <th colspan="6">INJEÇÃO</th>
@@ -144,7 +144,7 @@
             </tfoot>
          </table>
    
-         <table class="table-bordered" style="width: 100%;">
+         <table class="table-bordered" style="width: 100%; margin-top: 40px;">
             <thead>
                <tr>
                   <th colspan="6">RECALQUE</th>
@@ -185,7 +185,7 @@
             </tbody>
          </table>
    
-         <table class="table-bordered" style="width: 100%;">
+         <table class="table-bordered" style="width: 100%; margin-top: 40px;">
             <thead>
                <tr>
                   <th colspan="6">DOSAGEM</th>
@@ -242,7 +242,7 @@
             </tfoot>
          </table>
    
-         <table class="table-bordered" style="width: 100%;">
+         <table class="table-bordered" style="width: 100%; margin-top: 40px;">
             <thead>
                <tr>
                   <th colspan="6">DESCOMPRESSÃO</th>
@@ -276,7 +276,7 @@
             </tbody>
          </table>
    
-         <table class="table-bordered" style="width: 100%;">
+         <table class="table-bordered" style="width: 100%; margin-top: 40px;">
             <thead>
                <tr>
                   <th colspan="6">FECHAMENTO</th>
@@ -349,7 +349,7 @@
             </tfoot>
          </table>
    
-         <table class="table-bordered" style="width: 100%;">
+         <table class="table-bordered" style="width: 100%; margin-top: 40px;">
             <thead>
                <tr>
                   <th colspan="6">ABERTURA</th>
@@ -402,7 +402,7 @@
             </tfoot>
          </table>
    
-         <table class="table-bordered" style="width: 100%;">
+         <table class="table-bordered" style="width: 100%; margin-top: 40px;">
             <thead>
                <tr>
                   <th colspan="6">EXTRAÇÃO</th>
@@ -477,7 +477,7 @@
             </tfoot>
          </table>
    
-         <table class="table-bordered" style="width: 100%;">
+         <table class="table-bordered" style="width: 100%; margin-top: 40px;">
             <thead>
                <tr>
                   <th colspan="6">RADIAL HIDRÁULICO</th>
@@ -580,7 +580,7 @@
             </tbody>
          </table>
          
-         <table class="table-bordered" style="width: 100%; margin-top: 40px">
+         <table class="table-bordered" style="width: 100%; margin-top: 40px;">
             <thead>
                <tr>
                   <th colspan="5">CÂMARA QUENTE</th>
@@ -604,7 +604,7 @@
             </tbody>
          </table>
          
-         <table class="table-bordered" style="width: 100%; margin-top: 40px">
+         <table class="table-bordered" style="width: 100%; margin-top: 40px;">
             <thead>
                <tr>
                   <th colspan="5">VALVE GATES</th>
@@ -653,41 +653,130 @@
             </tbody>
          </table>
    
-         <table class="table-bordered" style="margin-top: 40px">
+         <table class="table-bordered" style="margin-top: 40px;">
             <thead>
                <tr>
-                  <th colspan="7">REFRIGERAÇÃO DO MOLDE</th>
+                  <th colspan="5">REFRIGERAÇÃO DO MOLDE</th>
+                  <th colspan="2">TOL &#177; 10%</th>
                </tr>
             </thead>
             <tbody>
                <tr>
                   <th colspan="3" style="text-align: center;">LADO FIXO</th>
-                  <th rowspan="3" style="text-align: center;">TOL<br> &#177;<br> 10%</th>
                   <th colspan="3" style="text-align: center;">LADO MÓVEL</th>
                </tr>
                <tr>
-                  <td colspan="3">
-                     <input style="width: 100%" id="rmladofixo1" name="rmladofixo1" placeholder="50C">
+                  <!-- LADO FIXO -->
+                  <td>
+                     <input style="width: 100%" id="rmladofixo1" name="rmladofixo1">
                   </td>
-                  <td colspan="3">
-                     <input style="width: 100%" id="rmladomovel1" name="rmladomovel1" placeholder="GELADA">
+                  <td>
+                     <input checked type="radio" id="fixoGelada1" name="fixoRefrig1" value="Gelada">
+                     <label for="fixoGelada1">Água Gelada</label>
+                  </td>
+                  <td>
+                     <input type="radio" id="fixoFria1" name="fixoRefrig1" value="Fria">
+                     <label for="fixoFria1">Água Fria</label>
+                  </td>
+                  <!-- LADO MOVEL -->
+                  <td>
+                     <input style="width: 100%" id="rmladomovel1" name="rmladomovel1">
+                  </td>
+                  <td> 
+                     <input checked type="radio" id="movelGelada1" name="movelRefrig1" value="Gelada">
+                     <label for="movelGelada1">Água Gelada</label>
+                  </td>
+                  <td>
+                     <input type="radio" id="movelFria1" name="movelRefrig1" value="Fria">
+                     <label for="movelFria1">Água Fria</label>
                   </td>
                </tr>
                <tr>
-                  <td colspan="3">
-                     <input style="width: 100%" id="rmladofixo2" name="rmladofixo2" placeholder="50C">
+                  <!-- LADO FIXO -->
+                  <td>
+                     <input style="width: 100%" id="rmladofixo2" name="rmladofixo2">
                   </td>
-                  <td colspan="3">
-                     <input style="width: 100%" id="rmladomovel2" name="rmladomovel2" placeholder="GELADA">
+                  <td>
+                     <input checked type="radio" id="fixoGelada2" name="fixoRefrig2" value="Gelada">
+                     <label for="fixoGelada2">Água Gelada</label>
+                  </td>
+                  <td>
+                     <input type="radio" id="fixoFria2" name="fixoRefrig2" value="Fria">
+                     <label for="fixoFria2">Água Fria</label>
+                  </td>
+                  <!-- LADO MOVEL -->
+                  <td>
+                     <input style="width: 100%" id="rmladomovel2" name="rmladomovel2">
+                  </td>
+                  <td>
+                     <input checked type="radio" id="movelGelada2" name="movelRefrig2" value="Gelada">
+                     <label for="movelGelada2">Água Gelada</label>
+                  </td>
+                  <td>
+                     <input type="radio" id="movelFria2" name="movelRefrig2" value="Fria">
+                     <label for="movelFria2">Água Fria</label>
+                  </td>
+               </tr>
+               <tr>
+                  <!-- LADO FIXO -->
+                  <td>
+                     <input style="width: 100%" id="rmladofixo3" name="rmladofixo3">
+                  </td>
+                  <td>
+                     <input checked type="radio" id="fixoGelada3" name="fixoRefrig3" value="Gelada">
+                     <label for="fixoGelada3">Água Gelada</label>
+                  </td>
+                  <td>
+                     <input type="radio" id="fixoFria3" name="fixoRefrig3" value="Fria">
+                     <label for="fixoFria3">Água Fria</label>
+                  </td>
+                  <!-- LADO MOVEL -->
+                  <td>
+                     <input style="width: 100%" id="rmladomovel3" name="rmladomovel3">
+                  </td>
+                  <td>
+                     <input checked type="radio" id="movelGelada3" name="movelRefrig3" value="Gelada">
+                     <label for="movelGelada3">Água Gelada</label>
+                  </td>
+                  <td>
+                     <input type="radio" id="movelFria3" name="movelRefrig3" value="Fria">
+                     <label for="movelFria3">Água Fria</label>
+                  </td>
+               </tr>
+               <tr>
+                  <!-- LADO FIXO -->
+                  <td>
+                     <input style="width: 100%" id="rmladofixo4" name="rmladofixo4">
+                  </td>
+                  <td>
+                     <input checked type="radio" id="fixoGelada4" name="fixoRefrig4" value="Gelada">
+                     <label for="fixoGelada4">Água Gelada</label>
+                  </td>
+                  <td>
+                     <input type="radio" id="fixoFria4" name="fixoRefrig4" value="Fria">
+                     <label for="fixoFria4">Água Fria</label>
+                  </td>
+                  <!-- LADO MOVEL -->
+                  <td>
+                     <input style="width: 100%" id="rmladomovel4" name="rmladomovel4">
+                  </td>
+                  <td>
+                     <input checked type="radio" id="movelGelada4" name="movelRefrig4" value="Gelada">
+                     <label for="movelGelada4">Água Gelada</label>
+                  </td>
+                  <td>
+                     <input type="radio" id="movelFria4" name="movelRefrig4" value="Fria">
+                     <label for="movelFria4">Água Fria</label>
                   </td>
                </tr>
             </tbody>
          </table>
    
-         <table class="table-bordered" style="margin-top: 40px">
+         <table class="table-bordered" style="margin-top: 40px;">
             <thead>
                <tr>
-                  <th colspan="7">STEAM(VAPOR)</th>
+                  <th colspan="5">STEAM(VAPOR)</th>
+                  <th colspan="2">TOL &#177; 10%</th>
                </tr>
                <tr>
                   <th colspan="7">REFRIGERAÇÃO DO MOLDE</th>
@@ -696,15 +785,101 @@
             <tbody>
                <tr>
                   <th colspan="3" style="text-align: center;">LADO FIXO</th>
-                  <th rowspan="3" style="text-align: center;">TOL<br> &#177;<br> 10%</th>
                   <th colspan="3" style="text-align: center;">LADO MÓVEL</th>
                </tr>
                <tr>
-                  <td colspan="3">
-                     <input style="width: 100%" id="valorladofixo" name="valorladofixo">
+                  <!-- LADO FIXO -->
+                  <td colspan="2">
+                     <input style="width: 100%" id="vaporladofixo1" name="vaporladofixo1">
                   </td>
-                  <td colspan="3">
-                     <input style="width: 100%" id="valorladomovel" name="valorladomovel">
+                  <td colspan="1">
+                     <input checked type="radio" id="fixoAguaF1" name="fixoSteam" value="AguaF1">
+                     <label for="fixoAguaF1">Temp. Água Industrial F1</label>
+                  </td>
+
+                  <!-- LADO MOVEL -->
+                  <td colspan="2">
+                     <input style="width: 100%" id="vaporladomovel1" name="vaporladomovel1">
+                  </td>
+                  <td colspan="1">
+                     <input checked type="radio" id="movelAguaF1" name="movelSteam" value="AguaF1">
+                     <label for="movelAguaF1">Temp. Água Industrial F1</label>
+                  </td>
+               </tr>
+               <tr>
+                  <!-- LADO FIXO -->
+                  <td colspan="2">
+                     <input style="width: 100%" id="vaporladofixo2" name="vaporladofixo2">
+                  </td>
+                  <td colspan="1">
+                     <input type="radio" id="fixoAguaF2" name="fixoSteam" value="AguaF2">
+                     <label for="fixoAguaF2">Temp. Água Industrial F2</label>
+                  </td>
+
+                  <!-- LADO MOVEL -->
+                  <td colspan="2">
+                     <input style="width: 100%" id="vaporladomovel2" name="vaporladomovel2">
+                  </td>
+                  <td colspan="1">
+                     <input type="radio" id="movelAguaF2" name="movelSteam" value="AguaF2">
+                     <label for="movelAguaF2">Temp. Água Industrial F2</label>
+                  </td>
+               </tr>
+               <tr>
+                  <!-- LADO FIXO -->
+                  <td colspan="2">
+                     <input style="width: 100%" id="vaporladofixo3" name="vaporladofixo3">
+                  </td>
+                  <td colspan="1">
+                     <input type="radio" id="fixoVaporAgua" name="fixoSteam" value="Gelada">
+                     <label for="fixoVaporAgua">Temp. Água Gelada</label>
+                  </td>
+
+                  <!-- LADO MOVEL -->
+                  <td colspan="2">
+                     <input style="width: 100%" id="vaporladomovel3" name="vaporladomovel3">
+                  </td>
+                  <td colspan="1">
+                     <input type="radio" id="movelVaporAgua" name="movelSteam" value="Gelada">
+                     <label for="movelVaporAgua">Temp. Água Gelada</label>
+                  </td>
+               </tr>
+               <tr>
+                  <!-- LADO FIXO -->
+                  <td colspan="2">
+                     <input style="width: 100%" id="vaporladofixo4" name="vaporladofixo4">
+                  </td>
+                  <td colspan="1">
+                     <input type="radio" id="fixoVapor" name="fixoSteam" value="Vapor"><br>
+                     <label for="fixoVapor">Bar. Vapor</label>
+                  </td>
+
+                  <!-- LADO MOVEL -->
+                  <td colspan="2">
+                     <input style="width: 100%" id="vaporladomovel4" name="vaporladomovel4">
+                  </td>
+                  <td colspan="1">
+                     <input type="radio" id="movelVapor" name="movelSteam" value="Vapor"><br>
+                     <label for="movelVapor">Bar. Vapor</label>
+                  </td>
+               </tr>
+               <tr>
+                  <!-- LADO FIXO -->
+                  <td colspan="2">
+                     <input style="width: 100%" id="vaporladofixo5" name="vaporladofixo5">
+                  </td>
+                  <td colspan="1">
+                     <input type="radio" id="fixoAr" name="fixoSteam" value="Ar">
+                     <label for="fixoAr">Bar. Ar Comprimido</label>
+                  </td>
+
+                  <!-- LADO MOVEL -->
+                  <td colspan="2">
+                     <input style="width: 100%" id="vaporladomovel5" name="vaporladomovel5">
+                  </td>
+                  <td colspan="1">
+                     <input type="radio" id="movelAr" name="movelSteam" value="Ar">
+                     <label for="movelAr">Bar. Ar Comprimido</label>
                   </td>
                </tr>
             </tbody>

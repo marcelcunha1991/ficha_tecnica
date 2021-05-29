@@ -1661,41 +1661,130 @@
                         </tbody>
                      </table>
                
-                     <table class="table-bordered" style="margin-top: 40px">
+                     <table class="table-bordered" style="margin-top: 30px;">
                         <thead>
                            <tr>
-                              <th colspan="7">REFRIGERAÇÃO DO MOLDE</th>
+                              <th colspan="5">REFRIGERAÇÃO DO MOLDE</th>
+                              <th colspan="2">TOL &#177; 10%</th>
                            </tr>
                         </thead>
                         <tbody>
                            <tr>
                               <th colspan="3" style="text-align: center;">LADO FIXO</th>
-                              <th rowspan="3" style="text-align: center;">TOL<br> &#177;<br> 10%</th>
                               <th colspan="3" style="text-align: center;">LADO MÓVEL</th>
                            </tr>
                            <tr>
-                              <td colspan="3">
-                                 <input style="width: 100%" id="rmladofixo1" name="rmladofixo1" placeholder="50C" value="<%= perifericos.refrLadoFixo1 %> %>">
+                              <!-- LADO FIXO -->
+                              <td>
+                                 <input style="width: 100%" id="rmladofixo1" name="rmladofixo1" value="<%= perifericos.refrLadoFixo1 %>">
                               </td>
-                              <td colspan="3">
-                                 <input style="width: 100%" id="rmladomovel1" name="rmladomovel1" placeholder="GELADA" value="<%= perifericos.refrLadoMovel1 %>">
+                              <td>
+                                 <input type="radio" id="fixoGeladaEdit1" name="fixoRefrig1" value="Gelada">
+                                 <label for="fixoGeladaEdit1">Água Gelada</label>
+                              </td>
+                              <td>
+                                 <input type="radio" id="fixoFriaEdit1" name="fixoRefrig1" value="Fria">
+                                 <label for="fixoFriaEdit1">Água Fria</label>
+                              </td>
+                              <!-- LADO MOVEL -->
+                              <td>
+                                 <input style="width: 100%" id="rmladomovel1" name="rmladomovel1" value="<%= perifericos.refrLadoMovel1 %>">
+                              </td>
+                              <td> 
+                                 <input type="radio" id="movelGeladaEdit1" name="movelRefrig1" value="Gelada">
+                                 <label for="movelGeladaEdit1">Água Gelada</label>
+                              </td>
+                              <td>
+                                 <input type="radio" id="movelFriaEdit1" name="movelRefrig1" value="Fria">
+                                 <label for="movelFriaEdit1">Água Fria</label>
                               </td>
                            </tr>
                            <tr>
-                              <td colspan="3">
-                                 <input style="width: 100%" id="rmladofixo2" name="rmladofixo2" placeholder="50C" value="<%= perifericos.refrLadoFixo2 %>">
+                              <!-- LADO FIXO -->
+                              <td>
+                                 <input style="width: 100%" id="rmladofixo2" name="rmladofixo2" value="<%= perifericos.refrLadoFixo2 %>">
                               </td>
-                              <td colspan="3">
-                                 <input style="width: 100%" id="rmladomovel2" name="rmladomovel2" placeholder="GELADA" value="<%= perifericos.refrLadoMovel2 %>">
+                              <td>
+                                 <input type="radio" id="fixoGeladaEdit2" name="fixoRefrig2" value="Gelada">
+                                 <label for="fixoGeladaEdit2">Água Gelada</label>
+                              </td>
+                              <td>
+                                 <input type="radio" id="fixoFriaEdit2" name="fixoRefrig2" value="Fria">
+                                 <label for="fixoFriaEdit2">Água Fria</label>
+                              </td>
+                              <!-- LADO MOVEL -->
+                              <td>
+                                 <input style="width: 100%" id="rmladomovel2" name="rmladomovel2" value="<%= perifericos.refrLadoMovel2 %>">
+                              </td>
+                              <td>
+                                 <input type="radio" id="movelGeladaEdit2" name="movelRefrig2" value="Gelada">
+                                 <label for="movelGeladaEdit2">Água Gelada</label>
+                              </td>
+                              <td>
+                                 <input type="radio" id="movelFriaEdit2" name="movelRefrig2" value="Fria">
+                                 <label for="movelFriaEdit2">Água Fria</label>
+                              </td>
+                           </tr>
+                           <tr>
+                              <!-- LADO FIXO -->
+                              <td>
+                                 <input style="width: 100%" id="rmladofixo3" name="rmladofixo3" value="<%= perifericos.refrLadoFixo3 %>">
+                              </td>
+                              <td>
+                                 <input type="radio" id="fixoGeladaEdit3" name="fixoRefrig3" value="Gelada">
+                                 <label for="fixoGeladaEdit3">Água Gelada</label>
+                              </td>
+                              <td>
+                                 <input type="radio" id="fixoFriaEdit3" name="fixoRefrig3" value="Fria">
+                                 <label for="fixoFriaEdit3">Água Fria</label>
+                              </td>
+                              <!-- LADO MOVEL -->
+                              <td>
+                                 <input style="width: 100%" id="rmladomovel3" name="rmladomovel3" value="<%= perifericos.refrLadoMovel3 %>">
+                              </td>
+                              <td>
+                                 <input type="radio" id="movelGeladaEdit3" name="movelRefrig3" value="Gelada">
+                                 <label for="movelGeladaEdit3">Água Gelada</label>
+                              </td>
+                              <td>
+                                 <input type="radio" id="movelFriaEdit3" name="movelRefrig3" value="Fria">
+                                 <label for="movelFriaEdit3">Água Fria</label>
+                              </td>
+                           </tr>
+                           <tr>
+                              <!-- LADO FIXO -->
+                              <td>
+                                 <input style="width: 100%" id="rmladofixo4" name="rmladofixo4" value="<%= perifericos.refrLadoFixo4 %>">
+                              </td>
+                              <td>
+                                 <input type="radio" id="fixoGeladaEdit4" name="fixoRefrig4" value="Gelada">
+                                 <label for="fixoGeladaEdit4">Água Gelada</label>
+                              </td>
+                              <td>
+                                 <input type="radio" id="fixoFriaEdit4" name="fixoRefrig4" value="Fria">
+                                 <label for="fixoFriaEdit4">Água Fria</label>
+                              </td>
+                              <!-- LADO MOVEL -->
+                              <td>
+                                 <input style="width: 100%" id="rmladomovel4" name="rmladomovel4" value="<%= perifericos.refrLadoMovel4 %>">
+                              </td>
+                              <td>
+                                 <input type="radio" id="movelGeladaEdit4" name="movelRefrig4" value="Gelada">
+                                 <label for="movelGeladaEdit4">Água Gelada</label>
+                              </td>
+                              <td>
+                                 <input type="radio" id="movelFriaEdit4" name="movelRefrig4" value="Fria">
+                                 <label for="movelFriaEdit4">Água Fria</label>
                               </td>
                            </tr>
                         </tbody>
                      </table>
                
-                     <table class="table-bordered" style="margin-top: 40px">
+                     <table class="table-bordered" style="margin-top: 30px;">
                         <thead>
                            <tr>
-                              <th colspan="7">STEAM(VAPOR)</th>
+                              <th colspan="5">STEAM(VAPOR)</th>
+                              <th colspan="2">TOL &#177; 10%</th>
                            </tr>
                            <tr>
                               <th colspan="7">REFRIGERAÇÃO DO MOLDE</th>
@@ -1704,15 +1793,101 @@
                         <tbody>
                            <tr>
                               <th colspan="3" style="text-align: center;">LADO FIXO</th>
-                              <th rowspan="3" style="text-align: center;">TOL<br> &#177;<br> 10%</th>
                               <th colspan="3" style="text-align: center;">LADO MÓVEL</th>
                            </tr>
                            <tr>
-                              <td colspan="3">
-                                 <input style="width: 100%" id="valorladofixo" name="valorladofixo" value="<%= perifericos.vaporLadoFixo1 %>">
+                              <!-- LADO FIXO -->
+                              <td colspan="2">
+                                 <input style="width: 100%" id="vaporladofixo1" name="vaporladofixo1" value="<%= perifericos.vaporLadoFixo1 %>">
                               </td>
-                              <td colspan="3">
-                                 <input style="width: 100%" id="valorladomovel" name="valorladomovel" value="<%= perifericos.vaporLadoFixo2 %>">
+                              <td colspan="1">
+                                 <input type="radio" id="fixoAguaF1Edit" name="fixoSteam" value="AguaF1">
+                                 <label for="fixoAguaF1Edit">Temp. Água Industrial F1</label>
+                              </td>
+            
+                              <!-- LADO MOVEL -->
+                              <td colspan="2">
+                                 <input style="width: 100%" id="vaporladomovel1" name="vaporladomovel1" value="<%= perifericos.vaporLadoMovel1 %>">
+                              </td>
+                              <td colspan="1">
+                                 <input type="radio" id="movelAguaF1Edit" name="movelSteam" value="AguaF1">
+                                 <label for="movelAguaF1Edit">Temp. Água Industrial F1</label>
+                              </td>
+                           </tr>
+                           <tr>
+                              <!-- LADO FIXO -->
+                              <td colspan="2">
+                                 <input style="width: 100%" id="vaporladofixo2" name="vaporladofixo2" value="<%= perifericos.vaporLadoFixo2 %>">
+                              </td>
+                              <td colspan="1">
+                                 <input type="radio" id="fixoAguaF2Edit" name="fixoSteam" value="AguaF2">
+                                 <label for="fixoAguaF2Edit">Temp. Água Industrial F2</label>
+                              </td>
+            
+                              <!-- LADO MOVEL -->
+                              <td colspan="2">
+                                 <input style="width: 100%" id="vaporladomovel2" name="vaporladomovel2" value="<%= perifericos.vaporLadoMovel2 %>">
+                              </td>
+                              <td colspan="1">
+                                 <input type="radio" id="movelAguaF2Edit" name="movelSteam" value="AguaF2">
+                                 <label for="movelAguaF2Edit">Temp. Água Industrial F2</label>
+                              </td>
+                           </tr>
+                           <tr>
+                              <!-- LADO FIXO -->
+                              <td colspan="2">
+                                 <input style="width: 100%" id="vaporladofixo3" name="vaporladofixo3" value="<%= perifericos.vaporLadoFixo3 %>">
+                              </td>
+                              <td colspan="1">
+                                 <input type="radio" id="fixoVaporAguaEdit" name="fixoSteam" value="Gelada">
+                                 <label for="fixoVaporAguaEdit">Temp. Água Gelada</label>
+                              </td>
+            
+                              <!-- LADO MOVEL -->
+                              <td colspan="2">
+                                 <input style="width: 100%" id="vaporladomovel3" name="vaporladomovel3" value="<%= perifericos.vaporLadoMovel3 %>">
+                              </td>
+                              <td colspan="1">
+                                 <input type="radio" id="movelVaporAguaEdit" name="movelSteam" value="Gelada">
+                                 <label for="movelVaporAguaEdit">Temp. Água Gelada</label>
+                              </td>
+                           </tr>
+                           <tr>
+                              <!-- LADO FIXO -->
+                              <td colspan="2">
+                                 <input style="width: 100%" id="vaporladofixo4" name="vaporladofixo4" value="<%= perifericos.vaporLadoFixo4 %>">
+                              </td>
+                              <td colspan="1">
+                                 <input type="radio" id="fixoVaporEdit" name="fixoSteam" value="Vapor"><br>
+                                 <label for="fixoVaporEdit">Bar. Vapor</label>
+                              </td>
+            
+                              <!-- LADO MOVEL -->
+                              <td colspan="2">
+                                 <input style="width: 100%" id="vaporladomovel4" name="vaporladomovel4" value="<%= perifericos.vaporLadoMovel4 %>">
+                              </td>
+                              <td colspan="1">
+                                 <input type="radio" id="movelVaporEdit" name="movelSteam" value="Vapor"><br>
+                                 <label for="movelVaporEdit">Bar. Vapor</label>
+                              </td>
+                           </tr>
+                           <tr>
+                              <!-- LADO FIXO -->
+                              <td colspan="2">
+                                 <input style="width: 100%" id="vaporladofixo5" name="vaporladofixo5" value="<%= perifericos.vaporLadoFixo5 %>">
+                              </td>
+                              <td colspan="1">
+                                 <input type="radio" id="fixoArEdit" name="fixoSteam" value="Ar">
+                                 <label for="fixoArEdit">Bar. Ar Comprimido</label>
+                              </td>
+            
+                              <!-- LADO MOVEL -->
+                              <td colspan="2">
+                                 <input style="width: 100%" id="vaporladomovel5" name="vaporladomovel5" value="<%= perifericos.vaporLadoMovel5 %>">
+                              </td>
+                              <td colspan="1">
+                                 <input type="radio" id="movelArEdit" name="movelSteam" value="Ar">
+                                 <label for="movelArEdit">Bar. Ar Comprimido</label>
                               </td>
                            </tr>
                         </tbody>
@@ -1735,6 +1910,7 @@
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src=/scripts/documentScripts.js></script>
+
 <script>
    function validateForm() {
       var molde = document.forms["pamForm"]["molde"].value;

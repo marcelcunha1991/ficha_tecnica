@@ -3595,7 +3595,7 @@ function tipoVisualizacao(tipo) {
                                                       "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG21ACTTIME + "</span></p>" +
                                                       "</td>" +
-                                                   "</tr>"
+                                                   "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG2</th>" +
                                                       "<td>" +
@@ -3612,7 +3612,7 @@ function tipoVisualizacao(tipo) {
                                                       "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG22ACTTIME + "</span></p>" +
                                                       "</td>" +
-                                                   "</tr>"
+                                                   "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG3</th>" +
                                                       "<td>" +
@@ -3629,7 +3629,7 @@ function tipoVisualizacao(tipo) {
                                                       "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG23ACTTIME + "</span></p>" +
                                                       "</td>" +
-                                                   "</tr>"
+                                                   "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG4</th>" +
                                                       "<td>" +
@@ -3646,7 +3646,7 @@ function tipoVisualizacao(tipo) {
                                                       "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG24ACTTIME + "</span></p>" +
                                                       "</td>" +
-                                                   "</tr>"
+                                                   "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG5</th>" +
                                                       "<td>" +
@@ -3663,7 +3663,7 @@ function tipoVisualizacao(tipo) {
                                                       "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG25ACTTIME + "</span></p>" +
                                                       "</td>" +
-                                                   "</tr>"
+                                                   "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG6</th>" +
                                                       "<td>" +
@@ -3680,7 +3680,7 @@ function tipoVisualizacao(tipo) {
                                                       "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG26ACTTIME + "</span></p>" +
                                                       "</td>" +
-                                                   "</tr>"
+                                                   "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG7</th>" +
                                                       "<td>" +
@@ -3697,7 +3697,7 @@ function tipoVisualizacao(tipo) {
                                                       "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG27ACTTIME + "</span></p>" +
                                                       "</td>" +
-                                                   "</tr>"
+                                                   "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG8</th>" +
                                                       "<td>" +
@@ -3714,7 +3714,7 @@ function tipoVisualizacao(tipo) {
                                                       "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG28ACTTIME + "</span></p>" +
                                                       "</td>" +
-                                                   "</tr>"
+                                                   "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG9</th>" +
                                                       "<td>" +
@@ -3731,7 +3731,7 @@ function tipoVisualizacao(tipo) {
                                                       "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG29ACTTIME + "</span></p>" +
                                                       "</td>" +
-                                                   "</tr>"
+                                                   "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG10</th>" +
                                                       "<td>" +
@@ -3742,13 +3742,13 @@ function tipoVisualizacao(tipo) {
                                                       "</td>" +
 
                                                       "<th>VG30</th>" +
-                                                      "<td" +
+                                                      "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG30DLYTIME + "</span></p>" +
                                                       "</td>" +
-                                                      "<td" +
+                                                      "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG30ACTTIME + "</span></p>" +
                                                       "</td>" +
-                                                   "</tr>"
+                                                   "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG11</th>" +
                                                       "<td>" +
@@ -3759,13 +3759,13 @@ function tipoVisualizacao(tipo) {
                                                       "</td>" +
 
                                                       "<th>VG31</th>" +
-                                                      "<td" + 
+                                                      "<td>" + 
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG31DLYTIME + "</span></p>" +
                                                       "</td>" +
-                                                      "<td" + 
+                                                      "<td>" + 
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG31ACTTIME + "</span></p>" +
                                                       "</td>" +
-                                                   "</tr>"
+                                                   "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG12</th>" +
                                                       "<td>" +
@@ -3776,146 +3776,146 @@ function tipoVisualizacao(tipo) {
                                                       "</td>" +
 
                                                       "<th>VG32</th>" +
-                                                      "<td" +
+                                                      "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG32DLYTIME + "</span></p>" +
                                                       "</td>" +
-                                                      "<td" +
+                                                      "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG32ACTTIME + "</span></p>" +
                                                       "</td>" +
-                                                   "</tr>"
+                                                   "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG13</th>" +
                                                       "<td>" +
-                                                         " +<p class='read-only'><span class='cadastrados'>" + perifericos.VG13DLYTIME + "</span></p>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG13DLYTIME + "</span></p>" +
                                                       "</td>" +
                                                       "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG13ACTTIME + "</span></p>" +
                                                       "</td>" +
 
                                                       "<th>VG33</th>" +
-                                                      "<td" +
+                                                      "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG33DLYTIME + "</span></p>" +
                                                       "</td>" +
-                                                      "<td" +
+                                                      "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG33ACTTIME + "</span></p>" +
                                                       "</td>" +
-                                                   "</tr>"
+                                                   "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG14</th>" +
                                                       "<td>" +
-                                                         " +<p class='read-only'><span class='cadastrados'>" + perifericos.VG14DLYTIME + "</span></p>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG14DLYTIME + "</span></p>" +
                                                       "</td>" +
                                                       "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG14ACTTIME + "</span></p>" +
                                                       "</td>" +
 
                                                       "<th>VG34</th>" +
-                                                      "<td" +
+                                                      "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG34DLYTIME + "</span></p>" +
                                                       "</td>" +
-                                                      "<td" +
+                                                      "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG34ACTTIME + "</span></p>" +
                                                       "</td>" +
-                                                   "</tr>"
+                                                   "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG15</th>" +
                                                       "<td>" +
-                                                         " +<p class='read-only'><span class='cadastrados'>" + perifericos.VG15DLYTIME + "</span></p>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG15DLYTIME + "</span></p>" +
                                                       "</td>" +
                                                       "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG15ACTTIME + "</span></p>" +
                                                       "</td>" +
 
                                                       "<th>VG35</th>" +
-                                                      "<td" +
+                                                      "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG35DLYTIME + "</span></p>" +
                                                       "</td>" +
-                                                      "<td" +
+                                                      "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG35ACTTIME + "</span></p>" +
                                                       "</td>" +
-                                                   "</tr>"
+                                                   "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG16</th>" +
                                                       "<td>" +
-                                                         " +<p class='read-only'><span class='cadastrados'>" + perifericos.VG16DLYTIME + "</span></p>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG16DLYTIME + "</span></p>" +
                                                       "</td>" +
                                                       "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG16ACTTIME + "</span></p>" +
                                                       "</td>" +
 
                                                       "<th>VG36</th>" +
-                                                      "<td" +
+                                                      "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG36DLYTIME + "</span></p>" +
                                                       "</td>" +
-                                                      "<td" +
+                                                      "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG36ACTTIME + "</span></p>" +
                                                       "</td>" +
-                                                   "</tr>"
+                                                   "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG17</th>" +
                                                       "<td>" +
-                                                         " +<p class='read-only'><span class='cadastrados'>" + perifericos.VG17DLYTIME + "</span></p>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG17DLYTIME + "</span></p>" +
                                                       "</td>" +
                                                       "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG17ACTTIME + "</span></p>" +
                                                       "</td>" +
 
                                                       "<th>VG37</th>" +
-                                                      "<td" +
+                                                      "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG37DLYTIME + "</span></p>" +
                                                       "</td>" +
-                                                      "<td" +
+                                                      "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG37ACTTIME + "</span></p>" +
                                                       "</td>" +
-                                                   "</tr>"
+                                                   "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG18</th>" +
                                                       "<td>" +
-                                                         " +<p class='read-only'><span class='cadastrados'>" + perifericos.VG18DLYTIME + "</span></p>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG18DLYTIME + "</span></p>" +
                                                       "</td>" +
                                                       "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG18ACTTIME + "</span></p>" +
                                                       "</td>" +
 
                                                       "<th>VG38</th>" +
-                                                      "<td" +
+                                                      "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG38DLYTIME + "</span></p>" +
                                                       "</td>" +
-                                                      "<td" +
+                                                      "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG38ACTTIME + "</span></p>" +
                                                       "</td>" +
-                                                   "</tr>"
+                                                   "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG19</th>" +
                                                       "<td>" +
-                                                         " +<p class='read-only'><span class='cadastrados'>" + perifericos.VG19DLYTIME + "</span></p>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG19DLYTIME + "</span></p>" +
                                                       "</td>" +
                                                       "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG19ACTTIME + "</span></p>" +
                                                       "</td>" +
 
                                                       "<th>VG39</th>" +
-                                                      "<td" +
+                                                      "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG39DLYTIME + "</span></p>" +
                                                       "</td>" +
-                                                      "<td" +
+                                                      "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG39ACTTIME + "</span></p>" +
                                                       "</td>" +
-                                                   "</tr>"
+                                                   "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG20</th>" +
                                                       "<td>" +
-                                                         " +<p class='read-only'><span class='cadastrados'>" + perifericos.VG20DLYTIME + "</span></p>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG20DLYTIME + "</span></p>" +
                                                       "</td>" +
                                                       "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG20ACTTIME + "</span></p>" +
                                                       "</td>" +
 
                                                       "<th>VG40</th>" +
-                                                      "<td" +
+                                                      "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG40DLYTIME + "</span></p>" +
                                                       "</td>" +
-                                                      "<td" +
+                                                      "<td>" +
                                                          "<p class='read-only'><span class='cadastrados'>" + perifericos.VG40ACTTIME + "</span></p>" +
                                                       "</td>" +
                                                    "</tr>"
@@ -3925,23 +3925,86 @@ function tipoVisualizacao(tipo) {
                                     
                                     var refrigeracao = "<tr>" +
                                                          "<th colspan='3' style='text-align: center;'>LADO FIXO</th>" +
-                                                         "<th rowspan='3' style='text-align: center;'>TOL<br> &#177;<br> 10%</th>" +
                                                          "<th colspan='3' style='text-align: center;'>LADO MÓVEL</th>" +
                                                       "</tr>" +
                                                       "<tr>" +
-                                                         "<td colspan='3'>" +
-                                                            "<p class='read-only'><span class='cadastrados'>" + perifericos.refrLadoFixo1 + "</span></p>" +
+                                                         "<td>" +
+                                                            "<input class='read-only' readonly style='width: 100%' id='rmladofixo1' name='rmladofixo1' value='" + perifericos.refrLadoFixo1 + "'>" +
                                                          "</td>" +
-                                                         "<td colspan='3'>" +
-                                                            "<p class='read-only'><span class='cadastrados'>" + perifericos.refrLadoMovel1 + "</span></p>" +
+                                                         "<td>" +
+                                                            "<p id='GeladaFixo1'>Água Gelada</p>" +
+                                                         "</td>" +
+                                                         "<td>" +
+                                                            "<p id='FriaFixo1'>Água Fria</p>" +
+                                                         "</td>"+
+                                                         "<td>" +
+                                                            "<input class='read-only' readonly style='width: 100%' id='rmladomovel1' name='rmladomovel1' value='" + perifericos.refrLadoMovel1 + "'>" +
+                                                         "</td>" +
+                                                         "<td>" +
+                                                            "<p id='GeladaMovel1'>Água Gelada</p>" +
+                                                         "</td>" +
+                                                         "<td>" +
+                                                            "<p id='FriaMovel1'>Água Fria</p>" +
                                                          "</td>" +
                                                       "</tr>" +
                                                       "<tr>" +
-                                                         "<td colspan='3'>" +
-                                                            "<p class='read-only'><span class='cadastrados'>" + perifericos.refrLadoFixo2 + "</span></p>" +
+                                                         "<td>" +
+                                                            "<input class='read-only' readonly style='width: 100%' id='rmladofixo2' name='rmladofixo2' value='" + perifericos.refrLadoFixo2 + "'>" +
                                                          "</td>" +
-                                                         "<td colspan='3'>" +
-                                                            "<p class='read-only'><span class='cadastrados'>" + perifericos.refrLadoMovel2 + "</span></p>" +
+                                                         "<td>" +
+                                                            "<p id='GeladaFixo2'>Água Gelada</p>" +
+                                                         "</td>" +
+                                                         "<td>" +
+                                                            "<p id='FriaFixo2'>Água Fria</p>" +
+                                                         "</td>" +
+                                                         "<td>" +
+                                                            "<input class='read-only' readonly style='width: 100%' id='rmladomovel2' name='rmladomovel2' value='" + perifericos.refrLadoMovel2 + "'>" +
+                                                         "</td>" +
+                                                         "<td>" +
+                                                            "<p id='GeladaMovel2'>Água Gelada</p>" +
+                                                         "</td>" +
+                                                         "<td>" +
+                                                            "<p id='FriaMovel2'>Água Fria</p>" +
+                                                         "</td>" +
+                                                      "</tr>" +
+                                                      "<tr>" +
+                                                         "<td>" +
+                                                            "<input class='read-only' readonly style='width: 100%' id='rmladofixo3' name='rmladofixo3' value='" + perifericos.refrLadoFixo3 + "'>" +
+                                                         "</td>" +
+                                                         "<td>" +
+                                                            "<p id='GeladaFixo3'>Água Gelada</p>" +
+                                                         "</td>" +
+                                                         "<td>" +
+                                                            "<p id='FriaFixo3'>Água Fria</p>" +
+                                                         "</td>" +
+                                                         "<td>" +
+                                                            "<input class='read-only' readonly style='width: 100%' id='rmladomovel3' name='rmladomovel3' value='" + perifericos.refrLadoMovel3 + "'>" +
+                                                         "</td>" +
+                                                         "<td>" +
+                                                            "<p id='GeladaMovel3'>Água Gelada</p>" +
+                                                         "</td>" +
+                                                         "<td>" +
+                                                            "<p id='FriaMovel3'>Água Fria</p>" +
+                                                         "</td>" +
+                                                      "</tr>" +
+                                                      "<tr>" +
+                                                         "<td>" +
+                                                            "<input class='read-only' readonly style='width: 100%' id='rmladofixo4' name='rmladofixo4' value='" + perifericos.refrLadoFixo4 + "'>" +
+                                                         "</td>" +
+                                                         "<td>" +
+                                                            "<p id='GeladaFixo4'>Água Gelada</p>" +
+                                                         "</td>" +
+                                                         "<td>" +
+                                                            "<p id='FriaFixo4'>Água Fria</p>" +
+                                                         "</td>" +
+                                                         "<td>" +
+                                                            "<input class='read-only' readonly style='width: 100%' id='rmladomovel4' name='rmladomovel4' value='" + perifericos.refrLadoMovel4 + "'>" +
+                                                         "</td>" +
+                                                         "<td>" +
+                                                            "<p id='GeladaMovel4'>Água Gelada</p>" +
+                                                         "</td>" +
+                                                         "<td>" +
+                                                            "<p id='FriaMovel4'>Água Fria</p>" +
                                                          "</td>" +
                                                       "</tr>"
    
@@ -3950,21 +4013,224 @@ function tipoVisualizacao(tipo) {
                                     
                                     var vapor = "<tr>" +
                                                    "<th colspan='3' style='text-align: center;'>LADO FIXO</th>" +
-                                                   "<th rowspan='3' style='text-align: center;'>TOL<br> &#177;<br> 10%</th>" +
                                                    "<th colspan='3' style='text-align: center;'>LADO MÓVEL</th>" +
                                                 "</tr>" +
                                                 "<tr>" +
-                                                   "<td colspan='3'>" +
-                                                      "<p class='read-only'><span class='cadastrados'>" + perifericos.vaporLadoFixo1 + "</span></p>" +
+                                                   "<td colspan='2'>" +
+                                                      "<input class='read-only' readonly style='width: 100%' id='vaporladofixo1' name='vaporladofixo1' value='" + perifericos.vaporLadoFixo1 + "'>" +
                                                    "</td>" +
-                                                   "<td colspan='3'>" +
-                                                      "<p class='read-only'><span class='cadastrados'>" + perifericos.vaporLadoFixo2 + "</span></p>" +
+                                                   "<td colspan='1'>" +
+                                                      "<p id='aguaF1Fixo'>Temp. Água Industrial F1</p>" +
                                                    "</td>" +
-                                                "</tr>" 
+                                 
+                                                   "<td colspan='2'>" +
+                                                      "<input class='read-only' readonly style='width: 100%' id='vaporladomovel1' name='vaporladomovel1' value='" + perifericos.vaporLadoMovel1 + "'>" +
+                                                   "</td>" +
+                                                   "<td colspan='1'>" +
+                                                      "<p id='aguaF1Movel'>Temp. Água Industrial F1</p>" +
+                                                   "</td>" +
+                                                "</tr>" +
+                                                "<tr>" +
+                                                   "<td colspan='2'>" +
+                                                      "<input class='read-only' readonly style='width: 100%' id='vaporladofixo2' name='vaporladofixo2' value='" + perifericos.vaporLadoFixo2 + "'>" +
+                                                   "</td>" +
+                                                   "<td colspan='1'>" +
+                                                      "<p id='aguaF2Fixo'>Temp. Água Industrial F2</p>" +
+                                                   "</td>" +
+                                 
+                                                   "<td colspan='2'>" +
+                                                      "<input class='read-only' readonly style='width: 100%' id='vaporladomovel2' name='vaporladomovel2' value='" + perifericos.vaporLadoMovel2 + "'>" +
+                                                   "</td>" +
+                                                   "<td colspan='1'>" +
+                                                      "<p id='aguaF2Movel'>Temp. Água Industrial F2</p>" +
+                                                   "</td>" +
+                                                "</tr>" +
+                                                "<tr>" +
+                                                   "<td colspan='2'>" +
+                                                      "<input class='read-only' readonly style='width: 100%' id='vaporladofixo3' name='vaporladofixo3' value='" + perifericos.vaporLadoFixo3 + "'>" +
+                                                   "</td>" +
+                                                   "<td colspan='1'>" +
+                                                      "<p id='geladaFixo'>Temp. Água Gelada</p>" +
+                                                   "</td>" +
+                                 
+                                                   "<td colspan='2'>" +
+                                                      "<input class='read-only' readonly style='width: 100%' id='vaporladomovel3' name='vaporladomovel3' value='" + perifericos.vaporLadoMovel3 + "'>" +
+                                                   "</td>" +
+                                                   "<td colspan='1'>" +
+                                                      "<p id='geladaMovel'>Temp. Água Gelada</p>" +
+                                                   "</td>" +
+                                                "</tr>" +
+                                                "<tr>" +
+                                                   "<td colspan='2'>" +
+                                                      "<input class='read-only' readonly style='width: 100%' id='vaporladofixo4' name='vaporladofixo4' value='" + perifericos.vaporLadoFixo4 + "'>" +
+                                                   "</td>" +
+                                                   "<td colspan='1'>" +
+                                                      "<p id='vaporFixo'>Bar. Vapor</p>" +
+                                                   "</td>" +
+                                 
+                                                   "<td colspan='2'>" +
+                                                      "<input class='read-only' readonly style='width: 100%' id='vaporladomovel4' name='vaporladomovel4' value='" + perifericos.vaporLadoMovel4 + "'>" +
+                                                   "</td>" +
+                                                   "<td colspan='1'>" +
+                                                      "<p id='vaporMovel'>Bar. Vapor</p>" +
+                                                   "</td>" +
+                                                "</tr>" +
+                                                "<tr>" +
+                                                   "<td colspan='2'>" +
+                                                      "<input class='read-only' readonly style='width: 100%' id='vaporladofixo5' name='vaporladofixo5' value='" + perifericos.vaporLadoFixo5 + "'>" +
+                                                   "</td>" +
+                                                   "<td colspan='1'>" +
+                                                      "<p id='arFixo'>Bar. Ar Comprimido</p>" +
+                                                   "</td>" +
+                                 
+                                                   "<td colspan='2'>" +
+                                                      "<input class='read-only' readonly style='width: 100%' id='vaporladomovel5' name='vaporladomovel5' value='" + perifericos.vaporLadoMovel5 + "'>" +
+                                                   "</td>" +
+                                                   "<td colspan='1'>" +
+                                                      "<p id='arMovel'>Bar. Ar Comprimido</p>" +
+                                                   "</td>" +
+                                                "</tr>"
    
                                     tableBody = $("#vapor tbody");
                                     tableBody.html(vapor);
 
+                                    //refrigeracao fixo
+                                    if (perifericos.fixoRefrig1 === "Gelada") {
+                                       document.getElementById("GeladaFixo1").style.fontWeight = "bold";
+                                       document.getElementById("GeladaFixo1").style.fontStyle = "italic";
+                                       document.getElementById("GeladaFixo1").style.textDecoration = "underline";
+                                    } else {
+                                       document.getElementById("FriaFixo1").style.fontWeight = "bold";
+                                       document.getElementById("FriaFixo1").style.fontStyle = "italic";
+                                       document.getElementById("FriaFixo1").style.textDecoration = "underline";
+                                    }
+
+                                    if (perifericos.fixoRefrig2 === "Gelada") {
+                                       document.getElementById("GeladaFixo2").style.fontWeight = "bold";
+                                       document.getElementById("GeladaFixo2").style.fontStyle = "italic";
+                                       document.getElementById("GeladaFixo2").style.textDecoration = "underline";
+                                    } else {
+                                       document.getElementById("FriaFixo2").style.fontWeight = "bold";
+                                       document.getElementById("FriaFixo2").style.fontStyle = "italic";
+                                       document.getElementById("FriaFixo2").style.textDecoration = "underline";
+                                    }
+
+                                    if (perifericos.fixoRefrig3 === "Gelada") {
+                                       document.getElementById("GeladaFixo3").style.fontWeight = "bold";
+                                       document.getElementById("GeladaFixo3").style.fontStyle = "italic";
+                                       document.getElementById("GeladaFixo3").style.textDecoration = "underline";
+                                    } else {
+                                       document.getElementById("FriaFixo3").style.fontWeight = "bold";
+                                       document.getElementById("FriaFixo3").style.fontStyle = "italic";
+                                       document.getElementById("FriaFixo3").style.textDecoration = "underline";
+                                    }
+
+                                    if (perifericos.fixoRefrig4 === "Gelada") {
+                                       document.getElementById("GeladaFixo4").style.fontWeight = "bold";
+                                       document.getElementById("GeladaFixo4").style.fontStyle = "italic";
+                                       document.getElementById("GeladaFixo4").style.textDecoration = "underline";
+                                    } else {
+                                       document.getElementById("FriaFixo4").style.fontWeight = "bold";
+                                       document.getElementById("FriaFixo4").style.fontStyle = "italic";
+                                       document.getElementById("FriaFixo4").style.textDecoration = "underline";
+                                    }
+
+                                    // refrigeracao movel
+                                    if (perifericos.movelRefrig1 === "Gelada") {
+                                       document.getElementById("GeladaMovel1").style.fontWeight = "bold";
+                                       document.getElementById("GeladaMovel1").style.fontStyle = "italic";
+                                       document.getElementById("GeladaMovel1").style.textDecoration = "underline";
+                                    } else {
+                                       document.getElementById("FriaMovel1").style.fontWeight = "bold";
+                                       document.getElementById("FriaMovel1").style.fontStyle = "italic";
+                                       document.getElementById("FriaMovel1").style.textDecoration = "underline";
+                                    }
+
+                                    if (perifericos.movelRefrig2 === "Gelada") {
+                                       document.getElementById("GeladaMovel2").style.fontWeight = "bold";
+                                       document.getElementById("GeladaMovel2").style.fontStyle = "italic";
+                                       document.getElementById("GeladaMovel2").style.textDecoration = "underline";
+                                    } else {
+                                       document.getElementById("FriaMovel2").style.fontWeight = "bold";
+                                       document.getElementById("FriaMovel2").style.fontStyle = "italic";
+                                       document.getElementById("FriaMovel2").style.textDecoration = "underline";
+                                    }
+
+                                    if (perifericos.movelRefrig3 === "Gelada") {
+                                       document.getElementById("GeladaMovel3").style.fontWeight = "bold";
+                                       document.getElementById("GeladaMovel3").style.fontStyle = "italic";
+                                       document.getElementById("GeladaMovel3").style.textDecoration = "underline";
+                                    } else {
+                                       document.getElementById("FriaMovel3").style.fontWeight = "bold";
+                                       document.getElementById("FriaMovel3").style.fontStyle = "italic";
+                                       document.getElementById("FriaMovel3").style.textDecoration = "underline";
+                                    }
+
+                                    if (perifericos.movelRefrig4 === "Gelada") {
+                                       document.getElementById("GeladaMovel4").style.fontWeight = "bold";
+                                       document.getElementById("GeladaMovel4").style.fontStyle = "italic";
+                                       document.getElementById("GeladaMovel4").style.textDecoration = "underline";
+                                    } else {
+                                       document.getElementById("FriaMovel4").style.fontWeight = "bold";
+                                       document.getElementById("FriaMovel4").style.fontStyle = "italic";
+                                       document.getElementById("FriaMovel4").style.textDecoration = "underline";
+                                    }
+
+                                    //refrigeracao vapor fixo
+                                    if (perifericos.fixoSteam === "AguaF1") {
+                                       document.getElementById("aguaF1Fixo").style.fontWeight = "bold";
+                                       document.getElementById("aguaF1Fixo").style.fontStyle = "italic";
+                                       document.getElementById("aguaF1Fixo").style.textDecoration = "underline";
+
+                                    } else if (perifericos.fixoSteam === "AguaF2") {
+                                       document.getElementById("aguaF2Fixo").style.fontWeight = "bold";
+                                       document.getElementById("aguaF2Fixo").style.fontStyle = "italic";
+                                       document.getElementById("aguaF2Fixo").style.textDecoration = "underline";
+
+                                    } else if (perifericos.fixoSteam === "Gelada") {
+                                       document.getElementById("geladaFixo").style.fontWeight = "bold";
+                                       document.getElementById("geladaFixo").style.fontStyle = "italic";
+                                       document.getElementById("geladaFixo").style.textDecoration = "underline";
+
+                                    } else if (perifericos.fixoSteam === "Vapor") {
+                                       document.getElementById("vaporFixo").style.fontWeight = "bold";
+                                       document.getElementById("vaporFixo").style.fontStyle = "italic";
+                                       document.getElementById("vaporFixo").style.textDecoration = "underline";
+                                       
+                                    } else if (perifericos.fixoSteam === "Ar") {
+                                       document.getElementById("arFixo").style.fontWeight = "bold";
+                                       document.getElementById("arFixo").style.fontStyle = "italic";
+                                       document.getElementById("arFixo").style.textDecoration = "underline";
+                                    }
+
+                                    //refrigeracao vapor fixo
+                                    if (perifericos.movelSteam === "AguaF1") {
+                                       document.getElementById("aguaF1Movel").style.fontWeight = "bold";
+                                       document.getElementById("aguaF1Movel").style.fontStyle = "italic";
+                                       document.getElementById("aguaF1Movel").style.textDecoration = "underline";
+
+                                    } else if (perifericos.movelSteam === "AguaF2") {
+                                       document.getElementById("aguaF2Movel").style.fontWeight = "bold";
+                                       document.getElementById("aguaF2Movel").style.fontStyle = "italic";
+                                       document.getElementById("aguaF2Movel").style.textDecoration = "underline";
+
+                                    } else if (perifericos.movelSteam === "Gelada") {
+                                       document.getElementById("geladaMovel").style.fontWeight = "bold";
+                                       document.getElementById("geladaMovel").style.fontStyle = "italic";
+                                       document.getElementById("geladaMovel").style.textDecoration = "underline";
+
+                                    } else if (perifericos.movelSteam === "Vapor") {
+                                       document.getElementById("vaporMovel").style.fontWeight = "bold";
+                                       document.getElementById("vaporMovel").style.fontStyle = "italic";
+                                       document.getElementById("vaporMovel").style.textDecoration = "underline";
+                                       
+                                    } else if (perifericos.movelSteam === "Ar") {
+                                       document.getElementById("arMovel").style.fontWeight = "bold";
+                                       document.getElementById("arMovel").style.fontStyle = "italic";
+                                       document.getElementById("arMovel").style.textDecoration = "underline";
+                                    }                                    
+                                    
+                                    // CLICK EVENT
                                     document.getElementById("cilindro1").addEventListener("click", function () {
                                        plotaGrafico("cilindro1");
                                     }, false);

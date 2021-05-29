@@ -18,8 +18,8 @@ $(document).ready(function () {
       url: '/get/editHaitian/' + $("#id").val(),
       method: 'get',
       dataType: 'json',
-      success: function (response) {   
-
+      success: function (response) {
+         //termopar e voltagem
          if (response.termopar === "K") {
             document.getElementById("termoparEditK").checked = true;
          } else {
@@ -31,17 +31,92 @@ $(document).ready(function () {
          } else {
             document.getElementById("voltagemEdit24").checked = true;
          }
+
+         //refrigeracao fixo
+         if (response.fixoRefrig1 === "Gelada") {
+            document.getElementById("fixoGeladaEdit1").checked = true;
+         } else {
+            document.getElementById("fixoFriaEdit1").checked = true;
+         }
+         if (response.fixoRefrig2 === "Gelada") {
+            document.getElementById("fixoGeladaEdit2").checked = true;
+         } else {
+            document.getElementById("fixoFriaEdit2").checked = true;
+         }
+         if (response.fixoRefrig3 === "Gelada") {
+            document.getElementById("fixoGeladaEdit3").checked = true;
+         } else {
+            document.getElementById("fixoFriaEdit3").checked = true;
+         }
+         if (response.fixoRefrig4 === "Gelada") {
+            document.getElementById("fixoGeladaEdit4").checked = true;
+         } else {
+            document.getElementById("fixoFriaEdit4").checked = true;
+         }
+         // refrigeracao movel
+         if (response.movelRefrig1 === "Gelada") {
+            document.getElementById("movelGeladaEdit1").checked = true;
+         } else {
+            document.getElementById("movelFriaEdit1").checked = true;
+         }
+         if (response.movelRefrig2 === "Gelada") {
+            document.getElementById("movelGeladaEdit2").checked = true;
+         } else {
+            document.getElementById("movelFriaEdit2").checked = true;
+         }
+         if (response.movelRefrig3 === "Gelada") {
+            document.getElementById("movelGeladaEdit3").checked = true;
+         } else {
+            document.getElementById("movelFriaEdit3").checked = true;
+         }
+         if (response.movelRefrig4 === "Gelada") {
+            document.getElementById("movelGeladaEdit4").checked = true;
+         } else {
+            document.getElementById("movelFriaEdit4").checked = true;
+         }
+
+         //refrigeracao vapor fixo
+         if (response.fixoSteam === "AguaF1") {
+            document.getElementById("fixoAguaF1Edit").checked = true;
+
+         } else if (response.fixoSteam === "AguaF2") {
+            document.getElementById("fixoAguaF2Edit").checked = true;
+
+         } else if (response.fixoSteam === "Gelada") {
+            document.getElementById("fixoVaporAguaEdit").checked = true;
+
+         } else if (response.fixoSteam === "Vapor") {
+            document.getElementById("fixoVaporEdit").checked = true;
+            
+         } else if (response.fixoSteam === "Ar") {
+            document.getElementById("fixoArEdit").checked = true;
+         }
+
+         //refrigeracao vapor fixo
+         if (response.movelSteam === "AguaF1") {
+            document.getElementById("movelAguaF1Edit").checked = true;
+
+         } else if (response.movelSteam === "AguaF2") {
+            document.getElementById("movelAguaF2Edit").checked = true;
+
+         } else if (response.movelSteam === "Gelada") {
+            document.getElementById("movelVaporAguaEdit").checked = true;
+
+         } else if (response.movelSteam === "Vapor") {
+            document.getElementById("movelVaporEdit").checked = true;
+            
+         } else if (response.movelSteam === "Ar") {
+            document.getElementById("movelArEdit").checked = true;
+         }
       }
    })
-
-   console.log($("#revisao").val())
 
    $.ajax({
       url: '/get/revisao/' + $("#revisao").val(),
       method: 'get',
       dataType: 'json',
       success: function (response) {   
-
+         //termopar e voltagem
          if (response.termopar === "K") {
             document.getElementById("termoparK").style.fontWeight = "bold";
             document.getElementById("termoparK").style.fontStyle = "italic";
@@ -60,6 +135,142 @@ $(document).ready(function () {
             document.getElementById("voltagem24").style.fontWeight = "bold";
             document.getElementById("voltagem24").style.fontStyle = "italic";
             document.getElementById("voltagem24").style.textDecoration = "underline";
+         }
+
+         //refrigeracao fixo
+         if (response.fixoRefrig1 === "Gelada") {
+            document.getElementById("GeladaFixo1").style.fontWeight = "bold";
+            document.getElementById("GeladaFixo1").style.fontStyle = "italic";
+            document.getElementById("GeladaFixo1").style.textDecoration = "underline";
+         } else {
+            document.getElementById("FriaFixo1").style.fontWeight = "bold";
+            document.getElementById("FriaFixo1").style.fontStyle = "italic";
+            document.getElementById("FriaFixo1").style.textDecoration = "underline";
+         }
+
+         if (response.fixoRefrig2 === "Gelada") {
+            document.getElementById("GeladaFixo2").style.fontWeight = "bold";
+            document.getElementById("GeladaFixo2").style.fontStyle = "italic";
+            document.getElementById("GeladaFixo2").style.textDecoration = "underline";
+         } else {
+            document.getElementById("FriaFixo2").style.fontWeight = "bold";
+            document.getElementById("FriaFixo2").style.fontStyle = "italic";
+            document.getElementById("FriaFixo2").style.textDecoration = "underline";
+         }
+
+         if (response.fixoRefrig3 === "Gelada") {
+            document.getElementById("GeladaFixo3").style.fontWeight = "bold";
+            document.getElementById("GeladaFixo3").style.fontStyle = "italic";
+            document.getElementById("GeladaFixo3").style.textDecoration = "underline";
+         } else {
+            document.getElementById("FriaFixo3").style.fontWeight = "bold";
+            document.getElementById("FriaFixo3").style.fontStyle = "italic";
+            document.getElementById("FriaFixo3").style.textDecoration = "underline";
+         }
+
+         if (response.fixoRefrig4 === "Gelada") {
+            document.getElementById("GeladaFixo4").style.fontWeight = "bold";
+            document.getElementById("GeladaFixo4").style.fontStyle = "italic";
+            document.getElementById("GeladaFixo4").style.textDecoration = "underline";
+         } else {
+            document.getElementById("FriaFixo4").style.fontWeight = "bold";
+            document.getElementById("FriaFixo4").style.fontStyle = "italic";
+            document.getElementById("FriaFixo4").style.textDecoration = "underline";
+         }
+
+         // refrigeracao movel
+         if (response.movelRefrig1 === "Gelada") {
+            document.getElementById("GeladaMovel1").style.fontWeight = "bold";
+            document.getElementById("GeladaMovel1").style.fontStyle = "italic";
+            document.getElementById("GeladaMovel1").style.textDecoration = "underline";
+         } else {
+            document.getElementById("FriaMovel1").style.fontWeight = "bold";
+            document.getElementById("FriaMovel1").style.fontStyle = "italic";
+            document.getElementById("FriaMovel1").style.textDecoration = "underline";
+         }
+
+         if (response.movelRefrig2 === "Gelada") {
+            document.getElementById("GeladaMovel2").style.fontWeight = "bold";
+            document.getElementById("GeladaMovel2").style.fontStyle = "italic";
+            document.getElementById("GeladaMovel2").style.textDecoration = "underline";
+         } else {
+            document.getElementById("FriaMovel2").style.fontWeight = "bold";
+            document.getElementById("FriaMovel2").style.fontStyle = "italic";
+            document.getElementById("FriaMovel2").style.textDecoration = "underline";
+         }
+
+         if (response.movelRefrig3 === "Gelada") {
+            document.getElementById("GeladaMovel3").style.fontWeight = "bold";
+            document.getElementById("GeladaMovel3").style.fontStyle = "italic";
+            document.getElementById("GeladaMovel3").style.textDecoration = "underline";
+         } else {
+            document.getElementById("FriaMovel3").style.fontWeight = "bold";
+            document.getElementById("FriaMovel3").style.fontStyle = "italic";
+            document.getElementById("FriaMovel3").style.textDecoration = "underline";
+         }
+
+         if (response.movelRefrig4 === "Gelada") {
+            document.getElementById("GeladaMovel4").style.fontWeight = "bold";
+            document.getElementById("GeladaMovel4").style.fontStyle = "italic";
+            document.getElementById("GeladaMovel4").style.textDecoration = "underline";
+         } else {
+            document.getElementById("FriaMovel4").style.fontWeight = "bold";
+            document.getElementById("FriaMovel4").style.fontStyle = "italic";
+            document.getElementById("FriaMovel4").style.textDecoration = "underline";
+         }
+
+         //refrigeracao vapor fixo
+         if (response.fixoSteam === "AguaF1") {
+            document.getElementById("aguaF1Fixo").style.fontWeight = "bold";
+            document.getElementById("aguaF1Fixo").style.fontStyle = "italic";
+            document.getElementById("aguaF1Fixo").style.textDecoration = "underline";
+
+         } else if (response.fixoSteam === "AguaF2") {
+            document.getElementById("aguaF2Fixo").style.fontWeight = "bold";
+            document.getElementById("aguaF2Fixo").style.fontStyle = "italic";
+            document.getElementById("aguaF2Fixo").style.textDecoration = "underline";
+
+         } else if (response.fixoSteam === "Gelada") {
+            document.getElementById("geladaFixo").style.fontWeight = "bold";
+            document.getElementById("geladaFixo").style.fontStyle = "italic";
+            document.getElementById("geladaFixo").style.textDecoration = "underline";
+
+         } else if (response.fixoSteam === "Vapor") {
+            document.getElementById("vaporFixo").style.fontWeight = "bold";
+            document.getElementById("vaporFixo").style.fontStyle = "italic";
+            document.getElementById("vaporFixo").style.textDecoration = "underline";
+            
+         } else if (response.fixoSteam === "Ar") {
+            document.getElementById("arFixo").style.fontWeight = "bold";
+            document.getElementById("arFixo").style.fontStyle = "italic";
+            document.getElementById("arFixo").style.textDecoration = "underline";
+         }
+
+         //refrigeracao vapor fixo
+         if (response.movelSteam === "AguaF1") {
+            document.getElementById("aguaF1Movel").style.fontWeight = "bold";
+            document.getElementById("aguaF1Movel").style.fontStyle = "italic";
+            document.getElementById("aguaF1Movel").style.textDecoration = "underline";
+
+         } else if (response.movelSteam === "AguaF2") {
+            document.getElementById("aguaF2Movel").style.fontWeight = "bold";
+            document.getElementById("aguaF2Movel").style.fontStyle = "italic";
+            document.getElementById("aguaF2Movel").style.textDecoration = "underline";
+
+         } else if (response.movelSteam === "Gelada") {
+            document.getElementById("geladaMovel").style.fontWeight = "bold";
+            document.getElementById("geladaMovel").style.fontStyle = "italic";
+            document.getElementById("geladaMovel").style.textDecoration = "underline";
+
+         } else if (response.movelSteam === "Vapor") {
+            document.getElementById("vaporMovel").style.fontWeight = "bold";
+            document.getElementById("vaporMovel").style.fontStyle = "italic";
+            document.getElementById("vaporMovel").style.textDecoration = "underline";
+            
+         } else if (response.movelSteam === "Ar") {
+            document.getElementById("arMovel").style.fontWeight = "bold";
+            document.getElementById("arMovel").style.fontStyle = "italic";
+            document.getElementById("arMovel").style.textDecoration = "underline";
          }
       }
    })

@@ -1654,41 +1654,114 @@
                   </tbody>
                </table>
          
-               <table class="table-bordered" style="margin-top: 40px">
+               <table class="table-bordered" style="margin-top: 40px;">
                   <thead>
                      <tr>
-                        <th colspan="7">REFRIGERAÇÃO DO MOLDE</th>
+                        <th colspan="5">REFRIGERAÇÃO DO MOLDE</th>
+                        <th colspan="2">TOL &#177; 10%</th>
                      </tr>
                   </thead>
                   <tbody>
                      <tr>
                         <th colspan="3" style="text-align: center;">LADO FIXO</th>
-                        <th rowspan="3" style="text-align: center;">TOL<br> &#177;<br> 10%</th>
                         <th colspan="3" style="text-align: center;">LADO MÓVEL</th>
                      </tr>
                      <tr>
-                        <td colspan="3">
-                           <input class="read-only" readonly style="width: 100%" id="rmladofixo1" name="rmladofixo1" placeholder="50C" value="<%= perifericos.refrLadoFixo1 %> %>">
+                        <!-- LADO FIXO -->
+                        <td>
+                           <input class="read-only" readonly style="width: 100%" id="rmladofixo1" name="rmladofixo1" value="<%= perifericos.refrLadoFixo1 %>">
                         </td>
-                        <td colspan="3">
-                           <input class="read-only" readonly style="width: 100%" id="rmladomovel1" name="rmladomovel1" placeholder="GELADA" value="<%= perifericos.refrLadoMovel1 %>">
+                        <td>
+                           <p id="GeladaFixo1">Água Gelada</p>
+                        </td>
+                        <td>
+                           <p id="FriaFixo1">Água Fria</p>
+                        </td>
+                        <!-- LADO MOVEL -->
+                        <td>
+                           <input class="read-only" readonly style="width: 100%" id="rmladomovel1" name="rmladomovel1" value="<%= perifericos.refrLadoMovel1 %>">
+                        </td>
+                        <td> 
+                           <p id="GeladaMovel1">Água Gelada</p>
+                        </td>
+                        <td>
+                           <p id="FriaMovel1">Água Fria</p>
                         </td>
                      </tr>
                      <tr>
-                        <td colspan="3">
-                           <input class="read-only" readonly style="width: 100%" id="rmladofixo2" name="rmladofixo2" placeholder="50C" value="<%= perifericos.refrLadoFixo2 %>">
+                        <!-- LADO FIXO -->
+                        <td>
+                           <input class="read-only" readonly style="width: 100%" id="rmladofixo2" name="rmladofixo2" value="<%= perifericos.refrLadoFixo2 %>">
                         </td>
-                        <td colspan="3">
-                           <input class="read-only" readonly style="width: 100%" id="rmladomovel2" name="rmladomovel2" placeholder="GELADA" value="<%= perifericos.refrLadoMovel2 %>">
+                        <td>
+                           <p id="GeladaFixo2">Água Gelada</p>
+                        </td>
+                        <td>
+                           <p id="FriaFixo2">Água Fria</p>
+                        </td>
+                        <!-- LADO MOVEL -->
+                        <td>
+                           <input class="read-only" readonly style="width: 100%" id="rmladomovel2" name="rmladomovel2" value="<%= perifericos.refrLadoMovel2 %>">
+                        </td>
+                        <td>
+                           <p id="GeladaMovel2">Água Gelada</p>
+                        </td>
+                        <td>
+                           <p id="FriaMovel2">Água Fria</p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <!-- LADO FIXO -->
+                        <td>
+                           <input class="read-only" readonly style="width: 100%" id="rmladofixo3" name="rmladofixo3" value="<%= perifericos.refrLadoFixo3 %>">
+                        </td>
+                        <td>
+                           <p id="GeladaFixo3">Água Gelada</p>
+                        </td>
+                        <td>
+                           <p id="FriaFixo3">Água Fria</p>
+                        </td>
+                        <!-- LADO MOVEL -->
+                        <td>
+                           <input class="read-only" readonly style="width: 100%" id="rmladomovel3" name="rmladomovel3" value="<%= perifericos.refrLadoMovel3 %>">
+                        </td>
+                        <td>
+                           <p id="GeladaMovel3">Água Gelada</p>
+                        </td>
+                        <td>
+                           <p id="FriaMovel3">Água Fria</p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <!-- LADO FIXO -->
+                        <td>
+                           <input class="read-only" readonly style="width: 100%" id="rmladofixo4" name="rmladofixo4" value="<%= perifericos.refrLadoFixo4 %>">
+                        </td>
+                        <td>
+                           <p id="GeladaFixo4">Água Gelada</p>
+                        </td>
+                        <td>
+                           <p id="FriaFixo4">Água Fria</p>
+                        </td>
+                        <!-- LADO MOVEL -->
+                        <td>
+                           <input class="read-only" readonly style="width: 100%" id="rmladomovel4" name="rmladomovel4" value="<%= perifericos.refrLadoMovel4 %>">
+                        </td>
+                        <td>
+                           <p id="GeladaMovel4">Água Gelada</p>
+                        </td>
+                        <td>
+                           <p id="FriaMovel4">Água Fria</p>
                         </td>
                      </tr>
                   </tbody>
                </table>
          
-               <table class="table-bordered" style="margin-top: 40px">
+               <table class="table-bordered" style="margin-top: 40px;">
                   <thead>
                      <tr>
-                        <th colspan="7">STEAM(VAPOR)</th>
+                        <th colspan="5">STEAM(VAPOR)</th>
+                        <th colspan="2">TOL &#177; 10%</th>
                      </tr>
                      <tr>
                         <th colspan="7">REFRIGERAÇÃO DO MOLDE</th>
@@ -1697,15 +1770,91 @@
                   <tbody>
                      <tr>
                         <th colspan="3" style="text-align: center;">LADO FIXO</th>
-                        <th rowspan="3" style="text-align: center;">TOL<br> &#177;<br> 10%</th>
                         <th colspan="3" style="text-align: center;">LADO MÓVEL</th>
                      </tr>
                      <tr>
-                        <td colspan="3">
-                           <input class="read-only" readonly style="width: 100%" id="valorladofixo" name="valorladofixo" value="<%= perifericos.vaporLadoFixo1 %>">
+                        <!-- LADO FIXO -->
+                        <td colspan="2">
+                           <input class="read-only" readonly style="width: 100%" id="vaporladofixo1" name="vaporladofixo1" value="<%= perifericos.vaporLadoFixo1 %>">
                         </td>
-                        <td colspan="3">
-                           <input class="read-only" readonly style="width: 100%" id="valorladomovel" name="valorladomovel" value="<%= perifericos.vaporLadoFixo2 %>">
+                        <td colspan="1">
+                           <p id="aguaF1Fixo">Temp. Água Industrial F1</p>
+                        </td>
+      
+                        <!-- LADO MOVEL -->
+                        <td colspan="2">
+                           <input class="read-only" readonly style="width: 100%" id="vaporladomovel1" name="vaporladomovel1" value="<%= perifericos.vaporLadoMovel1 %>">
+                        </td>
+                        <td colspan="1">
+                           <p id="aguaF1Movel">Temp. Água Industrial F1</p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <!-- LADO FIXO -->
+                        <td colspan="2">
+                           <input class="read-only" readonly style="width: 100%" id="vaporladofixo2" name="vaporladofixo2" value="<%= perifericos.vaporLadoFixo2 %>">
+                        </td>
+                        <td colspan="1">
+                           <p id="aguaF2Fixo">Temp. Água Industrial F2</p>
+                        </td>
+      
+                        <!-- LADO MOVEL -->
+                        <td colspan="2">
+                           <input class="read-only" readonly style="width: 100%" id="vaporladomovel2" name="vaporladomovel2" value="<%= perifericos.vaporLadoMovel2 %>">
+                        </td>
+                        <td colspan="1">
+                           <p id="aguaF2Movel">Temp. Água Industrial F2</p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <!-- LADO FIXO -->
+                        <td colspan="2">
+                           <input class="read-only" readonly style="width: 100%" id="vaporladofixo3" name="vaporladofixo3" value="<%= perifericos.vaporLadoFixo3 %>">
+                        </td>
+                        <td colspan="1">
+                           <p id="geladaFixo">Temp. Água Gelada</p>
+                        </td>
+      
+                        <!-- LADO MOVEL -->
+                        <td colspan="2">
+                           <input class="read-only" readonly style="width: 100%" id="vaporladomovel3" name="vaporladomovel3" value="<%= perifericos.vaporLadoMovel3 %>">
+                        </td>
+                        <td colspan="1">
+                           <p id="geladaMovel">Temp. Água Gelada</p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <!-- LADO FIXO -->
+                        <td colspan="2">
+                           <input class="read-only" readonly style="width: 100%" id="vaporladofixo4" name="vaporladofixo4" value="<%= perifericos.vaporLadoFixo4 %>">
+                        </td>
+                        <td colspan="1">
+                           <p id="vaporFixo">Bar. Vapor</p>
+                        </td>
+      
+                        <!-- LADO MOVEL -->
+                        <td colspan="2">
+                           <input class="read-only" readonly style="width: 100%" id="vaporladomovel4" name="vaporladomovel4" value="<%= perifericos.vaporLadoMovel4 %>">
+                        </td>
+                        <td colspan="1">
+                           <p id="vaporMovel">Bar. Vapor</p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <!-- LADO FIXO -->
+                        <td colspan="2">
+                           <input class="read-only" readonly style="width: 100%" id="vaporladofixo5" name="vaporladofixo5" value="<%= perifericos.vaporLadoFixo5 %>">
+                        </td>
+                        <td colspan="1">
+                           <p id="arFixo">Bar. Ar Comprimido</p>
+                        </td>
+      
+                        <!-- LADO MOVEL -->
+                        <td colspan="2">
+                           <input class="read-only" readonly style="width: 100%" id="vaporladomovel5" name="vaporladomovel5" value="<%= perifericos.vaporLadoMovel5 %>">
+                        </td>
+                        <td colspan="1">
+                           <p id="arMovel">Bar. Ar Comprimido</p>
                         </td>
                      </tr>
                   </tbody>
@@ -1720,4 +1869,5 @@
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src=/scripts/documentScripts.js></script>
+
 <%- include ('../partials/footer.ejs') %>
