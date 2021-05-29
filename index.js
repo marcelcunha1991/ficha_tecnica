@@ -122,9 +122,9 @@ app.get("/",(req,res) =>{
 //    AlertasAbertos.sync();
 //    FichaPastoreInjetores.sync();
 //    FichaPastorePerifericos.sync();
-//    RevisaoLimitesFichaTecnicaToshiba.sync();
 //    RevisaoFichaTecnicaPastoreInjetores.sync();
 //    RevisaoFichaTecnicaPastorePerifericos.sync();
+//    RevisaoLimitesFichaTecnicaToshiba.sync();
 
 
 //     User.create({
