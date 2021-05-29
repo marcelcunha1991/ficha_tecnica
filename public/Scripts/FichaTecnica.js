@@ -183,7 +183,6 @@ function addRow(rows, data, path, maquina, revisao) {
    for (var i = 0; i < rows; i++) {
       tbody +=  "<tr> <td>" + revisao[i] +"</td> \
                   <td>" + data[i].id +" </td> \
-                  <td>" + data[i].maq +"</td> \
                   <td>" + maquina +"</td> \
                   <td>" + data[i].NúmeroMolde +"</td> \
                   <td>" + data[i].Material +"</td> \
