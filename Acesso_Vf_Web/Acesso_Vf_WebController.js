@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const Maquinas = require("../Maquinas/Maquinas");
 const Tipo = require("../Tipo/Tipo");
+const ParametrosReaisToshiba = require("../ParametrosTempoReal/ParametrosReaisToshiba");
+const ParametrosReaisAutomata = require("../ParametrosTempoReal/ParametrosReaisAutomata");
 const ParametrosReaishaitianJupyter = require("../ParametrosTempoReal/ParametrosReaisHaitianJupyter");
 
 router.get("/externo/fichas/:maquina?",  (req,res) => {     
@@ -120,6 +122,59 @@ router.get("/externo/vf-web/fichasUltimo/maquina/:id",  (req,res) => {
 
       
    })      
+
+})
+
+router.get("/externo/parametrosReais/:maquina",  (req,res) => {
+
+   var maquinaId = req.params.maquina;      
+   console.log(req.params.maquina);
+
+   Maquinas.findOne({
+      where: {
+         codigo:maquinaId
+      }
+   }).then(maquina => {     
+
+      console.log(maquina.tipoId);
+
+      if(maquina.tipoId == 1){
+         ParametrosReaisToshiba.findAll({
+            limit: 30,
+            where: {
+               mac: maquina.mac
+            }
+         }).then(output => {
+
+            res.send(output)
+            
+         }); 
+      }else if(maquina.tipoId == 2){
+         ParametrosReaisAutomata.findAll({
+            limit: 30,
+            where: {
+               mac: maquina.mac
+            }
+         }).then(output => {
+
+            res.send(output)
+            
+         }); 
+      }else if(maquina.tipoId == 3){
+         ParametrosReaishaitianJupyter.findAll({
+            limit: 30,
+            where: {
+               mac: maquina.mac
+            },
+            order: [ [ 'createdAt', 'DESC' ]]
+         }).then(output => {
+
+            res.send(output)
+            
+         }); 
+      }
+       
+   })   
 
 })
 
