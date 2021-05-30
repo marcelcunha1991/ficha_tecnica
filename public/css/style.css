@@ -108,3 +108,15 @@ p.read-only span.reais {
 .table-bordered .form-control {
    font-weight: bold;
 }
+
+.form-floating textarea {
+   border: 1px solid #999;
+}
+
+.form-floating label {
+   font-weight: bold;
+}
+
+.form-floating small {
+   font-weight: bold;
+}

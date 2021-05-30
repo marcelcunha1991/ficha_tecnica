@@ -33,6 +33,8 @@ const RevisaoFichaPastoreInjetores = conn.define('revisao_injetores_pastore',{
    Produto: Sequelize.STRING,
    Material: Sequelize.STRING,
    Data: {type: Sequelize.DATE, defaultValue: Sequelize.NOW},
+   Justificativa: Sequelize.TEXT,
+   Usuario: Sequelize.TEXT,
 
    tolCilindro: Sequelize.FLOAT,
    cilindro1: {type: Sequelize.FLOAT, defaultValue: 0.0},

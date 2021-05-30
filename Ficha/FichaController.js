@@ -21,6 +21,7 @@ const FichaPastorePerifericos = require("../Ficha/FichaPastore/FichaTecnicaPasto
 const RevisaoLimitesFichaTecnicaToshiba = require("../Revisao/RevisaoLimitesFichaTecnicaToshiba");
 const RevisaoFichaTecnicaPastoreInjetores = require("../Revisao/RevisaoFichaTecnicaPastoreInjetores");
 const RevisaoFichaTecnicaPastorePerifericos = require("../Revisao/RevisaoFichaTecnicaPastorePerifericos");
+var usuarioLogado = "";
 
 router.get("/fichas/:maquina?",  (req,res) => {     
    var maquinas;
@@ -907,6 +908,11 @@ router.get("/fichas/editHaitian/:id",(req,res) => {
 
    var id = req.params.id;
    var perifericos;
+   console.log("req.session.user.email");
+   console.log(req.session.user);
+   if (req.session.user !== undefined) {
+      usuarioLogado = req.session.user.email;
+   }
 
    if(isNaN(id)){
       res.redirect("/fichas")
@@ -926,6 +932,7 @@ router.get("/fichas/editHaitian/:id",(req,res) => {
                   perifericos:perifericos,
                   materiais:material,
                   moldes:molde,
+                  userLogado:usuarioLogado,
                   nav_maquinas : "",
                   nav_produtos : "",
                   nav_mp : "",
@@ -2306,6 +2313,8 @@ router.post("/fichas/updateHaitian",(req,res) => {
    var Tecnico = req.body.tecnico;
    var Produto = req.body.produto;
    var Material = req.body.material.replace(/\./g, "");
+   var Justificativa = req.body.justificativa;
+   var Usuario = usuarioLogado;
 
    var tolCilindro = req.body.tolCilindro;
    var tolInjecao = req.body.tolInjecao;
@@ -3422,6 +3431,8 @@ router.post("/fichas/updateHaitian",(req,res) => {
                Tecnico: Tecnico,
                Produto: Produto,
                Material: Material,
+               Justificativa: Justificativa,
+               Usuario: Usuario,
                tolCilindro: tolCilindro,
                tolInjecao: tolInjecao,
                tolRecalque: tolRecalque,

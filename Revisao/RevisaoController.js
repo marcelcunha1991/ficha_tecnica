@@ -58,7 +58,7 @@ router.get("/revisao/visualizacao/:id",(req,res) => {
    })
 })
 
-router.get("/get/revisao/:id",(req,res) => {
+router.get("/get/revisaoPerifericos/:id",(req,res) => {
    var Id = req.params.id;
       
    RevisaoFichaTecnicaPastorePerifericos.findAll({
@@ -67,6 +67,19 @@ router.get("/get/revisao/:id",(req,res) => {
       }
    }).then(periferico => {
       res.send(periferico[0])
+   })
+
+})
+
+router.get("/get/revisaoInjetores/:id",(req,res) => {
+   var Id = req.params.id;
+      
+   RevisaoFichaTecnicaPastoreInjetores.findAll({
+      where: {
+         revisao: Id
+      }
+   }).then(injetores => {
+      res.send(injetores[0])
    })
 
 })

@@ -53,10 +53,12 @@ app.set('view engine','ejs');
 
 //Session
 app.use(session({
-        secret: "qualquercoisa",
-        cookie:{
-            maxAge: 30000
-        }  
+   secret: "qualquercoisa",
+   resave: true,
+   // cookie:{
+   //    maxAge: 24 * 60 * 60 * 1000
+   // },
+   saveUninitialized: true,
 }))
 
 //body parser

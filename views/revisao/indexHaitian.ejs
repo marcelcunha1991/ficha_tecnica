@@ -13,8 +13,9 @@
          <tr>
             <th> ID Revisão </th>
             <th> ID Ficha Técnica </th>
-            <th> ID Máquina </th>
+            <!-- <th> ID Máquina </th> -->
             <th> Máquina </th>
+            <th> Justificativa </th>
          </tr>
       </thead>
       <tbody>
@@ -22,8 +23,9 @@
             <tr>
                <td> <%= injetor.revisao %> </td>
                <td> <%= injetor.idFichaTecnica %> </td>
-               <td> <%= injetor.maq %> </td>
+               <!-- <td> <%= injetor.maq %> </td> -->
                <td> <%= maquinaDesc %> </td>
+               <td style="word-wrap: break-word; white-space: normal"> <%= injetor.Justificativa %> </td>
                <td> 
                   <form method="GET" action="/revisao/visualizacao/<%= injetor.revisao %>" style="display: inline;">                                     
                      <button class="btn btn-warning">Visualizar</button>

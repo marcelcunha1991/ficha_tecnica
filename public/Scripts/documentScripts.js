@@ -213,7 +213,7 @@ $(document).ready(function () {
    })
 
    $.ajax({
-      url: '/get/revisao/' + $("#revisao").val(),
+      url: '/get/revisaoPerifericos/' + $("#revisao").val(),
       method: 'get',
       dataType: 'json',
       success: function (response) {   
@@ -376,4 +376,12 @@ $(document).ready(function () {
       }
    })
 
+   $.ajax({
+      url: '/get/revisaoInjetores/' + $("#revisao").val(),
+      method: 'get',
+      dataType: 'json',
+      success: function (response) {
+         $("#justificativa").val(response.Justificativa);
+      }
+   })
 });
