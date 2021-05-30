@@ -2229,6 +2229,184 @@ function tipoVisualizacao(tipo) {
    } else {
       $("#parametros").hide();
       $("#ficha").show();
+
+      $.ajax({
+         url: '/externo/vf-web/maquinaById/' + codInjet,
+         method: 'get',
+         dataType: 'json',
+         success: function (maquina_) {    
+      
+            // PREENCHE TABELA DE FICHA TECNICA
+            $.ajax({
+               url: '/externo/vf-web/fichasUltimo/maquina/' + codInjet,
+               method: 'get',
+               dataType: 'json',
+               success: function (parametros) {
+      
+                  // console.log(parametros)
+      
+                  $.ajax({
+                     url: '/ficha/getFichaPastoreInjetores/' + parametros.mac,
+                     method: 'get',
+                     dataType: 'json',
+                     success: function (injetor) {
+                        //console.log(injetor)
+      
+                        $.ajax({
+                           url: '/ficha/getFichaPastorePerifericos/' + parametros.mac,
+                           method: 'get',
+                           dataType: 'json',
+                           success: function(perifericos) {
+                              var headerCilindro = "";
+      
+                              if(injetor.tolCilindro === 0.1) {
+                                 headerCilindro = "<th>TOL &#177; 10%</th>"
+                              } else {
+                                 headerCilindro = "<th>TOL &#177; 5%</th>"
+                              }
+                              
+                              tableHead = $("#cilindro thead #headCilindro");
+                              tableHead.append(headerCilindro);
+
+                              var headerInjecao = "";
+      
+                              if(injetor.tolInjecao === 0.1) {
+                                 headerInjecao = "<th>TOL &#177; 10%</th>"
+                              } else {
+                                 headerInjecao = "<th>TOL &#177; 5%</th>"
+                              }
+                              
+                              tableHead = $("#injecao thead #headInjecao");
+                              tableHead.append(headerInjecao);
+
+                              var headerRecalque = "";
+      
+                              if(injetor.tolRecalque === 0.1) {
+                                 headerRecalque = "<th>TOL &#177; 10%</th>"
+                              } else {
+                                 headerRecalque = "<th>TOL &#177; 5%</th>"
+                              }
+                              
+                              tableHead = $("#recalque thead #headRecalque");
+                              tableHead.append(headerRecalque);
+                              
+                              var headerDosagem = "";
+      
+                              if(injetor.tolDosagem === 0.1) {
+                                 headerDosagem = "<th>TOL &#177; 10%</th>"
+                              } else {
+                                 headerDosagem = "<th>TOL &#177; 5%</th>"
+                              }
+                              
+                              tableHead = $("#dosagem thead #headDosagem");
+                              tableHead.append(headerDosagem);
+
+                              var headerDescompressao = "";
+      
+                              if(injetor.tolDescompressao === 0.1) {
+                                 headerDescompressao = "<th>TOL &#177; 10%</th>"
+                              } else {
+                                 headerDescompressao = "<th>TOL &#177; 5%</th>"
+                              }
+                              
+                              tableHead = $("#descompressao thead #headDescompressao");
+                              tableHead.append(headerDescompressao);
+
+                              var headerFechamento = "";
+      
+                              if(injetor.tolFechamento === 0.1) {
+                                 headerFechamento = "<th>TOL &#177; 10%</th>"
+                              } else {
+                                 headerFechamento = "<th>TOL &#177; 5%</th>"
+                              }
+                              
+                              tableHead = $("#fechamento thead #headFechamento");
+                              tableHead.append(headerFechamento);
+
+                              var headerAbertura = "";
+      
+                              if(injetor.tolAbertura === 0.1) {
+                                 headerAbertura = "<th>TOL &#177; 10%</th>"
+                              } else {
+                                 headerAbertura = "<th>TOL &#177; 5%</th>"
+                              }
+                              
+                              tableHead = $("#abertura thead #headAbertura");
+                              tableHead.append(headerAbertura);
+
+                              var headerExtracao = "";
+      
+                              if(injetor.tolExtracao === 0.1) {
+                                 headerExtracao = "<th>TOL &#177; 10%</th>"
+                              } else {
+                                 headerExtracao = "<th>TOL &#177; 5%</th>"
+                              }
+                              
+                              tableHead = $("#extracao thead #headExtracao");
+                              tableHead.append(headerExtracao);
+
+                              var headerRadial = "";
+      
+                              if(injetor.tolRadial === 0.1) {
+                                 headerRadial = "<th>TOL &#177; 10%</th>"
+                              } else {
+                                 headerRadial = "<th>TOL &#177; 5%</th>"
+                              }
+                              
+                              tableHead = $("#radial thead #headRadial");
+                              tableHead.append(headerRadial);
+
+                              var headerCamara = "";
+      
+                              if(perifericos.tolCamara === 0.1) {
+                                 headerCamara = "<th>TOL &#177; 10%</th>"
+                              } else {
+                                 headerCamara = "<th>TOL &#177; 5%</th>"
+                              }
+                              
+                              tableHead = $("#camaraQuente thead #headCamara");
+                              tableHead.append(headerCamara);
+
+                              var headerValve = "";
+      
+                              if(perifericos.tolValve === 0.1) {
+                                 headerValve = "<th>TOL &#177; 10%</th>"
+                              } else {
+                                 headerValve = "<th>TOL &#177; 5%</th>"
+                              }
+                              
+                              tableHead = $("#valveGate thead #headValve");
+                              tableHead.append(headerValve);
+
+                              var headerRefrigeracao = "";
+      
+                              if(perifericos.tolRefrigeracao === 0.1) {
+                                 headerRefrigeracao = "<th>TOL &#177; 10%</th>"
+                              } else {
+                                 headerRefrigeracao = "<th>TOL &#177; 5%</th>"
+                              }
+                              
+                              tableHead = $("#refrigeracao thead #headRefrigeracao");
+                              tableHead.append(headerRefrigeracao);
+
+                              var headerVapor = "";
+      
+                              if(perifericos.tolVapor === 0.1) {
+                                 headerVapor = "<th>TOL &#177; 10%</th>"
+                              } else {
+                                 headerVapor = "<th>TOL &#177; 5%</th>"
+                              }
+                              
+                              tableHead = $("#vapor thead #headVapor");
+                              tableHead.append(headerVapor);
+                           }
+                        })
+                     }
+                  })
+               }
+            })
+         }
+      })
       
       setInterval(function () {
          
