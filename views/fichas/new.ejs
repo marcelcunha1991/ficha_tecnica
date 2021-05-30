@@ -24,7 +24,7 @@
          <select id="maquinasId" name="maquinasId" class="form-control">
             <option > Selecione uma máquina</option>
             <% maquinas.forEach((maquina) => { %>
-               <option value='<%= maquina.id %>,<%= maquina.tipo.tipo %>'><%= maquina.descricao %> - <%= maquina.tipo.tipo %></option>
+               <option value='<%= maquina.id %>,<%= maquina.tipo.tipo %>,<%= maquina.numeroMaquina %>'><%= maquina.descricao %> - <%= maquina.tipo.tipo %></option>
             <% }) %>
          </select>
          <br>

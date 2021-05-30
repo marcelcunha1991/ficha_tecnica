@@ -11,9 +11,11 @@
                   
          </div>
          <div class="card-body">
-            <form name="maquinaForm" method="POST" action="/maquinas/create" onsubmit="return validateForm()">
+            <form name="maquinaForm" method="POST" action="/maquinas/create" onsubmit="return validateForm()" style="display: inline;">
                <h6>Insira uma descricao para a máquina:</h6>
                <input class="form-control" type="text" id="descricao" name="descricao"><br>
+               <h6>Insira o número da máquina:</h6>
+               <input class="form-control" type="text" id="numeroMaquina" name="numeroMaquina"><br>
                <h6>Insira um IP para a máquina:</h6>
                <input class="form-control" type="text" id="mac" name="mac"><br>
                <h6>Insira o código Injet da máquina:</h6>
@@ -31,7 +33,9 @@
 
                <br><br>
                <button class="btn btn-primary">Cadastrar</button>
-                           
+            </form>
+            <form method="GET" action="/maquinas" style="display: inline;">
+               <button class="btn btn-danger">Cancelar</button>
             </form>
       </div>
            

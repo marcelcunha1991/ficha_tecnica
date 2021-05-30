@@ -77,15 +77,16 @@ router.get("/maquinas/new",  (req,res) => {
 
 router.post("/maquinas/create",(req,res) => {
    var descricao = req.body.descricao;
+   var numeroMaquina = req.body.numeroMaquina;
    var codigo = req.body.codigo;
    var mac = req.body.mac;
    var peso = req.body.peso;
    var modelo = req.body.modelo;
    var tipo = req.body.tipos;
-   
 
    Maquinas.create({
       descricao:descricao,
+      numeroMaquina:numeroMaquina,
       codigo: codigo,
       mac:mac,
       peso:peso,
@@ -106,7 +107,6 @@ router.get("/maquinas/edit/:id",(req,res) => {
    }
 
    Maquinas.findByPk(id).then(maquina => {
-
       if(maquina != undefined){
 
          res.render("maquinas/edit",{
@@ -137,6 +137,7 @@ router.get("/maquinas/edit/:id",(req,res) => {
 router.post("/maquinas/update",(req,res) => {
     
    var descricao = req.body.descricao;
+   var numeroMaquina = req.body.numeroMaquina;
    var codigo = req.body.codigo;
    var peso = req.body.peso;
    var modelo = req.body.modelo;
@@ -144,6 +145,7 @@ router.post("/maquinas/update",(req,res) => {
 
    Maquinas.update({
       descricao:descricao,
+      numeroMaquina:numeroMaquina,
       codigo: codigo,
       peso:peso,
       modelo: modelo
@@ -196,7 +198,7 @@ router.post("/maquinas/delete",(req,res) => {
                   })
                })
             
-            } else if (data.tipo.tipo === 'HAITIAN') {
+            } else if (data.tipo.tipo === 'Haitian Jupyter') {
                
                FichaTecnicaPastoreInjetores.destroy({
                   where:{

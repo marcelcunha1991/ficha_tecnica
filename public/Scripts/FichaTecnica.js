@@ -8,12 +8,14 @@ $('#maquinasId').change(e => {
    var split = e.target.value.split(",");
    var v1 = split[0];
    var v2 = split[1];
+   var numeroMaquina = split[2];
    var splitName = v2.split(" ");
    var v3 = splitName[0]
 
    if (v2 === 'HAITIAN' || v3 === "Haitian") {
 
       $("#maquinaHaitian").val(v1)
+      $("#numMaquina").val(numeroMaquina)
       $("#pastore").show()
       $("#toshiba").hide()
       
