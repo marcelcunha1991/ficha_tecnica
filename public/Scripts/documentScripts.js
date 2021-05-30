@@ -195,6 +195,20 @@ $(document).ready(function () {
          } else {
             $("#tolRadial").val("0.05")
          }
+
+         //RADIAL TYPE
+         console.log(response);
+         if (response.radialTypeEntrada1 === "Limite") {
+            $("#typeEntrada1").val("Limite")
+         } else {
+            $("#typeEntrada1").val("Tempo")
+         }
+
+         if (response.radialTypeSaida1 === "Limite") {
+            $("#typeSaida1").val("Limite")
+         } else {
+            $("#typeSaida1").val("Tempo")
+         }
       }
    })
 

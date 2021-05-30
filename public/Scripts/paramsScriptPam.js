@@ -3272,19 +3272,19 @@ function tipoVisualizacao(tipo) {
    
                                  var radial = "<tr>" +
                                                 "<th colspan='1'>TYPE</th>" +
-                                                "<th colspan='1'>TEMPO</th>" +
-                                                "<th colspan='1'>LIMITE</th>" +
-                                                "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + injetor.radialTypeEntrada1 + "</span></p>" +
-                                                "</td>" +
-                                                "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + injetor.radialTypeSaida1 + "</span></p>" +
-                                                "</td>" +
+                                                "<th colspan='1'>" + injetor.radialTypeEntrada1 + "</th>" +
+                                                "<th colspan='1'>" + injetor.radialTypeSaida1 + "</th>" +
                                                 "<td colspan='1'>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + injetor.radialTypeEntrada2 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + injetor.radialTypeSaida2 + "</span></p>" +
+                                                "</td>" +
+                                                "<td colspan='1'>" +
+                                                   "<p class='read-only'><span class='cadastrados'>" + injetor.radialTypeEntrada3 + "</span></p>" +
+                                                "</td>" +
+                                                "<td colspan='1'>" +
+                                                   "<p class='read-only'><span class='cadastrados'>" + injetor.radialTypeSaida3 + "</span></p>" +
                                                 "</td>" +
                                              "</tr>"
    

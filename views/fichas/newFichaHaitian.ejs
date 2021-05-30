@@ -544,8 +544,18 @@
             <tbody>
                <tr>
                   <th colspan="1">TYPE</th>
-                  <th colspan="1">TEMPO</th>
-                  <th colspan="1">LIMITE</th>
+                  <th colspan="1">
+                     <select id="typeEntrada1" name="typeEntrada1" class="form-control">
+                        <option value="Tempo">TEMPO</option>
+                        <option value="Limite">LIMITE</option>
+                     </select>
+                  </th>
+                  <th colspan="1">
+                     <select id="typeSaida1" name="typeSaida1" class="form-control">
+                        <option value="Limite">LIMITE</option>
+                        <option value="Tempo">TEMPO</option>
+                     </select>
+                  </th>
                   <% for(var i = 0; i < 4; i++) { %>
                      <td colspan="1">
                         <input style="width: 100%" id="type<%= i+1 %>" name="type<%= i+1 %>">

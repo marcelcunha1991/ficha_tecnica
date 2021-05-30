@@ -175,10 +175,12 @@ const RevisaoFichaPastoreInjetores = conn.define('revisao_injetores_pastore',{
    batida: {type: Sequelize.FLOAT, defaultValue: 0.0},
 
    tolRadial: Sequelize.FLOAT,
-   radialTypeEntrada1: {type: Sequelize.FLOAT, defaultValue: 0.0},
-   radialTypeSaida1: {type: Sequelize.FLOAT, defaultValue: 0.0},
+   radialTypeEntrada1: Sequelize.STRING,
+   radialTypeSaida1: Sequelize.STRING,
    radialTypeEntrada2: {type: Sequelize.FLOAT, defaultValue: 0.0},
    radialTypeSaida2: {type: Sequelize.FLOAT, defaultValue: 0.0},
+   radialTypeEntrada3: {type: Sequelize.FLOAT, defaultValue: 0.0},
+   radialTypeSaida3: {type: Sequelize.FLOAT, defaultValue: 0.0},
 
    radialPresEntrada1: {type: Sequelize.FLOAT, defaultValue: 0.0},
    radialPresSaida1: {type: Sequelize.FLOAT, defaultValue: 0.0},

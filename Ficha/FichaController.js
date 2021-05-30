@@ -1102,10 +1102,14 @@ router.post("/fichas/createHaitian",(req,res) => {
    var fluxoRecuo3 = req.body.fluxoRecuo3 !== "" ? req.body.fluxoRecuo3.replace(",", ".") : 0.0;
    var atraso = req.body.atraso !== "" ? req.body.atraso.replace(",", ".") : 0.0;
    var batida = req.body.batida !== "" ? req.body.batida.replace(",", ".") : 0.0;
-   var radialTypeEntrada1 = req.body.type1 !== "" ? req.body.type1.replace(",", ".") : 0.0;
-   var radialTypeSaida1 = req.body.type2 !== "" ? req.body.type2.replace(",", ".") : 0.0;
-   var radialTypeEntrada2 = req.body.type3 !== "" ? req.body.type3.replace(",", ".") : 0.0;
-   var radialTypeSaida2 = req.body.type4 !== "" ? req.body.type4.replace(",", ".") : 0.0;
+   
+   var radialTypeEntrada1 = req.body.typeEntrada1;
+   var radialTypeSaida1 = req.body.typeSaida1;
+   var radialTypeEntrada2 = req.body.type1 !== "" ? req.body.type1.replace(",", ".") : 0.0;
+   var radialTypeSaida2 = req.body.type2 !== "" ? req.body.type2.replace(",", ".") : 0.0;
+   var radialTypeEntrada3 = req.body.type3 !== "" ? req.body.type3.replace(",", ".") : 0.0;
+   var radialTypeSaida3 = req.body.type4 !== "" ? req.body.type4.replace(",", ".") : 0.0;
+
    var radialPresEntrada1 = req.body.pressaoRadial1 !== "" ? req.body.pressaoRadial1.replace(",", ".") : 0.0;
    var radialPresSaida1 = req.body.pressaoRadial2 !== "" ? req.body.pressaoRadial2.replace(",", ".") : 0.0;
    var radialPresEntrada2 = req.body.pressaoRadial3 !== "" ? req.body.pressaoRadial3.replace(",", ".") : 0.0;
@@ -1529,6 +1533,8 @@ router.post("/fichas/createHaitian",(req,res) => {
       radialTypeSaida1: radialTypeSaida1,
       radialTypeEntrada2: radialTypeEntrada2,
       radialTypeSaida2: radialTypeSaida2,
+      radialTypeEntrada3: radialTypeEntrada3,
+      radialTypeSaida3: radialTypeSaida3,
       radialPresEntrada1: radialPresEntrada1,
       radialPresSaida1: radialPresSaida1,
       radialPresEntrada2: radialPresEntrada2,
@@ -2438,10 +2444,14 @@ router.post("/fichas/updateHaitian",(req,res) => {
    var fluxoRecuo3 = req.body.fluxoRecuo3 !== "" ? req.body.fluxoRecuo3.replace(",", ".") : 0.0;
    var atraso = req.body.atraso !== "" ? req.body.atraso.replace(",", ".") : 0.0;
    var batida = req.body.batida !== "" ? req.body.batida.replace(",", ".") : 0.0;
-   var radialTypeEntrada1 = req.body.type1 !== "" ? req.body.type1.replace(",", ".") : 0.0;
-   var radialTypeSaida1 = req.body.type2 !== "" ? req.body.type2.replace(",", ".") : 0.0;
-   var radialTypeEntrada2 = req.body.type3 !== "" ? req.body.type3.replace(",", ".") : 0.0;
-   var radialTypeSaida2 = req.body.type4 !== "" ? req.body.type4.replace(",", ".") : 0.0;
+
+   var radialTypeEntrada1 = req.body.typeEntrada1;
+   var radialTypeSaida1 = req.body.typeSaida1;
+   var radialTypeEntrada2 = req.body.type1 !== "" ? req.body.type1.replace(",", ".") : 0.0;
+   var radialTypeSaida2 = req.body.type2 !== "" ? req.body.type2.replace(",", ".") : 0.0;
+   var radialTypeEntrada3 = req.body.type3 !== "" ? req.body.type3.replace(",", ".") : 0.0;
+   var radialTypeSaida3 = req.body.type4 !== "" ? req.body.type4.replace(",", ".") : 0.0;
+
    var radialPresEntrada1 = req.body.pressaoRadial1 !== "" ? req.body.pressaoRadial1.replace(",", ".") : 0.0;
    var radialPresSaida1 = req.body.pressaoRadial2 !== "" ? req.body.pressaoRadial2.replace(",", ".") : 0.0;
    var radialPresEntrada2 = req.body.pressaoRadial3 !== "" ? req.body.pressaoRadial3.replace(",", ".") : 0.0;
@@ -2863,6 +2873,8 @@ router.post("/fichas/updateHaitian",(req,res) => {
       radialTypeSaida1: radialTypeSaida1,
       radialTypeEntrada2: radialTypeEntrada2,
       radialTypeSaida2: radialTypeSaida2,
+      radialTypeEntrada3: radialTypeEntrada3,
+      radialTypeSaida3: radialTypeSaida3,
       radialPresEntrada1: radialPresEntrada1,
       radialPresSaida1: radialPresSaida1,
       radialPresEntrada2: radialPresEntrada2,
