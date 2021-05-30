@@ -3417,6 +3417,7 @@ router.post("/fichas/updateHaitian",(req,res) => {
                tolFechamento: tolFechamento,
                tolAbertura: tolAbertura,
                tolExtracao: tolExtracao,
+               tolRadial: tolRadial,
                cilindro1: cilindro1,
                cilindro2: cilindro2,
                cilindro3: cilindro3,
