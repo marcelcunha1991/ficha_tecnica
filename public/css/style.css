@@ -100,3 +100,11 @@ p.read-only span.reais {
 .outOfRange {
    background-color: #FDFD96;
 }
+
+.table-bordered select option {
+   font-weight: bold;
+}
+
+.table-bordered .form-control {
+   font-weight: bold;
+}

@@ -15,7 +15,7 @@ $(document).ready(function () {
 
 
    $.ajax({
-      url: '/get/editHaitian/' + $("#id").val(),
+      url: '/get/editHaitianPerifericos/' + $("#id").val(),
       method: 'get',
       dataType: 'json',
       success: function (response) {
@@ -107,6 +107,93 @@ $(document).ready(function () {
             
          } else if (response.movelSteam === "Ar") {
             document.getElementById("movelArEdit").checked = true;
+         }
+
+         //TOLERANCIA
+         if (response.tolCamara === 0.1) {
+            $("#tolCamara").val("0.1")
+         } else {
+            $("#tolCamara").val("0.05")
+         }
+
+         if (response.tolValve === 0.1) {
+            $("#tolValve").val("0.1")
+         } else {
+            $("#tolValve").val("0.05")
+         }
+         
+         if (response.tolRefrigeracao === 0.1) {
+            $("#tolRefrigeracao").val("0.1")
+         } else {
+            $("#tolRefrigeracao").val("0.05")
+         }
+         
+         if (response.tolVapor === 0.1) {
+            $("#tolVapor").val("0.1")
+         } else {
+            $("#tolVapor").val("0.05")
+         }
+      }
+   })
+
+   $.ajax({
+      url: '/get/editHaitianInjetores/' + $("#id").val(),
+      method: 'get',
+      dataType: 'json',
+      success: function (response) {
+         //TOLERANCIA
+         if (response.tolCilindro === 0.1) {
+            $("#tolCilindro").val("0.1")
+         } else {
+            $("#tolCilindro").val("0.05")
+         }
+         
+         if (response.tolInjecao === 0.1) {
+            $("#tolInjecao").val("0.1")
+         } else {
+            $("#tolInjecao").val("0.05")
+         }
+         
+         if (response.tolRecalque === 0.1) {
+            $("#tolRecalque").val("0.1")
+         } else {
+            $("#tolRecalque").val("0.05")
+         }
+         
+         if (response.tolDosagem === 0.1) {
+            $("#tolDosagem").val("0.1")
+         } else {
+            $("#tolDosagem").val("0.05")
+         }
+         
+         if (response.tolDescompressao === 0.1) {
+            $("#tolDescompressao").val("0.1")
+         } else {
+            $("#tolDescompressao").val("0.05")
+         }
+         
+         if (response.tolFechamento === 0.1) {
+            $("#tolFechamento").val("0.1")
+         } else {
+            $("#tolFechamento").val("0.05")
+         }
+         
+         if (response.tolAbertura === 0.1) {
+            $("#tolAbertura").val("0.1")
+         } else {
+            $("#tolAbertura").val("0.05")
+         }
+         
+         if (response.tolExtracao === 0.1) {
+            $("#tolExtracao").val("0.1")
+         } else {
+            $("#tolExtracao").val("0.05")
+         }
+         
+         if (response.tolRadial === 0.1) {
+            $("#tolRadial").val("0.1")
+         } else {
+            $("#tolRadial").val("0.05")
          }
       }
    })

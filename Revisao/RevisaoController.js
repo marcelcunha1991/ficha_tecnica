@@ -35,7 +35,6 @@ router.get("/revisao/visualizacao/:id",(req,res) => {
          revisao: Id
       }
    }).then(injetor => {
-      
       RevisaoFichaTecnicaPastorePerifericos.findAll({
          where: {
             revisao: Id

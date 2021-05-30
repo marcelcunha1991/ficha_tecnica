@@ -32,22 +32,34 @@ router.get("/fichas/:maquina?",  (req,res) => {
    Maquinas.findAll().then(maquina => {
       maquinas = maquina;
 
-      FichaTecnicaToshiba.findAll().then(fichas => {   
-         res.render("fichas/index",{
-            fichas:fichas,
-            dsMaquina : dsMaquina,
-            maquinas: maquinas,
-            tabela:"",
-            nav_maquinas : "",
-            nav_produtos : "",
-            nav_mp : "",
-            nav_usuarios : "",
-            nav_moldes : "",
-            nav_clientes : "",
-            nav_parametros:"",
-            nav_ficha: "active",
-            nav_alertas:""
-         })
+      FichaTecnicaToshiba.findAll().then(fichas => { 
+
+         FichaTecnicaPastoreInjetores.findAll().then(injetor => {   
+         
+            FichaPastorePerifericos.findAll().then(perifericos => {   
+         
+               res.render("fichas/index",{
+                  fichas:fichas,
+                  injetor:injetor,
+                  perifericos:perifericos,
+                  dsMaquina : dsMaquina,
+                  maquinas: maquinas,
+                  tabela:"",
+                  nav_maquinas : "",
+                  nav_produtos : "",
+                  nav_mp : "",
+                  nav_usuarios : "",
+                  nav_moldes : "",
+                  nav_clientes : "",
+                  nav_parametros:"",
+                  nav_ficha: "active",
+                  nav_alertas:""
+               })
+
+            });
+
+         });
+
       });
    })
     
@@ -870,12 +882,22 @@ router.get("/fichas/editToshiba/:id",(req,res) => {
 
 })
 
-router.get("/get/editHaitian/:id",(req,res) => {
+router.get("/get/editHaitianPerifericos/:id",(req,res) => {
 
    var id = req.params.id;
    
    FichaPastorePerifericos.findByPk(id).then(periferico => {
       res.send(periferico)
+   })
+   
+})
+
+router.get("/get/editHaitianInjetores/:id",(req,res) => {
+
+   var id = req.params.id;
+   
+   FichaTecnicaPastoreInjetores.findByPk(id).then(injetores => {
+      res.send(injetores)
    })
    
 })
@@ -941,6 +963,20 @@ router.post("/fichas/createHaitian",(req,res) => {
    var Tecnico = req.body.tecnico;
    var Produto = req.body.produto;
    var Material = req.body.material.replace(/\./g, "");
+
+   var tolCilindro = req.body.tolCilindro;
+   var tolInjecao = req.body.tolInjecao;
+   var tolRecalque = req.body.tolRecalque;
+   var tolDosagem = req.body.tolDosagem;
+   var tolDescompressao = req.body.tolDescompressao;
+   var tolFechamento = req.body.tolFechamento;
+   var tolAbertura = req.body.tolAbertura;
+   var tolExtracao = req.body.tolExtracao;
+   var tolRadial = req.body.tolRadial;
+   var tolCamara = req.body.tolCamara;
+   var tolValve = req.body.tolValve;
+   var tolRefrigeracao = req.body.tolRefrigeracao;
+   var tolVapor = req.body.tolVapor;
 
    var cilindro1 = req.body.cilindro1 !== "" ? req.body.cilindro1.replace(",", ".") : 0.0;
    var cilindro2 = req.body.cilindro2 !== "" ? req.body.cilindro2.replace(",", ".") : 0.0;
@@ -1356,6 +1392,15 @@ router.post("/fichas/createHaitian",(req,res) => {
       Tecnico: Tecnico,
       Produto: Produto,
       Material: Material,
+      tolCilindro: tolCilindro,
+      tolInjecao: tolInjecao,
+      tolRecalque: tolRecalque,
+      tolDosagem: tolDosagem,
+      tolDescompressao: tolDescompressao,
+      tolFechamento: tolFechamento,
+      tolAbertura: tolAbertura,
+      tolExtracao: tolExtracao,
+      tolRadial: tolRadial,
       cilindro1: cilindro1,
       cilindro2: cilindro2,
       cilindro3: cilindro3,
@@ -1520,6 +1565,10 @@ router.post("/fichas/createHaitian",(req,res) => {
          maq: maquina,
          termopar: termopar,
          voltagem: voltagem,
+         tolCamara: tolCamara,
+         tolValve: tolValve,
+         tolRefrigeracao: tolRefrigeracao,
+         tolVapor: tolVapor,
          camara1: camara1,
          camara2: camara2,
          camara3: camara3,
@@ -1765,6 +1814,10 @@ router.post("/fichas/createHaitian",(req,res) => {
             maq: maquina,
             termopar: termopar,
             voltagem: voltagem,
+            tolCamara: tolCamara,
+            tolValve: tolValve,
+            tolRefrigeracao: tolRefrigeracao,
+            tolVapor: tolVapor,
             camara1: camara1,
             camara2: camara2,
             camara3: camara3,
@@ -2016,6 +2069,15 @@ router.post("/fichas/createHaitian",(req,res) => {
                Tecnico: Tecnico,
                Produto: Produto,
                Material: Material,
+               tolCilindro: tolCilindro,
+               tolInjecao: tolInjecao,
+               tolRecalque: tolRecalque,
+               tolDosagem: tolDosagem,
+               tolDescompressao: tolDescompressao,
+               tolFechamento: tolFechamento,
+               tolAbertura: tolAbertura,
+               tolExtracao: tolExtracao,
+               tolRadial: tolRadial,
                cilindro1: cilindro1,
                cilindro2: cilindro2,
                cilindro3: cilindro3,
@@ -2225,6 +2287,7 @@ router.post("/fichas/createHaitian",(req,res) => {
 
 // *ATUALIZANDO FICHA PASTORE
 router.post("/fichas/updateHaitian",(req,res) => {
+   console.log(req.body);
    var id = req.body.id;
    var maquina = req.body.maquina;
 
@@ -2236,6 +2299,20 @@ router.post("/fichas/updateHaitian",(req,res) => {
    var Tecnico = req.body.tecnico;
    var Produto = req.body.produto;
    var Material = req.body.material.replace(/\./g, "");
+
+   var tolCilindro = req.body.tolCilindro;
+   var tolInjecao = req.body.tolInjecao;
+   var tolRecalque = req.body.tolRecalque;
+   var tolDosagem = req.body.tolDosagem;
+   var tolDescompressao = req.body.tolDescompressao;
+   var tolFechamento = req.body.tolFechamento;
+   var tolAbertura = req.body.tolAbertura;
+   var tolExtracao = req.body.tolExtracao;
+   var tolRadial = req.body.tolRadial;
+   var tolCamara = req.body.tolCamara;
+   var tolValve = req.body.tolValve;
+   var tolRefrigeracao = req.body.tolRefrigeracao;
+   var tolVapor = req.body.tolVapor;
 
    var cilindro1 = req.body.cilindro1 !== "" ? req.body.cilindro1.replace(",", ".") : 0.0;
    var cilindro2 = req.body.cilindro2 !== "" ? req.body.cilindro2.replace(",", ".") : 0.0;
@@ -2649,6 +2726,15 @@ router.post("/fichas/updateHaitian",(req,res) => {
       Tecnico: Tecnico,
       Produto: Produto,
       Material: Material,
+      tolCilindro: tolCilindro,
+      tolInjecao: tolInjecao,
+      tolRecalque: tolRecalque,
+      tolDosagem: tolDosagem,
+      tolDescompressao: tolDescompressao,
+      tolFechamento: tolFechamento,
+      tolAbertura: tolAbertura,
+      tolExtracao: tolExtracao,
+      tolRadial: tolRadial,
       cilindro1: cilindro1,
       cilindro2: cilindro2,
       cilindro3: cilindro3,
@@ -2815,6 +2901,10 @@ router.post("/fichas/updateHaitian",(req,res) => {
       FichaPastorePerifericos.update({
          termopar: termopar,
          voltagem: voltagem,
+         tolCamara: tolCamara,
+         tolValve: tolValve,
+         tolRefrigeracao: tolRefrigeracao,
+         tolVapor: tolVapor,
          camara1: camara1,
          camara2: camara2,
          camara3: camara3,
@@ -3064,6 +3154,10 @@ router.post("/fichas/updateHaitian",(req,res) => {
             maq: maquina,
             termopar: termopar,
             voltagem: voltagem,
+            tolCamara: tolCamara,
+            tolValve: tolValve,
+            tolRefrigeracao: tolRefrigeracao,
+            tolVapor: tolVapor,
             camara1: camara1,
             camara2: camara2,
             camara3: camara3,
@@ -3315,6 +3409,14 @@ router.post("/fichas/updateHaitian",(req,res) => {
                Tecnico: Tecnico,
                Produto: Produto,
                Material: Material,
+               tolCilindro: tolCilindro,
+               tolInjecao: tolInjecao,
+               tolRecalque: tolRecalque,
+               tolDosagem: tolDosagem,
+               tolDescompressao: tolDescompressao,
+               tolFechamento: tolFechamento,
+               tolAbertura: tolAbertura,
+               tolExtracao: tolExtracao,
                cilindro1: cilindro1,
                cilindro2: cilindro2,
                cilindro3: cilindro3,

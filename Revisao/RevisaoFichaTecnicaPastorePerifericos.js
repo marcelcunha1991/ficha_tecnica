@@ -24,6 +24,7 @@ const RevisaoFichaPastorePerifericos = conn.define('revisao_perifericos_pastore'
    },
    termopar: Sequelize.STRING,
    voltagem: Sequelize.STRING,
+   tolCamara: Sequelize.FLOAT,
    camara1: {type: Sequelize.FLOAT, defaultValue: 0.0},
    camara2: {type: Sequelize.FLOAT, defaultValue: 0.0},
    camara3: {type: Sequelize.FLOAT, defaultValue: 0.0},
@@ -155,6 +156,7 @@ const RevisaoFichaPastorePerifericos = conn.define('revisao_perifericos_pastore'
    camara129: {type: Sequelize.FLOAT, defaultValue: 0.0},
    camara130: {type: Sequelize.FLOAT, defaultValue: 0.0},
    
+   tolValve: Sequelize.FLOAT,
    VG1DLYTIME: Sequelize.STRING,
    VG1ACTTIME: Sequelize.STRING,
    VG2DLYTIME: Sequelize.STRING,
@@ -236,6 +238,7 @@ const RevisaoFichaPastorePerifericos = conn.define('revisao_perifericos_pastore'
    VG40DLYTIME: Sequelize.STRING,
    VG40ACTTIME: Sequelize.STRING,
 
+   tolRefrigeracao: Sequelize.FLOAT,
    refrLadoFixo1: Sequelize.STRING,
    fixoRefrig1: Sequelize.STRING,
    refrLadoFixo2: Sequelize.STRING,
@@ -254,6 +257,7 @@ const RevisaoFichaPastorePerifericos = conn.define('revisao_perifericos_pastore'
    refrLadoMovel4: Sequelize.STRING,
    movelRefrig4: Sequelize.STRING,
 
+   tolVapor: Sequelize.FLOAT,
    vaporLadoFixo1: Sequelize.STRING,
    vaporLadoMovel1: Sequelize.STRING,
    vaporLadoFixo2: Sequelize.STRING,

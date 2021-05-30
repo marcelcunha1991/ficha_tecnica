@@ -73,7 +73,11 @@
                <table class="table-bordered" style="width: 100%">
                   <thead>
                      <tr>
-                        <th>TOL &#177; 10%</th>
+                        <% if (injetor.tolCilindro === 0.1) { %>
+                           <th>TOL &#177; 10%</th>
+                        <% } else { %>
+                           <th>TOL &#177; 5%</th>
+                        <% } %>
                         <th colspan="4">CILINDRO</th>
                         <th colspan="2">BICO</th>
                      </tr>
@@ -114,7 +118,11 @@
                   <thead>
                      <tr>
                         <th colspan="6">INJEÇÃO</th>
-                        <th colspan="1">TOL &#177; 10%</th>
+                        <% if (injetor.tolInjecao === 0.1) { %>
+                           <th>TOL &#177; 10%</th>
+                        <% } else { %>
+                           <th>TOL &#177; 5%</th>
+                        <% } %>
                      </tr>
                      <tr>
                         <th colspan="2">COMUTAÇÃO</th>
@@ -203,7 +211,11 @@
                   <thead>
                      <tr>
                         <th colspan="6">RECALQUE</th>
-                        <th colspan="1">TOL &#177; 10%</th>
+                        <% if (injetor.tolRecalque === 0.1) { %>
+                           <th>TOL &#177; 10%</th>
+                        <% } else { %>
+                           <th>TOL &#177; 5%</th>
+                        <% } %>
                      </tr>
                      <tr>
                         <th colspan="2">bar / seg / %</th>
@@ -274,7 +286,11 @@
                   <thead>
                      <tr>
                         <th colspan="6">DOSAGEM</th>
-                        <th colspan="1">TOL &#177; 10%</th>
+                        <% if (injetor.tolDosagem === 0.1) { %>
+                           <th>TOL &#177; 10%</th>
+                        <% } else { %>
+                           <th>TOL &#177; 5%</th>
+                        <% } %>
                      </tr>
                      <tr>
                         <th colspan="2"></th>
@@ -371,7 +387,11 @@
                   <thead>
                      <tr>
                         <th colspan="6">DESCOMPRESSÃO</th>
-                        <th colspan="1">TOL &#177; 10%</th>
+                        <% if (injetor.tolDescompressao === 0.1) { %>
+                           <th>TOL &#177; 10%</th>
+                        <% } else { %>
+                           <th>TOL &#177; 5%</th>
+                        <% } %>
                      </tr>
                      <tr>
                         <th colspan="3">DESCOMPRIMIR</th>
@@ -419,7 +439,11 @@
                   <thead>
                      <tr>
                         <th colspan="6">FECHAMENTO</th>
-                        <th colspan="1">TOL &#177; 10%</th>
+                        <% if (injetor.tolFechamento === 0.1) { %>
+                           <th>TOL &#177; 10%</th>
+                        <% } else { %>
+                           <th>TOL &#177; 5%</th>
+                        <% } %>
                      </tr>
                      <tr>
                         <th colspan="2"></th>
@@ -504,7 +528,11 @@
                   <thead>
                      <tr>
                         <th colspan="6">ABERTURA</th>
-                        <th colspan="1">TOL &#177; 10%</th>
+                        <% if (injetor.tolAbertura === 0.1) { %>
+                           <th>TOL &#177; 10%</th>
+                        <% } else { %>
+                           <th>TOL &#177; 5%</th>
+                        <% } %>
                      </tr>
                      <tr>
                         <th colspan="2"></th>
@@ -587,7 +615,11 @@
                   <thead>
                      <tr>
                         <th colspan="6">EXTRAÇÃO</th>
-                        <th colspan="1">TOL &#177; 10%</th>
+                        <% if (injetor.tolExtracao === 0.1) { %>
+                           <th>TOL &#177; 10%</th>
+                        <% } else { %>
+                           <th>TOL &#177; 5%</th>
+                        <% } %>
                      </tr>
                      <tr>
                         <th rowspan="2" colspan="1"></th>
@@ -686,7 +718,11 @@
                   <thead>
                      <tr>
                         <th colspan="6">RADIAL HIDRÁULICO</th>
-                        <th colspan="1">TOL &#177; 10%</th>
+                        <% if (injetor.tolRadial === 0.1) { %>
+                           <th>TOL &#177; 10%</th>
+                        <% } else { %>
+                           <th>TOL &#177; 5%</th>
+                        <% } %>
                      </tr>
                      <tr>
                         <th rowspan="2" colspan="1"></th>
@@ -857,7 +893,11 @@
                   <thead>
                      <tr>
                         <th colspan="5">CÂMARA QUENTE</th>
-                        <th colspan="2">TOL &#177; 10%</th>
+                        <% if (perifericos.tolCamara === 0.1) { %>
+                           <th colspan="5">TOL &#177; 10%</th>
+                        <% } else { %>
+                           <th colspan="5">TOL &#177; 5%</th>
+                        <% } %>
                      </tr>
                   </thead>
                   <tbody>
@@ -1296,7 +1336,11 @@
                   <thead>
                      <tr>
                         <th colspan="5">VALVE GATES</th>
-                        <th colspan="2">TOL &#177; 10%</th>
+                        <% if (perifericos.tolValve === 0.1) { %>
+                           <th>TOL &#177; 10%</th>
+                        <% } else { %>
+                           <th>TOL &#177; 5%</th>
+                        <% } %>
                      </tr>
                      <tr>
                         <th colspan="7">SEQUENCIADOR</th>
@@ -1658,7 +1702,11 @@
                   <thead>
                      <tr>
                         <th colspan="5">REFRIGERAÇÃO DO MOLDE</th>
-                        <th colspan="2">TOL &#177; 10%</th>
+                        <% if (perifericos.tolRefrigeracao === 0.1) { %>
+                           <th colspan="2">TOL &#177; 10%</th>
+                        <% } else { %>
+                           <th colspan="2">TOL &#177; 5%</th>
+                        <% } %>
                      </tr>
                   </thead>
                   <tbody>
@@ -1761,7 +1809,11 @@
                   <thead>
                      <tr>
                         <th colspan="5">STEAM(VAPOR)</th>
-                        <th colspan="2">TOL &#177; 10%</th>
+                        <% if (perifericos.tolVapor === 0.1) { %>
+                           <th>TOL &#177; 10%</th>
+                        <% } else { %>
+                           <th>TOL &#177; 5%</th>
+                        <% } %>
                      </tr>
                      <tr>
                         <th colspan="7">REFRIGERAÇÃO DO MOLDE</th>

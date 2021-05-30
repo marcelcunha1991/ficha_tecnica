@@ -23,6 +23,7 @@ const FichaPastoreInjetores = conn.define('injetores_pastore',{
    Material: Sequelize.STRING,
    Data: {type: Sequelize.DATE, defaultValue: Sequelize.NOW},
 
+   tolCilindro: Sequelize.FLOAT,
    cilindro1: {type: Sequelize.FLOAT, defaultValue: 0.0},
    cilindro2: {type: Sequelize.FLOAT, defaultValue: 0.0},
    cilindro3: {type: Sequelize.FLOAT, defaultValue: 0.0},
@@ -31,6 +32,7 @@ const FichaPastoreInjetores = conn.define('injetores_pastore',{
    cilindro6: {type: Sequelize.FLOAT, defaultValue: 0.0},
    cilindro7: {type: Sequelize.FLOAT, defaultValue: 0.0},
 
+   tolInjecao: Sequelize.FLOAT,
    posComut: {type: Sequelize.FLOAT, defaultValue: 0.0},
    posInjecao1: {type: Sequelize.FLOAT, defaultValue: 0.0},
    posInjecao2: {type: Sequelize.FLOAT, defaultValue: 0.0},
@@ -51,6 +53,7 @@ const FichaPastoreInjetores = conn.define('injetores_pastore',{
    tempoDisparo:  {type: Sequelize.FLOAT, defaultValue: 0.0},
    pressaoInj:  {type: Sequelize.FLOAT, defaultValue: 0.0},
 
+   tolRecalque: Sequelize.FLOAT,
    presRecalque1: {type: Sequelize.FLOAT, defaultValue: 0.0},
    presRecalque2: {type: Sequelize.FLOAT, defaultValue: 0.0},
    presRecalque3: {type: Sequelize.FLOAT, defaultValue: 0.0},
@@ -67,6 +70,7 @@ const FichaPastoreInjetores = conn.define('injetores_pastore',{
    tempoRecalque4: {type: Sequelize.FLOAT, defaultValue: 0.0},
    tempoRecalque5: {type: Sequelize.FLOAT, defaultValue: 0.0},
 
+   tolDosagem: Sequelize.FLOAT,
    partDosagem1: {type: Sequelize.FLOAT, defaultValue: 0.0},
    partDosagem2: {type: Sequelize.FLOAT, defaultValue: 0.0},
    partDosagem3: {type: Sequelize.FLOAT, defaultValue: 0.0},
@@ -89,6 +93,7 @@ const FichaPastoreInjetores = conn.define('injetores_pastore',{
    CPDosagem5: {type: Sequelize.FLOAT, defaultValue: 0.0},
    tempoDosagem: {type: Sequelize.FLOAT, defaultValue: 0.0},
 
+   tolDescompressao: Sequelize.FLOAT,
    antesPos: {type: Sequelize.FLOAT, defaultValue: 0.0},
    antesPres: {type: Sequelize.FLOAT, defaultValue: 0.0},
    antesFluxo: {type: Sequelize.FLOAT, defaultValue: 0.0},
@@ -98,6 +103,7 @@ const FichaPastoreInjetores = conn.define('injetores_pastore',{
    depoisFluxo: {type: Sequelize.FLOAT, defaultValue: 0.0},
    depoisTempo: {type: Sequelize.FLOAT, defaultValue: 0.0},
 
+   tolFechamento: Sequelize.FLOAT,
    posFecha1: {type: Sequelize.FLOAT, defaultValue: 0.0},
    posFecha2: {type: Sequelize.FLOAT, defaultValue: 0.0},
    posFecha3: {type: Sequelize.FLOAT, defaultValue: 0.0},
@@ -116,6 +122,7 @@ const FichaPastoreInjetores = conn.define('injetores_pastore',{
    tempoProtMolde: {type: Sequelize.FLOAT, defaultValue: 0.0},
    tempoFecha: {type: Sequelize.FLOAT, defaultValue: 0.0},
 
+   tolAbertura: Sequelize.FLOAT,
    posAbertura1: {type: Sequelize.FLOAT, defaultValue: 0.0},
    posAbertura2: {type: Sequelize.FLOAT, defaultValue: 0.0},
    posAbertura3: {type: Sequelize.FLOAT, defaultValue: 0.0},
@@ -134,6 +141,7 @@ const FichaPastoreInjetores = conn.define('injetores_pastore',{
    resfriamento: {type: Sequelize.FLOAT, defaultValue: 0.0},
    tempoAbertura: {type: Sequelize.FLOAT, defaultValue: 0.0},
 
+   tolExtracao: Sequelize.FLOAT,
    posAvanco1: {type: Sequelize.FLOAT, defaultValue: 0.0},
    posAvanco2: {type: Sequelize.FLOAT, defaultValue: 0.0},
    posAvanco3: {type: Sequelize.FLOAT, defaultValue: 0.0},
@@ -155,6 +163,7 @@ const FichaPastoreInjetores = conn.define('injetores_pastore',{
    atraso: {type: Sequelize.FLOAT, defaultValue: 0.0},
    batida: {type: Sequelize.FLOAT, defaultValue: 0.0},
 
+   tolRadial: Sequelize.FLOAT,
    radialTypeEntrada1: {type: Sequelize.FLOAT, defaultValue: 0.0},
    radialTypeSaida1: {type: Sequelize.FLOAT, defaultValue: 0.0},
    radialTypeEntrada2: {type: Sequelize.FLOAT, defaultValue: 0.0},
