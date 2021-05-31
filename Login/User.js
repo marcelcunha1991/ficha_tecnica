@@ -6,22 +6,26 @@ var salt = bcrypt.genSaltSync(10);
 var hash = bcrypt.hashSync("admin",salt);
 
 const User = conn.define('users',{
-    nome:{
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    email:{
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    password: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    matricula: {
-        type: Sequelize.STRING,
-        allowNull: true
-    }
+   nome:{
+      type: Sequelize.STRING,
+      allowNull: false
+   },
+   email:{
+      type: Sequelize.STRING,
+      allowNull: false
+   },
+   password: {
+      type: Sequelize.STRING,
+      allowNull: false
+   },
+   matricula: {
+      type: Sequelize.STRING,
+      allowNull: true
+   },
+   isAdmin: {
+      type: Sequelize.STRING,
+      allowNull: true
+   }
 })
 
 // User.sync();

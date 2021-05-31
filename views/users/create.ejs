@@ -3,23 +3,57 @@
 
 <div class="container">
 
-    <div class="card mt-4"> 
-        <div class="card-header">
-            <h2> Criação de Usuário </h2>
-        </div>
-        <div class="card-body">
-                <form method="POST" action="/users/create">
-                    <input class="form-control" name="nome" type="text" placeholder="insira seu nome"><br>
-                    <input class="form-control" name="matricula" type="text" placeholder="insira sua matrícula"><br>
-                    <input class="form-control" name="email" type="email" placeholder="email@exemplo.com"><br>
-                    <input class="form-control" name="password" type="password" placeholder="*****"><br>
-                    <button type="submit" class="btn btn-primary btn-block">Criar </button>
-                </form>  
-        </div>
-    </div>
+   <div class="card mt-4"> 
+      <div class="card-header">
+         <h2> Criação de Usuário </h2>
+      </div>
+      <div class="card-body">
+         <form name="userForm" method="POST" action="/users/create" onsubmit="return validateForm()" style="display: inline;">
+            <h6>Insira seu nome</h6>
+            <input class="form-control" name="nome" type="text"><br>
+            <h6>Insira sua matrícula</h6>
+            <input class="form-control" name="matricula" type="text"><br>
+            <h6>Insira um email</h6>
+            <input class="form-control" name="email" type="email" placeholder="email@exemplo.com"><br>
+            <h6>Insira sua senha</h6>
+            <input class="form-control" name="password" type="password" placeholder="*****"><br>
+
+            <h6>É admin?</h6>
+            <input type="radio" id="Sim" name="isAdmin" value="1">
+            <label for="Sim">Sim</label><br>
+            <input checked type="radio" id="Não" name="isAdmin" value="0">
+            <label for="Não">Não</label><br>
+
+            <button type="submit" class="btn btn-primary">Criar </button>
+         </form>  
+         <form method="GET" action="/users" style="display: inline;">
+            <button class="btn btn-danger">Cancelar</button>
+         </form>
+      </div>
+   </div>
 
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src=/scripts/documentScripts.js></script>
+<script>
+   function validateForm() {
+      var nome = document.forms["userForm"]["nome"].value;
+      var email = document.forms["userForm"]["email"].value;
+      var password = document.forms["userForm"]["password"].value;
+
+      if (nome === "") {
+         alert("O nome deve ser informado.");
+         return false;
+      }
+      if (email === "") {
+         alert("O email deve ser informado.");
+         return false;
+      }
+      if (password === "") {
+         alert("A senha deve ser informado.");
+         return false;
+      }
+   }
+</script>
 <%- include ('../partials/footer.ejs') %>

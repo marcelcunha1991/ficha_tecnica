@@ -106,45 +106,46 @@ app.get("/",(req,res) =>{
 
 
 //Cria Tabelas
-//    Tipo.sync();
-//    Maquinas.sync();
-//    User.sync();
-//    Produtos.sync();
-//    MateriaPrima.sync();
-//    Moldes.sync();
-//    Clientes.sync();
-//    FichaTecnicaToshiba.sync();
-//    LimitesFichaTecnicaToshiba.sync();
-//    ParametrosReaisToshiba.sync();   
-//    ParametrosReaisAutomata.sync();        
-//    ParametrosReaisHaitianJupyter.sync();        
-//    LimiteParametrosToshiba.sync();
-//    LimiteParametrosAutomata.sync();
-//    Alertas.sync();
-//    AlertasAbertos.sync();
-//    FichaPastoreInjetores.sync();
-//    FichaPastorePerifericos.sync();
-//    RevisaoFichaTecnicaPastoreInjetores.sync();
-//    RevisaoFichaTecnicaPastorePerifericos.sync();
-//    RevisaoLimitesFichaTecnicaToshiba.sync();
+   // Tipo.sync();
+   // Maquinas.sync();
+   // User.sync();
+   // Produtos.sync();
+   // MateriaPrima.sync();
+   // Moldes.sync();
+   // Clientes.sync();
+   // FichaTecnicaToshiba.sync();
+   // LimitesFichaTecnicaToshiba.sync();
+   // ParametrosReaisToshiba.sync();   
+   // ParametrosReaisAutomata.sync();        
+   // ParametrosReaisHaitianJupyter.sync();        
+   // LimiteParametrosToshiba.sync();
+   // LimiteParametrosAutomata.sync();
+   // Alertas.sync();
+   // AlertasAbertos.sync();
+   // FichaPastoreInjetores.sync();
+   // FichaPastorePerifericos.sync();
+   // RevisaoFichaTecnicaPastoreInjetores.sync();
+   // RevisaoFichaTecnicaPastorePerifericos.sync();
+   // RevisaoLimitesFichaTecnicaToshiba.sync();
 
 
-//     User.create({
-//     nome:"admin",
-//     email:"admin@email.com",
-//     password:hash,
-//     matricula:"00000"        
-// })
+   // User.create({
+   //    nome:"admin",
+   //    email:"admin@email.com",
+   //    password:hash,
+   //    matricula:"00000",        
+   //    isAdmin:"1",        
+   // })
 
-//    Tipo.create({
-//       tipo:"Toshiba"
-//    });
-//    Tipo.create({
-//       tipo:"Automata OPTIN"
-//    })
-//    Tipo.create({
-//       tipo:"Haitian Jupyter"
-//    })
+   // Tipo.create({
+   //    tipo:"Toshiba"
+   // });
+   // Tipo.create({
+   //    tipo:"Automata OPTIN"
+   // })
+   // Tipo.create({
+   //    tipo:"Haitian Jupyter"
+   // })
 
    
     
