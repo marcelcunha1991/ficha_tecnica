@@ -197,7 +197,6 @@ $(document).ready(function () {
          }
 
          //RADIAL TYPE
-         console.log(response);
          if (response.radialTypeEntrada1 === "Limite") {
             $("#typeEntrada1").val("Limite")
          } else {
