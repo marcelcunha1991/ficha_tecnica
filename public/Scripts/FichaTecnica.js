@@ -182,23 +182,44 @@ $('.materiais').change(e => {
 
 function addRow(rows, data, path, maquina, revisao) {
    var tbody = '';
-   for (var i = 0; i < rows; i++) {
-      tbody +=  "<tr> <td>" + revisao[i] +"</td> \
-                  <td>" + data[i].id +" </td> \
-                  <td>" + maquina +"</td> \
-                  <td>" + data[i].NúmeroMolde +"</td> \
-                  <td>" + data[i].Material +"</td> \
-                  <td>\
-                  <form method='GET' action='/fichas/edit" + path  + "/" + data[i].id  + "' style='display: inline;'><button class='btn btn-warning'> Editar</button></form> \
-                  <form method='POST' action='/fichas/delete" + path + "'" +  "style='display: inline;' onsubmit='confirmarDelecao(event, this)'> \
-                     <input type='hidden' name='id' value='" + data[i].id  + "'> \
-                     <button class='btn btn-danger'> Remover</button> \
-                  </form> \
-                  <form method='GET' action='/ficha/revisao" + path  + "/" + data[i].id  + "' style='display: inline;'><button class='btn btn-info'> Revisão</button></form></td> \
-               </tr>";
+
+   if (sessionStorage.getItem('isAdmin') === "1") {
+      for (var i = 0; i < rows; i++) {
+         tbody +=  "<tr> <td>" + revisao[i] +"</td> \
+                     <td>" + data[i].id +" </td> \
+                     <td>" + maquina +"</td> \
+                     <td>" + data[i].NúmeroMolde +"</td> \
+                     <td>" + data[i].Material +"</td> \
+                     <td>\
+                     <form method='GET' action='/fichas/edit" + path  + "/" + data[i].id  + "' style='display: inline;'><button class='btn btn-warning'> Editar</button></form> \
+                     <form method='POST' action='/fichas/delete" + path + "'" +  "style='display: inline;' onsubmit='confirmarDelecao(event, this)'> \
+                        <input type='hidden' name='id' value='" + data[i].id  + "'> \
+                        <button class='btn btn-danger'> Remover</button> \
+                     </form> \
+                     <form method='GET' action='/ficha/revisao" + path  + "/" + data[i].id  + "' style='display: inline;'><button class='btn btn-info'> Revisão</button></form></td> \
+                  </tr>";
+      }
+   
+      $('#tableBody').html(tbody);
+
+   } else {
+
+      for (var i = 0; i < rows; i++) {
+         tbody +=  "<tr> <td>" + revisao[i] +"</td> \
+                     <td>" + data[i].id +" </td> \
+                     <td>" + maquina +"</td> \
+                     <td>" + data[i].NúmeroMolde +"</td> \
+                     <td>" + data[i].Material +"</td> \
+                     <td>\
+                     <form method='GET' action='/fichas/edit" + path  + "/" + data[i].id  + "' style='display: inline;'><button class='btn btn-warning'> Editar</button></form> \
+                     <form method='GET' action='/ficha/revisao" + path  + "/" + data[i].id  + "' style='display: inline;'><button class='btn btn-info'> Revisão</button></form></td> \
+                  </tr>";
+      }
+
+      $('#tableBody').html(tbody);
    }
 
-   $('#tableBody').html(tbody);
+   
    
 }
 
@@ -210,4 +231,26 @@ function selectMaterial(array) {
    }
 
    $('#materiais').html(opt);
+} 
+
+$(document).ready(function () {
+   var tbody = '';
+
+   tbody +=  "<td><div onclick='preencheCampo()' class='btn btn-primary'>&#10003</div>"
+   
+   $('#setarValor tbody tr').append(tbody);
+
+})
+
+function preencheCampo() {
+   var quant = $("#quantidade").val();
+   var valor = $("#valor").val();
+
+   for (let index = 0; index < quant; index++) {
+      var idElemento = $(".camara").get(index).id;
+      document.getElementById(idElemento).value = valor;
+   }
+   
+   $("#quantidade").val("");
+   $("#valor").val("");
 }
