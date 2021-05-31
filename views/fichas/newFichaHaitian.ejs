@@ -635,7 +635,22 @@
             </tbody>
          </table>
          
-         <table class="table-bordered" style="width: 100%; margin-top: 40px;">
+         <table id="setarValor" class="table-bordered" style="margin-top: 40px">
+            <tbody>
+               <tr>
+                  <td>
+                     <label style="font-weight: 500; margin: 0;">Quantidade de campos:</label>
+                     <input style="width: 40%;" type="number" id="quantidade">
+                  </td>
+                  <td>
+                     <label style="font-weight: 500; margin: 0;">Valor:</label>
+                     <input style="width: 50%;" type="number" id="valor">
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+
+         <table class="table-bordered" style="width: 100%;">
             <thead>
                <tr>
                   <th colspan="5">CÂMARA QUENTE</th>
@@ -654,8 +669,9 @@
                         <% count++ %>
    
                         <% if(count <= 130) { %>
-                           <td>
-                              <input style="width: 100%" id="camara<%= i+1 %>" name="camara<%= i+1 %>" placeholder="<%= count %>">
+                           <td style="padding-top: 0;">
+                              <label id="labelCamara" class="d-flex"><%= count %></label>
+                              <input class="camara" style="width: 100%" id="camara<%= count %>" name="camara<%= i+1 %>">
                            </td>
                         <% } %>
                      <% } %>
@@ -968,7 +984,7 @@
 </form>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src=/scripts/FichaTecnica.js></script>
+<!-- <script src=/scripts/FichaTecnica.js></script> -->
 <script>
    function validateForm() {
       var molde = document.forms["pamForm"]["molde"].value;

@@ -124,3 +124,10 @@ p.read-only span.reais {
 .form-floating small {
    font-weight: bold;
 }
+
+#labelCamara {
+   font-size: 0.8em;
+   background-color: rgb(221, 220, 220);
+   margin: 0;
+   font-weight: 600;
+}
