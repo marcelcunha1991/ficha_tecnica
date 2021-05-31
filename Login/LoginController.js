@@ -143,5 +143,20 @@ router.get("/logout",(req,res) => {
     res.redirect("/login");
 })
 
+router.get("/storeUser",(req,res) => {
+   res.send(req.session.user)
+})
+
+router.get("/isUserAdmin/:user", (req,res) => {
+   var email = req.params.user;
+
+   User.findOne({
+      where: {
+         email: email
+      }
+   }).then((logado) => {
+      res.send(logado)
+   })
+})
 
 module.exports = router;

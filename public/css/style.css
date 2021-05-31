@@ -82,6 +82,10 @@ input.read-only:focus {
    outline: none;
 }
 
+#userLogado:focus {
+   outline: none;
+}
+
 p.read-only {
    text-align: center;
    font-weight: bold;

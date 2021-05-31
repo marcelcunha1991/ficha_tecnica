@@ -209,6 +209,8 @@ $(document).ready(function () {
          } else {
             $("#typeSaida1").val("Tempo")
          }
+
+         $("#userLogado").val(sessionStorage.getItem('userLogado'));
       }
    })
 
@@ -382,6 +384,27 @@ $(document).ready(function () {
       dataType: 'json',
       success: function (response) {
          $("#justificativa").val(response.Justificativa);
+      }
+   })
+
+   $.ajax({
+      url: '/storeUser',
+      method: 'get',
+      dataType: 'json',
+      success: function (response) {
+
+         sessionStorage.setItem('userLogado', response.email);
+
+         $.ajax({
+            url: '/isUserAdmin/' + sessionStorage.getItem('userLogado'),
+            method: 'get',
+            dataType: 'json',
+            success: function (admin) {
+
+               sessionStorage.setItem('isAdmin', admin.isAdmin);
+  
+            }
+         })
       }
    })
 });
