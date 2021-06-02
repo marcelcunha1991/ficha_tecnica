@@ -233,6 +233,7 @@ function selectMaterial(array) {
    $('#materiais').html(opt);
 } 
 
+//edit e new ficha haitian
 $(document).ready(function () {
    var tbody = '';
 
@@ -242,6 +243,7 @@ $(document).ready(function () {
 
 })
 
+//edit e new ficha haitian
 function preencheCampo() {
    var quant = $("#quantidade").val();
    var valor = $("#valor").val();
