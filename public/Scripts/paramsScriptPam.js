@@ -1,3 +1,9 @@
+$("#selectMaquina").hide();
+
+function showSelect() {
+   $("#selectMaquina").show();
+}
+
 $('#maquinas').change(function () {
    var anchor = '';
 
