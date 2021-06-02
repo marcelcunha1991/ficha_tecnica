@@ -1414,7 +1414,7 @@ router.post("/fichas/updateHaitianRevisao",(req,res) => {
                radialSCREntrada3: radialSCREntrada3,
                radialSCRSaida3: radialSCRSaida3,
             }).then(() => {
-               res.redirect("/ficha/lista")
+               res.redirect("/revisao/visualizacao/" + (parseInt(id)+1))
             })
          })
       })
