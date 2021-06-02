@@ -43,7 +43,7 @@ $.ajax({
                method: 'get',
                dataType: 'json',
                success: function (injetor) {
-                  console.log(injetor)
+                  // console.log(injetor)
 
                   $.ajax({
                      url: '/ficha/getFichaPastorePerifericosRevisao/' + parametros.mac + "/" + $("#revisao").val(),
@@ -1150,7 +1150,6 @@ function comparar() {
                               document.getElementById("termoparKParams").style.fontStyle = "italic";
                               document.getElementById("termoparKParams").style.textDecoration = "underline";
                            } else {
-                              console.log('teste1');
                               document.getElementById("termoparJParams").style.fontWeight = "bold";
                               document.getElementById("termoparJParams").style.fontStyle = "italic";
                               document.getElementById("termoparJParams").style.textDecoration = "underline";
@@ -1161,7 +1160,6 @@ function comparar() {
                               document.getElementById("voltagem220Params").style.fontStyle = "italic";
                               document.getElementById("voltagem220Params").style.textDecoration = "underline";
                            } else {
-                              console.log('teste');
                               document.getElementById("voltagem24Params").style.fontWeight = "bold";
                               document.getElementById("voltagem24Params").style.fontStyle = "italic";
                               document.getElementById("voltagem24Params").style.textDecoration = "underline";
