@@ -256,3 +256,44 @@ function preencheCampo() {
    $("#quantidade").val("");
    $("#valor").val("");
 }
+
+var searchTimeout;
+$("input, textarea").keypress(function() {
+   if (searchTimeout != undefined) clearTimeout(searchTimeout);
+   searchTimeout = setTimeout(openModal, 150);
+});
+
+function openModal() {
+   $('#loginModal').modal('show');
+}
+
+function form_submit() {
+   
+   $.ajax({
+      url: '/authenticateEditRevisao/' + $("#email").val() + '/' + $("#password").val(),
+      method: 'get',
+      dataType: 'json',
+      success: function (success) {
+         if (success.error === "user not found") {
+            showalert()
+            
+         } else {
+            $("input, textarea").unbind("keypress");
+            $('#loginModal').modal('hide');
+            $("#tecnico").val(success.nome);
+         }
+      }
+   })
+}
+
+function showalert() {
+
+   $('#email_fake').before('<div id="alertdiv" class="alert alert-warning"><a class="close" data-dismiss="alert">×</a><span>Usuário ou senha incorreta.</span></div>');
+
+   setTimeout(function() { // this will automatically close the alert and remove this if the users doesnt close it in 5 secs
+
+
+     $("#alertdiv").fadeOut();
+
+   }, 5000);
+}

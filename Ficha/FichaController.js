@@ -2306,7 +2306,7 @@ router.post("/fichas/updateHaitian",(req,res) => {
    var Produto = req.body.produto;
    var Material = req.body.material.replace(/\./g, "");
    var Justificativa = req.body.justificativa;
-   var Usuario = req.body.userLogado;
+   var Usuario = req.body.tecnico;
 
    var tolCilindro = req.body.tolCilindro;
    var tolInjecao = req.body.tolInjecao;
