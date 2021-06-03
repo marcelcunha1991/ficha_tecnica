@@ -17,6 +17,28 @@ var tolVapor;
 
 var compara = true;
 
+function form_submit() {
+   
+   $.ajax({
+      url: '/authenticateEditRevisao/' + $("#email").val() + '/' + $("#password").val(),
+      method: 'get',
+      dataType: 'json',
+      success: function (success) {
+         if (success.error === "user not found") {
+            console.log(success.error)
+            
+         } else {
+            $('#loginModal').modal('hide');
+            $("#editRevisao").show();
+            $("#visualização").hide();
+            $("#parametrosRevisao").hide();
+            $("#editButton").hide();
+            $("#tecnicoEdit").val(success.nome);
+         }
+      }
+   })
+}
+
 function editarRevisao() {
    $("#editRevisao").show();
    $("#visualização").hide();

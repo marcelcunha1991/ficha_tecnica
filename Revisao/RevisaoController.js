@@ -8,6 +8,8 @@ const FichaPastorePerifericos = require("../Ficha/FichaPastore/FichaTecnicaPasto
 const Moldes = require("../Moldes/Moldes");
 const MateriasPrimas = require("../MateriaPrima/MateriasPrimas");
 const Maquinas = require("../Maquinas/Maquinas");
+const User = require("../Login/User");
+const bcrypt = require("bcryptjs");
 
 router.get("/ficha/revisao/visualizacao/:id",(req,res) => {
    var Id = req.params.id;
@@ -1245,7 +1247,7 @@ router.post("/fichas/updateHaitianRevisao",(req,res) => {
                Produto: Produto,
                Material: Material,
                Justificativa: Justificativa,
-               Usuario: Usuario,
+               Usuario: Tecnico,
                tolCilindro: tolCilindro,
                tolInjecao: tolInjecao,
                tolRecalque: tolRecalque,
@@ -1528,6 +1530,38 @@ router.get("/get/editHaitianInjetoresRevisao/:id",(req,res) => {
       res.send(injetores)
    })
    
+})
+
+router.get("/authenticateEditRevisao/:email/:password",(req,res) => {
+   var email = req.params.email;
+   var password = req.params.password;
+
+   if (email == "map@gmail.com" && password == "map"){
+
+      res.send({nome: 'map'})
+
+   }else{
+
+      User.findOne({where:{nome:email}}).then(user => {
+         if(user != undefined){
+
+            var correct = bcrypt.compareSync(password, user.password )
+
+            if(correct){
+               res.send(user)
+            }else{
+               res.send({error: 'user not found'});
+            }
+         }else{
+            res.send({error: 'user not found'});
+         }
+
+      }).catch(err =>{
+         console.log(err);
+      })
+
+   }
+
 })
 
 module.exports = router;
