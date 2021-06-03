@@ -1817,11 +1817,11 @@
                <table class="table-bordered" style="margin-top: 40px;">
                   <thead>
                      <tr>
-                        <th colspan="5">STEAM(VAPOR)</th>
-                        <% if (perifericos.tolVapor === 0.1) { %>
-                           <th>TOL &#177; 10%</th>
+                        <th>STEAM(VAPOR)</th>
+                        <% if (perifericos.tolRefrigeracao === 0.1) { %>
+                           <th colspan="2">TOL &#177; 10%</th>
                         <% } else { %>
-                           <th>TOL &#177; 5%</th>
+                           <th colspan="2">TOL &#177; 5%</th>
                         <% } %>
                      </tr>
                      <tr>
@@ -1830,93 +1830,93 @@
                   </thead>
                   <tbody>
                      <tr>
-                        <th colspan="3" style="text-align: center;">LADO FIXO</th>
-                        <th colspan="3" style="text-align: center;">LADO MÓVEL</th>
+                        <!-- <th colspan="3" style="text-align: center;">LADO FIXO</th> -->
+                        <!-- <th colspan="3" style="text-align: center;">LADO MÓVEL</th> -->
                      </tr>
                      <tr>
                         <!-- LADO FIXO -->
-                        <td colspan="2">
+                        <td>
                            <input class="read-only" readonly style="width: 100%" id="vaporladofixo1" name="vaporladofixo1" value="<%= perifericos.vaporLadoFixo1 %>">
                         </td>
-                        <td colspan="1">
-                           <p id="aguaF1Fixo">Temp. Água Industrial F1</p>
+                        <td>
+                           <p for="fixoAguaF1">Temp. Água Industrial F1</p>
                         </td>
       
                         <!-- LADO MOVEL -->
-                        <td colspan="2">
-                           <input class="read-only" readonly style="width: 100%" id="vaporladomovel1" name="vaporladomovel1" value="<%= perifericos.vaporLadoMovel1 %>">
+                        <!-- <td colspan="2">
+                           <input class="read-only" readonly style="width: 100%" id="vaporladomovel1" name="vaporladomovel1">
                         </td>
                         <td colspan="1">
-                           <p id="aguaF1Movel">Temp. Água Industrial F1</p>
-                        </td>
+                           <p for="movelAguaF1">Temp. Água Industrial F1</p>
+                        </td> -->
                      </tr>
                      <tr>
                         <!-- LADO FIXO -->
-                        <td colspan="2">
+                        <td>
                            <input class="read-only" readonly style="width: 100%" id="vaporladofixo2" name="vaporladofixo2" value="<%= perifericos.vaporLadoFixo2 %>">
                         </td>
-                        <td colspan="1">
-                           <p id="aguaF2Fixo">Temp. Água Industrial F2</p>
+                        <td>
+                           <p for="fixoAguaF2">Temp. Água Industrial F2</p>
                         </td>
       
                         <!-- LADO MOVEL -->
-                        <td colspan="2">
-                           <input class="read-only" readonly style="width: 100%" id="vaporladomovel2" name="vaporladomovel2" value="<%= perifericos.vaporLadoMovel2 %>">
+                        <!-- <td colspan="2">
+                           <input class="read-only" readonly style="width: 100%" id="vaporladomovel2" name="vaporladomovel2">
                         </td>
                         <td colspan="1">
-                           <p id="aguaF2Movel">Temp. Água Industrial F2</p>
-                        </td>
+                           <p for="movelAguaF2">Temp. Água Industrial F2</p>
+                        </td> -->
                      </tr>
                      <tr>
                         <!-- LADO FIXO -->
-                        <td colspan="2">
+                        <td>
                            <input class="read-only" readonly style="width: 100%" id="vaporladofixo3" name="vaporladofixo3" value="<%= perifericos.vaporLadoFixo3 %>">
                         </td>
-                        <td colspan="1">
-                           <p id="geladaFixo">Temp. Água Gelada</p>
+                        <td>
+                           <p for="fixoVaporAgua">Temp. Água Gelada</p>
                         </td>
       
                         <!-- LADO MOVEL -->
-                        <td colspan="2">
-                           <input class="read-only" readonly style="width: 100%" id="vaporladomovel3" name="vaporladomovel3" value="<%= perifericos.vaporLadoMovel3 %>">
+                        <!-- <td colspan="2">
+                           <input class="read-only" readonly style="width: 100%" id="vaporladomovel3" name="vaporladomovel3">
                         </td>
                         <td colspan="1">
-                           <p id="geladaMovel">Temp. Água Gelada</p>
-                        </td>
+                           <p for="movelVaporAgua">Temp. Água Gelada</p>
+                        </td> -->
                      </tr>
                      <tr>
                         <!-- LADO FIXO -->
-                        <td colspan="2">
+                        <td>
                            <input class="read-only" readonly style="width: 100%" id="vaporladofixo4" name="vaporladofixo4" value="<%= perifericos.vaporLadoFixo4 %>">
                         </td>
-                        <td colspan="1">
-                           <p id="vaporFixo">Bar. Vapor</p>
+                        <td>
+                           <p for="fixoVapor">Bar. Vapor</p>
                         </td>
       
                         <!-- LADO MOVEL -->
-                        <td colspan="2">
-                           <input class="read-only" readonly style="width: 100%" id="vaporladomovel4" name="vaporladomovel4" value="<%= perifericos.vaporLadoMovel4 %>">
+                        <!-- <td colspan="2">
+                           <input class="read-only" readonly style="width: 100%" id="vaporladomovel4" name="vaporladomovel4">
                         </td>
                         <td colspan="1">
-                           <p id="vaporMovel">Bar. Vapor</p>
-                        </td>
+                           <p for="movelVapor">Bar. Vapor</p>
+                        </td> -->
                      </tr>
                      <tr>
                         <!-- LADO FIXO -->
-                        <td colspan="2">
+                        <td>
                            <input class="read-only" readonly style="width: 100%" id="vaporladofixo5" name="vaporladofixo5" value="<%= perifericos.vaporLadoFixo5 %>">
                         </td>
-                        <td colspan="1">
-                           <p id="arFixo">Bar. Ar Comprimido</p>
+                        <td>
+                           <p for="fixoAr">Bar. Ar Comprimido</p>
                         </td>
       
                         <!-- LADO MOVEL -->
-                        <td colspan="2">
-                           <input class="read-only" readonly style="width: 100%" id="vaporladomovel5" name="vaporladomovel5" value="<%= perifericos.vaporLadoMovel5 %>">
+                        <!-- <td colspan="2">
+                           <input class="read-only" readonly style="width: 100%" id="vaporladomovel5" name="vaporladomovel5">
                         </td>
                         <td colspan="1">
-                           <p id="arMovel">Bar. Ar Comprimido</p>
-                        </td>
+                           <p for="movelAr">Bar. Ar Comprimido</p>
+                        </td> -->
                      </tr>
                   </tbody>
                </table>

@@ -4355,10 +4355,6 @@ function tipoVisualizacao(tipo) {
                                     tableBody.html(refrigeracao);
                                     
                                     var vapor = "<tr>" +
-                                                   "<th colspan='3' style='text-align: center;'>LADO FIXO</th>" +
-                                                   "<th colspan='3' style='text-align: center;'>LADO MÓVEL</th>" +
-                                                "</tr>" +
-                                                "<tr>" +
                                                    "<td colspan='2'>" +
                                                       "<input class='read-only' readonly style='width: 100%' id='vaporladofixo1' name='vaporladofixo1' value='" + perifericos.vaporLadoFixo1 + "'>" +
                                                    "</td>" +
@@ -4367,7 +4363,7 @@ function tipoVisualizacao(tipo) {
                                                    "</td>" +
                                  
                                                    "<td colspan='2'>" +
-                                                      "<input class='read-only' readonly style='width: 100%' id='vaporladomovel1' name='vaporladomovel1' value='" + perifericos.vaporLadoMovel1 + "'>" +
+                                                      "<input class='read-only' readonly style='width: 100%' id='vaporladomovel1' name='vaporladomovel1' value='0'>" +
                                                    "</td>" +
                                                    "<td colspan='1'>" +
                                                       "<p id='aguaF1Movel'>Temp. Água Industrial F1</p>" +
@@ -4382,7 +4378,7 @@ function tipoVisualizacao(tipo) {
                                                    "</td>" +
                                  
                                                    "<td colspan='2'>" +
-                                                      "<input class='read-only' readonly style='width: 100%' id='vaporladomovel2' name='vaporladomovel2' value='" + perifericos.vaporLadoMovel2 + "'>" +
+                                                      "<input class='read-only' readonly style='width: 100%' id='vaporladomovel2' name='vaporladomovel2' value='0'>" +
                                                    "</td>" +
                                                    "<td colspan='1'>" +
                                                       "<p id='aguaF2Movel'>Temp. Água Industrial F2</p>" +
@@ -4397,7 +4393,7 @@ function tipoVisualizacao(tipo) {
                                                    "</td>" +
                                  
                                                    "<td colspan='2'>" +
-                                                      "<input class='read-only' readonly style='width: 100%' id='vaporladomovel3' name='vaporladomovel3' value='" + perifericos.vaporLadoMovel3 + "'>" +
+                                                      "<input class='read-only' readonly style='width: 100%' id='vaporladomovel3' name='vaporladomovel3' value='0'>" +
                                                    "</td>" +
                                                    "<td colspan='1'>" +
                                                       "<p id='geladaMovel'>Temp. Água Gelada</p>" +
@@ -4412,7 +4408,7 @@ function tipoVisualizacao(tipo) {
                                                    "</td>" +
                                  
                                                    "<td colspan='2'>" +
-                                                      "<input class='read-only' readonly style='width: 100%' id='vaporladomovel4' name='vaporladomovel4' value='" + perifericos.vaporLadoMovel4 + "'>" +
+                                                      "<input class='read-only' readonly style='width: 100%' id='vaporladomovel4' name='vaporladomovel4' value='0'>" +
                                                    "</td>" +
                                                    "<td colspan='1'>" +
                                                       "<p id='vaporMovel'>Bar. Vapor</p>" +
@@ -4427,7 +4423,7 @@ function tipoVisualizacao(tipo) {
                                                    "</td>" +
                                  
                                                    "<td colspan='2'>" +
-                                                      "<input class='read-only' readonly style='width: 100%' id='vaporladomovel5' name='vaporladomovel5' value='" + perifericos.vaporLadoMovel5 + "'>" +
+                                                      "<input class='read-only' readonly style='width: 100%' id='vaporladomovel5' name='vaporladomovel5' value='0'>" +
                                                    "</td>" +
                                                    "<td colspan='1'>" +
                                                       "<p id='arMovel'>Bar. Ar Comprimido</p>" +
@@ -4518,60 +4514,6 @@ function tipoVisualizacao(tipo) {
                                        document.getElementById("FriaMovel4").style.fontStyle = "italic";
                                        document.getElementById("FriaMovel4").style.textDecoration = "underline";
                                     }
-
-                                    //refrigeracao vapor fixo
-                                    if (perifericos.fixoSteam === "AguaF1") {
-                                       document.getElementById("aguaF1Fixo").style.fontWeight = "bold";
-                                       document.getElementById("aguaF1Fixo").style.fontStyle = "italic";
-                                       document.getElementById("aguaF1Fixo").style.textDecoration = "underline";
-
-                                    } else if (perifericos.fixoSteam === "AguaF2") {
-                                       document.getElementById("aguaF2Fixo").style.fontWeight = "bold";
-                                       document.getElementById("aguaF2Fixo").style.fontStyle = "italic";
-                                       document.getElementById("aguaF2Fixo").style.textDecoration = "underline";
-
-                                    } else if (perifericos.fixoSteam === "Gelada") {
-                                       document.getElementById("geladaFixo").style.fontWeight = "bold";
-                                       document.getElementById("geladaFixo").style.fontStyle = "italic";
-                                       document.getElementById("geladaFixo").style.textDecoration = "underline";
-
-                                    } else if (perifericos.fixoSteam === "Vapor") {
-                                       document.getElementById("vaporFixo").style.fontWeight = "bold";
-                                       document.getElementById("vaporFixo").style.fontStyle = "italic";
-                                       document.getElementById("vaporFixo").style.textDecoration = "underline";
-                                       
-                                    } else if (perifericos.fixoSteam === "Ar") {
-                                       document.getElementById("arFixo").style.fontWeight = "bold";
-                                       document.getElementById("arFixo").style.fontStyle = "italic";
-                                       document.getElementById("arFixo").style.textDecoration = "underline";
-                                    }
-
-                                    //refrigeracao vapor fixo
-                                    if (perifericos.movelSteam === "AguaF1") {
-                                       document.getElementById("aguaF1Movel").style.fontWeight = "bold";
-                                       document.getElementById("aguaF1Movel").style.fontStyle = "italic";
-                                       document.getElementById("aguaF1Movel").style.textDecoration = "underline";
-
-                                    } else if (perifericos.movelSteam === "AguaF2") {
-                                       document.getElementById("aguaF2Movel").style.fontWeight = "bold";
-                                       document.getElementById("aguaF2Movel").style.fontStyle = "italic";
-                                       document.getElementById("aguaF2Movel").style.textDecoration = "underline";
-
-                                    } else if (perifericos.movelSteam === "Gelada") {
-                                       document.getElementById("geladaMovel").style.fontWeight = "bold";
-                                       document.getElementById("geladaMovel").style.fontStyle = "italic";
-                                       document.getElementById("geladaMovel").style.textDecoration = "underline";
-
-                                    } else if (perifericos.movelSteam === "Vapor") {
-                                       document.getElementById("vaporMovel").style.fontWeight = "bold";
-                                       document.getElementById("vaporMovel").style.fontStyle = "italic";
-                                       document.getElementById("vaporMovel").style.textDecoration = "underline";
-                                       
-                                    } else if (perifericos.movelSteam === "Ar") {
-                                       document.getElementById("arMovel").style.fontWeight = "bold";
-                                       document.getElementById("arMovel").style.fontStyle = "italic";
-                                       document.getElementById("arMovel").style.textDecoration = "underline";
-                                    }                                    
                                     
                                     // CLICK EVENT
                                     document.getElementById("cilindro1").addEventListener("click", function () {

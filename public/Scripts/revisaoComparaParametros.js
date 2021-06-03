@@ -2072,10 +2072,6 @@ function comparar() {
                               tableBody.html(refrigeracao);
                               
                               var vapor = "<tr>" +
-                                             "<th colspan='3' style='text-align: center;'>LADO FIXO</th>" +
-                                             "<th colspan='3' style='text-align: center;'>LADO MÓVEL</th>" +
-                                          "</tr>" +
-                                          "<tr>" +
                                              "<td colspan='2'>" +
                                                 "<input class='read-only' readonly style='width: 100%' id='vaporladofixo1' name='vaporladofixo1' value='" + perifericos.vaporLadoFixo1 + "'>" +
                                              "</td>" +
@@ -2084,7 +2080,7 @@ function comparar() {
                                              "</td>" +
                            
                                              "<td colspan='2'>" +
-                                                "<input class='read-only' readonly style='width: 100%' id='vaporladomovel1' name='vaporladomovel1' value='" + perifericos.vaporLadoMovel1 + "'>" +
+                                                "<input class='read-only' readonly style='width: 100%' id='vaporladomovel1' name='vaporladomovel1' value='0'>" +
                                              "</td>" +
                                              "<td colspan='1'>" +
                                                 "<p id='aguaF1MovelParams'>Temp. Água Industrial F1</p>" +
@@ -2099,7 +2095,7 @@ function comparar() {
                                              "</td>" +
                            
                                              "<td colspan='2'>" +
-                                                "<input class='read-only' readonly style='width: 100%' id='vaporladomovel2' name='vaporladomovel2' value='" + perifericos.vaporLadoMovel2 + "'>" +
+                                                "<input class='read-only' readonly style='width: 100%' id='vaporladomovel2' name='vaporladomovel2' value='0'>" +
                                              "</td>" +
                                              "<td colspan='1'>" +
                                                 "<p id='aguaF2MovelParams'>Temp. Água Industrial F2</p>" +
@@ -2114,7 +2110,7 @@ function comparar() {
                                              "</td>" +
                            
                                              "<td colspan='2'>" +
-                                                "<input class='read-only' readonly style='width: 100%' id='vaporladomovel3' name='vaporladomovel3' value='" + perifericos.vaporLadoMovel3 + "'>" +
+                                                "<input class='read-only' readonly style='width: 100%' id='vaporladomovel3' name='vaporladomovel3' value='0'>" +
                                              "</td>" +
                                              "<td colspan='1'>" +
                                                 "<p id='geladaMovelParams'>Temp. Água Gelada</p>" +
@@ -2129,7 +2125,7 @@ function comparar() {
                                              "</td>" +
                            
                                              "<td colspan='2'>" +
-                                                "<input class='read-only' readonly style='width: 100%' id='vaporladomovel4' name='vaporladomovel4' value='" + perifericos.vaporLadoMovel4 + "'>" +
+                                                "<input class='read-only' readonly style='width: 100%' id='vaporladomovel4' name='vaporladomovel4' value='0'>" +
                                              "</td>" +
                                              "<td colspan='1'>" +
                                                 "<p id='vaporMovelParams'>Bar. Vapor</p>" +
@@ -2144,7 +2140,7 @@ function comparar() {
                                              "</td>" +
                            
                                              "<td colspan='2'>" +
-                                                "<input class='read-only' readonly style='width: 100%' id='vaporladomovel5' name='vaporladomovel5' value='" + perifericos.vaporLadoMovel5 + "'>" +
+                                                "<input class='read-only' readonly style='width: 100%' id='vaporladomovel5' name='vaporladomovel5' value='0'>" +
                                              "</td>" +
                                              "<td colspan='1'>" +
                                                 "<p id='arMovelParams'>Bar. Ar Comprimido</p>" +
@@ -2235,60 +2231,6 @@ function comparar() {
                                  document.getElementById("FriaMovel4Params").style.fontStyle = "italic";
                                  document.getElementById("FriaMovel4Params").style.textDecoration = "underline";
                               }
-
-                              //refrigeracao vapor fixo
-                              if (perifericos.fixoSteam === "AguaF1") {
-                                 document.getElementById("aguaF1FixoParams").style.fontWeight = "bold";
-                                 document.getElementById("aguaF1FixoParams").style.fontStyle = "italic";
-                                 document.getElementById("aguaF1FixoParams").style.textDecoration = "underline";
-
-                              } else if (perifericos.fixoSteam === "AguaF2") {
-                                 document.getElementById("aguaF2FixoParams").style.fontWeight = "bold";
-                                 document.getElementById("aguaF2FixoParams").style.fontStyle = "italic";
-                                 document.getElementById("aguaF2FixoParams").style.textDecoration = "underline";
-
-                              } else if (perifericos.fixoSteam === "Gelada") {
-                                 document.getElementById("geladaFixoParams").style.fontWeight = "bold";
-                                 document.getElementById("geladaFixoParams").style.fontStyle = "italic";
-                                 document.getElementById("geladaFixoParams").style.textDecoration = "underline";
-
-                              } else if (perifericos.fixoSteam === "Vapor") {
-                                 document.getElementById("vaporFixoParams").style.fontWeight = "bold";
-                                 document.getElementById("vaporFixoParams").style.fontStyle = "italic";
-                                 document.getElementById("vaporFixoParams").style.textDecoration = "underline";
-                                 
-                              } else if (perifericos.fixoSteam === "Ar") {
-                                 document.getElementById("arFixoParams").style.fontWeight = "bold";
-                                 document.getElementById("arFixoParams").style.fontStyle = "italic";
-                                 document.getElementById("arFixoParams").style.textDecoration = "underline";
-                              }
-
-                              //refrigeracao vapor fixo
-                              if (perifericos.movelSteam === "AguaF1") {
-                                 document.getElementById("aguaF1MovelParams").style.fontWeight = "bold";
-                                 document.getElementById("aguaF1MovelParams").style.fontStyle = "italic";
-                                 document.getElementById("aguaF1MovelParams").style.textDecoration = "underline";
-
-                              } else if (perifericos.movelSteam === "AguaF2") {
-                                 document.getElementById("aguaF2MovelParams").style.fontWeight = "bold";
-                                 document.getElementById("aguaF2MovelParams").style.fontStyle = "italic";
-                                 document.getElementById("aguaF2MovelParams").style.textDecoration = "underline";
-
-                              } else if (perifericos.movelSteam === "Gelada") {
-                                 document.getElementById("geladaMovelParams").style.fontWeight = "bold";
-                                 document.getElementById("geladaMovelParams").style.fontStyle = "italic";
-                                 document.getElementById("geladaMovelParams").style.textDecoration = "underline";
-
-                              } else if (perifericos.movelSteam === "Vapor") {
-                                 document.getElementById("vaporMovelParams").style.fontWeight = "bold";
-                                 document.getElementById("vaporMovelParams").style.fontStyle = "italic";
-                                 document.getElementById("vaporMovelParams").style.textDecoration = "underline";
-                                 
-                              } else if (perifericos.movelSteam === "Ar") {
-                                 document.getElementById("arMovelParams").style.fontWeight = "bold";
-                                 document.getElementById("arMovelParams").style.fontStyle = "italic";
-                                 document.getElementById("arMovelParams").style.textDecoration = "underline";
-                              }                                    
                               
                               // CLICK EVENT
                               document.getElementById("cilindro1").addEventListener("click", function () {

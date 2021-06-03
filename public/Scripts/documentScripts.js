@@ -320,60 +320,6 @@ $(document).ready(function () {
             document.getElementById("FriaMovel4").style.fontStyle = "italic";
             document.getElementById("FriaMovel4").style.textDecoration = "underline";
          }
-
-         //refrigeracao vapor fixo
-         if (response.fixoSteam === "AguaF1") {
-            document.getElementById("aguaF1Fixo").style.fontWeight = "bold";
-            document.getElementById("aguaF1Fixo").style.fontStyle = "italic";
-            document.getElementById("aguaF1Fixo").style.textDecoration = "underline";
-
-         } else if (response.fixoSteam === "AguaF2") {
-            document.getElementById("aguaF2Fixo").style.fontWeight = "bold";
-            document.getElementById("aguaF2Fixo").style.fontStyle = "italic";
-            document.getElementById("aguaF2Fixo").style.textDecoration = "underline";
-
-         } else if (response.fixoSteam === "Gelada") {
-            document.getElementById("geladaFixo").style.fontWeight = "bold";
-            document.getElementById("geladaFixo").style.fontStyle = "italic";
-            document.getElementById("geladaFixo").style.textDecoration = "underline";
-
-         } else if (response.fixoSteam === "Vapor") {
-            document.getElementById("vaporFixo").style.fontWeight = "bold";
-            document.getElementById("vaporFixo").style.fontStyle = "italic";
-            document.getElementById("vaporFixo").style.textDecoration = "underline";
-            
-         } else if (response.fixoSteam === "Ar") {
-            document.getElementById("arFixo").style.fontWeight = "bold";
-            document.getElementById("arFixo").style.fontStyle = "italic";
-            document.getElementById("arFixo").style.textDecoration = "underline";
-         }
-
-         //refrigeracao vapor fixo
-         if (response.movelSteam === "AguaF1") {
-            document.getElementById("aguaF1Movel").style.fontWeight = "bold";
-            document.getElementById("aguaF1Movel").style.fontStyle = "italic";
-            document.getElementById("aguaF1Movel").style.textDecoration = "underline";
-
-         } else if (response.movelSteam === "AguaF2") {
-            document.getElementById("aguaF2Movel").style.fontWeight = "bold";
-            document.getElementById("aguaF2Movel").style.fontStyle = "italic";
-            document.getElementById("aguaF2Movel").style.textDecoration = "underline";
-
-         } else if (response.movelSteam === "Gelada") {
-            document.getElementById("geladaMovel").style.fontWeight = "bold";
-            document.getElementById("geladaMovel").style.fontStyle = "italic";
-            document.getElementById("geladaMovel").style.textDecoration = "underline";
-
-         } else if (response.movelSteam === "Vapor") {
-            document.getElementById("vaporMovel").style.fontWeight = "bold";
-            document.getElementById("vaporMovel").style.fontStyle = "italic";
-            document.getElementById("vaporMovel").style.textDecoration = "underline";
-            
-         } else if (response.movelSteam === "Ar") {
-            document.getElementById("arMovel").style.fontWeight = "bold";
-            document.getElementById("arMovel").style.fontStyle = "italic";
-            document.getElementById("arMovel").style.textDecoration = "underline";
-         }
       }
    })
 
