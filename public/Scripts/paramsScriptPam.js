@@ -2521,7 +2521,7 @@ function tipoVisualizacao(tipo) {
                               
                               } else {
                                  tolCamara = perifericos.tolCamara;
-                                 headerCamara = "<th>TOL &#177; 5%</th>"
+                                 headerCamara = "<th>TOL &#177; 5°C</th>"
                               }
                               
                               tableHead = $("#camaraQuente thead #headCamara");

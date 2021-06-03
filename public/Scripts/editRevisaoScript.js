@@ -98,7 +98,7 @@ $(document).ready(function () {
          if (response.tolCamara === 0.1) {
             $("#tolCamara").val("0.1")
          } else {
-            $("#tolCamara").val("0.05")
+            $("#tolCamara").val("5")
          }
    
          if (response.tolValve === 0.1) {

@@ -944,7 +944,7 @@
                               <th colspan="2">
                                  <select id="tolCamara" name="tolCamara" class="form-control">
                                     <option value="0.1">TOL &#177; 10%</option>
-                                    <option value="0.05">TOL &#177; 5%</option>
+                                    <option value="5">TOL &#177; 5°C</option>
                                  </select>
                               </th>
                            </tr>
@@ -2152,6 +2152,9 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src=/scripts/documentScripts.js></script>
 
+<script src=/scripts/FichaTecnica.js></script>
+<%- include ('../partials/footer.ejs') %>
+
 <script>
    function validateForm() {
       var molde = document.forms["pamForm"]["molde"].value;
@@ -2172,6 +2175,3 @@
       }
    }
 </script>
-
-<script src=/scripts/FichaTecnica.js></script>
-<%- include ('../partials/footer.ejs') %>

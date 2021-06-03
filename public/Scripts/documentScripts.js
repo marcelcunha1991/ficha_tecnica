@@ -75,45 +75,11 @@ $(document).ready(function () {
             document.getElementById("movelFriaEdit4").checked = true;
          }
 
-         //refrigeracao vapor fixo
-         if (response.fixoSteam === "AguaF1") {
-            document.getElementById("fixoAguaF1Edit").checked = true;
-
-         } else if (response.fixoSteam === "AguaF2") {
-            document.getElementById("fixoAguaF2Edit").checked = true;
-
-         } else if (response.fixoSteam === "Gelada") {
-            document.getElementById("fixoVaporAguaEdit").checked = true;
-
-         } else if (response.fixoSteam === "Vapor") {
-            document.getElementById("fixoVaporEdit").checked = true;
-            
-         } else if (response.fixoSteam === "Ar") {
-            document.getElementById("fixoArEdit").checked = true;
-         }
-
-         //refrigeracao vapor fixo
-         if (response.movelSteam === "AguaF1") {
-            document.getElementById("movelAguaF1Edit").checked = true;
-
-         } else if (response.movelSteam === "AguaF2") {
-            document.getElementById("movelAguaF2Edit").checked = true;
-
-         } else if (response.movelSteam === "Gelada") {
-            document.getElementById("movelVaporAguaEdit").checked = true;
-
-         } else if (response.movelSteam === "Vapor") {
-            document.getElementById("movelVaporEdit").checked = true;
-            
-         } else if (response.movelSteam === "Ar") {
-            document.getElementById("movelArEdit").checked = true;
-         }
-
          //TOLERANCIA
          if (response.tolCamara === 0.1) {
             $("#tolCamara").val("0.1")
          } else {
-            $("#tolCamara").val("0.05")
+            $("#tolCamara").val("5")
          }
 
          if (response.tolValve === 0.1) {
