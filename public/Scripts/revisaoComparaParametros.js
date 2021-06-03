@@ -25,7 +25,7 @@ function form_submit() {
       dataType: 'json',
       success: function (success) {
          if (success.error === "user not found") {
-            console.log(success.error)
+            showalert();
             
          } else {
             $('#loginModal').modal('hide');
@@ -37,6 +37,18 @@ function form_submit() {
          }
       }
    })
+}
+
+function showalert() {
+
+   $('#titulo').before('<div id="alertdiv" class="alert alert-warning"><a class="close" data-dismiss="alert">×</a><span>Usuário ou senha incorreta.</span></div>');
+
+   setTimeout(function() { // this will automatically close the alert and remove this if the users doesnt close it in 5 secs
+
+
+     $("#alertdiv").fadeOut();
+
+   }, 5000);
 }
 
 function editarRevisao() {
