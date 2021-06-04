@@ -28,6 +28,10 @@ router.get("/fichas/:maquina?",  (req,res) => {
    var dsMaquina = "",
    dsMaquina = req.params.maquina;
 
+   let data = new Date();
+   let dataFormatada = (data.getFullYear() + "-" + ((data.getMonth() + 1)) + "-" + (data.getDate() )) ;                 
+   console.log(dataFormatada);
+
    Maquinas.findAll().then(maquina => {
       maquinas = maquina;
 
@@ -1105,10 +1109,10 @@ router.post("/fichas/createHaitian",(req,res) => {
    
    var radialTypeEntrada1 = req.body.typeEntrada1;
    var radialTypeSaida1 = req.body.typeSaida1;
-   var radialTypeEntrada2 = req.body.type1 !== "" ? req.body.type1.replace(",", ".") : 0.0;
-   var radialTypeSaida2 = req.body.type2 !== "" ? req.body.type2.replace(",", ".") : 0.0;
-   var radialTypeEntrada3 = req.body.type3 !== "" ? req.body.type3.replace(",", ".") : 0.0;
-   var radialTypeSaida3 = req.body.type4 !== "" ? req.body.type4.replace(",", ".") : 0.0;
+   var radialTypeEntrada2 = req.body.typeEntrada2;
+   var radialTypeSaida2 = req.body.typeSaida2;
+   var radialTypeEntrada3 = req.body.typeEntrada3;
+   var radialTypeSaida3 = req.body.typeSaida3;
 
    var radialPresEntrada1 = req.body.pressaoRadial1 !== "" ? req.body.pressaoRadial1.replace(",", ".") : 0.0;
    var radialPresSaida1 = req.body.pressaoRadial2 !== "" ? req.body.pressaoRadial2.replace(",", ".") : 0.0;
@@ -1149,130 +1153,130 @@ router.post("/fichas/createHaitian",(req,res) => {
    var camara4 = req.body.camara4[0] !== "" ? req.body.camara4[0].replace(",", ".") : 0.0;
    var camara5 = req.body.camara5[0] !== "" ? req.body.camara5[0].replace(",", ".") : 0.0;
    var camara6 = req.body.camara6[0] !== "" ? req.body.camara6[0].replace(",", ".") : 0.0;
-   var camara7 = req.body.camara7[0] !== "" ? req.body.camara7[0].replace(",", ".") : 0.0;
-   var camara8 = req.body.camara1[1] !== "" ? req.body.camara1[1].replace(",", ".") : 0.0;
-   var camara9 = req.body.camara2[1] !== "" ? req.body.camara2[1].replace(",", ".") : 0.0;
-   var camara10 = req.body.camara3[1] !== "" ? req.body.camara3[1].replace(",", ".") : 0.0;
-   var camara11 = req.body.camara4[1] !== "" ? req.body.camara4[1].replace(",", ".") : 0.0;
-   var camara12 = req.body.camara5[1] !== "" ? req.body.camara5[1].replace(",", ".") : 0.0;
-   var camara13 = req.body.camara6[1] !== "" ? req.body.camara6[1].replace(",", ".") : 0.0;
-   var camara14 = req.body.camara7[1] !== "" ? req.body.camara7[1].replace(",", ".") : 0.0;
-   var camara15 = req.body.camara1[2] !== "" ? req.body.camara1[2].replace(",", ".") : 0.0;
-   var camara16 = req.body.camara2[2] !== "" ? req.body.camara2[2].replace(",", ".") : 0.0;
-   var camara17 = req.body.camara3[2] !== "" ? req.body.camara3[2].replace(",", ".") : 0.0;
-   var camara18 = req.body.camara4[2] !== "" ? req.body.camara4[3].replace(",", ".") : 0.0;
-   var camara19 = req.body.camara5[2] !== "" ? req.body.camara5[2].replace(",", ".") : 0.0;
-   var camara20 = req.body.camara6[2] !== "" ? req.body.camara6[2].replace(",", ".") : 0.0;
-   var camara21 = req.body.camara7[2] !== "" ? req.body.camara7[2].replace(",", ".") : 0.0;
-   var camara22 = req.body.camara1[3] !== "" ? req.body.camara1[3].replace(",", ".") : 0.0;
-   var camara23 = req.body.camara2[3] !== "" ? req.body.camara2[3].replace(",", ".") : 0.0;
-   var camara24 = req.body.camara3[3] !== "" ? req.body.camara3[3].replace(",", ".") : 0.0;
-   var camara25 = req.body.camara4[3] !== "" ? req.body.camara4[3].replace(",", ".") : 0.0;
-   var camara26 = req.body.camara5[3] !== "" ? req.body.camara5[3].replace(",", ".") : 0.0;
-   var camara27 = req.body.camara6[3] !== "" ? req.body.camara6[3].replace(",", ".") : 0.0;
-   var camara28 = req.body.camara7[3] !== "" ? req.body.camara7[3].replace(",", ".") : 0.0;
-   var camara29 = req.body.camara1[4] !== "" ? req.body.camara1[4].replace(",", ".") : 0.0;
-   var camara30 = req.body.camara2[4] !== "" ? req.body.camara2[4].replace(",", ".") : 0.0;
-   var camara31 = req.body.camara3[4] !== "" ? req.body.camara3[4].replace(",", ".") : 0.0;
-   var camara32 = req.body.camara4[4] !== "" ? req.body.camara4[4].replace(",", ".") : 0.0;
-   var camara33 = req.body.camara5[4] !== "" ? req.body.camara5[4].replace(",", ".") : 0.0;
-   var camara34 = req.body.camara6[4] !== "" ? req.body.camara6[4].replace(",", ".") : 0.0;
-   var camara35 = req.body.camara7[4] !== "" ? req.body.camara7[4].replace(",", ".") : 0.0;
-   var camara36 = req.body.camara1[5] !== "" ? req.body.camara1[5].replace(",", ".") : 0.0;
-   var camara37 = req.body.camara2[5] !== "" ? req.body.camara2[5].replace(",", ".") : 0.0;
-   var camara38 = req.body.camara3[5] !== "" ? req.body.camara3[5].replace(",", ".") : 0.0;
-   var camara39 = req.body.camara4[5] !== "" ? req.body.camara4[5].replace(",", ".") : 0.0;
-   var camara40 = req.body.camara5[5] !== "" ? req.body.camara5[5].replace(",", ".") : 0.0;
-   var camara41 = req.body.camara6[5] !== "" ? req.body.camara6[5].replace(",", ".") : 0.0;
-   var camara42 = req.body.camara7[5] !== "" ? req.body.camara7[5].replace(",", ".") : 0.0;
-   var camara43 = req.body.camara1[6] !== "" ? req.body.camara1[6].replace(",", ".") : 0.0;
-   var camara44 = req.body.camara2[6] !== "" ? req.body.camara2[6].replace(",", ".") : 0.0;
-   var camara45 = req.body.camara3[6] !== "" ? req.body.camara3[6].replace(",", ".") : 0.0;
-   var camara46 = req.body.camara4[6] !== "" ? req.body.camara4[6].replace(",", ".") : 0.0;
-   var camara47 = req.body.camara5[6] !== "" ? req.body.camara5[6].replace(",", ".") : 0.0;
-   var camara48 = req.body.camara6[6] !== "" ? req.body.camara6[6].replace(",", ".") : 0.0;
-   var camara49 = req.body.camara7[6] !== "" ? req.body.camara7[6].replace(",", ".") : 0.0;
-   var camara50 = req.body.camara1[7] !== "" ? req.body.camara1[7].replace(",", ".") : 0.0;
-   var camara51 = req.body.camara2[7] !== "" ? req.body.camara2[7].replace(",", ".") : 0.0;
-   var camara52 = req.body.camara3[7] !== "" ? req.body.camara3[7].replace(",", ".") : 0.0;
-   var camara53 = req.body.camara4[7] !== "" ? req.body.camara4[7].replace(",", ".") : 0.0;
-   var camara54 = req.body.camara5[7] !== "" ? req.body.camara5[7].replace(",", ".") : 0.0;
-   var camara55 = req.body.camara6[7] !== "" ? req.body.camara6[7].replace(",", ".") : 0.0;
-   var camara56 = req.body.camara7[7] !== "" ? req.body.camara7[7].replace(",", ".") : 0.0;
-   var camara57 = req.body.camara1[8] !== "" ? req.body.camara1[8].replace(",", ".") : 0.0;
-   var camara58 = req.body.camara2[8] !== "" ? req.body.camara2[8].replace(",", ".") : 0.0;
-   var camara59 = req.body.camara3[8] !== "" ? req.body.camara3[8].replace(",", ".") : 0.0;
-   var camara60 = req.body.camara4[8] !== "" ? req.body.camara4[8].replace(",", ".") : 0.0;
-   var camara61 = req.body.camara5[8] !== "" ? req.body.camara5[8].replace(",", ".") : 0.0;
-   var camara62 = req.body.camara6[8] !== "" ? req.body.camara6[8].replace(",", ".") : 0.0;
-   var camara63 = req.body.camara7[8] !== "" ? req.body.camara7[8].replace(",", ".") : 0.0;
-   var camara64 = req.body.camara1[9] !== "" ? req.body.camara1[9].replace(",", ".") : 0.0;
-   var camara65 = req.body.camara2[9] !== "" ? req.body.camara2[9].replace(",", ".") : 0.0;
-   var camara66 = req.body.camara3[9] !== "" ? req.body.camara3[9].replace(",", ".") : 0.0;
-   var camara67 = req.body.camara4[9] !== "" ? req.body.camara4[9].replace(",", ".") : 0.0;
-   var camara68 = req.body.camara5[9] !== "" ? req.body.camara5[9].replace(",", ".") : 0.0;
-   var camara69 = req.body.camara6[9] !== "" ? req.body.camara6[9].replace(",", ".") : 0.0;
-   var camara70 = req.body.camara7[9] !== "" ? req.body.camara7[9].replace(",", ".") : 0.0;
-   var camara71 = req.body.camara1[10] !== "" ? req.body.camara1[10].replace(",", ".") : 0.0;
-   var camara72 = req.body.camara2[10] !== "" ? req.body.camara2[10].replace(",", ".") : 0.0;
-   var camara73 = req.body.camara3[10] !== "" ? req.body.camara3[10].replace(",", ".") : 0.0;
-   var camara74 = req.body.camara4[10] !== "" ? req.body.camara4[10].replace(",", ".") : 0.0;
-   var camara75 = req.body.camara5[10] !== "" ? req.body.camara5[10].replace(",", ".") : 0.0;
-   var camara76 = req.body.camara6[10] !== "" ? req.body.camara6[10].replace(",", ".") : 0.0;
-   var camara77 = req.body.camara7[10] !== "" ? req.body.camara7[10].replace(",", ".") : 0.0;
-   var camara78 = req.body.camara1[11] !== "" ? req.body.camara1[11].replace(",", ".") : 0.0;
-   var camara79 = req.body.camara2[11] !== "" ? req.body.camara2[11].replace(",", ".") : 0.0;
-   var camara80 = req.body.camara3[11] !== "" ? req.body.camara3[11].replace(",", ".") : 0.0;
-   var camara81 = req.body.camara4[11] !== "" ? req.body.camara4[11].replace(",", ".") : 0.0;
-   var camara82 = req.body.camara5[11] !== "" ? req.body.camara5[11].replace(",", ".") : 0.0;
-   var camara83 = req.body.camara6[11] !== "" ? req.body.camara6[11].replace(",", ".") : 0.0;
-   var camara84 = req.body.camara7[11] !== "" ? req.body.camara7[11].replace(",", ".") : 0.0;
-   var camara85 = req.body.camara1[12] !== "" ? req.body.camara1[12].replace(",", ".") : 0.0;
-   var camara86 = req.body.camara2[12] !== "" ? req.body.camara2[12].replace(",", ".") : 0.0;
-   var camara87 = req.body.camara3[12] !== "" ? req.body.camara3[12].replace(",", ".") : 0.0;
-   var camara88 = req.body.camara4[12] !== "" ? req.body.camara4[12].replace(",", ".") : 0.0;
-   var camara89 = req.body.camara5[12] !== "" ? req.body.camara5[12].replace(",", ".") : 0.0;
-   var camara90 = req.body.camara6[12] !== "" ? req.body.camara6[12].replace(",", ".") : 0.0;
-   var camara91 = req.body.camara7[12] !== "" ? req.body.camara7[12].replace(",", ".") : 0.0;
-   var camara92 = req.body.camara1[13] !== "" ? req.body.camara1[13].replace(",", ".") : 0.0;
-   var camara93 = req.body.camara2[13] !== "" ? req.body.camara2[13].replace(",", ".") : 0.0;
-   var camara94 = req.body.camara3[13] !== "" ? req.body.camara3[13].replace(",", ".") : 0.0;
-   var camara95 = req.body.camara4[13] !== "" ? req.body.camara4[13].replace(",", ".") : 0.0;
-   var camara96 = req.body.camara5[13] !== "" ? req.body.camara5[13].replace(",", ".") : 0.0;
-   var camara97 = req.body.camara6[13] !== "" ? req.body.camara6[13].replace(",", ".") : 0.0;
-   var camara98 = req.body.camara7[13] !== "" ? req.body.camara7[13].replace(",", ".") : 0.0;
-   var camara99 = req.body.camara1[14] !== "" ? req.body.camara1[14].replace(",", ".") : 0.0;
-   var camara100 = req.body.camara2[14] !== "" ? req.body.camara2[14].replace(",", ".") : 0.0;
-   var camara101 = req.body.camara3[14] !== "" ? req.body.camara3[14].replace(",", ".") : 0.0;
-   var camara102 = req.body.camara4[14] !== "" ? req.body.camara4[14].replace(",", ".") : 0.0;
-   var camara103 = req.body.camara5[14] !== "" ? req.body.camara5[14].replace(",", ".") : 0.0;
-   var camara104 = req.body.camara6[14] !== "" ? req.body.camara6[14].replace(",", ".") : 0.0;
-   var camara105 = req.body.camara7[14] !== "" ? req.body.camara7[14].replace(",", ".") : 0.0;
-   var camara106 = req.body.camara1[15] !== "" ? req.body.camara1[15].replace(",", ".") : 0.0;
-   var camara107 = req.body.camara2[15] !== "" ? req.body.camara2[15].replace(",", ".") : 0.0;
-   var camara108 = req.body.camara3[15] !== "" ? req.body.camara3[15].replace(",", ".") : 0.0;
-   var camara109 = req.body.camara4[15] !== "" ? req.body.camara4[15].replace(",", ".") : 0.0;
-   var camara110 = req.body.camara5[15] !== "" ? req.body.camara5[15].replace(",", ".") : 0.0;
-   var camara111 = req.body.camara6[15] !== "" ? req.body.camara6[15].replace(",", ".") : 0.0;
-   var camara112 = req.body.camara7[15] !== "" ? req.body.camara7[15].replace(",", ".") : 0.0;
-   var camara113 = req.body.camara1[16] !== "" ? req.body.camara1[16].replace(",", ".") : 0.0;
-   var camara114 = req.body.camara2[16] !== "" ? req.body.camara2[16].replace(",", ".") : 0.0;
-   var camara115 = req.body.camara3[16] !== "" ? req.body.camara3[16].replace(",", ".") : 0.0;
-   var camara116 = req.body.camara4[16] !== "" ? req.body.camara4[16].replace(",", ".") : 0.0;
-   var camara117 = req.body.camara5[16] !== "" ? req.body.camara5[16].replace(",", ".") : 0.0;
-   var camara118 = req.body.camara6[16] !== "" ? req.body.camara6[16].replace(",", ".") : 0.0;
-   var camara119 = req.body.camara7[16] !== "" ? req.body.camara7[16].replace(",", ".") : 0.0;
-   var camara120 = req.body.camara1[17] !== "" ? req.body.camara1[17].replace(",", ".") : 0.0;
-   var camara121 = req.body.camara2[17] !== "" ? req.body.camara2[17].replace(",", ".") : 0.0;
-   var camara122 = req.body.camara3[17] !== "" ? req.body.camara3[17].replace(",", ".") : 0.0;
-   var camara123 = req.body.camara4[17] !== "" ? req.body.camara4[17].replace(",", ".") : 0.0;
-   var camara124 = req.body.camara5[17] !== "" ? req.body.camara5[17].replace(",", ".") : 0.0;
-   var camara125 = req.body.camara6[17] !== "" ? req.body.camara6[17].replace(",", ".") : 0.0;
-   var camara126 = req.body.camara7[17] !== "" ? req.body.camara7[17].replace(",", ".") : 0.0;
-   var camara127 = req.body.camara1[18] !== "" ? req.body.camara1[18].replace(",", ".") : 0.0;
-   var camara128 = req.body.camara2[18] !== "" ? req.body.camara2[18].replace(",", ".") : 0.0;
-   var camara129 = req.body.camara3[18] !== "" ? req.body.camara3[18].replace(",", ".") : 0.0;
-   var camara130 = req.body.camara4[18] !== "" ? req.body.camara4[18].replace(",", ".") : 0.0;
+   var camara7 = req.body.camara1[1] !== "" ? req.body.camara1[1].replace(",", ".") : 0.0;
+   var camara8 = req.body.camara2[1] !== "" ? req.body.camara2[1].replace(",", ".") : 0.0;
+   var camara9 = req.body.camara3[1] !== "" ? req.body.camara3[1].replace(",", ".") : 0.0;
+   var camara10 = req.body.camara4[1] !== "" ? req.body.camara4[1].replace(",", ".") : 0.0;
+   var camara11 = req.body.camara5[1] !== "" ? req.body.camara5[1].replace(",", ".") : 0.0;
+   var camara12 = req.body.camara6[1] !== "" ? req.body.camara6[1].replace(",", ".") : 0.0;
+   var camara13 = req.body.camara1[2] !== "" ? req.body.camara1[2].replace(",", ".") : 0.0;
+   var camara14 = req.body.camara2[2] !== "" ? req.body.camara2[2].replace(",", ".") : 0.0;
+   var camara15 = req.body.camara3[2] !== "" ? req.body.camara3[2].replace(",", ".") : 0.0;
+   var camara16 = req.body.camara4[2] !== "" ? req.body.camara4[2].replace(",", ".") : 0.0;
+   var camara17 = req.body.camara5[2] !== "" ? req.body.camara5[2].replace(",", ".") : 0.0;
+   var camara18 = req.body.camara6[2] !== "" ? req.body.camara6[2].replace(",", ".") : 0.0;
+   var camara19 = req.body.camara1[3] !== "" ? req.body.camara1[3].replace(",", ".") : 0.0;
+   var camara20 = req.body.camara2[3] !== "" ? req.body.camara2[3].replace(",", ".") : 0.0;
+   var camara21 = req.body.camara3[3] !== "" ? req.body.camara3[3].replace(",", ".") : 0.0;
+   var camara22 = req.body.camara4[3] !== "" ? req.body.camara4[3].replace(",", ".") : 0.0;
+   var camara23 = req.body.camara5[3] !== "" ? req.body.camara5[3].replace(",", ".") : 0.0;
+   var camara24 = req.body.camara6[3] !== "" ? req.body.camara6[3].replace(",", ".") : 0.0;
+   var camara25 = req.body.camara1[4] !== "" ? req.body.camara1[4].replace(",", ".") : 0.0;
+   var camara26 = req.body.camara2[4] !== "" ? req.body.camara2[4].replace(",", ".") : 0.0;
+   var camara27 = req.body.camara3[4] !== "" ? req.body.camara3[4].replace(",", ".") : 0.0;
+   var camara28 = req.body.camara4[4] !== "" ? req.body.camara4[4].replace(",", ".") : 0.0;
+   var camara29 = req.body.camara5[4] !== "" ? req.body.camara5[4].replace(",", ".") : 0.0;
+   var camara30 = req.body.camara6[4] !== "" ? req.body.camara6[4].replace(",", ".") : 0.0;
+   var camara31 = req.body.camara1[5] !== "" ? req.body.camara1[5].replace(",", ".") : 0.0;
+   var camara32 = req.body.camara2[5] !== "" ? req.body.camara2[5].replace(",", ".") : 0.0;
+   var camara33 = req.body.camara3[5] !== "" ? req.body.camara3[5].replace(",", ".") : 0.0;
+   var camara34 = req.body.camara4[5] !== "" ? req.body.camara4[5].replace(",", ".") : 0.0;
+   var camara35 = req.body.camara5[5] !== "" ? req.body.camara5[5].replace(",", ".") : 0.0;
+   var camara36 = req.body.camara6[5] !== "" ? req.body.camara6[5].replace(",", ".") : 0.0;
+   var camara37 = req.body.camara1[6] !== "" ? req.body.camara1[6].replace(",", ".") : 0.0;
+   var camara38 = req.body.camara2[6] !== "" ? req.body.camara2[6].replace(",", ".") : 0.0;
+   var camara39 = req.body.camara3[6] !== "" ? req.body.camara3[6].replace(",", ".") : 0.0;
+   var camara40 = req.body.camara4[6] !== "" ? req.body.camara4[6].replace(",", ".") : 0.0;
+   var camara41 = req.body.camara5[6] !== "" ? req.body.camara5[6].replace(",", ".") : 0.0;
+   var camara42 = req.body.camara6[6] !== "" ? req.body.camara6[6].replace(",", ".") : 0.0;
+   var camara43 = req.body.camara1[7] !== "" ? req.body.camara1[7].replace(",", ".") : 0.0;
+   var camara44 = req.body.camara2[7] !== "" ? req.body.camara2[7].replace(",", ".") : 0.0;
+   var camara45 = req.body.camara3[7] !== "" ? req.body.camara3[7].replace(",", ".") : 0.0;
+   var camara46 = req.body.camara4[7] !== "" ? req.body.camara4[7].replace(",", ".") : 0.0;
+   var camara47 = req.body.camara5[7] !== "" ? req.body.camara5[7].replace(",", ".") : 0.0;
+   var camara48 = req.body.camara6[7] !== "" ? req.body.camara6[7].replace(",", ".") : 0.0;
+   var camara49 = req.body.camara1[8] !== "" ? req.body.camara1[8].replace(",", ".") : 0.0;
+   var camara50 = req.body.camara2[8] !== "" ? req.body.camara2[8].replace(",", ".") : 0.0;
+   var camara51 = req.body.camara3[8] !== "" ? req.body.camara3[8].replace(",", ".") : 0.0;
+   var camara52 = req.body.camara4[8] !== "" ? req.body.camara4[8].replace(",", ".") : 0.0;
+   var camara53 = req.body.camara5[8] !== "" ? req.body.camara5[8].replace(",", ".") : 0.0;
+   var camara54 = req.body.camara6[8] !== "" ? req.body.camara6[8].replace(",", ".") : 0.0;
+   var camara55 = req.body.camara1[9] !== "" ? req.body.camara1[9].replace(",", ".") : 0.0;
+   var camara56 = req.body.camara2[9] !== "" ? req.body.camara2[9].replace(",", ".") : 0.0;
+   var camara57 = req.body.camara3[9] !== "" ? req.body.camara3[9].replace(",", ".") : 0.0;
+   var camara58 = req.body.camara4[9] !== "" ? req.body.camara4[9].replace(",", ".") : 0.0;
+   var camara59 = req.body.camara5[9] !== "" ? req.body.camara5[9].replace(",", ".") : 0.0;
+   var camara60 = req.body.camara6[9] !== "" ? req.body.camara6[9].replace(",", ".") : 0.0;
+   var camara61 = req.body.camara1[10] !== "" ? req.body.camara1[10].replace(",", ".") : 0.0;
+   var camara62 = req.body.camara2[10] !== "" ? req.body.camara2[10].replace(",", ".") : 0.0;
+   var camara63 = req.body.camara3[10] !== "" ? req.body.camara3[10].replace(",", ".") : 0.0;
+   var camara64 = req.body.camara4[10] !== "" ? req.body.camara4[10].replace(",", ".") : 0.0;
+   var camara65 = req.body.camara5[10] !== "" ? req.body.camara5[10].replace(",", ".") : 0.0;
+   var camara66 = req.body.camara6[10] !== "" ? req.body.camara6[10].replace(",", ".") : 0.0;
+   var camara67 = req.body.camara1[11] !== "" ? req.body.camara1[11].replace(",", ".") : 0.0;
+   var camara68 = req.body.camara2[11] !== "" ? req.body.camara2[11].replace(",", ".") : 0.0;
+   var camara69 = req.body.camara3[11] !== "" ? req.body.camara3[11].replace(",", ".") : 0.0;
+   var camara70 = req.body.camara4[11] !== "" ? req.body.camara4[11].replace(",", ".") : 0.0;
+   var camara71 = req.body.camara5[11] !== "" ? req.body.camara5[11].replace(",", ".") : 0.0;
+   var camara72 = req.body.camara6[11] !== "" ? req.body.camara6[11].replace(",", ".") : 0.0;
+   var camara73 = req.body.camara1[12] !== "" ? req.body.camara1[12].replace(",", ".") : 0.0;
+   var camara74 = req.body.camara2[12] !== "" ? req.body.camara2[12].replace(",", ".") : 0.0;
+   var camara75 = req.body.camara3[12] !== "" ? req.body.camara3[12].replace(",", ".") : 0.0;
+   var camara76 = req.body.camara4[12] !== "" ? req.body.camara4[12].replace(",", ".") : 0.0;
+   var camara77 = req.body.camara5[12] !== "" ? req.body.camara5[12].replace(",", ".") : 0.0;
+   var camara78 = req.body.camara6[12] !== "" ? req.body.camara6[12].replace(",", ".") : 0.0;
+   var camara79 = req.body.camara1[13] !== "" ? req.body.camara1[13].replace(",", ".") : 0.0;
+   var camara80 = req.body.camara2[13] !== "" ? req.body.camara2[13].replace(",", ".") : 0.0;
+   var camara81 = req.body.camara3[13] !== "" ? req.body.camara3[13].replace(",", ".") : 0.0;
+   var camara82 = req.body.camara4[13] !== "" ? req.body.camara4[13].replace(",", ".") : 0.0;
+   var camara83 = req.body.camara5[13] !== "" ? req.body.camara5[13].replace(",", ".") : 0.0;
+   var camara84 = req.body.camara6[13] !== "" ? req.body.camara6[13].replace(",", ".") : 0.0;
+   var camara85 = req.body.camara1[14] !== "" ? req.body.camara1[14].replace(",", ".") : 0.0;
+   var camara86 = req.body.camara2[14] !== "" ? req.body.camara2[14].replace(",", ".") : 0.0;
+   var camara87 = req.body.camara3[14] !== "" ? req.body.camara3[14].replace(",", ".") : 0.0;
+   var camara88 = req.body.camara4[14] !== "" ? req.body.camara4[14].replace(",", ".") : 0.0;
+   var camara89 = req.body.camara5[14] !== "" ? req.body.camara5[14].replace(",", ".") : 0.0;
+   var camara90 = req.body.camara6[14] !== "" ? req.body.camara6[14].replace(",", ".") : 0.0;
+   var camara91 = req.body.camara1[15] !== "" ? req.body.camara1[15].replace(",", ".") : 0.0;
+   var camara92 = req.body.camara2[15] !== "" ? req.body.camara2[15].replace(",", ".") : 0.0;
+   var camara93 = req.body.camara3[15] !== "" ? req.body.camara3[15].replace(",", ".") : 0.0;
+   var camara94 = req.body.camara4[15] !== "" ? req.body.camara4[15].replace(",", ".") : 0.0;
+   var camara95 = req.body.camara5[15] !== "" ? req.body.camara5[15].replace(",", ".") : 0.0;
+   var camara96 = req.body.camara6[15] !== "" ? req.body.camara6[15].replace(",", ".") : 0.0;
+   var camara97 = req.body.camara1[16] !== "" ? req.body.camara1[16].replace(",", ".") : 0.0;
+   var camara98 = req.body.camara2[16] !== "" ? req.body.camara2[16].replace(",", ".") : 0.0;
+   var camara99 = req.body.camara3[16] !== "" ? req.body.camara3[16].replace(",", ".") : 0.0;
+   var camara100 = req.body.camara4[16] !== "" ? req.body.camara4[16].replace(",", ".") : 0.0;
+   var camara101 = req.body.camara5[16] !== "" ? req.body.camara5[16].replace(",", ".") : 0.0;
+   var camara102 = req.body.camara6[16] !== "" ? req.body.camara6[16].replace(",", ".") : 0.0;
+   var camara103 = req.body.camara1[17] !== "" ? req.body.camara1[17].replace(",", ".") : 0.0;
+   var camara104 = req.body.camara2[17] !== "" ? req.body.camara2[17].replace(",", ".") : 0.0;
+   var camara105 = req.body.camara3[17] !== "" ? req.body.camara3[17].replace(",", ".") : 0.0;
+   var camara106 = req.body.camara4[17] !== "" ? req.body.camara4[17].replace(",", ".") : 0.0;
+   var camara107 = req.body.camara5[17] !== "" ? req.body.camara5[17].replace(",", ".") : 0.0;
+   var camara108 = req.body.camara6[17] !== "" ? req.body.camara6[17].replace(",", ".") : 0.0;
+   var camara109 = req.body.camara1[18] !== "" ? req.body.camara1[18].replace(",", ".") : 0.0;
+   var camara110 = req.body.camara2[18] !== "" ? req.body.camara2[18].replace(",", ".") : 0.0;
+   var camara111 = req.body.camara3[18] !== "" ? req.body.camara3[18].replace(",", ".") : 0.0;
+   var camara112 = req.body.camara4[18] !== "" ? req.body.camara4[18].replace(",", ".") : 0.0;
+   var camara113 = req.body.camara5[18] !== "" ? req.body.camara5[18].replace(",", ".") : 0.0;
+   var camara114 = req.body.camara6[18] !== "" ? req.body.camara6[18].replace(",", ".") : 0.0;
+   var camara115 = req.body.camara1[19] !== "" ? req.body.camara1[19].replace(",", ".") : 0.0;
+   var camara116 = req.body.camara2[19] !== "" ? req.body.camara2[19].replace(",", ".") : 0.0;
+   var camara117 = req.body.camara3[19] !== "" ? req.body.camara3[19].replace(",", ".") : 0.0;
+   var camara118 = req.body.camara4[19] !== "" ? req.body.camara4[19].replace(",", ".") : 0.0;
+   var camara119 = req.body.camara5[19] !== "" ? req.body.camara5[19].replace(",", ".") : 0.0;
+   var camara120 = req.body.camara6[19] !== "" ? req.body.camara6[19].replace(",", ".") : 0.0;
+   var camara121 = req.body.camara1[20] !== "" ? req.body.camara1[20].replace(",", ".") : 0.0;
+   var camara122 = req.body.camara2[20] !== "" ? req.body.camara2[20].replace(",", ".") : 0.0;
+   var camara123 = req.body.camara3[20] !== "" ? req.body.camara3[20].replace(",", ".") : 0.0;
+   var camara124 = req.body.camara4[20] !== "" ? req.body.camara4[20].replace(",", ".") : 0.0;
+   var camara125 = req.body.camara5[20] !== "" ? req.body.camara5[20].replace(",", ".") : 0.0;
+   var camara126 = req.body.camara6[20] !== "" ? req.body.camara6[20].replace(",", ".") : 0.0;
+   var camara127 = req.body.camara1[21] !== "" ? req.body.camara1[21].replace(",", ".") : 0.0;
+   var camara128 = req.body.camara2[21] !== "" ? req.body.camara2[21].replace(",", ".") : 0.0;
+   var camara129 = req.body.camara3[21] !== "" ? req.body.camara3[21].replace(",", ".") : 0.0;
+   var camara130 = req.body.camara4[21] !== "" ? req.body.camara4[21].replace(",", ".") : 0.0;
    var VG1DLYTIME = req.body.VG1[0] !== "" ? req.body.VG1[0].replace(",", ".") : 0.0;
    var VG1ACTTIME = req.body.VG1[1] !== "" ? req.body.VG1[1].replace(",", ".") : 0.0;
    var VG2DLYTIME = req.body.VG1[2] !== "" ? req.body.VG1[2].replace(",", ".") : 0.0;
@@ -2212,6 +2216,8 @@ router.post("/fichas/createHaitian",(req,res) => {
                radialTypeSaida1: radialTypeSaida1,
                radialTypeEntrada2: radialTypeEntrada2,
                radialTypeSaida2: radialTypeSaida2,
+               radialTypeEntrada3: radialTypeEntrada3,
+               radialTypeSaida3: radialTypeSaida3,
                radialPresEntrada1: radialPresEntrada1,
                radialPresSaida1: radialPresSaida1,
                radialPresEntrada2: radialPresEntrada2,
@@ -2449,10 +2455,10 @@ router.post("/fichas/updateHaitian",(req,res) => {
 
    var radialTypeEntrada1 = req.body.typeEntrada1;
    var radialTypeSaida1 = req.body.typeSaida1;
-   var radialTypeEntrada2 = req.body.type1 !== "" ? req.body.type1.replace(",", ".") : 0.0;
-   var radialTypeSaida2 = req.body.type2 !== "" ? req.body.type2.replace(",", ".") : 0.0;
-   var radialTypeEntrada3 = req.body.type3 !== "" ? req.body.type3.replace(",", ".") : 0.0;
-   var radialTypeSaida3 = req.body.type4 !== "" ? req.body.type4.replace(",", ".") : 0.0;
+   var radialTypeEntrada2 = req.body.typeEntrada2;
+   var radialTypeSaida2 = req.body.typeSaida2;
+   var radialTypeEntrada3 = req.body.typeEntrada3;
+   var radialTypeSaida3 = req.body.typeSaida3;
 
    var radialPresEntrada1 = req.body.pressaoRadial1 !== "" ? req.body.pressaoRadial1.replace(",", ".") : 0.0;
    var radialPresSaida1 = req.body.pressaoRadial2 !== "" ? req.body.pressaoRadial2.replace(",", ".") : 0.0;
@@ -3562,6 +3568,8 @@ router.post("/fichas/updateHaitian",(req,res) => {
                radialTypeSaida1: radialTypeSaida1,
                radialTypeEntrada2: radialTypeEntrada2,
                radialTypeSaida2: radialTypeSaida2,
+               radialTypeEntrada3: radialTypeEntrada3,
+               radialTypeSaida3: radialTypeSaida3,
                radialPresEntrada1: radialPresEntrada1,
                radialPresSaida1: radialPresSaida1,
                radialPresEntrada2: radialPresEntrada2,
