@@ -5,7 +5,7 @@
 
     <hr>
     <h2>Usuários</h2> 
-    <a class="btn btn-success" href="/users/create"> Criar novo Usuário</a>
+    <a class="btn btn-success newUser" href="/users/create"> Criar novo Usuário</a>
     <hr>
 
     <table class="table table-bordered"> 
@@ -15,7 +15,7 @@
                 <th> nome </th>  
                 <th> email </th>       
                 <th> Matrícula </th>   
-                <th> Opções </th>  
+                <th class="newUser"> Opções </th>  
                 
             </tr>
         </thead>
@@ -28,7 +28,7 @@
                 <td> <%= user.email %>  </td>
                 <td> <%= user.matricula %>  </td>
                 
-                <td> 
+                <td class="newUser"> 
                     <form method="GET" action="/admin/users/edit/<%= user.id %>" style="display: inline;">                                     
                             <button class="btn btn-warning"> Editar</button>
                     </form>
