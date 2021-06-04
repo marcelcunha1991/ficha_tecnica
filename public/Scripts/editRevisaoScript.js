@@ -182,17 +182,60 @@ $(document).ready(function () {
          }
    
          //RADIAL TYPE
-         if (response.radialTypeEntrada1 === "Limite") {
+         if (response.radialTypeEntrada1 === "0") {
+            $("#typeEntrada1").val("0")
+
+         } else if (response.radialTypeEntrada1 === "Limite") {
             $("#typeEntrada1").val("Limite")
-         } else {
+         } else  {
             $("#typeEntrada1").val("Tempo")
          }
-   
-         if (response.radialTypeSaida1 === "Limite") {
+
+         if (response.radialTypeSaida1 === "0") {
+            $("#typeSaida1").val("0")
+
+         } else if (response.radialTypeSaida1 === "Limite") {
             $("#typeSaida1").val("Limite")
-         } else {
+         } else  {
             $("#typeSaida1").val("Tempo")
          }
+
+         if (response.radialTypeEntrada2 === "0") {
+            $("#typeEntrada2").val("0")
+
+         } else if (response.radialTypeEntrada2 === "Limite") {
+            $("#typeEntrada2").val("Limite")
+         } else  {
+            $("#typeEntrada2").val("Tempo")
+         }
+
+         if (response.radialTypeSaida2 === "0") {
+            $("#typeSaida2").val("0")
+
+         } else if (response.radialTypeSaida2 === "Limite") {
+            $("#typeSaida2").val("Limite")
+         } else  {
+            $("#typeSaida2").val("Tempo")
+         }
+
+         if (response.radialTypeEntrada3 === "0") {
+            $("#typeEntrada3").val("0")
+
+         } else if (response.radialTypeEntrada3 === "Limite") {
+            $("#typeEntrada3").val("Limite")
+         } else  {
+            $("#typeEntrada3").val("Tempo")
+         }
+
+         if (response.radialTypeSaida3 === "0") {
+            $("#typeSaida3").val("0")
+
+         } else if (response.radialTypeSaida3 === "Limite") {
+            $("#typeSaida3").val("Limite")
+         } else  {
+            $("#typeSaida3").val("Tempo")
+         }
+
    
          $("#userLogado").val(sessionStorage.getItem('userLogado'));
       }

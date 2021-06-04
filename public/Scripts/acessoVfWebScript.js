@@ -3275,18 +3275,10 @@ function tipoVisualizacao(tipo) {
                                                 "<th colspan='1'>TYPE</th>" +
                                                 "<th colspan='1'>" + injetor.radialTypeEntrada1 + "</th>" +
                                                 "<th colspan='1'>" + injetor.radialTypeSaida1 + "</th>" +
-                                                "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + injetor.radialTypeEntrada2 + "</span></p>" +
-                                                "</td>" +
-                                                "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + injetor.radialTypeSaida2 + "</span></p>" +
-                                                "</td>" +
-                                                "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + injetor.radialTypeEntrada3 + "</span></p>" +
-                                                "</td>" +
-                                                "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + injetor.radialTypeSaida3 + "</span></p>" +
-                                                "</td>" +
+                                                "<th colspan='1'>" + injetor.radialTypeEntrada2 + "</th>" +
+                                                "<th colspan='1'>" + injetor.radialTypeSaida2 + "</th>" +
+                                                "<th colspan='1'>" + injetor.radialTypeEntrada3 + "</th>" +
+                                                "<th colspan='1'>" + injetor.radialTypeSaida3 + "</th>" +
                                              "</tr>"
    
                                  radial += "<tr><th scope='row' colspan='1'>PRESSÃO:</th>";
