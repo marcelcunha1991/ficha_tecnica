@@ -241,6 +241,7 @@ $(document).ready(function () {
    
    $('#setarValor tbody tr').append(tbody);
 
+   document.getElementById("edit").disabled = true;
 })
 
 //edit e new ficha haitian
@@ -281,6 +282,7 @@ function form_submit() {
             $("input, textarea").unbind("keypress");
             $('#loginModal').modal('hide');
             $("#tecnico").val(success.nome);
+            document.getElementById("edit").disabled = false;
          }
       }
    })
