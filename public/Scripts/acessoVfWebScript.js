@@ -3471,429 +3471,565 @@ function tipoVisualizacao(tipo) {
    
                                  var camara = "<tr>" +
                                                 "<td colspan='1'>" +
+                                                  "<label id='labelCamara' class='d-flex'>1</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara1 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>2</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara2 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>3</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara3 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>4</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara4 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>5</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara5 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>6</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara6 + "</span></p>" +
-                                                "</td>" +
-                                                "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara7 + "</span></p>" +
                                                 "</td>" +
                                              "</tr>" +
                                              "<tr>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>7</label>" +
+                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara7 + "</span></p>" +
+                                                "</td>" +
+                                                "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>8</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara8 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>9</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara9 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>10</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara10 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>11</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara11 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>12</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara12 + "</span></p>" +
                                                 "</td>" +
+                                             "</tr>" +
+                                             "<tr>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>13</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara13 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>14</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara14 + "</span></p>" +
                                                 "</td>" +
-                                             "</tr>" +
-                                             "<tr>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>15</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara15 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>16</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara16 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>17</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara17 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>18</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara18 + "</span></p>" +
                                                 "</td>" +
+                                             "</tr>" +
+                                             "<tr>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>19</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara19 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>20</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara20 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>21</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara21 + "</span></p>" +
                                                 "</td>" +
-                                             "</tr>" +
-                                             "<tr>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>22</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara22 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>23</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara23 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>24</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara24 + "</span></p>" +
                                                 "</td>" +
+                                             "</tr>" +
+                                             "<tr>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>25</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara25 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>26</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara26 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>27</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara27 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>28</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara28 + "</span></p>" +
                                                 "</td>" +
-                                             "</tr>" +
-                                             "<tr>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>29</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara29 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>30</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara30 + "</span></p>" +
-                                                "</td>" +
-                                                "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara31 + "</span></p>" +
-                                                "</td>" +
-                                                "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara32 + "</span></p>" +
-                                                "</td>" +
-                                                "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara33 + "</span></p>" +
-                                                "</td>" +
-                                                "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara34 + "</span></p>" +
-                                                "</td>" +
-                                                "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara35 + "</span></p>" +
                                                 "</td>" +
                                              "</tr>" +
                                              "<tr>" +
                                                 "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara36 + "</span></p>" +
+                                                   "<label id='labelCamara' class='d-flex'>31</label>" +
+                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara31 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>32</label>" +
+                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara32 + "</span></p>" +
+                                                "</td>" +
+                                                "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>33</label>" +
+                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara33 + "</span></p>" +
+                                                "</td>" +
+                                                "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>34</label>" +
+                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara34 + "</span></p>" +
+                                                "</td>" +
+                                                "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>35</label>" +
+                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara35 + "</span></p>" +
+                                                "</td>" +
+                                                "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>36</label>" +
+                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara36 + "</span></p>" +
+                                                "</td>" +
+                                             "</tr>" +
+                                             "<tr>" +
+                                                "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>37</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara37 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>38</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara38 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>39</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara39 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>40</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara40 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>41</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara41 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>42</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara42 + "</span></p>" +
                                                 "</td>" +
                                              "</tr>" +
                                              "<tr>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>43</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara43 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>44</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara44 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>45</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara45 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>46</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara46 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>47</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara47 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>48</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara48 + "</span></p>" +
-                                                "</td>" +
-                                                "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara49 + "</span></p>" +
                                                 "</td>" +
                                              "</tr>" +
                                              "<tr>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>49</label>" +
+                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara49 + "</span></p>" +
+                                                "</td>" +
+                                                "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>50</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara50 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>51</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara51 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>52</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara52 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>53</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara53 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>54</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara54 + "</span></p>" +
                                                 "</td>" +
+                                             "</tr>" +
+                                             "<tr>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>55</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara55 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>56</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara56 + "</span></p>" +
                                                 "</td>" +
-                                             "</tr>" +
-                                             "<tr>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>57</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara57 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>58</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara58 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>59</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara59 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>60</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara60 + "</span></p>" +
                                                 "</td>" +
+                                             "</tr>" +
+                                             "<tr>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>61</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara61 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>62</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara62 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>63</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara63 + "</span></p>" +
                                                 "</td>" +
-                                             "</tr>" +
-                                             "<tr>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>64</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara64 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>65</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara65 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>66</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara66 + "</span></p>" +
                                                 "</td>" +
+                                             "</tr>" +
+                                             "<tr>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>67</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara67 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>68</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara68 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>69</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara69 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>70</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara70 + "</span></p>" +
                                                 "</td>" +
-                                             "</tr>" +
-                                             "<tr>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>71</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara71 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>72</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara72 + "</span></p>" +
-                                                "</td>" +
-                                                "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara73 + "</span></p>" +
-                                                "</td>" +
-                                                "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara74 + "</span></p>" +
-                                                "</td>" +
-                                                "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara75 + "</span></p>" +
-                                                "</td>" +
-                                                "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara76 + "</span></p>" +
-                                                "</td>" +
-                                                "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara77 + "</span></p>" +
                                                 "</td>" +
                                              "</tr>" +
                                              "<tr>" +
                                                 "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara78 + "</span></p>" +
+                                                   "<label id='labelCamara' class='d-flex'>73</label>" +
+                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara73 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>74</label>" +
+                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara74 + "</span></p>" +
+                                                "</td>" +
+                                                "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>75</label>" +
+                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara75 + "</span></p>" +
+                                                "</td>" +
+                                                "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>76</label>" +
+                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara76 + "</span></p>" +
+                                                "</td>" +
+                                                "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>77</label>" +
+                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara77 + "</span></p>" +
+                                                "</td>" +
+                                                "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>78</label>" +
+                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara78 + "</span></p>" +
+                                                "</td>" +
+                                             "</tr>" +
+                                             "<tr>" +
+                                                "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>79</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara79 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>80</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara80 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>81</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara81 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>82</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara82 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>83</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara83 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>84</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara84 + "</span></p>" +
                                                 "</td>" +
                                              "</tr>" +
                                              "<tr>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>85</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara85 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>86</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara86 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>87</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara87 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>88</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara88 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>89</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara89 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>90</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara90 + "</span></p>" +
-                                                "</td>" +
-                                                "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara91 + "</span></p>" +
                                                 "</td>" +
                                              "</tr>" +
                                              "<tr>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>91</label>" +
+                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara91 + "</span></p>" +
+                                                "</td>" +
+                                                "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>92</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara92 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>93</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara93 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>94</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara94 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>95</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara95 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>96</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara96 + "</span></p>" +
                                                 "</td>" +
+                                             "</tr>" +
+                                             "<tr>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>97</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara97 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>98</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara98 + "</span></p>" +
                                                 "</td>" +
-                                             "</tr>" +
-                                             "<tr>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>99</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara99 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>100</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara100 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>101</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara101 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>102</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara102 + "</span></p>" +
                                                 "</td>" +
+                                             "</tr>" +
+                                             "<tr>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>103</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara103 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>104</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara104 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>105</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara105 + "</span></p>" +
                                                 "</td>" +
-                                             "</tr>" +
-                                             "<tr>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>106</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara106 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>107</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara107 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>108</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara108 + "</span></p>" +
                                                 "</td>" +
+                                             "</tr>" +
+                                             "<tr>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>109</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara109 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>110</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara110 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>111</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara111 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>112</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara112 + "</span></p>" +
                                                 "</td>" +
-                                             "</tr>" +
-                                             "<tr>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>113</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara113 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>114</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara114 + "</span></p>" +
-                                                "</td>" +
-                                                "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara115 + "</span></p>" +
-                                                "</td>" +
-                                                "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara116 + "</span></p>" +
-                                                "</td>" +
-                                                "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara117 + "</span></p>" +
-                                                "</td>" +
-                                                "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara118 + "</span></p>" +
-                                                "</td>" +
-                                                "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara119 + "</span></p>" +
                                                 "</td>" +
                                              "</tr>" +
                                              "<tr>" +
                                                 "<td colspan='1'>" +
-                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara120 + "</span></p>" +
+                                                   "<label id='labelCamara' class='d-flex'>115</label>" +
+                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara115 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>116</label>" +
+                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara116 + "</span></p>" +
+                                                "</td>" +
+                                                "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>117</label>" +
+                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara117 + "</span></p>" +
+                                                "</td>" +
+                                                "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>118</label>" +
+                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara118 + "</span></p>" +
+                                                "</td>" +
+                                                "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>119</label>" +
+                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara119 + "</span></p>" +
+                                                "</td>" +
+                                                "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>120</label>" +
+                                                   "<p class='read-only'><span class='cadastrados'>" + perifericos.camara120 + "</span></p>" +
+                                                "</td>" +
+                                             "</tr>" +
+                                             "<tr>" +
+                                                "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>121</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara121 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>122</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara122 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>123</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara123 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>124</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara124 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>125</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara125 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>126</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara126 + "</span></p>" +
                                                 "</td>" +
                                              "</tr>" +
                                              "<tr>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>127</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara127 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>128</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara128 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>129</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara129 + "</span></p>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
+                                                   "<label id='labelCamara' class='d-flex'>130</label>" +
                                                    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara130 + "</span></p>" +
                                                 "</td>" +
                                              "</tr>"
