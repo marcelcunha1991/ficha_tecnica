@@ -4043,351 +4043,388 @@ function tipoVisualizacao(tipo) {
                                     tableBody.html(camara);
    
                                     var valveGate ="<tr>" +
-                                                      "<th>BICO</th>" +
-                                                      "<th>DLY TIME</th>" +
-                                                      "<th>ACT TIME</th>" +
-                                                      "<th>BICO</th>" +
-                                                      "<th>DLY TIME</th>" +
-                                                      "<th>ACT TIME</th>" +
+                                                      "<th colspan='1'>BICO</th>" +
+                                                      "<th colspan='3'>DLY TIME</th>" +
+                                                      "<th colspan='3'>ACT TIME</th>" +
                                                    "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG1</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG1DLYTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG1DLYTIME + "</span>" + "</p>" +
                                                       "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG1ACTTIME + "</span></p>" +
-                                                      "</td>" +
-                                                      
-                                                      "<th>VG21</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG21DLYTIME + "</span></p>" +
-                                                      "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG21ACTTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG1ACTTIME + "</span>" + "</p>" +
                                                       "</td>" +
                                                    "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG2</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG2DLYTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG2DLYTIME + "</span>" + "</p>" +
                                                       "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG2ACTTIME + "</span></p>" +
-                                                      "</td>" +
-
-                                                      "<th>VG22</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG22DLYTIME + "</span></p>" +
-                                                      "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG22ACTTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG2ACTTIME + "</span>" + "</p>" +
                                                       "</td>" +
                                                    "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG3</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG3DLYTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG3DLYTIME + "</span>" + "</p>" +
                                                       "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG3ACTTIME + "</span></p>" +
-                                                      "</td>" +
-
-                                                      "<th>VG23</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG23DLYTIME + "</span></p>" +
-                                                      "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG23ACTTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG3ACTTIME + "</span>" + "</p>" +
                                                       "</td>" +
                                                    "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG4</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG4DLYTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG4DLYTIME + "</span>" + "</p>" +
                                                       "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG4ACTTIME + "</span></p>" +
-                                                      "</td>" +
-
-                                                      "<th>VG24</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG24DLYTIME + "</span></p>" +
-                                                      "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG24ACTTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG4ACTTIME + "</span>" + "</p>" +
                                                       "</td>" +
                                                    "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG5</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG5DLYTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG5DLYTIME + "</span>" + "</p>" +
                                                       "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG5ACTTIME + "</span></p>" +
-                                                      "</td>" +
-
-                                                      "<th>VG25</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG25DLYTIME + "</span></p>" +
-                                                      "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG25ACTTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG5ACTTIME + "</span>" + "</p>" +
                                                       "</td>" +
                                                    "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG6</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG6DLYTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG6DLYTIME + "</span>" + "</p>" +
                                                       "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG6ACTTIME + "</span></p>" +
-                                                      "</td>" +
-
-                                                      "<th>VG26</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG26DLYTIME + "</span></p>" +
-                                                      "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG26ACTTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG6ACTTIME + "</span>" + "</p>" +
                                                       "</td>" +
                                                    "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG7</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG7DLYTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG7DLYTIME + "</span>" + "</p>" +
                                                       "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG7ACTTIME + "</span></p>" +
-                                                      "</td>" +
-
-                                                      "<th>VG27</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG27DLYTIME + "</span></p>" +
-                                                      "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG27ACTTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG7ACTTIME + "</span>" + "</p>" +
                                                       "</td>" +
                                                    "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG8</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG8DLYTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG8DLYTIME + "</span>" + "</p>" +
                                                       "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG8ACTTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG8ACTTIME + "</span>" + "</p>" +
                                                       "</td>" +
-
-                                                      "<th>VG28</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG28DLYTIME + "</span></p>" +
-                                                      "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG28ACTTIME + "</span></p>" +
+                                                   "</tr>" +
+                                                   "<tr>" +
+                                                      "<td style='border-right: none; height: 40px;'>" +
+                                                         "<p class='read-only' style='width: 100%;'></p>" +
                                                       "</td>" +
                                                    "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG9</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG9DLYTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG9DLYTIME + "</span>" + "</p>" +
                                                       "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG9ACTTIME + "</span></p>" +
-                                                      "</td>" +
-
-                                                      "<th>VG29</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG29DLYTIME + "</span></p>" +
-                                                      "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG29ACTTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG9ACTTIME + "</span>" + "</p>" +
                                                       "</td>" +
                                                    "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG10</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG10DLYTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG10DLYTIME + "</span>" + "</p>" +
                                                       "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG10ACTTIME + "</span></p>" +
-                                                      "</td>" +
-
-                                                      "<th>VG30</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG30DLYTIME + "</span></p>" +
-                                                      "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG30ACTTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG10ACTTIME + "</span>" + "</p>" +
                                                       "</td>" +
                                                    "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG11</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG11DLYTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG11DLYTIME + "</span>" + "</p>" +
                                                       "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG11ACTTIME + "</span></p>" +
-                                                      "</td>" +
-
-                                                      "<th>VG31</th>" +
-                                                      "<td>" + 
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG31DLYTIME + "</span></p>" +
-                                                      "</td>" +
-                                                      "<td>" + 
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG31ACTTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG11ACTTIME + "</span>" + "</p>" +
                                                       "</td>" +
                                                    "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG12</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG12DLYTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG12DLYTIME + "</span>" + "</p>" +
                                                       "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG12ACTTIME + "</span></p>" +
-                                                      "</td>" +
-
-                                                      "<th>VG32</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG32DLYTIME + "</span></p>" +
-                                                      "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG32ACTTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG12ACTTIME + "</span>" + "</p>" +
                                                       "</td>" +
                                                    "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG13</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG13DLYTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG13DLYTIME + "</span>" + "</p>" +
                                                       "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG13ACTTIME + "</span></p>" +
-                                                      "</td>" +
-
-                                                      "<th>VG33</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG33DLYTIME + "</span></p>" +
-                                                      "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG33ACTTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG13ACTTIME + "</span>" + "</p>" +
                                                       "</td>" +
                                                    "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG14</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG14DLYTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG14DLYTIME + "</span>" + "</p>" +
                                                       "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG14ACTTIME + "</span></p>" +
-                                                      "</td>" +
-
-                                                      "<th>VG34</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG34DLYTIME + "</span></p>" +
-                                                      "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG34ACTTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG14ACTTIME + "</span>" + "</p>" +
                                                       "</td>" +
                                                    "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG15</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG15DLYTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG15DLYTIME + "</span>" + "</p>" +
                                                       "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG15ACTTIME + "</span></p>" +
-                                                      "</td>" +
-
-                                                      "<th>VG35</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG35DLYTIME + "</span></p>" +
-                                                      "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG35ACTTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG15ACTTIME + "</span>" + "</p>" +
                                                       "</td>" +
                                                    "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG16</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG16DLYTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG16DLYTIME + "</span>" + "</p>" +
                                                       "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG16ACTTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG16ACTTIME + "</span>" + "</p>" +
                                                       "</td>" +
-
-                                                      "<th>VG36</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG36DLYTIME + "</span></p>" +
-                                                      "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG36ACTTIME + "</span></p>" +
+                                                   "</tr>" +
+                                                   "<tr>" +
+                                                      "<td style='border-right: none; height: 40px;'>" +
+                                                         "<p class='read-only' style='width: 100%;'></p>" +
                                                       "</td>" +
                                                    "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG17</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG17DLYTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG17DLYTIME + "</span>" + "</p>" +
                                                       "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG17ACTTIME + "</span></p>" +
-                                                      "</td>" +
-
-                                                      "<th>VG37</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG37DLYTIME + "</span></p>" +
-                                                      "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG37ACTTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG17ACTTIME + "</span>" + "</p>" +
                                                       "</td>" +
                                                    "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG18</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG18DLYTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG18DLYTIME + "</span>" + "</p>" +
                                                       "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG18ACTTIME + "</span></p>" +
-                                                      "</td>" +
-
-                                                      "<th>VG38</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG38DLYTIME + "</span></p>" +
-                                                      "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG38ACTTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG18ACTTIME + "</span>" + "</p>" +
                                                       "</td>" +
                                                    "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG19</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG19DLYTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG19DLYTIME + "</span>" + "</p>" +
                                                       "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG19ACTTIME + "</span></p>" +
-                                                      "</td>" +
-
-                                                      "<th>VG39</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG39DLYTIME + "</span></p>" +
-                                                      "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG39ACTTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG19ACTTIME + "</span>" + "</p>" +
                                                       "</td>" +
                                                    "</tr>" +
                                                    "<tr>" +
                                                       "<th>VG20</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG20DLYTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG20DLYTIME + "</span>" + "</p>" +
                                                       "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG20ACTTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG20ACTTIME + "</span>" + "</p>" +
                                                       "</td>" +
-
+                                                   "</tr>" +
+                                                   "<tr>" +
+                                                      "<th>VG21</th>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG21DLYTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG21ACTTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                   "</tr>" +
+                                                   "<tr>" +
+                                                      "<th>VG22</th>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG22DLYTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG22ACTTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                   "</tr>" +
+                                                   "<tr>" +
+                                                      "<th>VG23</th>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG23DLYTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG23ACTTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                   "</tr>" +
+                                                   "<tr>" +
+                                                      "<th>VG24</th>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG24DLYTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG24ACTTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                   "</tr>" +
+                                                   "<tr>" +
+                                                      "<td style='border-right: none; height: 40px;'>" +
+                                                         "<p class='read-only' style='width: 100%;'></p>" +
+                                                      "</td>" +
+                                                   "</tr>" +
+                                                   "<tr>" +
+                                                      "<th>VG25</th>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG25DLYTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG25ACTTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                   "</tr>" +
+                                                   "<tr>" +
+                                                      "<th>VG26</th>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG26DLYTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG26ACTTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                   "</tr>" +
+                                                   "<tr>" +
+                                                      "<th>VG27</th>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG27DLYTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG27ACTTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                   "</tr>" +
+                                                   "<tr>" +
+                                                      "<th>VG28</th>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG28DLYTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG28ACTTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                   "</tr>" +
+                                                   "<tr>" +
+                                                      "<th>VG29</th>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG29DLYTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG29ACTTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                   "</tr>" +
+                                                   "<tr>" +
+                                                      "<th>VG30</th>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG30DLYTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG30ACTTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                   "</tr>" +
+                                                   "<tr>" +
+                                                      "<th>VG31</th>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG31DLYTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG31ACTTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                   "</tr>" +
+                                                   "<tr>" +
+                                                      "<th>VG32</th>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG32DLYTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG32ACTTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                   "</tr>" +
+                                                   "<tr>" +
+                                                      "<td style='border-right: none; height: 40px;'>" +
+                                                         "<p class='read-only' style='width: 100%;'></p>" +
+                                                      "</td>" +
+                                                   "</tr>" +
+                                                   "<tr>" +
+                                                      "<th>VG33</th>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG33DLYTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG33ACTTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                   "</tr>" +
+                                                   "<tr>" +
+                                                      "<th>VG34</th>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG34DLYTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG34ACTTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                   "</tr>" +
+                                                   "<tr>" +
+                                                      "<th>VG35</th>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG35DLYTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG35ACTTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                   "</tr>" +
+                                                   "<tr>" +
+                                                      "<th>VG36</th>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG36DLYTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG36ACTTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                   "</tr>" +
+                                                   "<tr>" +
+                                                      "<th>VG37</th>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG37DLYTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG37ACTTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                   "</tr>" +
+                                                   "<tr>" +
+                                                      "<th>VG38</th>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG38DLYTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG38ACTTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                   "</tr>" +
+                                                   "<tr>" +
+                                                      "<th>VG39</th>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG39DLYTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG39ACTTIME + "</span>" + "</p>" +
+                                                      "</td>" +
+                                                   "</tr>" +
+                                                   "<tr>" +
                                                       "<th>VG40</th>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG40DLYTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG40DLYTIME + "</span>" + "</p>" +
                                                       "</td>" +
-                                                      "<td>" +
-                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG40ACTTIME + "</span></p>" +
+                                                      "<td colspan='3'>" +
+                                                         "<p class='read-only'><span class='cadastrados'>" + perifericos.VG40ACTTIME + "</span>" + "</p>" +
                                                       "</td>" +
                                                    "</tr>"
                                                    
