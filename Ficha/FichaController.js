@@ -28,10 +28,6 @@ router.get("/fichas/:maquina?",  (req,res) => {
    var dsMaquina = "",
    dsMaquina = req.params.maquina;
 
-   let data = new Date();
-   let dataFormatada = (data.getFullYear() + "-" + ((data.getMonth() + 1)) + "-" + (data.getDate() )) ;                 
-   console.log(dataFormatada);
-
    Maquinas.findAll().then(maquina => {
       maquinas = maquina;
 
