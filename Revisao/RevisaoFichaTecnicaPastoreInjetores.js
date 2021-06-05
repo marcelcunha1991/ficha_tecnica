@@ -32,7 +32,7 @@ const RevisaoFichaPastoreInjetores = conn.define('revisao_injetores_pastore',{
    Tecnico: Sequelize.STRING,
    Produto: Sequelize.STRING,
    Material: Sequelize.STRING,
-   Data: {type: Sequelize.DATE, defaultValue: Sequelize.NOW},
+   Data: {type: Sequelize.DATEONLY, defaultValue: Sequelize.NOW},
    Justificativa: Sequelize.TEXT,
    Usuario: Sequelize.TEXT,
 
@@ -179,10 +179,10 @@ const RevisaoFichaPastoreInjetores = conn.define('revisao_injetores_pastore',{
    tolRadial: Sequelize.FLOAT,
    radialTypeEntrada1: Sequelize.STRING,
    radialTypeSaida1: Sequelize.STRING,
-   radialTypeEntrada2: {type: Sequelize.FLOAT, defaultValue: 0.0},
-   radialTypeSaida2: {type: Sequelize.FLOAT, defaultValue: 0.0},
-   radialTypeEntrada3: {type: Sequelize.FLOAT, defaultValue: 0.0},
-   radialTypeSaida3: {type: Sequelize.FLOAT, defaultValue: 0.0},
+   radialTypeEntrada2: Sequelize.STRING,
+   radialTypeSaida2: Sequelize.STRING,
+   radialTypeEntrada3: Sequelize.STRING,
+   radialTypeSaida3: Sequelize.STRING,
 
    radialPresEntrada1: {type: Sequelize.FLOAT, defaultValue: 0.0},
    radialPresSaida1: {type: Sequelize.FLOAT, defaultValue: 0.0},

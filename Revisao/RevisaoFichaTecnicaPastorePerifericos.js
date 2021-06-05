@@ -22,6 +22,7 @@ const RevisaoFichaPastorePerifericos = conn.define('revisao_perifericos_pastore'
       model: 'maquinas', // <<< Note, its table's name, not object name
       key: 'id'
    },
+   Data: {type: Sequelize.DATEONLY, defaultValue: Sequelize.NOW},
    termopar: Sequelize.STRING,
    voltagem: Sequelize.STRING,
    tolCamara: Sequelize.FLOAT,
