@@ -3429,22 +3429,14 @@ function tipoVisualizacao(tipo) {
                                  // PERIFERICOS
 
                                  var termopar = "<tr>" +
-                                                      "<th colspan='1'>TERMOPAR:</th>" +
-                                                      "<td colspan='1'>" +
-                                                         "<p id='termoparK'>K</p>" +
-                                                      "</td>" +
-                                                      "<td colspan='1'>" +
-                                                         "<p id='termoparJ'>J</p>" +
-                                                      "</td>" +
-                                       
-                                                      "<th colspan='1'>VOLTAGEM:</th>" +
-                                                      "<td colspan='1'>" +
-                                                         "<p id='voltagem220'>220</p>" +
-                                                      "</td>" +
-                                                      "<td colspan='1'>" +
-                                                         "<p id='voltagem24'>24</p>" +
-                                                      "</td>" +
-                                                   "</tr>"
+                                                   "<th colspan='1'>TERMOPAR:</th>" +
+                                                   "<td colspan='1'>" +
+                                                      "<p id='termoparK'>K</p>" +
+                                                   "</td>" +
+                                                   "<td colspan='1'>" +
+                                                      "<p id='termoparJ'>J</p>" +
+                                                   "</td>" +
+                                                "</tr>"
                                                    
                                  tableBody = $("#termopar tbody");
                                  tableBody.html(termopar);
@@ -3459,16 +3451,6 @@ function tipoVisualizacao(tipo) {
                                     document.getElementById("termoparJ").style.textDecoration = "underline";
                                  }
                                  
-                                 if (perifericos.voltagem === "220") {
-                                    document.getElementById("voltagem220").style.fontWeight = "bold";
-                                    document.getElementById("voltagem220").style.fontStyle = "italic";
-                                    document.getElementById("voltagem220").style.textDecoration = "underline";
-                                 } else {
-                                    document.getElementById("voltagem24").style.fontWeight = "bold";
-                                    document.getElementById("voltagem24").style.fontStyle = "italic";
-                                    document.getElementById("voltagem24").style.textDecoration = "underline";
-                                 }
-   
                                  var camara = "<tr>" +
                                                 "<td colspan='1'>" +
                                                   "<label id='labelCamara' class='d-flex'>1</label>" +
@@ -4036,6 +4018,29 @@ function tipoVisualizacao(tipo) {
    
                                     tableBody = $("#camaraQuente tbody");
                                     tableBody.html(camara);
+
+                                    var voltagem = "<tr>" +
+                                                      "<th colspan='1'>VOLTAGEM:</th>" +
+                                                      "<td colspan='1'>" +
+                                                         "<p id='voltagem220'>220</p>" +
+                                                      "</td>" +
+                                                      "<td colspan='1'>" +
+                                                         "<p id='voltagem24'>24</p>" +
+                                                      "</td>" +
+                                                   "</tr>"
+                                                   
+                                    tableBody = $("#voltagem tbody");
+                                    tableBody.html(voltagem);
+
+                                    if (perifericos.voltagem === "220") {
+                                       document.getElementById("voltagem220").style.fontWeight = "bold";
+                                       document.getElementById("voltagem220").style.fontStyle = "italic";
+                                       document.getElementById("voltagem220").style.textDecoration = "underline";
+                                    } else {
+                                       document.getElementById("voltagem24").style.fontWeight = "bold";
+                                       document.getElementById("voltagem24").style.fontStyle = "italic";
+                                       document.getElementById("voltagem24").style.textDecoration = "underline";
+                                    }
    
                                     var valveGate ="<tr>" +
                                                       "<th colspan='1'>BICO</th>" +

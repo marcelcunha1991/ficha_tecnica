@@ -1151,22 +1151,14 @@ function comparar() {
                            // PERIFERICOS
 
                            var termopar = "<tr>" +
-                                                "<th colspan='1'>TERMOPAR:</th>" +
-                                                "<td colspan='1'>" +
-                                                   "<p id='termoparKParams'>K</p>" +
-                                                "</td>" +
-                                                "<td colspan='1'>" +
-                                                   "<p id='termoparJParams'>J</p>" +
-                                                "</td>" +
-                                 
-                                                "<th colspan='1'>VOLTAGEM:</th>" +
-                                                "<td colspan='1'>" +
-                                                   "<p id='voltagem220Params'>220</p>" +
-                                                "</td>" +
-                                                "<td colspan='1'>" +
-                                                   "<p id='voltagem24Params'>24</p>" +
-                                                "</td>" +
-                                             "</tr>"
+                                             "<th colspan='1'>TERMOPAR:</th>" +
+                                             "<td colspan='1'>" +
+                                                "<p id='termoparKParams'>K</p>" +
+                                             "</td>" +
+                                             "<td colspan='1'>" +
+                                                "<p id='termoparJParams'>J</p>" +
+                                             "</td>" +
+                                          "</tr>"
                                              
                            tableBody = $("#termopar tbody");
                            tableBody.html(termopar);
@@ -1179,16 +1171,6 @@ function comparar() {
                               document.getElementById("termoparJParams").style.fontWeight = "bold";
                               document.getElementById("termoparJParams").style.fontStyle = "italic";
                               document.getElementById("termoparJParams").style.textDecoration = "underline";
-                           }
-                           
-                           if (perifericos.voltagem === "220") {
-                              document.getElementById("voltagem220Params").style.fontWeight = "bold";
-                              document.getElementById("voltagem220Params").style.fontStyle = "italic";
-                              document.getElementById("voltagem220Params").style.textDecoration = "underline";
-                           } else {
-                              document.getElementById("voltagem24Params").style.fontWeight = "bold";
-                              document.getElementById("voltagem24Params").style.fontStyle = "italic";
-                              document.getElementById("voltagem24Params").style.textDecoration = "underline";
                            }
 
                            var camara = "<tr>" +
@@ -1758,6 +1740,29 @@ function comparar() {
 
                               tableBody = $("#camaraQuente tbody");
                               tableBody.html(camara);
+
+                              var voltagem = "<tr>" +
+                                                "<th colspan='1'>VOLTAGEM:</th>" +
+                                                "<td colspan='1'>" +
+                                                   "<p id='voltagem220Params'>220</p>" +
+                                                "</td>" +
+                                                "<td colspan='1'>" +
+                                                   "<p id='voltagem24Params'>24</p>" +
+                                                "</td>" +
+                                             "</tr>"
+                                                   
+                              tableBody = $("#voltagem tbody");
+                              tableBody.html(voltagem);
+
+                              if (perifericos.voltagem === "220") {
+                                 document.getElementById("voltagem220Params").style.fontWeight = "bold";
+                                 document.getElementById("voltagem220Params").style.fontStyle = "italic";
+                                 document.getElementById("voltagem220Params").style.textDecoration = "underline";
+                              } else {
+                                 document.getElementById("voltagem24Params").style.fontWeight = "bold";
+                                 document.getElementById("voltagem24Params").style.fontStyle = "italic";
+                                 document.getElementById("voltagem24Params").style.textDecoration = "underline";
+                              }
 
                               var valveGate ="<tr>" +
                                                 "<th colspan='1'>BICO</th>" +
