@@ -241,4 +241,25 @@ $(document).ready(function () {
       }
    })
 
+   var tbody = '';
+
+   tbody +=  "<td><div onclick='preencherCampoEdit()' class='btn btn-primary'>&#10003</div>"
+   
+   $('#setarValor tbody tr').append(tbody);
+
+   document.getElementById("edit").disabled = true;
 })
+
+//edit e new ficha haitian
+function preencherCampoEdit() {
+   var quant = $("#quantidade").val();
+   var valor = $("#valor").val();
+
+   for (let index = 0; index < quant; index++) {
+      var idElemento = $(".camaraEdit").get(index).id;
+      document.getElementById(idElemento).value = valor;
+   }
+   
+   $("#quantidade").val("");
+   $("#valor").val("");
+}
