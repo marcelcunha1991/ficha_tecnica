@@ -1005,7 +1005,7 @@ const ParametrosAtuais = conn.define('parametros_reais_haitian_jupyter',{
       defaultValue: 0.0
    }, 
    TECNICO_RESP:Sequelize.STRING,
-   DATA:Sequelize.STRING
+   DATA: {type: Sequelize.DATEONLY, defaultValue: Sequelize.NOW}
 
 })
 
