@@ -143,3 +143,86 @@ p {
 .labels {
    margin-bottom: 0;
 }
+
+.last-item {
+   margin-left: auto;
+}
+
+.button-revisao {
+   margin-right: 5px;
+}
+
+
+@media print {
+   .dont-print {
+      display: none;
+   }
+
+   .print {
+      display: block;
+   }
+
+   
+
+   ::-webkit-scrollbar {
+      display: none;
+   }
+
+   ::-ms-overflow-style {
+      display: none;
+   }
+
+   #headerFicha > thead > tr > th {
+      border: 1px solid rgb(65, 64, 64) !important;
+      padding: 0.2rem;
+      text-align: center;
+   }
+   
+   .table-ficha .table-bordered {
+      border: 1px solid rgb(65, 64, 64) !important;
+   }
+   .table-ficha .table-bordered > thead > tr > th {
+      border: 1px solid rgb(65, 64, 64) !important;
+      padding: 0.2rem;
+      text-align: center;
+   }
+   .table-ficha .table-bordered > tbody > tr > td {
+      border: 1px solid rgb(65, 64, 64) !important;
+      padding: 0.3rem;
+      text-align: center;
+   }
+   .table-ficha .table-bordered > tbody > tr > th{
+      border: 1px solid rgb(65, 64, 64) !important;
+      padding: 0.3rem;
+      text-align: center;
+   }
+   .table-ficha .table-bordered > tfoot > tr > th{
+      border: 1px solid rgb(65, 64, 64) !important;
+      padding: 0.3rem;
+      border-right: none;
+      text-align: center;
+   }
+   .table-ficha .table-bordered > tfoot > tr > td{
+      border: 1px solid rgb(65, 64, 64) !important;
+      padding: 0.3rem;
+      border-left: none;
+   }
+   .table-ficha #termopar > tbody > tr > th{
+      border: 1px solid rgb(65, 64, 64) !important;
+      padding: 0.3rem;
+      text-align: center;
+   }
+   .table-ficha #termopar > tbody > tr > td{
+      border: 1px solid rgb(65, 64, 64) !important;
+      padding: 0.3rem;
+      border-left: none;
+   }
+   
+   #headerFicha tbody > tr > td {
+      border: 1px solid rgb(65, 64, 64) !important;
+   }
+
+   .form-floating textarea {
+      border: 1px solid rgb(65, 64, 64) !important;
+   }
+}
