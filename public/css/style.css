@@ -58,7 +58,6 @@
 .table-ficha #termopar > tbody > tr > th{
    border: 1px solid #999;
    padding: 0.3rem;
-   border-right: none;
    text-align: center;
 }
 .table-ficha #termopar > tbody > tr > td{
@@ -133,5 +132,10 @@ p.read-only span.reais {
 }
 
 p {
-   margin-top: revert;
+   margin-top: .5rem;
+   margin-bottom: .5rem;
+}
+
+.labels {
+   margin-bottom: 0;
 }
