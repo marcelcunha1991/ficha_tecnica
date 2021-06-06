@@ -247,7 +247,6 @@ $(document).ready(function () {
    
    $('#setarValor tbody tr').append(tbody);
 
-   document.getElementById("edit").disabled = true;
 })
 
 //edit e new ficha haitian
