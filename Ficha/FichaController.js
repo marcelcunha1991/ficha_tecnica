@@ -64,9 +64,10 @@ router.get("/fichas/:maquina?",  (req,res) => {
     
 })
 
-router.get("/fichasUltimo/maquina/:id",  (req,res) => {
+router.get("/fichasUltimo/maquina/:id/:date?",  (req,res) => {
    
    var maquinaId= req.params.id;      
+   var dataEscolhida = req.params.date;     
 
    Maquinas.findOne({
       where: {
@@ -116,7 +117,8 @@ router.get("/fichasUltimo/maquina/:id",  (req,res) => {
             ParametrosReaishaitianJupyter.findAll({
                limit: 1,
                where: {
-                  mac: maquina.descricao
+                  mac: maquina.descricao,
+                  DATA: dataEscolhida
                },
                order: [ [ 'createdAt', 'DESC' ]]
             }).then(output => {

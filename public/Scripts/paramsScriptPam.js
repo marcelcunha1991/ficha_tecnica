@@ -1,4 +1,24 @@
 $("#selectMaquina").hide();
+$("#setDate").hide();
+
+var today = new Date();
+
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = yyyy + '-' + mm + '-' + dd;
+
+console.log('today: ' + today);
+
+function getDate() {
+   $("#data").val()
+   today = $("#data").val();
+
+   console.log('data escolhida: ' + today);
+
+}
+
 
 function showSelect() {
    $("#selectMaquina").show();
@@ -14,6 +34,8 @@ $('#maquinas').change(function () {
 
       div = $("#nav");
       div.html(anchor);
+
+      $("#setDate").show();
 
 
    } else {
@@ -53,10 +75,11 @@ function tipoVisualizacao(tipo) {
          success: function (maquina_) {    
       
             $.ajax({
-               url: '/fichasUltimo/maquina/' + $("#maquinas").val(),
+               url: '/fichasUltimo/maquina/' + $("#maquinas").val() + '/' + today,
                method: 'get',
                dataType: 'json',
                success: function (parametros) {
+                  console.log(parametros.DATA);
             
                   $.ajax({
                      url: '/ficha/getFichaPastoreInjetores/' + parametros.mac,
@@ -158,7 +181,6 @@ function tipoVisualizacao(tipo) {
       })      
 
       setInterval(function () {
-         var maquina;
 
          //OBTEM DADOS DE MAQUINA
          $.ajax({
@@ -169,7 +191,7 @@ function tipoVisualizacao(tipo) {
 
                // PREENCHE TABELA DE FICHA TECNICA DA COLETA PASTORE
                $.ajax({
-                  url: '/fichasUltimo/maquina/' + $("#maquinas").val(),
+                  url: '/fichasUltimo/maquina/' + $("#maquinas").val() + '/' + today,
                   method: 'get',
                   dataType: 'json',
                   success: function (parametros) {
@@ -2371,7 +2393,7 @@ function tipoVisualizacao(tipo) {
          
                // PREENCHE HEADER
                $.ajax({
-                  url: '/fichasUltimo/maquina/' + $("#maquinas").val(),
+                  url: '/fichasUltimo/maquina/' + $("#maquinas").val() + '/' + today,
                   method: 'get',
                   dataType: 'json',
                   success: function (parametros) {
@@ -2591,7 +2613,7 @@ function tipoVisualizacao(tipo) {
          
                // PREENCHE TABELA DE FICHA TECNICA
                $.ajax({
-                  url: '/fichasUltimo/maquina/' + $("#maquinas").val(),
+                  url: '/fichasUltimo/maquina/' + $("#maquinas").val() + '/' + today,
                   method: 'get',
                   dataType: 'json',
                   success: function (parametros) {
