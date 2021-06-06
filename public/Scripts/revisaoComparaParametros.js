@@ -2265,77 +2265,87 @@ function comparar() {
                                  
                                  var vapor = "<tr>" +
                                                 "<td colspan='2'>" +
+                                                   "<label id='labelVapor' class='d-flex'>Temperatura</label>" +
                                                    "<input class='read-only' readonly style='width: 100%' id='vaporladofixo1' name='vaporladofixo1' value='" + perifericos.vaporLadoFixo1 + "'>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
-                                                   "<p id='aguaF1FixoParams'>Temp. Água Industrial F1</p>" +
+                                                   "<p id='aguaF1FixoParams'>Água Industrial F1</p>" +
                                                 "</td>" +
                               
                                                 "<td colspan='2'>" +
+                                                   "<label id='labelVapor' class='d-flex'>Temperatura</label>" +
                                                    "<input class='read-only' readonly style='width: 100%' id='vaporladomovel1' name='vaporladomovel1' value='0'>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
-                                                   "<p id='aguaF1MovelParams'>Temp. Água Industrial F1</p>" +
+                                                   "<p id='aguaF1MovelParams'>Água Industrial F1</p>" +
                                                 "</td>" +
                                              "</tr>" +
                                              "<tr>" +
                                                 "<td colspan='2'>" +
+                                                   "<label id='labelVapor' class='d-flex'>Temperatura</label>" +
                                                    "<input class='read-only' readonly style='width: 100%' id='vaporladofixo2' name='vaporladofixo2' value='" + perifericos.vaporLadoFixo2 + "'>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
-                                                   "<p id='aguaF2FixoParams'>Temp. Água Industrial F2</p>" +
+                                                   "<p id='aguaF2FixoParams'>Água Industrial F2</p>" +
                                                 "</td>" +
                               
                                                 "<td colspan='2'>" +
+                                                   "<label id='labelVapor' class='d-flex'>Temperatura</label>" +
                                                    "<input class='read-only' readonly style='width: 100%' id='vaporladomovel2' name='vaporladomovel2' value='0'>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
-                                                   "<p id='aguaF2MovelParams'>Temp. Água Industrial F2</p>" +
+                                                   "<p id='aguaF2MovelParams'>Água Industrial F2</p>" +
                                                 "</td>" +
                                              "</tr>" +
                                              "<tr>" +
                                                 "<td colspan='2'>" +
+                                                   "<label id='labelVapor' class='d-flex'>Temperatura</label>" +
                                                    "<input class='read-only' readonly style='width: 100%' id='vaporladofixo3' name='vaporladofixo3' value='" + perifericos.vaporLadoFixo3 + "'>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
-                                                   "<p id='geladaFixoParams'>Temp. Água Gelada</p>" +
+                                                   "<p id='geladaFixoParams'>Água Gelada</p>" +
                                                 "</td>" +
                               
                                                 "<td colspan='2'>" +
+                                                   "<label id='labelVapor' class='d-flex'>Temperatura</label>" +
                                                    "<input class='read-only' readonly style='width: 100%' id='vaporladomovel3' name='vaporladomovel3' value='0'>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
-                                                   "<p id='geladaMovelParams'>Temp. Água Gelada</p>" +
+                                                   "<p id='geladaMovelParams'>Água Gelada</p>" +
                                                 "</td>" +
                                              "</tr>" +
                                              "<tr>" +
                                                 "<td colspan='2'>" +
+                                                   "<label id='labelVapor' class='d-flex'>Bar</label>" +
                                                    "<input class='read-only' readonly style='width: 100%' id='vaporladofixo4' name='vaporladofixo4' value='" + perifericos.vaporLadoFixo4 + "'>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
-                                                   "<p id='vaporFixoParams'>Bar. Vapor</p>" +
+                                                   "<p id='vaporFixoParams'>Vapor</p>" +
                                                 "</td>" +
                               
                                                 "<td colspan='2'>" +
+                                                   "<label id='labelVapor' class='d-flex'>Bar</label>" +
                                                    "<input class='read-only' readonly style='width: 100%' id='vaporladomovel4' name='vaporladomovel4' value='0'>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
-                                                   "<p id='vaporMovelParams'>Bar. Vapor</p>" +
+                                                   "<p id='vaporMovelParams'>Vapor</p>" +
                                                 "</td>" +
                                              "</tr>" +
                                              "<tr>" +
                                                 "<td colspan='2'>" +
+                                                   "<label id='labelVapor' class='d-flex'>Bar</label>" +
                                                    "<input class='read-only' readonly style='width: 100%' id='vaporladofixo5' name='vaporladofixo5' value='" + perifericos.vaporLadoFixo5 + "'>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
-                                                   "<p id='arFixoParams'>Bar. Ar Comprimido</p>" +
+                                                   "<p id='arFixoParams'>Ar Comprimido</p>" +
                                                 "</td>" +
                               
                                                 "<td colspan='2'>" +
+                                                   "<label id='labelVapor' class='d-flex'>Bar</label>" +
                                                    "<input class='read-only' readonly style='width: 100%' id='vaporladomovel5' name='vaporladomovel5' value='0'>" +
                                                 "</td>" +
                                                 "<td colspan='1'>" +
-                                                   "<p id='arMovelParams'>Bar. Ar Comprimido</p>" +
+                                                   "<p id='arMovelParams'>Ar Comprimido</p>" +
                                                 "</td>" +
                                              "</tr>"
 
