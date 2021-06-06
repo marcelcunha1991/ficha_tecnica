@@ -32,6 +32,7 @@ var tolCamara;
 var tolValve;
 var tolRefrigeracao;
 var tolVapor;
+var count = 0;
 
 
 function tipoVisualizacao(tipo) {
@@ -2352,225 +2353,228 @@ function tipoVisualizacao(tipo) {
       }, 3000);
       
    } else {
+      count++;
       $("#parametros").hide();
       $("#ficha").show();
 
-      $.ajax({
-         url: '/externo/vf-web/maquinaById/' + codInjet,
-         method: 'get',
-         dataType: 'json',
-         success: function (maquina_) {    
-      
-            // PREENCHE TABELA DE FICHA TECNICA
-            $.ajax({
-               url: '/externo/vf-web/fichasUltimo/maquina/' + codInjet,
-               method: 'get',
-               dataType: 'json',
-               success: function (parametros) {
-      
-                  // console.log(parametros)
-      
-                  $.ajax({
-                     url: '/ficha/getFichaPastoreInjetores/' + parametros.mac,
-                     method: 'get',
-                     dataType: 'json',
-                     success: function (injetor) {
-                        //console.log(injetor)
-      
-                        $.ajax({
-                           url: '/ficha/getFichaPastorePerifericos/' + parametros.mac,
-                           method: 'get',
-                           dataType: 'json',
-                           success: function(perifericos) {
-                              var headerCilindro = "";
-      
-                              if(injetor.tolCilindro === 0.1) {
-                                 tolCilindro = injetor.tolCilindro;
-                                 headerCilindro = "<th>TOL &#177; 10%</th>"
-
-                              } else {
-                                 tolCilindro = injetor.tolCilindro;
-                                 headerCilindro = "<th>TOL &#177; 5%</th>"
+      if (count === 1) {
+         $.ajax({
+            url: '/externo/vf-web/maquinaById/' + codInjet,
+            method: 'get',
+            dataType: 'json',
+            success: function (maquina_) {    
+         
+               // PREENCHE TABELA DE FICHA TECNICA
+               $.ajax({
+                  url: '/externo/vf-web/fichasUltimo/maquina/' + codInjet,
+                  method: 'get',
+                  dataType: 'json',
+                  success: function (parametros) {
+         
+                     // console.log(parametros)
+         
+                     $.ajax({
+                        url: '/ficha/getFichaPastoreInjetores/' + parametros.mac,
+                        method: 'get',
+                        dataType: 'json',
+                        success: function (injetor) {
+                           //console.log(injetor)
+         
+                           $.ajax({
+                              url: '/ficha/getFichaPastorePerifericos/' + parametros.mac,
+                              method: 'get',
+                              dataType: 'json',
+                              success: function(perifericos) {
+                                 var headerCilindro = "";
+         
+                                 if(injetor.tolCilindro === 0.1) {
+                                    tolCilindro = injetor.tolCilindro;
+                                    headerCilindro = "<th>TOL &#177; 10%</th>"
+   
+                                 } else {
+                                    tolCilindro = injetor.tolCilindro;
+                                    headerCilindro = "<th>TOL &#177; 5%</th>"
+                                 }
+                                 
+                                 tableHead = $("#cilindro thead #headCilindro");
+                                 tableHead.append(headerCilindro);
+   
+                                 var headerInjecao = "";
+         
+                                 if(injetor.tolInjecao === 0.1) {
+                                    tolInjecao = injetor.tolInjecao;
+                                    headerInjecao = "<th>TOL &#177; 10%</th>"
+                                 
+                                 } else {
+                                    tolInjecao = injetor.tolInjecao;
+                                    headerInjecao = "<th>TOL &#177; 5%</th>"
+                                 }
+                                 
+                                 tableHead = $("#injecao thead #headInjecao");
+                                 tableHead.append(headerInjecao);
+   
+                                 var headerRecalque = "";
+         
+                                 if(injetor.tolRecalque === 0.1) {
+                                    tolRecalque = injetor.tolRecalque;
+                                    headerRecalque = "<th>TOL &#177; 10%</th>"
+                                 
+                                 } else {
+                                    tolRecalque = injetor.tolRecalque;
+                                    headerRecalque = "<th>TOL &#177; 5%</th>"
+                                 }
+                                 
+                                 tableHead = $("#recalque thead #headRecalque");
+                                 tableHead.append(headerRecalque);
+                                 
+                                 var headerDosagem = "";
+         
+                                 if(injetor.tolDosagem === 0.1) {
+                                    tolDosagem = injetor.tolDosagem;
+                                    headerDosagem = "<th>TOL &#177; 10%</th>"
+                                 
+                                 } else {
+                                    tolDosagem = injetor.tolDosagem;
+                                    headerDosagem = "<th>TOL &#177; 5%</th>"
+                                 }
+                                 
+                                 tableHead = $("#dosagem thead #headDosagem");
+                                 tableHead.append(headerDosagem);
+   
+                                 var headerDescompressao = "";
+         
+                                 if(injetor.tolDescompressao === 0.1) {
+                                    tolDescompressao = injetor.tolDescompressao;
+                                    headerDescompressao = "<th>TOL &#177; 10%</th>"
+                                 
+                                 } else {
+                                    tolDescompressao = injetor.tolDescompressao;
+                                    headerDescompressao = "<th>TOL &#177; 5%</th>"
+                                 }
+                                 
+                                 tableHead = $("#descompressao thead #headDescompressao");
+                                 tableHead.append(headerDescompressao);
+   
+                                 var headerFechamento = "";
+         
+                                 if(injetor.tolFechamento === 0.1) {
+                                    tolFechamento = injetor.tolFechamento;
+                                    headerFechamento = "<th>TOL &#177; 10%</th>"
+                                 
+                                 } else {
+                                    tolFechamento = injetor.tolFechamento;
+                                    headerFechamento = "<th>TOL &#177; 5%</th>"
+                                 }
+                                 
+                                 tableHead = $("#fechamento thead #headFechamento");
+                                 tableHead.append(headerFechamento);
+   
+                                 var headerAbertura = "";
+         
+                                 if(injetor.tolAbertura === 0.1) {
+                                    tolAbertura = injetor.tolAbertura;
+                                    headerAbertura = "<th>TOL &#177; 10%</th>"
+                                 
+                                 } else {
+                                    tolAbertura = injetor.tolAbertura;
+                                    headerAbertura = "<th>TOL &#177; 5%</th>"
+                                 }
+                                 
+                                 tableHead = $("#abertura thead #headAbertura");
+                                 tableHead.append(headerAbertura);
+   
+                                 var headerExtracao = "";
+         
+                                 if(injetor.tolExtracao === 0.1) {
+                                    tolExtracao = injetor.tolExtracao;
+                                    headerExtracao = "<th>TOL &#177; 10%</th>"
+                                 
+                                 } else {
+                                    tolExtracao = injetor.tolExtracao;
+                                    headerExtracao = "<th>TOL &#177; 5%</th>"
+                                 }
+                                 
+                                 tableHead = $("#extracao thead #headExtracao");
+                                 tableHead.append(headerExtracao);
+   
+                                 var headerRadial = "";
+         
+                                 if(injetor.tolRadial === 0.1) {
+                                    tolRadial = injetor.tolRadial;
+                                    headerRadial = "<th>TOL &#177; 10%</th>"
+                                 
+                                 } else {
+                                    tolRadial = injetor.tolRadial;
+                                    headerRadial = "<th>TOL &#177; 5%</th>"
+                                 }
+                                 
+                                 tableHead = $("#radial thead #headRadial");
+                                 tableHead.append(headerRadial);
+   
+                                 var headerCamara = "";
+         
+                                 if(perifericos.tolCamara === 0.1) {
+                                    tolCamara = perifericos.tolCamara;
+                                    headerCamara = "<th>TOL &#177; 10%</th>"
+                                 
+                                 } else {
+                                    tolCamara = perifericos.tolCamara;
+                                    headerCamara = "<th>TOL &#177; 5°C</th>"
+                                 }
+                                 
+                                 tableHead = $("#camaraQuente thead #headCamara");
+                                 tableHead.append(headerCamara);
+   
+                                 var headerValve = "";
+         
+                                 if(perifericos.tolValve === 0.1) {
+                                    tolValve = perifericos.tolValve;
+                                    headerValve = "<th>TOL &#177; 10%</th>"
+                                 
+                                 } else {
+                                    tolValve = perifericos.tolValve;
+                                    headerValve = "<th>TOL &#177; 5%</th>"
+                                 }
+                                 
+                                 tableHead = $("#valveGate thead #headValve");
+                                 tableHead.append(headerValve);
+   
+                                 var headerRefrigeracao = "";
+         
+                                 if(perifericos.tolRefrigeracao === 0.1) {
+                                    tolRefrigeracao = perifericos.tolRefrigeracao;
+                                    headerRefrigeracao = "<th>TOL &#177; 10%</th>"
+                                 
+                                 } else {
+                                    tolRefrigeracao = perifericos.tolRefrigeracao;
+                                    headerRefrigeracao = "<th>TOL &#177; 5%</th>"
+                                 }
+                                 
+                                 tableHead = $("#refrigeracao thead #headRefrigeracao");
+                                 tableHead.append(headerRefrigeracao);
+   
+                                 var headerVapor = "";
+         
+                                 if(perifericos.tolVapor === 0.1) {
+                                    tolVapor = perifericos.tolVapor;
+                                    headerVapor = "<th>TOL &#177; 10%</th>"
+                                 
+                                 } else {
+                                    tolVapor = perifericos.tolVapor;
+                                    headerVapor = "<th>TOL &#177; 5%</th>"
+                                 }
+                                 
+                                 tableHead = $("#vapor thead #headVapor");
+                                 tableHead.append(headerVapor);
                               }
-                              
-                              tableHead = $("#cilindro thead #headCilindro");
-                              tableHead.append(headerCilindro);
-
-                              var headerInjecao = "";
-      
-                              if(injetor.tolInjecao === 0.1) {
-                                 tolInjecao = injetor.tolInjecao;
-                                 headerInjecao = "<th>TOL &#177; 10%</th>"
-                              
-                              } else {
-                                 tolInjecao = injetor.tolInjecao;
-                                 headerInjecao = "<th>TOL &#177; 5%</th>"
-                              }
-                              
-                              tableHead = $("#injecao thead #headInjecao");
-                              tableHead.append(headerInjecao);
-
-                              var headerRecalque = "";
-      
-                              if(injetor.tolRecalque === 0.1) {
-                                 tolRecalque = injetor.tolRecalque;
-                                 headerRecalque = "<th>TOL &#177; 10%</th>"
-                              
-                              } else {
-                                 tolRecalque = injetor.tolRecalque;
-                                 headerRecalque = "<th>TOL &#177; 5%</th>"
-                              }
-                              
-                              tableHead = $("#recalque thead #headRecalque");
-                              tableHead.append(headerRecalque);
-                              
-                              var headerDosagem = "";
-      
-                              if(injetor.tolDosagem === 0.1) {
-                                 tolDosagem = injetor.tolDosagem;
-                                 headerDosagem = "<th>TOL &#177; 10%</th>"
-                              
-                              } else {
-                                 tolDosagem = injetor.tolDosagem;
-                                 headerDosagem = "<th>TOL &#177; 5%</th>"
-                              }
-                              
-                              tableHead = $("#dosagem thead #headDosagem");
-                              tableHead.append(headerDosagem);
-
-                              var headerDescompressao = "";
-      
-                              if(injetor.tolDescompressao === 0.1) {
-                                 tolDescompressao = injetor.tolDescompressao;
-                                 headerDescompressao = "<th>TOL &#177; 10%</th>"
-                              
-                              } else {
-                                 tolDescompressao = injetor.tolDescompressao;
-                                 headerDescompressao = "<th>TOL &#177; 5%</th>"
-                              }
-                              
-                              tableHead = $("#descompressao thead #headDescompressao");
-                              tableHead.append(headerDescompressao);
-
-                              var headerFechamento = "";
-      
-                              if(injetor.tolFechamento === 0.1) {
-                                 tolFechamento = injetor.tolFechamento;
-                                 headerFechamento = "<th>TOL &#177; 10%</th>"
-                              
-                              } else {
-                                 tolFechamento = injetor.tolFechamento;
-                                 headerFechamento = "<th>TOL &#177; 5%</th>"
-                              }
-                              
-                              tableHead = $("#fechamento thead #headFechamento");
-                              tableHead.append(headerFechamento);
-
-                              var headerAbertura = "";
-      
-                              if(injetor.tolAbertura === 0.1) {
-                                 tolAbertura = injetor.tolAbertura;
-                                 headerAbertura = "<th>TOL &#177; 10%</th>"
-                              
-                              } else {
-                                 tolAbertura = injetor.tolAbertura;
-                                 headerAbertura = "<th>TOL &#177; 5%</th>"
-                              }
-                              
-                              tableHead = $("#abertura thead #headAbertura");
-                              tableHead.append(headerAbertura);
-
-                              var headerExtracao = "";
-      
-                              if(injetor.tolExtracao === 0.1) {
-                                 tolExtracao = injetor.tolExtracao;
-                                 headerExtracao = "<th>TOL &#177; 10%</th>"
-                              
-                              } else {
-                                 tolExtracao = injetor.tolExtracao;
-                                 headerExtracao = "<th>TOL &#177; 5%</th>"
-                              }
-                              
-                              tableHead = $("#extracao thead #headExtracao");
-                              tableHead.append(headerExtracao);
-
-                              var headerRadial = "";
-      
-                              if(injetor.tolRadial === 0.1) {
-                                 tolRadial = injetor.tolRadial;
-                                 headerRadial = "<th>TOL &#177; 10%</th>"
-                              
-                              } else {
-                                 tolRadial = injetor.tolRadial;
-                                 headerRadial = "<th>TOL &#177; 5%</th>"
-                              }
-                              
-                              tableHead = $("#radial thead #headRadial");
-                              tableHead.append(headerRadial);
-
-                              var headerCamara = "";
-      
-                              if(perifericos.tolCamara === 0.1) {
-                                 tolCamara = perifericos.tolCamara;
-                                 headerCamara = "<th>TOL &#177; 10%</th>"
-                              
-                              } else {
-                                 tolCamara = perifericos.tolCamara;
-                                 headerCamara = "<th>TOL &#177; 5°C</th>"
-                              }
-                              
-                              tableHead = $("#camaraQuente thead #headCamara");
-                              tableHead.append(headerCamara);
-
-                              var headerValve = "";
-      
-                              if(perifericos.tolValve === 0.1) {
-                                 tolValve = perifericos.tolValve;
-                                 headerValve = "<th>TOL &#177; 10%</th>"
-                              
-                              } else {
-                                 tolValve = perifericos.tolValve;
-                                 headerValve = "<th>TOL &#177; 5%</th>"
-                              }
-                              
-                              tableHead = $("#valveGate thead #headValve");
-                              tableHead.append(headerValve);
-
-                              var headerRefrigeracao = "";
-      
-                              if(perifericos.tolRefrigeracao === 0.1) {
-                                 tolRefrigeracao = perifericos.tolRefrigeracao;
-                                 headerRefrigeracao = "<th>TOL &#177; 10%</th>"
-                              
-                              } else {
-                                 tolRefrigeracao = perifericos.tolRefrigeracao;
-                                 headerRefrigeracao = "<th>TOL &#177; 5%</th>"
-                              }
-                              
-                              tableHead = $("#refrigeracao thead #headRefrigeracao");
-                              tableHead.append(headerRefrigeracao);
-
-                              var headerVapor = "";
-      
-                              if(perifericos.tolVapor === 0.1) {
-                                 tolVapor = perifericos.tolVapor;
-                                 headerVapor = "<th>TOL &#177; 10%</th>"
-                              
-                              } else {
-                                 tolVapor = perifericos.tolVapor;
-                                 headerVapor = "<th>TOL &#177; 5%</th>"
-                              }
-                              
-                              tableHead = $("#vapor thead #headVapor");
-                              tableHead.append(headerVapor);
-                           }
-                        })
-                     }
-                  })
-               }
-            })
-         }
-      })
+                           })
+                        }
+                     })
+                  }
+               })
+            }
+         })
+      }
       
       setInterval(function () {
          
