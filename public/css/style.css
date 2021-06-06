@@ -135,6 +135,13 @@ p.read-only span.reais {
    font-weight: 600;
 }
 
+#labelVapor {
+   font-size: 0.8em;
+   background-color: rgb(241, 235, 235);
+   margin: 0;
+   font-weight: 600;
+}
+
 p {
    margin-top: .5rem;
    margin-bottom: .5rem;
