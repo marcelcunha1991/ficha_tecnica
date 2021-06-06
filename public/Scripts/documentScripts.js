@@ -364,12 +364,13 @@ $(document).ready(function () {
 
 $('#options').change(e => {
    if (e.target.value === "print") {
-      $("#ficha-container").addClass("flex-column");
-      $("#container-injetores").css('width', '93vw');
-      $("#container-injetores").css('margin-right', '0');
-
-      $("#container-perifericos").css('width', '93vw');
-      $("#container-perifericos").css('margin-top', '40px');
+      $(".ficha-container").addClass("flex-column");
+      $(".container-injetores").css('width', '93vw');
+      $(".container-injetores").css('margin-right', '0');
+      
+      $(".container-perifericos").css('width', '93vw');
+      $(".container-perifericos").css('margin-top', '40px');
+      $("#perifericos-comparacao").css('margin-left', '20px');
 
       window.print();
    } else if (e.target.value === "excel") {
@@ -378,12 +379,13 @@ $('#options').change(e => {
 })
 
 function removeClass() {
-   $("#ficha-container").removeClass("flex-column");
-   $("#container-injetores").css('width', '50vw');
-   $("#container-injetores").css('margin-right', '20px');
+   $(".ficha-container").removeClass("flex-column");
+   $(".container-injetores").css('width', '50vw');
+   $(".container-injetores").css('margin-right', '20px');
 
-   $("#container-perifericos").css('width', '50vw');
-   $("#container-perifericos").css('margin-top', '0');
+   $(".container-perifericos").css('width', '50vw');
+   $(".container-perifericos").css('margin-top', '0');
+   $("#perifericos-comparacao").css('margin-left', '0');
 
 }
 
@@ -391,12 +393,13 @@ function removeClass() {
 document.addEventListener("keydown", function (event) {
  
    if(event.ctrlKey && event.keyCode === 80) {
-      $("#ficha-container").addClass("flex-column");
-      $("#container-injetores").css('width', '93vw');
-      $("#container-injetores").css('margin-right', '0');
+      $(".ficha-container").addClass("flex-column");
+      $(".container-injetores").css('width', '93vw');
+      $(".container-injetores").css('margin-right', '0');
 
-      $("#container-perifericos").css('width', '93vw');
-      $("#container-perifericos").css('margin-top', '40px');
+      $(".container-perifericos").css('width', '93vw');
+      $(".container-perifericos").css('margin-top', '40px');
+      $("#perifericos-comparacao").css('margin-left', '20px');
    }
 
 });

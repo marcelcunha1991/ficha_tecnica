@@ -225,4 +225,12 @@ p {
    .form-floating textarea {
       border: 1px solid rgb(65, 64, 64) !important;
    }
+
+   #cadastrado {
+      color: blue;
+   }
+
+   #reais {
+      color: green;
+   }
 }

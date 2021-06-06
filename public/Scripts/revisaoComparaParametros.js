@@ -51,6 +51,7 @@ function form_submit() {
             $("#visualização").hide();
             $("#parametrosRevisao").hide();
             $("#editButton").hide();
+            $("#options").hide();
             $("#tecnicoEdit").val(success.nome);
          }
       }
@@ -299,6 +300,7 @@ function comparar() {
       $("#editRevisao").hide();
       $("#visualização").hide();
       $("#parametrosRevisao").show();
+      $("#options").show();
 
       $("#comparaButton").html("Voltar Revisão");
       compara = false;
