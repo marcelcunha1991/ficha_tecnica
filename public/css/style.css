@@ -200,7 +200,13 @@ p {
       display: block;
    }
 
-   
+   #export_table_to_excel_16 {
+      margin-bottom: 20px;
+   }
+
+   #export_table_to_excel_10 {
+      margin-bottom: 110px;
+   }
 
    ::-webkit-scrollbar {
       display: none;
