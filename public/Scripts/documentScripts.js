@@ -374,7 +374,6 @@ $('#options').change(e => {
 
       window.print();
    } else if (e.target.value === "excel") {
-      console.log('excel');
       tablesToExcel(array1, 'Sheet1', 'FichaTecnica.xls')
    }
 })
@@ -405,7 +404,7 @@ document.addEventListener("keydown", function (event) {
 
 });
 
-//TABLE TO EXCEL FUNCTION
+//TABLE TO EXCEL FUNCTION VISUALIZAÇÃO REVISAO
 var array1 = new Array();
 var n = 16; //Total table
 for ( var x=1; x<=n; x++ ) {

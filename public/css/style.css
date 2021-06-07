@@ -38,6 +38,7 @@
    border: 1px solid #999;
    padding: 0.3rem;
    text-align: center;
+   font-style: italic;
 }
 .table-ficha .table-bordered > tbody > tr > th{
    border: 1px solid #999;
@@ -54,6 +55,7 @@
    border: 1px solid #999;
    padding: 0.3rem;
    border-left: none;
+   font-style: italic;
 }
 .table-ficha #termopar > tbody > tr > th{
    border: 1px solid #999;
@@ -64,6 +66,16 @@
    border: 1px solid #999;
    padding: 0.3rem;
    border-left: none;
+}
+
+.table-ficha .header > tbody > tr > td{
+   text-align: center;
+   font-style: italic;
+   padding: 10px;
+}
+
+.table-ficha .header > thead > tr > th{
+   padding: 10px;
 }
 
 #headerFicha tbody > tr > td {
@@ -128,18 +140,22 @@ p.read-only span.reais {
    font-weight: bold;
 }
 
-#labelCamara {
+.labelCamara {
    font-size: 0.8em;
    background-color: rgb(241, 235, 235);
    margin: 0;
    font-weight: 600;
+   outline: none;
+   border: none;
 }
 
-#labelVapor {
+.labelVapor {
    font-size: 0.8em;
    background-color: rgb(241, 235, 235);
    margin: 0;
    font-weight: 600;
+   outline: none;
+   border: none;
 }
 
 p {
