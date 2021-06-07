@@ -574,6 +574,38 @@ function tipoVisualizacao(tipo) {
                                     "<td><button class='btn btn-primary' data-toggle='modal' data-target='#myModal' id='listafluxoInjecao5'>Clique para o gráfico</button></td>" +
                                     "</tr>"
                                  }
+                                 
+                                 if (injetor.tempoDisparo !== 0 && (parametros.TEMPO_DISPARO < (injetor.tempoDisparo - (injetor.tempoDisparo * injetor.tolInjecao)).toFixed(1) || parametros.TEMPO_DISPARO > (injetor.tempoDisparo + (injetor.tempoDisparo * injetor.tolInjecao)).toFixed(1))) {
+                                    markup = markup + "<tr class='outOfRange'>" +
+                                    "<td style='font-weight: bold'> TEMPO_DISPARO </td>" +     
+                                    "<td>" + injetor.tempoDisparo + "</td>" +               
+                                    "<td>" + parametros.TEMPO_DISPARO + "</td>" +                    
+                                    "<td><button class='btn btn-primary' data-toggle='modal' data-target='#myModal' id='listatempoDisparo'>Clique para o gráfico</button></td>" +
+                                    "</tr>"
+                                 } else {
+                                    markup = markup + "<tr>" +
+                                    "<td style='font-weight: bold'> TEMPO_DISPARO </td>" +     
+                                    "<td>" + injetor.tempoDisparo + "</td>" +               
+                                    "<td>" + parametros.TEMPO_DISPARO + "</td>" +                    
+                                    "<td><button class='btn btn-primary' data-toggle='modal' data-target='#myModal' id='listatempoDisparo'>Clique para o gráfico</button></td>" +
+                                    "</tr>"
+                                 }
+                                 
+                                 if (injetor.pressaoInj !== 0 && (parametros.TEMPO_INJECAO < (injetor.pressaoInj - (injetor.pressaoInj * injetor.tolInjecao)).toFixed(1) || parametros.TEMPO_INJECAO > (injetor.pressaoInj + (injetor.pressaoInj * injetor.tolInjecao)).toFixed(1))) {
+                                    markup = markup + "<tr class='outOfRange'>" +
+                                    "<td style='font-weight: bold'> TEMPO_INJECAO </td>" +     
+                                    "<td>" + injetor.pressaoInj + "</td>" +               
+                                    "<td>" + parametros.TEMPO_INJECAO + "</td>" +                    
+                                    "<td><button class='btn btn-primary' data-toggle='modal' data-target='#myModal' id='listapressaoInj'>Clique para o gráfico</button></td>" +
+                                    "</tr>"
+                                 } else {
+                                    markup = markup + "<tr>" +
+                                    "<td style='font-weight: bold'> TEMPO_INJECAO </td>" +     
+                                    "<td>" + injetor.pressaoInj + "</td>" +               
+                                    "<td>" + parametros.TEMPO_INJECAO + "</td>" +                    
+                                    "<td><button class='btn btn-primary' data-toggle='modal' data-target='#myModal' id='listapressaoInj'>Clique para o gráfico</button></td>" +
+                                    "</tr>"
+                                 }
 
                                  if (injetor.presRecalque1 !== 0 && (parametros.RECALQUE_PRESSAO_1 < (injetor.presRecalque1 - (injetor.presRecalque1 * injetor.tolRecalque)).toFixed(1) || parametros.RECALQUE_PRESSAO_1 > (injetor.presRecalque1 + (injetor.presRecalque1 * injetor.tolRecalque)).toFixed(1))) {
                                     markup = markup + "<tr class='outOfRange'>" +
@@ -1134,6 +1166,22 @@ function tipoVisualizacao(tipo) {
                                     "<td><button class='btn btn-primary' data-toggle='modal' data-target='#myModal' id='listaCPDosagem5'>Clique para o gráfico</button></td>" +
                                     "</tr>"
                                  }
+                                 
+                                 if (injetor.tempoDosagem !== 0 && (parametros.TEMPO_DOSAGEM < (injetor.tempoDosagem - (injetor.tempoDosagem * injetor.tolDosagem)).toFixed(1) || parametros.TEMPO_DOSAGEM > (injetor.tempoDosagem + (injetor.tempoDosagem * injetor.tolDosagem)).toFixed(1))) {
+                                    markup = markup + "<tr class='outOfRange'>" +
+                                    "<td style='font-weight: bold'> TEMPO_DOSAGEM </td>" +   
+                                    "<td>" + injetor.tempoDosagem + "</td>" +                
+                                    "<td>" + parametros.TEMPO_DOSAGEM + "</td>" +                    
+                                    "<td><button class='btn btn-primary' data-toggle='modal' data-target='#myModal' id='listatempoDosagem'>Clique para o gráfico</button></td>" +
+                                    "</tr>"
+                                 } else {
+                                    markup = markup + "<tr>" +
+                                    "<td style='font-weight: bold'> TEMPO_DOSAGEM </td>" +   
+                                    "<td>" + injetor.tempoDosagem + "</td>" +                
+                                    "<td>" + parametros.TEMPO_DOSAGEM + "</td>" +                    
+                                    "<td><button class='btn btn-primary' data-toggle='modal' data-target='#myModal' id='listatempoDosagem'>Clique para o gráfico</button></td>" +
+                                    "</tr>"
+                                 }
 
                                  if (injetor.posFecha1 !== 0 && (parametros.FECHAMENTO_POSICAO_1 < (injetor.posFecha1 - (injetor.posFecha1 * injetor.tolFechamento)).toFixed(1) || parametros.FECHAMENTO_POSICAO_1 > (injetor.posFecha1 + (injetor.posFecha1 * injetor.tolFechamento)).toFixed(1))) {
                                     markup = markup + "<tr class='outOfRange'>" +
@@ -1183,19 +1231,19 @@ function tipoVisualizacao(tipo) {
                                     "</tr>"
                                  }
 
-                                 if (injetor.tempoProtMolde !== 0 && (parametros.FECHAMENTO_POSICAO_PROTECAO_MOLDE < (injetor.tempoProtMolde - (injetor.tempoProtMolde * injetor.tolFechamento)).toFixed(1) || parametros.FECHAMENTO_POSICAO_PROTECAO_MOLDE > (injetor.tempoProtMolde + (injetor.tempoProtMolde * injetor.tolFechamento)).toFixed(1))) {
+                                 if (injetor.protMPos !== 0 && (parametros.FECHAMENTO_POSICAO_PROTECAO_MOLDE < (injetor.protMPos - (injetor.protMPos * injetor.tolFechamento)).toFixed(1) || parametros.FECHAMENTO_POSICAO_PROTECAO_MOLDE > (injetor.protMPos + (injetor.protMPos * injetor.tolFechamento)).toFixed(1))) {
                                     markup = markup + "<tr class='outOfRange'>" +
                                     "<td style='font-weight: bold'> FECHAMENTO_POSICAO_PROTECAO_MOLDE </td>" +    
-                                    "<td>" + injetor.tempoProtMolde + "</td>" +         
+                                    "<td>" + injetor.protMPos + "</td>" +         
                                     "<td>" + parametros.FECHAMENTO_POSICAO_PROTECAO_MOLDE + "</td>" +                    
-                                    "<td><button class='btn btn-primary' data-toggle='modal' data-target='#myModal' id='listatempoProtMolde'>Clique para o gráfico</button></td>" +
+                                    "<td><button class='btn btn-primary' data-toggle='modal' data-target='#myModal' id='listaFechaProtMolde'>Clique para o gráfico</button></td>" +
                                     "</tr>"
                                  } else {
                                     markup = markup + "<tr>" +
                                     "<td style='font-weight: bold'> FECHAMENTO_POSICAO_PROTECAO_MOLDE </td>" +    
-                                    "<td>" + injetor.tempoProtMolde + "</td>" +         
+                                    "<td>" + injetor.protMPos + "</td>" +         
                                     "<td>" + parametros.FECHAMENTO_POSICAO_PROTECAO_MOLDE + "</td>" +                    
-                                    "<td><button class='btn btn-primary' data-toggle='modal' data-target='#myModal' id='listatempoProtMolde'>Clique para o gráfico</button></td>" +
+                                    "<td><button class='btn btn-primary' data-toggle='modal' data-target='#myModal' id='listaFechaProtMolde'>Clique para o gráfico</button></td>" +
                                     "</tr>"
                                  }
 
@@ -1372,6 +1420,38 @@ function tipoVisualizacao(tipo) {
                                     "<td>" + injetor.AltaPresFluxo + "</td>" +              
                                     "<td>" + parametros.FECHAMENTO_FLUXO_ALTA_PRESSAO + "</td>" +                    
                                     "<td><button class='btn btn-primary' data-toggle='modal' data-target='#myModal' id='listaAltaPresFluxo'>Clique para o gráfico</button></td>" +
+                                    "</tr>"
+                                 }
+                                 
+                                 if (injetor.tempoProtMolde !== 0 && (parametros.TEMPO_PROTECAO_MOLDE < (injetor.tempoProtMolde - (injetor.tempoProtMolde * injetor.tolFechamento)).toFixed(1) || parametros.TEMPO_PROTECAO_MOLDE > (injetor.tempoProtMolde + (injetor.tempoProtMolde * injetor.tolFechamento)).toFixed(1))) {
+                                    markup = markup + "<tr class='outOfRange'>" +
+                                    "<td style='font-weight: bold'> TEMPO_PROTECAO_MOLDE </td>" +      
+                                    "<td>" + injetor.tempoProtMolde + "</td>" +              
+                                    "<td>" + parametros.TEMPO_PROTECAO_MOLDE + "</td>" +                    
+                                    "<td><button class='btn btn-primary' data-toggle='modal' data-target='#myModal' id='listatempoProtMolde'>Clique para o gráfico</button></td>" +
+                                    "</tr>"
+                                 } else {
+                                    markup = markup + "<tr>" +
+                                    "<td style='font-weight: bold'> TEMPO_PROTECAO_MOLDE </td>" +      
+                                    "<td>" + injetor.tempoProtMolde + "</td>" +              
+                                    "<td>" + parametros.TEMPO_PROTECAO_MOLDE + "</td>" +                    
+                                    "<td><button class='btn btn-primary' data-toggle='modal' data-target='#myModal' id='listatempoProtMolde'>Clique para o gráfico</button></td>" +
+                                    "</tr>"
+                                 }
+                                 
+                                 if (injetor.tempoFecha !== 0 && (parametros.TEMPO_FECHAMENTO < (injetor.tempoFecha - (injetor.tempoFecha * injetor.tolFechamento)).toFixed(1) || parametros.TEMPO_FECHAMENTO > (injetor.tempoFecha + (injetor.tempoFecha * injetor.tolFechamento)).toFixed(1))) {
+                                    markup = markup + "<tr class='outOfRange'>" +
+                                    "<td style='font-weight: bold'> TEMPO_FECHAMENTO </td>" +      
+                                    "<td>" + injetor.tempoFecha + "</td>" +              
+                                    "<td>" + parametros.TEMPO_FECHAMENTO + "</td>" +                    
+                                    "<td><button class='btn btn-primary' data-toggle='modal' data-target='#myModal' id='listatempoFecha'>Clique para o gráfico</button></td>" +
+                                    "</tr>"
+                                 } else {
+                                    markup = markup + "<tr>" +
+                                    "<td style='font-weight: bold'> TEMPO_FECHAMENTO </td>" +      
+                                    "<td>" + injetor.tempoFecha + "</td>" +              
+                                    "<td>" + parametros.TEMPO_FECHAMENTO + "</td>" +                    
+                                    "<td><button class='btn btn-primary' data-toggle='modal' data-target='#myModal' id='listatempoFecha'>Clique para o gráfico</button></td>" +
                                     "</tr>"
                                  }
 
@@ -1617,6 +1697,38 @@ function tipoVisualizacao(tipo) {
                                     "</tr>"
                                  }
                                  
+                                 if (injetor.resfriamento !== 0 && (parametros.TEMPO_RESFRIAMENT0 < (injetor.resfriamento - (injetor.resfriamento * injetor.tolAbertura)).toFixed(1) || parametros.TEMPO_RESFRIAMENT0 > (injetor.resfriamento + (injetor.resfriamento * injetor.tolAbertura)).toFixed(1))) {
+                                    markup = markup + "<tr class='outOfRange'>" +
+                                    "<td style='font-weight: bold'> TEMPO_RESFRIAMENT0 </td>" +   
+                                    "<td>" + injetor.resfriamento + "</td>" +                   
+                                    "<td>" + parametros.TEMPO_RESFRIAMENT0 + "</td>" +                    
+                                    "<td><button class='btn btn-primary' data-toggle='modal' data-target='#myModal' id='listaresfriamento'>Clique para o gráfico</button></td>" +
+                                    "</tr>"
+                                 } else {
+                                    markup = markup + "<tr>" +
+                                    "<td style='font-weight: bold'> TEMPO_RESFRIAMENT0 </td>" +   
+                                    "<td>" + injetor.resfriamento + "</td>" +                   
+                                    "<td>" + parametros.TEMPO_RESFRIAMENT0 + "</td>" +                    
+                                    "<td><button class='btn btn-primary' data-toggle='modal' data-target='#myModal' id='listaresfriamento'>Clique para o gráfico</button></td>" +
+                                    "</tr>"
+                                 }
+                                 
+                                 if (injetor.tempoAbertura !== 0 && (parametros.TEMPO_ABERTURA < (injetor.tempoAbertura - (injetor.tempoAbertura * injetor.tolAbertura)).toFixed(1) || parametros.TEMPO_ABERTURA > (injetor.tempoAbertura + (injetor.tempoAbertura * injetor.tolAbertura)).toFixed(1))) {
+                                    markup = markup + "<tr class='outOfRange'>" +
+                                    "<td style='font-weight: bold'> TEMPO_ABERTURA </td>" +   
+                                    "<td>" + injetor.tempoAbertura + "</td>" +                   
+                                    "<td>" + parametros.TEMPO_ABERTURA + "</td>" +                    
+                                    "<td><button class='btn btn-primary' data-toggle='modal' data-target='#myModal' id='listatempoAbertura'>Clique para o gráfico</button></td>" +
+                                    "</tr>"
+                                 } else {
+                                    markup = markup + "<tr>" +
+                                    "<td style='font-weight: bold'> TEMPO_ABERTURA </td>" +   
+                                    "<td>" + injetor.tempoAbertura + "</td>" +                   
+                                    "<td>" + parametros.TEMPO_ABERTURA + "</td>" +                    
+                                    "<td><button class='btn btn-primary' data-toggle='modal' data-target='#myModal' id='listatempoAbertura'>Clique para o gráfico</button></td>" +
+                                    "</tr>"
+                                 }
+                                 
                                  if (injetor.posAvanco1 !== 0 && (parametros.EXTRACAO_POSICAO_AVANCO_1 < (injetor.posAvanco1 - (injetor.posAvanco1 * injetor.tolExtracao)).toFixed(1) || parametros.EXTRACAO_POSICAO_AVANCO_1 > (injetor.posAvanco1 + (injetor.posAvanco1 * injetor.tolExtracao)).toFixed(1))) {
                                     markup = markup + "<tr class='outOfRange'>" +
                                     "<td style='font-weight: bold'> EXTRACAO_POSICAO_AVANCO_1 </td>" +     
@@ -1840,7 +1952,7 @@ function tipoVisualizacao(tipo) {
                                     "<td><button class='btn btn-primary' data-toggle='modal' data-target='#myModal' id='listafluxoAvanco2'>Clique para o gráfico</button></td>" +
                                     "</tr>"
                                  }
-                                 //aqui
+
                                  if (injetor.fluxoAvanco3 !== 0 && (parametros.EXTRACAO_FLUXO_AVANCO_3 < (injetor.fluxoAvanco3 - (injetor.fluxoAvanco3 * injetor.tolExtracao)).toFixed(1) || parametros.EXTRACAO_FLUXO_AVANCO_3 > (injetor.fluxoAvanco3 + (injetor.fluxoAvanco3 * injetor.tolExtracao)).toFixed(1))) {
                                     markup = markup + "<tr class='outOfRange'>" +
                                     "<td style='font-weight: bold'> EXTRACAO_FLUXO_AVANCO_3 </td>" +    
@@ -2119,6 +2231,12 @@ function tipoVisualizacao(tipo) {
                                  document.getElementById("listafluxoInjecao5").addEventListener("click", function () {
                                     plotaGrafico("fluxoInjecao5");
                                  }, false);
+                                 document.getElementById("listatempoDisparo").addEventListener("click", function () {
+                                    plotaGrafico("tempoDisparo");
+                                 }, false);
+                                 document.getElementById("listapressaoInj").addEventListener("click", function () {
+                                    plotaGrafico("pressaoInj");
+                                 }, false);
                                  document.getElementById("listapresRecalque1").addEventListener("click", function () {
                                     plotaGrafico("presRecalque1");
                                  }, false);
@@ -2224,6 +2342,9 @@ function tipoVisualizacao(tipo) {
                                  document.getElementById("listaCPDosagem5").addEventListener("click", function () {
                                     plotaGrafico("CPDosagem5");
                                  }, false);
+                                 document.getElementById("listatempoDosagem").addEventListener("click", function () {
+                                    plotaGrafico("tempoDosagem");
+                                 }, false);
                                  document.getElementById("listaposFecha1").addEventListener("click", function () {
                                     plotaGrafico("posFecha1");
                                  }, false);
@@ -2233,8 +2354,8 @@ function tipoVisualizacao(tipo) {
                                  document.getElementById("listaposFecha3").addEventListener("click", function () {
                                     plotaGrafico("posFecha3");
                                  }, false);
-                                 document.getElementById("listatempoProtMolde").addEventListener("click", function () {
-                                    plotaGrafico("tempoProtMolde");
+                                 document.getElementById("listaFechaProtMolde").addEventListener("click", function () {
+                                    plotaGrafico("protMPos");
                                  }, false);
                                  document.getElementById("listaAltaPresPos").addEventListener("click", function () {
                                     plotaGrafico("AltaPresPos");
@@ -2268,6 +2389,12 @@ function tipoVisualizacao(tipo) {
                                  }, false);
                                  document.getElementById("listaAltaPresFluxo").addEventListener("click", function () {
                                     plotaGrafico("AltaPresFluxo");
+                                 }, false);
+                                 document.getElementById("listatempoProtMolde").addEventListener("click", function () {
+                                    plotaGrafico("tempoProtMolde");
+                                 }, false);
+                                 document.getElementById("listatempoFecha").addEventListener("click", function () {
+                                    plotaGrafico("tempoFecha");
                                  }, false);
                                  document.getElementById("listaposAbertura1").addEventListener("click", function () {
                                     plotaGrafico("posAbertura1");
@@ -2313,6 +2440,12 @@ function tipoVisualizacao(tipo) {
                                  }, false);
                                  document.getElementById("listafluxoAbertura5").addEventListener("click", function () {
                                     plotaGrafico("fluxoAbertura5");
+                                 }, false);
+                                 document.getElementById("listaresfriamento").addEventListener("click", function () {
+                                    plotaGrafico("resfriamento");
+                                 }, false);
+                                 document.getElementById("listatempoAbertura").addEventListener("click", function () {
+                                    plotaGrafico("tempoAbertura");
                                  }, false);
                                  document.getElementById("listaposAvanco1").addEventListener("click", function () {
                                     plotaGrafico("posAvanco1");
