@@ -1864,7 +1864,7 @@ function comparar() {
                                                    "</td>" +
                                                 "</tr>" +
                                                 "<tr>" +
-                                                   "<td style='border-right: none; height: 40px;'>" +
+                                                   "<td colspan='7' style='height: 40px;'>" +
                                                       "<p class='read-only' style='width: 100%;'></p>" +
                                                    "</td>" +
                                                 "</tr>" +
@@ -1941,7 +1941,7 @@ function comparar() {
                                                    "</td>" +
                                                 "</tr>" +
                                                 "<tr>" +
-                                                   "<td style='border-right: none; height: 40px;'>" +
+                                                   "<td colspan='7' style='height: 40px;'>" +
                                                       "<p class='read-only' style='width: 100%;'></p>" +
                                                    "</td>" +
                                                 "</tr>" +
@@ -2018,7 +2018,7 @@ function comparar() {
                                                    "</td>" +
                                                 "</tr>" +
                                                 "<tr>" +
-                                                   "<td style='border-right: none; height: 40px;'>" +
+                                                   "<td colspan='7' style='height: 40px;'>" +
                                                       "<p class='read-only' style='width: 100%;'></p>" +
                                                    "</td>" +
                                                 "</tr>" +
@@ -2095,7 +2095,7 @@ function comparar() {
                                                    "</td>" +
                                                 "</tr>" +
                                                 "<tr>" +
-                                                   "<td style='border-right: none; height: 40px;'>" +
+                                                   "<td colspan='7' style='height: 40px;'>" +
                                                       "<p class='read-only' style='width: 100%;'></p>" +
                                                    "</td>" +
                                                 "</tr>" +
