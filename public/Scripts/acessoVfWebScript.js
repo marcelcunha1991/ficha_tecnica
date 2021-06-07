@@ -1,6 +1,24 @@
 $("#parametros").hide();
 $("#ficha").hide();
 
+var today = new Date();
+
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = yyyy + '-' + mm + '-' + dd;
+
+console.log('today: ' + today);
+
+function getDate() {
+   $("#data").val()
+   today = $("#data").val();
+
+   console.log('data escolhida: ' + today);
+
+}
+
 var codInjet = $("#maquinaId").val();
 
 $(document).ready(function(){
@@ -48,7 +66,7 @@ function tipoVisualizacao(tipo) {
          success: function (maquina_) {    
       
             $.ajax({
-               url: '/externo/vf-web/fichasUltimo/maquina/' + codInjet,
+               url: '/externo/vf-web/fichasUltimo/maquina/' + codInjet + '/' + today,
                method: 'get',
                dataType: 'json',
                success: function (parametros) {
@@ -164,7 +182,7 @@ function tipoVisualizacao(tipo) {
             success: function (maquina_) {     
                // PREENCHE TABELA DE FICHA TECNICA DA COLETA PASTORE
                $.ajax({
-                  url: '/externo/vf-web/fichasUltimo/maquina/' + codInjet,
+                  url: '/externo/vf-web/fichasUltimo/maquina/' + codInjet + '/' + today,
                   method: 'get',
                   dataType: 'json',
                   success: function (parametros) {
@@ -2366,7 +2384,7 @@ function tipoVisualizacao(tipo) {
          
                // PREENCHE TABELA DE FICHA TECNICA
                $.ajax({
-                  url: '/externo/vf-web/fichasUltimo/maquina/' + codInjet,
+                  url: '/externo/vf-web/fichasUltimo/maquina/' + codInjet + '/' + today,
                   method: 'get',
                   dataType: 'json',
                   success: function (parametros) {
@@ -2586,7 +2604,7 @@ function tipoVisualizacao(tipo) {
          
                // PREENCHE TABELA DE FICHA TECNICA
                $.ajax({
-                  url: '/externo/vf-web/fichasUltimo/maquina/' + codInjet,
+                  url: '/externo/vf-web/fichasUltimo/maquina/' + codInjet + '/' + today,
                   method: 'get',
                   dataType: 'json',
                   success: function (parametros) {

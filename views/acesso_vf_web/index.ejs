@@ -17,6 +17,12 @@
       <% }) %>
    </select> -->
 
+   <div id="setDate">
+      <label style="font-weight: 600;" for="data">Informar data específica para buscar os dados da coleta:</label>
+      <input type="date" id="data">
+      <button class="btn btn-primary" onclick="getDate()">Enviar</button>
+   </div>
+
    <h5>Escolha uma forma de visualização:</h5>
    <button style='margin-right: 5px' class='btn btn-info params' onclick='tipoVisualizacao(1)'>Visualização em lista</button>
    <button class='btn btn-info params' onclick='tipoVisualizacao(2)'>Visualização em Ficha</button>
@@ -53,7 +59,7 @@
       </tbody>
    </table> -->
     
-   <h5>Parâmetros De Programa: </h5>
+   <!-- <h5>Parâmetros De Programa: </h5> -->
    <br>
 
    <div id="main">
