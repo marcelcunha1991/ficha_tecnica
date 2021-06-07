@@ -360,8 +360,26 @@ $(document).ready(function () {
          })
       }
    })
+
+   $.ajax({
+      url: '/get/user/' + $("#idUser").val(),
+      method: 'get',
+      dataType: 'json',
+      success: function (response) {
+         console.log('response');
+         console.log(response.isAdmin);
+         console.log(typeof response.isAdmin);
+
+         if (response.isAdmin === "1") {
+            document.getElementById("Sim").checked = true;
+         } else {
+            document.getElementById("Nao").checked = true;
+         }
+      }
+   })
 });
 
+// OPÇAO IMPRIMIR OU SALVAR EM EXCEL
 $('#options').change(e => {
    if (e.target.value === "print") {
       $(".ficha-container").addClass("flex-column");

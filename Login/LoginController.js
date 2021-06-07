@@ -115,6 +115,69 @@ router.post("/authenticate",(req,res) => {
 
 })
 
+router.get("/users/edit/:id",(req,res) => {
+
+   var id = req.params.id;
+
+   if(isNaN(id)){
+      res.redirect("/users")
+   }
+
+   User.findByPk(id).then(user => {
+
+      if(user != undefined){
+
+         res.render("users/edit",{
+            user:user,
+            nav_maquinas : "",
+            nav_produtos : "",
+            nav_mp : "",
+            nav_usuarios : "",
+            nav_moldes : "",
+            nav_parametros:"",
+            nav_clientes : "active",
+            nav_ficha: "",
+            nav_alertas:""
+         
+         })
+
+      }else{
+         res.redirect("/users");
+      }
+
+   }).catch(erro => {
+         res.redirect("/users");
+   })  
+
+})
+
+router.post("/users/update",(req,res) => {
+
+   console.log(req.body);
+    
+   var email = req.body.email;
+   var nome = req.body.nome;
+   var password = req.body.password;
+   var matricula = req.body.matricula;
+   var isAdmin = req.body.isAdmin;
+   var id = req.body.idUser;
+
+   User.update({
+      email: email,
+      nome: nome,
+      password: password,
+      matricula: matricula,
+      isAdmin: isAdmin,
+
+   },{
+      where:{
+         id:id
+      }
+   }).then(() => {
+      res.redirect("/users")
+   })
+})
+
 router.post("/users/delete",(req,res) => {
     var id = req.body.id;
     if (id != undefined){
@@ -157,6 +220,19 @@ router.get("/isUserAdmin/:user", (req,res) => {
    }).then((logado) => {
       res.send(logado)
    })
+})
+
+router.get("/get/user/:id",(req,res) => {
+   var Id = req.params.id;
+      
+   User.findOne({
+      where: {
+         id: Id
+      }
+   }).then((user) => {
+      res.send(user)
+   })
+
 })
 
 module.exports = router;
