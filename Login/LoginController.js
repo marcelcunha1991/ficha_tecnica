@@ -160,10 +160,13 @@ router.post("/users/update",(req,res) => {
    var isAdmin = req.body.isAdmin;
    var id = req.body.idUser;
 
+   var salt = bcrypt.genSaltSync(10);
+   var hash = bcrypt.hashSync(password,salt);
+
    User.update({
       email: email,
       nome: nome,
-      password: password,
+      password: hash,
       matricula: matricula,
       isAdmin: isAdmin,
 
