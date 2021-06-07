@@ -204,8 +204,12 @@ p {
       margin-bottom: 20px;
    }
 
-   #export_table_to_excel_10 {
-      margin-bottom: 110px;
+   #export_table_to_excel_6 {
+      margin-bottom: 80px;
+   }
+
+   #vapor {
+      margin-bottom: 80px;
    }
 
    ::-webkit-scrollbar {
