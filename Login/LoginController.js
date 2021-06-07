@@ -152,8 +152,6 @@ router.get("/users/edit/:id",(req,res) => {
 })
 
 router.post("/users/update",(req,res) => {
-
-   console.log(req.body);
     
    var email = req.body.email;
    var nome = req.body.nome;
