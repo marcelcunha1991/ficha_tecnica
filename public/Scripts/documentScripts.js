@@ -375,6 +375,7 @@ $('#options').change(e => {
       window.print();
    } else if (e.target.value === "excel") {
       console.log('excel');
+      tablesToExcel(array1, 'Sheet1', 'FichaTecnica.xls')
    }
 })
 
@@ -403,3 +404,55 @@ document.addEventListener("keydown", function (event) {
    }
 
 });
+
+//TABLE TO EXCEL FUNCTION
+var array1 = new Array();
+var n = 16; //Total table
+for ( var x=1; x<=n; x++ ) {
+   array1[x-1] = 'export_table_to_excel_' + x;
+}
+var tablesToExcel = (function () {
+   var uri = 'data:application/vnd.ms-excel;base64,'
+      , utf8Heading = "<meta http-equiv=\"content-type\" content=\"application/vnd.ms-excel; charset=UTF-8\">"
+      , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">' + utf8Heading + '<head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets>'
+      , templateend = '</x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head>'
+      , body = '<body>'
+      , tablevar = '<table>{table'
+      , tablevarend = '}</table>'
+      , bodyend = '</body></html>'
+      , worksheet = '<x:ExcelWorksheet><x:Name>'
+      , worksheetend = '</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet>'
+      , worksheetvar = '{worksheet'
+      , worksheetvarend = '}'
+      , base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) }
+      , format = function (s, c) { return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; }) }
+      , wstemplate = ''
+      , tabletemplate = '';
+
+   return function (table, name, filename) {
+      var tables = table;
+      var wstemplate = '';
+      var tabletemplate = '';
+
+      wstemplate = worksheet + worksheetvar + '0' + worksheetvarend + worksheetend;
+      for (var i = 0; i < tables.length; ++i) {
+         tabletemplate += tablevar + i + tablevarend;
+      }
+
+      var allTemplate = template + wstemplate + templateend;
+      var allWorksheet = body + tabletemplate + bodyend;
+      var allOfIt = allTemplate + allWorksheet;
+
+      var ctx = {};
+      ctx['worksheet0'] = name;
+      for (var k = 0; k < tables.length; ++k) {
+         var exceltable;
+         if (!tables[k].nodeType) exceltable = document.getElementById(tables[k]);
+         ctx['table' + k] = exceltable.innerHTML;
+      }
+
+      document.getElementById("dlink").href = uri + base64(format(allOfIt, ctx));;
+      document.getElementById("dlink").download = filename;
+      document.getElementById("dlink").click();
+   }
+})();
