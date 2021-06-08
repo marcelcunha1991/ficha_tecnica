@@ -597,6 +597,7 @@ function insertDataAutomata(body){
 
 function insertDataHaitianJupyter(body){
    console.log(body)
+
    ParametrosReaishaitianJupyter.create(body).then((result) => {
       return result;
    }).catch(error =>{
