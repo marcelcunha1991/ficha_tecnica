@@ -3,7 +3,10 @@ const express = require("express");
 const router = express.Router();
 var nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
-dotenv.config();
+const path = require('path');
+dotenv.config(); //PARA TESTES, COMENTE ESSE E DESCOMENTE O DEBAIXO
+
+// dotenv.config({path: path.resolve(__dirname, '../.env.example')});
 
 const ParametrosReaisHaitianJupyter = require("../ParametrosTempoReal/ParametrosReaisHaitianJupyter");
 
