@@ -5289,11 +5289,12 @@ function plotaGrafico(area) {
    var dados = [];
    
    $.ajax({
-      url: '/externo/parametrosReais/' + codInjet,
+      url: '/externo/parametrosReais/' + codInjet + '/' + today,
       method: 'get',
       dataType: 'json',
       success: function (parametrosMaquina) {
          console.log("Entrou no parametrosReais")
+         console.log(parametrosMaquina)
          var center;
          var limite_;
          var range_;

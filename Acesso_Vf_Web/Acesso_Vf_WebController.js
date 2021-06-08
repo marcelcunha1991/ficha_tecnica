@@ -127,10 +127,10 @@ router.get("/externo/vf-web/fichasUltimo/maquina/:id/:date?",  (req,res) => {
 
 })
 
-router.get("/externo/parametrosReais/:maquina",  (req,res) => {
+router.get("/externo/parametrosReais/:maquina/:date?",  (req,res) => {
 
-   var maquinaId = req.params.maquina;      
-   console.log(req.params.maquina);
+   var maquinaId = req.params.maquina;    
+   var dataEscolhida = req.params.date;  
 
    Maquinas.findOne({
       where: {
@@ -166,7 +166,8 @@ router.get("/externo/parametrosReais/:maquina",  (req,res) => {
          ParametrosReaishaitianJupyter.findAll({
             limit: 30,
             where: {
-               mac: maquina.mac
+               mac: maquina.mac,
+               DATA: dataEscolhida
             },
             order: [ [ 'createdAt', 'DESC' ]]
          }).then(output => {

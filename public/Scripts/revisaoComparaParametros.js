@@ -2878,11 +2878,12 @@ function plotaGrafico(area) {
    var dados = [];
    
    $.ajax({
-      url: '/parametrosReais/' + $("#maquina").val(),
+      url: '/parametrosReais/' + $("#maquina").val() + '/' + today,
       method: 'get',
       dataType: 'json',
       success: function (parametrosMaquina) {
          console.log("Entrou no parametrosReais")
+         console.log(parametrosMaquina)
          var center;
          var limite_;
          var range_;

@@ -79,7 +79,6 @@ function tipoVisualizacao(tipo) {
                method: 'get',
                dataType: 'json',
                success: function (parametros) {
-                  console.log(parametros.DATA);
             
                   $.ajax({
                      url: '/ficha/getFichaPastoreInjetores/' + parametros.mac,
@@ -5298,11 +5297,12 @@ function plotaGrafico(area) {
    var dados = [];
    
    $.ajax({
-      url: '/parametrosReais/' + $("#maquinas").val(),
+      url: '/parametrosReais/' + $("#maquinas").val() + '/' + today,
       method: 'get',
       dataType: 'json',
       success: function (parametrosMaquina) {
          console.log("Entrou no parametrosReais")
+         console.log(parametrosMaquina)
          var center;
          var limite_;
          var range_;

@@ -322,9 +322,10 @@ router.get("/parametrosCadastrados/:maquina",  (req,res) => {
 })
 
 
-router.get("/parametrosReais/:maquina",  (req,res) => {
+router.get("/parametrosReais/:maquina/:date?",  (req,res) => {
 
-    var maquinaId= req.params.maquina;      
+    var maquinaId= req.params.maquina; 
+    var dataEscolhida = req.params.date;      
 
     Maquinas.findOne({
         where: {
@@ -358,7 +359,8 @@ router.get("/parametrosReais/:maquina",  (req,res) => {
          ParametrosReaisHaitianJupyter.findAll({
              limit: 30,
              where: {
-               mac: maquina.mac
+               mac: maquina.mac,
+               DATA: dataEscolhida
              },
              order: [ [ 'createdAt', 'DESC' ]]
            }).then(output => {
