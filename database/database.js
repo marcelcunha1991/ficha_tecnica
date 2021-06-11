@@ -10,7 +10,7 @@ const Sequelize = require("sequelize");
 //    timezone:"-04:00"
 // })
 
-const conn = new Sequelize('fichatecnica','postgres','Te100p21',{
+const conn = new Sequelize('fichatecnica','postgres','sa123',{
    host: 'localhost',
    dialect: 'postgres',
 })

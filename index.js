@@ -401,15 +401,15 @@ app.get("/",(req,res) =>{
 //       tipo:"Haitian Jupyter"
 //    })
 
+setInterval(rulesMediator, 3000);
 
-rulesMediator();
 
 
 function rulesMediator(){
 
     // A base de regras pode ser encontrada no seguinte link
     // https://www.ermontoro.com/post/2018/09/05/regras-para-avaliar-cartas-de-controle-cep
-
+    console.log("Executando Mediator");
     ParametrosReaisHaitianJupyter.findAll(
         { limit: 30, order: [ [ 'createdAt', 'DESC' ]] }
         ).then( parametros => {
