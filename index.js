@@ -336,7 +336,7 @@ app.use("/",tiposConctroller);
 app.use("/",alertasController);
 app.use("/",revisaoController);
 app.use("/",acessoVfWebController);
-app.use("/",WmController);
+app.use("/",WmController.router);
 
 
 
@@ -455,7 +455,8 @@ function rule1(iterator){
         for(var i =0; i < iterator.length; i++){
             
          if((iterator[i].get(listParametros[j]) > (3*desvioPadrao)+media)){
-             console.log("enviar Email ")
+            //  console.log("enviar Email ")
+             WmController.emailTrigger();
          }
         }
 
@@ -489,7 +490,8 @@ function rule1(iterator){
         }
 
         if(numbersUpMedian >= 9){
-            console.log("enviar Email ")
+            // console.log("enviar Email ")
+            WmController.emailTrigger();
         }
 
 
@@ -527,7 +529,8 @@ function rule1(iterator){
         }
 
         if(growPoints >= 6 || descPoints >=6){
-            console.log("enviar Email ")
+            // console.log("enviar Email ")
+            WmController.emailTrigger();
         }
 
         }
@@ -569,7 +572,8 @@ function rule1(iterator){
         }
 
         if(sequenceFlow >= 14){
-            console.log("enviar Email ")
+            // console.log("enviar Email ")
+            WmController.emailTrigger();
         }
 
         }
@@ -610,7 +614,8 @@ function rule1(iterator){
                 }
 
                 if(matchs >= 2){
-                    console.log("enviar Email ")
+                  //   console.log("enviar Email ")
+                    WmController.emailTrigger();
                 }
             }else if(listaParametros[i] < listaParametros[i-1]  && listaParametros[i-1] < listaParametros[i-2]){
                 if(listaParametros[i] < media - 2*desvioPadrao){
@@ -624,7 +629,8 @@ function rule1(iterator){
                 }
 
                 if(matchs >= 2){
-                    console.log("enviar Email ")
+                  //   console.log("enviar Email ")
+                  WmController.emailTrigger();
                 }
             }
 
@@ -664,7 +670,8 @@ function rule1(iterator){
             }
 
             if(matchs >= 15){
-                console.log("enviar Email ")
+               //  console.log("enviar Email ")
+               WmController.emailTrigger();
             }
       
         }
@@ -700,7 +707,8 @@ function rule1(iterator){
             }
 
             if(matchs >= 8){
-                console.log("enviar Email ")
+               //  console.log("enviar Email ")
+               WmController.emailTrigger();
             }
       
         }

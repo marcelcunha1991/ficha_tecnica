@@ -2,6 +2,11 @@
 const express = require("express");
 const router = express.Router();
 var nodemailer = require('nodemailer');
+const dotenv = require('dotenv');
+const path = require('path');
+dotenv.config(); //PARA TESTES, COMENTE ESSE E DESCOMENTE O DEBAIXO
+
+// dotenv.config({path: path.resolve(__dirname, '../.env.example')});
 
 const ParametrosReaisHaitianJupyter = require("../ParametrosTempoReal/ParametrosReaisHaitianJupyter");
 
@@ -277,7 +282,7 @@ router.get("/trigger",  (req,res) => {
       
       var mailOptions = {
         from: 'wmmailcentral@gmail.com',
-        to: 'implantacaomap@gmail.com',
+        to: process.env.SEND_EMAIL_TO,
         subject: 'WM ALERTA',
         text: 'Parâmetros tendendo a sair dos limites esperados'
       };
@@ -301,6 +306,36 @@ router.get("/trigger",  (req,res) => {
 
 
 })
+
+function emailTrigger() {
+   var transporter = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      secure: false, // use SSL
+      port: 587,
+      auth: {
+        user: 'wmmailcentral@gmail.com',
+        pass: 'marcelft131291'
+      },        
+      tls: {
+         rejectUnauthorized: false
+      }
+   });
+    
+   var mailOptions = {
+      from: 'wmmailcentral@gmail.com',
+      to: process.env.SEND_EMAIL_TO,
+      subject: 'WM ALERTA',
+      text: 'Parâmetros tendendo a sair dos limites esperados'
+   };
+    
+   transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+         console.log(error);
+      } else {
+         console.log('Email sent: ' + info.response);
+      }
+   });
+}
 
 function rule1(){
 
@@ -339,4 +374,4 @@ function rule1(){
 
 
  
-module.exports = router;
+module.exports = { router, emailTrigger };
