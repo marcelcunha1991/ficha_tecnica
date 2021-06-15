@@ -115,10 +115,14 @@ router.post("/moldes/update",(req,res) => {
     var descricao = req.body.descricao;
     var codigo = req.body.codigo.replace(/\s/g, "");
     var id = req.body.id;
+    var userLogado = req.body.userLogado;
+    var justificativa = req.body.justificativa;
 
     Moldes.update({
         descricao:codigo,
         codigo:codigo,
+        usuario: userLogado,
+        justificativa: justificativa,
  
     },{
         where:{

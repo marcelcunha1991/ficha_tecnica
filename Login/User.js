@@ -25,7 +25,9 @@ const User = conn.define('users',{
    isAdmin: {
       type: Sequelize.STRING,
       allowNull: true
-   }
+   },
+   justificativa: Sequelize.TEXT,
+   usuario: Sequelize.TEXT,
 })
 
 // User.sync();

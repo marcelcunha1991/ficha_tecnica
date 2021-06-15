@@ -142,13 +142,17 @@ router.post("/maquinas/update",(req,res) => {
    var peso = req.body.peso;
    var modelo = req.body.modelo;
    var id = req.body.id;
+   var userLogado = req.body.userLogado;
+   var justificativa = req.body.justificativa;
 
    Maquinas.update({
       descricao:descricao,
       numeroMaquina:numeroMaquina,
       codigo: codigo,
       peso:peso,
-      modelo: modelo
+      modelo: modelo,
+      usuario: userLogado,
+      justificativa: justificativa,
    },{
       where:{
          id:id

@@ -15,6 +15,7 @@
                 <th> Descrição </th>
                 <th> Código </th>
                 <th> Coleta </th>
+                <th> Última edição </th>
                 <th> Opções </th>
        
             </tr>
@@ -27,6 +28,10 @@
                 <td> <%=alerta.descricao %>  </td>
                 <td> <%=alerta.codigo %>  </td>
                 <td> <%=alerta.tipo.tipo %>  </td>
+                <td>
+                  <small style="font-weight: 700;"><%= alerta.usuario %></small><br>
+                  <p style="word-break: break-all; white-space: normal"><%= alerta.justificativa %></p>
+                </td>
               
          
                 <td> 

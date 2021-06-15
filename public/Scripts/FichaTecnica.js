@@ -257,6 +257,7 @@ function preencheCampo() {
    $("#valor").val("");
 }
 
+//ao editar, o usuario digita e aparece o modal. O modal some se o usuario fizer autenticação
 var searchTimeout;
 $("input, textarea").keypress(function() {
    if (searchTimeout != undefined) clearTimeout(searchTimeout);
@@ -281,6 +282,7 @@ function form_submit() {
             $("input, textarea").unbind("keypress");
             $('#loginModal').modal('hide');
             $("#tecnico").val(success.nome);
+            $("#userLogado").val(success.nome);
             document.getElementById("edit").disabled = false;
          }
       }

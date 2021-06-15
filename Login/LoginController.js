@@ -159,6 +159,8 @@ router.post("/users/update",(req,res) => {
    var matricula = req.body.matricula;
    var isAdmin = req.body.isAdmin;
    var id = req.body.idUser;
+   var userLogado = req.body.userLogado;
+   var justificativa = req.body.justificativa;
 
    var salt = bcrypt.genSaltSync(10);
    var hash = bcrypt.hashSync(password,salt);
@@ -169,6 +171,8 @@ router.post("/users/update",(req,res) => {
       password: hash,
       matricula: matricula,
       isAdmin: isAdmin,
+      usuario: userLogado,
+      justificativa: justificativa,
 
    },{
       where:{

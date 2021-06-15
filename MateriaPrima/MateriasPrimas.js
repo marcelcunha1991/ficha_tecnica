@@ -9,7 +9,9 @@ const MateriasPrimas = conn.define('materiaprima',{
     codigo: {
         type: Sequelize.STRING,
         allowNull: false
-    }
+    },
+    justificativa: Sequelize.TEXT,
+    usuario: Sequelize.TEXT,
 })
 
 // MateriasPrimas.sync();
