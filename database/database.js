@@ -11,15 +11,15 @@ const Sequelize = require("sequelize");
 // })
 
 
-// const conn = new Sequelize('fichatecnica','postgres','sa123',{
-//    host: 'localhost',
-//    dialect: 'postgres',
-// })
-
-const conn = new Sequelize('fichatecnica','postgres','Te100p21',{
+const conn = new Sequelize('fichatecnica','postgres','sa123',{
    host: 'localhost',
    dialect: 'postgres',
 })
+
+// const conn = new Sequelize('fichatecnica','postgres','Te100p21',{
+//    host: 'localhost',
+//    dialect: 'postgres',
+// })
 
 // const conn = new Sequelize('fichatecnica','postgres','1234',{
 //    host: 'localhost',

@@ -47,6 +47,19 @@ const bcrypt = require("bcryptjs");
 var salt = bcrypt.genSaltSync(10);
 var hash = bcrypt.hashSync("admin",salt);
 
+var transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    secure: false, // use SSL
+    port: 587,
+    auth: {
+      user: 'wmmailcentral@gmail.com',
+      pass: 'marcelft131291'
+    },        
+    tls: {
+       rejectUnauthorized: false
+    }
+ });
+
 var listParametros = ["TEMPERATURA_ZONA_1",
 "TEMPERATURA_ZONA_2",
 "TEMPERATURA_ZONA_3",
@@ -401,7 +414,7 @@ app.get("/",(req,res) =>{
 //       tipo:"Haitian Jupyter"
 //    })
 
-setInterval(rulesMediator, 3000);
+setInterval(rulesMediator, 5000);
 
 
 
@@ -415,54 +428,80 @@ function rulesMediator(){
         ).then( parametros => {
 
             //Regra 1: Um ponto mais do que 3 desvios padrão de distância da média. 
-            rule1(parametros);
+            try{
+                rule1(parametros);
 
-            //Regra 2: Nove ou mais pontos consecutivos de um mesmo lado da média.
-            rule2(parametros);
-
-            //Regra 3: Seis ou mais pontos consecutivos crescente ou decrescente. 
-            rule3(parametros);
-
-            //Regra 4: Quatorze pontos consecutivos ou mais de forma alternada, acima e abaixo da média.  
-            rule4(parametros);
-
-            //Regra 5: Dois ou mais pontos de três consecutivos mais do que dois desvios padrão da média na mesma direção. 
-            rule5(parametros);
-
-             //Regra 7: Quinze pontos em sequência todos dentro da região de um desvio padrão.  
-             rule7(parametros);
-
-             //Regra 8: Oito pontos consecutivos, mas nenhum dentro da faixa de ± 1 desvio padrão, mesmo dos dois lados da linha média.  
-             rule8(parametros);
+                //Regra 2: Nove ou mais pontos consecutivos de um mesmo lado da média.
+                rule2(parametros);
+    
+                //Regra 3: Seis ou mais pontos consecutivos crescente ou decrescente. 
+                rule3(parametros);
+    
+                //Regra 4: Quatorze pontos consecutivos ou mais de forma alternada, acima e abaixo da média.  
+                rule4(parametros);
+    
+                //Regra 5: Dois ou mais pontos de três consecutivos mais do que dois desvios padrão da média na mesma direção. 
+                rule5(parametros);
+    
+                 //Regra 7: Quinze pontos em sequência todos dentro da região de um desvio padrão.  
+                 rule7(parametros);
+    
+                 //Regra 8: Oito pontos consecutivos, mas nenhum dentro da faixa de ± 1 desvio padrão, mesmo dos dois lados da linha média.  
+                 rule8(parametros);
+            }catch(e){
+                console.log(e)
+            }
+          
       })    
 }
+
+function emailTrigger() {
+  
+     
+    var mailOptions = {
+       from: 'wmmailcentral@gmail.com',
+       to: "implantacaomap@gmail.com",
+       subject: 'WM ALERTA',
+       text: 'Parâmetros tendendo a sair dos limites esperados'
+    };
+     
+    transporter.sendMail(mailOptions, function(error, info){
+       if (error) {
+          console.log(error);
+       } else {
+          console.log('Email sent: ' + info.response);
+       }
+    });
+     throw "myException";
+ }
 
 
 function rule1(iterator){
 
-    for(var j =0; j < listParametros.length; j++){
+    // for(var j =0; j < listParametros.length; j++){
             
-        var listaParametros = [];
+    //     var listaParametros = [];
 
-        for(var i =0; i < iterator.length; i++){
+    //     for(var i =0; i < iterator.length; i++){
           
-          listaParametros.push(iterator[i].get(listParametros[j]))
-        }
+    //       listaParametros.push(iterator[i].get(listParametros[j]))
+    //     }
 
-        let desvioPadrao = calculaDesvioPadrao(listaParametros);
-        let media = calculaMedia(listaParametros);
+    //     let desvioPadrao = calculaDesvioPadrao(listaParametros);
+    //     let media = calculaMedia(listaParametros);
 
-        for(var i =0; i < iterator.length; i++){
+    //     for(var i =0; i < iterator.length; i++){
             
-         if((iterator[i].get(listParametros[j]) > (3*desvioPadrao)+media)){
-            //  console.log("enviar Email ")
-             WmController.emailTrigger();
-         }
-        }
+    //      if((iterator[i].get(listParametros[j]) > (3*desvioPadrao)+media)){
+    //         //  console.log("enviar Email ")
+    //          emailTrigger();
+    //      }
+    //     }
 
 
-      }
-    
+    //   }
+
+      emailTrigger();
   
   }
 
@@ -471,32 +510,32 @@ function rule1(iterator){
     var numbersUpMedian = 0;
 
     
-    for(var j =0; j < listParametros.length; j++){
+    // for(var j =0; j < listParametros.length; j++){
             
-        var listaParametros = [];
+    //     var listaParametros = [];
 
-        for(var i =0; i < iterator.length; i++){
+    //     for(var i =0; i < iterator.length; i++){
           
-          listaParametros.push(iterator[i].get(listParametros[j]))
-        }
+    //       listaParametros.push(iterator[i].get(listParametros[j]))
+    //     }
 
-        let media = calculaMedia(listaParametros);
+    //     let media = calculaMedia(listaParametros);
 
-        for(var i =0; i < listaParametros.length; i++){
+    //     for(var i =0; i < listaParametros.length; i++){
             
-         if(listaParametros[i] > media ){
-            numbersUpMedian = numbersUpMedian + 1;
-         }
-        }
+    //      if(listaParametros[i] > media ){
+    //         numbersUpMedian = numbersUpMedian + 1;
+    //      }
+    //     }
 
-        if(numbersUpMedian >= 9){
-            // console.log("enviar Email ")
-            WmController.emailTrigger();
-        }
+    //     if(numbersUpMedian >= 9){
+    //         console.log("enviar Email regra 2 ")
+    //         emailTrigger();
+    //     }
 
 
-      }
-    
+    //   }
+      emailTrigger();
   }
 
   function rule3(iterator){
@@ -529,8 +568,8 @@ function rule1(iterator){
         }
 
         if(growPoints >= 6 || descPoints >=6){
-            // console.log("enviar Email ")
-            WmController.emailTrigger();
+            console.log("enviar Email regra 3 ")
+            emailTrigger();
         }
 
         }
@@ -572,8 +611,8 @@ function rule1(iterator){
         }
 
         if(sequenceFlow >= 14){
-            // console.log("enviar Email ")
-            WmController.emailTrigger();
+            console.log("enviar Email regra 4")
+            emailTrigger();
         }
 
         }
@@ -614,7 +653,7 @@ function rule1(iterator){
                 }
 
                 if(matchs >= 2){
-                  //   console.log("enviar Email ")
+                    console.log("enviar Email regra 5 ")
                     WmController.emailTrigger();
                 }
             }else if(listaParametros[i] < listaParametros[i-1]  && listaParametros[i-1] < listaParametros[i-2]){
@@ -629,8 +668,8 @@ function rule1(iterator){
                 }
 
                 if(matchs >= 2){
-                  //   console.log("enviar Email ")
-                  WmController.emailTrigger();
+                    console.log("enviar Email regra 6")
+                  emailTrigger();
                 }
             }
 
@@ -670,8 +709,8 @@ function rule1(iterator){
             }
 
             if(matchs >= 15){
-               //  console.log("enviar Email ")
-               WmController.emailTrigger();
+                console.log("enviar Email regra 7")
+               emailTrigger();
             }
       
         }
@@ -707,8 +746,8 @@ function rule1(iterator){
             }
 
             if(matchs >= 8){
-               //  console.log("enviar Email ")
-               WmController.emailTrigger();
+                console.log("enviar Email regra 8")
+               emailTrigger();
             }
       
         }
