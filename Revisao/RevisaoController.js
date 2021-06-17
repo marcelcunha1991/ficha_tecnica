@@ -120,14 +120,14 @@ router.post("/fichas/updateHaitianRevisao",(req,res) => {
    var maquina = req.body.maquina;
    var idFichaTecnica = req.body.idFichaTecnica;
 
-   var NúmeroMolde = req.body.molde.replace(/\s/g, "");
+   var NúmeroMolde = req.body.molde.replace(/[\. ,:-]+/g, "");
    var NúmeroMáquina = req.body.numMaquina;
    var Revisao = req.body.revisao;
    var Cliente = req.body.cliente;
-   var CodigoPAM = req.body.codigoPAM.replace(/\s/g, "");
+   var CodigoPAM = req.body.codigoPAM.replace(/[\. ,:-]+/g, "");
    var Tecnico = req.body.tecnico;
    var Produto = req.body.produto;
-   var Material = req.body.material.replace(/\./g, "");
+   var Material = req.body.material.replace(/[\. ,:-]+/g, "");
    var Justificativa = req.body.justificativa;
    var Usuario = req.body.userLogado;
 

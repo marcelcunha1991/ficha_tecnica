@@ -48,7 +48,7 @@ router.get("/moldes/new",  (req,res) => {
 
 router.post("/moldes/create",(req,res) => {
     var descricao = req.body.descricao;
-    var codigo = req.body.codigo.replace(/\s/g, "");    
+    var codigo = req.body.codigo.replace(/[\. ,:-]+/g, "");    
 
    Moldes.findOne({
       where: {
@@ -113,7 +113,7 @@ router.get("/moldes/edit/:id",(req,res) => {
 router.post("/moldes/update",(req,res) => {
     
     var descricao = req.body.descricao;
-    var codigo = req.body.codigo.replace(/\s/g, "");
+    var codigo = req.body.codigo.replace(/[\. ,:-]+/g, "");
     var id = req.body.id;
     var userLogado = req.body.userLogado;
     var justificativa = req.body.justificativa;

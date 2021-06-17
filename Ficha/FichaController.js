@@ -958,14 +958,14 @@ router.post("/fichas/createHaitian",(req,res) => {
    console.log(req.body)
    var maquina = req.body.maquinaHaitian;
 
-   var NúmeroMolde = req.body.molde.replace(/\s/g, "");
+   var NúmeroMolde = req.body.molde.replace(/[\. ,:-]+/g, "");
    var NúmeroMáquina = req.body.numMaquina;
    var Revisao = req.body.revisao;
    var Cliente = req.body.cliente;
-   var CodigoPAM = req.body.codigoPAM.replace(/\s/g, "");
+   var CodigoPAM = req.body.codigoPAM.replace(/[\. ,:-]+/g, "");
    var Tecnico = req.body.tecnico;
    var Produto = req.body.produto;
-   var Material = req.body.material.replace(/\./g, "");
+   var Material = req.body.material.replace(/[\. ,:-]+/g, "");
 
    var tolCilindro = req.body.tolCilindro;
    var tolInjecao = req.body.tolInjecao;
@@ -2302,14 +2302,14 @@ router.post("/fichas/updateHaitian",(req,res) => {
    var id = req.body.id;
    var maquina = req.body.maquina;
 
-   var NúmeroMolde = req.body.molde.replace(/\s/g, "");
+   var NúmeroMolde = req.body.molde.replace(/[\. ,:-]+/g, "");
    var NúmeroMáquina = req.body.numMaquina;
    var Revisao = req.body.revisao;
    var Cliente = req.body.cliente;
-   var CodigoPAM = req.body.codigoPAM.replace(/\s/g, "");
+   var CodigoPAM = req.body.codigoPAM.replace(/[\. ,:-]+/g, "");
    var Tecnico = req.body.tecnico;
    var Produto = req.body.produto;
-   var Material = req.body.material.replace(/\./g, "");
+   var Material = req.body.material.replace(/[\. ,:-]+/g, "");
    var Justificativa = req.body.justificativa;
    var Usuario = req.body.tecnico;
 
