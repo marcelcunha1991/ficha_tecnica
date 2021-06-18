@@ -960,7 +960,7 @@ router.post("/fichas/createHaitian",(req,res) => {
 
    var NúmeroMolde = req.body.molde.replace(/[\. ,:-]+/g, "");
    var NúmeroMáquina = req.body.numMaquina;
-   var Revisao = req.body.revisao;
+   var RevisaoId = req.body.revisao;
    var Cliente = req.body.cliente;
    var CodigoPAM = req.body.codigoPAM.replace(/[\. ,:-]+/g, "");
    var Tecnico = req.body.tecnico;
@@ -1393,7 +1393,7 @@ router.post("/fichas/createHaitian",(req,res) => {
       maq: maquina,
       NúmeroMolde: NúmeroMolde,
       NúmeroMáquina: NúmeroMáquina,
-      Revisao: Revisao,
+      Revisao: RevisaoId,
       Cliente: Cliente,
       CodigoPAM: CodigoPAM,
       Tecnico: Tecnico,
@@ -2072,7 +2072,7 @@ router.post("/fichas/createHaitian",(req,res) => {
                maq: maquina,
                NúmeroMolde: NúmeroMolde,
                NúmeroMáquina: NúmeroMáquina,
-               Revisao: Revisao,
+               RevisaoId: RevisaoId,
                Cliente: Cliente,
                CodigoPAM: CodigoPAM,
                Tecnico: Tecnico,
@@ -2304,7 +2304,7 @@ router.post("/fichas/updateHaitian",(req,res) => {
 
    var NúmeroMolde = req.body.molde.replace(/[\. ,:-]+/g, "");
    var NúmeroMáquina = req.body.numMaquina;
-   var Revisao = req.body.revisao;
+   var RevisaoId = req.body.revisao;
    var Cliente = req.body.cliente;
    var CodigoPAM = req.body.codigoPAM.replace(/[\. ,:-]+/g, "");
    var Tecnico = req.body.tecnico;
@@ -2737,7 +2737,7 @@ router.post("/fichas/updateHaitian",(req,res) => {
    FichaTecnicaPastoreInjetores.update({
       NúmeroMolde: NúmeroMolde,
       NúmeroMáquina: NúmeroMáquina,
-      Revisao: Revisao,
+      Revisao: RevisaoId,
       Cliente: Cliente,
       CodigoPAM: CodigoPAM,
       Tecnico: Tecnico,
@@ -3422,7 +3422,7 @@ router.post("/fichas/updateHaitian",(req,res) => {
                maq: maquina,
                NúmeroMolde: NúmeroMolde,
                NúmeroMáquina: NúmeroMáquina,
-               Revisao: Revisao,
+               RevisaoId: RevisaoId,
                Cliente: Cliente,
                CodigoPAM: CodigoPAM,
                Tecnico: Tecnico,

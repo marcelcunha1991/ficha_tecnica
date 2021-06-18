@@ -26,7 +26,7 @@ const RevisaoFichaPastoreInjetores = conn.define('revisao_injetores_pastore',{
 
    NúmeroMolde: Sequelize.STRING,
    NúmeroMáquina: Sequelize.STRING,
-   Revisao: Sequelize.STRING,
+   RevisaoId: Sequelize.STRING,
    Cliente: Sequelize.STRING,
    CodigoPAM: Sequelize.STRING,
    Tecnico: Sequelize.STRING,
