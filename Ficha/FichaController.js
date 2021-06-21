@@ -10,6 +10,7 @@ const Alertas = require("../Alertas/Alertas");
 const Tipo = require("../Tipo/Tipo");
 const Moldes = require("../Moldes/Moldes");
 const MateriasPrimas = require("../MateriaPrima/MateriasPrimas");
+const User = require("../Login/User");
 const adminAuth = require("../middlewares/adminAuth");
 const { render } = require("ejs");
 const Maquinas = require("../Maquinas/Maquinas");
@@ -289,27 +290,32 @@ router.get("/novaficha",  (req,res) => {
 
       MateriasPrimas.findAll().then(material => {
 
-         Maquinas.findAll({
-            include: [{
-               model: Tipo,
-               required: true,
-               attributes:['tipo']
-            }]
-         }).then(maquina => {
-            res.render("fichas/new",{        
-               maquinas: maquina,    
-               materiais: material,    
-               moldes: molde,    
-               nav_maquinas : "",
-               nav_produtos : "",
-               nav_mp : "",
-               nav_usuarios : "",
-               nav_moldes : "",
-               nav_clientes : "",
-               nav_parametros:"",
-               nav_ficha: "active",
-               nav_alertas:"",
-               count: 0,
+         User.findAll().then(users => {
+         
+            Maquinas.findAll({
+               include: [{
+                  model: Tipo,
+                  required: true,
+                  attributes:['tipo']
+               }]
+            }).then(maquina => {
+               res.render("fichas/new",{        
+                  maquinas: maquina,    
+                  materiais: material,    
+                  moldes: molde,    
+                  users: users,    
+                  nav_maquinas : "",
+                  nav_produtos : "",
+                  nav_mp : "",
+                  nav_usuarios : "",
+                  nav_moldes : "",
+                  nav_clientes : "",
+                  nav_parametros:"",
+                  nav_ficha: "active",
+                  nav_alertas:"",
+                  count: 0,
+               })
+   
             })
 
          })

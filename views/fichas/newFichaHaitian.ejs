@@ -40,7 +40,12 @@
                   <input style="width: 100%" id="codigoPAM" name="codigoPAM">
                </td>
                <td>
-                  <input style="width: 100%" id="tecnico" name="tecnico">
+                  <input style="width: 100%" id="tecnico" name="tecnico" list="tecnicoList">
+                  <datalist id="tecnicoList">
+                     <% users.forEach((user) => { %>
+                        <option value="<%= user.nome %> <%= user.sobrenome %>"></option>
+                     <% }) %>
+                  </datalist>
                </td>
                <td>
                   <input style="width: 100%" id="produto" name="produto">
@@ -1076,12 +1081,17 @@
    function validateForm() {
       var molde = document.forms["pamForm"]["molde"].value;
       var material = document.forms["pamForm"]["material"].value;
+      var tecnico = document.forms["pamForm"]["tecnico"].value;
       if (molde === "") {
          alert("O número do Molde deve ser informado.");
          return false;
       }
       if (material === "") {
          alert("O número do Material deve ser informado.");
+         return false;
+      }
+      if (tecnico === "") {
+         alert("O nome do técnico deve ser informado.");
          return false;
       }
    }

@@ -281,8 +281,8 @@ function form_submit() {
          } else {
             $("input, textarea").unbind("keypress");
             $('#loginModal').modal('hide');
-            $("#tecnico").val(success.nome);
-            $("#userLogado").val(success.nome);
+            $("#tecnico").val(success.nome + " " + success.sobrenome);
+            $("#userLogado").val(success.nome + " " + success.sobrenome);
             document.getElementById("edit").disabled = false;
          }
       }
