@@ -6,7 +6,7 @@ const Maquinas = require("../../Maquinas/Maquinas");
 const Produtos = require("../../Produtos/Produtos");
 const MateriaPrima = require("../../MateriaPrima/MateriasPrimas");
 
-const FichaPastorePerifericos = conn.define('perifericos_pastore',{
+const FichaPastorePerifericos = conn.define('ficha_tecnica_perifericos_pam',{
    maq:{
       type: Sequelize.INTEGER,
       model: 'maquinas', // <<< Note, its table's name, not object name

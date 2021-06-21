@@ -6,7 +6,7 @@ const Maquinas = require("../Maquinas/Maquinas");
 const Produtos = require("../Produtos/Produtos");
 const MateriaPrima = require("../MateriaPrima/MateriasPrimas");
 
-const RevisaoFichaPastorePerifericos = conn.define('revisao_perifericos_pastore',{
+const RevisaoFichaPastorePerifericos = conn.define('revisao_ficha_tecnica_perifericos_pam',{
    revisao: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
@@ -14,7 +14,7 @@ const RevisaoFichaPastorePerifericos = conn.define('revisao_perifericos_pastore'
    },
    idFichaTecnica:{
       type: Sequelize.INTEGER,
-      model: 'perifericos_pastore', // <<< Note, its table's name, not object name
+      model: 'ficha_tecnica_perifericos_pam', // <<< Note, its table's name, not object name
       key: 'id'
    },
    maq:{
