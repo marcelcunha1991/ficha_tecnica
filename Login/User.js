@@ -10,6 +10,10 @@ const User = conn.define('users',{
       type: Sequelize.STRING,
       allowNull: false
    },
+   sobrenome:{
+      type: Sequelize.STRING,
+      allowNull: true
+   },
    email:{
       type: Sequelize.STRING,
       allowNull: false
