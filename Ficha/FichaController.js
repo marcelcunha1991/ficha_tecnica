@@ -296,8 +296,6 @@ router.get("/novaficha",  (req,res) => {
                attributes:['tipo']
             }]
          }).then(maquina => {
-            console.log("maquina");
-            console.log(maquina);
             res.render("fichas/new",{        
                maquinas: maquina,    
                materiais: material,    
