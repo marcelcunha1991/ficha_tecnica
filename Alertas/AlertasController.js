@@ -5,8 +5,7 @@ const { render } = require("ejs");
 var Tipo = require("../Tipo/Tipo");
 
 
-router.get("/alertas",  (req,res) => {
-    
+router.get("/alertas",  (req,res) => {    
 
     Alertas.findAll({
         include: [{

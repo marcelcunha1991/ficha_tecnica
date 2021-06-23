@@ -414,9 +414,23 @@ app.get("/",(req,res) =>{
 //       tipo:"Haitian Jupyter"
 //    })
 
-setInterval(rulesMediator, 5000);
+//setInterval(rulesMediator, 5000);
 
 
+app.get("/tendencias",(req,res) =>{
+    ParametrosReaisHaitianJupyter.findAll(
+        { limit: 30, order: [ [ 'createdAt', 'DESC' ]] }
+        ).then( parametros => {
+            
+            try{
+                res.send(rule1(parametros));
+          
+            }catch(e){
+                console.log(e)
+            }
+          
+      })
+})
 
 function rulesMediator(){
 
@@ -426,7 +440,7 @@ function rulesMediator(){
     ParametrosReaisHaitianJupyter.findAll(
         { limit: 30, order: [ [ 'createdAt', 'DESC' ]] }
         ).then( parametros => {
-
+            var meuSet = new Set();
             //Regra 1: Um ponto mais do que 3 desvios padrão de distância da média. 
             try{
                 rule1(parametros);
@@ -448,6 +462,7 @@ function rulesMediator(){
     
                  //Regra 8: Oito pontos consecutivos, mas nenhum dentro da faixa de ± 1 desvio padrão, mesmo dos dois lados da linha média.  
                  rule8(parametros);
+
             }catch(e){
                 console.log(e)
             }
@@ -476,32 +491,43 @@ function emailTrigger() {
  }
 
 
+
 function rule1(iterator){
 
-    // for(var j =0; j < listParametros.length; j++){
-            
-    //     var listaParametros = [];
+    var resposta = [];
 
-    //     for(var i =0; i < iterator.length; i++){
+    for(var j =0; j < listParametros.length; j++){
+            
+        var listaParametros = [];
+
+        for(var i =0; i < iterator.length; i++){
           
-    //       listaParametros.push(iterator[i].get(listParametros[j]))
-    //     }
+          listaParametros.push(iterator[i].get(listParametros[j]))
+        }
 
-    //     let desvioPadrao = calculaDesvioPadrao(listaParametros);
-    //     let media = calculaMedia(listaParametros);
+        let desvioPadrao = calculaDesvioPadrao(listaParametros);
+        let media = calculaMedia(listaParametros);
 
-    //     for(var i =0; i < iterator.length; i++){
+        for(var i =0; i < iterator.length; i++){
             
-    //      if((iterator[i].get(listParametros[j]) > (3*desvioPadrao)+media)){
-    //         //  console.log("enviar Email ")
-    //          emailTrigger();
-    //      }
-    //     }
+         if((iterator[i].get(listParametros[j]) > (3*desvioPadrao)+media)){
+
+            resposta.push({"parametro" : listParametros[j],
+            "lista" : iterator} 
+             );   
+             
+            
+            //  console.log("enviar Email ")
+            // emailTrigger();
+         }
+        }
+
+        return resposta;
 
 
-    //   }
+      }
 
-      emailTrigger();
+      //emailTrigger();
   
   }
 
@@ -510,32 +536,32 @@ function rule1(iterator){
     var numbersUpMedian = 0;
 
     
-    // for(var j =0; j < listParametros.length; j++){
+    for(var j =0; j < listParametros.length; j++){
             
-    //     var listaParametros = [];
+        var listaParametros = [];
 
-    //     for(var i =0; i < iterator.length; i++){
+        for(var i =0; i < iterator.length; i++){
           
-    //       listaParametros.push(iterator[i].get(listParametros[j]))
-    //     }
+          listaParametros.push(iterator[i].get(listParametros[j]))
+        }
 
-    //     let media = calculaMedia(listaParametros);
+        let media = calculaMedia(listaParametros);
 
-    //     for(var i =0; i < listaParametros.length; i++){
+        for(var i =0; i < listaParametros.length; i++){
             
-    //      if(listaParametros[i] > media ){
-    //         numbersUpMedian = numbersUpMedian + 1;
-    //      }
-    //     }
+         if(listaParametros[i] > media ){
+            numbersUpMedian = numbersUpMedian + 1;
+         }
+        }
 
-    //     if(numbersUpMedian >= 9){
-    //         console.log("enviar Email regra 2 ")
-    //         emailTrigger();
-    //     }
+        if(numbersUpMedian >= 9){
+            console.log("enviar Email regra 2 ")
+           // emailTrigger();
+        }
 
 
-    //   }
-      emailTrigger();
+      }
+    
   }
 
   function rule3(iterator){
@@ -569,7 +595,7 @@ function rule1(iterator){
 
         if(growPoints >= 6 || descPoints >=6){
             console.log("enviar Email regra 3 ")
-            emailTrigger();
+           // emailTrigger();
         }
 
         }
@@ -770,6 +796,7 @@ function rule1(iterator){
     let media = lista.reduce((total, valor) => total+valor/lista.length, 0);
     return media;
  }
-app.listen(3000,"0.0.0.0",() => {
+app.listen(3000,"192.168.0.6",() => {
     console.log("Servidor Rodando");
 })
+//
