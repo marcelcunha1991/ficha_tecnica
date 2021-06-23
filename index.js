@@ -374,7 +374,7 @@ app.get("/",(req,res) =>{
 
 //Cria Tabelas
 //    Tipo.sync();
-//    Maquinas.sync();
+//    Maquinas.sync({force: true});
 //    User.sync();
 //    Produtos.sync();
 //    MateriaPrima.sync();
@@ -500,7 +500,7 @@ function rule1(iterator){
             
         var listaParametros = [];
 
-        for(var i =0; i < iterator.length; i++){
+        for(var i =1; i < iterator.length; i++){
           
           listaParametros.push(iterator[i].get(listParametros[j]))
         }
@@ -515,6 +515,8 @@ function rule1(iterator){
             resposta.push({"parametro" : listParametros[j],
             "lista" : iterator} 
              );   
+
+             break;
              
             
             //  console.log("enviar Email ")
@@ -522,10 +524,12 @@ function rule1(iterator){
          }
         }
 
-        return resposta;
+       
 
 
       }
+
+      return resposta;
 
       //emailTrigger();
   
@@ -796,7 +800,7 @@ function rule1(iterator){
     let media = lista.reduce((total, valor) => total+valor/lista.length, 0);
     return media;
  }
-app.listen(3000,"192.168.0.6",() => {
+app.listen(3000,"0.0.0.0",() => {
     console.log("Servidor Rodando");
 })
 //
