@@ -14,6 +14,7 @@
                 <th> ID </th>
                 <th> Descrição </th>
                 <th> Código </th>
+                <th> Última edição </th>
        
             </tr>
         </thead>
@@ -24,7 +25,11 @@
                 <td> <%= materiaprima.id %> </td>
                 <td> <%=materiaprima.descricao %>  </td>
                 <td> <%=materiaprima.codigo %>  </td>
-         
+                <td>
+                  <small style="font-weight: 700;"><%= materiaprima.usuario %></small><br>
+                  <p style="word-break: break-all; white-space: normal"><%= materiaprima.justificativa %></p>
+                </td>
+
                 <td> 
                     <form method="GET" action="/materiaprima/edit/<%= materiaprima.id %>" style="display: inline;">                                     
                             <button class="btn btn-warning"> Editar</button>
@@ -32,7 +37,7 @@
                     
                     <form method="POST" action="/materiaprima/delete" style="display: inline;" onsubmit="confirmarDelecao(event, this)"> 
                             <input type="hidden" name="id" value="<%= materiaprima.id %>">
-                            <button id="remover" class="btn btn-danger"> Remover</button>
+                            <button class="btn btn-danger remover"> Remover</button>
                     </form> </th>
                 </td>
             </tr>

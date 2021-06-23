@@ -13,6 +13,8 @@
 
             <h6>Insira seu nome</h6>
             <input class="form-control" name="nome" type="text" value="<%= user.nome %>"><br>
+            <h6>Insira seu sobrenome</h6>
+            <input class="form-control" name="sobrenome" type="text" value="<%= user.sobrenome %>"><br>
             <h6>Insira sua matrícula</h6>
             <input class="form-control" name="matricula" type="text" value="<%= user.matricula %>"><br>
             <h6>Insira um email</h6>
@@ -26,7 +28,14 @@
             <input checked type="radio" id="Nao" name="isAdmin" value="0">
             <label for="Não">Não</label><br>
 
-            <button type="submit" class="btn btn-primary">Atualizar </button>
+            <div class="form-floating" style="margin-bottom: 50px;">
+               <small>Usuário: 
+               <input style="border: none; font-weight: 600;" readonly style="width: 100%" id="userLogado" name="userLogado"></small><br>
+               <label for="justificativa">Motivo da alteração:</label>
+               <textarea class="form-control" placeholder="Justifique a alteração" id="justificativa" name="justificativa"></textarea>
+            </div>
+
+            <button id="edit" type="submit" class="btn btn-primary">Atualizar </button>
          </form>  
          <form method="GET" action="/users" style="display: inline;">
             <button class="btn btn-danger">Cancelar</button>
@@ -34,15 +43,42 @@
       </div>
    </div>
 
+   <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <form autocomplete="off">
+               <div class="modal-body">
+                  <input type="email" name="email" id="email_fake" class="hidden" autocomplete="off" style="display: none;" />
+                  <input type="password" name="password" id="password_fake" class="hidden" autocomplete="off" style="display: none;" />
+
+                  <h4>Confirmar usuário:</h4><br>
+                  <label for="email">Nome:</label>
+                  <input type="text" id="email" name="email" autocomplete="off"><br>
+                  <label for="password">Senha:</label>
+                  <input type="password" id="password" name="password" autocomplete="off">
+               </div>
+               <div class="modal-footer">
+                  <button onclick="form_submit()" type="button" class="btn btn-primary">Confirmar</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src=/scripts/documentScripts.js></script>
+
+<script src=/scripts/FichaTecnica.js></script>
+
 <script>
    function validateForm() {
       var nome = document.forms["userForm"]["nome"].value;
       var email = document.forms["userForm"]["email"].value;
       var password = document.forms["userForm"]["password"].value;
+      var justificativa = document.forms["alertaForm"]["justificativa"].value;
 
       if (nome === "") {
          alert("O nome deve ser informado.");
@@ -56,6 +92,12 @@
          alert("A senha deve ser informado.");
          return false;
       }
+      if (justificativa === "") {
+         alert("A justificativa deve ser informada.");
+         return false;
+      }
    }
+
+   document.getElementById("edit").disabled = true;
 </script>
 <%- include ('../partials/footer.ejs') %>

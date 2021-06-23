@@ -14,6 +14,7 @@
                 <th> ID </th>
                 <th> Descrição </th>
                 <th> Código </th>
+                <th> Última edição </th>
        
             </tr>
         </thead>
@@ -24,7 +25,11 @@
                 <td> <%= molde.id %> </td>
                 <td> <%=molde.descricao %>  </td>
                 <td> <%=molde.codigo %>  </td>
-         
+                <td>
+                  <small style="font-weight: 700;"><%= molde.usuario %></small><br>
+                  <p style="word-break: break-all; white-space: normal"><%= molde.justificativa %></p>
+                </td>
+
                 <td> 
                     <form method="GET" action="/moldes/edit/<%= molde.id %>" style="display: inline;">                                     
                             <button class="btn btn-warning"> Editar</button>
@@ -32,7 +37,7 @@
                     
                     <form method="POST" action="/moldes/delete" style="display: inline;" onsubmit="confirmarDelecao(event, this)"> 
                             <input type="hidden" name="id" value="<%= molde.id %>">
-                            <button id="remover" class="btn btn-danger"> Remover</button>
+                            <button class="btn btn-danger remover"> Remover</button>
                     </form> </th>
                 </td>
             </tr>

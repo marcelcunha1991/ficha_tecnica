@@ -15,6 +15,7 @@
                 <th> nome </th>  
                 <th> email </th>       
                 <th> Matrícula </th>   
+                <th> Última edição </th>   
                 <th class="newUser"> Opções </th>  
                 
             </tr>
@@ -24,9 +25,13 @@
            <% users.forEach(user => { %>
             <tr>
                 <td> <%= user.id %> </td>
-                <td> <%= user.nome %>  </td>
+                <td> <%= user.nome %> <%= user.sobrenome %></td>
                 <td> <%= user.email %>  </td>
                 <td> <%= user.matricula %>  </td>
+                <td>
+                  <small style="font-weight: 700;"><%= user.usuario %></small><br>
+                  <p style="word-break: break-all; white-space: normal"><%= user.justificativa %></p>
+                </td>
                 
                 <td class="newUser"> 
                     <form method="GET" action="/users/edit/<%= user.id %>" style="display: inline;">                                     

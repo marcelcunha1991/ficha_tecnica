@@ -6,7 +6,7 @@ const Maquinas = require("../Maquinas/Maquinas");
 const Produtos = require("../Produtos/Produtos");
 const MateriaPrima = require("../MateriaPrima/MateriasPrimas");
 
-const RevisaoFichaPastoreInjetores = conn.define('revisao_injetores_pastore',{
+const RevisaoFichaPastoreInjetores = conn.define('revisao_ficha_tecnica_injetores_pam',{
 
    revisao: {
       type: Sequelize.INTEGER,
@@ -15,7 +15,7 @@ const RevisaoFichaPastoreInjetores = conn.define('revisao_injetores_pastore',{
    },
    idFichaTecnica:{
       type: Sequelize.INTEGER,
-      model: 'injetores_pastore', // <<< Note, its table's name, not object name
+      model: 'ficha_tecnica_injetores_pam', // <<< Note, its table's name, not object name
       key: 'id'
    },
    maq:{
@@ -26,7 +26,7 @@ const RevisaoFichaPastoreInjetores = conn.define('revisao_injetores_pastore',{
 
    NúmeroMolde: Sequelize.STRING,
    NúmeroMáquina: Sequelize.STRING,
-   Revisao: Sequelize.STRING,
+   RevisaoId: Sequelize.STRING,
    Cliente: Sequelize.STRING,
    CodigoPAM: Sequelize.STRING,
    Tecnico: Sequelize.STRING,

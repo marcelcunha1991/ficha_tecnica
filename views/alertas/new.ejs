@@ -4,32 +4,37 @@
 <div class="container">
  
   <br>
-    <div class="card">
-            <div class="card-header">
-                   
-                        <h2>Novo Alerta</h2>
-                    
-            </div>
-            <div class="card-body">
-                    <form  method="POST" action="/alertas/create">
-                            <input class="form-control" type="text" name="codigo" placeholder="Insira o codigo do Alerta"><br>
-                            <input class="form-control" type="text" name="descricao" placeholder="Insira uma descrição para o alerta"><br>
-                            <label for="tipos">Escolha a Coleta especifica:  </label>
-                            <select name="tipos" id="tipos">
-                                <% tipos.forEach(tipo => { %>
-                                        <option value= "<%= tipo.id %>" ><%= tipo.tipo%></option>
-                                <%})%>
-                       
-                              </select>
-    
-                            <br>
-                            <button class="btn btn-primary">Cadastrar</button>
-                            
-                        </form>
-            </div>
-           
-          
-    </div>
+   <div class="card">
+      <div class="card-header">
+               
+         <h2>Novo Alerta</h2>
+               
+      </div>
+      <div class="card-body">
+         <form  method="POST" action="/alertas/create" style="display: inline;">
+            <h6>Insira o codigo do Alerta:</h6>
+            <input class="form-control" type="text" name="codigo" placeholder="Insira o codigo do Alerta"><br>
+            <h6>Insira uma descrição para o alerta:</h6>
+            <input class="form-control" type="text" name="descricao" placeholder="Insira uma descrição para o alerta"><br>
+            <label for="tipos">Escolha a Coleta especifica:  </label>
+            <select name="tipos" id="tipos">
+               <% tipos.forEach(tipo => { %>
+                        <option value= "<%= tipo.id %>" ><%= tipo.tipo%></option>
+               <%})%>
+      
+            </select>
+
+            <br>
+            <button class="btn btn-primary">Cadastrar</button>
+                  
+            </form>
+            <form method="GET" action="/alertas" style="display: inline;">
+               <button class="btn btn-danger">Cancelar</button>
+            </form>
+      </div>
+         
+         
+   </div>
    
 </div>
 

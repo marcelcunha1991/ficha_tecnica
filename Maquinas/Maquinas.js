@@ -26,7 +26,9 @@ var Maquinas = conn.define('maquinas',{
    modelo: {
       type: Sequelize.STRING,
       allowNull: false
-   }
+   },
+   justificativa: Sequelize.TEXT,
+   usuario: Sequelize.TEXT,
     
 })
 

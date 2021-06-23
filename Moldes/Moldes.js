@@ -9,7 +9,9 @@ const Moldes = conn.define('moldes',{
     codigo: {
         type: Sequelize.STRING,
         allowNull: false
-    }
+    },
+    justificativa: Sequelize.TEXT,
+    usuario: Sequelize.TEXT,
 })
 
 // Moldes.sync();

@@ -1,4 +1,6 @@
 const express = require("express");
+var Connection = require('tedious').Connection;
+var Request = require('tedious').Request;
 const router = express.Router();
 const FichaTecnicaToshiba = require("./FichaTecnicaToshiba");
 const LimitesFichaTecnicaToshiba = require("./LimitesFichaTecnicaToshiba");
@@ -10,6 +12,7 @@ const Alertas = require("../Alertas/Alertas");
 const Tipo = require("../Tipo/Tipo");
 const Moldes = require("../Moldes/Moldes");
 const MateriasPrimas = require("../MateriaPrima/MateriasPrimas");
+const User = require("../Login/User");
 const adminAuth = require("../middlewares/adminAuth");
 const { render } = require("ejs");
 const Maquinas = require("../Maquinas/Maquinas");
@@ -289,29 +292,32 @@ router.get("/novaficha",  (req,res) => {
 
       MateriasPrimas.findAll().then(material => {
 
-         Maquinas.findAll({
-            include: [{
-               model: Tipo,
-               required: true,
-               attributes:['tipo']
-            }]
-         }).then(maquina => {
-            console.log("maquina");
-            console.log(maquina);
-            res.render("fichas/new",{        
-               maquinas: maquina,    
-               materiais: material,    
-               moldes: molde,    
-               nav_maquinas : "",
-               nav_produtos : "",
-               nav_mp : "",
-               nav_usuarios : "",
-               nav_moldes : "",
-               nav_clientes : "",
-               nav_parametros:"",
-               nav_ficha: "active",
-               nav_alertas:"",
-               count: 0,
+         User.findAll().then(users => {
+         
+            Maquinas.findAll({
+               include: [{
+                  model: Tipo,
+                  required: true,
+                  attributes:['tipo']
+               }]
+            }).then(maquina => {
+               res.render("fichas/new",{        
+                  maquinas: maquina,    
+                  materiais: material,    
+                  moldes: molde,    
+                  users: users,    
+                  nav_maquinas : "",
+                  nav_produtos : "",
+                  nav_mp : "",
+                  nav_usuarios : "",
+                  nav_moldes : "",
+                  nav_clientes : "",
+                  nav_parametros:"",
+                  nav_ficha: "active",
+                  nav_alertas:"",
+                  count: 0,
+               })
+   
             })
 
          })
@@ -958,14 +964,14 @@ router.post("/fichas/createHaitian",(req,res) => {
    console.log(req.body)
    var maquina = req.body.maquinaHaitian;
 
-   var NúmeroMolde = req.body.molde.replace(/\s/g, "");
+   var NúmeroMolde = req.body.molde.replace(/[\. ,:-]+/g, "");
    var NúmeroMáquina = req.body.numMaquina;
-   var Revisao = req.body.revisao;
+   var RevisaoId = req.body.revisao;
    var Cliente = req.body.cliente;
-   var CodigoPAM = req.body.codigoPAM.replace(/\s/g, "");
+   var CodigoPAM = req.body.codigoPAM.replace(/[\. ,:-]+/g, "");
    var Tecnico = req.body.tecnico;
    var Produto = req.body.produto;
-   var Material = req.body.material.replace(/\./g, "");
+   var Material = req.body.material.replace(/[\. ,:-]+/g, "");
 
    var tolCilindro = req.body.tolCilindro;
    var tolInjecao = req.body.tolInjecao;
@@ -1393,7 +1399,7 @@ router.post("/fichas/createHaitian",(req,res) => {
       maq: maquina,
       NúmeroMolde: NúmeroMolde,
       NúmeroMáquina: NúmeroMáquina,
-      Revisao: Revisao,
+      Revisao: RevisaoId,
       Cliente: Cliente,
       CodigoPAM: CodigoPAM,
       Tecnico: Tecnico,
@@ -2072,7 +2078,7 @@ router.post("/fichas/createHaitian",(req,res) => {
                maq: maquina,
                NúmeroMolde: NúmeroMolde,
                NúmeroMáquina: NúmeroMáquina,
-               Revisao: Revisao,
+               RevisaoId: RevisaoId,
                Cliente: Cliente,
                CodigoPAM: CodigoPAM,
                Tecnico: Tecnico,
@@ -2302,14 +2308,14 @@ router.post("/fichas/updateHaitian",(req,res) => {
    var id = req.body.id;
    var maquina = req.body.maquina;
 
-   var NúmeroMolde = req.body.molde.replace(/\s/g, "");
+   var NúmeroMolde = req.body.molde.replace(/[\. ,:-]+/g, "");
    var NúmeroMáquina = req.body.numMaquina;
-   var Revisao = req.body.revisao;
+   var RevisaoId = req.body.revisao;
    var Cliente = req.body.cliente;
-   var CodigoPAM = req.body.codigoPAM.replace(/\s/g, "");
+   var CodigoPAM = req.body.codigoPAM.replace(/[\. ,:-]+/g, "");
    var Tecnico = req.body.tecnico;
    var Produto = req.body.produto;
-   var Material = req.body.material.replace(/\./g, "");
+   var Material = req.body.material.replace(/[\. ,:-]+/g, "");
    var Justificativa = req.body.justificativa;
    var Usuario = req.body.tecnico;
 
@@ -2737,7 +2743,7 @@ router.post("/fichas/updateHaitian",(req,res) => {
    FichaTecnicaPastoreInjetores.update({
       NúmeroMolde: NúmeroMolde,
       NúmeroMáquina: NúmeroMáquina,
-      Revisao: Revisao,
+      Revisao: RevisaoId,
       Cliente: Cliente,
       CodigoPAM: CodigoPAM,
       Tecnico: Tecnico,
@@ -3422,7 +3428,7 @@ router.post("/fichas/updateHaitian",(req,res) => {
                maq: maquina,
                NúmeroMolde: NúmeroMolde,
                NúmeroMáquina: NúmeroMáquina,
-               Revisao: Revisao,
+               RevisaoId: RevisaoId,
                Cliente: Cliente,
                CodigoPAM: CodigoPAM,
                Tecnico: Tecnico,
@@ -3753,6 +3759,55 @@ router.get("/ficha/revisaoHaitian/:id",(req,res) => {
       })
 
    })
+})
+
+//BUSCA OS DADOS REAIS DE TEMPERATURA DO BANCO DA PAM
+router.get("/AutomacaoFabrica/temperaturaReal",  (req,res) => {
+   // Create connection to database
+   var config = {
+      server: '10.30.0.190',
+      authentication: {
+         type: 'default',
+         options: {
+            userName: 'ijadmin',
+            password: 'ijadmin'
+         }
+      },
+      options: {
+         encrypt: true,
+         trustServerCertificate: true,
+         validateBulkLoadParameters: false,
+         database: 'AUTOMACAO_FABRICA'
+      }
+   }
+
+   var connection = new Connection(config);
+
+   // Attempt to connect and execute queries if connection goes through
+   connection.on('connect', function(err) {
+      if (err) {
+         console.log(err);
+      } else {
+         console.log('Connected');
+
+         request = new Request("SELECT F1_TemperaturaAguaTorre, F2_TemperaturaAguaTorre, Chiller_TemperaturaAguaGelada, Caldeira_PressaoVapor, F1_PressaoArComprimido from tbl_UtilidadePAM ORDER BY id DESC OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY;", function(err) {  
+            if (err) {  
+               console.log(err);
+            }  
+         });
+
+         request.on('row', function(columns) {  
+            res.send(columns)
+            
+         });  
+
+         request.on('done', function(rowCount, more) {  
+            console.log(rowCount + ' rows returned');  
+         });  
+
+      connection.execSql(request);
+      }
+   });
 })
 
 module.exports = router;

@@ -109,11 +109,11 @@ p.read-only {
    cursor: pointer;
 }
 
-p.read-only span.cadastrados {
+.cadastrados {
    color: blue
 }
 
-p.read-only span.reais {
+.reais {
    color: green;
 }
 

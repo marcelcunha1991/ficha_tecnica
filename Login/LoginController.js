@@ -40,9 +40,9 @@ router.get("/users/create", (req,res) => {
 
 
 router.post("/users/create", (req,res) => {
-    
     var email = req.body.email;
     var nome = req.body.nome;
+    var sobrenome = req.body.sobrenome;
     var password = req.body.password;
     var matricula = req.body.matricula;
     var isAdmin = req.body.isAdmin;
@@ -59,6 +59,7 @@ router.post("/users/create", (req,res) => {
 
             User.create({
                 nome:nome,
+                sobrenome:sobrenome,
                 email:email,
                 password:hash,
                 matricula:matricula,
@@ -155,10 +156,13 @@ router.post("/users/update",(req,res) => {
     
    var email = req.body.email;
    var nome = req.body.nome;
+   var sobrenome = req.body.sobrenome;
    var password = req.body.password;
    var matricula = req.body.matricula;
    var isAdmin = req.body.isAdmin;
    var id = req.body.idUser;
+   var userLogado = req.body.userLogado;
+   var justificativa = req.body.justificativa;
 
    var salt = bcrypt.genSaltSync(10);
    var hash = bcrypt.hashSync(password,salt);
@@ -166,9 +170,12 @@ router.post("/users/update",(req,res) => {
    User.update({
       email: email,
       nome: nome,
+      sobrenome: sobrenome,
       password: hash,
       matricula: matricula,
       isAdmin: isAdmin,
+      usuario: userLogado,
+      justificativa: justificativa,
 
    },{
       where:{

@@ -10,7 +10,9 @@ const Alertas = conn.define('alertasAutomata',{
     descricao: {
         type: Sequelize.STRING,
         allowNull: false
-    }
+    },
+    justificativa: Sequelize.TEXT,
+    usuario: Sequelize.TEXT,
     
 })
 

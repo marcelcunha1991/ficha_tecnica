@@ -6,7 +6,7 @@ const Maquinas = require("../../Maquinas/Maquinas");
 const Produtos = require("../../Produtos/Produtos");
 const MateriaPrima = require("../../MateriaPrima/MateriasPrimas");
 
-const FichaPastoreInjetores = conn.define('injetores_pastore',{
+const FichaPastoreInjetores = conn.define('ficha_tecnica_injetores_pam',{
 
    maq:{
       type: Sequelize.INTEGER,
