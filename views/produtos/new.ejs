@@ -1,0 +1,33 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/sidebar.ejs') %>
+
+<div class="container">
+
+ 
+  <br>
+    <div class="card">
+            <div class="card-header">
+                   
+                        <h2>Novo Produto</h2>
+                    
+            </div>
+            <div class="card-body">
+                    <form  method="POST" action="/produtos/create">
+                            <input class="form-control" type="text" name="descricao" placeholder="Insira uma descrição para o Produto"><br>
+                            <input class="form-control" type="text" name="codigo" placeholder="Insira um código para o Produto"><br>
+                   
+                   
+                            
+
+                         
+                            <br>
+                            <button class="btn btn-primary">Cadastrar</button>
+                        </form>
+            </div>
+           
+          
+    </div>
+   
+</div>
+
+<%- include ('../partials/footer.ejs') %>

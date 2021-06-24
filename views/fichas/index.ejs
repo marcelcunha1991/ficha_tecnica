@@ -1,0 +1,97 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/sidebar.ejs') %>
+
+<div class="container"> 
+
+    <hr>
+    <h2>Fichas Técnicas</h2> 
+    <a class="btn btn-success" href="/novaficha"> Inserir Nova Ficha Técnica</a>
+    <hr>
+
+    <input type="hidden" name="dsMaquina"  id="dsMaquina" value="<%= dsMaquina %>">
+
+    <select name="maquinas" id="maquinas"  class="form-control">
+        <option>Selecione uma máquina</option>
+        <% maquinas.forEach((maquina) => { %>
+                <option value="<%= maquina.id %>"> <%= maquina.descricao %></option>
+        <% }) %>
+    </select>
+<br>
+<h5>Parâmetros de tempo real : </h5>
+<br>
+<table class="table table-bordered" id="parametrosReais"> 
+    <thead>
+        <tr>
+            <th> Parâmetro </th>
+            <th> Valor Mínimo </th>
+            <th> Valor Máximo </th>
+            <th> Último valor lido </th>             
+        </tr>
+    </thead>
+    <tbody>
+
+       
+       
+       
+    </tbody>
+
+
+</table>
+
+  
+    
+    <h5>Parâmetros De Programa : </h5>
+    <br>
+    <table class="table table-bordered" id="parametros"> 
+        <thead>
+            <tr>
+                <th> Parâmetro </th>
+                <th> Valor Mínimo </th>
+                <th> Valor Máximo </th>
+                <th> Último valor setado </th>             
+            </tr>
+        </thead>
+        <tbody>
+
+           
+           
+           
+        </tbody>
+
+
+    </table>
+
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+
+          <div id="plotly">
+
+        </div>
+         
+      
+        </div>
+      </div>
+
+
+</div>
+
+<script>
+
+    function confirmarDelecao(event,form){
+        event.preventDefault();
+        var decision = confirm("Você quer deletar esta Máquina?");
+         if(decision){
+             form.submit();
+         }
+
+    }
+
+</script>
+
+<script src=/scripts/jquery.js></script>
+<script src=/scripts/FichaScripts.js></script>
+
+<%- include ('../partials/footer.ejs') %>   

@@ -1,0 +1,68 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/sidebar.ejs') %>
+
+<div class="container"> 
+
+    <hr>
+    <h2>Máquinas</h2> 
+    <a class="btn btn-success" href="/maquinas/new"> Inserir Nova Máquina</a>
+    <hr>
+
+    <table class="table table-bordered"> 
+        <thead>
+            <tr>
+                <th> ID </th>
+                <th> Descrição </th>
+                <th> IP </th>
+                <th> Código </th>
+                <th> Peso </th>
+                <th> Modelo </th>
+            </tr>
+        </thead>
+        <tbody>
+
+           <% maquinas.forEach(article => { %>
+            <tr>
+                <td> <%= article.id %> </td>
+                <td> <%=article.descricao %>  </td>
+                <td> <%=article.mac %>  </td>
+                <td> <%=article.codigo %>  </td>
+                <td> <%=article.peso %> </td>
+                <td> <%=article.modelo %> </td>
+                <td> 
+                    <form method="GET" action="/maquinas/edit/<%= article.id %>" style="display: inline;">                                     
+                            <button class="btn btn-warning"> Editar</button>
+                    </form>
+                    
+                    <form method="POST" action="/maquinas/delete" style="display: inline;" onsubmit="confirmarDelecao(event, this)"> 
+                            <input type="hidden" name="id" value="<%= article.id %>">
+                            <button class="btn btn-danger"> Remover</button>
+                    </form> </th>
+                </td>
+            </tr>
+
+           <% }) %> 
+           
+           
+        </tbody>
+
+
+    </table>
+
+</div>
+
+<script>
+
+    function confirmarDelecao(event,form){
+        event.preventDefault();
+        var decision = confirm("Você quer deletar esta Máquina?");
+         if(decision){
+             form.submit();
+         }
+
+    }
+
+</script>
+
+<script src=/scripts/jquery.js></script>
+<%- include ('../partials/footer.ejs') %>

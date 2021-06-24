@@ -1,0 +1,64 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/sidebar.ejs') %>
+
+<div class="container"> 
+
+    <hr>
+    <h2>Matéria Prima</h2> 
+    <a class="btn btn-success" href="/materiaprima/new"> Inserir Novo Produto</a>
+    <hr>
+
+    <table class="table table-bordered"> 
+        <thead>
+            <tr>
+                <th> ID </th>
+                <th> Descrição </th>
+                <th> Código </th>
+       
+            </tr>
+        </thead>
+        <tbody>
+
+           <% materiaprima.forEach(materiaprima => { %>
+            <tr>
+                <td> <%= materiaprima.id %> </td>
+                <td> <%=materiaprima.descricao %>  </td>
+                <td> <%=materiaprima.codigo %>  </td>
+         
+                <td> 
+                    <form method="GET" action="/materiaprima/edit/<%= materiaprima.id %>" style="display: inline;">                                     
+                            <button class="btn btn-warning"> Editar</button>
+                    </form>
+                    
+                    <form method="POST" action="/materiaprima/delete" style="display: inline;" onsubmit="confirmarDelecao(event, this)"> 
+                            <input type="hidden" name="id" value="<%= materiaprima.id %>">
+                            <button class="btn btn-danger"> Remover</button>
+                    </form> </th>
+                </td>
+            </tr>
+
+           <% }) %> 
+           
+           
+        </tbody>
+
+
+    </table>
+
+</div>
+
+<script>
+
+    function confirmarDelecao(event,form){
+        event.preventDefault();
+        var decision = confirm("Você quer deletar esta Matéria Prima?");
+         if(decision){
+             form.submit();
+         }
+
+    }
+
+</script>
+
+
+<%- include ('../partials/footer.ejs') %>
