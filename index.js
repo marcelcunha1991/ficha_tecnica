@@ -513,7 +513,7 @@ function rule1(iterator){
          if((iterator[i].get(listParametros[j]) > (3*desvioPadrao)+media)){
 
             resposta.push({"parametro" : listParametros[j],
-            "lista" : iterator} 
+            "lista" : iterator[i]} 
              );   
 
              break;
@@ -529,7 +529,7 @@ function rule1(iterator){
 
       }
 
-      return resposta;
+      return {"tendencias" : resposta};
 
       //emailTrigger();
   
