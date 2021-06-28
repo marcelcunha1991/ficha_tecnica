@@ -19,27 +19,27 @@ router.get("/fichas/:maquina?",  (req,res) => {
 
     Maquinas.findAll().then(maquina => {
         maquinas = maquina;
-    })
 
-    Fichas.findAll().then(fichas => {
+        Fichas.findAll().then(fichas => {
       
         
-        res.render("fichas/index",{
-            fichas:fichas,
-            dsMaquina : dsMaquina,
-            maquinas: maquinas,
-            tabela:"",
-            nav_maquinas : "",
-            nav_produtos : "",
-            nav_mp : "",
-            nav_usuarios : "",
-            nav_moldes : "",
-            nav_clientes : "",
-            nav_parametros:"",
-            nav_ficha: "active"
-        })
-    });
-
+            res.render("fichas/index",{
+                fichas:fichas,
+                dsMaquina : dsMaquina,
+                maquinas: maquinas,
+                tabela:"",
+                nav_maquinas : "",
+                nav_produtos : "",
+                nav_mp : "",
+                nav_usuarios : "",
+                nav_moldes : "",
+                nav_clientes : "",
+                nav_parametros:"",
+                nav_ficha: "active"
+            })
+        });
+    
+    })
     
 })
 
