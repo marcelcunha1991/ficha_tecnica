@@ -1415,7 +1415,7 @@ function addRow(rows, data, maquina) {
                     <td>" + maquina + "</td> \
                     <td>\
                     <form method='GET' action='' style='display: inline;'><button class='btn btn-warning'> Editar</button></form> \
-                    <form method='POST' action=''" +  "style='display: inline;' onsubmit='confirmarDelecao(event, this)'> \
+                    <form method='POST' action='/fichas/delete'" +  "style='display: inline;' onsubmit='confirmarDelecao(event, this)'> \
                         <input type='hidden' name='id' value='" + data[i].id  + "'> \
                         <button class='btn btn-danger'> Remover</button> \
                     </form> \

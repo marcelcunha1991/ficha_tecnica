@@ -499,14 +499,14 @@ router.post("/fichas/delete",(req,res) => {
                     id:id
                 }
             }).then(() => {
-                res.redirect("/fichas");
+                res.redirect("/lista");
             })
 
         }else{
-            res.redirect("/fichas");
+            res.redirect("/lista");
         }
     }else{
-        res.redirect("/fichas");
+        res.redirect("/lista");
     }
 })
 
