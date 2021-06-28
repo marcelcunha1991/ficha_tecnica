@@ -19,13 +19,17 @@ const cron = require("node-cron");
 var nodemailer = require('nodemailer');
 const userController = require("./Login/LoginController");
 const maquinasController = require("./Maquinas/MaquinasController");
-const produtosConctroller = require("./Produtos/ProdutosController");
+const produtosController = require("./Produtos/ProdutosController");
 //const materiaPrimaConctroller = require("./MateriaPrima/MateriaPrimaController");
 //const moldesConctroller = require("./Moldes/MoldesController");
-const clientesConctroller = require("./Clientes/ClientesController");
-const fichasConctroller = require("./Ficha/FichaController");
+const clientesController = require("./Clientes/ClientesController");
+const fichasController = require("./Ficha/FichaController");
 const ParametrosRealController = require("./ParametrosTempoReal/ParametrosRealController");
 
+const bcrypt = require("bcryptjs");
+
+var salt = bcrypt.genSaltSync(10);
+var hash = bcrypt.hashSync("admin",salt);
 
 //view engine
 app.set('view engine','ejs');
@@ -49,11 +53,11 @@ app.use(express.static('public'));
 // Controllers
 app.use("/",userController);
 app.use("/",maquinasController);
-app.use("/",produtosConctroller);
+app.use("/",produtosController);
 //app.use("/",materiaPrimaConctroller);
 //app.use("/",moldesConctroller);
-app.use("/",clientesConctroller);
-app.use("/",fichasConctroller);
+app.use("/",clientesController);
+app.use("/",fichasController);
 app.use("/",ParametrosRealController);
 
 
@@ -79,18 +83,22 @@ app.get("/",(req,res) =>{
 
 //Cria Tabelas
 
-//    Maquinas.sync();
-//    User.sync();
-//    Produtos.sync();
-//    MateriaPrima.sync();
-//    Clientes.sync();
-//	  ParametrosTecnicos.sync();
-//    ParametrosReal.sync();
-//	  ParametrosAtuais.sync();
-// 	  Fichas.sync();
+    // Maquinas.sync();
+    // User.sync();
+    // Produtos.sync();
+    // Clientes.sync();
+    // ParametrosTecnicos.sync();
+    // ParametrosReal.sync();
+    // ParametrosAtuais.sync();
+    // Fichas.sync();
 
-
-
+   // User.create({
+   //    nome:"admin",
+   //    email:"admin@email.com",
+   //    password:hash,
+   //    matricula:"00000",        
+   //    isAdmin:"1",        
+   // })
 
 
 // cron.schedule("*/5 * * * *", () => {
