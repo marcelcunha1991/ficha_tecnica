@@ -7,15 +7,20 @@ const Sequelize = require("sequelize");
 //     timezone:"-04:00"
 // })
 
- const conn = new Sequelize('fichatecnica', 'INJETPTC', 'InJPtC#D@',{
-	 host: 'sahdamvpsql007',
-     dialect: 'mssql',
-	 logging:false,
-     dialectOptions:{
-		 encrypt:true
+//  const conn = new Sequelize('fichatecnica', 'INJETPTC', 'InJPtC#D@',{
+// 	 host: 'sahdamvpsql007',
+//      dialect: 'mssql',
+// 	 logging:false,
+//      dialectOptions:{
+// 		 encrypt:true
 		
-	 }
- });
+// 	 }
+//  });
+
+const conn = new Sequelize('fichatecnicaHonda','postgres','1234',{
+   host: 'localhost',   
+   dialect: 'postgres',
+})
  
  conn.authenticate().then(() => {
  console.log("conexao bem sucedida")}).catch(err => {
