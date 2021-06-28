@@ -1373,3 +1373,59 @@ $('#maquinas').change(function(){
     
 });
 
+var id;
+//usado em fichas/list.ejs para mostrar a listagem de fichas de cada maquina
+$('#maquinasList').change(e => {
+    id = e.target.value;
+
+    $.ajax({
+        url: "/lista/getFicha/"+ id,
+        type: "get", //send it through get method
+        success: function(fichas) {
+
+            $.ajax({
+                url: "/maquinaById/"+ id,
+                type: "get", //send it through get method
+                success: function(maquina) {
+                    
+                    // setTimeout(() => {
+                        addRow(fichas.length, fichas, maquina.descricao)
+                    // }, 200);
+                },
+
+                error: function(error) {
+                    console.log(error)
+                }
+            });
+
+        },
+        error: function(xhr) {
+            console.log(xhr)
+        }
+    });
+
+});
+
+function addRow(rows, data, maquina) {
+    var tbody = '';
+ 
+    for (var i = 0; i < rows; i++) {
+        // tbody +=  "<tr> <td>" + revisao[i] +"</td> \
+        tbody += "<tr> <td>" + data[i].id + "</td> \
+                    <td>" + maquina + "</td> \
+                    <td>\
+                    <form method='GET' action='' style='display: inline;'><button class='btn btn-warning'> Editar</button></form> \
+                    <form method='POST' action=''" +  "style='display: inline;' onsubmit='confirmarDelecao(event, this)'> \
+                        <input type='hidden' name='id' value='" + data[i].id  + "'> \
+                        <button class='btn btn-danger'> Remover</button> \
+                    </form> \
+                    <form method='GET' action='' style='display: inline;'><button class='btn btn-info'> Revisão</button></form></td> \
+                </tr>";
+
+    }
+            
+            
+    $('#tableBody').html(tbody);
+    
+    
+}

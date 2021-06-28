@@ -156,5 +156,20 @@ router.get("/listaMaquinas",(req,res) => {
 
 })
 
+router.get("/maquinaById/:id",  (req,res) => {
+
+    var maquinaId = req.params.id;
+    
+    Maquinas.findOne({
+       where:{
+          id:parseInt(maquinaId)
+       }
+    }).then(result => {
+       res.send(result);
+    })
+ 
+     
+ })
+
 
 module.exports = router;

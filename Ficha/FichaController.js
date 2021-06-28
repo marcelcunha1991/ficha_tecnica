@@ -122,7 +122,7 @@ router.get("/fichas/maquina/:id",  (req,res) => {
     
 
 })
-    
+
 router.get("/ficha/getFicha/:macMaquina",  (req,res) => {
 
     var maquinaMac= req.params.macMaquina;
@@ -150,10 +150,32 @@ router.get("/ficha/getFicha/:macMaquina",  (req,res) => {
           }); 
         
       }); 
+})
+
+router.get("/lista/getFicha/:idMaquina",  (req,res) => {
+    console.log(req.params.idMaquina);
+    var maquinaId= req.params.idMaquina;
+ 
 
 
-   
 
+    // Maquinas.findOne({
+    //     where: {
+    //         id : maquinaId
+    //     }
+    // }).then(output => {
+    //     console.log(output.id);
+        Fichas.findAll({
+            where: {
+                maquina: maquinaId
+            }
+        }).then(fichas => {         
+    
+            res.send(fichas)
+            
+        }); 
+        
+    // }); 
 })
 
 router.get("/novaficha",  (req,res) => {
@@ -488,5 +510,33 @@ router.post("/fichas/delete",(req,res) => {
     }
 })
 
+
+router.get("/lista",  (req,res) => {
+
+    var maquinas;
+
+    Maquinas.findAll().then(maquina => {
+        maquinas = maquina;
+
+        Fichas.findAll().then((fichas) => {
+            res.render("fichas/lista",{        
+                maquinas: maquinas,    
+                nav_maquinas : "",
+                nav_produtos : "",
+                nav_mp : "",
+                nav_usuarios : "",
+                nav_moldes : "",
+                nav_clientes : "",
+                nav_parametros:"",
+                nav_ficha: "active"
+            })
+        });
+    })
+
+
+    
+
+    
+})
 
 module.exports = router;

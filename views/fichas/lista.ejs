@@ -1,0 +1,42 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/sidebar.ejs') %>
+
+<div class="container"> 
+    <hr>
+    <h2>Lista de Fichas Técnicas</h2> 
+    <div>
+      <a class="btn btn-success" href="/novaficha"> Inserir Nova Ficha Técnica</a>
+      <a class="btn btn-success" href="/lista"> Lista de Fichas Técnicas</a>
+    </div>
+    <hr>
+
+    <h5>Selecione uma máquina:</h5>
+    <select  name="maquinasList" id="maquinasList" class="form-control">
+        <option value="0"> Selecione uma máquina</option>
+        <% maquinas.forEach((maquina) => { %>
+            <option value="<%= maquina.id %>">
+                <%= maquina.descricao %>
+            </option>
+        <% }) %>
+    </select>   
+    <br>
+    <br>
+
+    <table id="fichaTable" class="table table-bordered"> 
+        <thead>
+           <tr>
+                <!-- <th> Revisão </th> -->
+                <th> Id Ficha Técnica </th>
+                <th> Máquina </th>
+           </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+</div>
+
+
+<script src=/scripts/jquery.js></script>
+<script src=/scripts/FichaScripts.js></script>
+
+<%- include ('../partials/footer.ejs') %>   
