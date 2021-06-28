@@ -398,6 +398,7 @@ app.get("/",(req,res) =>{
 
 //    User.create({
 //       nome:"admin",
+//       sobrenome:"",
 //       email:"admin@email.com",
 //       password:hash,
 //       matricula:"00000",        
