@@ -207,36 +207,36 @@ router.get("/novaficha",  (req,res) => {
 router.post("/fichas/create",(req,res) => {
    
     var maquina = req.body.maquinas;
-    var VI1_min = req.body.VI1_min;
-    var VI1_max = req.body.VI1_max;
-    var VI2_min = req.body.VI2_min;
-    var VI2_max = req.body.VI2_max;
-    var VI3_min = req.body.VI3_min;
-    var VI3_max = req.body.VI3_max;
-    var VI4_min = req.body.VI4_min;
-    var VI4_max = req.body.VI4_max;
-    var VI5_min = req.body.VI5_min;
-    var VI5_max = req.body.VI5_max;
-    var VI6_min = req.body.VI6_min;
-    var VI6_max = req.body.VI6_max;
-    var VI7_min = req.body.VI7_min;
-    var VI7_max = req.body.VI7_max;
-    var VI8_min = req.body.VI8_min;
-    var VI8_max = req.body.VI8_max;
-    var VI9_min = req.body.VI9_min;
-    var VI9_max = req.body.VI9_max;
-    var VI10_min = req.body.VI10_min;
-    var VI10_max = req.body.VI10_max;
-    var VH1_min = req.body.VH1_min;
-    var VH1_max = req.body.VH1_max;
-    var VH2_min = req.body.VH2_min;
-    var VH2_max = req.body.VH2_max;
-    var PI1_min = req.body.PI1_min;
-    var PI1_max = req.body.PI1_max;
-    var LS4_min = req.body.LS4_min;
-    var LS4_max = req.body.LS4_max;
-    var LS4A_min = req.body.LS4A_min;
-    var LS4A_max = req.body.LS4A_max;    
+    var VI1_min = req.body.VI1_min !==  "" ? req.body.VI1_min : 0.0;
+    var VI1_max = req.body.VI1_max !==  "" ? req.body.VI1_max : 0.0;
+    var VI2_min = req.body.VI2_min !==  "" ? req.body.VI2_min : 0.0;
+    var VI2_max = req.body.VI2_max !==  "" ? req.body.VI2_max : 0.0;
+    var VI3_min = req.body.VI3_min !==  "" ? req.body.VI3_min : 0.0;
+    var VI3_max = req.body.VI3_max !==  "" ? req.body.VI3_max : 0.0;
+    var VI4_min = req.body.VI4_min !==  "" ? req.body.VI4_min : 0.0;
+    var VI4_max = req.body.VI4_max !==  "" ? req.body.VI4_max : 0.0;
+    var VI5_min = req.body.VI5_min !==  "" ? req.body.VI5_min : 0.0;
+    var VI5_max = req.body.VI5_max !==  "" ? req.body.VI5_max : 0.0;
+    var VI6_min = req.body.VI6_min !==  "" ? req.body.VI6_min : 0.0;
+    var VI6_max = req.body.VI6_max !==  "" ? req.body.VI6_max : 0.0;
+    var VI7_min = req.body.VI7_min !==  "" ? req.body.VI7_min : 0.0;
+    var VI7_max = req.body.VI7_max !==  "" ? req.body.VI7_max : 0.0;
+    var VI8_min = req.body.VI8_min !==  "" ? req.body.VI8_min : 0.0;
+    var VI8_max = req.body.VI8_max !==  "" ? req.body.VI8_max : 0.0;
+    var VI9_min = req.body.VI9_min !==  "" ? req.body.VI9_min : 0.0;
+    var VI9_max = req.body.VI9_max !==  "" ? req.body.VI9_max : 0.0;
+    var VI10_min = req.body.VI10_min !==  "" ? req.body.VI10_min : 0.0;
+    var VI10_max = req.body.VI10_max !==  "" ? req.body.VI10_max : 0.0;
+    var VH1_min = req.body.VH1_min !==  "" ? req.body.VH1_min : 0.0;
+    var VH1_max = req.body.VH1_max !==  "" ? req.body.VH1_max : 0.0;
+    var VH2_min = req.body.VH2_min !==  "" ? req.body.VH2_min : 0.0;
+    var VH2_max = req.body.VH2_max !==  "" ? req.body.VH2_max : 0.0;
+    var PI1_min = req.body.PI1_min !==  "" ? req.body.PI1_min : 0.0;
+    var PI1_max = req.body.PI1_max !==  "" ? req.body.PI1_max : 0.0;
+    var LS4_min = req.body.LS4_min !==  "" ? req.body.LS4_min : 0.0;
+    var LS4_max = req.body.LS4_max !==  "" ? req.body.LS4_max : 0.0;
+    var LS4A_min = req.body.LS4A_min !==  "" ? req.body.LS4A_min : 0.0;
+    var LS4A_max = req.body.LS4A_max !==  "" ? req.body.LS4A_max : 0.0;    
     
 
     Fichas.create({
