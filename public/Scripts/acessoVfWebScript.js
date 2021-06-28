@@ -3445,142 +3445,345 @@ function tipoVisualizacao(tipo) {
 
                                        radial += "<tr><th scope='row' colspan='1'>PRESSÃO:</th>";
 
-                                       (injetor.radialPresEntrada1 !== 0 && (parametros.RADIAL_PRESSAO_ENTRADA_1 < (injetor.radialPresEntrada1 - (injetor.radialPresEntrada1 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_PRESSAO_ENTRADA_1 > (injetor.radialPresEntrada1 + (injetor.radialPresEntrada1 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresEntrada1' class='outOfRange'><p tle='Clique para o gráfico' class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialPresEntrada1 + "</span> - <span class='reais'>" + parametros.RADIAL_PRESSAO_ENTRADA_1 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresEntrada1'><p tle='Clique para o gráfico' class='read-only'><span class='cadastrados'> " + injetor.radialPresEntrada1 + "</span> - <span class='reais'>" + parametros.RADIAL_PRESSAO_ENTRADA_1 + "</span></p></td>";
-                                       
-                                       (injetor.radialPresSaida1 !== 0 && (parametros.RADIAL_PRESSAO_SAIDA_1 < (injetor.radialPresSaida1 - (injetor.radialPresSaida1 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_PRESSAO_SAIDA_1 > (injetor.radialPresSaida1 + (injetor.radialPresSaida1 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresSaida1' class='outOfRange'><p tle='Clique para o gráfico' class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialPresSaida1 + "</span> - <span class='reais'>" + parametros.RADIAL_PRESSAO_SAIDA_1 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresSaida1'><p tle='Clique para o gráfico' class='read-only'><span class='cadastrados'> " + injetor.radialPresSaida1 + "</span> - <span class='reais'>" + parametros.RADIAL_PRESSAO_SAIDA_1 + "</span></p></td>";
-                                       
-                                       (injetor.radialPresEntrada2 !== 0 && (parametros.RADIAL_PRESSAO_ENTRADA_2 < (injetor.radialPresEntrada2 - (injetor.radialPresEntrada2 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_PRESSAO_ENTRADA_2 > (injetor.radialPresEntrada2 + (injetor.radialPresEntrada2 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresEntrada2' class='outOfRange'><p tle='Clique para o gráfico' class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialPresEntrada2 + "</span> - <span class='reais'>" + parametros.RADIAL_PRESSAO_ENTRADA_2 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresEntrada2'><p tle='Clique para o gráfico' class='read-only'><span class='cadastrados'> " + injetor.radialPresEntrada2 + "</span> - <span class='reais'>" + parametros.RADIAL_PRESSAO_ENTRADA_2 + "</span></p></td>";
-                                       
-                                       (injetor.radialPresSaida2 !== 0 && (parametros.RADIAL_PRESSAO_SAIDA_2 < (injetor.radialPresSaida2 - (injetor.radialPresSaida2 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_PRESSAO_SAIDA_2 > (injetor.radialPresSaida2 + (injetor.radialPresSaida2 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresSaida2' class='outOfRange'><p tle='Clique para o gráfico' class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialPresSaida2 + "</span> - <span class='reais'>" + parametros.RADIAL_PRESSAO_SAIDA_2 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresSaida2'><p tle='Clique para o gráfico' class='read-only'><span class='cadastrados'> " + injetor.radialPresSaida2 + "</span> - <span class='reais'>" + parametros.RADIAL_PRESSAO_SAIDA_2 + "</span></p></td>";
-                                       
-                                       (injetor.radialPresEntrada3 !== 0 && (parametros.RADIAL_PRESSAO_ENTRADA_3 < (injetor.radialPresEntrada3 - (injetor.radialPresEntrada3 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_PRESSAO_ENTRADA_3 > (injetor.radialPresEntrada3 + (injetor.radialPresEntrada3 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresEntrada3' class='outOfRange'><p tle='Clique para o gráfico' class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialPresEntrada3 + "</span> - <span class='reais'>" + parametros.RADIAL_PRESSAO_ENTRADA_3 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresEntrada3'><p tle='Clique para o gráfico' class='read-only'><span class='cadastrados'> " + injetor.radialPresEntrada3 + "</span> - <span class='reais'>" + parametros.RADIAL_PRESSAO_ENTRADA_3 + "</span></p></td>";
-                                       
-                                       (injetor.radialPresSaida3 !== 0 && (parametros.RADIAL_PRESSAO_SAIDA_3 < (injetor.radialPresSaida3 - (injetor.radialPresSaida3 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_PRESSAO_SAIDA_3 > (injetor.radialPresSaida3 + (injetor.radialPresSaida3 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresSaida3' class='outOfRange'><p tle='Clique para o gráfico' class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialPresSaida3 + "</span> - <span class='reais'>" + parametros.RADIAL_PRESSAO_SAIDA_3 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresSaida3'><p tle='Clique para o gráfico' class='read-only'><span class='cadastrados'> " + injetor.radialPresSaida3 + "</span> - <span class='reais'>" + parametros.RADIAL_PRESSAO_SAIDA_3 + "</span></p></td>";
+                                       if (injetor.radialPresEntrada1 !== 0) {
+
+                                          (injetor.radialPresEntrada1 !== 0 && (parametros.RADIAL_PRESSAO_ENTRADA_1 < (injetor.radialPresEntrada1 - (injetor.radialPresEntrada1 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_PRESSAO_ENTRADA_1 > (injetor.radialPresEntrada1 + (injetor.radialPresEntrada1 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresEntrada1' class='outOfRange'><p title='Clique para o gráfico' class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialPresEntrada1 + "</span> - <span class='reais'>" + parametros.RADIAL_PRESSAO_ENTRADA_1 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresEntrada1'><p title='Clique para o gráfico' class='read-only'><span class='cadastrados'> " + injetor.radialPresEntrada1 + "</span> - <span class='reais'>" + parametros.RADIAL_PRESSAO_ENTRADA_1 + "</span></p></td>";
+
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresEntrada1'><p title='Clique para o gráfico' class='read-only'><span class='cadastrados'> " + injetor.radialPresEntrada1 + "</span></p></td>";
+                                       }
+
+                                       if (injetor.radialPresSaida1 !== 0) {
+
+                                          (injetor.radialPresSaida1 !== 0 && (parametros.RADIAL_PRESSAO_SAIDA_1 < (injetor.radialPresSaida1 - (injetor.radialPresSaida1 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_PRESSAO_SAIDA_1 > (injetor.radialPresSaida1 + (injetor.radialPresSaida1 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresSaida1' class='outOfRange'><p title='Clique para o gráfico' class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialPresSaida1 + "</span> - <span class='reais'>" + parametros.RADIAL_PRESSAO_SAIDA_1 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresSaida1'><p title='Clique para o gráfico' class='read-only'><span class='cadastrados'> " + injetor.radialPresSaida1 + "</span> - <span class='reais'>" + parametros.RADIAL_PRESSAO_SAIDA_1 + "</span></p></td>";
+
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresSaida1'><p title='Clique para o gráfico' class='read-only'><span class='cadastrados'> " + injetor.radialPresSaida1 + "</span></p></td>";
+                                       }
+
+                                       if (injetor.radialPresEntrada2 !== 0) {
+
+                                          (injetor.radialPresEntrada2 !== 0 && (parametros.RADIAL_PRESSAO_ENTRADA_2 < (injetor.radialPresEntrada2 - (injetor.radialPresEntrada2 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_PRESSAO_ENTRADA_2 > (injetor.radialPresEntrada2 + (injetor.radialPresEntrada2 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresEntrada2' class='outOfRange'><p title='Clique para o gráfico' class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialPresEntrada2 + "</span> - <span class='reais'>" + parametros.RADIAL_PRESSAO_ENTRADA_2 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresEntrada2'><p title='Clique para o gráfico' class='read-only'><span class='cadastrados'> " + injetor.radialPresEntrada2 + "</span> - <span class='reais'>" + parametros.RADIAL_PRESSAO_ENTRADA_2 + "</span></p></td>";
+
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresEntrada2'><p title='Clique para o gráfico' class='read-only'><span class='cadastrados'> " + injetor.radialPresEntrada2 + "</span></p></td>";
+                                       }
+
+                                       if (injetor.radialPresSaida2 !== 0) {
+
+                                          (injetor.radialPresSaida2 !== 0 && (parametros.RADIAL_PRESSAO_SAIDA_2 < (injetor.radialPresSaida2 - (injetor.radialPresSaida2 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_PRESSAO_SAIDA_2 > (injetor.radialPresSaida2 + (injetor.radialPresSaida2 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresSaida2' class='outOfRange'><p title='Clique para o gráfico' class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialPresSaida2 + "</span> - <span class='reais'>" + parametros.RADIAL_PRESSAO_SAIDA_2 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresSaida2'><p title='Clique para o gráfico' class='read-only'><span class='cadastrados'> " + injetor.radialPresSaida2 + "</span> - <span class='reais'>" + parametros.RADIAL_PRESSAO_SAIDA_2 + "</span></p></td>";
+
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresSaida2'><p title='Clique para o gráfico' class='read-only'><span class='cadastrados'> " + injetor.radialPresSaida2 + "</span></p></td>";
+                                       }
+
+                                       if (injetor.radialPresEntrada3 !== 0) {
+
+                                          (injetor.radialPresEntrada3 !== 0 && (parametros.RADIAL_PRESSAO_ENTRADA_3 < (injetor.radialPresEntrada3 - (injetor.radialPresEntrada3 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_PRESSAO_ENTRADA_3 > (injetor.radialPresEntrada3 + (injetor.radialPresEntrada3 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresEntrada3' class='outOfRange'><p title='Clique para o gráfico' class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialPresEntrada3 + "</span> - <span class='reais'>" + parametros.RADIAL_PRESSAO_ENTRADA_3 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresEntrada3'><p title='Clique para o gráfico' class='read-only'><span class='cadastrados'> " + injetor.radialPresEntrada3 + "</span> - <span class='reais'>" + parametros.RADIAL_PRESSAO_ENTRADA_3 + "</span></p></td>";
+
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresEntrada3'><p title='Clique para o gráfico' class='read-only'><span class='cadastrados'> " + injetor.radialPresEntrada3 + "</span></p></td>";
+                                       }
+
+                                       if (injetor.radialPresSaida3 !== 0) {
+
+                                          (injetor.radialPresSaida3 !== 0 && (parametros.RADIAL_PRESSAO_SAIDA_3 < (injetor.radialPresSaida3 - (injetor.radialPresSaida3 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_PRESSAO_SAIDA_3 > (injetor.radialPresSaida3 + (injetor.radialPresSaida3 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresSaida3' class='outOfRange'><p title='Clique para o gráfico' class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialPresSaida3 + "</span> - <span class='reais'>" + parametros.RADIAL_PRESSAO_SAIDA_3 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresSaida3'><p title='Clique para o gráfico' class='read-only'><span class='cadastrados'> " + injetor.radialPresSaida3 + "</span> - <span class='reais'>" + parametros.RADIAL_PRESSAO_SAIDA_3 + "</span></p></td>";
+
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialPresSaida3'><p title='Clique para o gráfico' class='read-only'><span class='cadastrados'> " + injetor.radialPresSaida3 + "</span></p></td>";
+                                       }
 
                                        radial += "</tr>";
 
                                        radial += "<tr><th scope='row' colspan='1'>FLUXO:</th>";
 
-                                       (injetor.radialFluxoEntrada1 !== 0 && (parametros.RADIAL_FLUXO_ENTRADA_1 < (injetor.radialFluxoEntrada1 - (injetor.radialFluxoEntrada1 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_FLUXO_ENTRADA_1 > (injetor.radialFluxoEntrada1 + (injetor.radialFluxoEntrada1 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoEntrada1' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialFluxoEntrada1 + "</span> - <span class='reais'>" + parametros.RADIAL_FLUXO_ENTRADA_1 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoEntrada1'><p class='read-only'><span class='cadastrados'> " + injetor.radialFluxoEntrada1 + "</span> - <span class='reais'>" + parametros.RADIAL_FLUXO_ENTRADA_1 + "</span></p></td>";
-                                       
-                                       (injetor.radialFluxoSaida1 !== 0 && (parametros.RADIAL_FLUXO_SAIDA_1 < (injetor.radialFluxoSaida1 - (injetor.radialFluxoSaida1 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_FLUXO_SAIDA_1 > (injetor.radialFluxoSaida1 + (injetor.radialFluxoSaida1 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoSaida1' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialFluxoSaida1 + "</span> - <span class='reais'>" + parametros.RADIAL_FLUXO_SAIDA_1 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoSaida1'><p class='read-only'><span class='cadastrados'> " + injetor.radialFluxoSaida1 + "</span> - <span class='reais'>" + parametros.RADIAL_FLUXO_SAIDA_1 + "</span></p></td>";
-                                       
-                                       (injetor.radialFluxoEntrada2 !== 0 && (parametros.RADIAL_FLUXO_ENTRADA_2 < (injetor.radialFluxoEntrada2 - (injetor.radialFluxoEntrada2 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_FLUXO_ENTRADA_2 > (injetor.radialFluxoEntrada2 + (injetor.radialFluxoEntrada2 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoEntrada2' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialFluxoEntrada2 + "</span> - <span class='reais'>" + parametros.RADIAL_FLUXO_ENTRADA_2 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoEntrada2'><p class='read-only'><span class='cadastrados'> " + injetor.radialFluxoEntrada2 + "</span> - <span class='reais'>" + parametros.RADIAL_FLUXO_ENTRADA_2 + "</span></p></td>";
-                                       
-                                       (injetor.radialFluxoSaida2 !== 0 && (parametros.RADIAL_FLUXO_SAIDA_2 < (injetor.radialFluxoSaida2 - (injetor.radialFluxoSaida2 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_FLUXO_SAIDA_2 > (injetor.radialFluxoSaida2 + (injetor.radialFluxoSaida2 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoSaida2' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialFluxoSaida2 + "</span> - <span class='reais'>" + parametros.RADIAL_FLUXO_SAIDA_2 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoSaida2'><p class='read-only'><span class='cadastrados'> " + injetor.radialFluxoSaida2 + "</span> - <span class='reais'>" + parametros.RADIAL_FLUXO_SAIDA_2 + "</span></p></td>";
-                                       
-                                       (injetor.radialFluxoEntrada3 !== 0 && (parametros.RADIAL_FLUXO_ENTRADA_3 < (injetor.radialFluxoEntrada3 - (injetor.radialFluxoEntrada3 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_FLUXO_ENTRADA_3 > (injetor.radialFluxoEntrada3 + (injetor.radialFluxoEntrada3 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoEntrada3' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialFluxoEntrada3 + "</span> - <span class='reais'>" + parametros.RADIAL_FLUXO_ENTRADA_3 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoEntrada3'><p class='read-only'><span class='cadastrados'> " + injetor.radialFluxoEntrada3 + "</span> - <span class='reais'>" + parametros.RADIAL_FLUXO_ENTRADA_3 + "</span></p></td>";
-                                       
-                                       (injetor.radialFluxoSaida3 !== 0 && (parametros.RADIAL_FLUXO_SAIDA_3 < (injetor.radialFluxoSaida3 - (injetor.radialFluxoSaida3 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_FLUXO_SAIDA_3 > (injetor.radialFluxoSaida3 + (injetor.radialFluxoSaida3 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoSaida3' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialFluxoSaida3 + "</span> - <span class='reais'>" + parametros.RADIAL_FLUXO_SAIDA_3 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoSaida3'><p class='read-only'><span class='cadastrados'> " + injetor.radialFluxoSaida3 + "</span> - <span class='reais'>" + parametros.RADIAL_FLUXO_SAIDA_3 + "</span></p></td>";
+                                       if (injetor.radialFluxoEntrada1 !== 0) {
+
+                                          (injetor.radialFluxoEntrada1 !== 0 && (parametros.RADIAL_FLUXO_ENTRADA_1 < (injetor.radialFluxoEntrada1 - (injetor.radialFluxoEntrada1 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_FLUXO_ENTRADA_1 > (injetor.radialFluxoEntrada1 + (injetor.radialFluxoEntrada1 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoEntrada1' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialFluxoEntrada1 + "</span> - <span class='reais'>" + parametros.RADIAL_FLUXO_ENTRADA_1 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoEntrada1'><p class='read-only'><span class='cadastrados'> " + injetor.radialFluxoEntrada1 + "</span> - <span class='reais'>" + parametros.RADIAL_FLUXO_ENTRADA_1 + "</span></p></td>";
+
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoEntrada1'><p class='read-only'><span class='cadastrados'> " + injetor.radialFluxoEntrada1 + "</span></p></td>";
+                                          
+                                       }
+
+                                       if (injetor.radialFluxoSaida1 !== 0) {
+
+                                          (injetor.radialFluxoSaida1 !== 0 && (parametros.RADIAL_FLUXO_SAIDA_1 < (injetor.radialFluxoSaida1 - (injetor.radialFluxoSaida1 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_FLUXO_SAIDA_1 > (injetor.radialFluxoSaida1 + (injetor.radialFluxoSaida1 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoSaida1' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialFluxoSaida1 + "</span> - <span class='reais'>" + parametros.RADIAL_FLUXO_SAIDA_1 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoSaida1'><p class='read-only'><span class='cadastrados'> " + injetor.radialFluxoSaida1 + "</span> - <span class='reais'>" + parametros.RADIAL_FLUXO_SAIDA_1 + "</span></p></td>";
+
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoSaida1'><p class='read-only'><span class='cadastrados'> " + injetor.radialFluxoSaida1 + "</span></p></td>";
+                                          
+                                       }
+
+                                       if (injetor.radialFluxoEntrada2 !== 0) {
+
+                                          (injetor.radialFluxoEntrada2 !== 0 && (parametros.RADIAL_FLUXO_ENTRADA_2 < (injetor.radialFluxoEntrada2 - (injetor.radialFluxoEntrada2 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_FLUXO_ENTRADA_2 > (injetor.radialFluxoEntrada2 + (injetor.radialFluxoEntrada2 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoEntrada2' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialFluxoEntrada2 + "</span> - <span class='reais'>" + parametros.RADIAL_FLUXO_ENTRADA_2 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoEntrada2'><p class='read-only'><span class='cadastrados'> " + injetor.radialFluxoEntrada2 + "</span> - <span class='reais'>" + parametros.RADIAL_FLUXO_ENTRADA_2 + "</span></p></td>";
+                                          
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoEntrada2'><p class='read-only'><span class='cadastrados'> " + injetor.radialFluxoEntrada2 + "</span></p></td>";
+                                          
+                                       }
+
+                                       if (injetor.radialFluxoSaida2 !== 0) {
+
+                                          (injetor.radialFluxoSaida2 !== 0 && (parametros.RADIAL_FLUXO_SAIDA_2 < (injetor.radialFluxoSaida2 - (injetor.radialFluxoSaida2 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_FLUXO_SAIDA_2 > (injetor.radialFluxoSaida2 + (injetor.radialFluxoSaida2 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoSaida2' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialFluxoSaida2 + "</span> - <span class='reais'>" + parametros.RADIAL_FLUXO_SAIDA_2 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoSaida2'><p class='read-only'><span class='cadastrados'> " + injetor.radialFluxoSaida2 + "</span> - <span class='reais'>" + parametros.RADIAL_FLUXO_SAIDA_2 + "</span></p></td>";
+                                             
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoSaida2'><p class='read-only'><span class='cadastrados'> " + injetor.radialFluxoSaida2 + "</span></p></td>";
+                                          
+                                       }
+
+                                       if (injetor.radialFluxoEntrada3 !== 0) {
+
+                                          (injetor.radialFluxoEntrada3 !== 0 && (parametros.RADIAL_FLUXO_ENTRADA_3 < (injetor.radialFluxoEntrada3 - (injetor.radialFluxoEntrada3 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_FLUXO_ENTRADA_3 > (injetor.radialFluxoEntrada3 + (injetor.radialFluxoEntrada3 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoEntrada3' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialFluxoEntrada3 + "</span> - <span class='reais'>" + parametros.RADIAL_FLUXO_ENTRADA_3 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoEntrada3'><p class='read-only'><span class='cadastrados'> " + injetor.radialFluxoEntrada3 + "</span> - <span class='reais'>" + parametros.RADIAL_FLUXO_ENTRADA_3 + "</span></p></td>";
+                                                
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoEntrada3'><p class='read-only'><span class='cadastrados'> " + injetor.radialFluxoEntrada3 + "</span></p></td>";
+                                          
+                                       }
+
+                                       if (injetor.radialFluxoSaida3 !== 0) {
+
+                                          (injetor.radialFluxoSaida3 !== 0 && (parametros.RADIAL_FLUXO_SAIDA_3 < (injetor.radialFluxoSaida3 - (injetor.radialFluxoSaida3 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_FLUXO_SAIDA_3 > (injetor.radialFluxoSaida3 + (injetor.radialFluxoSaida3 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoSaida3' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialFluxoSaida3 + "</span> - <span class='reais'>" + parametros.RADIAL_FLUXO_SAIDA_3 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoSaida3'><p class='read-only'><span class='cadastrados'> " + injetor.radialFluxoSaida3 + "</span> - <span class='reais'>" + parametros.RADIAL_FLUXO_SAIDA_3 + "</span></p></td>";
+                                                   
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialFluxoSaida3'><p class='read-only'><span class='cadastrados'> " + injetor.radialFluxoSaida3 + "</span></p></td>";
+                                          
+                                       }
 
                                        radial += "</tr>";
 
                                        radial += "<tr><th scope='row' colspan='1'>ACT. POSIÇÃO:</th>";
 
-                                       (injetor.radialPosEntrada1 !== 0 && (parametros.RADIAL_ACT_POSICAO_ENTRADA_1 < (injetor.radialPosEntrada1 - (injetor.radialPosEntrada1 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_ACT_POSICAO_ENTRADA_1 > (injetor.radialPosEntrada1 + (injetor.radialPosEntrada1 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosEntrada1' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialPosEntrada1 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_POSICAO_ENTRADA_1 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosEntrada1'><p class='read-only'><span class='cadastrados'> " + injetor.radialPosEntrada1 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_POSICAO_ENTRADA_1 + "</span></p></td>";
-                                       
-                                       (injetor.radialPosSaida1 !== 0 && (parametros.RADIAL_ACT_POSICAO_SAIDA_1 < (injetor.radialPosSaida1 - (injetor.radialPosSaida1 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_ACT_POSICAO_SAIDA_1 > (injetor.radialPosSaida1 + (injetor.radialPosSaida1 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosSaida1' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialPosSaida1 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_POSICAO_SAIDA_1 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosSaida1'><p class='read-only'><span class='cadastrados'> " + injetor.radialPosSaida1 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_POSICAO_SAIDA_1 + "</span></p></td>";
-                                       
-                                       (injetor.radialPosEntrada2 !== 0 && (parametros.RADIAL_ACT_POSICAO_ENTRADA_2 < (injetor.radialPosEntrada2 - (injetor.radialPosEntrada2 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_ACT_POSICAO_ENTRADA_2 > (injetor.radialPosEntrada2 + (injetor.radialPosEntrada2 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosEntrada2' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialPosEntrada2 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_POSICAO_ENTRADA_2 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosEntrada2'><p class='read-only'><span class='cadastrados'> " + injetor.radialPosEntrada2 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_POSICAO_ENTRADA_2 + "</span></p></td>";
-                                       
-                                       (injetor.radialPosSaida2 !== 0 && (parametros.RADIAL_ACT_POSICAO_SAIDA_2 < (injetor.radialPosSaida2 - (injetor.radialPosSaida2 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_ACT_POSICAO_SAIDA_2 > (injetor.radialPosSaida2 + (injetor.radialPosSaida2 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosSaida2' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialPosSaida2 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_POSICAO_SAIDA_2 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosSaida2'><p class='read-only'><span class='cadastrados'> " + injetor.radialPosSaida2 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_POSICAO_SAIDA_2 + "</span></p></td>";
-                                       
-                                       (injetor.radialPosEntrada3 !== 0 && (parametros.RADIAL_ACT_POSICAO_ENTRADA_3 < (injetor.radialPosEntrada3 - (injetor.radialPosEntrada3 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_ACT_POSICAO_ENTRADA_3 > (injetor.radialPosEntrada3 + (injetor.radialPosEntrada3 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosEntrada3' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialPosEntrada3 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_POSICAO_ENTRADA_3 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosEntrada3'><p class='read-only'><span class='cadastrados'> " + injetor.radialPosEntrada3 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_POSICAO_ENTRADA_3 + "</span></p></td>";
-                                       
-                                       (injetor.radialPosSaida3 !== 0 && (parametros.RADIAL_ACT_POSICAO_SAIDA_3 < (injetor.radialPosSaida3 - (injetor.radialPosSaida3 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_ACT_POSICAO_SAIDA_3 > (injetor.radialPosSaida3 + (injetor.radialPosSaida3 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosSaida3' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialPosSaida3 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_POSICAO_SAIDA_3 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosSaida3'><p class='read-only'><span class='cadastrados'> " + injetor.radialPosSaida3 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_POSICAO_SAIDA_3 + "</span></p></td>";
+                                       if (injetor.radialPosEntrada1 !== 0) {
 
+                                          (injetor.radialPosEntrada1 !== 0 && (parametros.RADIAL_ACT_POSICAO_ENTRADA_1 < (injetor.radialPosEntrada1 - (injetor.radialPosEntrada1 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_ACT_POSICAO_ENTRADA_1 > (injetor.radialPosEntrada1 + (injetor.radialPosEntrada1 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosEntrada1' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialPosEntrada1 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_POSICAO_ENTRADA_1 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosEntrada1'><p class='read-only'><span class='cadastrados'> " + injetor.radialPosEntrada1 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_POSICAO_ENTRADA_1 + "</span></p></td>";
+                                       
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosEntrada1'><p class='read-only'><span class='cadastrados'> " + injetor.radialPosEntrada1 + "</span></p></td>";
+                                          
+                                       }
+                                       
+                                       if (injetor.radialPosSaida1 !== 0) {
+                                       
+                                          (injetor.radialPosSaida1 !== 0 && (parametros.RADIAL_ACT_POSICAO_SAIDA_1 < (injetor.radialPosSaida1 - (injetor.radialPosSaida1 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_ACT_POSICAO_SAIDA_1 > (injetor.radialPosSaida1 + (injetor.radialPosSaida1 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosSaida1' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialPosSaida1 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_POSICAO_SAIDA_1 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosSaida1'><p class='read-only'><span class='cadastrados'> " + injetor.radialPosSaida1 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_POSICAO_SAIDA_1 + "</span></p></td>";
+                                          
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosSaida1'><p class='read-only'><span class='cadastrados'> " + injetor.radialPosSaida1 + "</span></p></td>";
+                                          
+                                       }
+                                       
+                                       if (injetor.radialPosEntrada2 !== 0) {
+                                       
+                                          (injetor.radialPosEntrada2 !== 0 && (parametros.RADIAL_ACT_POSICAO_ENTRADA_2 < (injetor.radialPosEntrada2 - (injetor.radialPosEntrada2 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_ACT_POSICAO_ENTRADA_2 > (injetor.radialPosEntrada2 + (injetor.radialPosEntrada2 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosEntrada2' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialPosEntrada2 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_POSICAO_ENTRADA_2 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosEntrada2'><p class='read-only'><span class='cadastrados'> " + injetor.radialPosEntrada2 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_POSICAO_ENTRADA_2 + "</span></p></td>";
+                                             
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosEntrada2'><p class='read-only'><span class='cadastrados'> " + injetor.radialPosEntrada2 + "</span></p></td>";
+                                          
+                                       }
+                                       
+                                       if (injetor.radialPosSaida2 !== 0) {
+                                       
+                                          (injetor.radialPosSaida2 !== 0 && (parametros.RADIAL_ACT_POSICAO_SAIDA_2 < (injetor.radialPosSaida2 - (injetor.radialPosSaida2 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_ACT_POSICAO_SAIDA_2 > (injetor.radialPosSaida2 + (injetor.radialPosSaida2 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosSaida2' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialPosSaida2 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_POSICAO_SAIDA_2 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosSaida2'><p class='read-only'><span class='cadastrados'> " + injetor.radialPosSaida2 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_POSICAO_SAIDA_2 + "</span></p></td>";
+                                                
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosSaida2'><p class='read-only'><span class='cadastrados'> " + injetor.radialPosSaida2 + "</span></p></td>";
+                                          
+                                       }
+                                       
+                                       if (injetor.radialPosEntrada3 !== 0) {
+                                       
+                                          (injetor.radialPosEntrada3 !== 0 && (parametros.RADIAL_ACT_POSICAO_ENTRADA_3 < (injetor.radialPosEntrada3 - (injetor.radialPosEntrada3 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_ACT_POSICAO_ENTRADA_3 > (injetor.radialPosEntrada3 + (injetor.radialPosEntrada3 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosEntrada3' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialPosEntrada3 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_POSICAO_ENTRADA_3 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosEntrada3'><p class='read-only'><span class='cadastrados'> " + injetor.radialPosEntrada3 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_POSICAO_ENTRADA_3 + "</span></p></td>";
+                                                   
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosEntrada3'><p class='read-only'><span class='cadastrados'> " + injetor.radialPosEntrada3 + "</span></p></td>";
+                                          
+                                       }
+                                       
+                                       if (injetor.radialPosSaida3 !== 0) {
+                                       
+                                          (injetor.radialPosSaida3 !== 0 && (parametros.RADIAL_ACT_POSICAO_SAIDA_3 < (injetor.radialPosSaida3 - (injetor.radialPosSaida3 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_ACT_POSICAO_SAIDA_3 > (injetor.radialPosSaida3 + (injetor.radialPosSaida3 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosSaida3' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialPosSaida3 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_POSICAO_SAIDA_3 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosSaida3'><p class='read-only'><span class='cadastrados'> " + injetor.radialPosSaida3 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_POSICAO_SAIDA_3 + "</span></p></td>";
+                                                      
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialPosSaida3'><p class='read-only'><span class='cadastrados'> " + injetor.radialPosSaida3 + "</span></p></td>";
+                                          
+                                       }
+                                       
                                        radial += "</tr>";
-
+                                       
                                        radial += "<tr><th scope='row' colspan='1'>ACT. TEMPO:</th>";
+                                       
 
-                                       (injetor.radialTempoEntrada1 !== 0 && (parametros.RADIAL_ACT_TEMPO_ENTRADA_1 < (injetor.radialTempoEntrada1 - (injetor.radialTempoEntrada1 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_ACT_TEMPO_ENTRADA_1 > (injetor.radialTempoEntrada1 + (injetor.radialTempoEntrada1 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoEntrada1' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialTempoEntrada1 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_TEMPO_ENTRADA_1 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoEntrada1'><p class='read-only'><span class='cadastrados'> " + injetor.radialTempoEntrada1 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_TEMPO_ENTRADA_1 + "</span></p></td>";
-                                       
-                                       (injetor.radialTempoSaida1 !== 0 && (parametros.RADIAL_ACT_TEMPO_SAIDA_1 < (injetor.radialTempoSaida1 - (injetor.radialTempoSaida1 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_ACT_TEMPO_SAIDA_1 > (injetor.radialTempoSaida1 + (injetor.radialTempoSaida1 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoSaida1' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialTempoSaida1 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_TEMPO_SAIDA_1 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoSaida1'><p class='read-only'><span class='cadastrados'> " + injetor.radialTempoSaida1 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_TEMPO_SAIDA_1 + "</span></p></td>";
-                                       
-                                       (injetor.radialTempoEntrada2 !== 0 && (parametros.RADIAL_ACT_TEMPO_ENTRADA_2 < (injetor.radialTempoEntrada2 - (injetor.radialTempoEntrada2 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_ACT_TEMPO_ENTRADA_2 > (injetor.radialTempoEntrada2 + (injetor.radialTempoEntrada2 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoEntrada2' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialTempoEntrada2 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_TEMPO_ENTRADA_2 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoEntrada2'><p class='read-only'><span class='cadastrados'> " + injetor.radialTempoEntrada2 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_TEMPO_ENTRADA_2 + "</span></p></td>";
-                                       
-                                       (injetor.radialTempoSaida2 !== 0 && (parametros.RADIAL_ACT_TEMPO_SAIDA_2 < (injetor.radialTempoSaida2 - (injetor.radialTempoSaida2 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_ACT_TEMPO_SAIDA_2 > (injetor.radialTempoSaida2 + (injetor.radialTempoSaida2 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoSaida2' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialTempoSaida2 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_TEMPO_SAIDA_2 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoSaida2'><p class='read-only'><span class='cadastrados'> " + injetor.radialTempoSaida2 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_TEMPO_SAIDA_2 + "</span></p></td>";
-                                       
-                                       (injetor.radialTempoEntrada3 !== 0 && (parametros.RADIAL_ACT_TEMPO_ENTRADA_3 < (injetor.radialTempoEntrada3 - (injetor.radialTempoEntrada3 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_ACT_TEMPO_ENTRADA_3 > (injetor.radialTempoEntrada3 + (injetor.radialTempoEntrada3 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoEntrada3' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialTempoEntrada3 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_TEMPO_ENTRADA_3 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoEntrada3'><p class='read-only'><span class='cadastrados'> " + injetor.radialTempoEntrada3 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_TEMPO_ENTRADA_3 + "</span></p></td>";
-                                       
-                                       (injetor.radialTempoSaida3 !== 0 && (parametros.RADIAL_ACT_TEMPO_SAIDA_3 < (injetor.radialTempoSaida3 - (injetor.radialTempoSaida3 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_ACT_TEMPO_SAIDA_3 > (injetor.radialTempoSaida3 + (injetor.radialTempoSaida3 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoSaida3' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialTempoSaida3 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_TEMPO_SAIDA_3 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoSaida3'><p class='read-only'><span class='cadastrados'> " + injetor.radialTempoSaida3 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_TEMPO_SAIDA_3 + "</span></p></td>";
+                                       if (injetor.radialTempoEntrada1 !== 0) {
 
+                                          (injetor.radialTempoEntrada1 !== 0 && (parametros.RADIAL_ACT_TEMPO_ENTRADA_1 < (injetor.radialTempoEntrada1 - (injetor.radialTempoEntrada1 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_ACT_TEMPO_ENTRADA_1 > (injetor.radialTempoEntrada1 + (injetor.radialTempoEntrada1 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoEntrada1' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialTempoEntrada1 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_TEMPO_ENTRADA_1 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoEntrada1'><p class='read-only'><span class='cadastrados'> " + injetor.radialTempoEntrada1 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_TEMPO_ENTRADA_1 + "</span></p></td>";
+                                       
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoEntrada1'><p class='read-only'><span class='cadastrados'> " + injetor.radialTempoEntrada1 + "</span></p></td>";
+                                          
+                                       }
+                                       
+                                       if (injetor.radialTempoSaida1 !== 0) {
+                                       
+                                          (injetor.radialTempoSaida1 !== 0 && (parametros.RADIAL_ACT_TEMPO_SAIDA_1 < (injetor.radialTempoSaida1 - (injetor.radialTempoSaida1 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_ACT_TEMPO_SAIDA_1 > (injetor.radialTempoSaida1 + (injetor.radialTempoSaida1 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoSaida1' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialTempoSaida1 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_TEMPO_SAIDA_1 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoSaida1'><p class='read-only'><span class='cadastrados'> " + injetor.radialTempoSaida1 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_TEMPO_SAIDA_1 + "</span></p></td>";
+                                          
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoSaida1'><p class='read-only'><span class='cadastrados'> " + injetor.radialTempoSaida1 + "</span></p></td>";
+                                          
+                                       }
+                                       
+                                       if (injetor.radialTempoEntrada2 !== 0) {
+                                       
+                                          (injetor.radialTempoEntrada2 !== 0 && (parametros.RADIAL_ACT_TEMPO_ENTRADA_2 < (injetor.radialTempoEntrada2 - (injetor.radialTempoEntrada2 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_ACT_TEMPO_ENTRADA_2 > (injetor.radialTempoEntrada2 + (injetor.radialTempoEntrada2 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoEntrada2' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialTempoEntrada2 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_TEMPO_ENTRADA_2 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoEntrada2'><p class='read-only'><span class='cadastrados'> " + injetor.radialTempoEntrada2 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_TEMPO_ENTRADA_2 + "</span></p></td>";
+                                             
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoEntrada2'><p class='read-only'><span class='cadastrados'> " + injetor.radialTempoEntrada2 + "</span></p></td>";
+                                          
+                                       }
+                                       
+                                       if (injetor.radialTempoSaida2 !== 0) {
+                                       
+                                          (injetor.radialTempoSaida2 !== 0 && (parametros.RADIAL_ACT_TEMPO_SAIDA_2 < (injetor.radialTempoSaida2 - (injetor.radialTempoSaida2 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_ACT_TEMPO_SAIDA_2 > (injetor.radialTempoSaida2 + (injetor.radialTempoSaida2 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoSaida2' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialTempoSaida2 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_TEMPO_SAIDA_2 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoSaida2'><p class='read-only'><span class='cadastrados'> " + injetor.radialTempoSaida2 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_TEMPO_SAIDA_2 + "</span></p></td>";
+                                                
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoSaida2'><p class='read-only'><span class='cadastrados'> " + injetor.radialTempoSaida2 + "</span></p></td>";
+                                          
+                                       }
+                                       
+                                       if (injetor.radialTempoEntrada3 !== 0) {
+                                       
+                                          (injetor.radialTempoEntrada3 !== 0 && (parametros.RADIAL_ACT_TEMPO_ENTRADA_3 < (injetor.radialTempoEntrada3 - (injetor.radialTempoEntrada3 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_ACT_TEMPO_ENTRADA_3 > (injetor.radialTempoEntrada3 + (injetor.radialTempoEntrada3 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoEntrada3' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialTempoEntrada3 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_TEMPO_ENTRADA_3 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoEntrada3'><p class='read-only'><span class='cadastrados'> " + injetor.radialTempoEntrada3 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_TEMPO_ENTRADA_3 + "</span></p></td>";
+                                                   
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoEntrada3'><p class='read-only'><span class='cadastrados'> " + injetor.radialTempoEntrada3 + "</span></p></td>";
+                                          
+                                       }
+                                       
+                                       if (injetor.radialTempoSaida3 !== 0) {
+                                       
+                                          (injetor.radialTempoSaida3 !== 0 && (parametros.RADIAL_ACT_TEMPO_SAIDA_3 < (injetor.radialTempoSaida3 - (injetor.radialTempoSaida3 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_ACT_TEMPO_SAIDA_3 > (injetor.radialTempoSaida3 + (injetor.radialTempoSaida3 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoSaida3' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialTempoSaida3 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_TEMPO_SAIDA_3 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoSaida3'><p class='read-only'><span class='cadastrados'> " + injetor.radialTempoSaida3 + "</span> - <span class='reais'>" + parametros.RADIAL_ACT_TEMPO_SAIDA_3 + "</span></p></td>";
+                                                      
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialTempoSaida3'><p class='read-only'><span class='cadastrados'> " + injetor.radialTempoSaida3 + "</span></p></td>";
+                                          
+                                       }
+                                       
                                        radial += "</tr>";
-
+                                       
                                        radial += "<tr><th scope='row' colspan='1'>SCRCOUNT:</th>";
 
-                                       (injetor.radialSCREntrada1 !== 0 && (parametros.RADIAL_SCRCOUNT_ENTRADA_1 < (injetor.radialSCREntrada1 - (injetor.radialSCREntrada1 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_SCRCOUNT_ENTRADA_1 > (injetor.radialSCREntrada1 + (injetor.radialSCREntrada1 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCREntrada1' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialSCREntrada1 + "</span> - <span class='reais'>" + parametros.RADIAL_SCRCOUNT_ENTRADA_1 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCREntrada1'><p class='read-only'><span class='cadastrados'> " + injetor.radialSCREntrada1 + "</span> - <span class='reais'>" + parametros.RADIAL_SCRCOUNT_ENTRADA_1 + "</span></p></td>";
-                                       
-                                       (injetor.radialSCRSaida1 !== 0 && (parametros.RADIAL_SCRCOUNT_SAIDA_1 < (injetor.radialSCRSaida1 - (injetor.radialSCRSaida1 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_SCRCOUNT_SAIDA_1 > (injetor.radialSCRSaida1 + (injetor.radialSCRSaida1 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCRSaida1' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialSCRSaida1 + "</span> - <span class='reais'>" + parametros.RADIAL_SCRCOUNT_SAIDA_1 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCRSaida1'><p class='read-only'><span class='cadastrados'> " + injetor.radialSCRSaida1 + "</span> - <span class='reais'>" + parametros.RADIAL_SCRCOUNT_SAIDA_1 + "</span></p></td>";
-                                       
-                                       (injetor.radialSCREntrada2 !== 0 && (parametros.RADIAL_SCRCOUNT_ENTRADA_2 < (injetor.radialSCREntrada2 - (injetor.radialSCREntrada2 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_SCRCOUNT_ENTRADA_2 > (injetor.radialSCREntrada2 + (injetor.radialSCREntrada2 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCREntrada2' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialSCREntrada2 + "</span> - <span class='reais'>" + parametros.RADIAL_SCRCOUNT_ENTRADA_2 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCREntrada2'><p class='read-only'><span class='cadastrados'> " + injetor.radialSCREntrada2 + "</span> - <span class='reais'>" + parametros.RADIAL_SCRCOUNT_ENTRADA_2 + "</span></p></td>";
-                                       
-                                       (injetor.radialSCRSaida2 !== 0 && (parametros.RADIAL_SCRCOUNT_SAIDA_2 < (injetor.radialSCRSaida2 - (injetor.radialSCRSaida2 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_SCRCOUNT_SAIDA_2 > (injetor.radialSCRSaida2 + (injetor.radialSCRSaida2 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCRSaida2' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialSCRSaida2 + "</span> - <span class='reais'>" + parametros.RADIAL_SCRCOUNT_SAIDA_2 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCRSaida2'><p class='read-only'><span class='cadastrados'> " + injetor.radialSCRSaida2 + "</span> - <span class='reais'>" + parametros.RADIAL_SCRCOUNT_SAIDA_2 + "</span></p></td>";
-                                       
-                                       (injetor.radialSCREntrada3 !== 0 && (parametros.RADIAL_SCRCOUNT_ENTRADA_3 < (injetor.radialSCREntrada3 - (injetor.radialSCREntrada3 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_SCRCOUNT_ENTRADA_3 > (injetor.radialSCREntrada3 + (injetor.radialSCREntrada3 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCREntrada3' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialSCREntrada3 + "</span> - <span class='reais'>" + parametros.RADIAL_SCRCOUNT_ENTRADA_3 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCREntrada3'><p class='read-only'><span class='cadastrados'> " + injetor.radialSCREntrada3 + "</span> - <span class='reais'>" + parametros.RADIAL_SCRCOUNT_ENTRADA_3 + "</span></p></td>";
-                                       
-                                       (injetor.radialSCRSaida3 !== 0 && (parametros.RADIAL_SCRCOUNT_SAIDA_3 < (injetor.radialSCRSaida3 - (injetor.radialSCRSaida3 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_SCRCOUNT_SAIDA_3 > (injetor.radialSCRSaida3 + (injetor.radialSCRSaida3 * injetor.tolRadial)).toFixed(1))) 
-                                       ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCRSaida3' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialSCRSaida3 + "</span> - <span class='reais'>" + parametros.RADIAL_SCRCOUNT_SAIDA_3 + "</span></p></td>"
-                                       : radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCRSaida3'><p class='read-only'><span class='cadastrados'> " + injetor.radialSCRSaida3 + "</span> - <span class='reais'>" + parametros.RADIAL_SCRCOUNT_SAIDA_3 + "</span></p></td>";
+                                       if (injetor.radialSCREntrada1 !== 0) {
 
+                                          (injetor.radialSCREntrada1 !== 0 && (parametros.RADIAL_SCRCOUNT_ENTRADA_1 < (injetor.radialSCREntrada1 - (injetor.radialSCREntrada1 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_SCRCOUNT_ENTRADA_1 > (injetor.radialSCREntrada1 + (injetor.radialSCREntrada1 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCREntrada1' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialSCREntrada1 + "</span> - <span class='reais'>" + parametros.RADIAL_SCRCOUNT_ENTRADA_1 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCREntrada1'><p class='read-only'><span class='cadastrados'> " + injetor.radialSCREntrada1 + "</span> - <span class='reais'>" + parametros.RADIAL_SCRCOUNT_ENTRADA_1 + "</span></p></td>";
+                                             
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCREntrada1'><p class='read-only'><span class='cadastrados'> " + injetor.radialSCREntrada1 + "</span></p></td>";
+                                          
+                                       }
+
+                                       if (injetor.radialSCRSaida1 !== 0) {
+
+                                          (injetor.radialSCRSaida1 !== 0 && (parametros.RADIAL_SCRCOUNT_SAIDA_1 < (injetor.radialSCRSaida1 - (injetor.radialSCRSaida1 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_SCRCOUNT_SAIDA_1 > (injetor.radialSCRSaida1 + (injetor.radialSCRSaida1 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCRSaida1' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialSCRSaida1 + "</span> - <span class='reais'>" + parametros.RADIAL_SCRCOUNT_SAIDA_1 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCRSaida1'><p class='read-only'><span class='cadastrados'> " + injetor.radialSCRSaida1 + "</span> - <span class='reais'>" + parametros.RADIAL_SCRCOUNT_SAIDA_1 + "</span></p></td>";
+                                                
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCRSaida1'><p class='read-only'><span class='cadastrados'> " + injetor.radialSCRSaida1 + "</span></p></td>";
+                                          
+                                       }
+
+                                       if (injetor.radialSCREntrada2 !== 0) {
+
+                                          (injetor.radialSCREntrada2 !== 0 && (parametros.RADIAL_SCRCOUNT_ENTRADA_2 < (injetor.radialSCREntrada2 - (injetor.radialSCREntrada2 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_SCRCOUNT_ENTRADA_2 > (injetor.radialSCREntrada2 + (injetor.radialSCREntrada2 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCREntrada2' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialSCREntrada2 + "</span> - <span class='reais'>" + parametros.RADIAL_SCRCOUNT_ENTRADA_2 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCREntrada2'><p class='read-only'><span class='cadastrados'> " + injetor.radialSCREntrada2 + "</span> - <span class='reais'>" + parametros.RADIAL_SCRCOUNT_ENTRADA_2 + "</span></p></td>";
+                                                   
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCREntrada2'><p class='read-only'><span class='cadastrados'> " + injetor.radialSCREntrada2 + "</span></p></td>";
+                                          
+                                       }
+
+                                       if (injetor.radialSCRSaida2 !== 0) {
+
+                                          (injetor.radialSCRSaida2 !== 0 && (parametros.RADIAL_SCRCOUNT_SAIDA_2 < (injetor.radialSCRSaida2 - (injetor.radialSCRSaida2 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_SCRCOUNT_SAIDA_2 > (injetor.radialSCRSaida2 + (injetor.radialSCRSaida2 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCRSaida2' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialSCRSaida2 + "</span> - <span class='reais'>" + parametros.RADIAL_SCRCOUNT_SAIDA_2 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCRSaida2'><p class='read-only'><span class='cadastrados'> " + injetor.radialSCRSaida2 + "</span> - <span class='reais'>" + parametros.RADIAL_SCRCOUNT_SAIDA_2 + "</span></p></td>";
+                                                      
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCRSaida2'><p class='read-only'><span class='cadastrados'> " + injetor.radialSCRSaida2 + "</span></p></td>";
+                                          
+                                       }
+
+                                       if (injetor.radialSCREntrada3 !== 0) {
+
+                                          (injetor.radialSCREntrada3 !== 0 && (parametros.RADIAL_SCRCOUNT_ENTRADA_3 < (injetor.radialSCREntrada3 - (injetor.radialSCREntrada3 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_SCRCOUNT_ENTRADA_3 > (injetor.radialSCREntrada3 + (injetor.radialSCREntrada3 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCREntrada3' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialSCREntrada3 + "</span> - <span class='reais'>" + parametros.RADIAL_SCRCOUNT_ENTRADA_3 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCREntrada3'><p class='read-only'><span class='cadastrados'> " + injetor.radialSCREntrada3 + "</span> - <span class='reais'>" + parametros.RADIAL_SCRCOUNT_ENTRADA_3 + "</span></p></td>";
+                                                         
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCREntrada3'><p class='read-only'><span class='cadastrados'> " + injetor.radialSCREntrada3 + "</span></p></td>";
+                                          
+                                       }
+
+                                       if (injetor.radialSCRSaida3 !== 0) {
+
+                                          (injetor.radialSCRSaida3 !== 0 && (parametros.RADIAL_SCRCOUNT_SAIDA_3 < (injetor.radialSCRSaida3 - (injetor.radialSCRSaida3 * injetor.tolRadial)).toFixed(1) || parametros.RADIAL_SCRCOUNT_SAIDA_3 > (injetor.radialSCRSaida3 + (injetor.radialSCRSaida3 * injetor.tolRadial)).toFixed(1))) 
+                                          ? radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCRSaida3' class='outOfRange'><p class='read-only outOfRange'><span class='cadastrados'> " + injetor.radialSCRSaida3 + "</span> - <span class='reais'>" + parametros.RADIAL_SCRCOUNT_SAIDA_3 + "</span></p></td>"
+                                          : radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCRSaida3'><p class='read-only'><span class='cadastrados'> " + injetor.radialSCRSaida3 + "</span> - <span class='reais'>" + parametros.RADIAL_SCRCOUNT_SAIDA_3 + "</span></p></td>";                  
+                                       } else {
+                                          radial += "<td data-toggle='modal' data-target='#myModal' id='radialSCRSaida3'><p class='read-only'><span class='cadastrados'> " + injetor.radialSCRSaida3 + "</span></p></td>";
+                                          
+                                       }
                                        radial += "</tr>";
 
                                        tableBody = $("#radial tbody");
