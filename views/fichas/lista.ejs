@@ -35,6 +35,15 @@
     </table>
 </div>
 
+<script>
+    function confirmarDelecao(event,form){
+       event.preventDefault();
+       var decision = confirm("Você quer realmente deletar esta Ficha Técnica?");
+        if(decision){
+            form.submit();
+        }
+    }
+</script>
 
 <script src=/scripts/jquery.js></script>
 <script src=/scripts/FichaScripts.js></script>
