@@ -1389,7 +1389,7 @@ $('#maquinasList').change(e => {
                 success: function(maquina) {
                     
                     // setTimeout(() => {
-                        addRow(fichas.length, fichas, maquina.descricao)
+                        addRow(fichas.length, fichas, maquina.descricao, 'fichas')
                     // }, 200);
                 },
 
@@ -1406,7 +1406,42 @@ $('#maquinasList').change(e => {
 
 });
 
-function addRow(rows, data, maquina) {
+var idParametros;
+//usado em fichas/list.ejs para mostrar a listagem de fichas de cada maquina
+$('#maquinasListParametros').change(e => {
+    idParametros = e.target.value;
+    console.log('paramettros: ' + idParametros);
+
+    $.ajax({
+        url: "/lista/getParametros/"+ idParametros,
+        type: "get", //send it through get method
+        success: function(parametros) {
+            // console.log(parametros);
+
+            $.ajax({
+                url: "/maquinaById/"+ idParametros,
+                type: "get", //send it through get method
+                success: function(maquina) {
+                    
+                    // setTimeout(() => {
+                        addRow(parametros.length, parametros, maquina.descricao, 'parametros')
+                    // }, 200);
+                },
+
+                error: function(error) {
+                    console.log(error)
+                }
+            });
+
+        },
+        error: function(xhr) {
+            console.log(xhr)
+        }
+    });
+
+});
+
+function addRow(rows, data, maquina, path) {
     var tbody = '';
  
     for (var i = 0; i < rows; i++) {
@@ -1414,8 +1449,8 @@ function addRow(rows, data, maquina) {
         tbody += "<tr> <td>" + data[i].id + "</td> \
                     <td>" + maquina + "</td> \
                     <td>\
-                    <form method='GET' action='/fichas/edit/" + data[i].id + "' style='display: inline;'><button class='btn btn-warning'> Editar</button></form> \
-                    <form method='POST' action='/fichas/delete'" +  "style='display: inline;' onsubmit='confirmarDelecao(event, this)'> \
+                    <form method='GET' action='/" + path + "/edit/" + data[i].id + "' style='display: inline;'><button class='btn btn-warning'> Editar</button></form> \
+                    <form method='POST' action='/" + path + "/delete'" +  "style='display: inline;' onsubmit='confirmarDelecao(event, this)'> \
                         <input type='hidden' name='id' value='" + data[i].id  + "'> \
                         <button class='btn btn-danger'> Remover</button> \
                     </form> \

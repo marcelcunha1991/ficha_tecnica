@@ -211,4 +211,73 @@ router.get("/parametrosReais/:maquina",  (req,res) => {
 
 })
 
+router.get("/parametros/lista",  (req,res) => {
+
+    var maquinas;
+
+    Maquinas.findAll().then(maquina => {
+        maquinas = maquina;
+
+        ParametrosReal.findAll().then((parametros) => {
+            res.render("parametros/lista",{        
+                maquinas: maquinas,    
+                nav_maquinas : "",
+                nav_produtos : "",
+                nav_mp : "",
+                nav_usuarios : "",
+                nav_moldes : "",
+                nav_clientes : "",
+                nav_parametros:"",
+                nav_ficha: "active"
+            })
+        });
+    })
+})
+
+router.get("/lista/getParametros/:idMaquina",  (req,res) => {
+    console.log('req.params.idMaquina');
+    console.log(req.params.idMaquina);
+    var maquinaId= req.params.idMaquina;
+ 
+    // Maquinas.findOne({
+    //     where: {
+    //         id : maquinaId
+    //     }
+    // }).then(output => {
+    //     console.log(output.id);
+    ParametrosReal.findAll({
+            where: {
+                maquina: maquinaId
+            }
+        }).then(parametros => {         
+    
+            res.send(parametros)
+            
+        }); 
+        
+    // }); 
+})
+
+router.post("/parametros/delete",(req,res) => {
+    var id = req.body.id;
+    if (id != undefined){
+
+        if(!isNaN(id)){
+
+            ParametrosReal.destroy({
+                where:{
+                    id:id
+                }
+            }).then(() => {
+                res.redirect("/parametros/lista");
+            })
+
+        }else{
+            res.redirect("/parametros/lista");
+        }
+    }else{
+        res.redirect("/parametros/lista");
+    }
+})
+
 module.exports = router;
