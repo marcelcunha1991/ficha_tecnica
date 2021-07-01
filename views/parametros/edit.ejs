@@ -1,0 +1,211 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/sidebar.ejs') %>
+
+<div class="container">
+    <br>
+    <div class="card">
+        <div class="card-header">                
+            <h2>Editar Parâmetros de Máquina</h2>              
+        </div>
+        <div class="card-body">
+            <form  method="POST" action="/parametros/update" style="display: inline;">
+                <input type="hidden" name="id" value="<%= parametros.id %>">
+                <input type="hidden" name="maquina" value="<%= parametros.maquina %>">
+
+                <div>
+                    <label for="username"> Production Shot Min: </label>
+                    <input id="VI1_min" name="VI1_min" size="30" type="number" value="<%= parametros.prodShotMin %>"/>
+            
+                    <label for="name">Production Shot Max: </label>
+                    <input id="VI1_max" name="VI1_max" size="30" type="number" value="<%= parametros.prodShotMax %>"/>
+                </div>
+
+                <div>
+                        <label for="username">Cycle Time Min: </label>
+                        <input id="VI2_min" name="VI2_min" size="30" type="number" value="<%= parametros.cycleTimeMin %>"/>
+                
+                        <label for="name">Cycle Time Max: </label>
+                        <input id="VI2_max" name="VI2_max" size="30" type="number" value="<%= parametros.cycleTimeMax %>"/>
+                </div>
+
+                <div>
+                        <label for="username">Dwell Pressure Min: </label>
+                        <input id="VI3_min" name="VI3_min" size="30" type="number" value="<%= parametros.dwellPressureMin %>"/>
+                
+                        <label for="name">Dwell Pressure Max: </label>
+                        <input id="VI3_max" name="VI3_max" size="30" type="number" value="<%= parametros.dwellPressureMax %>"/>
+                </div>
+
+                <div>
+                        <label for="username">Ok ProdShot Min: </label>
+                        <input id="ok_prodShot_min" name="ok_prodShot_min" size="30" type="number" value="<%= parametros.ok_prodShotMin %>"/>
+                
+                        <label for="name">Ok ProdShot Max: </label>
+                        <input id="ok_prodShot_max" name="ok_prodShot_max" size="30" type="number" value="<%= parametros.ok_prodShotMax %>"/>
+                </div>
+
+                <div>
+                        <label for="username">Print Shot Min: </label>
+                        <input id="printShotMin_min" name="printShotMin_min" size="30" type="number" value="<%= parametros.printShotMin %>"/>
+                
+                        <label for="name">Print Shot Max: </label>
+                        <input id="printShotMin_max" name="printShotMin_max" size="30" type="number" value="<%= parametros.printShotMax %>"/>
+                </div>
+
+                <div>
+                        <label for="username">Filling Time Min: </label>
+                        <input id="fillingTime_min" name="fillingTime_min" size="30" type="number" value="<%= parametros.fillingTimeMin %>"/>
+                
+                        <label for="name">Filling Time Max: </label>
+                        <input id="fillingTime_max" name="fillingTime_max" size="30" type="number" value="<%= parametros.fillingTimeMax %>"/>
+                </div>
+
+                <div>
+                        <label for="username">Charging Time Min: </label>
+                        <input id="chargingTime_min" name="chargingTime_min" size="30" type="number" value="<%= parametros.chargingTimeMin %>"/>
+                
+                        <label for="name">Charging Time Max: </label>
+                        <input id="chargingTime_max" name="chargingTime_max" size="30" type="number" value="<%= parametros.chargingTimeMax %>"/>
+                </div>
+
+                <div>
+                        <label for="username">Take Out Time Min: </label>
+                        <input id="takeoutTime_min" name="takeoutTime_min" size="30" type="number" value="<%= parametros.takeoutTimeMin %>"/>
+                
+                        <label for="name">Take Out Time Max: </label>
+                        <input id="takeoutTime_max" name="takeoutTime_max" size="30" type="number" value="<%= parametros.takeoutTimeMax %>"/>
+                </div>
+
+                <div>
+                        <label for="username">Dwell Change Position Min: </label>
+                        <input id="dwellChnagePosition_min" name="dwellChnagePosition_min" size="30" type="number" value="<%= parametros.dwellChnagePositionMin %>"/>
+                
+                        <label for="name">Dwell Change Position Max: </label>
+                        <input id="dwellChnagePosition_max" name="dwellChnagePosition_max" size="30" type="number" value="<%= parametros.dwellChnagePositionMax %>"/>
+                </div>
+
+                <div>
+                        <label for="username">Minumum Cushion Position Min: </label>
+                        <input id="minumumCushionPosition_min" name="minumumCushionPosition_min" size="30" type="number" value="<%= parametros.minumumCushionPositionMin %>"/>
+                
+                        <label for="name">Minumum Cushion Position Max: </label>
+                        <input id="minumumCushionPosition_max" name="minumumCushionPosition_max" size="30" type="number" value="<%= parametros.minumumCushionPositionMax %>"/>
+                </div>
+
+                <div>
+                        <label for="username">Cushion Position Min: </label>
+                        <input id="cushionPosition_min" name="cushionPosition_min" size="30" type="number" value="<%= parametros.cushionPositionMin %>"/>
+                
+                        <label for="name">Cushion Position Max: </label>
+                        <input id="cushionPosition_max" name="cushionPosition_max" size="30" type="number" value="<%= parametros.cushionPositionMax %>"/>
+                </div>
+
+                <div>
+                        <label for="username">Injet Start Position Min: </label>
+                        <input id="injetStartPosition_min" name="injetStartPosition_min" size="30" type="number" value="<%= parametros.injetStartPositionMin %>"/>
+                
+                        <label for="name">Injet Start Position Max: </label>
+                        <input id="injetStartPosition_max" name="injetStartPosition_max" size="30" type="number" value="<%= parametros.injetStartPositionMax %>"/>
+                </div>
+
+                <div>
+                        <label for="username">Max Inject Pressure Min: </label>
+                        <input id="maxInjectPressure_min" name="maxInjectPressure_min" size="30" type="number" value="<%= parametros.maxInjectPressureMin %>"/>
+                
+                        <label for="name">Max Inject Pressure Max: </label>
+                        <input id="maxInjectPressure_max" name="maxInjectPressure_max" size="30" type="number" value="<%= parametros.maxInjectPressureMax %>"/>
+                </div>
+
+                <div>
+                        <label for="username">Crew Rotation Speed Min: </label>
+                        <input id="crewRotationSpeed_min" name="crewRotationSpeed_min" size="30" type="number" value="<%= parametros.crewRotationSpeedMin %>"/>
+                
+                        <label for="name">Crew Rotation Speed Max: </label>
+                        <input id="crewRotationSpeed_max" name="crewRotationSpeed_max" size="30" type="number" value="<%= parametros.crewRotationSpeedMax %>"/>
+                </div>
+
+                <div>
+                        <label for="username">Temperature Hen Min: </label>
+                        <input id="temperature_hen_min" name="temperature_hen_min" size="30" type="number" value="<%= parametros.temperature_henMin %>"/>
+                
+                        <label for="name">Temperature Hen Max: </label>
+                        <input id="temperature_hen_max" name="temperature_hen_max" size="30" type="number" value="<%= parametros.temperature_henMax %>"/>
+                </div>
+
+                <div>
+                        <label for="username">Temperature Hn Min: </label>
+                        <input id="temperature_hn_min" name="temperature_hn_min" size="30" type="number" value="<%= parametros.temperature_hnMin %>"/>
+                
+                        <label for="name">Temperature Hn Max: </label>
+                        <input id="temperature_hn_max" name="temperature_hn_max" size="30" type="number" value="<%= parametros.temperature_hnMax %>"/>
+                </div>
+
+                <div>
+                        <label for="username">Temperature H1 Min: </label>
+                        <input id="temperature_h1_min" name="temperature_h1_min" size="30" type="number" value="<%= parametros.temperature_h1Min %>"/>
+                
+                        <label for="name">Temperature Hn Max: </label>
+                        <input id="temperature_h1_max" name="temperature_h1_max" size="30" type="number" value="<%= parametros.temperature_h1Max %>"/>
+                </div>
+
+                <div>
+                        <label for="username">Temperature H2 Min: </label>
+                        <input id="temperature_h2_min" name="temperature_h2_min" size="30" type="number" value="<%= parametros.temperature_h2Min %>"/>
+                
+                        <label for="name">Temperature H2 Max: </label>
+                        <input id="temperature_h2_max" name="temperature_h2_max" size="30" type="number" value="<%= parametros.temperature_h2Max %>"/>
+                </div>
+
+                <div>
+                        <label for="username">Temperature H3 Min: </label>
+                        <input id="temperature_h3_min" name="temperature_h3_min" size="30" type="number" value="<%= parametros.temperature_h3Min %>"/>
+                
+                        <label for="name">Temperature H2 Max: </label>
+                        <input id="temperature_h3_max" name="temperature_h3_max" size="30" type="number" value="<%= parametros.temperature_h3Max %>"/>
+                </div>
+
+                <div>
+                        <label for="username">Temperature H4 Min: </label>
+                        <input id="temperature_h4_min" name="temperature_h4_min" size="30" type="number" value="<%= parametros.temperature_h4Min %>"/>
+                
+                        <label for="name">Temperature H4 Max: </label>
+                        <input id="temperature_h4_max" name="temperature_h4_max" size="30" type="number" value="<%= parametros.temperature_h4Max %>"/>
+                </div>
+
+                <div>
+                        <label for="username">Temperature H5 Min: </label>
+                        <input id="temperature_h5_min" name="temperature_h5_min" size="30" type="number" value="<%= parametros.temperature_h5Min %>"/>
+                
+                        <label for="name">Temperature H4 Max: </label>
+                        <input id="temperature_h5_max" name="temperature_h5_max" size="30" type="number" value="<%= parametros.temperature_h5Max %>"/>
+                </div>
+
+                <div>
+                        <label for="username">Temperature OIL Min: </label>
+                        <input id="temperature_oil_min" name="temperature_oil_min" size="30" type="number" value="<%= parametros.temperature_hopMin %>"/>
+                
+                        <label for="name">Temperature OIL Max: </label>
+                        <input id="temperature_oil_max" name="temperature_oil_max" size="30" type="number" value="<%= parametros.temperature_hopMax %>"/>
+                </div>
+
+                <div>
+                        <label for="username">Temperature HOP Min: </label>
+                        <input id="temperature_hop_min" name="temperature_hop_min" size="30" type="number" value="<%= parametros.temperature_oilMin %>"/>
+                
+                        <label for="name">Temperature HOP Max: </label>
+                        <input id="temperature_hop_max" name="temperature_hop_max" size="30" type="number" value="<%= parametros.temperature_oilMax %>"/>
+                </div>
+
+                <br>
+                <button class="btn btn-primary">Editar</button>
+            </form>
+
+            <form method="GET" action="/parametros/lista" style="display: inline;">
+                <button class="btn btn-danger">Cancelar</button>
+            </form>
+        </div>
+    </div>
+   <br>
+</div>
+
+<%- include ('../partials/footer.ejs') %>
