@@ -227,8 +227,8 @@ router.get("/parametros/lista",  (req,res) => {
                 nav_usuarios : "",
                 nav_moldes : "",
                 nav_clientes : "",
-                nav_parametros:"",
-                nav_ficha: "active"
+                nav_parametros:"active",
+                nav_ficha: ""
             })
         });
     })
@@ -300,8 +300,8 @@ router.get("/parametros/edit/:id",(req,res) => {
                 nav_usuarios : "",
                 nav_moldes : "",
                 nav_clientes : "",
-                nav_parametros : "",
-                nav_ficha: "active"
+                nav_parametros : "active",
+                nav_ficha: ""
               
             })
 
