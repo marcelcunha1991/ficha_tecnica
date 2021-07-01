@@ -19,3 +19,13 @@
     color: #fff;
     transition: all 0.3s;
 }
+
+input.read-only {
+    border: none;
+    text-align: center;
+    font-style: italic;
+}
+
+input.read-only:focus {
+    outline: none;
+}

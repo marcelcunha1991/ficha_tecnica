@@ -1454,7 +1454,7 @@ function addRow(rows, data, maquina, path) {
                         <input type='hidden' name='id' value='" + data[i].id  + "'> \
                         <button class='btn btn-danger'> Remover</button> \
                     </form> \
-                    <form method='GET' action='' style='display: inline;'><button class='btn btn-info'> Revisão</button></form></td> \
+                    <form method='GET' action='/" + path + "/revisao/" + data[i].id  + "' style='display: inline;'><button class='btn btn-info'> Revisão</button></form></td> \
                 </tr>";
 
     }

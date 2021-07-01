@@ -8,6 +8,7 @@ const { render } = require("ejs");
 const Maquinas = require("../Maquinas/Maquinas");
 var nodemailer = require('nodemailer');
 const ParametrosMedios = require("../ParametrosTempoReal/ParametrosReal");
+const RevisaoFicha = require("../RevisaoFicha/RevisaoFicha")
 
 
 router.get("/fichas/:maquina?",  (req,res) => {
@@ -242,37 +243,72 @@ router.post("/fichas/create",(req,res) => {
     Fichas.create({
         maquina:maquina,
         VI1_min:  VI1_min,
-    VI1_max: VI1_max,
-    VI2_min: VI2_min,
-    VI2_max: VI2_max,
-    VI3_min: VI3_min,
-    VI3_max: VI3_max,
-    VI4_min: VI4_min,
-    VI4_max: VI4_max,
-    VI5_min: VI5_min,
-    VI5_max: VI5_max,
-    VI6_min: VI6_min,
-    VI6_max: VI6_max,
-    VI7_min: VI7_min,
-    VI7_max: VI7_max,
-    VI8_min: VI8_min,
-    VI8_max: VI8_max,
-    VI9_min: VI9_min,
-    VI9_max: VI9_max,
-    VI10_min: VI10_min,
-    VI10_max: VI10_max,
-    VH1_min: VH1_min,
-    VH1_max: VH1_max,
-    VH2_min: VH2_min,
-    VH2_max: VH2_max,
-    PI1_min: PI1_min,
-    PI1_max: PI1_max,
-    LS4_min: LS4_min,
-    LS4_max: LS4_max,
-    LS4A_min: LS4A_min,
-    LS4A_max: LS4A_max,
-    }).then(() => {
-        res.redirect("/fichas");
+        VI1_max: VI1_max,
+        VI2_min: VI2_min,
+        VI2_max: VI2_max,
+        VI3_min: VI3_min,
+        VI3_max: VI3_max,
+        VI4_min: VI4_min,
+        VI4_max: VI4_max,
+        VI5_min: VI5_min,
+        VI5_max: VI5_max,
+        VI6_min: VI6_min,
+        VI6_max: VI6_max,
+        VI7_min: VI7_min,
+        VI7_max: VI7_max,
+        VI8_min: VI8_min,
+        VI8_max: VI8_max,
+        VI9_min: VI9_min,
+        VI9_max: VI9_max,
+        VI10_min: VI10_min,
+        VI10_max: VI10_max,
+        VH1_min: VH1_min,
+        VH1_max: VH1_max,
+        VH2_min: VH2_min,
+        VH2_max: VH2_max,
+        PI1_min: PI1_min,
+        PI1_max: PI1_max,
+        LS4_min: LS4_min,
+        LS4_max: LS4_max,
+        LS4A_min: LS4A_min,
+        LS4A_max: LS4A_max,
+    }).then(data => {
+        RevisaoFicha.create({
+            idFichaTecnica: data.id,
+            maquina:maquina,
+            VI1_min:  VI1_min,
+            VI1_max: VI1_max,
+            VI2_min: VI2_min,
+            VI2_max: VI2_max,
+            VI3_min: VI3_min,
+            VI3_max: VI3_max,
+            VI4_min: VI4_min,
+            VI4_max: VI4_max,
+            VI5_min: VI5_min,
+            VI5_max: VI5_max,
+            VI6_min: VI6_min,
+            VI6_max: VI6_max,
+            VI7_min: VI7_min,
+            VI7_max: VI7_max,
+            VI8_min: VI8_min,
+            VI8_max: VI8_max,
+            VI9_min: VI9_min,
+            VI9_max: VI9_max,
+            VI10_min: VI10_min,
+            VI10_max: VI10_max,
+            VH1_min: VH1_min,
+            VH1_max: VH1_max,
+            VH2_min: VH2_min,
+            VH2_max: VH2_max,
+            PI1_min: PI1_min,
+            PI1_max: PI1_max,
+            LS4_min: LS4_min,
+            LS4_max: LS4_max,
+            LS4A_min: LS4A_min,
+            LS4A_max: LS4A_max,
+        }).then(() => {
+            res.redirect("/fichas");
+        })
     })
 })
 
@@ -539,7 +575,42 @@ router.post("/fichas/update",(req,res) => {
             id:id
         }
     }).then(() => {
-        res.redirect("/lista")
+        RevisaoFicha.create({
+            idFichaTecnica: id,
+            maquina:maquina,
+            VI1_min:  VI1_min,
+            VI1_max: VI1_max,
+            VI2_min: VI2_min,
+            VI2_max: VI2_max,
+            VI3_min: VI3_min,
+            VI3_max: VI3_max,
+            VI4_min: VI4_min,
+            VI4_max: VI4_max,
+            VI5_min: VI5_min,
+            VI5_max: VI5_max,
+            VI6_min: VI6_min,
+            VI6_max: VI6_max,
+            VI7_min: VI7_min,
+            VI7_max: VI7_max,
+            VI8_min: VI8_min,
+            VI8_max: VI8_max,
+            VI9_min: VI9_min,
+            VI9_max: VI9_max,
+            VI10_min: VI10_min,
+            VI10_max: VI10_max,
+            VH1_min: VH1_min,
+            VH1_max: VH1_max,
+            VH2_min: VH2_min,
+            VH2_max: VH2_max,
+            PI1_min: PI1_min,
+            PI1_max: PI1_max,
+            LS4_min: LS4_min,
+            LS4_max: LS4_max,
+            LS4A_min: LS4A_min,
+            LS4A_max: LS4A_max,
+        }).then(() => {
+            res.redirect("/lista");
+        })
     })
 })
 
@@ -588,10 +659,39 @@ router.get("/lista",  (req,res) => {
         });
     })
 
-
-    
-
-    
 })
+
+router.get("/fichas/revisao/:id",(req,res) => {
+    var fichaId = req.params.id;
+ 
+
+        RevisaoFicha.findAll({
+            where: {
+                idFichaTecnica: fichaId
+            },
+            order: [ [ 'createdAt', 'DESC' ]]
+        }).then(revisao => {
+            Maquinas.findOne({
+                where: {
+                    id: revisao[0].maquina
+                }
+            }).then(maquina => {
+                res.render("revisaoFicha/index", {
+                    revisoes: revisao,
+                    maquinaDesc: maquina.descricao,
+                    nav_maquinas : "",
+                    nav_produtos : "",
+                    nav_mp : "",
+                    nav_usuarios : "",
+                    nav_moldes : "",
+                    nav_clientes : "",
+                    nav_parametros:"",
+                    nav_ficha: "active",
+                    nav_alertas:"",
+                })
+            })
+        })
+ 
+ })
 
 module.exports = router;
