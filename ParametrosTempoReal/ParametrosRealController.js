@@ -4,6 +4,7 @@ const Maquinas = require("../Maquinas/Maquinas");
 const ParametrosAtuais = require("../Ficha/ParametrosAtuais");
 const ParametrosReal = require("../ParametrosTempoReal/ParametrosReal");
 const Parametros = require("../Ficha/Parametros");
+const RevisaoParametros = require("../RevisaoParametros/RevisaoParametros");
 
 router.get("/parametrosReal",  (req,res) => {
 
@@ -157,8 +158,63 @@ router.post("/parametrosReal/create",(req,res) => {
 
 
   
-    }).then(() => {
-        res.redirect("/parametrosReal");
+    }).then(data => {
+        RevisaoParametros.create({
+            idFichaTecnica: data.id,
+            maquina:maquina,
+            prodShotMin:  VI1_min,
+            prodShotMax: VI1_max,
+            cycleTimeMin: VI2_min,
+            cycleTimeMax: VI2_max,    
+            dwellPressureMin: VI3_min,
+            dwellPressureMax: VI3_max,
+            ok_prodShotMin : ok_prodShotMin,
+            ok_prodShotMax : ok_prodShotMax,
+            printShotMin : printShotMin,
+            printShotMax : printShotMax,
+            fillingTimeMin : fillingTimeMin,
+            fillingTimeMax : fillingTimeMax,
+            chargingTimeMin : chargingTimeMin,
+            chargingTimeMax : chargingTimeMax,
+            takeoutTimeMin : takeoutTimeMin,
+            takeoutTimeMax : takeoutTimeMax,
+            dwellChnagePositionMin : dwellChnagePositionMin,
+            dwellChnagePositionMax : dwellChnagePositionMax,
+            minumumCushionPositionMin : minumumCushionPositionMin,
+            minumumCushionPositionMax : minumumCushionPositionMax,
+            cushionPositionMin : cushionPositionMin,
+            cushionPositionMax : cushionPositionMax,
+            injetStartPositionMin : injetStartPositionMin,
+            injetStartPositionMax : injetStartPositionMax,
+            maxInjectPressureMin : maxInjectPressureMin,
+            maxInjectPressureMax : maxInjectPressureMax,
+            crewRotationSpeedMin : crewRotationSpeedMin,
+            crewRotationSpeedMax : crewRotationSpeedMax,
+            temperature_henMin : temperature_hen_min,
+            temperature_henMax : temperature_hen_max,
+            temperature_hnMin : temperature_hn_min,
+            temperature_hnMax : temperature_hn_max,
+            temperature_h1Min : temperature_h1_min,
+            temperature_h1Max : temperature_h1_max,
+            temperature_h2Min : temperature_h2_min,
+            temperature_h2Max : temperature_h2_max,
+            temperature_h3Min : temperature_h3_min,
+            temperature_h3Max : temperature_h3_max,
+            temperature_h4Min : temperature_h4_min,
+            temperature_h4Max : temperature_h4_max,
+            temperature_h5Min : temperature_h5_min,
+            temperature_h5Max : temperature_h5_max,
+            temperature_hopMin : temperature_hop_min,
+            temperature_hopMax : temperature_hop_max,
+            temperature_oilMin : temperature_oil_min,
+            temperature_oilMax : temperature_oil_max
+    
+    
+    
+      
+        }).then(() => {
+            res.redirect("/parametrosReal");
+        })
     })
 })
 
@@ -420,8 +476,95 @@ router.post("/parametros/update",(req,res) => {
             id:id
         }
     }).then(() => {
-        res.redirect("/parametros/lista")
+        RevisaoParametros.create({
+            idFichaTecnica: id,
+            maquina:maquina,
+            prodShotMin:  VI1_min,
+            prodShotMax: VI1_max,
+            cycleTimeMin: VI2_min,
+            cycleTimeMax: VI2_max,    
+            dwellPressureMin: VI3_min,
+            dwellPressureMax: VI3_max,
+            ok_prodShotMin : ok_prodShotMin,
+            ok_prodShotMax : ok_prodShotMax,
+            printShotMin : printShotMin,
+            printShotMax : printShotMax,
+            fillingTimeMin : fillingTimeMin,
+            fillingTimeMax : fillingTimeMax,
+            chargingTimeMin : chargingTimeMin,
+            chargingTimeMax : chargingTimeMax,
+            takeoutTimeMin : takeoutTimeMin,
+            takeoutTimeMax : takeoutTimeMax,
+            dwellChnagePositionMin : dwellChnagePositionMin,
+            dwellChnagePositionMax : dwellChnagePositionMax,
+            minumumCushionPositionMin : minumumCushionPositionMin,
+            minumumCushionPositionMax : minumumCushionPositionMax,
+            cushionPositionMin : cushionPositionMin,
+            cushionPositionMax : cushionPositionMax,
+            injetStartPositionMin : injetStartPositionMin,
+            injetStartPositionMax : injetStartPositionMax,
+            maxInjectPressureMin : maxInjectPressureMin,
+            maxInjectPressureMax : maxInjectPressureMax,
+            crewRotationSpeedMin : crewRotationSpeedMin,
+            crewRotationSpeedMax : crewRotationSpeedMax,
+            temperature_henMin : temperature_hen_min,
+            temperature_henMax : temperature_hen_max,
+            temperature_hnMin : temperature_hn_min,
+            temperature_hnMax : temperature_hn_max,
+            temperature_h1Min : temperature_h1_min,
+            temperature_h1Max : temperature_h1_max,
+            temperature_h2Min : temperature_h2_min,
+            temperature_h2Max : temperature_h2_max,
+            temperature_h3Min : temperature_h3_min,
+            temperature_h3Max : temperature_h3_max,
+            temperature_h4Min : temperature_h4_min,
+            temperature_h4Max : temperature_h4_max,
+            temperature_h5Min : temperature_h5_min,
+            temperature_h5Max : temperature_h5_max,
+            temperature_hopMin : temperature_hop_min,
+            temperature_hopMax : temperature_hop_max,
+            temperature_oilMin : temperature_oil_min,
+            temperature_oilMax : temperature_oil_max
+    
+    
+    
+      
+        }).then(() => {
+            res.redirect("/parametros/lista")
+        })
     })
 })
 
+router.get("/parametros/revisao/:id",(req,res) => {
+    var fichaId = req.params.id;
+ 
+
+    RevisaoParametros.findAll({
+        where: {
+            idFichaTecnica: fichaId
+        },
+        order: [ [ 'createdAt', 'DESC' ]]
+    }).then(revisao => {
+        Maquinas.findOne({
+            where: {
+                id: revisao[0].maquina
+            }
+        }).then(maquina => {
+            res.render("revisaoParametros/index", {
+                revisoes: revisao,
+                maquinaDesc: maquina.descricao,
+                nav_maquinas : "",
+                nav_produtos : "",
+                nav_mp : "",
+                nav_usuarios : "",
+                nav_moldes : "",
+                nav_clientes : "",
+                nav_parametros:"",
+                nav_ficha: "active",
+                nav_alertas:"",
+            })
+        })
+    })
+ 
+})
 module.exports = router;

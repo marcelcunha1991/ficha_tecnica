@@ -1,0 +1,204 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/sidebar.ejs') %>
+
+<div class="container">
+    <br>
+    <h2>Revisões</h2> 
+    <a class="btn btn-success" href="/parametros/new"> Inserir Novos Parâmetros</a>
+    <a class="btn btn-success" href="/parametros/lista"> Listagem - Novos Parâmetros</a>
+    <hr>
+    
+    <div class="card">
+        <div class="card-header">                
+            <h2>Revisão Id <%= revisoes.revisao %></h2>              
+        </div>
+        <div class="card-body">
+            <div>
+                <label style="font-weight: bold; margin-right: 15px" for="username"> Production Shot Min: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="VI1_min" name="VI1_min" size="30" type="number" value="<%= revisoes.prodShotMin %>"/>
+        
+                <label style="font-weight: bold; margin-right: 15px" for="name">Production Shot Max: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="VI1_max" name="VI1_max" size="30" type="number" value="<%= revisoes.prodShotMax %>"/>
+            </div>
+
+            <div>
+                <label style="font-weight: bold; margin-right: 15px" for="username">Cycle Time Min: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="VI2_min" name="VI2_min" size="30" type="number" value="<%= revisoes.cycleTimeMin %>"/>
+        
+                <label style="font-weight: bold; margin-right: 15px" for="name">Cycle Time Max: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="VI2_max" name="VI2_max" size="30" type="number" value="<%= revisoes.cycleTimeMax %>"/>
+            </div>
+
+            <div>
+                <label style="font-weight: bold; margin-right: 15px" for="username">Dwell Pressure Min: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="VI3_min" name="VI3_min" size="30" type="number" value="<%= revisoes.dwellPressureMin %>"/>
+        
+                <label style="font-weight: bold; margin-right: 15px" for="name">Dwell Pressure Max: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="VI3_max" name="VI3_max" size="30" type="number" value="<%= revisoes.dwellPressureMax %>"/>
+            </div>
+
+            <div>
+                <label style="font-weight: bold; margin-right: 15px" for="username">Ok ProdShot Min: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="ok_prodShot_min" name="ok_prodShot_min" size="30" type="number" value="<%= revisoes.ok_prodShotMin %>"/>
+        
+                <label style="font-weight: bold; margin-right: 15px" for="name">Ok ProdShot Max: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="ok_prodShot_max" name="ok_prodShot_max" size="30" type="number" value="<%= revisoes.ok_prodShotMax %>"/>
+            </div>
+
+            <div>
+                <label style="font-weight: bold; margin-right: 15px" for="username">Print Shot Min: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="printShotMin_min" name="printShotMin_min" size="30" type="number" value="<%= revisoes.printShotMin %>"/>
+        
+                <label style="font-weight: bold; margin-right: 15px" for="name">Print Shot Max: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="printShotMin_max" name="printShotMin_max" size="30" type="number" value="<%= revisoes.printShotMax %>"/>
+            </div>
+
+            <div>
+                <label style="font-weight: bold; margin-right: 15px" for="username">Filling Time Min: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="fillingTime_min" name="fillingTime_min" size="30" type="number" value="<%= revisoes.fillingTimeMin %>"/>
+        
+                <label style="font-weight: bold; margin-right: 15px" for="name">Filling Time Max: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="fillingTime_max" name="fillingTime_max" size="30" type="number" value="<%= revisoes.fillingTimeMax %>"/>
+            </div>
+
+            <div>
+                <label style="font-weight: bold; margin-right: 15px" for="username">Charging Time Min: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="chargingTime_min" name="chargingTime_min" size="30" type="number" value="<%= revisoes.chargingTimeMin %>"/>
+        
+                <label style="font-weight: bold; margin-right: 15px" for="name">Charging Time Max: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="chargingTime_max" name="chargingTime_max" size="30" type="number" value="<%= revisoes.chargingTimeMax %>"/>
+            </div>
+
+            <div>
+                <label style="font-weight: bold; margin-right: 15px" for="username">Take Out Time Min: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="takeoutTime_min" name="takeoutTime_min" size="30" type="number" value="<%= revisoes.takeoutTimeMin %>"/>
+        
+                <label style="font-weight: bold; margin-right: 15px" for="name">Take Out Time Max: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="takeoutTime_max" name="takeoutTime_max" size="30" type="number" value="<%= revisoes.takeoutTimeMax %>"/>
+            </div>
+
+            <div>
+                <label style="font-weight: bold; margin-right: 15px" for="username">Dwell Change Position Min: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="dwellChnagePosition_min" name="dwellChnagePosition_min" size="30" type="number" value="<%= revisoes.dwellChnagePositionMin %>"/>
+        
+                <label style="font-weight: bold; margin-right: 15px" for="name">Dwell Change Position Max: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="dwellChnagePosition_max" name="dwellChnagePosition_max" size="30" type="number" value="<%= revisoes.dwellChnagePositionMax %>"/>
+            </div>
+
+            <div>
+                <label style="font-weight: bold; margin-right: 15px" for="username">Minumum Cushion Position Min: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="minumumCushionPosition_min" name="minumumCushionPosition_min" size="30" type="number" value="<%= revisoes.minumumCushionPositionMin %>"/>
+        
+                <label style="font-weight: bold; margin-right: 15px" for="name">Minumum Cushion Position Max: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="minumumCushionPosition_max" name="minumumCushionPosition_max" size="30" type="number" value="<%= revisoes.minumumCushionPositionMax %>"/>
+            </div>
+
+            <div>
+                <label style="font-weight: bold; margin-right: 15px" for="username">Cushion Position Min: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="cushionPosition_min" name="cushionPosition_min" size="30" type="number" value="<%= revisoes.cushionPositionMin %>"/>
+        
+                <label style="font-weight: bold; margin-right: 15px" for="name">Cushion Position Max: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="cushionPosition_max" name="cushionPosition_max" size="30" type="number" value="<%= revisoes.cushionPositionMax %>"/>
+            </div>
+
+            <div>
+                <label style="font-weight: bold; margin-right: 15px" for="username">Injet Start Position Min: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="injetStartPosition_min" name="injetStartPosition_min" size="30" type="number" value="<%= revisoes.injetStartPositionMin %>"/>
+        
+                <label style="font-weight: bold; margin-right: 15px" for="name">Injet Start Position Max: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="injetStartPosition_max" name="injetStartPosition_max" size="30" type="number" value="<%= revisoes.injetStartPositionMax %>"/>
+            </div>
+
+            <div>
+                <label style="font-weight: bold; margin-right: 15px" for="username">Max Inject Pressure Min: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="maxInjectPressure_min" name="maxInjectPressure_min" size="30" type="number" value="<%= revisoes.maxInjectPressureMin %>"/>
+        
+                <label style="font-weight: bold; margin-right: 15px" for="name">Max Inject Pressure Max: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="maxInjectPressure_max" name="maxInjectPressure_max" size="30" type="number" value="<%= revisoes.maxInjectPressureMax %>"/>
+            </div>
+
+            <div>
+                <label style="font-weight: bold; margin-right: 15px" for="username">Crew Rotation Speed Min: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="crewRotationSpeed_min" name="crewRotationSpeed_min" size="30" type="number" value="<%= revisoes.crewRotationSpeedMin %>"/>
+        
+                <label style="font-weight: bold; margin-right: 15px" for="name">Crew Rotation Speed Max: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="crewRotationSpeed_max" name="crewRotationSpeed_max" size="30" type="number" value="<%= revisoes.crewRotationSpeedMax %>"/>
+            </div>
+
+            <div>
+                <label style="font-weight: bold; margin-right: 15px" for="username">Temperature Hen Min: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="temperature_hen_min" name="temperature_hen_min" size="30" type="number" value="<%= revisoes.temperature_henMin %>"/>
+        
+                <label style="font-weight: bold; margin-right: 15px" for="name">Temperature Hen Max: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="temperature_hen_max" name="temperature_hen_max" size="30" type="number" value="<%= revisoes.temperature_henMax %>"/>
+            </div>
+
+            <div>
+                <label style="font-weight: bold; margin-right: 15px" for="username">Temperature Hn Min: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="temperature_hn_min" name="temperature_hn_min" size="30" type="number" value="<%= revisoes.temperature_hnMin %>"/>
+        
+                <label style="font-weight: bold; margin-right: 15px" for="name">Temperature Hn Max: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="temperature_hn_max" name="temperature_hn_max" size="30" type="number" value="<%= revisoes.temperature_hnMax %>"/>
+            </div>
+
+            <div>
+                <label style="font-weight: bold; margin-right: 15px" for="username">Temperature H1 Min: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="temperature_h1_min" name="temperature_h1_min" size="30" type="number" value="<%= revisoes.temperature_h1Min %>"/>
+        
+                <label style="font-weight: bold; margin-right: 15px" for="name">Temperature Hn Max: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="temperature_h1_max" name="temperature_h1_max" size="30" type="number" value="<%= revisoes.temperature_h1Max %>"/>
+            </div>
+
+            <div>
+                <label style="font-weight: bold; margin-right: 15px" for="username">Temperature H2 Min: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="temperature_h2_min" name="temperature_h2_min" size="30" type="number" value="<%= revisoes.temperature_h2Min %>"/>
+        
+                <label style="font-weight: bold; margin-right: 15px" for="name">Temperature H2 Max: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="temperature_h2_max" name="temperature_h2_max" size="30" type="number" value="<%= revisoes.temperature_h2Max %>"/>
+            </div>
+
+            <div>
+                <label style="font-weight: bold; margin-right: 15px" for="username">Temperature H3 Min: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="temperature_h3_min" name="temperature_h3_min" size="30" type="number" value="<%= revisoes.temperature_h3Min %>"/>
+        
+                <label style="font-weight: bold; margin-right: 15px" for="name">Temperature H2 Max: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="temperature_h3_max" name="temperature_h3_max" size="30" type="number" value="<%= revisoes.temperature_h3Max %>"/>
+            </div>
+
+            <div>
+                <label style="font-weight: bold; margin-right: 15px" for="username">Temperature H4 Min: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="temperature_h4_min" name="temperature_h4_min" size="30" type="number" value="<%= revisoes.temperature_h4Min %>"/>
+        
+                <label style="font-weight: bold; margin-right: 15px" for="name">Temperature H4 Max: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="temperature_h4_max" name="temperature_h4_max" size="30" type="number" value="<%= revisoes.temperature_h4Max %>"/>
+            </div>
+
+            <div>
+                <label style="font-weight: bold; margin-right: 15px" for="username">Temperature H5 Min: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="temperature_h5_min" name="temperature_h5_min" size="30" type="number" value="<%= revisoes.temperature_h5Min %>"/>
+        
+                <label style="font-weight: bold; margin-right: 15px" for="name">Temperature H4 Max: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="temperature_h5_max" name="temperature_h5_max" size="30" type="number" value="<%= revisoes.temperature_h5Max %>"/>
+            </div>
+
+            <div>
+                <label style="font-weight: bold; margin-right: 15px" for="username">Temperature OIL Min: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="temperature_oil_min" name="temperature_oil_min" size="30" type="number" value="<%= revisoes.temperature_hopMin %>"/>
+        
+                <label style="font-weight: bold; margin-right: 15px" for="name">Temperature OIL Max: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="temperature_oil_max" name="temperature_oil_max" size="30" type="number" value="<%= revisoes.temperature_hopMax %>"/>
+            </div>
+
+            <div>
+                <label style="font-weight: bold; margin-right: 15px" for="username">Temperature HOP Min: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="temperature_hop_min" name="temperature_hop_min" size="30" type="number" value="<%= revisoes.temperature_oilMin %>"/>
+        
+                <label style="font-weight: bold; margin-right: 15px" for="name">Temperature HOP Max: </label>
+                <input  style="text-align: left;" class="read-only" readonly id="temperature_hop_max" name="temperature_hop_max" size="30" type="number" value="<%= revisoes.temperature_oilMax %>"/>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+
+<%- include ('../partials/footer.ejs') %>

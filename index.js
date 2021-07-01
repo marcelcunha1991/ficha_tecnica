@@ -14,7 +14,8 @@ const ParametrosTecnicos = require("./Ficha/Parametros");
 const ParametrosReal = require("./ParametrosTempoReal/ParametrosReal");
 const ParametrosAtuais = require("./Ficha/ParametrosAtuais");
 const Fichas = require("./Ficha/Ficha");
-const RevisaoFicha = require("./RevisaoFicha/RevisaoFicha")
+const RevisaoFicha = require("./RevisaoFicha/RevisaoFicha");
+const RevisaoParametros = require("./RevisaoParametros/RevisaoParametros");
 
 const cron = require("node-cron");
 var nodemailer = require('nodemailer');
@@ -27,6 +28,7 @@ const clientesController = require("./Clientes/ClientesController");
 const fichasController = require("./Ficha/FichaController");
 const ParametrosRealController = require("./ParametrosTempoReal/ParametrosRealController");
 const RevisaoFichaController = require("./RevisaoFicha/RevisaoFichaController");
+const RevisaoParametrosController = require("./RevisaoParametros/RevisaoParametrosController");
 
 const bcrypt = require("bcryptjs");
 
@@ -62,6 +64,7 @@ app.use("/",clientesController);
 app.use("/",fichasController);
 app.use("/",ParametrosRealController);
 app.use("/",RevisaoFichaController);
+app.use("/",RevisaoParametrosController);
 
 
 
@@ -95,6 +98,7 @@ app.get("/",(req,res) =>{
     // ParametrosAtuais.sync();
     // Fichas.sync();
     // RevisaoFicha.sync();
+    // RevisaoParametros.sync();
 
    // User.create({
    //    nome:"admin",
