@@ -3805,7 +3805,7 @@ router.get("/AutomacaoFabrica/temperaturaReal",  (req,res) => {
             console.log(rowCount + ' rows returned');  
          });  
 
-      connection.execSql(request);
+         connection.execSql(request);
       }
    });
 })
