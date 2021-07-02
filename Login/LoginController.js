@@ -41,8 +41,10 @@ router.post("/users/create", (req,res) => {
     
     var email = req.body.email;
     var nome = req.body.nome;
+    var sobrenome = req.body.sobrenome;
     var password = req.body.password;
     var matricula = req.body.matricula;
+    var isAdmin = req.body.isAdmin;
 
     User.findOne({
         where:{
@@ -56,9 +58,11 @@ router.post("/users/create", (req,res) => {
 
             User.create({
                 nome:nome,
+                sobrenome:sobrenome,
                 email:email,
                 password:hash,
-                matricula:matricula
+                matricula:matricula,
+                isAdmin:isAdmin,
             }).then(() =>{
                 console.log("usuario criado com sucesso");
                 res.redirect("/users");

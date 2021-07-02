@@ -8,13 +8,29 @@
             <h2> Criação de Usuário </h2>
         </div>
         <div class="card-body">
-                <form method="POST" action="/users/create">
-                    <input class="form-control" name="nome" type="text" placeholder="insira seu nome"><br>
-                    <input class="form-control" name="matricula" type="text" placeholder="insira sua matrícula"><br>
+                <form method="POST" action="/users/create" style="display: inline;">
+                    <h6>Insira seu nome</h6>
+                    <input class="form-control" name="nome" type="text"><br>
+                    <h6>Insira seu sobrenome</h6>
+                    <input class="form-control" name="sobrenome" type="text"><br>
+                    <h6>Insira sua matrícula</h6>
+                    <input class="form-control" name="matricula" type="text"><br>
+                    <h6>Insira um email</h6>
                     <input class="form-control" name="email" type="email" placeholder="email@exemplo.com"><br>
+                    <h6>Insira sua senha</h6>
                     <input class="form-control" name="password" type="password" placeholder="*****"><br>
-                    <button type="submit" class="btn btn-primary btn-block">Criar </button>
+
+                    <h6>É admin?</h6>
+                    <input type="radio" id="Sim" name="isAdmin" value="1">
+                    <label for="Sim">Sim</label><br>
+                    <input checked type="radio" id="Não" name="isAdmin" value="0">
+                    <label for="Não">Não</label><br>
+
+                    <button type="submit" class="btn btn-primary">Criar </button>
                 </form>  
+                <form method="GET" action="/users" style="display: inline;">
+                    <button class="btn btn-danger">Cancelar</button>
+                </form>
         </div>
     </div>
 

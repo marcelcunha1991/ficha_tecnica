@@ -10,6 +10,10 @@ const User = conn.define('users',{
         type: Sequelize.STRING,
         allowNull: false
     },
+    sobrenome:{
+        type: Sequelize.STRING,
+        allowNull: true
+    },
     email:{
         type: Sequelize.STRING,
         allowNull: false
@@ -21,7 +25,11 @@ const User = conn.define('users',{
     matricula: {
         type: Sequelize.STRING,
         allowNull: true
-    }
+    },
+    isAdmin: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
 })
 
 /*User.sync();
