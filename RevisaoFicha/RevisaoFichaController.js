@@ -27,7 +27,6 @@ router.get("/revisaoFicha/visualizacao/:id",(req,res) => {
 })
 
 router.post("/fichas/updateRevisao",(req,res) => {
-    console.log(req.body);
     var id = req.body.id;
     var maquina = req.body.maquina;
     var idFichaTecnica = req.body.idFichaTecnica;
