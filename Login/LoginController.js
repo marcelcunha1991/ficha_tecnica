@@ -137,11 +137,91 @@ router.post("/users/delete",(req,res) => {
     }
 })
 
+router.get("/users/edit/:id",(req,res) => {
+
+    var id = req.params.id;
+ 
+    if(isNaN(id)){
+       res.redirect("/users")
+    }
+ 
+    User.findByPk(id).then(user => {
+ 
+        if(user != undefined){
+    
+            res.render("users/edit",{
+                user:user,
+                nav_maquinas : "",
+                nav_produtos : "",
+                nav_mp : "",
+                nav_usuarios : "active",
+                nav_moldes : "",
+                nav_clientes : "",
+                nav_parametros:"",
+                nav_ficha: ""
+            
+            })
+    
+        }else{
+            res.redirect("/users");
+        }
+ 
+    }).catch(erro => {
+        res.redirect("/users");
+    })  
+ 
+ })
+
+router.post("/users/update",(req,res) => {
+    
+    var email = req.body.email;
+    var nome = req.body.nome;
+    var sobrenome = req.body.sobrenome;
+    var password = req.body.password;
+    var matricula = req.body.matricula;
+    var isAdmin = req.body.isAdmin;
+    var id = req.body.idUser;
+    var userLogado = req.body.userLogado;
+    var justificativa = req.body.justificativa;
+ 
+    var salt = bcrypt.genSaltSync(10);
+    var hash = bcrypt.hashSync(password,salt);
+ 
+    User.update({
+       email: email,
+       nome: nome,
+       sobrenome: sobrenome,
+       password: hash,
+       matricula: matricula,
+       isAdmin: isAdmin,
+       usuario: userLogado,
+       justificativa: justificativa,
+ 
+    },{
+       where:{
+          id:id
+       }
+    }).then(() => {
+       res.redirect("/users")
+    })
+})
 
 router.get("/logout",(req,res) => {
     req.session.user = undefined;
-    res.redirect("/login");
+    res.redirect("/");
 })
 
+router.get("/get/user/:id",(req,res) => {
+    var Id = req.params.id;
+       
+    User.findOne({
+       where: {
+          id: Id
+       }
+    }).then((user) => {
+       res.send(user)
+    })
+ 
+})
 
 module.exports = router;

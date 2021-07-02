@@ -1,0 +1,66 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/sidebar.ejs') %>
+
+<div class="container">
+
+   <div class="card mt-4"> 
+      <div class="card-header">
+         <h2> Criação de Usuário </h2>
+      </div>
+      <div class="card-body">
+         <form name="userForm" method="POST" action="/users/update" onsubmit="return validateForm()" style="display: inline;">
+            <input type="hidden" id="idUser" name="idUser" value="<%= user.id %>">
+
+            <h6>Insira seu nome</h6>
+            <input class="form-control" name="nome" type="text" value="<%= user.nome %>"><br>
+            <h6>Insira seu sobrenome</h6>
+            <input class="form-control" name="sobrenome" type="text" value="<%= user.sobrenome %>"><br>
+            <h6>Insira sua matrícula</h6>
+            <input class="form-control" name="matricula" type="text" value="<%= user.matricula %>"><br>
+            <h6>Insira um email</h6>
+            <input class="form-control" name="email" type="email" placeholder="email@exemplo.com" value="<%= user.email %>"><br>
+            <h6>Insira sua senha</h6>
+            <input class="form-control" name="password" type="password" placeholder="*****"><br>
+
+            <h6>É admin?</h6>
+            <input type="radio" id="Sim" name="isAdmin" value="1">
+            <label for="Sim">Sim</label><br>
+            <input checked type="radio" id="Nao" name="isAdmin" value="0">
+            <label for="Não">Não</label><br>
+
+            <button id="edit" type="submit" class="btn btn-primary">Atualizar </button>
+         </form>  
+         <form method="GET" action="/users" style="display: inline;">
+            <button class="btn btn-danger">Cancelar</button>
+         </form>
+      </div>
+   </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src=/scripts/jquery.js></script>
+<script src=/scripts/documentScript.js></script>
+
+<script>
+   function validateForm() {
+      var nome = document.forms["userForm"]["nome"].value;
+      var email = document.forms["userForm"]["email"].value;
+      var password = document.forms["userForm"]["password"].value;
+
+      if (nome === "") {
+         alert("O nome deve ser informado.");
+         return false;
+      }
+      if (email === "") {
+         alert("O email deve ser informado.");
+         return false;
+      }
+      if (password === "") {
+         alert("A senha deve ser informado.");
+         return false;
+      }
+   }
+
+</script>
+<%- include ('../partials/footer.ejs') %>
