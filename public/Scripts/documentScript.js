@@ -46,7 +46,27 @@ function editarRevisaoFicha() {
 
         $("#editRevisaoFicha").show();
         $("#visualizacaoFicha").hide();
-        $("#editButton").html("Votar Revisão");
+        $("#editButton").html("Voltar Revisão");
+
+    }
+}
+
+$("#editRevisaoParametros").hide();
+var editParametros = false;
+
+function editarRevisaoParametros() {
+    editParametros = !editParametros;
+
+    if (editParametros === false) {
+        $("#editRevisaoParametros").hide();
+        $("#visualizacaoParametros").show();
+        $("#editButton").html("Editar");
+        
+    } else {
+
+        $("#editRevisaoParametros").show();
+        $("#visualizacaoParametros").hide();
+        $("#editButton").html("Voltar Revisão");
 
     }
 }
