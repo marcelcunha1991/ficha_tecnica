@@ -15,7 +15,6 @@
         </div>
         <div class="card-body">
             <form  method="POST" action="/fichas/update" style="display: inline;">
-                <div id="toshiba">
                 <input type="hidden" name="id" value="<%= ficha.id %>">
                 <input type="hidden" name="maquina" value="<%= ficha.maquina %>">
                 <div>
@@ -136,7 +135,6 @@
                     
                     <label for="name">LS4A Max: </label>
                     <input id="LS4A_max" name="LS4A_max" size="30" type="number" value="<%= ficha.LS4A_max %>" />
-                </div>
                 </div>
             
                 <br>

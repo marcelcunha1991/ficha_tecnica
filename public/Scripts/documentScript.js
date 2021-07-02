@@ -30,3 +30,23 @@ $(document).ready(function () {
         }
     })
 });
+
+$("#editRevisaoFicha").hide();
+var edit = false;
+
+function editarRevisao() {
+    edit = !edit;
+
+    if (edit === false) {
+        $("#editRevisaoFicha").hide();
+        $("#visualizacaoFicha").show();
+        $("#editButton").html("Editar");
+        
+    } else {
+
+        $("#editRevisaoFicha").show();
+        $("#visualizacaoFicha").hide();
+        $("#editButton").html("Votar Revisão");
+
+    }
+}
