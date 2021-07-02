@@ -34,7 +34,7 @@ $(document).ready(function () {
 $("#editRevisaoFicha").hide();
 var edit = false;
 
-function editarRevisao() {
+function editarRevisaoFicha() {
     edit = !edit;
 
     if (edit === false) {
