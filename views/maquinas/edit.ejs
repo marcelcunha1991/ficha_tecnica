@@ -12,7 +12,7 @@
                     
             </div>
             <div class="card-body">
-                    <form  method="POST" action="/maquinas/update">
+                    <form  method="POST" action="/maquinas/update" style="display: inline;">
                             <input class="form-control" type="text" name="descricao" placeholder="Insira um nome Para a Máquina" value="<%= maquina.descricao %>"><br>
                             <input class="form-control" type="text" name="mac" placeholder="Insira um ip Para a Máquina" value="<%= maquina.mac %>"><br>
                             <input class="form-control" type="text" name="codigo" placeholder="Insira um código Para a Máquina" value="<%= maquina.codigo %>"><br>
@@ -25,11 +25,18 @@
                             <br>
                             <button class="btn btn-primary">Editar</button>
                         </form>
+                        <form method="GET" action="/maquinas" style="display: inline;">
+                            <button class="btn btn-danger">Cancelar</button>
+                        </form>
             </div>
            
           
     </div>
    
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src=/scripts/jquery.js></script>
+<script src=/scripts/documentScript.js></script>
 
 <%- include ('../partials/footer.ejs') %>
