@@ -3761,52 +3761,127 @@ router.get("/ficha/revisaoHaitian/:id",(req,res) => {
    })
 })
 
-//BUSCA OS DADOS REAIS DE TEMPERATURA DO BANCO DA PAM
-router.get("/AutomacaoFabrica/temperaturaReal",  (req,res) => {
-   // Create connection to database
-   var config = {
-      server: '10.30.0.190',
-      authentication: {
-         type: 'default',
-         options: {
-            userName: 'ijadmin',
-            password: 'ijadmin'
-         }
-      },
-      options: {
-         encrypt: true,
-         trustServerCertificate: true,
-         validateBulkLoadParameters: false,
-         database: 'AUTOMACAO_FABRICA'
-      }
-   }
+// //BUSCA OS DADOS REAIS DE TEMPERATURA DO BANCO DA PAM
+// router.get("/AutomacaoFabrica/temperaturaReal",  (req,res) => {
+//    // Create connection to database
+//    var config = {
+//       server: '10.30.0.190',
+//       authentication: {
+//          type: 'default',
+//          options: {
+//             userName: 'ijadmin',
+//             password: 'ijadmin'
+//          }
+//       },
+//       options: {
+//          encrypt: true,
+//          trustServerCertificate: true,
+//          validateBulkLoadParameters: false,
+//          database: 'AUTOMACAO_FABRICA'
+//       }
+//    }
 
-   var connection = new Connection(config);
+//    var connection = new Connection(config);
+//    var data = [];
 
-   // Attempt to connect and execute queries if connection goes through
-   connection.on('connect', function(err) {
-      if (err) {
-         console.log(err);
-      } else {
-         console.log('Connected');
+//    // Attempt to connect and execute queries if connection goes through
+//    //busco dados de duas tabelas diferentes 'tbl_UtilidadesPam' e 'tbl_Maquina_Temperatura_Zona'
+//    connection.on('connect', function(err) {
+//       if (err) {
+//          console.log(err);
+//       } else {
+//          console.log('Connected');
 
-         request = new Request("SELECT F1_TemperaturaAguaTorre, F2_TemperaturaAguaTorre, Chiller_TemperaturaAguaGelada, Caldeira_PressaoVapor, F1_PressaoArComprimido from tbl_UtilidadePAM ORDER BY id DESC OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY;", function(err) {  
-            if (err) {  
-               console.log(err);
-            }  
-         });
+//          request = new Request("SELECT F1_TemperaturaAguaTorre, F2_TemperaturaAguaTorre, Chiller_TemperaturaAguaGelada, Caldeira_PressaoVapor, F1_PressaoArComprimido from tbl_UtilidadePAM ORDER BY id DESC OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY;", function(err) {  
+//             if (err) {  
+//                console.log(err);
+//             }
 
-         request.on('row', function(columns) {  
-            res.send(columns)
+//             connection.execSql(new Request("SELECT Temperatura FROM tbl_Maquina_Temperatura_Zona WHERE Maquina = 64 ORDER BY DataHora DESC OFFSET 0 ROWS FETCH NEXT 72 ROWS ONLY;", function(err, rowCount) {
+//                if (err) {
+//                  console.log(err);
+//                } else {
+//                  console.log(rowCount + ' rowsTeste');
+//                }
+//                connection.close();
+//             }).on('row', function(columnsTeste) {
+//                res.send(columnsTeste)
+//                // console.log(columnsTeste);
+//             }))
+//          });
+
+//          request.on('row', function(columns) {  
+//             res.send(columns)
             
-         });  
+//          });  
 
-         request.on('done', function(rowCount, more) {  
-            console.log(rowCount + ' rows returned');  
-         });  
+//          request.on('done', function(rowCount, more) {  
+//             console.log(rowCount + ' rows returned');  
+//          });  
 
-         connection.execSql(request);
+//          connection.execSql(request);
+//       }
+//    });
+// })
+
+const executeSQL = (sql, callback) => {
+   let connection = new Connection({
+      "authentication": {
+         "options": {
+            "userName": "ijadmin",
+            "password": "ijadmin"
+         },
+         "type": "default"
+      },
+      "server": "10.30.0.190",
+      "options": {
+         "validateBulkLoadParameters": false,
+         "rowCollectionOnRequestCompletion": true,
+         "trustServerCertificate": true,
+         "database": "AUTOMACAO_FABRICA",
+         "encrypt": true
       }
+});
+ 
+connection.connect((err) => {
+   if (err)
+      return callback(err, null);
+
+   const request = new Request(sql, (err, rowCount, rows) => {
+      connection.close();
+
+      if (err)
+         return callback(err, null);
+
+      callback(null, {rowCount, rows});
+   });
+
+   connection.execSql(request);
+   });
+};
+
+router.get("/AutomacaoFabrica/temperaturaReal",  (req,res) => {
+
+   executeSQL("SELECT F1_TemperaturaAguaTorre, F2_TemperaturaAguaTorre, Chiller_TemperaturaAguaGelada, Caldeira_PressaoVapor, F1_PressaoArComprimido from tbl_UtilidadePAM ORDER BY id DESC OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY;", (err, data) => {
+      if (err)
+         console.error(err);
+
+      console.log('data');
+      console.log(data.rows);
+      res.send(data.rows);
+   });
+})
+ 
+
+router.get("/AutomacaoFabrica/temperaturaCamara",  (req,res) => {
+
+   executeSQL("SELECT Temperatura FROM tbl_Maquina_Temperatura_Zona WHERE Maquina = 64 ORDER BY DataHora DESC OFFSET 0 ROWS FETCH NEXT 72 ROWS ONLY;", (err, data) => {
+      if (err)
+         console.error(err);
+
+      console.log('data');
+      console.log(data.rows);
+      res.send(data.rows);
    });
 })
 
