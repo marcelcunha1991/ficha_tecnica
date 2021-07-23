@@ -2778,7 +2778,7 @@ function tipoVisualizacao(tipo) {
                                           method: 'get',
                                           dataType: 'json',
                                           success: function(camara) {
-                                             // console.log(camara[0][0].value)
+                                            //  console.log(camara)
 
                                              //CABECALHO FICHA
                                              var header = "<tr>" +
@@ -3833,315 +3833,674 @@ function tipoVisualizacao(tipo) {
                                                 
                                              var camara = "<tr>" +
                                                             "<td colspan='1'>" +
-                                                            "<label id='labelCamara' class='d-flex'>1</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara1 + "</span></p>" +
+                                                               "<label id='labelCamara' class='d-flex'>1</label>" +
+                                             
+                                                                ((perifericos.camara1 !== 0 && camara[71][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara1 + "</span> - <span class='reais'>" + camara[71][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara1 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara1 + "</span> - <span class='reais'>" + camara[71][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>2</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara2 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara2 !== 0 && camara[70][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara2 + "</span> - <span class='reais'>" + camara[70][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara2 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara2 + "</span> - <span class='reais'>" + camara[70][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>3</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara3 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara3 !== 0 && camara[69][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara3 + "</span> - <span class='reais'>" + camara[69][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara3 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara3 + "</span> - <span class='reais'>" + camara[69][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>4</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara4 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara4 !== 0 && camara[68][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara4 + "</span> - <span class='reais'>" + camara[68][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara4 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara4 + "</span> - <span class='reais'>" + camara[68][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>5</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara5 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara5 !== 0 && camara[67][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara5 + "</span> - <span class='reais'>" + camara[67][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara5 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara5 + "</span> - <span class='reais'>" + camara[67][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>6</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara6 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara6 !== 0 && camara[66][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara6 + "</span> - <span class='reais'>" + camara[66][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara6 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara6 + "</span> - <span class='reais'>" + camara[66][0].value + "</span></p>" +
                                                             "</td>" +
                                                          "</tr>" +
                                                          "<tr>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>7</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara7 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara7 !== 0 && camara[65][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara7 + "</span> - <span class='reais'>" + camara[65][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara7 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara7 + "</span> - <span class='reais'>" + camara[65][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>8</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara8 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara8 !== 0 && camara[64][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara8 + "</span> - <span class='reais'>" + camara[64][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara8 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara8 + "</span> - <span class='reais'>" + camara[64][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>9</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara9 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara9 !== 0 && camara[63][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara9 + "</span> - <span class='reais'>" + camara[63][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara9 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara9 + "</span> - <span class='reais'>" + camara[63][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>10</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara10 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara10 !== 0 && camara[62][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara10 + "</span> - <span class='reais'>" + camara[62][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara10 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara10 + "</span> - <span class='reais'>" + camara[62][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>11</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara11 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara11 !== 0 && camara[61][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara11 + "</span> - <span class='reais'>" + camara[61][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara11 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara11 + "</span> - <span class='reais'>" + camara[61][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>12</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara12 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara12 !== 0 && camara[60][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara12 + "</span> - <span class='reais'>" + camara[60][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara12 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara12 + "</span> - <span class='reais'>" + camara[60][0].value + "</span></p>" +
                                                             "</td>" +
                                                          "</tr>" +
                                                          "<tr>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>13</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara13 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara13 !== 0 && camara[59][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara13 + "</span> - <span class='reais'>" + camara[59][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara13 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara13 + "</span> - <span class='reais'>" + camara[59][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>14</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara14 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara14 !== 0 && camara[58][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara14 + "</span> - <span class='reais'>" + camara[58][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara14 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara14 + "</span> - <span class='reais'>" + camara[58][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>15</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara15 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara15 !== 0 && camara[57][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara15 + "</span> - <span class='reais'>" + camara[57][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara15 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara15 + "</span> - <span class='reais'>" + camara[57][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>16</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara16 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara16 !== 0 && camara[56][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara16 + "</span> - <span class='reais'>" + camara[56][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara16 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara16 + "</span> - <span class='reais'>" + camara[56][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>17</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara17 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara17 !== 0 && camara[55][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara17 + "</span> - <span class='reais'>" + camara[55][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara17 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara17 + "</span> - <span class='reais'>" + camara[55][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>18</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara18 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara18 !== 0 && camara[54][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara18 + "</span> - <span class='reais'>" + camara[54][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara18 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara18 + "</span> - <span class='reais'>" + camara[54][0].value + "</span></p>" +
                                                             "</td>" +
                                                          "</tr>" +
                                                          "<tr>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>19</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara19 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara19 !== 0 && camara[53][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara19 + "</span> - <span class='reais'>" + camara[53][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara19 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara19 + "</span> - <span class='reais'>" + camara[53][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>20</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara20 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara20 !== 0 && camara[52][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara20 + "</span> - <span class='reais'>" + camara[52][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara20 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara20 + "</span> - <span class='reais'>" + camara[52][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>21</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara21 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara21 !== 0 && camara[51][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara21 + "</span> - <span class='reais'>" + camara[51][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara21 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara21 + "</span> - <span class='reais'>" + camara[51][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>22</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara22 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara22 !== 0 && camara[50][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara22 + "</span> - <span class='reais'>" + camara[50][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara22 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara22 + "</span> - <span class='reais'>" + camara[50][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>23</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara23 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara23 !== 0 && camara[49][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara23 + "</span> - <span class='reais'>" + camara[49][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara23 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara23 + "</span> - <span class='reais'>" + camara[49][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>24</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara24 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara24 !== 0 && camara[48][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara24 + "</span> - <span class='reais'>" + camara[48][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara24 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara24 + "</span> - <span class='reais'>" + camara[48][0].value + "</span></p>" +
                                                             "</td>" +
                                                          "</tr>" +
                                                          "<tr>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>25</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara25 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara25 !== 0 && camara[47][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara25 + "</span> - <span class='reais'>" + camara[47][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara25 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara25 + "</span> - <span class='reais'>" + camara[47][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>26</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara26 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara26 !== 0 && camara[46][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara26 + "</span> - <span class='reais'>" + camara[46][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara26 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara26 + "</span> - <span class='reais'>" + camara[46][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>27</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara27 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara27 !== 0 && camara[45][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara27 + "</span> - <span class='reais'>" + camara[45][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara27 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara27 + "</span> - <span class='reais'>" + camara[45][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>28</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara28 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara28 !== 0 && camara[44][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara28 + "</span> - <span class='reais'>" + camara[44][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara28 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara28 + "</span> - <span class='reais'>" + camara[44][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>29</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara29 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara29 !== 0 && camara[43][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara29 + "</span> - <span class='reais'>" + camara[43][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara29 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara29 + "</span> - <span class='reais'>" + camara[43][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>30</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara30 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara30 !== 0 && camara[42][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara30 + "</span> - <span class='reais'>" + camara[42][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara30 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara30 + "</span> - <span class='reais'>" + camara[42][0].value + "</span></p>" +
                                                             "</td>" +
                                                          "</tr>" +
                                                          "<tr>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>31</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara31 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara31 !== 0 && camara[41][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara31 + "</span> - <span class='reais'>" + camara[41][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara31 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara31 + "</span> - <span class='reais'>" + camara[41][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>32</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara32 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara32 !== 0 && camara[40][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara32 + "</span> - <span class='reais'>" + camara[40][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara32 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara32 + "</span> - <span class='reais'>" + camara[40][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>33</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara33 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara33 !== 0 && camara[39][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara33 + "</span> - <span class='reais'>" + camara[39][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara33 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara33 + "</span> - <span class='reais'>" + camara[39][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>34</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara34 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara34 !== 0 && camara[38][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara34 + "</span> - <span class='reais'>" + camara[38][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara34 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara34 + "</span> - <span class='reais'>" + camara[38][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>35</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara35 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara35 !== 0 && camara[37][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara35 + "</span> - <span class='reais'>" + camara[37][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara35 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara35 + "</span> - <span class='reais'>" + camara[37][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>36</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara36 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara36 !== 0 && camara[36][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara36 + "</span> - <span class='reais'>" + camara[36][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara36 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara36 + "</span> - <span class='reais'>" + camara[36][0].value + "</span></p>" +
                                                             "</td>" +
                                                          "</tr>" +
                                                          "<tr>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>37</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara37 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara37 !== 0 && camara[35][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara37 + "</span> - <span class='reais'>" + camara[35][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara37 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara37 + "</span> - <span class='reais'>" + camara[35][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>38</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara38 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara38 !== 0 && camara[34][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara38 + "</span> - <span class='reais'>" + camara[34][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara38 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara38 + "</span> - <span class='reais'>" + camara[34][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>39</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara39 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara39 !== 0 && camara[33][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara39 + "</span> - <span class='reais'>" + camara[33][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara39 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara39 + "</span> - <span class='reais'>" + camara[33][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>40</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara40 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara40 !== 0 && camara[32][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara40 + "</span> - <span class='reais'>" + camara[32][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara40 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara40 + "</span> - <span class='reais'>" + camara[32][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>41</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara41 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara41 !== 0 && camara[31][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara41 + "</span> - <span class='reais'>" + camara[31][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara41 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara41 + "</span> - <span class='reais'>" + camara[31][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>42</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara42 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara42 !== 0 && camara[30][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara42 + "</span> - <span class='reais'>" + camara[30][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara42 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara42 + "</span> - <span class='reais'>" + camara[30][0].value + "</span></p>" +
                                                             "</td>" +
                                                          "</tr>" +
                                                          "<tr>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>43</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara43 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara43 !== 0 && camara[29][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara43 + "</span> - <span class='reais'>" + camara[29][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara43 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara43 + "</span> - <span class='reais'>" + camara[29][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>44</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara44 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara44 !== 0 && camara[28][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara44 + "</span> - <span class='reais'>" + camara[28][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara44 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara44 + "</span> - <span class='reais'>" + camara[28][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>45</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara45 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara45 !== 0 && camara[27][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara45 + "</span> - <span class='reais'>" + camara[27][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara45 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara45 + "</span> - <span class='reais'>" + camara[27][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>46</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara46 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara46 !== 0 && camara[26][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara46 + "</span> - <span class='reais'>" + camara[26][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara46 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara46 + "</span> - <span class='reais'>" + camara[26][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>47</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara47 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara47 !== 0 && camara[25][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara47 + "</span> - <span class='reais'>" + camara[25][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara47 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara47 + "</span> - <span class='reais'>" + camara[25][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>48</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara48 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara48 !== 0 && camara[24][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara48 + "</span> - <span class='reais'>" + camara[24][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara48 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara48 + "</span> - <span class='reais'>" + camara[24][0].value + "</span></p>" +
                                                             "</td>" +
                                                          "</tr>" +
                                                          "<tr>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>49</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara49 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara49 !== 0 && camara[23][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara49 + "</span> - <span class='reais'>" + camara[23][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara49 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara49 + "</span> - <span class='reais'>" + camara[23][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>50</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara50 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara50 !== 0 && camara[22][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara50 + "</span> - <span class='reais'>" + camara[22][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara50 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara50 + "</span> - <span class='reais'>" + camara[22][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>51</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara51 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara51 !== 0 && camara[21][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara51 + "</span> - <span class='reais'>" + camara[21][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara51 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara51 + "</span> - <span class='reais'>" + camara[21][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>52</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara52 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara52 !== 0 && camara[20][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara52 + "</span> - <span class='reais'>" + camara[20][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara52 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara52 + "</span> - <span class='reais'>" + camara[20][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>53</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara53 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara53 !== 0 && camara[19][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara53 + "</span> - <span class='reais'>" + camara[19][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara53 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara53 + "</span> - <span class='reais'>" + camara[19][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>54</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara54 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara54 !== 0 && camara[18][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara54 + "</span> - <span class='reais'>" + camara[18][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara54 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara54 + "</span> - <span class='reais'>" + camara[18][0].value + "</span></p>" +
                                                             "</td>" +
                                                          "</tr>" +
                                                          "<tr>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>55</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara55 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara55 !== 0 && camara[17][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara55 + "</span> - <span class='reais'>" + camara[17][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara55 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara55 + "</span> - <span class='reais'>" + camara[17][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>56</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara56 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara56 !== 0 && camara[16][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara56 + "</span> - <span class='reais'>" + camara[16][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara56 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara56 + "</span> - <span class='reais'>" + camara[16][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>57</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara57 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara57 !== 0 && camara[15][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara57 + "</span> - <span class='reais'>" + camara[15][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara57 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara57 + "</span> - <span class='reais'>" + camara[15][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>58</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara58 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara58 !== 0 && camara[14][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara58 + "</span> - <span class='reais'>" + camara[14][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara58 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara58 + "</span> - <span class='reais'>" + camara[14][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>59</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara59 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara59 !== 0 && camara[13][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara59 + "</span> - <span class='reais'>" + camara[13][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara59 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara59 + "</span> - <span class='reais'>" + camara[13][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>60</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara60 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara60 !== 0 && camara[12][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara60 + "</span> - <span class='reais'>" + camara[12][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara60 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara60 + "</span> - <span class='reais'>" + camara[12][0].value + "</span></p>" +
                                                             "</td>" +
                                                          "</tr>" +
                                                          "<tr>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>61</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara61 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara61 !== 0 && camara[11][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara61 + "</span> - <span class='reais'>" + camara[11][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara61 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara61 + "</span> - <span class='reais'>" + camara[11][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>62</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara62 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara62 !== 0 && camara[10][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara62 + "</span> - <span class='reais'>" + camara[10][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara62 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara62 + "</span> - <span class='reais'>" + camara[10][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>63</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara63 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara63 !== 0 && camara[9][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara63 + "</span> - <span class='reais'>" + camara[9][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara63 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara63 + "</span> - <span class='reais'>" + camara[9][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>64</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara64 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara64 !== 0 && camara[8][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara64 + "</span> - <span class='reais'>" + camara[8][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara64 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara64 + "</span> - <span class='reais'>" + camara[8][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>65</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara65 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara65 !== 0 && camara[7][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara65 + "</span> - <span class='reais'>" + camara[7][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara65 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara65 + "</span> - <span class='reais'>" + camara[7][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>66</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara66 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara66 !== 0 && camara[6][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara66 + "</span> - <span class='reais'>" + camara[6][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara66 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara66 + "</span> - <span class='reais'>" + camara[6][0].value + "</span></p>" +
                                                             "</td>" +
                                                          "</tr>" +
                                                          "<tr>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>67</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara67 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara67 !== 0 && camara[5][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara67 + "</span> - <span class='reais'>" + camara[5][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara67 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara67 + "</span> - <span class='reais'>" + camara[5][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>68</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara68 + "</span></p>" +
+                                             
+                                                                ((perifericos.camara68 !== 0 && camara[4][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara68 + "</span> - <span class='reais'>" + camara[4][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara68 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara68 + "</span> - <span class='reais'>" + camara[4][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>69</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara69 + "</span></p>" +
+
+                                                               ((perifericos.camara69 !== 0 && camara[3][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara69 + "</span> - <span class='reais'>" + camara[3][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara69 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara69 + "</span> - <span class='reais'>" + camara[3][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>70</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara70 + "</span></p>" +
+
+                                                               ((perifericos.camara70 !== 0 && camara[2][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara70 + "</span> - <span class='reais'>" + camara[2][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara70 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara70 + "</span> - <span class='reais'>" + camara[2][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>71</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara71 + "</span></p>" +
+
+                                                               ((perifericos.camara71 !== 0 && camara[1][0].value < 1000)
+                                                               ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara71 + "</span> - <span class='reais'>" + camara[1][0].value + "</span></p>"
+                                                               : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara71 + "</span></p>") +
+
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara71 + "</span> - <span class='reais'>" + camara[1][0].value + "</span></p>" +
                                                             "</td>" +
                                                             "<td colspan='1'>" +
                                                                "<label id='labelCamara' class='d-flex'>72</label>" +
-                                                               "<p class='read-only'><span class='cadastrados'>" + perifericos.camara72 + "</span></p>" +
-                                                               // "<p class='read-only'><span class='cadastrados'>" + perifericos.camara72 + "</span> - <span class='reais'>" + camara[0][0].value + "</span></p>" +
+
+                                                               ((perifericos.camara72 !== 0 && camara[0][0].value < 1000)
+                                                                ? "<p class='read-only'><span class='cadastrados'>" + perifericos.camara72 + "</span> - <span class='reais'>" + camara[0][0].value + "</span></p>"
+                                                                : "<p class='read-only'><span class='cadastrados'>" + perifericos.camara72 + "</span></p>") +
+                                                            //    "<p class='read-only'><span class='cadastrados'>" + perifericos.camara72 + "</span> - <span class='reais'>" + camara[0][0].value + "</span></p>" +
+                                                            
                                                             "</td>" +
                                                          "</tr>" +
                                                          "<tr>" +

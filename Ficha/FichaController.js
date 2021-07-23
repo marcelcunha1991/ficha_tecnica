@@ -3866,8 +3866,8 @@ router.get("/AutomacaoFabrica/temperaturaReal",  (req,res) => {
       if (err)
          console.error(err);
 
-      console.log('data');
-      console.log(data.rows);
+    //   console.log('data');
+    //   console.log(data.rows);
       res.send(data.rows);
    });
 })
@@ -3879,8 +3879,8 @@ router.get("/AutomacaoFabrica/temperaturaCamara",  (req,res) => {
       if (err)
          console.error(err);
 
-      console.log('data');
-      console.log(data.rows);
+    //   console.log('data');
+    //   console.log(data.rows);
       res.send(data.rows);
    });
 })
