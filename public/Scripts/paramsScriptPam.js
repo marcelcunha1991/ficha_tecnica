@@ -2,6 +2,7 @@ $("#selectMaquina").hide();
 $("#setDate").hide();
 $("#parametros").hide();
 $("#ficha").hide();
+$("#injet").hide();
 
 var today = new Date();
 
@@ -31,6 +32,7 @@ var MAQUINA_SEM_CONEXAO = "2";
 
 //futuramente concatenar com o codigo injet da maquina
 function chamadaInjet() {
+   $("#injet").show();
    var stfuncionamento;
    var aguardandomolde;
    var cdmolde;
@@ -201,7 +203,8 @@ $('#maquinas').change(function () {
       $("#ficha").hide();
       $("#nav").hide();
       $("#setDate").hide();
-      
+      $("#injet").hide();
+
    }
 });
 
