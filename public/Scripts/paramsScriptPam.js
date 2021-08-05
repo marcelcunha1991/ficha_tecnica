@@ -1,5 +1,7 @@
 $("#selectMaquina").hide();
 $("#setDate").hide();
+$("#parametros").hide();
+$("#ficha").hide();
 
 var today = new Date();
 
@@ -19,12 +21,167 @@ function getDate() {
 
 }
 
-
 function showSelect() {
    $("#selectMaquina").show();
 }
 
+var MAQUINA_PARADA = "0";
+var MAQUINA_TRABALHANDO = "1";
+var MAQUINA_SEM_CONEXAO = "2";
+
+//futuramente concatenar com o codigo injet da maquina
+function chamadaInjet() {
+   var stfuncionamento;
+   var aguardandomolde;
+   var cdmolde;
+   var dsproduto;
+   var cdestrutura;
+   var cdproduto;
+   var cdparada;
+   var dsparada;
+   var html = "";
+   var opt = "";
+   const trabalhandoColor = "success";
+   const paradaColor = "danger";
+   const semConexaoColor = "secondary";
+   const aguardandoMoldeColor = "primary";
+   var backgroundColor;
+
+   $.ajax({
+      url: '/teste',
+      method: 'get',
+      dataType: 'json',
+      success: function (injet) {
+         console.log(injet)
+         
+         injet[0].forEach(element => {
+            if (element.metadata.colName === "cdmolde") {
+               cdmolde = element.value;
+               console.log(element.value)
+            }
+            if (element.metadata.colName === "cdestrutura") {
+               cdestrutura = element.value;
+               console.log(element.value)
+            }
+            if (element.metadata.colName === "cdproduto") {
+               cdproduto = element.value;
+               console.log(element.value)
+            }
+            if (element.metadata.colName === "dsproduto") {
+               dsproduto = element.value;
+               console.log(element.value)
+            }
+            if (element.metadata.colName === "stfuncionamento") {
+               stfuncionamento = element.value;
+               console.log(element.value)
+            }
+            if (element.metadata.colName === "aguardandomolde") {
+               aguardandomolde = element.value;
+               console.log(element.value)
+            }
+            if (element.metadata.colName === "cdparada") {
+               cdparada = element.value;
+               console.log(element.value)
+            }
+            if (element.metadata.colName === "dsparada") {
+               dsparada = element.value;
+               console.log(element.value)
+            }
+         });
+
+         //condição para o status da máquina
+         if(stfuncionamento === MAQUINA_SEM_CONEXAO) {
+            stfuncionamento = 'MÁQUINA SEM CONEXÃO';
+            backgroundColor = semConexaoColor;
+
+         } else if(aguardandomolde === 1){
+            stfuncionamento = 'MÁQUINA SEM OP/AGUARDANDO MOLDE';
+            backgroundColor = aguardandoMoldeColor;
+
+         } else if(stfuncionamento === MAQUINA_PARADA){
+            stfuncionamento = 'MÁQUINA PARADA';
+            backgroundColor = paradaColor;
+            
+         } else {
+            stfuncionamento = 'MÁQUINA TRABALHANDO';
+            backgroundColor = trabalhandoColor;
+            
+         }
+         //condição para molde
+         if(cdmolde === null) {
+            cdmolde = "";
+         }
+         //condição para molde
+         if(cdestrutura === null) {
+            cdestrutura = "";
+         }
+         //condição para produto
+         if(dsproduto === null) {
+            $('#produto').text(dsproduto)
+            dsproduto = "";
+         }
+         //condição para maquina parada
+         if(cdparada === null) {
+            cdparada = "";
+         }
+         if(dsparada === null) {
+            dsparada = "";
+         }
+
+         //montando HTML
+         if (stfuncionamento === 'MÁQUINA PARADA') {
+            html += "<div class='d-flex mb-4 mt-2'>"
+            // + "<div class='mr-2' style='border-radius: 50%; width: 30px; height: 30px; background-color:" + backgroundColor + "'></div>"
+
+            + "<span id='status' class='mr-4 btn btn-" + backgroundColor + "'>" + stfuncionamento + "</span>"
+            + "<h5 class='mr-2 align-self-center'>Código Parada:</h5>"
+            + "<span id='cdParada' class='mr-4 align-self-center injetStatus'>" + cdparada + "</span>"
+            + "<h5 class='mr-2 align-self-center'>Descrição:</h5>"
+            + "<span id='dsParada' class='align-self-center injetStatus'>" + dsparada + "</span>"
+            + "</div>"
+
+         } else {
+            html += "<div class='d-flex mb-4'>"
+            + "<span id='status' class='mr-4 btn btn-" + backgroundColor + "'>" + stfuncionamento + "</span>"
+            + "</div>"
+         }
+         
+         //MONTANDO HTML COM CONDIÇÃO PARA MAIS DE UM PRODUTO
+         if (injet.length > 1) {
+            html += "<div class='d-flex'>"
+            + "<h5 class='mr-2'>Molde:</h5>"
+            + "<span id='molde' class='mr-4 injetStatus'>" + cdmolde + "/" + cdestrutura + "</span>"
+            + "<h5 class='mr-2'>Produto:</h5>"
+            + "<select id='produtos' class='form-control' style='width: fit-content'>"
+            + "</select>"
+            + "</div>"
+
+            for (let i = 0; i < injet.length; i++) {
+               const element = injet[i];
+               console.log(element[3].value)
+               opt += "<option value='" + element[3].value + "'>" + element[3].value + "</option>"
+            }            
+
+         } else if(cdmolde !== ""){
+            html += "<div class='d-flex'>"
+            + "<h5 class='mr-2'>Molde:</h5>"
+            + "<span id='molde' class='mr-4 align-self-center injetStatus'>" + cdmolde + "/" + cdestrutura + "</span>"
+            + "<h5 class='mr-2'>Produto:</h5>"
+            + "<span id='produto' class='align-self-center injetStatus'>" + dsproduto + "</span>"
+            + "</div>"
+         }
+
+         section = $("#dadosInjet");
+         section.html(html);
+         $('#produtos').html(opt);
+      }
+   })
+}
+
+//inserir chamada injet aqui
 $('#maquinas').change(function () {
+   chamadaInjet();
+
    var anchor = '';
 
    if ($("#maquinas").val() !== "0") {
@@ -32,20 +189,21 @@ $('#maquinas').change(function () {
       "<button style='margin-right: 5px' class='btn btn-info params' onclick='tipoVisualizacao(1)'>Visualização em lista</button>"
       + "<button class='btn btn-info params' onclick='tipoVisualizacao(2)'>Visualização em Ficha</button>"
 
+      
+      $("#nav").show();
       div = $("#nav");
       div.html(anchor);
-
-      $("#setDate").show();
-
+      $("#parametros").hide();
+      $("#ficha").hide();
 
    } else {
-      $(".params").hide();
+      $("#parametros").hide();
+      $("#ficha").hide();
+      $("#nav").hide();
+      $("#setDate").hide();
       
    }
 });
-
-$("#parametros").hide();
-$("#ficha").hide();
 
 var tolCilindro;
 var tolInjecao;
@@ -63,6 +221,7 @@ var tolVapor;
 var count = 0;
 
 function tipoVisualizacao(tipo) {
+   $("#setDate").show();
 
    if (tipo === 1) {
       $("#parametros").show();

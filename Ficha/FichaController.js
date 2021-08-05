@@ -3841,23 +3841,23 @@ const executeSQL = (sql, callback) => {
          "database": "AUTOMACAO_FABRICA",
          "encrypt": true
       }
-});
+   });
  
-connection.connect((err) => {
-   if (err)
-      return callback(err, null);
-
-   const request = new Request(sql, (err, rowCount, rows) => {
-      connection.close();
-
+   connection.connect((err) => {
       if (err)
          return callback(err, null);
 
-      callback(null, {rowCount, rows});
-   });
+      const request = new Request(sql, (err, rowCount, rows) => {
+         connection.close();
 
-   connection.execSql(request);
-   });
+         if (err)
+            return callback(err, null);
+
+         callback(null, {rowCount, rows});
+      });
+
+      connection.execSql(request);
+      });
 };
 
 router.get("/AutomacaoFabrica/temperaturaReal",  (req,res) => {
@@ -3876,6 +3876,66 @@ router.get("/AutomacaoFabrica/temperaturaReal",  (req,res) => {
 router.get("/AutomacaoFabrica/temperaturaCamara",  (req,res) => {
 
    executeSQL("SELECT Temperatura FROM tbl_Maquina_Temperatura_Zona WHERE Maquina = 64 ORDER BY DataHora DESC OFFSET 0 ROWS FETCH NEXT 72 ROWS ONLY;", (err, data) => {
+      if (err)
+         console.error(err);
+
+    //   console.log('data');
+    //   console.log(data.rows);
+      res.send(data.rows);
+   });
+})
+
+const executeSQLInjet = (sql, callback) => {
+   let connectionInjet = new Connection({
+      "authentication": {
+         "options": {
+            "userName": "sa",
+            "password": "sa123"
+         },
+         "type": "default"
+      },
+      "server": "170.10.0.211",
+      "options": {
+         "validateBulkLoadParameters": false,
+         "rowCollectionOnRequestCompletion": true,
+         "trustServerCertificate": true,
+         "database": "INJET_TUTI",
+         "encrypt": false
+      }
+   });
+ 
+   connectionInjet.connect((err) => {
+      if (err)
+         return callback(err, null);
+
+      const request = new Request(sql, (err, rowCount, rows) => {
+         connectionInjet.close();
+
+         if (err)
+            return callback(err, null);
+
+         callback(null, {rowCount, rows});
+      });
+
+      connectionInjet.execSql(request);
+   });
+};
+
+var strSQL = "";
+//futuramente concatenar com o codigo injet da maquina
+strSQL = strSQL.concat(" SELECT mol.cdmolestendido as cdmolde, inj.CdEstruturaAtual as cdestrutura, mp.cdproduto, pro.dsproduto, ");
+strSQL = strSQL.concat("  inj.stfuncionamento, inj.aguardandomolde, inj.cdparada, par.dsparada ");
+strSQL = strSQL.concat("  FROM ijtbinj inj ");
+strSQL = strSQL.concat("  LEFT JOIN ijtbpar par ON (par.cdparada = inj.cdparada) ");
+strSQL = strSQL.concat("  LEFT JOIN ijtbmol mol ON (mol.cdmolde = inj.CdMoldeAtual) ");
+strSQL = strSQL.concat("  LEFT JOIN ijmolpro mp ON (mp.cdmolde = inj.CdMoldeAtual AND mp.cdestrutura = inj.CdEstruturaAtual AND mp.dthrfval IS NULL) ");
+strSQL = strSQL.concat("  LEFT JOIN ijtbpro pro ON (pro.cdproduto = mp.cdproduto) ");
+strSQL = strSQL.concat(" WHERE inj.cdinjestendido = '002021'"); 
+strSQL = strSQL.concat(" ORDER BY mp.cdproduto ");
+
+router.get("/teste",  (req,res) => {
+
+   executeSQLInjet(strSQL, (err, data) => {
       if (err)
          console.error(err);
 

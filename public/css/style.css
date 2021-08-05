@@ -283,3 +283,12 @@ p {
       color: green;
    }
 }
+
+.injetStatus {
+   font-weight: 500;
+   margin-bottom: .2rem;
+}
+
+#dadosInjet {
+   padding: 10px;
+}
