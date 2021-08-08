@@ -3943,24 +3943,25 @@ const executeSQLInjet = (sql, callback) => {
 
 var strSQL = "";
 //futuramente concatenar com o codigo injet da maquina
-strSQL = strSQL.concat(" SELECT mol.cdmolestendido as cdmolde, inj.CdEstruturaAtual as cdestrutura, mp.cdproduto, pro.dsproduto, ");
-strSQL = strSQL.concat("  inj.stfuncionamento, inj.aguardandomolde, inj.cdparada, par.dsparada ");
-strSQL = strSQL.concat("  FROM ijtbinj inj ");
-strSQL = strSQL.concat("  LEFT JOIN ijtbpar par ON (par.cdparada = inj.cdparada) ");
-strSQL = strSQL.concat("  LEFT JOIN ijtbmol mol ON (mol.cdmolde = inj.CdMoldeAtual) ");
-strSQL = strSQL.concat("  LEFT JOIN ijmolpro mp ON (mp.cdmolde = inj.CdMoldeAtual AND mp.cdestrutura = inj.CdEstruturaAtual AND mp.dthrfval IS NULL) ");
-strSQL = strSQL.concat("  LEFT JOIN ijtbpro pro ON (pro.cdproduto = mp.cdproduto) ");
-strSQL = strSQL.concat(" WHERE inj.cdinjestendido = '005003'"); 
-strSQL = strSQL.concat(" ORDER BY mp.cdproduto ");
 
-router.get("/teste",  (req,res) => {
+
+router.get("/getInjetData/:codInjet",  (req,res) => {
+   var codigo = req.params.codInjet;
+
+   strSQL = strSQL.concat(" SELECT mol.cdmolestendido as cdmolde, inj.CdEstruturaAtual as cdestrutura, mp.cdproduto, pro.dsproduto, ");
+   strSQL = strSQL.concat("  inj.stfuncionamento, inj.aguardandomolde, inj.cdparada, par.dsparada ");
+   strSQL = strSQL.concat("  FROM ijtbinj inj ");
+   strSQL = strSQL.concat("  LEFT JOIN ijtbpar par ON (par.cdparada = inj.cdparada) ");
+   strSQL = strSQL.concat("  LEFT JOIN ijtbmol mol ON (mol.cdmolde = inj.CdMoldeAtual) ");
+   strSQL = strSQL.concat("  LEFT JOIN ijmolpro mp ON (mp.cdmolde = inj.CdMoldeAtual AND mp.cdestrutura = inj.CdEstruturaAtual AND mp.dthrfval IS NULL) ");
+   strSQL = strSQL.concat("  LEFT JOIN ijtbpro pro ON (pro.cdproduto = mp.cdproduto) ");
+   strSQL = strSQL.concat("WHERE inj.cdinjestendido = " + "'" + codigo + "'"); 
+   strSQL = strSQL.concat(" ORDER BY mp.cdproduto ");
 
    executeSQLInjet(strSQL, (err, data) => {
       if (err)
          console.error(err);
 
-    //   console.log('data');
-    //   console.log(data.rows);
       res.send(data.rows);
    });
 })
