@@ -238,32 +238,50 @@ router.get("/getAlertasAbertos/:id",  (req,res) => {
 
 })
 
-router.get("/ficha/getFichaPastoreInjetores/:macMaquina",  (req,res) => {
+router.get("/ficha/getFichaPastoreInjetores/:macMaquina/:cdmolde/:dsproduto/",  (req,res) => {
 
    var maquinaMac = req.params.macMaquina;
+   var molde = req.params.cdmolde;
+   var produto = req.params.dsproduto;
+   console.log(molde);
+   console.log(produto);
 
    Maquinas.findOne({
       where: {
          descricao : maquinaMac
       }
    }).then(output => {
+      console.log('output');
+      console.log(output);
 
       RevisaoFichaTecnicaPastoreInjetores.findOne({
          limit: 1,
          where: {
-            maq : output.id
+            maq : output.id,
+            NúmeroMolde : molde,
+            Produto : produto,
          },
          order: [ [ 'createdAt', 'DESC' ]]
-      }).then(output => {
-         res.send(output)      
+      }).then(revisao => {
+         console.log('revisao');
+         console.log(revisao);
+         if (revisao === null) {
+            console.log('false')
+            res.send(false)
+
+         } else {
+            console.log('entrou aqui')
+            res.send(revisao)      
+         }
       }); 
       
    }); 
 })
 
-router.get("/ficha/getFichaPastorePerifericos/:macMaquina",  (req,res) => {
+router.get("/ficha/getFichaPastorePerifericos/:macMaquina/:revisao",  (req,res) => {
 
    var maquinaMac = req.params.macMaquina;
+   var revisao = req.params.revisao;
 
    Maquinas.findOne({
       where: {
@@ -274,10 +292,12 @@ router.get("/ficha/getFichaPastorePerifericos/:macMaquina",  (req,res) => {
       RevisaoFichaTecnicaPastorePerifericos.findOne({
          limit: 1,
          where: {
-            maq : output.id
+            maq : output.id,
+            revisao : revisao,
          },
          order: [ [ 'createdAt', 'DESC' ]]
       }).then(output => {
+         res.send('output')      
          res.send(output)      
       }); 
       
@@ -3930,7 +3950,7 @@ strSQL = strSQL.concat("  LEFT JOIN ijtbpar par ON (par.cdparada = inj.cdparada)
 strSQL = strSQL.concat("  LEFT JOIN ijtbmol mol ON (mol.cdmolde = inj.CdMoldeAtual) ");
 strSQL = strSQL.concat("  LEFT JOIN ijmolpro mp ON (mp.cdmolde = inj.CdMoldeAtual AND mp.cdestrutura = inj.CdEstruturaAtual AND mp.dthrfval IS NULL) ");
 strSQL = strSQL.concat("  LEFT JOIN ijtbpro pro ON (pro.cdproduto = mp.cdproduto) ");
-strSQL = strSQL.concat(" WHERE inj.cdinjestendido = '002021'"); 
+strSQL = strSQL.concat(" WHERE inj.cdinjestendido = '005003'"); 
 strSQL = strSQL.concat(" ORDER BY mp.cdproduto ");
 
 router.get("/teste",  (req,res) => {
