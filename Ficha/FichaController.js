@@ -297,7 +297,6 @@ router.get("/ficha/getFichaPastorePerifericos/:macMaquina/:revisao",  (req,res) 
          },
          order: [ [ 'createdAt', 'DESC' ]]
       }).then(output => {
-         res.send('output')      
          res.send(output)      
       }); 
       
@@ -3942,8 +3941,6 @@ const executeSQLInjet = (sql, callback) => {
 };
 
 var strSQL = "";
-//futuramente concatenar com o codigo injet da maquina
-
 
 router.get("/getInjetData/:codInjet",  (req,res) => {
    var codigo = req.params.codInjet;
@@ -3955,13 +3952,14 @@ router.get("/getInjetData/:codInjet",  (req,res) => {
    strSQL = strSQL.concat("  LEFT JOIN ijtbmol mol ON (mol.cdmolde = inj.CdMoldeAtual) ");
    strSQL = strSQL.concat("  LEFT JOIN ijmolpro mp ON (mp.cdmolde = inj.CdMoldeAtual AND mp.cdestrutura = inj.CdEstruturaAtual AND mp.dthrfval IS NULL) ");
    strSQL = strSQL.concat("  LEFT JOIN ijtbpro pro ON (pro.cdproduto = mp.cdproduto) ");
-   strSQL = strSQL.concat("WHERE inj.cdinjestendido = " + "'" + codigo + "'"); 
+   // strSQL = strSQL.concat("WHERE inj.cdinjestendido = '005003'"); 
+   strSQL = strSQL.concat("WHERE inj.cdinjestendido = '000194'"); 
    strSQL = strSQL.concat(" ORDER BY mp.cdproduto ");
 
    executeSQLInjet(strSQL, (err, data) => {
       if (err)
          console.error(err);
-
+      console.log(data.rows);
       res.send(data.rows);
    });
 })

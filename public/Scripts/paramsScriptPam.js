@@ -31,6 +31,7 @@ var MAQUINA_TRABALHANDO = "1";
 var MAQUINA_SEM_CONEXAO = "2";
 var cdmolde = ""; //variaveis globais
 var dsproduto = "";
+var valorProduto = "";
 
 //futuramente concatenar com o codigo injet da maquina
 function chamadaInjet() {
@@ -48,6 +49,7 @@ function chamadaInjet() {
    const semConexaoColor = "secondary";
    const aguardandoMoldeColor = "primary";
    var backgroundColor;
+   var isSelect = false;
 
    $.ajax({
       url: '/maquinaById/' + $("#maquinas").val(),
@@ -60,7 +62,7 @@ function chamadaInjet() {
             method: 'get',
             dataType: 'json',
             success: function (injet) {
-               // console.log(injet)
+               console.log(injet)
 
                if (injet.length !== 0) {
                   injet[0].forEach(element => {
@@ -158,7 +160,7 @@ function chamadaInjet() {
                   }
                   
                   //MONTANDO HTML COM CONDIÇÃO PARA MAIS DE UM PRODUTO
-                  if (injet.length > 1) {
+                  if (injet.length > 1 && cdmolde !== "") {
                      html += "<div class='d-flex'>"
                      + "<h5 class='mr-2'>Molde:</h5>"
                      + "<span id='molde' class='mr-4 injetStatus'>" + cdmolde + "/" + cdestrutura + "</span>"
@@ -170,7 +172,9 @@ function chamadaInjet() {
                      for (let i = 0; i < injet.length; i++) {
                         const element = injet[i];
                         opt += "<option value='" + element[3].value + "'>" + element[3].value + "</option>"
-                     }            
+                     }      
+                     
+                     isSelect = true;
          
                   } else if(cdmolde !== ""){
                      html += "<div class='d-flex'>"
@@ -179,11 +183,21 @@ function chamadaInjet() {
                      + "<h5 class='mr-2'>Produto:</h5>"
                      + "<span id='produto' class='align-self-center injetStatus'>" + dsproduto + "</span>"
                      + "</div>"
+
+                     isSelect = false;
                   }
          
                   section = $("#dadosInjet");
                   section.html(html);
                   $('#produtos').html(opt);
+
+                  if (isSelect === false) {
+                     valorProduto = $("#produto").text();
+                     console.log(valorProduto);
+                  } else {
+                     valorProduto = $("#produtos").val();
+                     console.log(valorProduto);
+                  }
 
                } else {
                   var texto = "<h5 style='text-align: center'>Dados injet não encontrado.</h5>"
@@ -197,6 +211,11 @@ function chamadaInjet() {
       }
    })
 }
+
+$('#produtos').change(function () {
+   valorProduto = $("#produtos").val();
+   console.log(valorProduto);
+});
 
 //inserir chamada injet aqui
 $('#maquinas').change(function () {
@@ -246,6 +265,7 @@ function tipoVisualizacao(tipo) {
 
    if (tipo === 1) {
       $("#ficha").hide();
+      $("#parametros").show();
 
       $.ajax({
          url: '/maquinaById/' + $("#maquinas").val(),
@@ -260,14 +280,14 @@ function tipoVisualizacao(tipo) {
                success: function (parametros) {
                   
                   $.ajax({
-                     url: '/ficha/getFichaPastoreInjetores/' + parametros.mac + '/' + cdmolde + '/' + $("#produtos").val(),
+                     url: '/ficha/getFichaPastoreInjetores/' + parametros.mac + '/' + cdmolde + '/' + valorProduto,
                      method: 'get',
                      dataType: 'json',
                      success: function (injetor) {
                         
                         if (injetor !== false) {
                            
-                           $("#parametros").show();
+                           
                            
                            $.ajax({
                               url: '/ficha/getFichaPastorePerifericos/' + parametros.mac + '/' + injetor.revisao,
@@ -381,13 +401,12 @@ function tipoVisualizacao(tipo) {
                   success: function (parametros) {
 
                      $.ajax({
-                        url: '/ficha/getFichaPastoreInjetores/' + parametros.mac + '/' + cdmolde + '/' + $("#produtos").val(),
+                        url: '/ficha/getFichaPastoreInjetores/' + parametros.mac + '/' + cdmolde + '/' + valorProduto,
                         method: 'get',
                         dataType: 'json',
                         success: function (injetor) {
 
                            if (injetor !== false) {
-
                               $.ajax({
                                  url: '/ficha/getFichaPastorePerifericos/' + parametros.mac + '/' + injetor.revisao,
                                  method: 'get',
@@ -2704,6 +2723,7 @@ function tipoVisualizacao(tipo) {
    } else {
       count++;
       $("#parametros").hide();
+      $("#ficha").show();
 
       if (count === 1) {
          $.ajax({
@@ -2720,13 +2740,12 @@ function tipoVisualizacao(tipo) {
                   success: function (parametros) {
                   
                      $.ajax({
-                        url: '/ficha/getFichaPastoreInjetores/' + parametros.mac + '/' + cdmolde + '/' + $("#produtos").val(),
+                        url: '/ficha/getFichaPastoreInjetores/' + parametros.mac + '/' + cdmolde + '/' + valorProduto,
                         method: 'get',
                         dataType: 'json',
                         success: function (injetor) {
 
                            if (injetor !== false) {
-                              $("#ficha").show();
 
                               $.ajax({
                                  url: '/ficha/getFichaPastorePerifericos/' + parametros.mac + '/' + injetor.revisao,
@@ -2945,7 +2964,7 @@ function tipoVisualizacao(tipo) {
                      // console.log(parametros);
          
                      $.ajax({
-                        url: '/ficha/getFichaPastoreInjetores/' + parametros.mac + '/' + cdmolde + '/' + $("#produtos").val(),
+                        url: '/ficha/getFichaPastoreInjetores/' + parametros.mac + '/' + cdmolde + '/' + valorProduto,
                         method: 'get',
                         dataType: 'json',
                         success: function (injetor) {
