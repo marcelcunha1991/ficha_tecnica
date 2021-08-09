@@ -3943,6 +3943,7 @@ const executeSQLInjet = (sql, callback) => {
 var strSQL = "";
 
 router.get("/getInjetData/:codInjet",  (req,res) => {
+   strSQL = "";
    var codigo = req.params.codInjet;
 
    strSQL = strSQL.concat(" SELECT mol.cdmolestendido as cdmolde, inj.CdEstruturaAtual as cdestrutura, mp.cdproduto, pro.dsproduto, ");
@@ -3953,7 +3954,7 @@ router.get("/getInjetData/:codInjet",  (req,res) => {
    strSQL = strSQL.concat("  LEFT JOIN ijmolpro mp ON (mp.cdmolde = inj.CdMoldeAtual AND mp.cdestrutura = inj.CdEstruturaAtual AND mp.dthrfval IS NULL) ");
    strSQL = strSQL.concat("  LEFT JOIN ijtbpro pro ON (pro.cdproduto = mp.cdproduto) ");
    // strSQL = strSQL.concat("WHERE inj.cdinjestendido = '005003'"); 
-   strSQL = strSQL.concat("WHERE inj.cdinjestendido = '000194'"); 
+   strSQL = strSQL.concat("WHERE inj.cdinjestendido = '005003'"); 
    strSQL = strSQL.concat(" ORDER BY mp.cdproduto ");
 
    executeSQLInjet(strSQL, (err, data) => {
