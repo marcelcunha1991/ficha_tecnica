@@ -1464,10 +1464,12 @@ router.post("/fichas/updateHaitianRevisao",(req,res) => {
    })
 })
 
-router.get("/ficha/getFichaPastoreInjetoresRevisao/:macMaquina/:idRevisao",  (req,res) => {
+router.get("/ficha/getFichaPastoreInjetoresRevisao/:macMaquina/:idRevisao/:cdmolde/:dsproduto",  (req,res) => {
 
    var maquinaMac = req.params.macMaquina;
    var idRevisao = req.params.idRevisao;
+   var molde = req.params.cdmolde;
+   var produto = req.params.dsproduto;
 
    Maquinas.findOne({
       where: {
@@ -1479,11 +1481,18 @@ router.get("/ficha/getFichaPastoreInjetoresRevisao/:macMaquina/:idRevisao",  (re
          limit: 1,
          where: {
             maq : output.id,
-            revisao: idRevisao
+            revisao: idRevisao,
+            NúmeroMolde : molde,
+            Produto : produto,
          },
          order: [ [ 'createdAt', 'DESC' ]]
-      }).then(output => {
-         res.send(output)      
+      }).then(revisao => {
+         if (revisao === null) {
+            res.send(false)
+
+         } else {
+            res.send(revisao)      
+         }      
       }); 
       
    }); 
