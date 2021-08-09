@@ -243,8 +243,6 @@ router.get("/ficha/getFichaPastoreInjetores/:macMaquina/:cdmolde/:dsproduto/",  
    var maquinaMac = req.params.macMaquina;
    var molde = req.params.cdmolde;
    var produto = req.params.dsproduto;
-   console.log(molde);
-   console.log(produto);
 
    Maquinas.findOne({
       where: {
@@ -3905,21 +3903,21 @@ router.get("/AutomacaoFabrica/temperaturaCamara",  (req,res) => {
 })
 
 const executeSQLInjet = (sql, callback) => {
-   let connectionInjet = new Connection({
+   let connectionInjet= new Connection({
       "authentication": {
          "options": {
-            "userName": "sa",
-            "password": "sa123"
+            "userName": "ijadmin",
+            "password": "ijadmin"
          },
          "type": "default"
       },
-      "server": "170.10.0.211",
+      "server": "10.30.0.190",
       "options": {
          "validateBulkLoadParameters": false,
          "rowCollectionOnRequestCompletion": true,
          "trustServerCertificate": true,
-         "database": "INJET_TUTI",
-         "encrypt": false
+         "database": "INJET",
+         "encrypt": true
       }
    });
  
@@ -3953,14 +3951,14 @@ router.get("/getInjetData/:codInjet",  (req,res) => {
    strSQL = strSQL.concat("  LEFT JOIN ijtbmol mol ON (mol.cdmolde = inj.CdMoldeAtual) ");
    strSQL = strSQL.concat("  LEFT JOIN ijmolpro mp ON (mp.cdmolde = inj.CdMoldeAtual AND mp.cdestrutura = inj.CdEstruturaAtual AND mp.dthrfval IS NULL) ");
    strSQL = strSQL.concat("  LEFT JOIN ijtbpro pro ON (pro.cdproduto = mp.cdproduto) ");
-   // strSQL = strSQL.concat("WHERE inj.cdinjestendido = '005003'"); 
+   //strSQL = strSQL.concat("WHERE inj.cdinjestendido = '000013'"); 
    strSQL = strSQL.concat("WHERE inj.cdinjestendido = " + "'" + codigo + "'"); 
    strSQL = strSQL.concat(" ORDER BY mp.cdproduto ");
 
    executeSQLInjet(strSQL, (err, data) => {
       if (err)
          console.error(err);
-      console.log(data.rows);
+
       res.send(data.rows);
    });
 })
