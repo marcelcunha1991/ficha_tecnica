@@ -69,7 +69,7 @@ function chamadaInjet() {
       method: 'get',
       dataType: 'json',
       success: function (injet) {
-         console.log(injet)
+         // console.log(injet)
 
          if (injet.length !== 0) {
             injet[0].forEach(element => {
@@ -201,10 +201,10 @@ function chamadaInjet() {
 
             if (isSelect === false) {
                valorProduto = $("#produto").text();
-               console.log(valorProduto);
+               
             } else {
                valorProduto = $("#produtos").val();
-               console.log(valorProduto);
+               
             }
 
          } else {
@@ -219,7 +219,7 @@ function chamadaInjet() {
 
 $('#produtos').change(function () {
    valorProduto = $("#produtos").val();
-   console.log(valorProduto);
+   
 });
 
 var tolCilindro;
