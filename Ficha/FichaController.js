@@ -1,4 +1,4 @@
-const express = require("express");
+﻿const express = require("express");
 var Connection = require('tedious').Connection;
 var Request = require('tedious').Request;
 const router = express.Router();
@@ -3954,7 +3954,7 @@ router.get("/getInjetData/:codInjet",  (req,res) => {
    strSQL = strSQL.concat("  LEFT JOIN ijmolpro mp ON (mp.cdmolde = inj.CdMoldeAtual AND mp.cdestrutura = inj.CdEstruturaAtual AND mp.dthrfval IS NULL) ");
    strSQL = strSQL.concat("  LEFT JOIN ijtbpro pro ON (pro.cdproduto = mp.cdproduto) ");
    // strSQL = strSQL.concat("WHERE inj.cdinjestendido = '005003'"); 
-   strSQL = strSQL.concat("WHERE inj.cdinjestendido = '005003'"); 
+   strSQL = strSQL.concat("WHERE inj.cdinjestendido = " + "'" + codigo + "'"); 
    strSQL = strSQL.concat(" ORDER BY mp.cdproduto ");
 
    executeSQLInjet(strSQL, (err, data) => {
