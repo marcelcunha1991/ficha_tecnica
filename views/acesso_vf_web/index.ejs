@@ -17,20 +17,27 @@
       <% }) %>
    </select> -->
 
+   <!-- STATUS MAQUINA - DADOS INJET -->
+   <br>
+   <div id="injet">
+      <section id="dadosInjet" class="d-flex flex-column align-items-center border border-5 rounded">
+      </section>
+   </div>
+
+   <br>
+   <div id="nav">
+      <h5>Escolha uma forma de visualização:</h5>
+      <button style='margin-right: 5px' class='btn btn-info params' onclick='tipoVisualizacao(1)'>Visualização em lista</button>
+      <button class='btn btn-info params' onclick='tipoVisualizacao(2)'>Visualização em Ficha</button>
+   </div>
+   <br>
+
+   <br>
    <div id="setDate">
       <label style="font-weight: 600;" for="data">Filtrar por data:</label>
       <input type="date" id="data">
       <button class="btn btn-primary" onclick="getDate()">Enviar</button>
    </div>
-   <br>
-
-   <h5>Escolha uma forma de visualização:</h5>
-   <button style='margin-right: 5px' class='btn btn-info params' onclick='tipoVisualizacao(1)'>Visualização em lista</button>
-   <button class='btn btn-info params' onclick='tipoVisualizacao(2)'>Visualização em Ficha</button>
-
-   <br>
-   <div id="nav"></div>
-   <br>
 
    <!-- <h5>Alertas Abertos : </h5>
    <br>
